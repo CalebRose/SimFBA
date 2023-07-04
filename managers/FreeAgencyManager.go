@@ -165,6 +165,7 @@ func CreateFAOffer(offer structs.FreeAgencyOfferDTO) structs.FreeAgencyOffer {
 			SeasonID:    ts.NFLSeasonID,
 			MessageType: "Free Agency",
 			WeekID:      ts.NFLWeekID,
+			Week:        ts.NFLWeek,
 			Message:     offer.Team + " have placed an offer on " + player.TeamAbbr + " " + player.Position + " " + player.FirstName + " " + player.LastName + " to pick up from the practice squad.",
 			League:      "NFL",
 		}
@@ -224,6 +225,7 @@ func SignFreeAgent(offer structs.FreeAgencyOffer, FreeAgent structs.NFLPlayer, t
 	newsLog := structs.NewsLog{
 		TeamID:      int(offer.TeamID),
 		WeekID:      ts.NFLWeekID,
+		Week:        ts.NFLWeek,
 		SeasonID:    ts.NFLSeasonID,
 		MessageType: "Free Agency",
 		Message:     message,
@@ -309,6 +311,7 @@ func SyncFreeAgencyOffers() {
 			newsLog := structs.NewsLog{
 				TeamID:      int(winningOffer.TeamID),
 				WeekID:      ts.NFLWeekID,
+				Week:        ts.NFLWeek,
 				SeasonID:    ts.NFLSeasonID,
 				MessageType: "Free Agency",
 				Message:     message,
