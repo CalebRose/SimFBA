@@ -134,6 +134,12 @@ func UpdateNFLDepthChart(w http.ResponseWriter, r *http.Request) {
 }
 
 // UpdateCollegeAIDepthCharts
+func CheckAllUserDepthChartsForInjuredPlayers(w http.ResponseWriter, r *http.Request) {
+	managers.CheckAllUserDepthChartsForInjuredPlayers()
+	json.NewEncoder(w).Encode("All Depth Charts Inspected")
+}
+
+// UpdateCollegeAIDepthCharts
 func UpdateCollegeAIDepthCharts(w http.ResponseWriter, r *http.Request) {
 	managers.UpdateCollegeAIDepthCharts()
 	json.NewEncoder(w).Encode("Updated all CFB Depth Charts")

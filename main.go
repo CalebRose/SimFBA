@@ -42,6 +42,7 @@ func handleRequests() {
 	myRouter.HandleFunc("/simfba/sync/timestamp/", controller.SyncTimestamp).Methods("POST")
 	myRouter.HandleFunc("/simfba/sync/week/", controller.SyncWeek).Methods("GET")
 	myRouter.HandleFunc("/simfba/sync/timeslot/{timeslot}", controller.SyncTimeslot).Methods("GET")
+	myRouter.HandleFunc("/simfba/regress/timeslot/{timeslot}", controller.RegressTimeslot).Methods("GET")
 	myRouter.HandleFunc("/simfba/sync/freeagency/round", controller.SyncFreeAgencyRound).Methods("GET")
 	myRouter.HandleFunc("/simfba/sync/recruiting/", controller.SyncRecruiting).Methods("GET")
 	// myRouter.HandleFunc("/simfba/sync/missing/", controller.SyncMissingRES).Methods("GET")
@@ -54,6 +55,7 @@ func handleRequests() {
 	myRouter.HandleFunc("/admin/recruiting/class/size", controller.GetRecruitingClassSizeForTeams).Methods("GET")
 	myRouter.HandleFunc("/admin/ai/fill/boards", controller.FillAIBoards).Methods("GET")
 	myRouter.HandleFunc("/admin/ai/sync/boards", controller.SyncAIBoards).Methods("GET")
+	myRouter.HandleFunc("/admin/fix/affinities", controller.FixSmallTownBigCityAIBoards).Methods("GET")
 	myRouter.HandleFunc("/admin/run/the/games/", controller.RunTheGames).Methods("GET")
 	// myRouter.HandleFunc("/admin/overall/progressions/next/season", controller.ProgressToNextSeason).Methods("GET")
 	myRouter.HandleFunc("/admin/trades/accept/sync/{proposalID}", controller.SyncAcceptedTrade).Methods("GET")
@@ -181,7 +183,7 @@ func handleRequests() {
 	myRouter.HandleFunc("/statistics/export/players/", controller.ExportPlayerStatsToCSV).Methods("GET")
 	myRouter.HandleFunc("/statistics/interface/cfb/{seasonID}/{weekID}/{viewType}", controller.GetStatsPageContentForSeason).Methods("GET")
 	myRouter.HandleFunc("/statistics/interface/nfl/{seasonID}/{weekID}/{viewType}", controller.GetNFLStatsPageContent).Methods("GET")
-	myRouter.HandleFunc("/statistics/map/season/", controller.MapAllStatsToSeason).Methods("GET")
+	myRouter.HandleFunc("/statistics/reset/season/", controller.ResetCFBSeasonalStats).Methods("GET")
 
 	// Team Controls
 	myRouter.HandleFunc("/teams/college/all/", controller.GetAllCollegeTeams).Methods("GET")
@@ -227,7 +229,7 @@ func handleRequests() {
 	originsOk := handlers.AllowedOrigins([]string{origins})
 	headersOk := handlers.AllowedHeaders([]string{"Content-Type", "Authorization", "Accept", "Access-Control-Request-Method", "Access-Control-Request-Headers"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
-	log.Fatal(http.ListenAndServe(":8081", handlers.CORS(originsOk, methodsOk, headersOk)(myRouter)))
+	log.Fatal(http.ListenAndServe(":5001", handlers.CORS(originsOk, methodsOk, headersOk)(myRouter)))
 }
 
 func loadEnvs() {

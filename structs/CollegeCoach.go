@@ -56,3 +56,31 @@ func (cc *CollegeCoach) UpdateCoachRecord(game CollegeGame) {
 		}
 	}
 }
+
+func (cc *CollegeCoach) ReduceCoachRecord(game CollegeGame) {
+	isAway := game.AwayTeamCoach == cc.CoachName
+	winner := (!isAway && game.HomeTeamWin) || (isAway && game.AwayTeamWin)
+	if winner {
+		cc.OverallWins -= 1
+		if game.IsConferenceChampionship {
+			cc.OverallConferenceChampionships -= 1
+		}
+		if game.IsBowlGame {
+			cc.BowlWins -= 1
+		}
+		if game.IsPlayoffGame {
+			cc.PlayoffWins -= 1
+		}
+		if game.IsNationalChampionship {
+			cc.NationalChampionships -= 1
+		}
+	} else {
+		cc.OverallLosses -= 1
+		if game.IsBowlGame {
+			cc.BowlLosses -= 1
+		}
+		if game.IsPlayoffGame {
+			cc.PlayoffLosses -= 1
+		}
+	}
+}

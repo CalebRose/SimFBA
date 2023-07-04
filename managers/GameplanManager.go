@@ -334,6 +334,28 @@ func GetPlayerFromNFLDClist(id uint, updatedPlayers []structs.NFLDepthChartPosit
 	return player
 }
 
+func CheckAllUserDepthChartsForInjuredPlayers() {
+	teams := GetAllCollegeTeams()
+
+	for _, team := range teams {
+		if len(team.Coach) == 0 || team.Coach == "AI" {
+			continue
+		}
+		teamID := strconv.Itoa(int(team.ID))
+
+		depthchartPositions := GetDepthChartPositionPlayersByDepthchartID(teamID)
+
+		for _, dcp := range depthchartPositions {
+			player := dcp.CollegePlayer
+
+			if player.IsInjured {
+				fmt.Println(team.TeamName + ": INJURY AT " + dcp.Position + dcp.PositionLevel + ": " + player.FirstName + " " + player.LastName + " injured with " + strconv.Itoa(int(player.WeeksOfRecovery)) + " weeks of recovery.")
+			}
+		}
+	}
+
+}
+
 // UpdateCollegeAIDepthCharts
 func UpdateCollegeAIDepthCharts() {
 	db := dbprovider.GetInstance().GetDB()
@@ -383,7 +405,7 @@ func UpdateCollegeAIDepthCharts() {
 							score += 5
 						}
 					}
-					score += cp.ThrowAccuracy
+					score += cp.ThrowAccuracy + (cp.ThrowPower / 2)
 				} else if offScheme == "Air Raid" {
 					if pos == "QB" {
 						score += 35
@@ -397,7 +419,7 @@ func UpdateCollegeAIDepthCharts() {
 							score += 5
 						}
 					}
-					score += cp.ThrowPower
+					score += cp.ThrowPower + (cp.ThrowAccuracy / 2)
 				} else if offScheme == "Spread Option" {
 					if pos == "QB" {
 						score += 35
@@ -411,7 +433,7 @@ func UpdateCollegeAIDepthCharts() {
 							score += 10
 						}
 					}
-					score += cp.ThrowAccuracy
+					score += cp.ThrowAccuracy + (cp.ThrowPower / 2)
 				} else if offScheme == "Double Wing Option" {
 					if pos == "QB" {
 						score += 35
@@ -548,9 +570,9 @@ func UpdateCollegeAIDepthCharts() {
 					if pos == "TE" {
 						score += 35
 						if arch == "Receiving" {
-							score += 20
+							score += 5
 						} else {
-							score += 15
+							score += 2
 						}
 					}
 					score += cp.Overall
@@ -558,19 +580,19 @@ func UpdateCollegeAIDepthCharts() {
 					if pos == "TE" {
 						score += 35
 						if arch == "Vertical Threat" {
-							score += 20
+							score += 8
 						} else if arch == "Receiving" {
-							score += 15
-						} else {
 							score += 5
+						} else {
+							score += 2
 						}
 					}
-					score += cp.Catching
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.Catching)*0.4)
 				} else if offScheme == "Spread Option" {
 					if pos == "TE" {
 						score += 35
 						if arch == "Receiving" {
-							score += 15
+							score += 8
 						} else {
 							score += 5
 						}
@@ -580,12 +602,12 @@ func UpdateCollegeAIDepthCharts() {
 					if pos == "TE" {
 						score += 35
 						if arch == "Blocking" {
-							score += 15
+							score += 8
 						} else {
 							score += 5
 						}
 					}
-					score += cp.RunBlock
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.RunBlock)*0.4)
 				}
 				dcpObj := structs.DepthChartPositionDTO{
 					Position:      pos,
@@ -605,7 +627,7 @@ func UpdateCollegeAIDepthCharts() {
 							score += 5
 						}
 					}
-					score += cp.Catching
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.Catching)*0.4)
 				} else if offScheme == "Air Raid" {
 					if pos == "WR" {
 						score += 35
@@ -615,7 +637,7 @@ func UpdateCollegeAIDepthCharts() {
 					} else if pos == "TE" && arch == "Vertical Threat" {
 						score += 10
 					}
-					score += cp.Speed
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.Speed)*0.4)
 				} else if offScheme == "Spread Option" {
 					if pos == "WR" {
 						score += 35
@@ -623,7 +645,7 @@ func UpdateCollegeAIDepthCharts() {
 							score += 5
 						}
 					}
-					score += cp.RouteRunning
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.RouteRunning)*0.4)
 				} else if offScheme == "Double Wing Option" {
 					if pos == "WR" {
 						score += 35
@@ -631,7 +653,7 @@ func UpdateCollegeAIDepthCharts() {
 							score += 5
 						}
 					}
-					score += cp.RunBlock
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.RunBlock)*0.4)
 				}
 				dcpObj := structs.DepthChartPositionDTO{
 					Position:      pos,
@@ -652,8 +674,10 @@ func UpdateCollegeAIDepthCharts() {
 					}
 					score += cp.Overall
 				} else if offScheme == "Air Raid" {
-					if (pos == "OT" || pos == "OG") && arch == "Pass Blocking" {
-						score += 35
+					if (pos == "OT") && arch == "Pass Blocking" {
+						score += 30
+					} else if pos == "OG" && arch == "Pass Blocking" {
+						score += 12
 					} else if pos == "C" && arch == "Pass Blocking" {
 						score += 5
 					} else if (pos == "OT" || pos == "OG") && arch != "Pass Blocking" {
@@ -668,8 +692,10 @@ func UpdateCollegeAIDepthCharts() {
 					}
 					score += cp.Overall
 				} else if offScheme == "Double Wing Option" {
-					if (pos == "OT" || pos == "OG") && arch == "Run Blocking" {
+					if (pos == "OT") && arch == "Run Blocking" {
 						score += 35
+					} else if pos == "OG" && arch == "Run Blocking" {
+						score += 12
 					} else if pos == "C" && arch == "Run Blocking" {
 						score += 5
 					} else if (pos == "OT" || pos == "OG") && arch != "Run Blocking" {
@@ -743,7 +769,7 @@ func UpdateCollegeAIDepthCharts() {
 					score += cp.Overall
 				} else if offScheme == "Air Raid" {
 					if pos == "C" {
-						score += 25
+						score += 35
 						if arch == "Pass Blocking" {
 							score += 10
 						} else {
@@ -758,7 +784,7 @@ func UpdateCollegeAIDepthCharts() {
 					score += cp.Overall
 				} else if offScheme == "Double Wing Option" {
 					if pos == "C" {
-						score += 25
+						score += 35
 						if arch == "Run Blocking" {
 							score += 10
 						}
@@ -867,7 +893,7 @@ func UpdateCollegeAIDepthCharts() {
 					} else if pos == "OLB" && arch == "Pass Rush" {
 						score += 5
 					}
-					score += cp.Speed
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.Speed)*0.4)
 				} else if defScheme == "3-4" {
 					if pos == "OLB" && (arch == "Pass Rush" || arch == "Run Stopper") {
 						score += 15
@@ -876,7 +902,7 @@ func UpdateCollegeAIDepthCharts() {
 					} else if pos == "ILB" && arch == "Run Stopper" {
 						score += 5
 					}
-					score += cp.PassRush
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.PassRush)*0.4)
 				}
 				dcpObj := structs.DepthChartPositionDTO{
 					Position:      pos,
@@ -903,7 +929,7 @@ func UpdateCollegeAIDepthCharts() {
 					} else if (pos == "SS" || pos == "FS") && arch == "Run Stopper" {
 						score += 5
 					}
-					score += cp.RunDefense
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.RunDefense)*0.4)
 				} else if defScheme == "3-4" {
 					if pos == "ILB" {
 						score += 30
@@ -912,7 +938,7 @@ func UpdateCollegeAIDepthCharts() {
 					} else if (pos == "SS" || pos == "FS") && arch == "Run Stopper" {
 						score += 5
 					}
-					score += cp.PassRush
+					score += int(float64(cp.Overall)*0.6) + int(float64(cp.PassRush)*0.4)
 				}
 				dcpObj := structs.DepthChartPositionDTO{
 					Position:      pos,

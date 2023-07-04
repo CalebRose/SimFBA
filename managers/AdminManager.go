@@ -45,6 +45,254 @@ func MoveUpWeek() structs.Timestamp {
 	return timestamp
 }
 
+func RegressTimeslot(timeslot string) {
+	db := dbprovider.GetInstance().GetDB()
+	timestamp := GetTimestamp()
+
+	// Update timeslot
+	// timestamp.ToggleTimeSlot(timeslot)
+
+	isCFB := false
+	if timeslot == "Thursday Night" ||
+		timeslot == "Friday Night" ||
+		timeslot == "Saturday Morning" ||
+		timeslot == "Saturday Afternoon" ||
+		timeslot == "Saturday Evening" ||
+		timeslot == "Saturday Night" {
+		isCFB = true
+	}
+
+	if isCFB {
+		// Get Games
+		games := GetCollegeGamesByTimeslotAndWeekId(strconv.Itoa(timestamp.CollegeWeekID), timeslot)
+		seasonStats := GetCollegeSeasonStatsBySeason(strconv.Itoa(timestamp.CollegeSeasonID))
+		seasonStatsMap := make(map[int]*structs.CollegeTeamSeasonStats)
+		for _, s := range seasonStats {
+			seasonStatsMap[int(s.TeamID)] = &s
+		}
+
+		for _, game := range games {
+			if game.ID == 2048 || game.ID == 2049 {
+				continue
+			}
+			// Get team stats
+			gameID := strconv.Itoa(int(game.ID))
+			homeTeamID := game.HomeTeamID
+			awayTeamID := game.AwayTeamID
+
+			// homeTeamSeasonStats := seasonStatsMap[homeTeamID]
+			// awayTeamSeasonStats := seasonStatsMap[awayTeamID]
+			homeTeamSeasonStats := GetCollegeTeamSeasonStatsBySeason(strconv.Itoa(homeTeamID), strconv.Itoa(int(timestamp.CollegeSeasonID)))
+			awayTeamSeasonStats := GetCollegeTeamSeasonStatsBySeason(strconv.Itoa(awayTeamID), strconv.Itoa(int(timestamp.CollegeSeasonID)))
+			if homeTeamSeasonStats.ID == 0 {
+				homeTeamSeasonStats = structs.CollegeTeamSeasonStats{
+					TeamID:   uint(homeTeamID),
+					SeasonID: uint(game.SeasonID),
+					Year:     timestamp.Season,
+				}
+			}
+
+			if awayTeamSeasonStats.ID == 0 {
+				awayTeamSeasonStats = structs.CollegeTeamSeasonStats{
+					TeamID:   uint(awayTeamID),
+					SeasonID: uint(game.SeasonID),
+					Year:     timestamp.Season,
+				}
+			}
+
+			homeTeamStats := GetCollegeTeamStatsByGame(strconv.Itoa(homeTeamID), gameID)
+			awayTeamStats := GetCollegeTeamStatsByGame(strconv.Itoa(awayTeamID), gameID)
+
+			homeTeamSeasonStats.ReduceStats([]structs.CollegeTeamStats{homeTeamStats})
+			awayTeamSeasonStats.ReduceStats([]structs.CollegeTeamStats{awayTeamStats})
+			// Get Player Stats
+			homePlayerStats := GetAllCollegePlayerStatsByGame(gameID, strconv.Itoa(homeTeamID))
+			awayPlayerStats := GetAllCollegePlayerStatsByGame(gameID, strconv.Itoa(awayTeamID))
+
+			for _, h := range homePlayerStats {
+				if h.Snaps == 0 {
+					continue
+				}
+				// playerSeasonStat := playerSeasonStatsMap[h.CollegePlayerID]
+				playerSeasonStat := GetCollegeSeasonStatsByPlayerAndSeason(strconv.Itoa(h.CollegePlayerID), strconv.Itoa(int(timestamp.CollegeSeasonID)))
+				if playerSeasonStat.ID == 0 {
+					playerSeasonStat = structs.CollegePlayerSeasonStats{
+						CollegePlayerID: uint(h.CollegePlayerID),
+						SeasonID:        uint(timestamp.CollegeSeasonID),
+						TeamID:          uint(h.TeamID),
+						Year:            uint(h.Year),
+					}
+				}
+
+				playerSeasonStat.ReduceStats([]structs.CollegePlayerStats{h})
+
+				if !timestamp.CFBSpringGames {
+					db.Save(&playerSeasonStat)
+				}
+			}
+
+			for _, a := range awayPlayerStats {
+				if a.Snaps == 0 {
+					continue
+				}
+				// playerSeasonStat := playerSeasonStatsMap[a.CollegePlayerID]
+				playerSeasonStat := GetCollegeSeasonStatsByPlayerAndSeason(strconv.Itoa(a.CollegePlayerID), strconv.Itoa(int(timestamp.CollegeSeasonID)))
+				if playerSeasonStat.ID == 0 {
+					playerSeasonStat = structs.CollegePlayerSeasonStats{
+						CollegePlayerID: uint(a.CollegePlayerID),
+						SeasonID:        uint(timestamp.CollegeSeasonID),
+						TeamID:          uint(a.TeamID),
+						Year:            uint(a.Year),
+					}
+				}
+				playerSeasonStat.ReduceStats([]structs.CollegePlayerStats{a})
+
+				if !timestamp.CFBSpringGames {
+					db.Save(&playerSeasonStat)
+				}
+			}
+
+			// Update Standings
+			homeTeamStandings := GetCFBStandingsByTeamIDAndSeasonID(strconv.Itoa(homeTeamID), strconv.Itoa(timestamp.CollegeSeasonID))
+			awayTeamStandings := GetCFBStandingsByTeamIDAndSeasonID(strconv.Itoa(awayTeamID), strconv.Itoa(timestamp.CollegeSeasonID))
+
+			homeTeamStandings.SubtractCollegeStandings(game)
+			awayTeamStandings.SubtractCollegeStandings(game)
+
+			if game.HomeTeamCoach != "AI" && !timestamp.CFBSpringGames {
+				homeCoach := GetCollegeCoachByCoachName(game.HomeTeamCoach)
+				homeCoach.UpdateCoachRecord(game)
+
+				err := db.Save(&homeCoach).Error
+				if err != nil {
+					log.Panicln("Could not save coach record for team " + strconv.Itoa(homeTeamID))
+				}
+			}
+
+			if game.AwayTeamCoach != "AI" && !timestamp.CFBSpringGames {
+				awayCoach := GetCollegeCoachByCoachName(game.AwayTeamCoach)
+				awayCoach.UpdateCoachRecord(game)
+				err := db.Save(&awayCoach).Error
+				if err != nil {
+					log.Panicln("Could not save coach record for team " + strconv.Itoa(awayTeamID))
+				}
+			}
+
+			// Save
+			if !timestamp.CFBSpringGames {
+				db.Save(&homeTeamSeasonStats)
+				db.Save(&awayTeamSeasonStats)
+				db.Save(&homeTeamStandings)
+				db.Save(&awayTeamStandings)
+			}
+		}
+	} else {
+		// Get Games
+		games := GetNFLGamesByTimeslotAndWeekId(strconv.Itoa(timestamp.NFLWeekID), timeslot)
+
+		for _, game := range games {
+			// Get team stats
+			gameID := strconv.Itoa(int(game.ID))
+			homeTeamID := game.HomeTeamID
+			awayTeamID := game.AwayTeamID
+
+			// homeTeamSeasonStats := seasonStatsMap[homeTeamID]
+			// awayTeamSeasonStats := seasonStatsMap[awayTeamID]
+			homeTeamSeasonStats := GetNFLTeamSeasonStatsByTeamANDSeason(strconv.Itoa(homeTeamID), strconv.Itoa(int(timestamp.NFLSeasonID)))
+			awayTeamSeasonStats := GetNFLTeamSeasonStatsByTeamANDSeason(strconv.Itoa(awayTeamID), strconv.Itoa(int(timestamp.NFLSeasonID)))
+
+			homeTeamStats := GetNFLTeamStatsByGame(strconv.Itoa(homeTeamID), gameID)
+			awayTeamStats := GetNFLTeamStatsByGame(strconv.Itoa(awayTeamID), gameID)
+
+			homeTeamSeasonStats.SubtractStats([]structs.NFLTeamStats{homeTeamStats})
+			awayTeamSeasonStats.SubtractStats([]structs.NFLTeamStats{awayTeamStats})
+			// Get Player Stats
+			homePlayerStats := GetAllNFLPlayerStatsByGame(gameID, strconv.Itoa(homeTeamID))
+			awayPlayerStats := GetAllNFLPlayerStatsByGame(gameID, strconv.Itoa(awayTeamID))
+
+			for _, h := range homePlayerStats {
+				if h.Snaps == 0 {
+					continue
+				}
+				// playerSeasonStat := playerSeasonStatsMap[h.NFLPlayerID]
+				seasonStats := GetNFLSeasonStatsByPlayerAndSeason(strconv.Itoa(h.NFLPlayerID), strconv.Itoa(int(timestamp.NFLSeasonID)))
+				if seasonStats.ID == 0 {
+					seasonStats = structs.NFLPlayerSeasonStats{
+						NFLPlayerID: uint(h.NFLPlayerID),
+						SeasonID:    uint(timestamp.NFLSeasonID),
+						TeamID:      uint(h.TeamID),
+						Team:        h.Team,
+						Year:        uint(timestamp.Season),
+					}
+				}
+
+				seasonStats.SubtractStats([]structs.NFLPlayerStats{h}, timestamp)
+
+				db.Save(&seasonStats)
+			}
+
+			for _, a := range awayPlayerStats {
+				if a.Snaps == 0 {
+					continue
+				}
+
+				// playerSeasonStat := playerSeasonStatsMap[a.NFLPlayerID]
+				seasonStats := GetNFLSeasonStatsByPlayerAndSeason(strconv.Itoa(a.NFLPlayerID), strconv.Itoa(int(timestamp.NFLSeasonID)))
+				if seasonStats.ID == 0 {
+					seasonStats = structs.NFLPlayerSeasonStats{
+						NFLPlayerID: uint(a.NFLPlayerID),
+						SeasonID:    uint(timestamp.NFLSeasonID),
+						TeamID:      uint(a.TeamID),
+						Team:        a.Team,
+						Year:        uint(timestamp.Season),
+					}
+				}
+
+				seasonStats.SubtractStats([]structs.NFLPlayerStats{a}, timestamp)
+
+				db.Save(&seasonStats)
+			}
+
+			// Update Standings
+			homeTeamStandings := GetNFLStandingsByTeamIDAndSeasonID(strconv.Itoa(homeTeamID), strconv.Itoa(timestamp.NFLSeasonID))
+			awayTeamStandings := GetNFLStandingsByTeamIDAndSeasonID(strconv.Itoa(awayTeamID), strconv.Itoa(timestamp.NFLSeasonID))
+
+			homeTeamStandings.ReduceNFLStandings(game)
+			awayTeamStandings.ReduceNFLStandings(game)
+
+			if game.HomeTeamCoach != "AI" && !timestamp.NFLPreseason {
+				homeCoach := GetNFLUserByUsername(game.HomeTeamCoach)
+				homeCoach.ReduceCoachRecord(game)
+
+				err := db.Save(&homeCoach).Error
+				if err != nil {
+					log.Panicln("Could not save coach record for team " + strconv.Itoa(homeTeamID))
+				}
+			}
+
+			if game.AwayTeamCoach != "AI" && !timestamp.NFLPreseason {
+				awayCoach := GetNFLUserByUsername(game.AwayTeamCoach)
+				awayCoach.ReduceCoachRecord(game)
+				err := db.Save(&awayCoach).Error
+				if err != nil {
+					log.Panicln("Could not save coach record for team " + strconv.Itoa(awayTeamID))
+				}
+			}
+
+			// Save
+			if !timestamp.NFLPreseason {
+				db.Save(&homeTeamSeasonStats)
+				db.Save(&awayTeamSeasonStats)
+				db.Save(&homeTeamStandings)
+				db.Save(&awayTeamStandings)
+			}
+
+		}
+	}
+
+	db.Save(&timestamp)
+}
+
 func SyncTimeslot(timeslot string) {
 	db := dbprovider.GetInstance().GetDB()
 	timestamp := GetTimestamp()

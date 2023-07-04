@@ -239,8 +239,8 @@ func GetSeasonTeamStatsByTeamAbbrAndSeason(w http.ResponseWriter, r *http.Reques
 	json.NewEncoder(w).Encode(team)
 }
 
-func MapAllStatsToSeason(w http.ResponseWriter, r *http.Request) {
-	managers.MapAllStatsToSeason()
+func ResetCFBSeasonalStats(w http.ResponseWriter, r *http.Request) {
+	managers.ResetCFBSeasonalStats()
 }
 
 func GetCollegeGameResultsByGameID(w http.ResponseWriter, r *http.Request) {

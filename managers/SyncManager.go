@@ -534,6 +534,81 @@ func SyncTeamRankings() {
 	}
 }
 
+func FixSmallTownBigCityAIBoards() {
+	db := dbprovider.GetInstance().GetDB()
+
+	teams := GetAllCollegeTeams()
+
+	for _, t := range teams {
+
+		teamID := strconv.Itoa(int(t.ID))
+
+		profile := structs.RecruitingTeamProfile{}
+
+		err := db.Preload("Affinities").Where("id = ?", teamID).Find(&profile).Error
+		if err != nil {
+			log.Panicln(err)
+		}
+
+		playerProfiles := GetRecruitingProfileForTeamBoardByTeamID(teamID)
+
+		croots := playerProfiles.Recruits
+		smallTownApplicable := true
+		bigCityApplicable := true
+		for _, croot := range croots {
+			r := croot.Recruit
+
+			individualProfile := GetRecruitProfileByPlayerId(strconv.Itoa(int(r.ID)), teamID)
+			fixApplied := false
+
+			for _, affinity := range profile.Affinities {
+				if affinity.AffinityName != "Small Town" && affinity.AffinityName != "Big City" {
+					continue
+				}
+
+				if affinity.AffinityName == "Small Town" && !affinity.IsApplicable {
+					smallTownApplicable = false
+					continue
+				}
+				if affinity.AffinityName == "Big City" && !affinity.IsApplicable {
+					bigCityApplicable = false
+					continue
+				}
+				if r.AffinityOne == "Small Town" && isAffinityApplicable("Small Town", affinity) && !individualProfile.AffinityOneEligible {
+					// Fix Affinity One in recruiting player profile
+					individualProfile.ToggleAffinityOne()
+					fixApplied = true
+				}
+
+				if r.AffinityTwo == "Small Town" && isAffinityApplicable("Small Town", affinity) && !individualProfile.AffinityTwoEligible {
+					// Fix Affinity One in recruiting player profile
+					individualProfile.ToggleAffinityTwo()
+					fixApplied = true
+				}
+
+				if r.AffinityOne == "Big City" && isAffinityApplicable("Big City", affinity) && !individualProfile.AffinityOneEligible {
+					// Fix Affinity One in recruiting player profile
+					individualProfile.ToggleAffinityOne()
+					fixApplied = true
+				}
+
+				if r.AffinityTwo == "Big City" && isAffinityApplicable("Big City", affinity) && !individualProfile.AffinityTwoEligible {
+					// Fix Affinity One in recruiting player profile
+					individualProfile.ToggleAffinityTwo()
+					fixApplied = true
+				}
+			}
+
+			if !smallTownApplicable && !bigCityApplicable {
+				break
+			}
+			if fixApplied {
+				db.Save(&individualProfile)
+			}
+		}
+	}
+}
+
 func FillAIRecruitingBoards() {
 	db := dbprovider.GetInstance().GetDB()
 	fmt.Println(time.Now().UnixNano())
@@ -545,10 +620,10 @@ func FillAIRecruitingBoards() {
 	stateMatcher := util.GetStateMatcher()
 	regionMatcher := util.GetStateRegionMatcher()
 
-	boardCount := 100
+	boardCount := 75
 
 	if ts.CollegeWeek > 5 {
-		boardCount = 125
+		boardCount = 100
 	}
 
 	for _, team := range AITeams {
@@ -579,7 +654,7 @@ func FillAIRecruitingBoards() {
 		}
 
 		for _, croot := range UnsignedRecruits {
-			if count == boardCount {
+			if count >= boardCount {
 				break
 			}
 
@@ -768,6 +843,42 @@ func FillAIRecruitingBoards() {
 					}
 
 					if croot.AffinityTwo == "Small School" {
+						affinityTwoApplicable = true
+						affinityMod += 3
+					}
+				}
+
+				if doesCrootHaveAffinity("Small Town", croot) && isAffinityApplicable("Small Town", affinity) {
+					if team.IsFBS {
+						odds += 33
+					} else {
+						odds += 17
+					}
+
+					if croot.AffinityOne == "Small Town" {
+						affinityOneApplicable = true
+						affinityMod += 3
+					}
+
+					if croot.AffinityTwo == "Small Town" {
+						affinityTwoApplicable = true
+						affinityMod += 3
+					}
+				}
+
+				if doesCrootHaveAffinity("Big City", croot) && isAffinityApplicable("Big City", affinity) {
+					if team.IsFBS {
+						odds += 33
+					} else {
+						odds += 17
+					}
+
+					if croot.AffinityOne == "Big City" {
+						affinityOneApplicable = true
+						affinityMod += 3
+					}
+
+					if croot.AffinityTwo == "Big City" {
 						affinityTwoApplicable = true
 						affinityMod += 3
 					}

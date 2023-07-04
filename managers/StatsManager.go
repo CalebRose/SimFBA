@@ -347,41 +347,34 @@ func GetAllNFLTeamsWithStatsBySeasonID(seasonID, weekID, viewType string) []mode
 	return ctResponse
 }
 
-func MapAllStatsToSeason() {
+func ResetCFBSeasonalStats() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
-
+	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
 	teams := GetAllCollegeTeams()
 
 	for _, team := range teams {
-		teamStats := GetHistoricalTeamStats(strconv.Itoa(int(team.ID)), strconv.Itoa(ts.CollegeSeasonID))
-
-		seasonStats := structs.CollegeTeamSeasonStats{
-			TeamID:   team.ID,
-			SeasonID: uint(ts.CollegeSeasonID),
-		}
-
+		teamID := strconv.Itoa(int(team.ID))
+		teamStats := GetHistoricalTeamStats(teamID, seasonID)
+		seasonStats := GetCollegeTeamSeasonStatsBySeason(teamID, seasonID)
+		seasonStats.ResetStats()
 		seasonStats.MapStats(teamStats)
-
 		db.Save(&seasonStats)
-		fmt.Println("Saved Season Stats for " + team.TeamName)
+		fmt.Println("Reset Season Stats for " + team.TeamName)
 	}
 
 	players := GetAllCollegePlayers()
 
 	for _, player := range players {
-		playerStats := GetCollegePlayerStatsByPlayerIDAndSeason(strconv.Itoa(int(player.ID)), strconv.Itoa(ts.CollegeSeasonID))
-
-		seasonStats := structs.CollegePlayerSeasonStats{
-			CollegePlayerID: player.ID,
-			TeamID:          uint(player.TeamID),
-			SeasonID:        uint(ts.CollegeSeasonID),
+		playerID := strconv.Itoa(int(player.ID))
+		playerStats := GetCollegePlayerStatsByPlayerIDAndSeason(playerID, seasonID)
+		if len(playerStats) > 0 {
+			seasonStats := GetCollegeSeasonStatsByPlayerAndSeason(playerID, seasonID)
+			seasonStats.ResetStats()
+			seasonStats.MapStats(playerStats)
+			db.Save(&seasonStats)
 		}
-
-		seasonStats.MapStats(playerStats)
-
-		db.Save(&seasonStats)
-		fmt.Println("Saved Season Stats for " + player.FirstName + " " + player.LastName + " " + player.Position)
+		fmt.Println("Reset Season Stats for " + player.FirstName + " " + player.LastName + " " + player.Position)
 	}
 }
 

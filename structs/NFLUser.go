@@ -99,3 +99,28 @@ func (nu *NFLUser) UpdateCoachRecord(game NFLGame) {
 		}
 	}
 }
+
+func (nu *NFLUser) ReduceCoachRecord(game NFLGame) {
+	isAway := game.AwayTeamCoach == nu.Username
+	winner := (!isAway && game.HomeTeamWin) || (isAway && game.AwayTeamWin)
+	if winner {
+		nu.TotalWins -= 1
+		if game.IsConferenceChampionship {
+			nu.ConferenceChampionships -= 1
+		}
+		if game.IsPlayoffGame {
+			nu.PlayoffWins -= 1
+		}
+		if game.IsSuperBowl {
+			nu.SuperBowls -= 1
+		}
+	} else {
+		nu.TotalLosses -= 1
+		if game.IsSuperBowl {
+			nu.SuperBowlLosses -= 1
+		}
+		if game.IsPlayoffGame {
+			nu.PlayoffLosses -= 1
+		}
+	}
+}

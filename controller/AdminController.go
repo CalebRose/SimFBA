@@ -59,6 +59,18 @@ func SyncTimeslot(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode("Timeslot updated")
 }
 
+func RegressTimeslot(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	timeslot := vars["timeslot"]
+	if len(timeslot) == 0 {
+		log.Panicln("Missing timeslot!")
+	}
+
+	managers.RegressTimeslot(timeslot)
+
+	json.NewEncoder(w).Encode("Timeslot updated")
+}
+
 func SyncFreeAgencyRound(w http.ResponseWriter, r *http.Request) {
 	managers.MoveUpInOffseasonFreeAgency()
 	managers.SyncFreeAgencyOffers()
@@ -135,4 +147,9 @@ func RunTheGames(w http.ResponseWriter, r *http.Request) {
 func WeatherGenerator(w http.ResponseWriter, r *http.Request) {
 	managers.GenerateWeatherForGames()
 	fmt.Println(w, "Congrats, you generated the GODDAM WEATHER!")
+}
+
+func FixSmallTownBigCityAIBoards(w http.ResponseWriter, r *http.Request) {
+	managers.FixSmallTownBigCityAIBoards()
+	fmt.Println(w, "Affinities fixed!")
 }

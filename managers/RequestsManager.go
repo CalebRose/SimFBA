@@ -227,7 +227,7 @@ func RemoveUserFromTeam(teamId string) {
 
 	recruitingProfile := GetOnlyRecruitingProfileByTeamID(teamId)
 
-	recruitingProfile.DeactivateAI()
+	recruitingProfile.ActivateAI()
 
 	db.Save(&recruitingProfile)
 
