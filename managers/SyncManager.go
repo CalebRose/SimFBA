@@ -622,11 +622,10 @@ func FillAIRecruitingBoards() {
 
 	boardCount := 75
 
-	if ts.CollegeWeek > 5 {
-		boardCount = 100
-	}
-
 	for _, team := range AITeams {
+		if team.ID < 130 {
+			continue
+		}
 		count := 0
 		if !team.IsAI || team.TotalCommitments >= team.RecruitClassSize {
 			continue

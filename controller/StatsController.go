@@ -68,6 +68,22 @@ func ExportPlayerStatsToCSV(w http.ResponseWriter, r *http.Request) {
 	managers.ExportPlayerStatsToCSV(collegePlayers, w)
 }
 
+func GetInjuryReport(w http.ResponseWriter, r *http.Request) {
+
+	// GetInjuredCollegePlayers
+	collegePlayers := managers.GetInjuredCollegePlayers()
+
+	// GetInjuredNFLPlayers
+	nflPlayers := managers.GetInjuredNFLPlayers()
+
+	response := structs.InjuryReportResponse{
+		CollegePlayers: collegePlayers,
+		NFLPlayers:     nflPlayers,
+	}
+
+	json.NewEncoder(w).Encode(response)
+}
+
 func GetStatsPageContentForSeason(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	seasonID := vars["seasonID"]

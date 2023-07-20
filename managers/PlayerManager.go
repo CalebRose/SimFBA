@@ -1014,3 +1014,23 @@ func GetAllPracticeSquadPlayersForFAPage() []structs.NFLPlayer {
 
 	return players
 }
+
+func GetInjuredCollegePlayers() []structs.CollegePlayer {
+	db := dbprovider.GetInstance().GetDB()
+
+	var collegePlayers []structs.CollegePlayer
+
+	db.Order("team_id asc").Where("is_injured = true").Find(&collegePlayers)
+
+	return collegePlayers
+}
+
+func GetInjuredNFLPlayers() []structs.NFLPlayer {
+	db := dbprovider.GetInstance().GetDB()
+
+	var nflPlayers []structs.NFLPlayer
+
+	db.Order("team_id asc").Where("is_injured = true").Find(&nflPlayers)
+
+	return nflPlayers
+}
