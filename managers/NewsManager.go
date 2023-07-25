@@ -57,7 +57,7 @@ func GetCFBRelatedNews(TeamID string) []structs.NewsLog {
 		if recentEventsCount == 5 && personalizedNewsCount == 5 {
 			break
 		}
-		if news.SeasonID != ts.CollegeSeasonID && news.League != "CFB" {
+		if (news.SeasonID != ts.CollegeSeasonID && news.League != "CFB") || news.MessageType == "Collusion" {
 			continue
 		}
 		if news.TeamID == 0 && recentEventsCount < 5 {

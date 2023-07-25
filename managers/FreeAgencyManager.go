@@ -160,16 +160,8 @@ func CreateFAOffer(offer structs.FreeAgencyOfferDTO) structs.FreeAgencyOffer {
 	}
 
 	if player.IsPracticeSquad && player.TeamID != int(offer.TeamID) {
-		newsLog := structs.NewsLog{
-			TeamID:      player.TeamID,
-			SeasonID:    ts.NFLSeasonID,
-			MessageType: "Free Agency",
-			WeekID:      ts.NFLWeekID,
-			Week:        ts.NFLWeek,
-			Message:     offer.Team + " have placed an offer on " + player.TeamAbbr + " " + player.Position + " " + player.FirstName + " " + player.LastName + " to pick up from the practice squad.",
-			League:      "NFL",
-		}
-		db.Create(&newsLog)
+		message := offer.Team + " have placed an offer on " + player.TeamAbbr + " " + player.Position + " " + player.FirstName + " " + player.LastName + " to pick up from the practice squad."
+		CreateNewsLog("NFL", message, "Free Agency", player.TeamID, ts)
 	}
 
 	return freeAgentOffer
@@ -222,17 +214,7 @@ func SignFreeAgent(offer structs.FreeAgencyOffer, FreeAgent structs.NFLPlayer, t
 
 	// News Log
 	message := "FA " + FreeAgent.Position + " " + FreeAgent.FirstName + " " + FreeAgent.LastName + " has signed with the " + NFLTeam.TeamName + " with a contract worth approximately $" + strconv.Itoa(int(Contract.ContractValue)) + " Million Dollars."
-	newsLog := structs.NewsLog{
-		TeamID:      int(offer.TeamID),
-		WeekID:      ts.NFLWeekID,
-		Week:        ts.NFLWeek,
-		SeasonID:    ts.NFLSeasonID,
-		MessageType: "Free Agency",
-		Message:     message,
-		League:      "NFL",
-	}
-
-	db.Create(&newsLog)
+	CreateNewsLog("NFL", message, "Free Agency", int(offer.TeamID), ts)
 }
 
 func SyncFreeAgencyOffers() {
@@ -308,17 +290,7 @@ func SyncFreeAgencyOffers() {
 			w.SignPlayer(int(winningOffer.TeamID), winningOffer.Team)
 
 			message := w.Position + " " + w.FirstName + " " + w.LastName + " was picked up on the Waiver Wire by " + winningOffer.Team
-			newsLog := structs.NewsLog{
-				TeamID:      int(winningOffer.TeamID),
-				WeekID:      ts.NFLWeekID,
-				Week:        ts.NFLWeek,
-				SeasonID:    ts.NFLSeasonID,
-				MessageType: "Free Agency",
-				Message:     message,
-				League:      "NFL",
-			}
-
-			db.Create(&newsLog)
+			CreateNewsLog("NFL", message, "Free Agency", int(winningOffer.TeamID), ts)
 
 			// Recalibrate winning team's remaining offers
 			teamOffers := GetWaiverOffersByTeamID(strconv.Itoa(int(winningOffer.TeamID)))
