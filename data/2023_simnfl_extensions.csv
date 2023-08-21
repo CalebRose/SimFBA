@@ -1,0 +1,1350 @@
+id,team_id,team_abbr,Pos,first_name,last_name, Value 
+45476,17,Dallas Cowboys,QB,Jessie,Noel,39.41
+51956,5,Baltimore Ravens,QB,David,Chop,39.41
+40157,20,Washington Commanders,QB,Jose,Padilla,35.47
+35310,29,Arizona Cardinals,QB,Patrick,Johnson,31.53
+55373,2,Miami Dolphins,QB,Dean,Hammonds,39.41
+60135,13,Denver Broncos,QB,Peter,London,37.53
+30539,3,New England Patriots,QB,Gary,Freitag,26.27
+51216,21,Chicago Bears,QB,Gerald,Lewis,37.53
+55522,6,Cincinnati Bengals,QB,Jeremiah,West,29.83
+51262,4,New York Jets,QB,Lamar,Johnson,29.83
+55600,8,Pittsburgh Steelers,QB,Robert,Morris,29.83
+60285,23,Green Bay Packers,QB,Joseph,Garibay,29.83
+60310,16,Los Angeles Chargers,QB,Miguel,Aguilera,29.83
+35327,27,New Orleans Saints,QB,Cade,Alves,23.86
+40241,19,Philadelphia Eagles,QB,Aaron,Pool,26.85
+46863,7,Cleveland Browns,QB,James,Rivera,29.83
+40505,30,Los Angeles Rams,QB,Philip,Avila,26.85
+46829,15,Las Vegas Raiders,QB,James,Hixon,29.83
+33740,11,Jacksonville Jaguars,QB,Steven,Connolly,20.88
+35121,18,New York Giants,QB,Jan,Miles,23.86
+65199,28,Tampa Bay Buccaneers,QB,Gregory,Taphorn,18.7
+69978,24,Minnesota Vikings,QB,Christian,Sinnock,18.7
+25053,14,Kansas City Chiefs,QB,Chad,Williams,11.22
+70030,9,Houston Texans,QB,Jerome,Morrison,14.4
+65197,12,Tennessee Titans,QB,Wayne,Reimer,14.4
+70372,22,Detroit Lions,QB,Randall,Hansen,14.4
+65249,26,Carolina Panthers,QB,Myron,Everett,14.4
+62855,6,Cincinnati Bengals,QB,Donald,Gurevich,2.57
+64830,17,Dallas Cowboys,QB,Cecilio,Fuentes,2.57
+62153,18,New York Giants,QB,Mark,Plattenburg,2.57
+66656,31,San Francisco 49ers,QB,Benjamin,Nguyen,2.57
+61920,6,Cincinnati Bengals,QB,Jerald,Nicholson,2.57
+62822,10,Indianapolis Colts,QB,Paul,Byrd,2.57
+69977,12,TEN,QB,Clarence,Hobson,2.57
+65523,16,Los Angeles Chargers,QB,Henry,Maldonado,2.57
+67039,7,Cleveland Browns,QB,Philippe,Conner,2.57
+66454,3,New England Patriots,QB,Vernon,Bly,2.57
+65275,19,Philadelphia Eagles,QB,Richard,Mcleod,2.57
+70138,21,Chicago Bears,QB,Monty,Turner,2.57
+62595,8,Pittsburgh Steelers,QB,Rudy,Stokes,2.57
+67421,14,Kansas City Chiefs,QB,Jose,Delpozo,2.57
+66827,30,Los Angeles Rams,QB,Timothy,Bruder,2.57
+62847,12,Tennessee Titans,QB,Scott,Nelson,2.57
+63004,16,Los Angeles Chargers,QB,Joseph,Valenzuela,2.57
+70247,29,Arizona Cardinals,QB,Miles,Mccarty,2.57
+66320,22,Detroit Lions,QB,Nathan,Hendrickson,2.57
+70012,4,New York Jets,QB,Randy,Bloom,2.57
+70323,25,Atlanta Falcons,QB,William,Hawkins,1.2
+71524,23,Green Bay Packers,QB,Jack,Taylor,1.2
+67734,28,Tampa Bay Buccaneers,QB,Glen,Sam,1.2
+48549,14,Kansas City Chiefs,QB,Erik,Burns,1.2
+54639,5,Baltimore Ravens,QB,Pedro,Cruz,1.2
+58655,2,Miami Dolphins,QB,Guillermo,Romero,1.2
+54772,32,Seattle Seahawks,QB,Chad,Schettino,1.2
+58494,31,San Francisco 49ers,QB,Timothy,Chadwick,1.2
+65532,25,Atlanta Falcons,QB,Frank,Forbus,0.6
+52752,0,FA,QB,Michael,Intemann,0.6
+47944,5,Baltimore Ravens,QB,Timothy,Ducas,0.6
+37505,0,,QB,Arturo,Vicenti,0.48
+55455,28,Tampa Bay Buccaneers,RB,Max,Smith,13.86
+45157,8,Pittsburgh Steelers,RB,Dario,Tamayo,13.86
+60139,14,Kansas City Chiefs,RB,James,Carter,13.86
+50162,11,Jacksonville Jaguars,RB,Stephen,Tabbert,13.86
+40441,6,Cincinnati Bengals,RB,Ronnie,Jefferson,12.47
+35426,15,Las Vegas Raiders,RB,James,Agnew,10.56
+55561,29,Arizona Cardinals,RB,Thomas,Gesick,13.2
+50363,25,Atlanta Falcons,RB,Wayne,Ricketts,13.2
+55535,3,New England Patriots,RB,David,Taylor,13.2
+40378,20,Washington Commanders,RB,John,Woodward,11.88
+40168,20,Washington Commanders,RB,Stanley,Piper,11.88
+30047,12,Tennessee Titans,RB,John,Knighten,9.24
+46195,19,Philadelphia Eagles,RB,Gregg,Lemay,13.2
+50431,17,Dallas Cowboys,RB,Bruno,Hanson,13.2
+60809,10,Indianapolis Colts,RB,Michael,Fulmer,21.42
+65075,7,Cleveland Browns,RB,Juan,Mora,12.3
+46628,1,Buffalo Bills,RB,Michael,Torgler,12.3
+38345,27,New Orleans Saints,RB,Kenneth,Williams,9.84
+38264,13,Denver Broncos,RB,William,Kinley,9.84
+69984,9,Houston Texans,RB,Hue,Khan,12.3
+60519,18,New York Giants,RB,Joseph,Cale,12.3
+30206,22,Detroit Lions,RB,David,Perrigin,8.61
+65149,2,Miami Dolphins,RB,Gregory,Sellers,8.5
+25506,1,Buffalo Bills,RB,Gary,Westbrook,5.1
+66337,23,Green Bay Packers,RB,Carl,Frost,8.5
+70196,17,Dallas Cowboys,RB,Timothy,Miller,8.5
+70006,13,Denver Broncos,RB,Adel,Fraire,8.5
+62780,30,Los Angeles Rams,RB,Thomas,Vorisek,1.64
+62264,26,Carolina Panthers,RB,James,Ibach,1.64
+66430,12,TEN,RB,Steven,Friant,1.64
+60604,31,San Francisco 49ers,RB,Melvin,Arnold,1.64
+61305,29,Arizona Cardinals,RB,William,Webber,1.64
+60178,11,Jacksonville Jaguars,RB,Michael,Wade,1.64
+62262,31,San Francisco 49ers,RB,Roger,Phillips,1.64
+63510,23,Green Bay Packers,RB,Daniel,Stordahl,1.64
+65541,7,Cleveland Browns,RB,Joshua,Mower,1.64
+68067,5,Baltimore Ravens,RB,Mike,Kaid,1.64
+66824,22,Detroit Lions,RB,Ted,Booth,1.64
+66238,16,Los Angeles Chargers,RB,Milton,Evans,1.64
+70342,8,Pittsburgh Steelers,RB,Yao,Richardson,1.64
+63812,25,Atlanta Falcons,RB,Charles,Galvan,1.64
+62142,20,Washington Commanders,RB,Alonzo,Snead,1.64
+62303,6,Cincinnati Bengals,RB,Jimmy,Dejesus,1.64
+53977,23,Green Bay Packers,RB,Raymond,Knights,1.64
+58595,10,Indianapolis Colts,RB,Ricky,Davis,1.64
+68345,21,Chicago Bears,RB,Paul,Beasley,1.64
+65772,30,Los Angeles Rams,RB,Thomas,Kaschalk,1.64
+67740,8,Pittsburgh Steelers,RB,Quinton,Trice,1.64
+63170,14,Kansas City Chiefs,RB,Donald,Spence,0.77
+53057,10,Indianapolis Colts,RB,Paul,Neun,0.77
+58480,31,SF,RB,Brandon,Armstrong,0.77
+67217,19,Philadelphia Eagles,RB,Michael,Vance,0.77
+71479,28,Tampa Bay Buccaneers,RB,Curt,Schow,0.77
+53580,29,Arizona Cardinals,RB,Charles,Robinson,0.6
+56028,25,Atlanta Falcons,RB,Donald,Hazle,0.6
+63069,16,Los Angeles Chargers,RB,Hal,Duchemin,0.6
+49305,26,Carolina Panthers,RB,Andre,Jordan,0.6
+70275,9,Houston Texans,RB,Michael,Carmouche,0.6
+46699,3,New England Patriots,RB,Hernan,Eudave,0.6
+49358,32,Seattle Seahawks,RB,Albert,Stradford,0.6
+60006,10,Indianapolis Colts,RB,James,Alexis,0.6
+57921,32,Seattle Seahawks,RB,Scott,Creasy,0.6
+55972,7,Cleveland Browns,RB,Mark,Drew,0.6
+58462,7,Cleveland Browns,RB,David,Avila,0.6
+49686,18,New York Giants,RB,Paul,Mcguire,0.6
+50096,4,New York Jets,FB,Michael,Carter,8.51
+46656,28,Tampa Bay Buccaneers,FB,Donald,Johnson,8.51
+51385,7,Cleveland Browns,FB,Saul,Galvan,8.51
+30045,20,WAS,FB,Todd,Thibodeaux,5.95
+65231,16,Los Angeles Chargers,FB,Howard,Mcintosh,8.51
+66787,28,Tampa Bay Buccaneers,FB,Clement,Carr,3.2
+70127,17,Dallas Cowboys,FB,David,Vargas,3.2
+70145,14,Kansas City Chiefs,FB,Richard,Patrick,3.2
+65801,8,Pittsburgh Steelers,FB,Anthony,Staple,3.2
+62737,32,Seattle Seahawks,FB,Matthew,Spada,3.2
+61528,12,Tennessee Titans,FB,Philip,Whitley,3.2
+62290,0,,FB,Thomas,Pursell,3.2
+62517,1,Buffalo Bills,FB,Eric,Kellogg,3.2
+61528,12,Tennessee Titans,FB,Philip,Whitley,3.2
+65997,25,Atlanta Falcons,FB,Fredy,Olivarez,3.2
+66726,5,Baltimore Ravens,FB,Douglas,Love,3.2
+66257,3,New England Patriots,FB,Esteban,Diaz,3.2
+66211,23,Green Bay Packers,FB,Jose,Valencia,0.98
+70059,2,Miami Dolphins,FB,Vernon,Johnson,0.98
+62030,31,San Francisco 49ers,FB,Luis,Ortiz,0.98
+57642,30,Los Angeles Rams,FB,Gary,Madlangbayan,0.98
+70405,26,Carolina Panthers,FB,Mark,Currier,0.98
+70759,22,Detroit Lions,FB,George,Brush,0.98
+49868,27,New Orleans Saints,FB,Michael,Kauffman,0.98
+71369,14,Kansas City Chiefs,FB,Juan,Rivera,0.98
+71369,14,Kansas City Chiefs,FB,Juan,Rivera,0.98
+71354,20,Washington Commanders,FB,William,Berry,0.4
+47148,29,Arizona Cardinals,FB,Robert,Crocco,0.4
+48325,6,Cincinnati Bengals,FB,Shawn,Howlett,0.4
+50523,20,Washington Commanders,WR,Mathew,Madden,34.28
+60502,17,Dallas Cowboys,WR,Christopher,Lee,23.63
+55219,19,Philadelphia Eagles,WR,Gilberto,Silva,23.63
+40250,11,Jacksonville Jaguars,WR,Charles,Brown,21.26
+60146,15,Las Vegas Raiders,WR,James,Blanck,23.63
+55560,8,PIT,WR,Paul,Gurule,22.5
+45160,11,Jacksonville Jaguars,WR,Charles,Grady,22.5
+51585,16,Los Angeles Chargers,WR,Keith,Davis,22.5
+55499,17,Dallas Cowboys,WR,Edwin,Chabolla,22.5
+55541,30,Los Angeles Rams,WR,Scott,Baldwin,22.5
+41457,22,Detroit Lions,WR,Victor,Villamar,20.25
+65743,10,Indianapolis Colts,WR,Daniel,Elswick,22.5
+51507,15,Las Vegas Raiders,WR,Terrence,Hoffman,22.5
+55536,3,New England Patriots,WR,Rodrigo,Gonzalez,22.5
+51278,32,Seattle Seahawks,WR,Kevin,Lund,22.5
+45989,13,Denver Broncos,WR,Hector,Covarrubias,22.5
+46248,23,Green Bay Packers,WR,George,Boone,22.5
+55215,13,Denver Broncos,WR,Ronald,Spencer,22.5
+51531,4,New York Jets,WR,Donald,Galligan,22.5
+41888,20,Washington Commanders,WR,Christopher,Richardson,20.25
+46416,1,Buffalo Bills,WR,Brian,Adams,22.5
+42401,11,Jacksonville Jaguars,WR,Richard,Roshell,20.25
+45912,8,Pittsburgh Steelers,WR,James,Berendes,22.5
+41485,20,Washington Commanders,WR,Tracey,Borders,20.25
+27360,32,Seattle Seahawks,WR,Eric,Palkovich,13.5
+61818,16,Los Angeles Chargers,WR,Fernando,Owens,22.5
+60516,1,Buffalo Bills,WR,Donald,Kelly,22.5
+60376,2,Miami Dolphins,WR,Kenny,White,22.5
+65410,30,Los Angeles Rams,WR,Anthony,Larry,22.5
+37094,18,New York Giants,WR,Mark,Spencer,18
+69992,21,Chicago Bears,WR,Richard,Maguire,20
+60346,6,Cincinnati Bengals,WR,Antonio,Campoverde,20
+65706,26,Carolina Panthers,WR,Russell,Barnes,20
+36802,19,Philadelphia Eagles,WR,Enrique,Nunes,16
+65077,27,New Orleans Saints,WR,Walter,Nwachukwu,20
+30058,29,Arizona Cardinals,WR,Franco,Milton,9.52
+30119,29,Arizona Cardinals,WR,Michael,King,9.52
+65234,29,Arizona Cardinals,WR,Raymond,Stelly,7.55
+65157,6,Cincinnati Bengals,WR,Barry,Madruga,7.55
+71200,7,Cleveland Browns,WR,George,Lovejoy,7.55
+70314,5,Baltimore Ravens,WR,Edwin,Garcia,7.55
+70117,17,Dallas Cowboys,WR,Antonio,Arellano,7.55
+69993,25,Atlanta Falcons,WR,Rafael,Rosario,7.55
+71234,2,Miami Dolphins,WR,Lawrence,Sanders,5.72
+62531,26,Carolina Panthers,WR,Jose,Maldonado,5.72
+64094,14,Kansas City Chiefs,WR,Joshua,Morice,5.72
+62437,27,New Orleans Saints,WR,Ernest,Mccauley,5.72
+62243,3,New England Patriots,WR,John,Bensman,5.72
+71333,5,Baltimore Ravens,WR,Dale,Murphy,5.72
+70637,23,Green Bay Packers,WR,Anthony,Stovall,5.72
+66474,19,Philadelphia Eagles,WR,Charles,Thomas,5.72
+63424,10,Indianapolis Colts,WR,Donald,Loving,5.13
+63424,10,Indianapolis Colts,WR,Donald,Loving,5.13
+60678,30,Los Angeles Rams,WR,James,Leclair,5.13
+62754,8,Pittsburgh Steelers,WR,Ji,Penalosa,5.13
+60594,3,New England Patriots,WR,Richard,Mccomas,5.13
+65980,29,Arizona Cardinals,WR,Donald,Mason,5.13
+65547,25,Atlanta Falcons,WR,Rodolfo,Chavez,5.13
+65728,5,Baltimore Ravens,WR,King,Angeles,5.13
+67678,5,Baltimore Ravens,WR,Clarence,Napier,5.13
+70109,26,Carolina Panthers,WR,Jose,Melero,5.13
+67671,21,Chicago Bears,WR,Jamie,Murray,5.13
+71691,21,Chicago Bears,WR,Daniel,Castro,5.13
+65361,7,Cleveland Browns,WR,Christopher,Mosher,5.13
+70040,17,Dallas Cowboys,WR,Ronald,Geda,5.13
+66003,11,Jacksonville Jaguars,WR,William,Mass,5.13
+67604,2,Miami Dolphins,WR,Ronnie,Ritter,5.13
+66628,2,Miami Dolphins,WR,Sergio,Gonzalez,5.13
+67716,18,New York Giants,WR,Thomas,Rothschild,5.13
+68473,12,Tennessee Titans,WR,John,Mori,5.13
+66945,12,Tennessee Titans,WR,Gregory,Sprouse,5.13
+62587,28,Tampa Bay Buccaneers,WR,Glenn,Gervais,2.34
+62554,15,Las Vegas Raiders,WR,Peter,Speciale,2.34
+62366,20,Washington Commanders,WR,Timothy,Brown,2.34
+62749,6,Cincinnati Bengals,WR,Charles,Aarons,2.34
+62988,1,Buffalo Bills,WR,Richard,Martin,2.34
+61977,10,Indianapolis Colts,WR,Dennis,Coutu,2.34
+70577,7,Cleveland Browns,WR,Michael,Walker,2.34
+65490,1,Buffalo Bills,WR,Richard,Woods,2.34
+67258,13,Denver Broncos,WR,Jesse,Walker,2.34
+68224,23,Green Bay Packers,WR,Leif,Allen,2.34
+65884,31,San Francisco 49ers,WR,Victor,Romani,2.34
+67599,31,San Francisco 49ers,WR,James,Smith,2.34
+64461,8,Pittsburgh Steelers,WR,Donald,Bailey,1.85
+62806,6,Cincinnati Bengals,WR,Michael,Bonam,1.85
+67920,20,Washington Commanders,WR,Alejandro,Castellanos,1.85
+61729,14,Kansas City Chiefs,WR,Brian,Whitaker,1.85
+61729,14,Kansas City Chiefs,WR,Brian,Whitaker,1.85
+64883,23,Green Bay Packers,WR,Tyler,Giese,1.85
+59118,6,Cincinnati Bengals,WR,Anthony,Finch,1.85
+66874,22,Detroit Lions,WR,Thomas,Bullock,1.85
+68483,14,Kansas City Chiefs,WR,Mark,Short,1.85
+65965,22,Detroit Lions,WR,Richard,Harsch,1.85
+66483,2,Miami Dolphins,WR,Alejandro,Moore,1.85
+68639,18,New York Giants,WR,Frank,Rivas,1.85
+70309,19,Philadelphia Eagles,WR,David,Smith,1.85
+69192,21,Chicago Bears,WR,David,George,0.98
+64492,21,Chicago Bears,WR,Alejandro,Roman,0.98
+59805,12,Tennessee Titans,WR,Paul,Mason,0.98
+62865,26,Carolina Panthers,WR,William,Coffman,0.98
+57706,25,Atlanta Falcons,WR,Paul,Julian,0.98
+54126,25,Atlanta Falcons,WR,Cyrus,Nicholson,0.98
+54857,14,Kansas City Chiefs,WR,Michael,Patton,0.98
+60069,27,New Orleans Saints,WR,Eric,Floyd,0.98
+65218,29,Arizona Cardinals,WR,Robert,Warren,0.98
+66728,10,Indianapolis Colts,WR,Paul,Rodriguez,0.98
+65619,18,New York Giants,WR,Robert,Ellsworth,0.98
+66721,4,New York Jets,WR,Joseph,Jones,0.98
+63336,8,Pittsburgh Steelers,WR,Steve,Moreno,0.86
+62000,0,,WR,Ricardo,Reyes,0.86
+55079,26,Carolina Panthers,WR,Robert,Peters,0.86
+59303,26,Carolina Panthers,WR,Kirk,Obrien,0.86
+59073,13,Denver Broncos,WR,Ted,Smith,0.86
+59631,30,Los Angeles Rams,WR,David,Baris,0.86
+54791,32,Seattle Seahawks,WR,Timothy,White,0.86
+67882,25,Atlanta Falcons,WR,Alfred,Swaray,0.86
+66768,25,Atlanta Falcons,WR,Timothy,Valenta,0.86
+70762,21,Chicago Bears,WR,Paul,Rowland,0.86
+71183,0,FA,WR,Juan,Soto,0.86
+67313,10,Indianapolis Colts,WR,Sanjay,Le,0.86
+68636,18,New York Giants,WR,Jose,Delgado,0.86
+65836,31,San Francisco 49ers,WR,Christopher,Landry,0.86
+59667,9,Houston Texans,WR,Thang,Lam,0.86
+70958,29,Arizona Cardinals,WR,Vicente,Rivera,0.86
+68251,6,Cincinnati Bengals,WR,Anthony,Redd,0.86
+47372,22,Detroit Lions,WR,Carl,Gibson,0.86
+66137,0,FA,WR,Gabriel,Blair,0.86
+62247,9,Houston Texans,WR,Arthur,Hu,0.86
+67409,16,Los Angeles Chargers,WR,Jacob,Adams,0.86
+71620,30,Los Angeles Rams,WR,Noe,Morales,0.86
+47640,4,New York Jets,WR,Jarred,Harrison,0.86
+71588,28,Tampa Bay Buccaneers,WR,Edward,Madura,0.86
+54817,29,Arizona Cardinals,WR,Gregory,Holthaus,0.86
+59983,10,Indianapolis Colts,WR,Hugh,Chaney,0.86
+40734,7,Cleveland Browns,WR,Christopher,Cresswell,0.77
+43239,32,Seattle Seahawks,WR,Kenneth,Erickson,0.77
+33329,10,Indianapolis Colts,WR,Stephen,Peloquin,0.6
+44495,26,Carolina Panthers,WR,Stephen,Howard,0.77
+30362,30,Los Angeles Rams,WR,Tim,Phelps,0.6
+49444,32,Seattle Seahawks,WR,Keith,Osborn,0.86
+55202,16,Los Angeles Chargers,TE,Sebastian,Moore,35.7
+55589,13,Denver Broncos,TE,Carmine,Rhodes,14.7
+40259,7,Cleveland Browns,TE,Mark,Lysek,13.23
+50122,30,Los Angeles Rams,TE,Kerry,Slomba,14.7
+60412,12,Tennessee Titans,TE,Randy,Wright,14.7
+51774,14,Kansas City Chiefs,TE,Jose,Sobrevilla,14
+51303,25,Atlanta Falcons,TE,Jin,Zhong,14
+56547,17,Dallas Cowboys,TE,Henry,Green,14
+48444,29,Arizona Cardinals,TE,Michael,Vega,14
+45315,28,Tampa Bay Buccaneers,TE,Michael,Delucia,14
+55603,6,Cincinnati Bengals,TE,John,Hendrickson,14
+60287,21,Chicago Bears,TE,Jamie,Ramirez,14
+39234,20,Washington Commanders,TE,Michael,Katz,11.2
+41143,32,Seattle Seahawks,TE,Kevin,Black,12.6
+48091,11,Jacksonville Jaguars,TE,George,Devoe,14
+35582,3,New England Patriots,TE,John,Koerner,11.2
+60186,19,Philadelphia Eagles,TE,Matthew,Lee,14
+61471,1,Buffalo Bills,TE,Jan,Summers,14
+61884,15,Las Vegas Raiders,TE,Glenn,Lloyd,14
+25957,18,New York Giants,TE,Damien,Boone,4.98
+65298,22,DET,TE,Frank,Moore,8.3
+65915,10,Indianapolis Colts,TE,Enrique,Rodriguez,8.3
+70228,5,Baltimore Ravens,TE,Charles,Tice,6.47
+62121,17,Dallas Cowboys,TE,Roberto,Duenez,6.47
+65994,32,Seattle Seahawks,TE,Raymond,Wagler,6.47
+70662,12,Tennessee Titans,TE,Jaime,Perez,6.47
+62409,20,Washington Commanders,TE,Randal,Marquardt,6.47
+65176,22,Detroit Lions,TE,Stephen,Eilers,6.47
+70268,18,New York Giants,TE,Wayne,Brooks,6.47
+68090,4,New York Jets,TE,Raymond,Sanchez,6.47
+62732,14,Kansas City Chiefs,TE,Feng,Song,6.47
+63397,15,Las Vegas Raiders,TE,Carlos,Gleisner,6.47
+61101,27,New Orleans Saints,TE,Stephen,Barnett,6.47
+61669,31,San Francisco 49ers,TE,Jason,Holbrook,6.47
+60539,8,Pittsburgh Steelers,TE,Byron,Broyles,6.47
+60539,8,Pittsburgh Steelers,TE,Byron,Broyles,6.47
+62670,23,Green Bay Packers,TE,Efren,Solis,6.47
+67271,7,Cleveland Browns,TE,Charles,Shields,6.47
+71526,21,Chicago Bears,TE,Nick,Evans,6.47
+64606,26,Carolina Panthers,TE,Michael,Rausch,6.47
+66677,10,Indianapolis Colts,TE,Hugh,Whiteman,6.47
+66181,16,Los Angeles Chargers,TE,David,Valasco,6.47
+65981,24,Minnesota Vikings,TE,Carl,White,0.8
+61338,27,New Orleans Saints,TE,Raymond,Anderson,0.8
+60700,31,San Francisco 49ers,TE,Samuel,Henry,0.8
+62200,15,Las Vegas Raiders,TE,Hai,Cua,0.8
+61753,17,Dallas Cowboys,TE,Harlan,Pitman,0.8
+53287,1,Buffalo Bills,TE,Michael,Pepple,0.8
+71201,29,Arizona Cardinals,TE,Ketan,Cheng,0.8
+49588,22,Detroit Lions,TE,John,Barks,0.8
+57447,23,Green Bay Packers,TE,Malcolm,Nixon,0.8
+65105,28,Tampa Bay Buccaneers,TE,Arturo,Medeiros,0.8
+66361,20,Washington Commanders,TE,Victor,Perrin,0.8
+63614,0,,TE,Tyler,Colombo,0.78
+63353,0,,TE,Carson,Kirton,0.78
+55143,25,Atlanta Falcons,TE,Joseph,Hornbeck,0.78
+57478,13,Denver Broncos,TE,Charles,Pearce,0.78
+54920,10,Indianapolis Colts,TE,Greg,Miller,0.78
+60085,30,Los Angeles Rams,TE,James,Bills,0.78
+55019,2,Miami Dolphins,TE,Jesus,Sanchez,0.78
+58837,8,Pittsburgh Steelers,TE,Gregory,Anderson,0.78
+65656,17,Dallas Cowboys,TE,Richard,Ludwig,0.78
+66047,4,New York Jets,TE,Andres,Smith,0.78
+52587,30,Los Angeles Rams,TE,Edward,Topper,0.6
+53896,6,Cincinnati Bengals,TE,Larry,Watts,0.6
+49051,3,New England Patriots,TE,Boyd,Robison,0.6
+59865,5,Baltimore Ravens,TE,Jonathan,Nilson,0.6
+48914,0,,TE,Seymour,Wright,0.6
+49008,3,New England Patriots,TE,Rodney,Olmos,0.6
+39077,19,Philadelphia Eagles,TE,Clifford,Pepper,0.48
+54235,26,Carolina Panthers,TE,Milton,Mathews,0.6
+44979,11,Jacksonville Jaguars,TE,Andrew,Martin,0.54
+43280,16,Los Angeles Chargers,TE,Charles,Palmer,0.54
+45200,28,Tampa Bay Buccaneers,OT,Haim,Costa,29.3
+60115,23,Green Bay Packers,OT,Oscar,Martinez,29.3
+55336,15,Las Vegas Raiders,OT,Nelson,Garcia,29.3
+45151,29,Arizona Cardinals,OT,Marvin,Forges,29.3
+50109,11,Jacksonville Jaguars,OT,Sung,Liu,29.3
+41875,30,Los Angeles Rams,OT,Donald,Vereeke,25.11
+60124,17,Dallas Cowboys,OT,Kevin,Escobar,27.9
+50114,24,Minnesota Vikings,OT,Charles,Seay,27.84
+40307,21,Chicago Bears,OT,Preston,Smith,25.05
+35105,3,New England Patriots,OT,Edward,Koch,22.27
+30070,19,Philadelphia Eagles,OT,Kenneth,Draper,19.48
+65080,6,Cincinnati Bengals,OT,John,Alfred,27.84
+51073,17,Dallas Cowboys,OT,Neil,Hankins,27.84
+50610,27,New Orleans Saints,OT,Eric,Terrell,27.84
+51693,32,Seattle Seahawks,OT,Jacob,Kerns,27.84
+46598,12,Tennessee Titans,OT,Jonathan,Lowe,27.84
+61243,26,Carolina Panthers,OT,Peter,Smith,27.84
+61243,26,Carolina Panthers,OT,Peter,Smith,27.84
+60991,6,Cincinnati Bengals,OT,Richard,Farris,27.84
+60420,13,Denver Broncos,OT,Derek,Dixon,27.84
+56186,3,New England Patriots,OT,Mark,Bishop,27.84
+55887,19,Philadelphia Eagles,OT,Brad,Wells,27.84
+46388,11,Jacksonville Jaguars,OT,Donn,Shuster,27.84
+46106,8,Pittsburgh Steelers,OT,Shawn,Talley,27.84
+46626,1,Buffalo Bills,OT,Ron,Cubbage,27.84
+40202,18,New York Giants,OT,Edward,Shea,25.05
+60130,13,Denver Broncos,OT,Craig,Parrish,21.94
+65082,8,Pittsburgh Steelers,OT,James,Knoll,21.94
+55918,5,Baltimore Ravens,OT,Robert,Anderson,21.94
+65127,14,Kansas City Chiefs,OT,Jeffrey,Theriot,21.94
+40268,29,Arizona Cardinals,OT,Kevin,Mori,19.74
+30147,7,Cleveland Browns,OT,Lucas,Whitman,15.36
+70113,31,San Francisco 49ers,OT,Herman,Knott,17.25
+32023,10,Indianapolis Colts,OT,Christopher,Shelburne,12.08
+35902,2,Miami Dolphins,OT,Michael,Johnson,13.8
+36222,16,Los Angeles Chargers,OT,Gordon,White,13.8
+70022,21,Chicago Bears,OT,Jon,Mendenhall,17.25
+65368,7,Cleveland Browns,OT,Bao,Sultana,17.25
+65456,2,Miami Dolphins,OT,Javier,Barber,17.25
+65468,22,Detroit Lions,OT,Young,Pascual,17.25
+70222,10,Indianapolis Colts,OT,Bradley,Mcpherson,17.25
+25072,15,LV,OT,Phil,Solomon,10.35
+26779,22,Detroit Lions,OT,Michael,Bumpus,10.35
+62976,10,Indianapolis Colts,OT,Mark,Jones,4.52
+62628,23,Green Bay Packers,OT,Lee,Thornsberry,4.52
+62723,30,Los Angeles Rams,OT,Matthew,Blankenship,4.52
+62310,12,Tennessee Titans,OT,Xiaoping,Smith,4.52
+67482,26,Carolina Panthers,OT,Michael,Williams,4.52
+64546,15,Las Vegas Raiders,OT,James,Kenyon,4.52
+63451,1,Buffalo Bills,OT,Salvador,Serna,4.52
+66442,29,Arizona Cardinals,OT,Edgardo,Valenti,4.52
+70724,21,Chicago Bears,OT,William,Ruhl,4.52
+65878,17,Dallas Cowboys,OT,James,Kartz,4.52
+67032,13,Denver Broncos,OT,Salomon,Gonzalez,4.52
+70562,9,Houston Texans,OT,Douglas,Decker,4.52
+70351,31,San Francisco 49ers,OT,John,Simmons,4.52
+62866,31,San Francisco 49ers,OT,Andrey,Levkulich,1.17
+62550,0,,OT,Luis,Zuluaga,1.17
+62550,0,,OT,Luis,Zuluaga,1.17
+62866,31,San Francisco 49ers,OT,Andrey,Levkulich,1.17
+63879,15,Las Vegas Raiders,OT,Michael,Archer,1.17
+63801,12,TEN,OT,Mark,Taylor,1.17
+60792,3,New England Patriots,OT,Scott,Worth,1.17
+71248,24,Minnesota Vikings,OT,Kenneth,Beguhl,1.17
+71342,23,GB,OT,Tony,Hershberger,1.17
+71066,29,Arizona Cardinals,OT,Norberto,Zavala,1.17
+67373,25,Atlanta Falcons,OT,Travis,Mock,1.17
+67241,6,Cincinnati Bengals,OT,William,Riley,1.17
+67105,3,New England Patriots,OT,Luis,Gracia,1.17
+70221,32,Seattle Seahawks,OT,Brett,Link,1.17
+66005,28,Tampa Bay Buccaneers,OT,Martin,Sears,1.17
+66140,12,Tennessee Titans,OT,Thomas,Richert,1.17
+70671,26,Carolina Panthers,OT,Quang,Nguyen,0.86
+65741,22,Detroit Lions,OT,George,Benton,0.86
+66077,22,Detroit Lions,OT,Larry,Hall,0.86
+71624,9,Houston Texans,OT,Jie,Chen,0.86
+71585,16,Los Angeles Chargers,OT,Rafael,Russel,0.86
+67215,2,Miami Dolphins,OT,Raul,Macey,0.86
+70062,27,New Orleans Saints,OT,John,Simmons,0.86
+63680,10,Indianapolis Colts,OT,Michael,Dover,0.86
+66413,0,,OT,Steve,Kozel,0.86
+64244,8,Pittsburgh Steelers,OT,David,Braley,0.86
+54363,4,New York Jets,OT,Philip,Sowinski,0.86
+68574,5,Baltimore Ravens,OT,Michael,Boyd,0.86
+65879,5,Baltimore Ravens,OT,Curtis,Perkins,0.86
+67020,13,Denver Broncos,OT,Ivan,Molina,0.86
+66693,22,Detroit Lions,OT,Uma,Nguyen,0.86
+70964,23,Green Bay Packers,OT,Harold,Ribordy,0.86
+71450,16,Los Angeles Chargers,OT,Michael,Abston,0.86
+68662,30,Los Angeles Rams,OT,Oscar,Torrez,0.86
+54594,10,Indianapolis Colts,OT,William,Bellville,0.6
+70543,25,Atlanta Falcons,OT,Ricardo,Moreno,0.6
+71543,6,Cincinnati Bengals,OT,Peter,Cape,0.6
+68329,7,Cleveland Browns,OT,Matthew,Mcnatt,0.6
+67480,7,Cleveland Browns,OT,Michael,King,0.6
+66959,9,Houston Texans,OT,Jerry,Parente,0.6
+66597,30,Los Angeles Rams,OT,John,Gilliam,0.6
+71330,19,Philadelphia Eagles,OT,Keith,Weise,0.6
+71600,28,Tampa Bay Buccaneers,OT,Kevin,Harris,0.6
+59598,26,Carolina Panthers,OT,Eric,Jackson,0.6
+54610,4,New York Jets,OT,Calvin,Warner,0.6
+71206,0,FA,OT,Aaron,Guerrero,0.6
+68490,0,FA,OT,Floyd,Williams,0.6
+47479,18,New York Giants,OT,James,Taylor,0.6
+58932,18,New York Giants,OT,Richard,Piccillo,0.6
+50110,14,Kansas City Chiefs,OG,Jason,Naylor,25.83
+55409,18,New York Giants,OG,William,Greer,25.83
+60125,26,Carolina Panthers,OG,Paul,Caruso,72.29
+55198,13,Denver Broncos,OG,David,Mcneal,25.83
+60245,28,Tampa Bay Buccaneers,OG,William,Chittum,25.83
+50462,18,New York Giants,OG,William,Do,24.6
+60117,23,Green Bay Packers,OG,Robert,Smith,24.6
+60191,31,San Francisco 49ers,OG,Joseph,Bordewyk,24.6
+65081,16,Los Angeles Chargers,OG,Ramon,Diaz,21.76
+40150,24,Minnesota Vikings,OG,Louis,Perez,19.58
+41725,28,Tampa Bay Buccaneers,OG,Ronald,Price,19.58
+35514,30,Los Angeles Rams,OG,Mike,Xiong,17.41
+35655,20,Washington Commanders,OG,Ernest,Arellano,17.41
+50176,11,Jacksonville Jaguars,OG,Keith,Nelson,21.76
+55460,27,New Orleans Saints,OG,Morris,Tye,21.76
+50445,19,Philadelphia Eagles,OG,Mark,Sharkey,21.76
+57296,21,Chicago Bears,OG,Allen,Althoff,21.76
+56804,9,Houston Texans,OG,Mohan,Gupta,21.76
+48493,22,Detroit Lions,OG,Carmelo,Goto,21.76
+61377,20,Washington Commanders,OG,Jorge,Ledezma,21.76
+60616,12,Tennessee Titans,OG,Joseph,Kolodny,21.76
+61260,17,Dallas Cowboys,OG,Thomas,Jordan,21.76
+51540,12,Tennessee Titans,OG,Nicolas,Conti,21.76
+40897,10,Indianapolis Colts,OG,Theodore,Marsh,19.58
+61559,29,Arizona Cardinals,OG,Daniel,Mousseau,21.76
+45380,12,Tennessee Titans,OG,Dennis,Boles,18.3
+65219,7,Cleveland Browns,OG,Dennis,Matsui,18.3
+40379,2,Miami Dolphins,OG,Donnell,Burns,16.47
+66383,3,New England Patriots,OG,Roosevelt,Penn,18.3
+40639,21,Chicago Bears,OG,Clifton,Anthony,16.47
+36554,2,Miami Dolphins,OG,Kevin,Ragin,14.64
+46731,30,Los Angeles Rams,OG,Hector,Faulkner,18.3
+65460,25,Atlanta Falcons,OG,Kyle,Schneider,18.3
+33489,20,Washington Commanders,OG,Christopher,Regala,5.67
+65465,1,Buffalo Bills,OG,Daniel,Astudillo,8.09
+36385,13,Denver Broncos,OG,Mark,Stern,6.47
+70331,32,Seattle Seahawks,OG,Luis,Cruz,4.42
+70183,28,Tampa Bay Buccaneers,OG,Mark,Killough,4.42
+70720,26,Carolina Panthers,OG,Patrick,Whitaker,4.42
+70546,4,New York Jets,OG,Arthur,Mejia,4.42
+66129,25,Atlanta Falcons,OG,Charles,Williams,4.42
+65503,21,Chicago Bears,OG,Juan,Colchado,4.42
+66376,17,Dallas Cowboys,OG,Myron,Collins,4.42
+61234,7,Cleveland Browns,OG,Rodney,Fells,4.42
+65537,28,Tampa Bay Buccaneers,OG,John,Stone,4.42
+61937,15,Las Vegas Raiders,OG,Vincent,Gomez,4.42
+64581,8,Pittsburgh Steelers,OG,Melvin,Adams,4.42
+67873,17,Dallas Cowboys,OG,Steven,Sarratt,4.42
+70689,23,Green Bay Packers,OG,George,Shumaker,4.42
+70128,27,New Orleans Saints,OG,John,Mitchell,4.42
+67093,18,New York Giants,OG,James,Harper,4.42
+63026,5,Baltimore Ravens,OG,Wayne,Jones,4.42
+62053,0,,OG,Jin,Webb,4.42
+68068,14,Kansas City Chiefs,OG,Timothy,Corbitt,4.42
+62930,12,Tennessee Titans,OG,Steven,Hughes,4.42
+64195,10,Indianapolis Colts,OG,Alejandro,Suarez,4.42
+63031,20,Washington Commanders,OG,Mark,Chadwick,4.42
+66237,26,Carolina Panthers,OG,David,Smith,4.42
+70621,6,Cincinnati Bengals,OG,Luis,Rocha,4.42
+70659,14,Kansas City Chiefs,OG,Robert,Garcia,4.42
+67322,14,Kansas City Chiefs,OG,Gregorio,Castro,4.42
+68114,14,Kansas City Chiefs,OG,Marty,Ferguson,4.42
+68066,30,Los Angeles Rams,OG,Manuel,Garcia,4.42
+68463,22,Detroit Lions,OG,Byung,Yuen,4.42
+67191,2,Miami Dolphins,OG,Ronald,Hester,4.42
+67887,31,San Francisco 49ers,OG,Michael,Lucas,4.42
+70125,12,Tennessee Titans,OG,Thomas,Maddock,4.42
+64814,32,Seattle Seahawks,OG,Carlton,Mathews,4.42
+65895,24,Minnesota Vikings,OG,Ronald,King,4.42
+64676,15,Las Vegas Raiders,OG,Roger,Wnek,4.42
+64475,23,Green Bay Packers,OG,Juan,Santiago,4.42
+61350,14,Kansas City Chiefs,OG,Ernest,Rowe,4.42
+63078,21,Chicago Bears,OG,Stephen,Douglas,4.42
+58864,4,New York Jets,OG,Jason,Haynes,4.42
+66409,6,Cincinnati Bengals,OG,Stephen,Gibson,4.42
+65748,15,Las Vegas Raiders,OG,Santiago,Garza,4.42
+70822,8,PIT,OG,Frederic,Green,4.42
+71594,31,San Francisco 49ers,OG,William,Sackett,4.42
+67555,28,Tampa Bay Buccaneers,OG,Oliver,Harris,4.42
+60900,30,Los Angeles Rams,OG,Dominick,Horn,4.42
+64059,20,Washington Commanders,OG,Cesar,Gonzalez,4.42
+68005,20,Washington Commanders,OG,Qing,Pradhan,4.42
+59228,8,Pittsburgh Steelers,OG,Hing,Hill,4.42
+66456,26,Carolina Panthers,OG,Jaime,Villacorta,4.42
+68172,7,Cleveland Browns,OG,Ernesto,Silva,4.42
+65136,17,Dallas Cowboys,OG,Thomas,Robles,4.42
+66010,10,Indianapolis Colts,OG,Steven,Harris,4.42
+71476,2,Miami Dolphins,OG,Richard,Strickland,4.42
+71534,15,Las Vegas Raiders,OG,Carl,Hill,0.95
+54592,5,Baltimore Ravens,OG,Andrew,Matchett,0.95
+53901,22,Detroit Lions,OG,Michael,Schreck,0.95
+51990,3,New England Patriots,OG,Peter,Mann,0.95
+59106,32,Seattle Seahawks,OG,Jonathan,Fawcett,0.95
+66543,29,Arizona Cardinals,OG,Herbert,Smith,0.95
+71716,1,Buffalo Bills,OG,George,Vice,0.95
+70184,7,Cleveland Browns,OG,Eric,Mutter,0.95
+73386,18,New York Giants,OG,William,Miller,0.95
+70526,15,Las Vegas Raiders,OG,David,Hiegel,0.95
+55870,10,Indianapolis Colts,OG,Deron,Manougian,0.95
+59855,2,Miami Dolphins,OG,Hong,Mariano,0.95
+37161,22,Detroit Lions,OG,Justin,Pearson,0.76
+48851,18,New York Giants,OG,Katerina,Freed,0.95
+66517,28,Tampa Bay Buccaneers,OG,Steve,Jones,0.95
+66189,28,Tampa Bay Buccaneers,OG,Joseph,Jonas,0.95
+59369,0,FA,OG,James,Pendleton,0.6
+39154,5,Baltimore Ravens,OG,Stephan,Easterling,0.32
+38908,32,Seattle Seahawks,OG,Hyun,Ling,0.32
+50663,21,Chicago Bears,C,Orlando,Deberry,22.3
+55370,27,New Orleans Saints,C,Walter,Arrasmith,22.3
+45484,7,Cleveland Browns,C,Robert,Smith,22.3
+35215,12,Tennessee Titans,C,Raul,Salazar,17.84
+51110,11,Jacksonville Jaguars,C,Scott,Gatewood,22.3
+56824,29,Arizona Cardinals,C,Anthony,Helton,21.24
+56481,1,Buffalo Bills,C,Fred,Garland,21.24
+50516,20,Washington Commanders,C,Scott,Bianchi,17.1
+65271,15,Las Vegas Raiders,C,Sean,Duell,17.1
+46381,14,Kansas City Chiefs,C,Mark,Transue,17.1
+56920,17,Dallas Cowboys,C,Miguel,Robertson,17.1
+65266,6,Cincinnati Bengals,C,Raul,Hallett,17.1
+35089,2,Miami Dolphins,C,Alvaro,Rivera,13.68
+40280,4,New York Jets,C,John,Jones,15.39
+46824,23,Green Bay Packers,C,Fred,Gross,17.1
+45562,28,Tampa Bay Buccaneers,C,Ronald,Milton,17.1
+30960,13,Denver Broncos,C,Louis,Casebeer,11.97
+50342,20,Washington Commanders,C,Joel,Hudson,17.1
+38618,30,Los Angeles Rams,C,Peter,Leary,13.68
+45362,22,Detroit Lions,C,Michael,Kern,17.1
+60927,24,Minnesota Vikings,C,Darren,Willard,17.1
+61579,19,Philadelphia Eagles,C,Randy,Harrell,17.1
+25206,31,San Francisco 49ers,C,Fidel,Trujillo,10.26
+61512,31,SF,C,Richard,Campos,17.1
+65877,9,Houston Texans,C,Todd,Brumlow,4.15
+70204,26,Carolina Panthers,C,Kenneth,Eggleston,4.15
+70407,5,Baltimore Ravens,C,Joe,Mejia,4.15
+71540,13,Denver Broncos,C,Timothy,Gurganus,4.15
+62360,10,Indianapolis Colts,C,Michael,Nguyen,4.15
+61964,30,Los Angeles Rams,C,Ruben,Gallardo,4.15
+63267,12,TEN,C,James,Kohn,4.15
+63262,8,Pittsburgh Steelers,C,John,Rockhill,2.05
+63439,20,Washington Commanders,C,Henry,Lollis,2.05
+62332,15,Las Vegas Raiders,C,Jimmy,Walker,2.05
+61553,7,Cleveland Browns,C,James,Pipkin,2.05
+70150,26,Carolina Panthers,C,Franklin,Mitchell,2.05
+65228,17,Dallas Cowboys,C,Mark,Gregg,2.05
+66234,16,Los Angeles Chargers,C,Reginald,Campbell,2.05
+70356,28,Tampa Bay Buccaneers,C,Willie,Washington,2.05
+60565,3,New England Patriots,C,Jaime,Mir,1.41
+68311,29,Arizona Cardinals,C,Ronald,Black,1.41
+65180,25,Atlanta Falcons,C,Franklin,Gaines,1.41
+66359,8,Pittsburgh Steelers,C,John,Osborn,1.41
+71521,23,Green Bay Packers,C,Barry,Downs,1.41
+58349,31,San Francisco 49ers,C,Joseph,Land,1.41
+59385,21,Chicago Bears,C,Stephen,Rodriguez,1.41
+54642,22,Detroit Lions,C,Jeremy,Odell,1.41
+53817,27,New Orleans Saints,C,Douglas,Cosgrove,1.41
+66417,0,FA,C,Anthony,Henderson,1.41
+66616,4,New York Jets,C,Elias,Arellano,1.41
+71257,20,Washington Commanders,C,Rick,Shoemaker,1.41
+57657,5,Baltimore Ravens,C,James,Rodriguez,1.41
+52950,14,Kansas City Chiefs,C,Hung,Lee,1.41
+54712,19,Philadelphia Eagles,C,Peter,Howard,1.41
+66986,16,Los Angeles Chargers,C,Jonathan,Stevens,1.41
+26876,10,Indianapolis Colts,C,Thomas,Roach,0.85
+67392,0,FA,C,Kenneth,Upchurch,1.41
+67674,0,FA,C,Stanley,Kittrell,1.41
+43826,9,Houston Texans,C,Brian,Hilderbrand,1.27
+71425,18,New York Giants,C,Joseph,Davis,1.41
+66609,0,FA,C,Nicholas,Flores,0.4
+71071,0,FA,C,Antonio,Navarro,0.4
+44653,3,New England Patriots,C,Kenneth,Negro,0.36
+45348,4,New York Jets,DE,Richard,Lucia,28.28
+45170,12,TEN,DE,Brett,Mcphail,28.28
+55217,14,Kansas City Chiefs,DE,David,Cunningham,49.98
+60112,13,Denver Broncos,DE,Chad,Bruce,28.28
+45335,16,Los Angeles Chargers,DE,Jeremy,Pruitt,28.28
+50828,9,Houston Texans,DE,James,Kiger,26.9
+40166,22,Detroit Lions,DE,Stephen,Brouillet,24.21
+40327,20,Washington Commanders,DE,Bryan,Ludi,24.21
+35843,27,New Orleans Saints,DE,Erik,Schaefer,21.52
+60489,2,Miami Dolphins,DE,Damon,Lucas,26.9
+25285,25,Atlanta Falcons,DE,Ray,Jackson,16.14
+65089,13,Denver Broncos,DE,Andrew,Rahi,26.9
+55291,11,Jacksonville Jaguars,DE,Jeffery,Amend,26.05
+55856,28,Tampa Bay Buccaneers,DE,Brian,Yokum,26.05
+41897,20,Washington Commanders,DE,James,Wood,23.45
+55531,24,Minnesota Vikings,DE,Paul,Munford,26.05
+46482,1,Buffalo Bills,DE,Stephen,Dinardo,26.05
+46186,5,Baltimore Ravens,DE,Robert,Jackson,26.05
+46549,15,Las Vegas Raiders,DE,Gerald,Javed,26.05
+46347,12,Tennessee Titans,DE,John,Goetz,26.05
+42948,10,Indianapolis Colts,DE,Rudolph,Garcia,23.45
+51484,25,Atlanta Falcons,DE,Todd,Showalter,26.05
+51735,3,New England Patriots,DE,William,May,26.05
+51937,32,Seattle Seahawks,DE,Paul,Huffman,26.05
+65179,6,Cincinnati Bengals,DE,Phillip,Wilcox,26.05
+36871,3,New England Patriots,DE,Gregory,Charpentier,20.84
+65814,4,New York Jets,DE,Aaron,Stokes,26.05
+36315,1,Buffalo Bills,DE,Manoj,Yang,20.84
+65208,8,Pittsburgh Steelers,DE,Krzysztof,Leatherman,26.05
+60834,14,Kansas City Chiefs,DE,Vaughn,Johnson,26.05
+30234,23,Green Bay Packers,DE,Scott,Totherow,18.24
+61201,30,Los Angeles Rams,DE,William,Poku,26.05
+60872,15,Las Vegas Raiders,DE,Nicholas,Sarno,26.05
+61031,7,Cleveland Browns,DE,David,Sparacino,26.05
+26777,26,Carolina Panthers,DE,Harold,Campbell,8.94
+69988,17,Dallas Cowboys,DE,Michael,Dewitt,14.9
+70215,23,Green Bay Packers,DE,Roy,Cali,11.13
+62453,18,New York Giants,DE,Michael,Waldo,11.13
+65340,5,Baltimore Ravens,DE,Ronald,Millier,11.13
+64389,26,Carolina Panthers,DE,Eric,Stephens,7.26
+63609,20,Washington Commanders,DE,David,Tibbits,7.26
+60917,16,Los Angeles Chargers,DE,Abel,Moore,7.26
+61516,7,Cleveland Browns,DE,Ernest,Morgan,7.26
+62369,6,Cincinnati Bengals,DE,David,Eck,7.26
+63333,3,New England Patriots,DE,Daniel,Rojas,7.26
+70053,2,Miami Dolphins,DE,Bruce,Utesch,7.26
+66526,27,New Orleans Saints,DE,Richard,Kalisch,7.26
+62657,13,Denver Broncos,DE,Richard,Dehne,7.26
+60553,32,Seattle Seahawks,DE,Zachary,Willwerth,7.26
+62527,20,Washington Commanders,DE,Glenn,Setzer,7.26
+62527,20,Washington Commanders,DE,Glenn,Setzer,7.26
+61148,15,Las Vegas Raiders,DE,Douglas,Ehrmann,7.26
+64737,11,Jacksonville Jaguars,DE,Larry,Danner,7.26
+71151,29,Arizona Cardinals,DE,Rigoberto,Juarez,7.26
+70198,22,Detroit Lions,DE,Joseph,Little,7.26
+70169,19,Philadelphia Eagles,DE,Hugh,Cohen,7.26
+66298,8,Pittsburgh Steelers,DE,John,Luu,7.26
+66149,31,San Francisco 49ers,DE,Jaime,Hernandez,7.26
+70173,25,Atlanta Falcons,DE,Peter,Mager,7.26
+70173,25,Atlanta Falcons,DE,Peter,Mager,7.26
+63198,30,Los Angeles Rams,DE,John,Sands,7.26
+62640,31,San Francisco 49ers,DE,Michael,Hamman,7.26
+62513,10,Indianapolis Colts,DE,Frank,Thielen,7.26
+62513,10,Indianapolis Colts,DE,Frank,Thielen,7.26
+61042,0,,DE,David,Hine,7.26
+65389,14,KC,DE,Robert,Biland,7.26
+66490,14,KC,DE,Dimitri,Lewis,7.26
+59045,29,Arizona Cardinals,DE,Richard,Salazar,7.26
+53935,7,Cleveland Browns,DE,Larry,Buroker,7.26
+59061,28,Tampa Bay Buccaneers,DE,Randy,Mccarthy,7.26
+66771,5,Baltimore Ravens,DE,Humberto,Velasquez,7.26
+66374,7,Cleveland Browns,DE,Juan,Johnson,7.26
+68216,19,Philadelphia Eagles,DE,Francis,Young,7.26
+65713,8,Pittsburgh Steelers,DE,David,Hernandez,7.26
+70942,21,Chicago Bears,DE,Andres,Garcia,2.08
+59404,12,Tennessee Titans,DE,David,Bracy,2.08
+59533,31,San Francisco 49ers,DE,Mel,Wolf,2.08
+64405,0,,DE,Rudolph,Lewis,2.08
+62569,17,Dallas Cowboys,DE,Lee,Kenney,2.08
+60771,21,Chicago Bears,DE,Segundo,Garcia,2.08
+63039,23,Green Bay Packers,DE,Ray,Baek,2.08
+66000,17,Dallas Cowboys,DE,Sean,Wilson,2.08
+59189,22,Detroit Lions,DE,John,Bonser,2.08
+53307,30,Los Angeles Rams,DE,Keith,Winters,2.08
+71677,5,Baltimore Ravens,DE,Gregory,Lucas,2.08
+70401,28,Tampa Bay Buccaneers,DE,Miguel,Pedraza,2.08
+61974,0,,DE,Joao,Greco,0.95
+54697,13,Denver Broncos,DE,Alexander,Pierce,0.95
+59378,32,Seattle Seahawks,DE,Ted,Molina,0.95
+71638,25,Atlanta Falcons,DE,David,Juarez,0.95
+49004,2,Miami Dolphins,DE,Benjamin,Haney,0.95
+49645,32,Seattle Seahawks,DE,John,Quay,0.95
+70657,15,Las Vegas Raiders,DE,Jerome,Spivey,0.95
+70657,15,Las Vegas Raiders,DE,Jerome,Spivey,0.95
+59720,26,Carolina Panthers,DE,Preston,Hobson,0.95
+56581,2,Miami Dolphins,DE,Jonathan,Whitaker,0.95
+56557,3,New England Patriots,DE,John,Rouzer,0.95
+71017,0,FA,DE,Scott,Starkman,0.95
+45136,9,Houston Texans,DE,Rodolfo,Ripley,0.86
+48900,10,Indianapolis Colts,DE,Dennis,Austin,0.95
+50007,10,Indianapolis Colts,DE,Earl,Mcquiller,0.95
+49334,27,New Orleans Saints,DE,Uma,Ngo,0.95
+66794,18,New York Giants,DE,David,Majewski,0.95
+65825,18,New York Giants,DE,Steven,Hamilton,0.95
+53670,18,New York Giants,DE,David,Lou,0.6
+49865,2,Miami Dolphins,DE,Clifford,Davis,0.6
+58826,0,FA,DE,Michael,Barton,0.6
+42088,0,,DE,Benjamin,Downey,0.54
+50140,29,Arizona Cardinals,DT,Philip,Nagel,32.04
+55343,12,Tennessee Titans,DT,Robert,Miller,32.04
+45540,15,Las Vegas Raiders,DT,Robert,Monzel,32.04
+36850,6,Cincinnati Bengals,DT,Timothy,Taylor,25.63
+41718,2,Miami Dolphins,DT,David,Buchheit,28.83
+40170,10,Indianapolis Colts,DT,David,Digirolamo,27.46
+61428,8,Pittsburgh Steelers,DT,Robert,Berry,30.51
+60658,5,Baltimore Ravens,DT,Jeffrey,Jesse,30.51
+50378,30,Los Angeles Rams,DT,Mario,Sisneros,30.51
+55368,19,Philadelphia Eagles,DT,Leon,Payne,30.51
+56868,13,DEN,DT,Michael,Cuevas,30.51
+55363,8,Pittsburgh Steelers,DT,Richard,Crawford,30.51
+53244,28,Tampa Bay Buccaneers,DT,Matthew,Zimmer,30.51
+51925,21,Chicago Bears,DT,Reyes,Dzul,30.51
+45567,20,Washington Commanders,DT,James,Henze,30.51
+60470,17,Dallas Cowboys,DT,Elliott,Grossman,30.51
+60448,16,Los Angeles Chargers,DT,Jesus,Gonzalez,30.51
+45518,28,Tampa Bay Buccaneers,DT,Howard,Phillips,30.51
+40902,1,Buffalo Bills,DT,Charles,Apple,27.46
+45926,9,Houston Texans,DT,Steven,Molinari,30.51
+41025,11,Jacksonville Jaguars,DT,Manuel,Harris,27.46
+61562,26,Carolina Panthers,DT,Steven,Kapfhammer,30.51
+62249,32,Seattle Seahawks,DT,Gary,Wheeler,21.66
+60329,17,Dallas Cowboys,DT,Eric,Simon,21.66
+61738,14,Kansas City Chiefs,DT,Jose,Sola,21.66
+30410,23,Green Bay Packers,DT,Michael,Dryer,15.16
+36055,7,Cleveland Browns,DT,Richard,Smith,17.33
+65418,4,New York Jets,DT,Russell,Garban,21.66
+33704,13,Denver Broncos,DT,Daniel,Garrison,15.16
+65367,24,Minnesota Vikings,DT,Neil,Henry,8.91
+65398,22,Detroit Lions,DT,Bradley,Crook,8.91
+60632,30,Los Angeles Rams,DT,Ronald,Dixon,2.05
+62588,30,Los Angeles Rams,DT,Edward,Mallory,2.05
+66936,18,New York Giants,DT,Michael,Barrera,2.05
+67924,1,Buffalo Bills,DT,Mark,Tran,2.05
+67776,26,Carolina Panthers,DT,Marco,Everett,2.05
+66134,23,Green Bay Packers,DT,Stuart,Nelson,2.05
+62967,20,Washington Commanders,DT,Thomas,Estep,2.05
+61578,31,SF,DT,Marvin,Scott,2.05
+61578,31,SF,DT,Marvin,Scott,2.05
+63402,32,Seattle Seahawks,DT,Grady,Randall,2.05
+62291,10,Indianapolis Colts,DT,John,Cuthbertson,2.05
+63654,32,Seattle Seahawks,DT,Arthur,Stuart,2.05
+62233,0,,DT,Juan,Zuniga,2.05
+61989,7,Cleveland Browns,DT,Adan,Gutierrez,2.05
+60884,14,Kansas City Chiefs,DT,Lloyd,Garrett,2.05
+66538,26,Carolina Panthers,DT,William,Neil,2.05
+65403,27,New Orleans Saints,DT,Cezary,Moulton,2.05
+65796,19,Philadelphia Eagles,DT,David,Helgeson,2.05
+68434,15,Las Vegas Raiders,DT,Sylvester,White,2.05
+63544,0,,DT,Huy,Henriques,2.05
+66177,20,Washington Commanders,DT,Hyun,Shin,2.05
+61730,6,Cincinnati Bengals,DT,Terence,Graf,2.05
+60682,17,Dallas Cowboys,DT,Jeff,Mcclellan,2.05
+53974,3,New England Patriots,DT,Sudhir,Lockard,2.05
+70470,29,Arizona Cardinals,DT,Joseph,Rasmussen,2.05
+65258,25,Atlanta Falcons,DT,Samuel,Kim,2.05
+68479,5,Baltimore Ravens,DT,William,Esteves,2.05
+70154,5,Baltimore Ravens,DT,Michael,Abukhdeir,2.05
+71813,7,Cleveland Browns,DT,Paul,Mchenry,2.05
+67079,10,Indianapolis Colts,DT,Kenneth,Anderson,2.05
+65785,2,Miami Dolphins,DT,Edward,Cazares,2.05
+63312,31,San Francisco 49ers,DT,Eric,Pritchard,0.98
+71846,15,LV,DT,Jamie,Gooley,0.98
+58453,26,Carolina Panthers,DT,Joseph,Peltz,0.98
+59218,2,Miami Dolphins,DT,Isidro,Forney,0.98
+57100,2,Miami Dolphins,DT,Paul,Lewis,0.98
+52546,32,Seattle Seahawks,DT,Timothy,Jeffcoat,0.98
+66176,21,Chicago Bears,DT,Robert,Jackson,0.98
+70102,6,Cincinnati Bengals,DT,Lance,Nguyen,0.98
+71732,22,Detroit Lions,DT,Josh,Benson,0.98
+66009,9,Houston Texans,DT,James,Ross,0.98
+65096,30,Los Angeles Rams,DT,Shawn,Martin,0.98
+65680,8,Pittsburgh Steelers,DT,Rigoberto,Pascual,0.98
+65956,31,San Francisco 49ers,DT,Steven,Mckibben,0.98
+63243,17,Dallas Cowboys,DT,Jose,Foster,0.7
+57744,26,Carolina Panthers,DT,John,Anderson,0.7
+58734,6,Cincinnati Bengals,DT,Jason,Britz,0.7
+65358,21,Chicago Bears,DT,John,Apple,0.7
+65294,18,New York Giants,DT,Mark,Arndt,0.7
+52798,25,Atlanta Falcons,DT,Caleb,Cline,0.6
+59798,4,New York Jets,DT,Jim,Meinke,0.6
+65665,29,Arizona Cardinals,DT,John,Hooe,0.6
+48838,3,New England Patriots,DT,Theodore,Cummings,0.6
+53708,16,Los Angeles Chargers,DT,Samuel,Lafosse,0.6
+54119,22,Detroit Lions,DT,Carlos,Loredo,0.6
+49937,0,FA,DT,Jose,Matos,0.6
+56376,14,Kansas City Chiefs,OLB,Ramon,Hubanks,42.13
+50323,17,Dallas Cowboys,OLB,Jacob,Wiseman,25.83
+50121,23,Green Bay Packers,OLB,James,Stewart,25.83
+55420,11,Jacksonville Jaguars,OLB,Kirk,Ridley,25.83
+40239,30,Los Angeles Rams,OLB,Paul,Craven,23.25
+60588,25,ATL,OLB,Karl,Rosania,24.6
+69994,32,Seattle Seahawks,OLB,Brandon,Schroeder,24.6
+42533,22,Detroit Lions,OLB,William,Edwards,22.14
+45407,7,Cleveland Browns,OLB,Michael,Malone,24.6
+45763,29,Arizona Cardinals,OLB,Dwayne,Murchinson,24.6
+45719,27,New Orleans Saints,OLB,Ricardo,Szura,24.6
+50465,20,WAS,OLB,Jesus,Avalos,24.6
+55351,19,Philadelphia Eagles,OLB,Emory,Hightower,24.6
+55735,28,Tampa Bay Buccaneers,OLB,Alan,Feehan,24.6
+50145,7,Cleveland Browns,OLB,Larry,Bushong,24.6
+56916,20,Washington Commanders,OLB,Pierre,Smith,24.6
+45462,13,DEN,OLB,Andrew,Perkins,24.6
+60722,25,Atlanta Falcons,OLB,Jason,Gregory,17.76
+61290,8,Pittsburgh Steelers,OLB,Anthony,Rizzi,17.76
+36212,21,Chicago Bears,OLB,Douglas,Bingaman,14.21
+40538,10,Indianapolis Colts,OLB,Tony,Davis,15.98
+60790,23,Green Bay Packers,OLB,Benjamin,Hanbury,16.3
+36227,3,New England Patriots,OLB,Robert,Hoffman,13.04
+40949,32,Seattle Seahawks,OLB,Howard,Dellinger,14.67
+60348,15,Las Vegas Raiders,OLB,Steven,Mcintosh,16.3
+27237,22,Detroit Lions,OLB,Alan,Thompson,9.78
+65408,24,Minnesota Vikings,OLB,Jeffrey,Kersting,16.3
+69998,16,Los Angeles Chargers,OLB,Rodney,Labell,6.2
+69989,30,Los Angeles Rams,OLB,Richard,Davidson,6.2
+65441,3,New England Patriots,OLB,Lawrence,Carnes,6.2
+65365,14,Kansas City Chiefs,OLB,Alen,Riley,6.2
+70267,17,Dallas Cowboys,OLB,Alton,Bradfield,6.2
+61757,15,Las Vegas Raiders,OLB,David,Zumbrun,6.2
+61597,5,Baltimore Ravens,OLB,Ronald,Bergeron,6.2
+70234,2,Miami Dolphins,OLB,Christopher,Rogers,6.2
+66152,27,New Orleans Saints,OLB,Stephen,Pearson,6.2
+70137,19,Philadelphia Eagles,OLB,William,Gustafson,6.2
+70223,8,Pittsburgh Steelers,OLB,Michael,Ruby,6.2
+63293,28,Tampa Bay Buccaneers,OLB,Robert,Wilkinson,6.2
+62283,10,Indianapolis Colts,OLB,John,Osman,6.2
+62344,26,Carolina Panthers,OLB,Michael,Naccarato,6.2
+62316,29,Arizona Cardinals,OLB,Leobardo,Vela,6.2
+65506,14,Kansas City Chiefs,OLB,Ronald,Gubler,6.2
+61727,15,Las Vegas Raiders,OLB,John,Duffy,6.2
+61622,7,Cleveland Browns,OLB,Earl,Vandyke,6.2
+61354,6,Cincinnati Bengals,OLB,Young,Lai,6.2
+62882,15,Las Vegas Raiders,OLB,Lorne,Davis,6.2
+65500,26,Carolina Panthers,OLB,Robert,Morales,6.2
+66389,17,Dallas Cowboys,OLB,Timothy,Stimac,6.2
+65670,23,Green Bay Packers,OLB,Delmar,Mcdowell,6.2
+70387,10,Indianapolis Colts,OLB,Kevin,Der,6.2
+66478,14,Kansas City Chiefs,OLB,Phillip,Giffen,6.2
+65308,2,Miami Dolphins,OLB,Anthony,Yurczyk,6.2
+67964,3,New England Patriots,OLB,Alfredo,Hashimoto,6.2
+65351,31,San Francisco 49ers,OLB,Alexander,Williams,6.2
+66755,12,Tennessee Titans,OLB,Garrick,Wells,6.2
+62065,32,Seattle Seahawks,OLB,Gerald,Brouillette,6.2
+62996,20,Washington Commanders,OLB,Joseph,Patchen,6.2
+62146,31,San Francisco 49ers,OLB,Kyle,Taylor,6.2
+61355,8,Pittsburgh Steelers,OLB,David,Baxter,6.2
+62371,19,Philadelphia Eagles,OLB,Ricardo,Rubiano,6.2
+62230,20,Washington Commanders,OLB,Scott,Potash,6.2
+61650,21,Chicago Bears,OLB,Luis,Moreno,6.2
+62373,26,Carolina Panthers,OLB,Patrick,Kossen,6.2
+62321,1,Buffalo Bills,OLB,Paul,Drum,6.2
+58933,12,Tennessee Titans,OLB,James,Geiger,6.2
+59896,11,Jacksonville Jaguars,OLB,Todd,Eggers,6.2
+65690,26,Carolina Panthers,OLB,Ramon,Wells,6.2
+66412,13,Denver Broncos,OLB,Mark,Urich,6.2
+66193,13,Denver Broncos,OLB,John,Arnold,6.2
+66607,22,Detroit Lions,OLB,Darryl,Gregory,6.2
+66302,18,New York Giants,OLB,Keith,Brown,6.2
+64005,8,Pittsburgh Steelers,OLB,Willy,Jimenez,2.87
+60049,25,Atlanta Falcons,OLB,Stanley,Whistler,2.87
+52119,12,Tennessee Titans,OLB,Fred,Copeland,2.87
+66015,9,Houston Texans,OLB,Gregory,Rosiek,2.87
+65851,9,Houston Texans,OLB,Alexander,Dyer,2.87
+65798,30,Los Angeles Rams,OLB,William,Blue,2.87
+66732,19,Philadelphia Eagles,OLB,Bradley,Resar,2.87
+68209,31,San Francisco 49ers,OLB,James,Ward,2.87
+66276,21,Chicago Bears,OLB,Robert,Barr,1.23
+63905,0,,OLB,John,Carroll,1.23
+59688,23,Green Bay Packers,OLB,Thomas,Bowling,1.23
+53931,16,Los Angeles Chargers,OLB,Brian,Stith,1.23
+58002,18,New York Giants,OLB,David,Davis,1.23
+54453,4,New York Jets,OLB,Alexander,Herrera,1.23
+54427,32,Seattle Seahawks,OLB,Alain,Munoz,1.23
+66373,21,Chicago Bears,OLB,John,Finstad,1.23
+70000,6,Cincinnati Bengals,OLB,Christopher,Demoss,1.23
+66742,9,Houston Texans,OLB,Michael,Williams,1.23
+48025,30,Los Angeles Rams,OLB,Shaun,Finn,1.23
+67847,20,Washington Commanders,OLB,John,Damiano,1.23
+65320,24,Minnesota Vikings,OLB,Peter,Kiefer,1.23
+52945,3,New England Patriots,OLB,Dean,Mcconnell,0.6
+48789,5,Baltimore Ravens,OLB,William,Munch,0.6
+67563,17,Dallas Cowboys,OLB,John,Lentz,0.6
+45919,22,Detroit Lions,OLB,Thomas,Kerr,0.6
+70086,28,Tampa Bay Buccaneers,OLB,James,Whitfield,0.6
+44371,12,Tennessee Titans,OLB,John,Neely,0.54
+54150,18,New York Giants,OLB,Jose,Castaneda,0.6
+42085,6,Cincinnati Bengals,OLB,Kevin,Campbell,0.54
+37698,10,Indianapolis Colts,OLB,Sergio,Rodriguez,0.48
+48282,10,Indianapolis Colts,OLB,Konstantin,Lee,0.6
+31881,7,Cleveland Browns,OLB,Paul,Best,0.42
+54532,4,New York Jets,OLB,Ryan,Distefano,0.6
+44804,4,New York Jets,OLB,David,Norfleet,0.54
+55200,22,Detroit Lions,ILB,Gordon,Wilburn,27.03
+45449,1,Buffalo Bills,ILB,Andrew,Bascue,27.03
+45367,32,Seattle Seahawks,ILB,Julio,Jimenez,27.03
+60199,20,WAS,ILB,Karl,Ogles,27.03
+35741,2,Miami Dolphins,ILB,Michael,Berger,21.62
+56599,6,Cincinnati Bengals,ILB,Russell,Craw,22.15
+56588,16,Los Angeles Chargers,ILB,Christopher,Pratt,22.15
+50173,13,Denver Broncos,ILB,Dennis,Jones,22.15
+55403,4,New York Jets,ILB,Tram,Singh,22.15
+53409,7,Cleveland Browns,ILB,Louis,Dell,22.15
+46157,11,Jacksonville Jaguars,ILB,David,Powers,17.78
+53230,31,San Francisco 49ers,ILB,Samuel,Bronson,17.78
+36750,20,Washington Commanders,ILB,Mark,Keesey,12.31
+45511,10,Indianapolis Colts,ILB,John,Williams,15.39
+45805,27,New Orleans Saints,ILB,Michael,Damme,15.39
+45689,13,Denver Broncos,ILB,Glenn,Sosa,15.39
+60144,21,CHI,ILB,Todd,Bunch,15.39
+31412,30,Los Angeles Rams,ILB,Jack,Ousley,8.89
+34214,20,Washington Commanders,ILB,Patrick,Cannady,8.89
+40397,12,Tennessee Titans,ILB,Juan,Suazo,11.43
+65339,28,Tampa Bay Buccaneers,ILB,David,Stowell,10.35
+62772,20,Washington Commanders,ILB,Jonathan,Osborne,5.06
+70147,23,Green Bay Packers,ILB,Michael,Price,5.06
+62311,32,Seattle Seahawks,ILB,Brent,Stover,5.06
+63526,5,Baltimore Ravens,ILB,Patrick,Green,5.06
+63537,8,PIT,ILB,Narinder,Beckmann,5.06
+60863,5,Baltimore Ravens,ILB,Thomas,Gupta,5.06
+62529,10,Indianapolis Colts,ILB,David,Quigley,5.06
+62522,8,Pittsburgh Steelers,ILB,Jon,Saksena,5.06
+66725,7,Cleveland Browns,ILB,Louis,Wallace,5.06
+65858,29,Arizona Cardinals,ILB,Mei,Felipe,5.06
+70079,1,Buffalo Bills,ILB,Max,Perez,5.06
+73300,17,Dallas Cowboys,ILB,Steven,Othon,5.06
+70045,4,New York Jets,ILB,Erik,Arredondo,5.06
+65430,13,Denver Broncos,ILB,Kyu,Snyder,5.06
+70123,14,Kansas City Chiefs,ILB,Brian,Holder,4.11
+70123,14,Kansas City Chiefs,ILB,Brian,Holder,4.11
+60948,20,Washington Commanders,ILB,Larry,Arwood,4.11
+61158,30,Los Angeles Rams,ILB,Jeffrey,George,4.11
+62461,15,Las Vegas Raiders,ILB,Ross,Fox,4.11
+60660,31,San Francisco 49ers,ILB,Victor,Gonzalez,4.11
+60622,6,Cincinnati Bengals,ILB,Aaron,Hancock,4.11
+60652,27,New Orleans Saints,ILB,Thomas,Bettenhausen,4.11
+61740,7,Cleveland Browns,ILB,Richard,Melo,4.11
+59331,9,Houston Texans,ILB,Edward,Porter,4.11
+70335,29,Arizona Cardinals,ILB,Nelson,Mcgarity,4.11
+65526,29,Arizona Cardinals,ILB,Edgar,Hyde,4.11
+67052,25,Atlanta Falcons,ILB,Bryan,Thompson,4.11
+66760,18,NYG,ILB,Juan,Pacheco,4.11
+65388,16,Los Angeles Chargers,ILB,Derrick,Hawkins,4.11
+65660,19,Philadelphia Eagles,ILB,Alvin,Eckes,4.11
+62720,12,Tennessee Titans,ILB,Roger,Wise,2.05
+63425,23,Green Bay Packers,ILB,Salvador,Meza,2.05
+61310,14,Kansas City Chiefs,ILB,Jose,Delabra,2.05
+63396,26,Carolina Panthers,ILB,David,Leffew,2.05
+59998,12,Tennessee Titans,ILB,Allan,Tang,2.05
+67906,17,Dallas Cowboys,ILB,Jeffrey,Rigoni,2.05
+71639,11,Jacksonville Jaguars,ILB,Saul,Vasquez,2.05
+66498,12,TEN,ILB,Steven,Delucchi,2.05
+65126,18,New York Giants,ILB,Charles,Walker,2.05
+66715,28,Tampa Bay Buccaneers,ILB,Joe,Griffin,2.05
+67003,15,Las Vegas Raiders,ILB,Patrick,Parker,2.05
+63986,10,Indianapolis Colts,ILB,Michael,Floyd,2.05
+63986,10,Indianapolis Colts,ILB,Michael,Floyd,2.05
+62673,31,San Francisco 49ers,ILB,Steve,Olson,2.05
+70488,23,GB,ILB,Hwa,Alegado,2.05
+52360,7,Cleveland Browns,ILB,Harold,Forst,2.05
+57295,22,Detroit Lions,ILB,Jignesh,Islam,2.05
+59612,16,Los Angeles Chargers,ILB,Michael,Niebla,2.05
+52971,30,Los Angeles Rams,ILB,David,Reisinger,2.05
+65592,25,Atlanta Falcons,ILB,Michael,Jensen,2.05
+66649,23,Green Bay Packers,ILB,Troy,Smalley,2.05
+65834,2,Miami Dolphins,ILB,Billy,Ryder,2.05
+66391,4,New York Jets,ILB,James,Castle,2.05
+65561,31,San Francisco 49ers,ILB,Ronald,Harris,2.05
+68440,28,Tampa Bay Buccaneers,ILB,Carlos,Martinez,2.05
+71500,24,Minnesota Vikings,ILB,Monty,Cook,2.05
+57890,0,,ILB,Emil,Mcmillan,0.78
+53772,26,Carolina Panthers,ILB,Darrell,Gray,0.78
+52068,6,Cincinnati Bengals,ILB,Lawrence,Prejean,0.78
+68377,5,Baltimore Ravens,ILB,Luther,Due,0.78
+65213,21,Chicago Bears,ILB,Louis,Aguilar,0.78
+48876,18,New York Giants,ILB,Walter,Hernandez,0.78
+70269,16,LAC,ILB,Anthony,Riddle,0.78
+70959,29,Arizona Cardinals,ILB,Luis,Resurreccion,0.78
+71305,22,Detroit Lions,ILB,Gil,Kennedy,0.78
+66487,0,FA,ILB,Scott,Schovajsa,0.78
+70158,30,Los Angeles Rams,ILB,Joseph,Hatcher,0.78
+44180,3,New England Patriots,ILB,Clay,Christensen,0.7
+45101,3,New England Patriots,ILB,Mirela,Bealer,0.7
+34786,19,Philadelphia Eagles,ILB,Jose,Ortega,0.54
+54012,4,New York Jets,ILB,Anthony,Demoor,0.78
+47158,6,Cincinnati Bengals,ILB,Robert,Tappa,0.78
+70235,9,Houston Texans,ILB,Marvin,Sao,0.78
+41320,27,New Orleans Saints,ILB,Pedro,Winters,0.7
+60022,18,New York Giants,ILB,Ethan,Madding,0.6
+44111,2,Miami Dolphins,ILB,Jermaine,Gustave,0.54
+60128,11,Jacksonville Jaguars,CB,Randy,Espino,28.56
+60449,25,Atlanta Falcons,CB,Gregory,Williams,28.56
+55212,13,DEN,CB,George,Kent,28.56
+46301,19,Philadelphia Eagles,CB,Andrew,Kangas,28.56
+50134,16,Los Angeles Chargers,CB,John,Warnock,28.56
+45773,20,Washington Commanders,CB,William,Stevens,27.2
+60145,3,New England Patriots,CB,Huey,Ashe,27.2
+36628,8,Pittsburgh Steelers,CB,Richard,Lupo,21.76
+60741,14,Kansas City Chiefs,CB,Benedict,Deluna,27.2
+40312,22,Detroit Lions,CB,Robert,Smith,24.48
+36317,29,Arizona Cardinals,CB,William,Morin,21.76
+65074,27,New Orleans Saints,CB,Arthur,Medrano,26.52
+60134,28,Tampa Bay Buccaneers,CB,Andrzej,Harris,26.52
+60367,15,Las Vegas Raiders,CB,Samuel,Frazier,26.52
+60466,5,Baltimore Ravens,CB,Juan,Vega,26.52
+53111,21,Chicago Bears,CB,Gary,Lindblad,26.52
+55472,13,Denver Broncos,CB,Keith,Remy,26.52
+55578,24,Minnesota Vikings,CB,Marcos,Maldonado,26.52
+50115,30,Los Angeles Rams,CB,Edward,Rivera,26.52
+50373,12,Tennessee Titans,CB,William,Johnson,26.52
+45211,11,Jacksonville Jaguars,CB,Fausto,Harrison,26.52
+45212,20,Washington Commanders,CB,Paul,Clark,26.52
+56271,18,NYG,CB,William,Owens,26.52
+65078,16,Los Angeles Chargers,CB,Alan,Laurent,26.52
+40289,19,Philadelphia Eagles,CB,Dustin,Phillips,23.87
+65084,2,Miami Dolphins,CB,Ernest,Mccoy,26.52
+44252,18,New York Giants,CB,Brian,Rowland,10.35
+36932,11,Jacksonville Jaguars,CB,Charles,Kling,9.2
+33028,27,New Orleans Saints,CB,David,Stuckey,5.88
+37170,20,Washington Commanders,CB,Jason,Holliman,6.72
+26010,22,Detroit Lions,CB,Christopher,Salgado,4.14
+70038,1,Buffalo Bills,CB,Alvin,Annan,6.9
+70279,32,Seattle Seahawks,CB,Daniel,Mendoza,6.2
+63821,26,Carolina Panthers,CB,Michael,Rebecca,6.2
+62536,15,Las Vegas Raiders,CB,Roger,Nettles,6.2
+63266,28,Tampa Bay Buccaneers,CB,Jason,Green,6.2
+67261,22,Detroit Lions,CB,Michael,Frizzell,6.2
+65551,3,New England Patriots,CB,Robert,Briggs,6.2
+65644,3,New England Patriots,CB,Dilip,Tran,6.2
+68504,8,Pittsburgh Steelers,CB,James,Klasky,6.2
+64821,15,Las Vegas Raiders,CB,Kenneth,Wheat,6.2
+64731,30,Los Angeles Rams,CB,Jason,Bumbarger,6.2
+62326,23,Green Bay Packers,CB,Lee,Kiser,6.2
+60733,30,Los Angeles Rams,CB,James,Voth,6.2
+62031,24,Minnesota Vikings,CB,Paul,Wade,6.2
+70174,14,Kansas City Chiefs,CB,Wei,Bao,6.2
+63754,27,New Orleans Saints,CB,Carl,Baptiste,6.2
+62423,7,Cleveland Browns,CB,Brice,Torres,6.2
+61295,23,Green Bay Packers,CB,Johnathan,Drayton,6.2
+67223,29,Arizona Cardinals,CB,Taylor,Selby,6.2
+66052,5,Baltimore Ravens,CB,Benny,Murray,6.2
+71003,1,Buffalo Bills,CB,Hugo,Hernandez,6.2
+70284,26,Carolina Panthers,CB,Adrian,Goerner,6.2
+71061,10,Indianapolis Colts,CB,Myron,Mahan,6.2
+66790,15,Las Vegas Raiders,CB,Ronald,Hawkins,6.2
+70082,2,Miami Dolphins,CB,Wilfredo,Aguirre,6.2
+71400,17,Dallas Cowboys,CB,Jason,Smothers,6.2
+70988,19,Philadelphia Eagles,CB,Barry,Taylor,6.2
+65471,31,San Francisco 49ers,CB,Ronald,Ibarra,6.2
+70585,31,San Francisco 49ers,CB,Roger,Swimmer,6.2
+63427,0,FA,CB,Jason,Chamblee,4.15
+60563,24,Minnesota Vikings,CB,Ralph,Cornelius,4.15
+62047,31,San Francisco 49ers,CB,Everardo,Gastelum,4.15
+61545,6,Cincinnati Bengals,CB,Mario,Gonzales,4.15
+63607,6,Cincinnati Bengals,CB,Leonid,Nieto,4.15
+70176,25,Atlanta Falcons,CB,Kenneth,Hobbs,4.15
+68199,21,Chicago Bears,CB,Roberto,Jimenez,4.15
+67090,6,Cincinnati Bengals,CB,Herbert,Pergerson,4.15
+71280,7,Cleveland Browns,CB,Fernando,Barrera,4.15
+66885,23,Green Bay Packers,CB,Jose,Frost,4.15
+70366,10,Indianapolis Colts,CB,Ray,Quintana,4.15
+65662,14,Kansas City Chiefs,CB,David,Poper,4.15
+67662,15,Las Vegas Raiders,CB,Kevin,Cordova,4.15
+62603,12,Tennessee Titans,CB,Gilberto,Santana,4.15
+62603,12,Tennessee Titans,CB,Gilberto,Santana,4.15
+63692,12,Tennessee Titans,CB,Ronald,Jones,4.15
+67141,5,Baltimore Ravens,CB,Jesus,Casillas,4.15
+67141,5,Baltimore Ravens,CB,Jesus,Casillas,4.15
+62645,8,Pittsburgh Steelers,CB,Robert,Garcia,4.15
+64805,32,Seattle Seahawks,CB,Douglas,Agee,4.15
+68485,1,Buffalo Bills,CB,Irvin,Guzman,4.15
+67675,17,Dallas Cowboys,CB,Thomas,Calame,4.15
+71640,23,Green Bay Packers,CB,Mike,Burpee,4.15
+65599,4,New York Jets,CB,Keith,Cates,4.15
+66046,4,New York Jets,CB,Charles,Davis,4.15
+65710,8,Pittsburgh Steelers,CB,Wilfred,Price,4.15
+65712,31,San Francisco 49ers,CB,Edgar,Arguello,4.15
+59582,13,Denver Broncos,CB,Stephen,Kern,4.15
+64259,31,San Francisco 49ers,CB,Marcus,Singleton,4.15
+64578,8,Pittsburgh Steelers,CB,Carlos,Galvan,4.15
+54256,10,Indianapolis Colts,CB,Chad,Omalley,4.15
+71768,21,Chicago Bears,CB,Arthur,Murphy,4.15
+71506,7,Cleveland Browns,CB,David,Peterson,4.15
+66030,24,Minnesota Vikings,CB,Elias,Oliva,4.15
+72532,18,New York Giants,CB,Matthew,Bradshaw,4.15
+67746,19,Philadelphia Eagles,CB,Manuel,Gonzalez,4.15
+67619,20,Washington Commanders,CB,Edward,Staton,0.78
+69289,30,Los Angeles Rams,CB,Pedro,Zamora,0.78
+70867,26,CAR,CB,Mark,Hodson,0.78
+58234,26,Carolina Panthers,CB,Gary,Andress,0.78
+52764,13,Denver Broncos,CB,Ricardo,Romero,0.78
+59901,2,Miami Dolphins,CB,James,Barrett,0.78
+59695,2,Miami Dolphins,CB,Keith,Williams,0.78
+67568,7,Cleveland Browns,CB,Andres,Hernandez,0.78
+68278,17,Dallas Cowboys,CB,Peter,Mcclure,0.78
+67619,20,Washington Commanders,CB,Edward,Staton,0.78
+67587,16,Los Angeles Chargers,CB,Thomas,Ciardi,0.78
+70910,4,New York Jets,CB,Michael,Bryant,0.78
+52727,3,New England Patriots,CB,Norman,Elcock,0.6
+48866,29,Arizona Cardinals,CB,Todd,Mcdonald,0.6
+68275,22,Detroit Lions,CB,Luis,Garcia,0.6
+66537,22,Detroit Lions,CB,Perry,Doucet,0.6
+39859,9,Houston Texans,CB,Joseph,Moots,0.48
+48557,9,Houston Texans,CB,Howard,Deane,0.6
+39533,6,Cincinnati Bengals,CB,Ben,Andrews,0.48
+41871,9,Houston Texans,CB,Richard,Driver,0.54
+41999,10,Indianapolis Colts,CB,Manuel,Aragon,0.54
+45054,18,New York Giants,CB,Kevin,Mcmullen,0.54
+59408,0,FA,CB,Patrick,Krammer,0.6
+59606,18,New York Giants,CB,Keith,Coleman,0.6
+50295,16,Los Angeles Chargers,FS,Lucio,Escarcega,27.72
+56972,7,Cleveland Browns,FS,Robert,Davis,27.72
+40852,4,New York Jets,FS,Jarred,Stone,24.95
+60136,15,LV,FS,Timothy,Monahan,27.72
+65069,19,Philadelphia Eagles,FS,Leonard,Vaughn,27.72
+40391,2,Miami Dolphins,FS,Michael,Hales,19.58
+56215,1,Buffalo Bills,FS,Adam,Grier,15.5
+56619,12,TEN,FS,Joshua,Johnstone,10.9
+41038,21,Chicago Bears,FS,Jerzy,Redding,9.81
+51695,23,Green Bay Packers,FS,Timothy,Sulton,10.9
+42086,27,New Orleans Saints,FS,Steven,Carder,9.81
+60493,13,Denver Broncos,FS,Jason,Hinton,10.9
+45236,18,New York Giants,FS,Jorge,Ramirez,10.9
+60116,24,Minnesota Vikings,FS,Wade,Hires,10.9
+46588,8,Pittsburgh Steelers,FS,Nicholas,Cross,10.9
+35622,11,Jacksonville Jaguars,FS,Arnold,Loken,8.72
+31250,20,Washington Commanders,FS,Joseph,Frank,7.63
+25717,30,Los Angeles Rams,FS,Andre,Williams,6.54
+25717,30,Los Angeles Rams,FS,Andre,Williams,6.54
+70324,17,Dallas Cowboys,FS,Jorge,Mendez,7.48
+64470,15,Las Vegas Raiders,FS,Anthony,Daniels,3.93
+71032,29,Arizona Cardinals,FS,Thomas,Odom,3.93
+66055,27,New Orleans Saints,FS,Chong,Tracey,3.93
+60772,15,Las Vegas Raiders,FS,Genaro,Losoya,2.15
+65296,9,Houston Texans,FS,Reginald,Mabry,2.15
+66674,8,Pittsburgh Steelers,FS,Robert,Cook,2.15
+61627,6,Cincinnati Bengals,FS,Richard,Surges,2.15
+61146,22,Detroit Lions,FS,Rupert,Moore,2.15
+64127,10,Indianapolis Colts,FS,Timothy,Ward,2.15
+71240,23,Green Bay Packers,FS,Matthew,Campbell,2.15
+65373,1,Buffalo Bills,FS,Ryan,Pottinger,2.15
+67646,17,Dallas Cowboys,FS,James,Garnette,2.15
+66938,30,Los Angeles Rams,FS,Vadim,Camirand,2.15
+62767,26,Carolina Panthers,FS,Jon,White,2.15
+64235,19,Philadelphia Eagles,FS,Sameer,Vandersteen,2.15
+63223,20,Washington Commanders,FS,Mike,Schlueter,2.15
+63507,14,Kansas City Chiefs,FS,Frank,Robbins,2.15
+66216,30,Los Angeles Rams,FS,Joseph,Willis,2.15
+66960,29,Arizona Cardinals,FS,John,Elder,2.15
+68406,5,Baltimore Ravens,FS,Gustavo,Guerrero,2.15
+70410,10,Indianapolis Colts,FS,Tim,Maloney,2.15
+70359,16,Los Angeles Chargers,FS,Kien,Tran,2.15
+66314,4,New York Jets,FS,Alton,Toles,2.15
+68259,31,San Francisco 49ers,FS,Gregory,Payne,2.15
+66974,12,Tennessee Titans,FS,Joel,Evans,2.15
+55723,6,Cincinnati Bengals,FS,John,Eley,2.15
+55730,22,Detroit Lions,FS,Damon,Armes,2.15
+66036,5,Baltimore Ravens,FS,Jose,Carbajal,2.15
+68620,2,Miami Dolphins,FS,Andres,Herrada,2.15
+66954,18,New York Giants,FS,Matthew,Beil,2.15
+71764,28,Tampa Bay Buccaneers,FS,Daniel,Lopez,2.15
+70424,1,BUF,FS,Terence,Seth,2.15
+57359,28,Tampa Bay Buccaneers,FS,Michael,Whitman,2.15
+68499,13,Denver Broncos,FS,David,Williamson,2.15
+71463,16,Los Angeles Chargers,FS,Robert,Summers,2.15
+47905,3,New England Patriots,FS,Stephen,Sheppard,0.6
+58646,26,Carolina Panthers,FS,Erik,Jackson,0.6
+58146,11,Jacksonville Jaguars,FS,Andrew,Durso,0.6
+53383,6,Cincinnati Bengals,FS,Andrzej,Parker,0.6
+60291,27,New Orleans Saints,SS,Daryl,Lee,28.64
+35389,29,Arizona Cardinals,SS,Roy,Bass,22.91
+53274,11,Jacksonville Jaguars,SS,James,Wilson,28.64
+51286,15,Las Vegas Raiders,SS,Jeffrey,Cullum,27.28
+47073,20,Washington Commanders,SS,Derick,Dudley,27.28
+55494,1,Buffalo Bills,SS,Patrick,Collins,27.28
+56136,14,Kansas City Chiefs,SS,William,Redman,27.28
+50959,28,Tampa Bay Buccaneers,SS,Christopher,Lowe,27.28
+31080,2,Miami Dolphins,SS,Robert,Yellowhair,19.09
+61609,23,Green Bay Packers,SS,Manish,Watson,27.28
+61271,8,Pittsburgh Steelers,SS,Jose,Gomezrodriguez,27.28
+46760,16,Los Angeles Chargers,SS,Thomas,Rauckhorst,27.28
+25085,13,Denver Broncos,SS,Vicente,Bugarin,16.37
+36787,22,Detroit Lions,SS,Daniel,Ortiz,10.99
+65300,28,Tampa Bay Buccaneers,SS,Jan,Miller,13.74
+65581,16,Los Angeles Chargers,SS,Edwin,Carter,8.67
+70004,6,Cincinnati Bengals,SS,Brian,Johnson,5.13
+63261,26,Carolina Panthers,SS,Pablo,Jovel,5.13
+60730,30,Los Angeles Rams,SS,Kenneth,Hankins,5.13
+63619,20,Washington Commanders,SS,Jeffery,Mcbrearty,2.59
+66525,25,Atlanta Falcons,SS,Oscar,Reyes,2.59
+63484,10,Indianapolis Colts,SS,Raymond,Teague,2.59
+61391,5,Baltimore Ravens,SS,Leonard,Robinson,2.59
+61223,24,Minnesota Vikings,SS,Christopher,Chapman,2.59
+66561,30,Los Angeles Rams,SS,Malik,Boyd,2.59
+65966,9,Houston Texans,SS,Ellis,Jackson,2.59
+65936,18,New York Giants,SS,Abel,Ruiz,2.59
+65569,32,Seattle Seahawks,SS,Daryl,Dillon,2.59
+63656,31,San Francisco 49ers,SS,William,Rojo,2.59
+68352,12,TEN,SS,Thomas,Henderson,2.59
+62348,17,Dallas Cowboys,SS,Luis,Smith,2.59
+70379,24,Minnesota Vikings,SS,Juan,Goldberg,2.59
+70328,23,GB,SS,Stanley,Armstrong,2.59
+67932,1,Buffalo Bills,SS,Earl,Lewis,2.59
+66480,21,Chicago Bears,SS,William,Alexander,2.59
+65623,13,Denver Broncos,SS,James,Bacon,2.59
+70074,19,Philadelphia Eagles,SS,Tracey,Blake,2.59
+71441,15,Las Vegas Raiders,SS,Mark,Schlegel,2.59
+71441,15,Las Vegas Raiders,SS,Mark,Schlegel,2.59
+63829,7,Cleveland Browns,SS,Elias,Lola,2.59
+70549,15,Las Vegas Raiders,SS,Joshua,Hall,2.59
+64717,23,Green Bay Packers,SS,Christopher,Allen,2.59
+60074,3,New England Patriots,SS,Javier,Lizcano,2.59
+57768,3,New England Patriots,SS,Francisco,Perezhernandez,2.59
+50085,25,Atlanta Falcons,SS,John,Greer,2.59
+65507,5,Baltimore Ravens,SS,Kevin,Hansford,2.59
+70322,6,Cincinnati Bengals,SS,Anthony,Feintuch,2.59
+68261,9,Houston Texans,SS,Hipolito,Campos,2.59
+71428,11,Jacksonville Jaguars,SS,Ken,Miller,2.59
+70271,2,Miami Dolphins,SS,Lawrence,Nguyen,2.59
+66636,19,Philadelphia Eagles,SS,Nathan,Waller,2.59
+71215,20,Washington Commanders,SS,Benjamin,Silva,0.86
+70265,29,Arizona Cardinals,SS,Richard,Horton,0.86
+70530,17,Dallas Cowboys,SS,Keith,Mozingo,0.86
+68529,9,Houston Texans,SS,Christian,Ibarra,0.86
+67293,2,Miami Dolphins,SS,Omar,Melendez,0.86
+67628,27,New Orleans Saints,SS,Patrick,Gould,0.86
+71214,8,Pittsburgh Steelers,SS,Pedro,Robles,0.86
+45070,7,Cleveland Browns,SS,James,Hayes,0.77
+66058,22,Detroit Lions,SS,Joseph,Ramos,0.86
+66433,18,New York Giants,SS,James,Keene,0.86
+31742,10,Indianapolis Colts,SS,Wesley,Lewis,0.6
+41993,26,Carolina Panthers,SS,Robert,Wilkins,0.77
+45264,2,Miami Dolphins,K,David,Genter,13.57
+51009,20,Washington Commanders,K,Jeffrey,Leon,13.57
+53362,14,Kansas City Chiefs,K,Rob,Downing,13.57
+36022,7,Cleveland Browns,K,John,Raigoza,10.85
+70306,17,Dallas Cowboys,K,Michael,Cox,13.57
+67276,11,Jacksonville Jaguars,K,Paul,Tompkins,1.04
+71818,15,Las Vegas Raiders,K,Alan,Rutherford,1.04
+63495,22,Detroit Lions,K,Xin,Nevin,1.04
+63495,22,Detroit Lions,K,Xin,Nevin,1.04
+60812,1,Buffalo Bills,K,Francis,Barmore,1.04
+62965,8,Pittsburgh Steelers,K,Hector,Gonzalez,1.04
+63211,30,Los Angeles Rams,K,Ramon,Veloz,1.04
+57680,32,Seattle Seahawks,K,Matthew,Walker,1.04
+62107,3,NE,K,Glenn,Brandt,1.04
+62107,3,NE,K,Glenn,Brandt,1.04
+62523,24,MIN,K,Antonio,Frank,1.04
+62523,24,MIN,K,Antonio,Frank,1.04
+65905,18,New York Giants,K,Abel,Chapa,1.04
+57946,23,Green Bay Packers,K,Paul,Mcdonell,0.9
+65458,19,PHI,K,Juan,Bishop,0.9
+65458,19,PHI,K,Juan,Bishop,0.9
+58226,0,,K,Richard,Yob,0.9
+70385,26,CAR,K,Michael,Rogers,0.9
+59256,9,Houston Texans,K,Andrew,Reddin,0.77
+59167,10,Indianapolis Colts,K,Keith,Tucker,0.77
+57519,28,Tampa Bay Buccaneers,K,Robert,Sterley,0.77
+66111,5,Baltimore Ravens,K,Benjamin,Ray,0.77
+71327,27,New Orleans Saints,K,Herman,Vanderhorst,0.77
+57268,13,Denver Broncos,K,Ronald,Netherton,0.77
+44792,32,Seattle Seahawks,K,Robert,Pearson,0.69
+33748,16,Los Angeles Chargers,K,Timothy,Hanamoto,0.54
+59774,20,Washington Commanders,K,Marvin,Moreno,0.77
+47188,29,Arizona Cardinals,K,Ralph,Goldsmith,0.77
+35326,2,Miami Dolphins,P,Brent,Garcia,6.98
+45290,13,Denver Broncos,P,Wayne,Sutton,8.73
+40894,22,Detroit Lions,P,Robert,Richbow,7.85
+66458,21,Chicago Bears,P,Walter,Bullard,8.73
+70256,1,Buffalo Bills,P,Daniel,Schlabach,8.73
+70256,1,Buffalo Bills,P,Daniel,Schlabach,3.33
+70256,1,Buffalo Bills,P,Daniel,Schlabach,3.33
+70357,27,New Orleans Saints,P,Michael,Salvatore,3.33
+63419,23,GB,P,Francisco,Orozco,1.55
+63419,23,GB,P,Francisco,Orozco,1.55
+62534,7,Cleveland Browns,P,Patrick,Brown,1.55
+67797,25,Atlanta Falcons,P,Sergio,Resendiz,1.55
+66390,30,Los Angeles Rams,P,Richard,Sheridan,1.55
+66795,3,New England Patriots,P,Brian,Kelly,1.55
+68260,4,New York Jets,P,Jose,Garcia,1.55
+62507,26,Carolina Panthers,P,Hung,Min,1.55
+62507,26,Carolina Panthers,P,Hung,Min,1.55
+61944,14,Kansas City Chiefs,P,Eric,Copeland,1.55
+60957,15,Las Vegas Raiders,P,Tyler,Hamon,1.55
+60942,0,,P,William,Shuck,1.55
+71292,6,Cincinnati Bengals,P,Manuel,Bonilla,1.55
+65374,8,Pittsburgh Steelers,P,Wayne,Crafton,1.08
+54031,31,San Francisco 49ers,P,William,Orso,1.08
+63499,20,Washington Commanders,P,Mikhail,Coley,1.08
+54490,12,TEN,P,Gregory,Linley,1.08
+61859,19,Philadelphia Eagles,P,Jose,Ramos,1.08
+63296,17,Dallas Cowboys,P,Peter,Fergurson,0.8
+51943,18,New York Giants,P,Marcos,Salazar,0.8
+49966,6,Cincinnati Bengals,P,Larry,Hersey,0.8
+56818,5,Baltimore Ravens,P,Kevin,Clark,0.8
+59374,9,Houston Texans,P,Brad,Canter,0.8
+58164,11,Jacksonville Jaguars,P,Warner,Garcia,0.8
+48595,32,Seattle Seahawks,P,Melvin,Nelson,0.8
+34817,10,Indianapolis Colts,P,Fernando,Bernardez,0.56
+29725,0,,P,Verne,Bunyan,0.48

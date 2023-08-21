@@ -94,3 +94,28 @@ func (fo ByContractValue) Swap(i, j int) { fo[i], fo[j] = fo[j], fo[i] }
 func (fo ByContractValue) Less(i, j int) bool {
 	return fo[i].ContractValue > fo[j].ContractValue
 }
+
+// Table for storing Extensions for contracted players
+type NFLExtensionOffer struct {
+	gorm.Model
+	NFLPlayerID     uint
+	TeamID          uint
+	SeasonID        uint
+	Team            string
+	ContractLength  int
+	Y1BaseSalary    float64
+	Y1Bonus         float64
+	Y2BaseSalary    float64
+	Y2Bonus         float64
+	Y3BaseSalary    float64
+	Y3Bonus         float64
+	Y4BaseSalary    float64
+	Y4Bonus         float64
+	Y5BaseSalary    float64
+	Y5Bonus         float64
+	TotalBonus      float64
+	TotalSalary     float64
+	ContractValue   float64
+	BonusPercentage float64
+	IsAccepted      bool
+}

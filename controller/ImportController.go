@@ -30,6 +30,10 @@ func ImportFAPreferences(w http.ResponseWriter, r *http.Request) {
 	managers.ImportFAPreferences()
 }
 
+func ImportSimNFLMinimumValues(w http.ResponseWriter, r *http.Request) {
+	managers.ImportMinimumFAValues()
+}
+
 func ImportTradePreferences(w http.ResponseWriter, r *http.Request) {
 	managers.ImportTradePreferences()
 }

@@ -2,7 +2,9 @@ package managers
 
 import (
 	"fmt"
+	"math/rand"
 	"strconv"
+	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/models"
@@ -242,7 +244,7 @@ func GetNFLGameByGameID(gameID string) structs.NFLGame {
 func UpdateTimeslot(dto structs.UpdateTimeslotDTO) {
 	db := dbprovider.GetInstance().GetDB()
 	gameID := strconv.Itoa(int(dto.GameID))
-	// rand.Seed(time.Now().UnixNano())
+	rand.Seed(time.Now().UnixNano())
 	// regions := getRegionalWeather()
 	// rainForecasts := getRainChart()
 	// mixForecasts := getMixChart()
@@ -251,8 +253,8 @@ func UpdateTimeslot(dto structs.UpdateTimeslotDTO) {
 	if dto.League == "CFB" {
 		game := GetCollegeGameByGameID(gameID)
 		game.UpdateTimeslot(dto.Timeslot)
-		db.Save(&game)
 		// GenerateWeatherForGame(db, game, teamRegions, regions, rainForecasts, mixForecasts, snowForecasts)
+		// db.Save(&game)
 		// return game, structs.NFLGame{}
 	} else {
 		game := GetNFLGameByGameID(gameID)

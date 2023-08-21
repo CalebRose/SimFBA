@@ -42,7 +42,7 @@ func GetAllAvailableNFLPlayers(TeamID string) models.FreeAgencyResponse {
 	count := 0
 
 	for _, p := range roster {
-		if p.IsPracticeSquad {
+		if p.IsPracticeSquad || p.InjuryReserve {
 			continue
 		}
 		count += 1

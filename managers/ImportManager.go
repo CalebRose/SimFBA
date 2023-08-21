@@ -318,7 +318,7 @@ func ImportNFLDraftPicks() {
 
 func ImportMinimumFAValues() {
 	db := dbprovider.GetInstance().GetDB()
-	playerPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2023_Free_Agency_expected_Values_CSV.csv"
+	playerPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2023_simnfl_extensions.csv"
 
 	nflCSV := util.ReadCSV(playerPath)
 
@@ -328,7 +328,7 @@ func ImportMinimumFAValues() {
 		}
 
 		playerID := row[0]
-		value := util.ConvertStringToFloat(row[5])
+		value := util.ConvertStringToFloat(row[6])
 
 		NFLPlayerRecord := GetNFLPlayerRecord(playerID)
 		if NFLPlayerRecord.ID == 0 {

@@ -179,3 +179,16 @@ func PlaceNFLPlayerOnPracticeSquad(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode("Player " + playerID + " placed on trade block.")
 }
+
+// Place player on NFL Trade block
+func PlaceNFLPlayerOnInjuryReserve(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	playerID := vars["PlayerID"]
+	if len(playerID) == 0 {
+		panic("User did not provide playerID")
+	}
+
+	managers.PlaceNFLPlayerOnInjuryReserve(playerID)
+
+	json.NewEncoder(w).Encode("Player " + playerID + " placed on trade block.")
+}

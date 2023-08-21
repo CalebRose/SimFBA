@@ -44,6 +44,7 @@ type BasePlayer struct {
 	InjuryName      string
 	InjuryType      string
 	WeeksOfRecovery uint
+	InjuryReserve   bool
 }
 
 func (cp *BasePlayer) GetOverall() {
@@ -172,4 +173,8 @@ func (cp *BasePlayer) RecoveryCheck() {
 		cp.ResetInjuryStatus()
 	}
 
+}
+
+func (cp *BasePlayer) ToggleInjuryReserve() {
+	cp.InjuryReserve = !cp.InjuryReserve
 }
