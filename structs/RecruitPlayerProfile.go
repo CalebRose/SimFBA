@@ -105,3 +105,21 @@ func (rp ByPoints) Swap(i, j int) { rp[i], rp[j] = rp[j], rp[i] }
 func (rp ByPoints) Less(i, j int) bool {
 	return rp[i].TotalPoints > rp[j].TotalPoints
 }
+
+type OddsAndAffinities struct {
+	Odds        int
+	Af1         bool
+	Af2         bool
+	AffinityMod int
+}
+
+type RecruitInfo struct {
+	HasAcademicAffinity    bool
+	HasCloseToHomeAffinity bool
+	HasServiceAffinity     bool
+	HasFrontRunnerAffinity bool
+	HasReligionAffinity    bool
+	HasSmallSchoolAffinity bool
+	HasSmallTownAffinity   bool
+	HasBigCityAffinity     bool
+}

@@ -505,6 +505,27 @@ func FillAIRecruitingBoards() {
 	stateMatcher := util.GetStateMatcher()
 	regionMatcher := util.GetStateRegionMatcher()
 
+	recruitInfos := make(map[uint]structs.RecruitInfo)
+	recruitProfileMap := make(map[uint][]structs.RecruitPlayerProfile)
+	fmt.Println("Loading recruits...")
+	for _, croot := range UnsignedRecruits {
+		info := structs.RecruitInfo{
+			HasAcademicAffinity:    doesCrootHaveAffinity("Academics", croot),
+			HasCloseToHomeAffinity: doesCrootHaveAffinity("Close to Home", croot),
+			HasServiceAffinity:     doesCrootHaveAffinity("Service", croot),
+			HasFrontRunnerAffinity: doesCrootHaveAffinity("Frontrunner", croot),
+			HasReligionAffinity:    doesCrootHaveAffinity("Religion", croot),
+			HasSmallSchoolAffinity: doesCrootHaveAffinity("Small School", croot),
+			HasSmallTownAffinity:   doesCrootHaveAffinity("Small Town", croot),
+			HasBigCityAffinity:     doesCrootHaveAffinity("Big City", croot),
+		}
+		recruitInfos[croot.ID] = info
+
+		crootProfiles := GetRecruitPlayerProfilesByRecruitId(strconv.Itoa(int(croot.ID)))
+		recruitProfileMap[croot.ID] = crootProfiles
+	}
+	fmt.Println("Loaded all unsigned recruits.")
+
 	boardCount := 75
 
 	for _, team := range AITeams {
@@ -512,7 +533,7 @@ func FillAIRecruitingBoards() {
 		if !team.IsAI || team.TotalCommitments >= team.RecruitClassSize {
 			continue
 		}
-
+		fmt.Println("Iterating through " + team.Team + ".")
 		existingBoard := GetOnlyRecruitProfilesByTeamProfileID(strconv.Itoa(int(team.ID)))
 		teamNeeds := GetRecruitingNeeds(strconv.Itoa(int(team.ID)))
 		// Get Current Count of the existing board
@@ -539,34 +560,13 @@ func FillAIRecruitingBoards() {
 				break
 			}
 
-			if teamNeeds[croot.Position] < 1 {
+			if (teamNeeds[croot.Position] < 1) ||
+				(croot.Stars == 5 && !isBlueBlood(team.AIBehavior)) ||
+				(croot.Stars > 3 && !team.IsFBS) {
 				continue
 			}
 
-			passOnRecruit := false
-
-			if croot.Stars == 5 && !isBlueBlood(team.AIBehavior) {
-				passOnRecruit = true
-			}
-
-			if croot.Stars > 3 && !team.IsFBS {
-				passOnRecruit = true
-			}
-
-			// Conditions in which the team should not recruit this particular recruit
-			if passOnRecruit {
-				continue
-			}
-
-			// Check and see if the croot already exists on the player's board
-			crootProfile := GetRecruitProfileByPlayerId(strconv.Itoa(int(croot.ID)), strconv.Itoa(int(team.ID)))
-			if uint(crootProfile.ProfileID) == team.ID || crootProfile.ID > 0 || crootProfile.RemovedFromBoard || crootProfile.IsLocked {
-				fmt.Println(croot.FirstName + " " + croot.LastName + " is already on " + team.TeamAbbreviation + "'s board.")
-				continue
-			}
-
-			crootProfiles := GetRecruitPlayerProfilesByRecruitId(strconv.Itoa(int(croot.ID)))
-			affinityMod := 0
+			crootProfiles := recruitProfileMap[croot.ID]
 			teamCount := 0
 
 			for _, crootProfile := range crootProfiles {
@@ -581,221 +581,53 @@ func FillAIRecruitingBoards() {
 				continue
 			}
 
-			odds := 5
-
-			if ts.CollegeWeek > 5 {
-				odds = 10
-			}
-
-			if croot.State == team.State {
-				odds = 25
+			// Check and see if the croot already exists on the player's board
+			crootProfile := GetRecruitProfileByPlayerId(strconv.Itoa(int(croot.ID)), strconv.Itoa(int(team.ID)))
+			if uint(crootProfile.ProfileID) == team.ID || crootProfile.ID > 0 || crootProfile.RemovedFromBoard || crootProfile.IsLocked {
+				fmt.Println(croot.FirstName + " " + croot.LastName + " is already on " + team.TeamAbbreviation + "'s board.")
+				continue
 			}
 
 			closeToHome := util.IsCrootCloseToHome(croot.State, croot.City, team.State, team.TeamAbbreviation, stateMatcher, regionMatcher)
-			// In Region
-			if closeToHome && croot.State != team.State {
-				odds = 15
-			}
-
-			affinityOneApplicable := false
-			affinityTwoApplicable := false
-
-			if team.AIBehavior == "G5" {
-				if croot.Stars > 3 {
-					odds -= 15
-				} else {
-					odds += 5
-				}
-			}
-
-			if team.AIBehavior == "Doormat" {
-				if croot.Stars > 2 {
-					odds -= 20
-				} else {
-					odds += 10
-				}
-			}
-
-			for _, affinity := range team.Affinities {
-				if (doesCrootHaveAffinity("Close to Home", croot)) && closeToHome {
-					if team.IsFBS {
-						odds += 33
-					} else {
-						odds += 20
-					}
-
-					if croot.AffinityOne == "Close to Home" {
-						affinityOneApplicable = true
-						affinityMod += 3
-					}
-
-					if croot.AffinityTwo == "Close to Home" {
-						affinityTwoApplicable = true
-						affinityMod += 3
-					}
-				}
-
-				if doesCrootHaveAffinity("Academics", croot) && isAffinityApplicable("Academics", affinity) {
-					if team.IsFBS {
-						odds += 33
-					} else {
-						odds += 17
-					}
-
-					if croot.AffinityOne == "Academics" {
-						affinityOneApplicable = true
-						affinityMod += 3
-					}
-
-					if croot.AffinityTwo == "Academics" {
-						affinityTwoApplicable = true
-						affinityMod += 3
-					}
-				}
-
-				if doesCrootHaveAffinity("Frontrunner", croot) && isAffinityApplicable("Frontrunner", affinity) {
-					if team.IsFBS {
-						odds += 33
-					} else {
-						odds += 17
-					}
-
-					if isBlueBlood(team.AIBehavior) || team.AIBehavior == "Playoff Buster" {
-						odds += 5
-					}
-
-					if croot.AffinityOne == "Frontrunner" {
-						affinityOneApplicable = true
-						affinityMod += 3
-					}
-
-					if croot.AffinityTwo == "Frontrunner" {
-						affinityTwoApplicable = true
-						affinityMod += 3
-					}
-				}
-
-				if doesCrootHaveAffinity("Religion", croot) && isAffinityApplicable("Religion", affinity) {
-					if team.IsFBS {
-						odds += 33
-					} else {
-						odds += 17
-					}
-
-					if croot.AffinityOne == "Religion" {
-						affinityOneApplicable = true
-						affinityMod += 3
-					}
-
-					if croot.AffinityTwo == "Religion" {
-						affinityTwoApplicable = true
-						affinityMod += 3
-					}
-				}
-
-				if doesCrootHaveAffinity("Service", croot) && isAffinityApplicable("Service", affinity) {
-					if team.IsFBS {
-						odds += 33
-					} else {
-						odds += 17
-					}
-
-					if croot.AffinityOne == "Service" {
-						affinityOneApplicable = true
-						affinityMod += 3
-					}
-
-					if croot.AffinityTwo == "Service" {
-						affinityTwoApplicable = true
-						affinityMod += 3
-					}
-				}
-
-				if doesCrootHaveAffinity("Small School", croot) && isAffinityApplicable("Small School", affinity) {
-					if team.IsFBS {
-						odds += 33
-					} else {
-						odds += 17
-					}
-
-					if croot.AffinityOne == "Small School" {
-						affinityOneApplicable = true
-						affinityMod += 3
-					}
-
-					if croot.AffinityTwo == "Small School" {
-						affinityTwoApplicable = true
-						affinityMod += 3
-					}
-				}
-
-				if doesCrootHaveAffinity("Small Town", croot) && isAffinityApplicable("Small Town", affinity) {
-					if team.IsFBS {
-						odds += 33
-					} else {
-						odds += 17
-					}
-
-					if croot.AffinityOne == "Small Town" {
-						affinityOneApplicable = true
-						affinityMod += 3
-					}
-
-					if croot.AffinityTwo == "Small Town" {
-						affinityTwoApplicable = true
-						affinityMod += 3
-					}
-				}
-
-				if doesCrootHaveAffinity("Big City", croot) && isAffinityApplicable("Big City", affinity) {
-					if team.IsFBS {
-						odds += 33
-					} else {
-						odds += 17
-					}
-
-					if croot.AffinityOne == "Big City" {
-						affinityOneApplicable = true
-						affinityMod += 3
-					}
-
-					if croot.AffinityTwo == "Big City" {
-						affinityTwoApplicable = true
-						affinityMod += 3
-					}
-				}
-			}
+			oddsObject := getRecruitingOdds(ts, croot, team, closeToHome, recruitInfos)
 
 			chance := util.GenerateIntFromRange(1, 100)
 
-			willAddToBoard := isHighlyContestedCroot(affinityMod, teamCount, ts.CollegeWeek)
+			willAddToBoard := isHighlyContestedCroot(oddsObject.AffinityMod, teamCount, ts.CollegeWeek)
 
-			if chance <= odds && willAddToBoard {
-				playerProfile := structs.RecruitPlayerProfile{
-					RecruitID:                 int(croot.ID),
-					ProfileID:                 int(team.ID),
-					SeasonID:                  ts.CollegeSeasonID,
-					TotalPoints:               0,
-					CurrentWeeksPoints:        0,
-					SpendingCount:             0,
-					Scholarship:               false,
-					ScholarshipRevoked:        false,
-					TeamAbbreviation:          team.TeamAbbreviation,
-					AffinityOneEligible:       affinityOneApplicable,
-					AffinityTwoEligible:       affinityTwoApplicable,
-					RecruitingEfficiencyScore: 1,
-					IsSigned:                  false,
-					IsLocked:                  false,
-				}
-
-				err := db.Create(&playerProfile).Error
-				if err != nil {
-					log.Fatalln("Could not add " + croot.FirstName + " " + croot.LastName + " to " + team.TeamAbbreviation + "'s Recruiting Board.")
-				}
-
-				teamNeeds[croot.Position] -= 1
-				count++
+			addPlayer := chance <= oddsObject.Odds && willAddToBoard
+			if !addPlayer {
+				continue
 			}
+			playerProfile := structs.RecruitPlayerProfile{
+				RecruitID:                 int(croot.ID),
+				ProfileID:                 int(team.ID),
+				SeasonID:                  ts.CollegeSeasonID,
+				TotalPoints:               0,
+				CurrentWeeksPoints:        0,
+				SpendingCount:             0,
+				Scholarship:               false,
+				ScholarshipRevoked:        false,
+				TeamAbbreviation:          team.TeamAbbreviation,
+				AffinityOneEligible:       oddsObject.Af1,
+				AffinityTwoEligible:       oddsObject.Af2,
+				RecruitingEfficiencyScore: 1,
+				IsSigned:                  false,
+				IsLocked:                  false,
+			}
+
+			err := db.Create(&playerProfile).Error
+			if err != nil {
+				log.Fatalln("Could not add " + croot.FirstName + " " + croot.LastName + " to " + team.TeamAbbreviation + "'s Recruiting Board.")
+			}
+
+			teamNeeds[croot.Position] -= 1
+			recruitProfileMap[croot.ID] = append(recruitProfileMap[croot.ID], playerProfile)
+			sort.Slice(recruitProfileMap[croot.ID], func(i, j int) bool {
+				return recruitProfileMap[croot.ID][i].TotalPoints > recruitProfileMap[croot.ID][j].TotalPoints
+			})
+			count++
+
 		}
 	}
 }
@@ -927,6 +759,9 @@ func AllocatePointsToAIBoards() {
 		fmt.Println("Saved " + team.TeamAbbreviation + " Recruiting Board!")
 		db.Save(&team)
 	}
+
+	ts.ToggleAIrecruitingSync()
+	db.Save(&ts)
 }
 
 func ResetAIBoardsForCompletedTeams() {
@@ -1143,5 +978,216 @@ func updateTeamRankings(teamRecruitingProfiles []structs.RecruitingTeamProfile, 
 			log.Fatalf("Could not save timestamp")
 		}
 		fmt.Println("Saved Rank Scores for Team " + rp.TeamAbbreviation)
+	}
+}
+
+func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs.RecruitingTeamProfile, closeToHome bool, recruitInfos map[uint]structs.RecruitInfo) structs.OddsAndAffinities {
+	odds := 5
+	affinityMod := 0
+	if ts.CollegeWeek > 5 {
+		odds = 10
+	} else if ts.CollegeWeek > 14 && odds < 20 {
+		odds = 20
+	}
+
+	if croot.State == team.State {
+		odds = 25
+	}
+
+	// In Region
+	if closeToHome && croot.State != team.State && odds < 15 {
+		odds = 15
+	}
+
+	affinityOneApplicable := false
+	affinityTwoApplicable := false
+
+	if team.AIBehavior == "G5" {
+		if croot.Stars > 3 {
+			odds -= 15
+		} else {
+			odds += 5
+		}
+	}
+
+	if team.AIBehavior == "Doormat" {
+		if croot.Stars > 2 {
+			odds -= 20
+		} else {
+			odds += 10
+		}
+	}
+
+	crootInfo := recruitInfos[croot.ID]
+
+	for _, affinity := range team.Affinities {
+		if (crootInfo.HasCloseToHomeAffinity) && closeToHome {
+			if team.IsFBS {
+				odds += 33
+			} else if !team.IsFBS && croot.Stars < 3 {
+				odds += 20
+			} else {
+				odds += 5
+			}
+
+			if croot.AffinityOne == "Close to Home" {
+				affinityOneApplicable = true
+				affinityMod += 3
+			}
+
+			if croot.AffinityTwo == "Close to Home" {
+				affinityTwoApplicable = true
+				affinityMod += 3
+			}
+		}
+
+		if crootInfo.HasAcademicAffinity && isAffinityApplicable("Academics", affinity) {
+			if team.IsFBS {
+				odds += 33
+			} else if !team.IsFBS && croot.Stars < 3 {
+				odds += 17
+			} else {
+				odds += 5
+			}
+
+			if croot.AffinityOne == "Academics" {
+				affinityOneApplicable = true
+				affinityMod += 3
+			}
+
+			if croot.AffinityTwo == "Academics" {
+				affinityTwoApplicable = true
+				affinityMod += 3
+			}
+		}
+
+		if crootInfo.HasFrontRunnerAffinity && isAffinityApplicable("Frontrunner", affinity) {
+			if team.IsFBS {
+				odds += 33
+			} else if !team.IsFBS && croot.Stars < 3 {
+				odds += 17
+			} else {
+				odds += 5
+			}
+
+			if isBlueBlood(team.AIBehavior) || team.AIBehavior == "Playoff Buster" {
+				odds += 5
+			}
+
+			if croot.AffinityOne == "Frontrunner" {
+				affinityOneApplicable = true
+				affinityMod += 3
+			}
+
+			if croot.AffinityTwo == "Frontrunner" {
+				affinityTwoApplicable = true
+				affinityMod += 3
+			}
+		}
+
+		if crootInfo.HasReligionAffinity && isAffinityApplicable("Religion", affinity) {
+			if team.IsFBS {
+				odds += 33
+			} else if !team.IsFBS && croot.Stars < 3 {
+				odds += 17
+			} else {
+				odds += 5
+			}
+
+			if croot.AffinityOne == "Religion" {
+				affinityOneApplicable = true
+				affinityMod += 3
+			}
+
+			if croot.AffinityTwo == "Religion" {
+				affinityTwoApplicable = true
+				affinityMod += 3
+			}
+		}
+
+		if crootInfo.HasServiceAffinity && isAffinityApplicable("Service", affinity) {
+			if team.IsFBS {
+				odds += 33
+			} else if !team.IsFBS && croot.Stars < 3 {
+				odds += 17
+			} else {
+				odds += 5
+			}
+
+			if croot.AffinityOne == "Service" {
+				affinityOneApplicable = true
+				affinityMod += 3
+			}
+
+			if croot.AffinityTwo == "Service" {
+				affinityTwoApplicable = true
+				affinityMod += 3
+			}
+		}
+
+		if crootInfo.HasSmallSchoolAffinity && isAffinityApplicable("Small School", affinity) {
+			if team.IsFBS {
+				odds += 33
+			} else if !team.IsFBS && croot.Stars < 3 {
+				odds += 17
+			} else {
+				odds += 5
+			}
+
+			if croot.AffinityOne == "Small School" {
+				affinityOneApplicable = true
+				affinityMod += 3
+			}
+
+			if croot.AffinityTwo == "Small School" {
+				affinityTwoApplicable = true
+				affinityMod += 3
+			}
+		}
+
+		if crootInfo.HasSmallTownAffinity && isAffinityApplicable("Small Town", affinity) {
+			if team.IsFBS {
+				odds += 33
+			} else if !team.IsFBS && croot.Stars < 3 {
+				odds += 17
+			} else {
+				odds += 5
+			}
+
+			if croot.AffinityOne == "Small Town" {
+				affinityOneApplicable = true
+				affinityMod += 3
+			}
+
+			if croot.AffinityTwo == "Small Town" {
+				affinityTwoApplicable = true
+				affinityMod += 3
+			}
+		}
+
+		if crootInfo.HasBigCityAffinity && isAffinityApplicable("Big City", affinity) {
+			if team.IsFBS {
+				odds += 33
+			} else {
+				odds += 17
+			}
+
+			if croot.AffinityOne == "Big City" {
+				affinityOneApplicable = true
+				affinityMod += 3
+			}
+
+			if croot.AffinityTwo == "Big City" {
+				affinityTwoApplicable = true
+				affinityMod += 3
+			}
+		}
+	}
+
+	return structs.OddsAndAffinities{
+		Odds:        odds,
+		Af1:         affinityOneApplicable,
+		Af2:         affinityTwoApplicable,
+		AffinityMod: affinityMod,
 	}
 }

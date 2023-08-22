@@ -1178,6 +1178,10 @@ func UpdateCollegeAIDepthCharts() {
 			}
 		}
 	}
+
+	ts := GetTimestamp()
+	ts.ToggleAIDepthCharts()
+	db.Save(&ts)
 }
 
 // UpdateCollegeAIDepthCharts

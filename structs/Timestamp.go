@@ -31,6 +31,8 @@ type Timestamp struct {
 	IsOffSeason                bool
 	IsNFLOffSeason             bool
 	IsRecruitingLocked         bool
+	AIDepthchartsSync          bool
+	AIRecruitingBoardsSynced   bool
 	IsFreeAgencyLocked         bool
 	IsDraftTime                bool
 	RunGames                   bool
@@ -115,6 +117,8 @@ func (t *Timestamp) SyncToNextWeek() {
 	t.NFLSundayAfternoon = false
 	t.NFLSundayEvening = false
 	t.NFLMondayEvening = false
+	t.AIDepthchartsSync = false
+	t.AIRecruitingBoardsSynced = false
 	// t.ToggleRES()
 	t.ToggleRecruiting()
 	t.ToggleGMActions()
@@ -150,4 +154,12 @@ func (t *Timestamp) ToggleTimeSlot(ts string) {
 
 func (t *Timestamp) ToggleRunGames() {
 	t.RunGames = !t.RunGames
+}
+
+func (t *Timestamp) ToggleAIrecruitingSync() {
+	t.AIRecruitingBoardsSynced = !t.AIRecruitingBoardsSynced
+}
+
+func (t *Timestamp) ToggleAIDepthCharts() {
+	t.AIDepthchartsSync = !t.AIDepthchartsSync
 }

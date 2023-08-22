@@ -7,6 +7,7 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -786,7 +787,8 @@ func getRegionalWeather() map[string]structs.WeatherRegion {
 }
 
 func getRainChart() map[float64]map[int]string {
-	path := util.ReadLocalPath("data\\WeatherSetup\\Weather Data - Rain Chart.csv")
+	// path := util.ReadLocalPath("data\\WeatherSetup\\Weather Data - Rain Chart.csv")
+	path := filepath.Join(os.Getenv("GOPATH"), "src", "github.com", "CalebRose", "SimFBA", "data", "WeatherSetup", "Weather Data - Rain Chart.csv")
 	rainChartCSV := util.ReadCSV(path)
 
 	return getChartMap(rainChartCSV)
