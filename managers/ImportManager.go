@@ -555,7 +555,7 @@ func ImportUDFAs() {
 func ImportCFBGames() {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2023\\2023_CFB_Games.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2023\\2023_CFB_PostSeason_Games.csv"
 
 	gamesCSV := util.ReadCSV(path)
 

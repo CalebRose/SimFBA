@@ -186,7 +186,8 @@ func handleRequests() {
 	myRouter.HandleFunc("/statistics/injured/players/", controller.GetInjuryReport).Methods("GET")
 	myRouter.HandleFunc("/statistics/interface/cfb/{seasonID}/{weekID}/{viewType}", controller.GetStatsPageContentForSeason).Methods("GET")
 	myRouter.HandleFunc("/statistics/interface/nfl/{seasonID}/{weekID}/{viewType}", controller.GetNFLStatsPageContent).Methods("GET")
-	myRouter.HandleFunc("/statistics/reset/season/", controller.ResetCFBSeasonalStats).Methods("GET")
+	myRouter.HandleFunc("/statistics/reset/cfb/season/", controller.ResetCFBSeasonalStats).Methods("GET")
+	myRouter.HandleFunc("/statistics/reset/nfl/season/", controller.ResetNFLSeasonalStats).Methods("GET")
 
 	// Team Controls
 	myRouter.HandleFunc("/teams/college/all/", controller.GetAllCollegeTeams).Methods("GET")

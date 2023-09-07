@@ -41,6 +41,16 @@ func GetCollegePlayerStatsByPlayerIDAndSeason(PlayerID string, SeasonID string) 
 	return playerStats
 }
 
+func GetNFLPlayerStatsByPlayerIDAndSeason(PlayerID string, SeasonID string) []structs.NFLPlayerStats {
+	db := dbprovider.GetInstance().GetDB()
+
+	var playerStats []structs.NFLPlayerStats
+
+	db.Where("nfl_player_id = ? and season_id = ?", PlayerID, SeasonID).Find(&playerStats)
+
+	return playerStats
+}
+
 func GetAllCollegePlayerStatsByGame(GameID string, TeamID string) []structs.CollegePlayerStats {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -260,6 +270,16 @@ func GetHistoricalTeamStats(TeamID string, SeasonID string) []structs.CollegeTea
 	return teamStats
 }
 
+func GetNFLHistoricalTeamStats(TeamID string, SeasonID string) []structs.NFLTeamStats {
+	db := dbprovider.GetInstance().GetDB()
+
+	var teamStats []structs.NFLTeamStats
+
+	db.Where("team_id = ? AND season_id = ?", TeamID, SeasonID).Find(&teamStats)
+
+	return teamStats
+}
+
 func GetAllCollegeTeamsWithStatsBySeasonID(seasonID, weekID, viewType string) []models.CollegeTeamResponse {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -375,6 +395,79 @@ func ResetCFBSeasonalStats() {
 			db.Save(&seasonStats)
 		}
 		fmt.Println("Reset Season Stats for " + player.FirstName + " " + player.LastName + " " + player.Position)
+	}
+
+	standings := GetAllConferenceStandingsBySeasonID(seasonID)
+
+	for _, standing := range standings {
+		if standing.ID == 0 {
+			continue
+		}
+		standing.ResetCFBStandings()
+
+		games := GetCollegeGamesByTeamIdAndSeasonId(strconv.Itoa(int(standing.TeamID)), seasonID)
+
+		for _, game := range games {
+			if !game.GameComplete {
+				continue
+			}
+			standing.UpdateCollegeStandings(game)
+		}
+
+		db.Save(&standing)
+		fmt.Println("Updated Standings for " + standing.TeamName)
+	}
+}
+
+func ResetNFLSeasonalStats() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	seasonID := strconv.Itoa(int(ts.NFLSeasonID))
+	teams := GetAllNFLTeams()
+
+	for _, team := range teams {
+		teamID := strconv.Itoa(int(team.ID))
+		teamStats := GetNFLHistoricalTeamStats(teamID, seasonID)
+		seasonStats := GetNFLTeamSeasonStatsByTeamANDSeason(teamID, seasonID)
+		seasonStats.ResetStats()
+		seasonStats.MapStats(teamStats)
+		db.Save(&seasonStats)
+		fmt.Println("Reset Season Stats for " + team.TeamName)
+	}
+
+	players := GetAllNFLPlayers()
+
+	for _, player := range players {
+		playerID := strconv.Itoa(int(player.ID))
+		playerStats := GetNFLPlayerStatsByPlayerIDAndSeason(playerID, seasonID)
+		if len(playerStats) > 0 {
+			seasonStats := GetNFLSeasonStatsByPlayerAndSeason(playerID, seasonID)
+			seasonStats.ResetStats()
+			seasonStats.MapStats(playerStats, ts)
+			db.Save(&seasonStats)
+		}
+		fmt.Println("Reset Season Stats for " + player.FirstName + " " + player.LastName + " " + player.Position)
+	}
+
+	standings := GetAllNFLStandingsBySeasonID(seasonID)
+
+	for _, standing := range standings {
+		if standing.ID == 0 {
+			continue
+		}
+		standing.ResetNFLStandings()
+
+		games := GetNFLGamesByTeamIdAndSeasonId(strconv.Itoa(int(standing.TeamID)), seasonID)
+
+		for _, game := range games {
+			if !game.GameComplete {
+				continue
+			}
+			standing.UpdateNFLStandings(game)
+		}
+
+		db.Save(&standing)
+		fmt.Println("Updated Standings for " + standing.TeamName)
 	}
 }
 

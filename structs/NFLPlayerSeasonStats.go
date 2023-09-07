@@ -32,6 +32,67 @@ type NFLPlayerStats struct {
 	BasePlayerStats
 }
 
+func (ss *NFLPlayerSeasonStats) ResetStats() {
+	ss.GamesPlayed = 0
+	ss.PassingYards = 0
+	ss.PassAttempts = 0
+	ss.PassCompletions = 0
+	ss.PassingTDs = 0
+	ss.Interceptions = 0
+	ss.Sacks = 0
+	ss.LongestPass = 0
+	ss.RushAttempts = 0
+	ss.RushingTDs = 0
+	ss.RushingYards = 0
+	ss.LongestRush = 0
+	ss.Fumbles = 0
+	ss.Targets = 0
+	ss.Catches = 0
+	ss.ReceivingTDs = 0
+	ss.ReceivingYards = 0
+	ss.LongestReception = 0
+	ss.Tackles = 0
+	ss.AssistedTackles = 0
+	ss.SoloTackles = 0
+	ss.RecoveredFumbles = 0
+	ss.SacksMade = 0
+	ss.ForcedFumbles = 0
+	ss.TacklesForLoss = 0
+	ss.PassDeflections = 0
+	ss.InterceptionsCaught = 0
+	ss.Safeties = 0
+	ss.DefensiveTDs = 0
+	ss.FGMade = 0
+	ss.FGAttempts = 0
+	ss.LongestFG = 0
+	ss.ExtraPointsAttempted = 0
+	ss.ExtraPointsMade = 0
+	ss.KickoffTouchbacks = 0
+	ss.Punts = 0
+	ss.PuntTouchbacks = 0
+	ss.PuntsInside20 = 0
+	ss.KickReturns = 0
+	ss.KickReturnYards = 0
+	ss.KickReturnTDs = 0
+	ss.PuntReturns = 0
+	ss.PuntReturnYards = 0
+	ss.PuntReturnTDs = 0
+	ss.STSoloTackles = 0
+	ss.STAssistedTackles = 0
+	ss.PuntsBlocked = 0
+	ss.FGBlocked = 0
+	ss.Snaps = 0
+	ss.Pancakes = 0
+	ss.SacksAllowed = 0
+	ss.PlayedGame = 0
+	ss.StartedGame = 0
+	ss.QBRating = 0
+	ss.PassingAvg = 0
+	ss.Completion = 0
+	ss.RushingAvg = 0
+	ss.ReceivingAvg = 0
+}
+
 func (ss *NFLPlayerSeasonStats) MapStats(stats []NFLPlayerStats, ts Timestamp) {
 	for _, stat := range stats {
 		ss.Snaps = ss.Snaps + stat.Snaps

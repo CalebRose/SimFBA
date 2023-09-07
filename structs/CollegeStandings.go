@@ -77,3 +77,18 @@ func (cs *CollegeStandings) SubtractCollegeStandings(game CollegeGame) {
 		cs.PointsAgainst -= game.AwayTeamScore
 	}
 }
+
+func (cs *CollegeStandings) ResetCFBStandings() {
+	cs.TotalLosses = 0
+	cs.TotalWins = 0
+	cs.ConferenceLosses = 0
+	cs.ConferenceWins = 0
+	cs.PostSeasonStatus = ""
+	cs.Streak = 0
+	cs.PointsFor = 0
+	cs.PointsAgainst = 0
+	cs.HomeWins = 0
+	cs.AwayWins = 0
+	cs.RankedWins = 0
+	cs.RankedLosses = 0
+}

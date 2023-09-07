@@ -137,3 +137,21 @@ func (ns *NFLStandings) ReduceNFLStandings(game NFLGame) {
 		ns.PointsAgainst -= game.AwayTeamScore
 	}
 }
+
+func (ns *NFLStandings) ResetNFLStandings() {
+	ns.TotalTies = 0
+	ns.TotalLosses = 0
+	ns.TotalWins = 0
+	ns.DivisionLosses = 0
+	ns.DivisionTies = 0
+	ns.DivisionWins = 0
+	ns.ConferenceLosses = 0
+	ns.ConferenceWins = 0
+	ns.ConferenceTies = 0
+	ns.PostSeasonStatus = ""
+	ns.Streak = 0
+	ns.PointsFor = 0
+	ns.PointsAgainst = 0
+	ns.HomeWins = 0
+	ns.AwayWins = 0
+}

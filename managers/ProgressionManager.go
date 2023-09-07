@@ -993,6 +993,9 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 			if attribute == "Agility" || attribute == "Speed" {
 				return 0.05
 			}
+			if attribute == "Throw Power" || attribute == "Throw Accuracy" {
+				return 0.0175
+			}
 		}
 		return 0
 	} else if pos == "RB" {

@@ -27,6 +27,63 @@ type NFLTeamStats struct {
 	BaseTeamStats
 }
 
+func (ss *NFLTeamSeasonStats) ResetStats() {
+	ss.GamesPlayed = 0
+	ss.PassingYards = 0
+	ss.PassingAttempts = 0
+	ss.PassingCompletions = 0
+	ss.PassingTouchdowns = 0
+	ss.PassingInterceptions = 0
+	ss.QBSacks = 0
+	ss.LongestPass = 0
+	ss.RushAttempts = 0
+	ss.RushingTouchdowns = 0
+	ss.RushingYards = 0
+	ss.Fumbles = 0
+	ss.ReceivingTargets = 0
+	ss.ReceivingCatches = 0
+	ss.ReceivingTouchdowns = 0
+	ss.ReceivingYards = 0
+	ss.AssistedTackles = 0
+	ss.Tackles = 0
+	ss.SoloTackles = 0
+	ss.FumblesRecovered = 0
+	ss.DefensiveSacks = 0
+	ss.ForcedFumbles = 0
+	ss.TacklesForLoss = 0
+	ss.DefensiveInterceptions = 0
+	ss.Safeties = 0
+	ss.DefensiveTDs = 0
+	ss.FieldGoalsMade = 0
+	ss.FieldGoalsAttempted = 0
+	ss.LongestFieldGoal = 0
+	ss.ExtraPointsAttempted = 0
+	ss.ExtraPointsMade = 0
+	ss.KickoffTBs = 0
+	ss.Punts = 0
+	ss.PuntTBs = 0
+	ss.PuntsInside20 = 0
+	ss.KickReturnYards = 0
+	ss.KickReturnTDs = 0
+	ss.PuntReturnYards = 0
+	ss.PuntReturnTDs = 0
+	ss.PointsScored = 0
+	ss.PointsAgainst = 0
+	ss.TwoPointTries = 0
+	ss.TwoPointSucceed = 0
+	ss.PassingCompletionsAllowed = 0
+	ss.PassingTDsAllowed = 0
+	ss.PassingYardsAllowed = 0
+	ss.RushingTDsAllowed = 0
+	ss.RushingYardsAllowed = 0
+	ss.Turnovers = 0
+	ss.OffensivePenalties = 0
+	ss.DefensivePenalties = 0
+	ss.TotalOffensiveYards = 0
+	ss.TotalYardsAllowed = 0
+	ss.QBRating = 0
+}
+
 func (ss *NFLTeamSeasonStats) MapStats(stats []NFLTeamStats) {
 	if ss.TeamID == 0 {
 		ss.TeamID = stats[0].TeamID

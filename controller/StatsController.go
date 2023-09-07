@@ -259,6 +259,10 @@ func ResetCFBSeasonalStats(w http.ResponseWriter, r *http.Request) {
 	managers.ResetCFBSeasonalStats()
 }
 
+func ResetNFLSeasonalStats(w http.ResponseWriter, r *http.Request) {
+	managers.ResetNFLSeasonalStats()
+}
+
 func GetCollegeGameResultsByGameID(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	gameID := vars["gameID"]
