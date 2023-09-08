@@ -35,4 +35,5 @@ type NFLRetiredPlayer struct {
 	Contract          NFLContract          `gorm:"foreignKey:NFLPlayerID"`
 	Offers            []FreeAgencyOffer    `gorm:"foreignKey:NFLPlayerID"`
 	WaiverOffers      []NFLWaiverOffer     `gorm:"foreignKey:NFLPlayerID"`
+	Extensions        []NFLExtensionOffer  `gorm:"foreignKey:NFLPlayerID"`
 }

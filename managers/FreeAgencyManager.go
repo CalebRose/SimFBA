@@ -377,6 +377,20 @@ func GetLatestFreeAgentOfferInDB(db *gorm.DB) uint {
 	return latestOffer.ID + 1
 }
 
+func GetLatestExtensionOfferInDB(db *gorm.DB) uint {
+	var latestOffer structs.NFLExtensionOffer
+
+	err := db.Last(&latestOffer).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return 1
+		}
+		log.Fatalln("ERROR! Could not find latest record" + err.Error())
+	}
+
+	return latestOffer.ID + 1
+}
+
 func GetLatestWaiverOfferInDB(db *gorm.DB) uint {
 	var latestOffer structs.NFLWaiverOffer
 

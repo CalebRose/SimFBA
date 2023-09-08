@@ -889,6 +889,20 @@ func GetTradableNFLPlayersByTeamID(TeamID string) []structs.NFLPlayer {
 	return players
 }
 
+func GetNFLPlayersForRosterPage(TeamID string) []structs.NFLPlayer {
+	db := dbprovider.GetInstance().GetDB()
+
+	var players []structs.NFLPlayer
+
+	db.Preload("Contract", func(db *gorm.DB) *gorm.DB {
+		return db.Where("is_active = true")
+	}).Preload("Extensions", func(db *gorm.DB) *gorm.DB {
+		return db.Where("is_active = true")
+	}).Where("team_id = ?", TeamID).Find(&players)
+
+	return players
+}
+
 func GetNFLPlayersWithContractsByTeamID(TeamID string) []structs.NFLPlayer {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -1042,4 +1056,54 @@ func GetInjuredNFLPlayers() []structs.NFLPlayer {
 	db.Order("team_id asc").Where("is_injured = true").Find(&nflPlayers)
 
 	return nflPlayers
+}
+
+func GetExtensionOfferByOfferID(OfferID string) structs.NFLExtensionOffer {
+	db := dbprovider.GetInstance().GetDB()
+
+	offer := structs.NFLExtensionOffer{}
+
+	err := db.Where("id = ?", OfferID).Find(&offer).Error
+	if err != nil {
+		return offer
+	}
+
+	return offer
+}
+
+func CreateExtensionOffer(offer structs.FreeAgencyOfferDTO) structs.NFLExtensionOffer {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	extensionOffer := GetExtensionOfferByOfferID(strconv.Itoa(int(offer.ID)))
+	player := GetNFLPlayerRecord(strconv.Itoa(int(offer.NFLPlayerID)))
+
+	extensionOffer.CalculateOffer(offer)
+
+	// If the owning team is sending an offer to a player
+	if extensionOffer.ID == 0 {
+		id := GetLatestExtensionOfferInDB(db)
+		extensionOffer.AssignID(id)
+		db.Create(&extensionOffer)
+		fmt.Println("Creating Extension Offer!")
+
+		message := offer.Team + " have offered a " + strconv.Itoa(offer.ContractLength) + " year contract extension for " + player.Position + " " + player.FirstName + " " + player.LastName + "."
+		CreateNewsLog("NFL", message, "Free Agency", player.TeamID, ts)
+	} else {
+		fmt.Println("Updating Extension Offer!")
+		db.Save(&extensionOffer)
+	}
+
+	return extensionOffer
+}
+
+func CancelExtensionOffer(offer structs.FreeAgencyOfferDTO) {
+	db := dbprovider.GetInstance().GetDB()
+
+	OfferID := strconv.Itoa(int(offer.ID))
+
+	freeAgentOffer := GetExtensionOfferByOfferID(OfferID)
+
+	freeAgentOffer.CancelOffer()
+
+	db.Save(&freeAgentOffer)
 }

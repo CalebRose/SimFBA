@@ -67,7 +67,7 @@ func GetNFLRecordsForRosterPage(teamId string) models.NFLRosterPageResponse {
 
 	team := GetNFLTeamWithCapsheetByTeamID(teamId)
 
-	players := GetNFLPlayersWithContractsByTeamID(teamId)
+	players := GetNFLPlayersForRosterPage(teamId)
 
 	return models.NFLRosterPageResponse{
 		Team:   team,

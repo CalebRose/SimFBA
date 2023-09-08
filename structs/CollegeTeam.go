@@ -20,11 +20,11 @@ type CollegeTeam struct {
 	RecruitingProfile RecruitingTeamProfile  `gorm:"foreignKey:TeamID"`
 	TeamStats         []CollegeTeamStats     `gorm:"foreignKey:TeamID"`
 	TeamSeasonStats   CollegeTeamSeasonStats `gorm:"foreignKey:TeamID"`
-	CollegeRivals     []CollegeRival         `gorm:"foreignKey:TeamID"`
-	TeamRecord        CollegeTeamRecords     `gorm:"foreignKey:TeamID"`
-	TeamGameplan      CollegeGameplan        `gorm:"foreignKey:TeamID"`
-	TeamDepthChart    CollegeTeamDepthChart  `gorm:"foreignKey:TeamID"`
-	TeamStandings     []CollegeStandings     `gorm:"foreignKey:TeamID"`
+	// CollegeRivals     []CollegeRival         `gorm:"foreignKey:TeamOneID"`
+	TeamRecord     CollegeTeamRecords    `gorm:"foreignKey:TeamID"`
+	TeamGameplan   CollegeGameplan       `gorm:"foreignKey:TeamID"`
+	TeamDepthChart CollegeTeamDepthChart `gorm:"foreignKey:TeamID"`
+	TeamStandings  []CollegeStandings    `gorm:"foreignKey:TeamID"`
 }
 
 func (ct *CollegeTeam) TogglePlayersProgressed() {

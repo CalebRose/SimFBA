@@ -70,6 +70,8 @@ func handleRequests() {
 	myRouter.HandleFunc("/nfl/draft/draftees/export/{season}", controller.ExportDrafteesToCSV).Methods("GET")
 
 	// Free Agency Controls
+	myRouter.HandleFunc("/nfl/extension/create/offer", controller.CreateExtensionOffer).Methods("POST")
+	myRouter.HandleFunc("/nfl/extension/cancel/offer", controller.CancelExtensionOffer).Methods("POST")
 	myRouter.HandleFunc("/nfl/freeagency/create/offer", controller.CreateFreeAgencyOffer).Methods("POST")
 	myRouter.HandleFunc("/nfl/freeagency/cancel/offer", controller.CancelFreeAgencyOffer).Methods("POST")
 	myRouter.HandleFunc("/nfl/waiverwire/create/offer", controller.CreateWaiverWireOffer).Methods("POST")

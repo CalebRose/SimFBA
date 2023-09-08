@@ -192,3 +192,31 @@ func PlaceNFLPlayerOnInjuryReserve(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode("Player " + playerID + " placed on trade block.")
 }
+
+// CreateExtensionOffer - Extend Offer to NFL player to extend contract with existing team
+func CreateExtensionOffer(w http.ResponseWriter, r *http.Request) {
+	var freeAgencyOfferDTO structs.FreeAgencyOfferDTO
+	err := json.NewDecoder(r.Body).Decode(&freeAgencyOfferDTO)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	var offer = managers.CreateExtensionOffer(freeAgencyOfferDTO)
+
+	json.NewEncoder(w).Encode(offer)
+}
+
+// CancelExtensionOffer - Cancel an extension offer with an NFL player
+func CancelExtensionOffer(w http.ResponseWriter, r *http.Request) {
+	var freeAgencyOfferDTO structs.FreeAgencyOfferDTO
+	err := json.NewDecoder(r.Body).Decode(&freeAgencyOfferDTO)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	managers.CancelExtensionOffer(freeAgencyOfferDTO)
+
+	json.NewEncoder(w).Encode(true)
+}
