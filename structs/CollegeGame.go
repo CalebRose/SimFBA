@@ -44,6 +44,8 @@ type CollegeGame struct {
 	GameComplete             bool
 	IsSpringGame             bool
 	GameTitle                string // For rivalry match-ups, bowl games, championships, and more
+	NextGameID               uint
+	NextGameHOA              string
 }
 
 func (cg *CollegeGame) UpdateScore(HomeScore int, AwayScore int) {
@@ -78,6 +80,26 @@ func (cg *CollegeGame) ApplyWeather(precip string, lowTemp float64, highTemp flo
 
 func (cg *CollegeGame) UpdateTimeslot(ts string) {
 	cg.TimeSlot = ts
+}
+
+func (cg *CollegeGame) AddTeam(isHome bool, id int, team, coach string) {
+	if isHome {
+		cg.HomeTeam = team
+		cg.HomeTeamID = id
+		cg.HomeTeamCoach = coach
+	} else {
+		cg.AwayTeam = team
+		cg.AwayTeamID = id
+		cg.AwayTeamCoach = coach
+	}
+}
+
+func (cg *CollegeGame) AddLocation(stadiumID int, stadium, city, state string, isDomed bool) {
+	cg.StadiumID = uint(stadiumID)
+	cg.Stadium = stadium
+	cg.City = city
+	cg.State = state
+	cg.IsDomed = isDomed
 }
 
 type WeatherResponse struct {

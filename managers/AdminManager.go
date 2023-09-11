@@ -435,6 +435,51 @@ func SyncTimeslot(timeslot string) {
 
 			// Save
 			if !timestamp.CFBSpringGames {
+				if game.NextGameID > 0 {
+					nextGameID := strconv.Itoa(int(game.NextGameID))
+					winningTeamID := 0
+					winningTeam := ""
+					winningCoach := ""
+					if game.HomeTeamWin {
+						winningTeamID = game.HomeTeamID
+						winningTeam = game.HomeTeam
+						winningCoach = game.HomeTeamCoach
+					} else {
+						winningTeamID = game.AwayTeamID
+						winningTeam = game.AwayTeam
+						winningCoach = game.AwayTeamCoach
+					}
+
+					nextGame := GetCollegeGameByGameID(nextGameID)
+					nextGame.AddTeam(game.NextGameHOA == "H", winningTeamID, winningTeam, winningCoach)
+					if !nextGame.IsNeutral && !game.IsNationalChampionship {
+						stadiumID := 0
+						stadium := ""
+						city := ""
+						state := ""
+						isDomed := false
+
+						if game.HomeTeamWin {
+							stadium = game.Stadium
+							city = game.City
+							state = game.State
+							stadiumID = int(game.StadiumID)
+						} else {
+							awayTeam := GetTeamByTeamID(strconv.Itoa(awayTeamID))
+							stadiumRecord := GetStadiumByStadiumID(strconv.Itoa(int(awayTeam.StadiumID)))
+							stadium = awayTeam.Stadium
+							city = awayTeam.City
+							state = awayTeam.State
+							stadiumID = int(awayTeam.StadiumID)
+							isDomed = stadiumRecord.IsDomed
+						}
+						nextGame.AddLocation(stadiumID, stadium, city, state, isDomed)
+					}
+
+					// Updating matchup for playoff game!
+					db.Save(&nextGame)
+				}
+
 				db.Save(&homeTeamSeasonStats)
 				db.Save(&awayTeamSeasonStats)
 				db.Save(&homeTeamStandings)
@@ -550,6 +595,51 @@ func SyncTimeslot(timeslot string) {
 
 			// Save
 			if !timestamp.NFLPreseason {
+				if game.NextGameID > 0 {
+					nextGameID := strconv.Itoa(int(game.NextGameID))
+					winningTeamID := 0
+					winningTeam := ""
+					winningCoach := ""
+					if game.HomeTeamWin {
+						winningTeamID = game.HomeTeamID
+						winningTeam = game.HomeTeam
+						winningCoach = game.HomeTeamCoach
+					} else {
+						winningTeamID = game.AwayTeamID
+						winningTeam = game.AwayTeam
+						winningCoach = game.AwayTeamCoach
+					}
+
+					nextGame := GetNFLGameByGameID(nextGameID)
+					nextGame.AddTeam(game.NextGameHOA == "H", winningTeamID, winningTeam, winningCoach)
+					if !nextGame.IsNeutral && !game.IsSuperBowl {
+						stadiumID := 0
+						stadium := ""
+						city := ""
+						state := ""
+						isDomed := false
+						if game.HomeTeamWin {
+							stadium = game.Stadium
+							city = game.City
+							state = game.State
+							stadiumID = int(game.StadiumID)
+							isDomed = game.IsDomed
+						} else {
+							awayTeam := GetTeamByTeamID(strconv.Itoa(awayTeamID))
+							stadiumRecord := GetStadiumByStadiumID(strconv.Itoa(int(awayTeam.StadiumID)))
+							stadium = awayTeam.Stadium
+							city = awayTeam.City
+							state = awayTeam.State
+							stadiumID = int(awayTeam.StadiumID)
+							isDomed = stadiumRecord.IsDomed
+						}
+						nextGame.AddLocation(stadiumID, stadium, city, state, isDomed)
+					}
+
+					// Updating matchup for playoff game!
+					db.Save(&nextGame)
+				}
+
 				db.Save(&homeTeamSeasonStats)
 				db.Save(&awayTeamSeasonStats)
 				db.Save(&homeTeamStandings)

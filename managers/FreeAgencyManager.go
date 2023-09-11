@@ -6,10 +6,12 @@ import (
 	"log"
 	"sort"
 	"strconv"
+	"strings"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/structs"
+	"github.com/CalebRose/SimFBA/util"
 	"gorm.io/gorm"
 )
 
@@ -363,6 +365,61 @@ func SyncFreeAgencyOffers() {
 	db.Save(&ts)
 }
 
+func SyncExtensionOffers() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	seasonID := strconv.Itoa(ts.NFLSeasonID)
+
+	nflTeams := GetAllNFLTeams()
+
+	for _, team := range nflTeams {
+		teamID := strconv.Itoa(int(team.ID))
+		roster := GetNFLPlayersForRosterPage(teamID)
+
+		for _, player := range roster {
+			min := player.MinimumValue
+			contract := player.Contract
+			if contract.ContractLength == 1 && len(player.Extensions) > 0 {
+				for idx, e := range player.Extensions {
+					if e.IsRejected || !e.IsActive {
+						continue
+					}
+					minimumValueMultiplier := 1.0
+					validation := validateFreeAgencyPref(player, roster, team, seasonID, e.ContractLength, idx)
+					// If the offer is valid and meets the player's free agency bias, reduce the minimum value required by 15%
+					if validation && player.FreeAgency != "Average" {
+						minimumValueMultiplier = 0.85
+						// If the offer does not meet the player's free agency bias, increase the minimum value required by 15%
+					} else if !validation && player.FreeAgency != "Average" {
+						minimumValueMultiplier = 1.15
+					}
+					percentage := e.ContractValue / (min * minimumValueMultiplier)
+					odds := getExtensionPercentageOdds(percentage)
+					// Run Check on the Extension
+
+					roll := util.GenerateFloatFromRange(1, 100)
+					message := ""
+					if odds == 0 || roll > odds {
+						// Rejects offer
+						e.DeclineOffer()
+						if e.IsRejected {
+							message = player.Position + " " + player.FirstName + " " + player.LastName + " has rejected an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars and will enter Free Agency."
+						} else {
+							message = player.Position + " " + player.FirstName + " " + player.LastName + " has declined an extension offer from " + e.Team + " with an extension worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars, and is still negotiating."
+						}
+						CreateNewsLog("NFL", message, "Free Agency", int(e.TeamID), ts)
+					} else {
+						e.AcceptOffer()
+						message = player.Position + " " + player.FirstName + " " + player.LastName + " has accepted an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars and will enter Free Agency."
+						CreateNewsLog("NFL", message, "Free Agency", int(e.TeamID), ts)
+					}
+					db.Save(&e)
+				}
+			}
+		}
+	}
+}
+
 func GetLatestFreeAgentOfferInDB(db *gorm.DB) uint {
 	var latestOffer structs.FreeAgencyOffer
 
@@ -506,4 +563,88 @@ func CancelWaiverOffer(offer structs.NFLWaiverOffDTO) {
 	waiverOffer := GetWaiverOfferByOfferID(OfferID)
 
 	db.Delete(&waiverOffer)
+}
+
+func getExtensionPercentageOdds(percentage float64) float64 {
+	if percentage > 100 {
+		return 100
+	} else if percentage > 90 {
+		return 75
+	} else if percentage > 80 {
+		return 50
+	} else if percentage > 70 {
+		return 25
+	}
+	return 0
+}
+
+func validateFreeAgencyPref(playerRecord structs.NFLPlayer, roster []structs.NFLPlayer, team structs.NFLTeam, seasonID string, offerLength int, offerIdx int) bool {
+	preference := playerRecord.FreeAgency
+
+	if preference == "Average" {
+		return true
+	}
+	if preference == "Drafted team discount" && playerRecord.DraftedTeamID == team.ID {
+		return true
+	}
+	if preference == "Loyal" && (playerRecord.PreviousTeamID == team.ID || playerRecord.TeamID == int(team.ID)) {
+		return true
+	}
+
+	if preference == "Hometown Hero" && playerRecord.State == team.State {
+		return true
+	}
+	if preference == "Adversarial" && playerRecord.PreviousTeamID != team.ID && playerRecord.DraftedTeamID != team.ID {
+		return true
+	}
+
+	if preference == "I'm the starter" {
+		teamRoster := roster
+		sort.Slice(teamRoster, func(i, j int) bool {
+			return teamRoster[i].Overall > teamRoster[j].Overall
+		})
+		for idx, p := range teamRoster {
+			if idx > 4 {
+				return false
+			}
+			if playerRecord.Overall >= p.Overall {
+				return true
+			}
+		}
+	}
+	if preference == "Market-driven" && offerLength < 3 {
+		return true
+	}
+	if preference == "Wants Extension" && offerLength > 2 {
+		return true
+	}
+	if preference == "Money motivated" {
+		return false
+	}
+	if preference == "Highest bidder" && offerIdx == 0 {
+		return true
+	}
+	if preference == "Championship seeking" {
+		standings := GetNFLStandingsByTeamIDAndSeasonID(strconv.Itoa(int(team.ID)), seasonID)
+		if standings.TotalWins > standings.TotalLosses {
+			return true
+		}
+	}
+
+	hateBias := strings.Fields(preference)
+	if hateBias[0] == "Hates" {
+		check := hateCheck(hateBias[1:], team.TeamName)
+		return check
+	}
+
+	return false
+}
+
+// func checkMarketCity(city string) bool {
+// 	return city == "Los Angeles" || city == "New York" || city == "New Jersey" || city == "Chicago" || city == "Philadelphia" || city == "Boston" || city == "Dallas" || city == "San Francisco" || city == "Atlanta" || city == "Houston" || city == "Washington"
+// }
+
+func hateCheck(bias []string, teamName string) bool {
+	joinedBias := strings.Join(bias, " ")
+	return joinedBias != teamName
 }

@@ -601,6 +601,9 @@ func ImportCFBGames() {
 		isBowlGame := util.ConvertStringToBool(row[13])
 		isPlayoffGame := util.ConvertStringToBool(row[14])
 		isNationalChampionship := util.ConvertStringToBool(row[15])
+		gameTitle := row[23]
+		nextGame := util.ConvertStringToInt(row[25])
+		nextGameHOA := row[26]
 
 		game := structs.CollegeGame{
 			Model:                    gorm.Model{ID: uint(gameID)},
@@ -626,6 +629,9 @@ func ImportCFBGames() {
 			City:                     city,
 			State:                    state,
 			IsDomed:                  isDomed,
+			GameTitle:                gameTitle,
+			NextGameID:               uint(nextGame),
+			NextGameHOA:              nextGameHOA,
 		}
 
 		db.Create(&game)
@@ -694,6 +700,9 @@ func ImportNFLGames() {
 		// isConferenceChampionship := util.ConvertStringToBool(row[13])
 		// isPlayoffGame := util.ConvertStringToBool(row[14])
 		// isNationalChampionship := util.ConvertStringToBool(row[15])
+		gameTitle := row[23]
+		nextGame := util.ConvertStringToInt(row[25])
+		nextGameHOA := row[26]
 
 		game := structs.NFLGame{
 			Model:           gorm.Model{ID: uint(gameID)},
@@ -714,6 +723,9 @@ func ImportNFLGames() {
 			Stadium:         stadium,
 			City:            city,
 			State:           state,
+			GameTitle:       gameTitle,
+			NextGameID:      uint(nextGame),
+			NextGameHOA:     nextGameHOA,
 		}
 
 		db.Create(&game)

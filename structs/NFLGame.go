@@ -43,6 +43,8 @@ type NFLGame struct {
 	GameComplete             bool
 	IsPreseasonGame          bool
 	GameTitle                string // For rivalry match-ups, bowl games, championships, and more
+	NextGameID               uint
+	NextGameHOA              string
 }
 
 func (ng *NFLGame) UpdateScore(HomeScore int, AwayScore int) {
@@ -77,4 +79,24 @@ func (ng *NFLGame) ApplyWeather(precip string, lowTemp float64, highTemp float64
 
 func (ng *NFLGame) UpdateTimeslot(ts string) {
 	ng.TimeSlot = ts
+}
+
+func (ng *NFLGame) AddTeam(isHome bool, id int, team, coach string) {
+	if isHome {
+		ng.HomeTeam = team
+		ng.HomeTeamID = id
+		ng.HomeTeamCoach = coach
+	} else {
+		ng.AwayTeam = team
+		ng.AwayTeamID = id
+		ng.AwayTeamCoach = coach
+	}
+}
+
+func (ng *NFLGame) AddLocation(stadiumID int, stadium, city, state string, isDomed bool) {
+	ng.StadiumID = uint(stadiumID)
+	ng.Stadium = stadium
+	ng.City = city
+	ng.State = state
+	ng.IsDomed = isDomed
 }

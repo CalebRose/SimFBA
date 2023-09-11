@@ -117,8 +117,10 @@ type NFLExtensionOffer struct {
 	TotalSalary     float64
 	ContractValue   float64
 	BonusPercentage float64
+	Rejections      int
 	IsAccepted      bool
 	IsActive        bool
+	IsRejected      bool
 }
 
 func (f *NFLExtensionOffer) AssignID(id uint) {
@@ -163,6 +165,13 @@ func (f *NFLExtensionOffer) CalculateOffer(offer FreeAgencyOfferDTO) {
 func (f *NFLExtensionOffer) AcceptOffer() {
 	f.IsAccepted = true
 	f.CancelOffer()
+}
+
+func (f *NFLExtensionOffer) DeclineOffer() {
+	f.Rejections += 1
+	if f.Rejections > 2 {
+		f.IsRejected = true
+	}
 }
 
 func (f *NFLExtensionOffer) CancelOffer() {
