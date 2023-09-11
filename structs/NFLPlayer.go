@@ -30,6 +30,7 @@ type NFLPlayer struct {
 	DraftedRound      uint
 	DraftedPick       uint
 	ShowLetterGrade   bool
+	Rejections        int
 	Stats             []NFLPlayerStats     `gorm:"foreignKey:NFLPlayerID"`
 	SeasonStats       NFLPlayerSeasonStats `gorm:"foreignKey:NFLPlayerID"`
 	Contract          NFLContract          `gorm:"foreignKey:NFLPlayerID"`
@@ -78,6 +79,7 @@ func (np *NFLPlayer) ToggleIsFreeAgent() {
 	np.IsNegotiating = false
 	np.IsOnTradeBlock = false
 	np.IsPracticeSquad = false
+	np.Rejections = 0
 }
 
 func (np *NFLPlayer) SignPlayer(TeamID int, Abbr string) {
@@ -154,4 +156,8 @@ func (np *NFLPlayer) TradePlayer(id uint, team string) {
 	np.TeamID = int(id)
 	np.TeamAbbr = team
 	np.IsOnTradeBlock = false
+}
+
+func (f *NFLPlayer) DeclineOffer() {
+	f.Rejections += 1
 }

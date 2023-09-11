@@ -381,7 +381,7 @@ func SyncExtensionOffers() {
 			contract := player.Contract
 			if contract.ContractLength == 1 && len(player.Extensions) > 0 {
 				for idx, e := range player.Extensions {
-					if e.IsRejected || !e.IsActive {
+					if e.IsRejected || !e.IsActive || team.OffersAccepted > 2 {
 						continue
 					}
 					minimumValueMultiplier := 1.0
@@ -402,16 +402,20 @@ func SyncExtensionOffers() {
 					if odds == 0 || roll > odds {
 						// Rejects offer
 						e.DeclineOffer()
-						if e.IsRejected {
+						player.DeclineOffer()
+						if e.IsRejected || player.Rejections > 2 {
 							message = player.Position + " " + player.FirstName + " " + player.LastName + " has rejected an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars and will enter Free Agency."
 						} else {
 							message = player.Position + " " + player.FirstName + " " + player.LastName + " has declined an extension offer from " + e.Team + " with an extension worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars, and is still negotiating."
 						}
 						CreateNewsLog("NFL", message, "Free Agency", int(e.TeamID), ts)
+						db.Save(&player)
 					} else {
 						e.AcceptOffer()
+						team.IncrementExtensionOffers()
 						message = player.Position + " " + player.FirstName + " " + player.LastName + " has accepted an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars and will enter Free Agency."
 						CreateNewsLog("NFL", message, "Free Agency", int(e.TeamID), ts)
+						db.Save(&team)
 					}
 					db.Save(&e)
 				}
@@ -599,15 +603,26 @@ func validateFreeAgencyPref(playerRecord structs.NFLPlayer, roster []structs.NFL
 	}
 
 	if preference == "I'm the starter" {
-		teamRoster := roster
-		sort.Slice(teamRoster, func(i, j int) bool {
-			return teamRoster[i].Overall > teamRoster[j].Overall
+		depthChart := GetNFLDepthchartByTeamID(strconv.Itoa(int(team.ID)))
+		dc := depthChart.DepthChartPlayers
+		depthChartByPosition := []structs.NFLDepthChartPosition{}
+
+		for _, dcp := range dc {
+			if dcp.Position == playerRecord.Position {
+				depthChartByPosition = append(depthChartByPosition, dcp)
+			}
+		}
+
+		sort.Slice(depthChartByPosition, func(i, j int) bool {
+			iNum := util.ConvertStringToInt(depthChartByPosition[i].PositionLevel)
+			jNum := util.ConvertStringToInt(depthChartByPosition[j].PositionLevel)
+			return iNum > jNum
 		})
-		for idx, p := range teamRoster {
-			if idx > 4 {
+		for idx, p := range depthChartByPosition {
+			if idx > 3 {
 				return false
 			}
-			if playerRecord.Overall >= p.Overall {
+			if playerRecord.Overall >= p.NFLPlayer.Overall {
 				return true
 			}
 		}
