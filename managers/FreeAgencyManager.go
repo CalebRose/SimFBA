@@ -381,7 +381,7 @@ func SyncExtensionOffers() {
 			contract := player.Contract
 			if contract.ContractLength == 1 && len(player.Extensions) > 0 {
 				for idx, e := range player.Extensions {
-					if e.IsRejected || !e.IsActive || team.OffersAccepted > 2 {
+					if e.IsRejected || !e.IsActive {
 						continue
 					}
 					minimumValueMultiplier := 1.0
@@ -412,7 +412,6 @@ func SyncExtensionOffers() {
 						db.Save(&player)
 					} else {
 						e.AcceptOffer()
-						team.IncrementExtensionOffers()
 						message = player.Position + " " + player.FirstName + " " + player.LastName + " has accepted an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars and will enter Free Agency."
 						CreateNewsLog("NFL", message, "Free Agency", int(e.TeamID), ts)
 						db.Save(&team)

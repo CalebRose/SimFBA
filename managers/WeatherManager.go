@@ -49,7 +49,7 @@ func GenerateWeatherForGames() {
 	nflGames := GetNFLGamesBySeasonID(strconv.Itoa(int(ts.NFLSeasonID)))
 
 	for _, game := range nflGames {
-		// if game.WeekID != ts.NFLWeekID {
+		// if game.WeekID < ts.NFLWeekID {
 		// 	continue
 		// }
 		homeTeam := GetNFLTeamByTeamID(strconv.Itoa(game.HomeTeamID))
@@ -316,6 +316,9 @@ func GenerateWeatherForNFLGame(db *gorm.DB, game structs.NFLGame, abbr string, t
 		}
 		precip = chance.Weather
 		break
+	}
+	if precip == "" {
+		precip = "Clear"
 	}
 
 	if precip == "Rain" {

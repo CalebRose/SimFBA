@@ -18,7 +18,6 @@ type NFLTeam struct {
 	NFLAssistantID   uint
 	NFLAssistantName string
 	WaiverOrder      uint
-	OffersAccepted   int
 	Capsheet         NFLCapsheet          `gorm:"foreignKey:NFLTeamID"`
 	Contracts        []NFLContract        `gorm:"foreignKey:TeamID"`
 	DraftPicks       []NFLDraftPick       `gorm:"foreignKey:TeamID"`
@@ -74,13 +73,4 @@ func (t *NFLTeam) RemoveNFLUserFromTeam(r NFLRequest, u NFLUser) {
 
 func (t *NFLTeam) AssignWaiverOrder(val uint) {
 	t.WaiverOrder = val
-}
-
-func (t *NFLTeam) ResetSeasonData() {
-	t.OffersAccepted = 0
-	t.WaiverOrder = 0
-}
-
-func (t *NFLTeam) IncrementExtensionOffers() {
-	t.OffersAccepted += 1
 }

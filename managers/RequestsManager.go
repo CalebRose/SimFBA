@@ -79,6 +79,9 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 
 	timestamp := GetTimestamp()
 
+	teamId := strconv.Itoa(request.TeamID)
+	seasonID := strconv.Itoa(timestamp.CollegeSeasonID)
+
 	// Approve Request
 	request.ApproveTeamRequest()
 
@@ -89,7 +92,7 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 	// Assign Team
 	fmt.Println("Assigning team...")
 
-	team := GetTeamByTeamID(strconv.Itoa(request.TeamID))
+	team := GetTeamByTeamID(teamId)
 
 	coach := GetCollegeCoachByCoachName(request.Username)
 
@@ -97,7 +100,7 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 
 	team.AssignUserToTeam(coach.CoachName)
 
-	seasonalGames := GetCollegeGamesByTeamIdAndSeasonId(strconv.Itoa(request.TeamID), strconv.Itoa(timestamp.CollegeSeasonID))
+	seasonalGames := GetCollegeGamesByTeamIdAndSeasonId(teamId, seasonID)
 
 	for _, game := range seasonalGames {
 		if game.Week >= timestamp.CollegeWeek {
@@ -107,11 +110,16 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 
 	}
 
-	recruitingProfile := GetOnlyRecruitingProfileByTeamID(strconv.Itoa(request.TeamID))
+	standings := GetCFBStandingsByTeamIDAndSeasonID(teamId, seasonID)
+	standings.SetCoach(coach.CoachName)
+	db.Save(&standings)
 
-	recruitingProfile.ActivateAI()
+	recruitingProfile := GetOnlyRecruitingProfileByTeamID(teamId)
 
-	db.Save(&recruitingProfile)
+	if recruitingProfile.IsAI {
+		recruitingProfile.ActivateAI()
+		db.Save(&recruitingProfile)
+	}
 
 	err := db.Save(&team).Error
 	if err != nil {
@@ -224,10 +232,26 @@ func RemoveUserFromTeam(teamId string) {
 	db.Save(&coach)
 
 	timestamp := GetTimestamp()
+	seasonID := strconv.Itoa(int(timestamp.CollegeSeasonID))
+	seasonalGames := GetCollegeGamesByTeamIdAndSeasonId(teamId, seasonID)
+
+	for _, game := range seasonalGames {
+		if game.Week >= timestamp.CollegeWeek {
+			game.UpdateCoach(int(team.ID), "AI")
+			db.Save(&game)
+		}
+
+	}
+
+	standings := GetCFBStandingsByTeamIDAndSeasonID(teamId, seasonID)
+	standings.SetCoach("AI")
+	db.Save(&standings)
 
 	recruitingProfile := GetOnlyRecruitingProfileByTeamID(teamId)
 
-	recruitingProfile.ActivateAI()
+	if !recruitingProfile.IsAI {
+		recruitingProfile.ActivateAI()
+	}
 
 	db.Save(&recruitingProfile)
 

@@ -92,3 +92,7 @@ func (cs *CollegeStandings) ResetCFBStandings() {
 	cs.RankedWins = 0
 	cs.RankedLosses = 0
 }
+
+func (cs *CollegeStandings) SetCoach(coach string) {
+	cs.Coach = coach
+}
