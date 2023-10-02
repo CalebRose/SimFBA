@@ -393,7 +393,7 @@ func SyncExtensionOffers() {
 					} else if !validation && player.FreeAgency != "Average" {
 						minimumValueMultiplier = 1.15
 					}
-					percentage := e.ContractValue / (min * minimumValueMultiplier)
+					percentage := (e.ContractValue / (min * minimumValueMultiplier) * 100)
 					odds := getExtensionPercentageOdds(percentage)
 					// Run Check on the Extension
 
@@ -412,7 +412,7 @@ func SyncExtensionOffers() {
 						db.Save(&player)
 					} else {
 						e.AcceptOffer()
-						message = player.Position + " " + player.FirstName + " " + player.LastName + " has accepted an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars and will enter Free Agency."
+						message = player.Position + " " + player.FirstName + " " + player.LastName + " has accepted an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars."
 						CreateNewsLog("NFL", message, "Free Agency", int(e.TeamID), ts)
 						db.Save(&team)
 					}

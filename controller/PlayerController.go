@@ -141,8 +141,6 @@ func ExportRosterToCSV(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.ExportTeamToCSV(teamId, w)
-
-	// ?
 }
 
 func ExportNFLRosterToCSV(w http.ResponseWriter, r *http.Request) {

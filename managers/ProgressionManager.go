@@ -35,7 +35,7 @@ func ProgressionMain() {
 				stats := GetCollegePlayerStatsByPlayerIDAndSeason(strconv.Itoa(int(player.ID)), SeasonID)
 
 				// Else
-				player = ProgressPlayer(player, SeasonID, stats)
+				player = ProgressCollegePlayer(player, SeasonID, stats)
 
 				if (player.IsRedshirt && player.Year > 5) ||
 					(!player.IsRedshirt && player.Year > 4) {
@@ -168,9 +168,31 @@ func ProgressionMain() {
 			log.Panic("Recruit could not be deleted!")
 		}
 	}
+
+	// nflPlayers := GetAllNFLPlayers()
+
+	// for _, player := range nflPlayers {
+	// 	// Progress the Player
+
+	// 	// Get Contract if Applicable
+	// 	// Reduce contract by one year
+	// 	// If contract length == 0, check for extension contract offer
+	// 	// if no offer, set player as free agent
+
+	// 	// Get Stats from latest two seasons
+	// 	// Do an age check
+	// 	// If player is ready to retire or has not seen the field in two seasons, set player to retire
+
+	// }
+
+	// For all retired players
+	// Create retiredplayer record
+	// Delete NFL Player Record
+	// Retire Contracts?
+
 }
 
-func ProgressPlayer(cp structs.CollegePlayer, SeasonID string, stats []structs.CollegePlayerStats) structs.CollegePlayer {
+func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []structs.CollegePlayerStats) structs.CollegePlayer {
 	totalSnaps := 0
 
 	for _, stat := range stats {

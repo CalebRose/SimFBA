@@ -40,6 +40,9 @@ func MoveUpWeek() structs.Timestamp {
 	RecoverPlayers()
 	CheckNFLRookiesForLetterGrade(strconv.Itoa(int(timestamp.NFLSeasonID)))
 	timestamp.SyncToNextWeek()
+	if timestamp.NFLWeek > 15 {
+		SyncExtensionOffers()
+	}
 	db.Save(&timestamp)
 
 	return timestamp

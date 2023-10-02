@@ -43,9 +43,6 @@ func SyncRecruiting(w http.ResponseWriter, r *http.Request) {
 
 func SyncWeek(w http.ResponseWriter, r *http.Request) {
 	newTimestamp := managers.MoveUpWeek()
-	if newTimestamp.NFLWeek > 15 {
-		managers.SyncExtensionOffers()
-	}
 
 	json.NewEncoder(w).Encode(newTimestamp)
 }
