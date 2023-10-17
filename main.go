@@ -46,7 +46,7 @@ func handleRequests() {
 	myRouter.HandleFunc("/simfba/sync/freeagency/round", controller.SyncFreeAgencyRound).Methods("GET")
 	myRouter.HandleFunc("/simfba/sync/recruiting/", controller.SyncRecruiting).Methods("GET")
 	// myRouter.HandleFunc("/simfba/sync/missing/", controller.SyncMissingRES).Methods("GET")
-	// myRouter.HandleFunc("/simfba/sync/weather/", controller.WeatherGenerator).Methods("GET")
+	myRouter.HandleFunc("/simfba/sync/weather/", controller.WeatherGenerator).Methods("GET")
 	myRouter.HandleFunc("/simfba/current/weather/forecast/", controller.GetWeatherForecast).Methods("GET")
 	myRouter.HandleFunc("/simfba/future/weather/forecast/", controller.GetFutureWeatherForecast).Methods("GET")
 	myRouter.HandleFunc("/news/{weekID}/{seasonID}/", controller.GetNewsLogs).Methods("GET")
@@ -156,6 +156,7 @@ func handleRequests() {
 	// ReCroot Controls
 	myRouter.HandleFunc("/recruits/all/", controller.AllRecruits).Methods("GET")
 	myRouter.HandleFunc("/recruits/export/all/", controller.ExportCroots).Methods("GET")
+	myRouter.HandleFunc("/recruits/generate/", controller.ExportCroots).Methods("GET")
 	// myRouter.HandleFunc("/recruits/juco/all/", controller.AllJUCOCollegeRecruits).Methods("GET")
 	myRouter.HandleFunc("/recruits/recruit/{recruitID}/", controller.GetCollegeRecruitByRecruitID).Methods("GET")
 	myRouter.HandleFunc("/recruits/profile/recruits/{recruitProfileID}/", controller.GetRecruitsByTeamProfileID).Methods("GET")

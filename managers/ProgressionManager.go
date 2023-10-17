@@ -10,6 +10,7 @@ import (
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/structs"
+	"github.com/CalebRose/SimFBA/util"
 )
 
 func ProgressionMain() {
@@ -30,25 +31,41 @@ func ProgressionMain() {
 
 		if !team.PlayersProgressed {
 			for _, player := range roster {
-				// If early declaree
-
+				// Get Latest Stats
 				stats := GetCollegePlayerStatsByPlayerIDAndSeason(strconv.Itoa(int(player.ID)), SeasonID)
 
-				// Else
+				// Get Average Snaps
+				avgSnaps := getAverageSnaps(stats)
+
+				// Run Function to Determine if Player is Declaring Early
+				willDeclare := DetermineIfDeclaring(player, avgSnaps)
+
+				// Progress the Player
 				player = ProgressCollegePlayer(player, SeasonID, stats)
 
-				if (player.IsRedshirt && player.Year > 5) ||
-					(!player.IsRedshirt && player.Year > 4) {
+				if willDeclare {
 					player.GraduatePlayer()
 					draftee := structs.NFLDraftee{}
 					draftee.Map(player)
+					// Map New Progression value for NFL
+					newProgression := util.GeneratePotential()
+					newPotentialGrade := util.GetWeightedPotentialGrade(newProgression)
+					draftee.MapProgression(newProgression, newPotentialGrade)
+
+					// Create Historic Player Record
 					hcp := (structs.HistoricCollegePlayer)(player)
 
 					err := db.Create(&hcp).Error
 					if err != nil {
 						log.Panicln("Could not save historic player record!")
 					}
-					fmt.Println(hcp.FirstName + " " + hcp.LastName + " is graduating!")
+					message := player.Position + " " + player.FirstName + " " + player.LastName + " has graduated from " + player.TeamAbbr + "!"
+					if (player.Year < 5 && player.IsRedshirt) || (player.Year < 4 && !player.IsRedshirt) {
+						message = "Breaking News! " + player.Position + " " + player.FirstName + " " + player.LastName + " is declaring early from " + player.TeamAbbr + ", and will be eligible for the SimNFL Draft!"
+					}
+					CreateNewsLog("CFB", message, "Graduation", player.TeamID, ts)
+
+					// Add Graduating Player to List
 					graduatingPlayers = append(graduatingPlayers, draftee)
 					// CollegePlayer record will be deleted, but record will be mapped to a GraduatedCollegePlayer struct, and then saved in that table, along side with NFL Draftees table
 					// GraduatedCollegePlayer will be a copy of the collegeplayers table, but only for historical players
@@ -1198,4 +1215,64 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 		return 0.0075
 	}
 	return 0
+}
+
+func DetermineIfDeclaring(player structs.CollegePlayer, avgSnaps int) bool {
+	// Redshirt senior or just a senior
+	if (player.IsRedshirt && player.Year == 5) || (!player.IsRedshirt && player.Year == 4 && !player.IsRedshirting) {
+		return true
+	}
+	ovr := player.Overall
+	if ovr < 55 || player.IsRedshirting {
+		return false
+	}
+
+	snapMod := 0
+	if avgSnaps > 50 {
+		snapMod = 16
+	} else if avgSnaps > 30 {
+		snapMod = 12
+	} else if avgSnaps > 20 {
+		snapMod = 8
+	} else if avgSnaps > 10 {
+		snapMod = 4
+	}
+
+	// Dice Roll
+	odds := util.GenerateIntFromRange(1, 100) - snapMod
+	if ovr > 55 && odds <= 25 {
+		return true
+	} else if ovr > 56 && odds <= 30 {
+		return true
+	} else if ovr > 57 && odds <= 35 {
+		return true
+	} else if ovr > 58 && odds <= 45 {
+		return true
+	} else if ovr > 59 && odds <= 70 {
+		return true
+	} else if ovr > 60 && odds <= 75 {
+		return true
+	} else if ovr > 61 && odds <= 80 {
+		return true
+	} else if ovr > 62 && odds <= 95 {
+		return true
+	} else if ovr > 63 {
+		return true
+	}
+	return false
+}
+
+func getAverageSnaps(stats []structs.CollegePlayerStats) int {
+	totalSnaps := 0
+
+	for _, stat := range stats {
+		totalSnaps += stat.Snaps
+	}
+
+	var SnapsPerGame int = 0
+	if len(stats) > 0 {
+		SnapsPerGame = totalSnaps / 12 // 12
+	}
+
+	return SnapsPerGame
 }

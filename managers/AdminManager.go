@@ -628,7 +628,7 @@ func SyncTimeslot(timeslot string) {
 							stadiumID = int(game.StadiumID)
 							isDomed = game.IsDomed
 						} else {
-							awayTeam := GetTeamByTeamID(strconv.Itoa(awayTeamID))
+							awayTeam := GetNFLTeamByTeamID(strconv.Itoa(awayTeamID))
 							stadiumRecord := GetStadiumByStadiumID(strconv.Itoa(int(awayTeam.StadiumID)))
 							stadium = awayTeam.Stadium
 							city = awayTeam.City

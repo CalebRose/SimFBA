@@ -178,3 +178,8 @@ func (cp *BasePlayer) RecoveryCheck() {
 func (cp *BasePlayer) ToggleInjuryReserve() {
 	cp.InjuryReserve = !cp.InjuryReserve
 }
+
+func (cp *BasePlayer) MapProgression(prog int, letter string) {
+	cp.Progression = prog
+	cp.PotentialGrade = letter
+}

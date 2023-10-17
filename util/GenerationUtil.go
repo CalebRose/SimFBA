@@ -24,6 +24,26 @@ func GetProgressionRating() int {
 	return val
 }
 
+func GeneratePotential() int {
+	num := GenerateIntFromRange(1, 100)
+
+	if num < 10 {
+		return GenerateIntFromRange(1, 20)
+	} else if num < 20 {
+		return GenerateIntFromRange(21, 40)
+	} else if num < 80 {
+		return GenerateIntFromRange(41, 55)
+	} else if num < 85 {
+		return GenerateIntFromRange(56, 65)
+	} else if num < 90 {
+		return GenerateIntFromRange(66, 75)
+	} else if num < 95 {
+		return GenerateIntFromRange(76, 85)
+	} else {
+		return GenerateIntFromRange(86, 99)
+	}
+}
+
 func GetWeightedPotentialGrade(rating int) string {
 	weightedRating := GenerateIntFromRange(rating-15, rating+15)
 	if weightedRating > 100 {

@@ -95,6 +95,11 @@ func ExportCroots(w http.ResponseWriter, r *http.Request) {
 	managers.ExportCrootsToCSV(w)
 }
 
+func GenerateRecruitClass(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/csv")
+	managers.ExportCrootsToCSV(w)
+}
+
 // UpdateCollegeRecruit
 func UpdateCollegeRecruit(w http.ResponseWriter, r *http.Request) {
 	// Update DTO for College Recruit

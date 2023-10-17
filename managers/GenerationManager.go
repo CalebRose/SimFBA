@@ -23,6 +23,7 @@ func GenerateWalkOns() {
 	rand.Seed(time.Now().UnixNano())
 	db := dbprovider.GetInstance().GetDB()
 	AllTeams := GetRecruitingProfileForRecruitSync()
+	ts := GetTimestamp()
 	count := 0
 	attributeBlob := getAttributeBlob()
 	highSchoolBlob := getCrootLocations()
@@ -43,11 +44,11 @@ func GenerateWalkOns() {
 		teamNeeds := GetRecruitingNeeds(id)
 		limit := team.RecruitClassSize - len(signedRecruits)
 
-		for _, recruit := range signedRecruits {
-			if teamNeeds[recruit.Position] > 0 {
-				teamNeeds[recruit.Position] -= 1
-			}
-		}
+		// for _, recruit := range signedRecruits {
+		// 	if teamNeeds[recruit.Position] > 0 {
+		// 		teamNeeds[recruit.Position] -= 1
+		// 	}
+		// }
 
 		// Get All Needed Positions into a list
 		for k, v := range teamNeeds {
@@ -84,7 +85,7 @@ func GenerateWalkOns() {
 				IsSigned:         true,
 				IsLocked:         true,
 				TeamAbbreviation: team.TeamAbbreviation,
-				SeasonID:         2,
+				SeasonID:         ts.CollegeSeasonID,
 				TotalPoints:      1,
 			}
 
@@ -155,7 +156,7 @@ func createRecruit(ethnicity string, position string, year int, firstNameList []
 	archetype := getArchetype(position)
 	stars := getStarRating()
 	if stars == 5 {
-		fmt.Println("WE'VE GOT A FIVE STAR")
+		fmt.Println("WE'VE GOT A FIVE STAR: " + position + " " + firstName + " " + lastName)
 	}
 	height := getAttributeValue(position, archetype, stars, "Height", blob)
 	weight := getAttributeValue(position, archetype, stars, "Weight", blob)
@@ -368,7 +369,7 @@ func pickState(state string) string {
 	} else if state == "AZ" {
 		return util.PickFromStringList([]string{"AZ", "NM", "CA"})
 	} else if state == "CA" {
-		return util.PickFromStringList([]string{"CA", "AZ"})
+		return util.PickFromStringList([]string{"CA", "AZ", "HI"})
 	} else if state == "CO" {
 		return util.PickFromStringList([]string{"CO", "KS", "UT", "WY"})
 	} else if state == "CT" {
@@ -385,6 +386,8 @@ func pickState(state string) string {
 		return util.PickFromStringList([]string{"IA", "MN", "WI", "NE"})
 	} else if state == "ID" {
 		return util.PickFromStringList([]string{"ID", "WA", "UT"})
+	} else if state == "IN" {
+		return util.PickFromStringList([]string{"IN", "IL", "OH", "MI", "AK"})
 	} else if state == "IL" {
 		return util.PickFromStringList([]string{"IL", "IN", "WI", "MI"})
 	} else if state == "KS" {
@@ -446,7 +449,7 @@ func pickState(state string) string {
 	} else if state == "VA" {
 		return util.PickFromStringList([]string{"VA", "WV", "DC", "MD"})
 	} else if state == "WA" {
-		return util.PickFromStringList([]string{"WA", "OR", "ID"})
+		return util.PickFromStringList([]string{"WA", "OR", "ID", "AK"})
 	} else if state == "WI" {
 		return util.PickFromStringList([]string{"WI", "MN", "IL", "MI"})
 	} else if state == "WV" {
@@ -616,7 +619,7 @@ func getArchetype(pos string) string {
 	} else if pos == "OLB" {
 		return util.PickFromStringList([]string{"Coverage", "Pass Rush", "Run Stopper", "Speed"})
 	} else if pos == "CB" {
-		return util.PickFromStringList([]string{"Balanced", "Ball Hawk", "Man Coverage", "Zone Coverage"})
+		return util.PickFromStringList([]string{"Ball Hawk", "Man Coverage", "Zone Coverage"})
 	} else if pos == "FS" || pos == "SS" {
 		return util.PickFromStringList([]string{"Run Stopper", "Ball Hawk", "Man Coverage", "Zone Coverage"})
 	} else if pos == "K" || pos == "P" {
@@ -756,22 +759,22 @@ func getCityAndHighSchool(schools []structs.CrootLocation) (string, string) {
 func getValueFromInterfaceRange(star string, starMap map[string]interface{}) int {
 	u, ok := starMap[star]
 	if ok {
-		fmt.Println("Was able to get value)")
+		fmt.Println("(Was able to get value)")
 	}
 
 	minMax, ok := u.([]interface{})
 	if !ok {
-		fmt.Printf("This is not an int")
+		fmt.Printf("This is not an int: " + star)
 	}
 
 	min, ok := minMax[0].(float64)
 	if !ok {
-		fmt.Printf("This is not an int")
+		fmt.Printf("This is not an int: " + star)
 	}
 
 	max, ok := minMax[1].(float64)
 	if !ok {
-		fmt.Printf("This is not an int")
+		fmt.Printf("This is not an int: " + star)
 	}
 	return util.GenerateIntFromRange(int(min), int(max))
 }
