@@ -269,7 +269,15 @@ func UpdateTimeslot(dto structs.UpdateTimeslotDTO) {
 func RunTheGames() {
 	db := dbprovider.GetInstance().GetDB()
 
-	ts := GetTimestamp()
+	tsChn := make(chan structs.Timestamp)
+
+	go func() {
+		timestamp := GetTimestamp()
+		tsChn <- timestamp
+	}()
+
+	ts := <-tsChn
+	close(tsChn)
 
 	ts.ToggleRunGames()
 

@@ -31,6 +31,9 @@ func ExportCFBStatisticsFromSim(w http.ResponseWriter, r *http.Request) {
 		managers.ExportNFLStatisticsFromSim(exportStatsDTO.NFLGameStatDTOs)
 	}
 
+	// Turn off Run Games Boolean
+	managers.RunTheGames()
+
 	fmt.Println(w, "Game Data Exported")
 }
 

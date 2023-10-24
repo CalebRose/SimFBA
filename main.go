@@ -156,7 +156,7 @@ func handleRequests() {
 	// ReCroot Controls
 	myRouter.HandleFunc("/recruits/all/", controller.AllRecruits).Methods("GET")
 	myRouter.HandleFunc("/recruits/export/all/", controller.ExportCroots).Methods("GET")
-	myRouter.HandleFunc("/recruits/generate/", controller.ExportCroots).Methods("GET")
+	// myRouter.HandleFunc("/recruits/generate/", controller.ExportCroots).Methods("GET")
 	// myRouter.HandleFunc("/recruits/juco/all/", controller.AllJUCOCollegeRecruits).Methods("GET")
 	myRouter.HandleFunc("/recruits/recruit/{recruitID}/", controller.GetCollegeRecruitByRecruitID).Methods("GET")
 	myRouter.HandleFunc("/recruits/profile/recruits/{recruitProfileID}/", controller.GetRecruitsByTeamProfileID).Methods("GET")

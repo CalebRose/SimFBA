@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
 )
@@ -24,13 +25,16 @@ func ProgressionMain() {
 	collegeTeams := GetAllCollegeTeams()
 	// Loop
 	for _, team := range collegeTeams {
-		var graduatingPlayers []structs.NFLDraftee
+		var graduatingPlayers []models.NFLDraftee
 		teamID := strconv.Itoa(int(team.ID))
 		roster := GetAllCollegePlayersByTeamId(teamID)
 		croots := GetSignedRecruitsByTeamProfileID(teamID)
 
 		if !team.PlayersProgressed {
 			for _, player := range roster {
+				if player.HasProgressed {
+					continue
+				}
 				// Get Latest Stats
 				stats := GetCollegePlayerStatsByPlayerIDAndSeason(strconv.Itoa(int(player.ID)), SeasonID)
 
@@ -45,7 +49,7 @@ func ProgressionMain() {
 
 				if willDeclare {
 					player.GraduatePlayer()
-					draftee := structs.NFLDraftee{}
+					draftee := models.NFLDraftee{}
 					draftee.Map(player)
 					// Map New Progression value for NFL
 					newProgression := util.GeneratePotential()
@@ -59,13 +63,18 @@ func ProgressionMain() {
 					if err != nil {
 						log.Panicln("Could not save historic player record!")
 					}
+
 					message := player.Position + " " + player.FirstName + " " + player.LastName + " has graduated from " + player.TeamAbbr + "!"
 					if (player.Year < 5 && player.IsRedshirt) || (player.Year < 4 && !player.IsRedshirt) {
 						message = "Breaking News! " + player.Position + " " + player.FirstName + " " + player.LastName + " is declaring early from " + player.TeamAbbr + ", and will be eligible for the SimNFL Draft!"
 					}
 					CreateNewsLog("CFB", message, "Graduation", player.TeamID, ts)
 
-					// Add Graduating Player to List
+					// Create Draftee Record
+					err = db.Create(&draftee).Error
+					if err != nil {
+						log.Panicln("Could not save graduating players")
+					}
 					graduatingPlayers = append(graduatingPlayers, draftee)
 					// CollegePlayer record will be deleted, but record will be mapped to a GraduatedCollegePlayer struct, and then saved in that table, along side with NFL Draftees table
 					// GraduatedCollegePlayer will be a copy of the collegeplayers table, but only for historical players
@@ -82,14 +91,6 @@ func ProgressionMain() {
 					log.Panicln("Could not save player record")
 				}
 
-			}
-
-			// Graduating players
-			for _, grad := range graduatingPlayers {
-				err := db.Create(&grad).Error
-				if err != nil {
-					log.Panicln("Could not save graduating players")
-				}
 			}
 
 			team.TogglePlayersProgressed()
@@ -125,14 +126,14 @@ func ProgressionMain() {
 
 	// Unsigned Players
 	unsignedPlayers := GetAllUnsignedPlayers()
-	var graduatingPlayers []structs.NFLDraftee
+	var graduatingPlayers []models.NFLDraftee
 
 	for _, player := range unsignedPlayers {
 		player = ProgressUnsignedPlayer(player, SeasonID)
 		if (player.IsRedshirt && player.Year > 5) ||
 			(!player.IsRedshirt && player.Year > 4) {
 			player.GraduatePlayer()
-			draftee := structs.NFLDraftee{}
+			draftee := models.NFLDraftee{}
 			draftee.MapUnsignedPlayer(player)
 			hcp := structs.HistoricCollegePlayer{}
 			hcp.MapUnsignedPlayer(player)
@@ -1223,6 +1224,17 @@ func DetermineIfDeclaring(player structs.CollegePlayer, avgSnaps int) bool {
 		return true
 	}
 	ovr := player.Overall
+
+	// YEAR 3 and NOT redshirt == Junior
+	// Year 4 AND redshirt == Redshirt Junior
+	// Year 3 AND redshirt == Redshirt Sophomore
+	// Year 2 AND redshirt == Redshirt Freshmen
+	// All players that are freshmen, redshirt freshmen, sophomore, redshirt sophomores, and non-redshirt juniors
+	isRedshirtJunior := player.Year == 4 && player.IsRedshirt
+	if !isRedshirtJunior {
+		return false
+	}
+
 	if ovr < 55 || player.IsRedshirting {
 		return false
 	}
@@ -1240,7 +1252,7 @@ func DetermineIfDeclaring(player structs.CollegePlayer, avgSnaps int) bool {
 
 	// Dice Roll
 	odds := util.GenerateIntFromRange(1, 100) - snapMod
-	if ovr > 55 && odds <= 25 {
+	if ovr > 54 && odds <= 25 {
 		return true
 	} else if ovr > 56 && odds <= 30 {
 		return true
@@ -1255,8 +1267,6 @@ func DetermineIfDeclaring(player structs.CollegePlayer, avgSnaps int) bool {
 	} else if ovr > 61 && odds <= 80 {
 		return true
 	} else if ovr > 62 && odds <= 95 {
-		return true
-	} else if ovr > 63 {
 		return true
 	}
 	return false

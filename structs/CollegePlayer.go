@@ -21,6 +21,7 @@ type CollegePlayer struct {
 	HasGraduated  bool
 	Stats         []CollegePlayerStats     `gorm:"foreignKey:CollegePlayerID"`
 	SeasonStats   CollegePlayerSeasonStats `gorm:"foreignKey:CollegePlayerID"`
+	HasProgressed bool
 }
 
 type ByOverall []CollegePlayer
@@ -216,6 +217,7 @@ func (cp *CollegePlayer) Progress(attr CollegePlayerProgressions) {
 	cp.PuntPower = attr.PuntPower
 	cp.ThrowAccuracy = attr.ThrowAccuracy
 	cp.ThrowPower = attr.ThrowPower
+	cp.HasProgressed = true
 }
 
 func (cp *CollegePlayer) GraduatePlayer() {

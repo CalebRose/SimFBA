@@ -5,7 +5,11 @@ import (
 )
 
 func GenerateIntFromRange(min int, max int) int {
-	return rand.Intn(max-min+1) + min
+	diff := max - min + 1
+	if diff < 0 {
+		diff = 1
+	}
+	return rand.Intn(diff) + min
 }
 
 func GenerateFloatFromRange(min float64, max float64) float64 {

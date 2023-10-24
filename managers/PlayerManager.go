@@ -187,20 +187,20 @@ func SetRedshirtStatusForPlayer(playerId string) structs.CollegePlayer {
 	return player
 }
 
-func GetAllNFLDraftees() []structs.NFLDraftee {
+func GetAllNFLDraftees() []models.NFLDraftee {
 	db := dbprovider.GetInstance().GetDB()
 
-	var NFLDraftees []structs.NFLDraftee
+	var NFLDraftees []models.NFLDraftee
 
 	db.Order("overall desc").Find(&NFLDraftees)
 
 	return NFLDraftees
 }
 
-func GetNFLDrafteeByPlayerID(PlayerID string) structs.NFLDraftee {
+func GetNFLDrafteeByPlayerID(PlayerID string) models.NFLDraftee {
 	db := dbprovider.GetInstance().GetDB()
 
-	var player structs.NFLDraftee
+	var player models.NFLDraftee
 
 	db.Where("id = ?", PlayerID).Find(&player)
 
@@ -264,7 +264,7 @@ func GetAllCollegePlayersWithStatsBySeasonID(cMap map[int]int, cNMap map[int]str
 	}
 
 	// If viewing a past season, get all past season players too
-	if seasonIDVal < ts.CollegeSeasonID {
+	if seasonIDVal <= ts.CollegeSeasonID {
 		var historicCollegePlayers []structs.HistoricCollegePlayer
 
 		if viewType == "SEASON" {

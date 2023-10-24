@@ -45,6 +45,8 @@ type BasePlayer struct {
 	InjuryType      string
 	WeeksOfRecovery uint
 	InjuryReserve   bool
+	// Clutch int
+	// Shotgun int
 }
 
 func (cp *BasePlayer) GetOverall() {

@@ -485,9 +485,6 @@ func ExportCFBStatisticsFromSim(gameStats []structs.GameStatDTO) {
 	timestamp := <-tsChn
 	close(tsChn)
 
-	timestamp.ToggleRunGames()
-	db.Save(&timestamp)
-
 	var teamStats []structs.CollegeTeamStats
 
 	for _, gameDataDTO := range gameStats {

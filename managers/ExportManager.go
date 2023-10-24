@@ -233,7 +233,7 @@ func ExportCrootsToCSV(w http.ResponseWriter) {
 }
 
 func ExportDrafteesToCSV(w http.ResponseWriter) {
-	w.Header().Set("Content-Disposition", "attachment;filename=2022SimNFLDraftClass.csv")
+	w.Header().Set("Content-Disposition", "attachment;filename=2024SimNFLDraftClass.csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
 	writer := csv.NewWriter(w)
@@ -260,18 +260,17 @@ func ExportDrafteesToCSV(w http.ResponseWriter) {
 	}
 
 	for _, player := range draftees {
-		csvModel := models.MapNFLDrafteeToModel(player)
 		playerRow := []string{
-			strconv.Itoa(csvModel.PlayerID), csvModel.FirstName, csvModel.LastName, csvModel.Position,
-			csvModel.Archetype, strconv.Itoa(player.Age), strconv.Itoa(player.Stars), player.College,
+			strconv.Itoa(player.PlayerID), player.FirstName, player.LastName, player.Position,
+			player.Archetype, strconv.Itoa(player.Age), strconv.Itoa(player.Stars), player.College,
 			player.HighSchool, player.City, player.State, strconv.Itoa(player.Height),
-			strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,
-			csvModel.FootballIQGrade, csvModel.AgilityGrade, csvModel.CarryingGrade,
-			csvModel.CatchingGrade, csvModel.RouteRunningGrade, csvModel.ZoneCoverageGrade, csvModel.ManCoverageGrade,
-			csvModel.StrengthGrade, csvModel.TackleGrade, csvModel.PassBlockGrade, csvModel.RunBlockGrade,
-			csvModel.PassRushGrade, csvModel.RunDefenseGrade, csvModel.ThrowPowerGrade, csvModel.ThrowAccuracyGrade,
-			csvModel.KickPowerGrade, csvModel.KickAccuracyGrade, csvModel.PuntPowerGrade, csvModel.PuntAccuracyGrade,
-			csvModel.StaminaGrade, csvModel.InjuryGrade, csvModel.PotentialGrade,
+			strconv.Itoa(player.Weight), player.OverallGrade, player.SpeedGrade,
+			player.FootballIQGrade, player.AgilityGrade, player.CarryingGrade,
+			player.CatchingGrade, player.RouteRunningGrade, player.ZoneCoverageGrade, player.ManCoverageGrade,
+			player.StrengthGrade, player.TackleGrade, player.PassBlockGrade, player.RunBlockGrade,
+			player.PassRushGrade, player.RunDefenseGrade, player.ThrowPowerGrade, player.ThrowAccuracyGrade,
+			player.KickPowerGrade, player.KickAccuracyGrade, player.PuntPowerGrade, player.PuntAccuracyGrade,
+			player.StaminaGrade, player.InjuryGrade, player.PotentialGrade,
 		}
 
 		err = writer.Write(playerRow)

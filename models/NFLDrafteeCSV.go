@@ -2,7 +2,6 @@ package models
 
 import (
 	config "github.com/CalebRose/SimFBA/secrets"
-	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
 )
 
@@ -46,7 +45,7 @@ type NFLDrafteeCSV struct {
 	PotentialGrade     string
 }
 
-func MapNFLDrafteeToModel(player structs.NFLDraftee) NFLDrafteeCSV {
+func MapNFLDrafteeToModel(player NFLDraftee) NFLDrafteeCSV {
 
 	attributeMeans := config.AttributeMeans()
 	OverallGrade := util.GetNFLOverallGrade(player.Overall)

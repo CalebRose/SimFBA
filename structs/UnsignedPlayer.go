@@ -17,6 +17,7 @@ type UnsignedPlayer struct {
 	HasGraduated  bool
 	Stats         []CollegePlayerStats     `gorm:"foreignKey:CollegePlayerID"`
 	SeasonStats   CollegePlayerSeasonStats `gorm:"foreignKey:CollegePlayerID"`
+	HasProgressed bool
 }
 
 func (up *UnsignedPlayer) GraduatePlayer() {
@@ -46,6 +47,7 @@ func (up *UnsignedPlayer) Progress(attr CollegePlayerProgressions) {
 	up.PuntPower = attr.PuntPower
 	up.ThrowAccuracy = attr.ThrowAccuracy
 	up.ThrowPower = attr.ThrowPower
+	up.HasProgressed = true
 }
 
 func (up *UnsignedPlayer) MapFromRecruit(r Recruit) {

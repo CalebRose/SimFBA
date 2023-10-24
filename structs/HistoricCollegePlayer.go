@@ -17,6 +17,7 @@ type HistoricCollegePlayer struct {
 	HasGraduated  bool
 	Stats         []CollegePlayerStats     `gorm:"foreignKey:CollegePlayerID"`
 	SeasonStats   CollegePlayerSeasonStats `gorm:"foreignKey:CollegePlayerID"`
+	HasProgressed bool
 }
 
 func (hcp *HistoricCollegePlayer) MapUnsignedPlayer(up UnsignedPlayer) {

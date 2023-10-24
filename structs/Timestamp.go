@@ -102,7 +102,7 @@ func (t *Timestamp) ToggleFALock() {
 func (t *Timestamp) SyncToNextWeek() {
 	t.MoveUpWeekCollege()
 	t.MoveUpWeekNFL()
-	if t.CollegeWeek > 20 {
+	if t.NFLWeek > 23 {
 		t.MoveUpSeason()
 	}
 	// Reset Toggles
