@@ -14,6 +14,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/nelkinda/health-go"
 	"github.com/nelkinda/health-go/checks/sendgrid"
+	"github.com/robfig/cron"
 )
 
 func InitialMigration() {
@@ -58,6 +59,7 @@ func handleRequests() {
 	// myRouter.HandleFunc("/admin/fix/affinities", controller.FixSmallTownBigCityAIBoards).Methods("GET")
 	myRouter.HandleFunc("/admin/run/the/games/", controller.RunTheGames).Methods("GET")
 	// myRouter.HandleFunc("/admin/overall/progressions/next/season", controller.ProgressToNextSeason).Methods("GET")
+	// myRouter.HandleFunc("/admin/overall/progressions/nfl", controller.ProgressNFL).Methods("GET")
 	myRouter.HandleFunc("/admin/trades/accept/sync/{proposalID}", controller.SyncAcceptedTrade).Methods("GET")
 	myRouter.HandleFunc("/admin/trades/veto/sync/{proposalID}", controller.VetoAcceptedTrade).Methods("GET")
 	myRouter.HandleFunc("/admin/trades/cleanup", controller.CleanUpRejectedTrades).Methods("GET")
@@ -116,6 +118,7 @@ func handleRequests() {
 	// myRouter.HandleFunc("/admin/import/preferences", controller.ImportTradePreferences).Methods("GET")
 	// myRouter.HandleFunc("/import/custom/croots", controller.ImportCustomCroots).Methods("GET")
 	// myRouter.HandleFunc("/import/simnfl/updated/values", controller.ImportSimNFLMinimumValues).Methods("GET")
+	// myRouter.HandleFunc("/import/simfba/dt/overall", controller.FixDTOveralls).Methods("GET")
 
 	// News Controls
 	myRouter.HandleFunc("/cfb/news/all/", controller.GetAllNewsLogsForASeason).Methods("GET")
@@ -226,6 +229,8 @@ func handleRequests() {
 	myRouter.HandleFunc("/croots/ds/class/{teamID}/", controller.GetRecruitingClassByTeamID).Methods("GET")
 	myRouter.HandleFunc("/croots/ds/croot/{firstName}/{lastName}", controller.GetRecruitByFirstNameAndLastName).Methods("GET")
 	myRouter.HandleFunc("/schedule/ds/current/week/{league}/", controller.GetCurrentWeekGamesByLeague).Methods("GET")
+	myRouter.HandleFunc("/ds/cfb/flex/{teamOneID}/{teamTwoID}/", controller.CompareTeams).Methods("GET")
+	myRouter.HandleFunc("/ds/cfb/conference/{conference}/", controller.CompareTeams).Methods("GET")
 	// Easter Controls
 	myRouter.HandleFunc("/easter/egg/collude/", controller.CollusionButton).Methods("POST")
 
@@ -246,10 +251,29 @@ func loadEnvs() {
 	}
 }
 
+func handleCron() {
+	go func() {
+		c := cron.New()
+		// Fill AI Recruiting Boards
+		// Update AI Gameplans and DCs
+		// Allocate AI Boards
+		// Sync Recruiting
+		// Sync Free Agency
+		// Sync Extension Offers
+		// Run the Games
+		// Reveal Timeslot Results
+		// Sync Week
+		c.Start()
+	}()
+}
+
 func main() {
 	InitialMigration()
 	fmt.Println("Football Server Initialized.")
 
+	fmt.Println("Loading cron...")
+	handleCron()
+	fmt.Println("Cron loaded.")
 	handleRequests()
 	fmt.Println("Hello There!")
 }

@@ -111,3 +111,21 @@ func (nc *NFLCapsheet) AddContractViaTrade(contract NFLContract, differenceValue
 	nc.Y5Bonus += contract.Y5Bonus
 	nc.Y5Salary += contract.Y5BaseSalary
 }
+
+func (nc *NFLCapsheet) ProgressCapsheet() {
+	nc.Y1Salary = nc.Y2Salary
+	nc.Y1Bonus = nc.Y2Bonus
+	nc.Y1CapHit = nc.Y2CapHit
+	nc.Y2Salary = nc.Y3Salary
+	nc.Y2Bonus = nc.Y3Bonus
+	nc.Y2CapHit = nc.Y3CapHit
+	nc.Y3Salary = nc.Y4Salary
+	nc.Y3Bonus = nc.Y4Bonus
+	nc.Y3CapHit = nc.Y4CapHit
+	nc.Y4Salary = nc.Y5Salary
+	nc.Y4Bonus = nc.Y5Bonus
+	nc.Y4CapHit = nc.Y5CapHit
+	nc.Y5Salary = 0
+	nc.Y5Bonus = 0
+	nc.Y5CapHit = 0
+}

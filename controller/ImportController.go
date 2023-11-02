@@ -57,3 +57,7 @@ func ImportUDFAs(w http.ResponseWriter, r *http.Request) {
 func GetMissingRecruitingClasses(w http.ResponseWriter, r *http.Request) {
 	managers.GetMissingRecruitingClasses()
 }
+
+func FixDTOveralls(w http.ResponseWriter, r *http.Request) {
+	managers.FixOverallRatingDT()
+}

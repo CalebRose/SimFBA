@@ -561,8 +561,7 @@ func FillAIRecruitingBoards() {
 			}
 
 			if (teamNeeds[croot.Position] < 1) ||
-				(croot.Stars == 5 && !isBlueBlood(team.AIBehavior)) ||
-				(croot.Stars > 3 && !team.IsFBS) {
+				(croot.Stars > team.AIMaxStar) {
 				continue
 			}
 
@@ -700,18 +699,8 @@ func AllocatePointsToAIBoards() {
 						continue
 					}
 
-					min := 5
-					max := 15
-
-					if team.AIBehavior == "Blue Blood" || team.AIBehavior == "Playoff Buster" {
-						min = 8
-					} else if team.AIBehavior == "Doormat" {
-						max = 7
-						min = 1
-					} else if team.AIBehavior == "G5" {
-						min = 1
-						max = 10
-					}
+					min := team.AIMinThreshold
+					max := team.AIMaxThreshold
 
 					num = float64(util.GenerateIntFromRange(min, max))
 					if num > pointsRemaining {
@@ -745,7 +734,7 @@ func AllocatePointsToAIBoards() {
 			}
 
 			croot.AllocateCurrentWeekPoints(num)
-			if !croot.Scholarship && team.ScholarshipsAvailable > 0 {
+			if !croot.Scholarship && team.ScholarshipsAvailable > 0 && team.AIAutoOfferscholarships {
 				croot.ToggleScholarship(true, false)
 				team.SubtractScholarshipsAvailable()
 			}

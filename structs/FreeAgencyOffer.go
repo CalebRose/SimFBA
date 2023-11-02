@@ -167,9 +167,9 @@ func (f *NFLExtensionOffer) AcceptOffer() {
 	f.CancelOffer()
 }
 
-func (f *NFLExtensionOffer) DeclineOffer() {
+func (f *NFLExtensionOffer) DeclineOffer(week int) {
 	f.Rejections += 1
-	if f.Rejections > 2 {
+	if f.Rejections > 2 || week >= 23 {
 		f.IsRejected = true
 	}
 }

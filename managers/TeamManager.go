@@ -229,3 +229,13 @@ func GetCollegeConferences() []structs.CollegeConference {
 
 	return conferences
 }
+
+func GetCollegeTeamsByConference(conf string) []structs.CollegeTeam {
+	db := dbprovider.GetInstance().GetDB()
+
+	var teams []structs.CollegeTeam
+
+	db.Where("conference = ?", conf).Find(&teams)
+
+	return teams
+}

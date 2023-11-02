@@ -17,6 +17,8 @@ type NFLDraftPick struct {
 	PickNumber     uint
 	SeasonID       uint
 	Season         uint
+	IsCompensation bool
+	IsVoid         bool
 	TradeValue     float64
 }
 

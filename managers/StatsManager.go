@@ -220,6 +220,16 @@ func GetNFLPlayerSeasonStatsBySeason(SeasonID string) []structs.NFLPlayerSeasonS
 	return playerStats
 }
 
+func GetAllNFLPlayerSeasonStatsByPlayerID(playerID string) []structs.NFLPlayerSeasonStats {
+	db := dbprovider.GetInstance().GetDB()
+
+	var playerStats []structs.NFLPlayerSeasonStats
+
+	db.Where("nfl_player_id = ?", playerID).Find(&playerStats)
+
+	return playerStats
+}
+
 func GetCollegeTeamStatsByGame(TeamID string, GameID string) structs.CollegeTeamStats {
 	db := dbprovider.GetInstance().GetDB()
 

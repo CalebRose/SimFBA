@@ -62,22 +62,6 @@ func AllCollegePlayersByTeamIDWithoutRedshirts(w http.ResponseWriter, r *http.Re
 	json.NewEncoder(w).Encode(players)
 }
 
-// GetCollegePlayerByNameAndTeam
-func GetCollegePlayerByNameAndTeam(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	firstName := vars["firstName"]
-	lastName := vars["lastName"]
-	teamID := vars["teamID"]
-
-	if len(firstName) == 0 {
-		panic("User did not provide a first name")
-	}
-
-	player := managers.GetCollegePlayerByNameAndTeam(firstName, lastName, teamID)
-
-	json.NewEncoder(w).Encode(player)
-}
-
 // GetCollegePlayerByID
 func GetCollegePlayerByCollegePlayerId(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)

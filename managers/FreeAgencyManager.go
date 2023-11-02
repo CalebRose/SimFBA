@@ -61,9 +61,14 @@ func GetAllAvailableNFLPlayers(TeamID string) models.FreeAgencyResponse {
 
 // GetAllFreeAgentsWithOffers -- For Free Agency UI Page.
 func GetAllFreeAgentsWithOffers() []structs.NFLPlayer {
+	ts := GetTimestamp()
 	db := dbprovider.GetInstance().GetDB()
 
 	fas := []structs.NFLPlayer{}
+
+	db.Preload("Offers", func(db *gorm.DB) *gorm.DB {
+		return db.Order("contract_value DESC").Where("is_active = true")
+	}).Order("overall desc").Where("is_free_agent = ? AND overall > ?", true, "43").Find(&fas)
 
 	sort.Slice(fas[:], func(i, j int) bool {
 		if fas[i].ShowLetterGrade {
@@ -75,9 +80,22 @@ func GetAllFreeAgentsWithOffers() []structs.NFLPlayer {
 		return fas[i].Overall > fas[j].Overall
 	})
 
-	db.Preload("Offers", func(db *gorm.DB) *gorm.DB {
-		return db.Order("contract_value DESC").Where("is_active = true")
-	}).Order("overall desc").Where("is_free_agent = ? AND overall > ?", true, "43").Find(&fas)
+	for _, fa := range fas {
+		playerID := strconv.Itoa(int(fa.ID))
+		stats := GetAllNFLPlayerSeasonStatsByPlayerID(playerID)
+		seasonID := 0
+		if !ts.IsNFLOffSeason {
+			seasonID = ts.NFLSeasonID
+		} else {
+			seasonID = ts.NFLSeasonID - 1
+		}
+		for _, stat := range stats {
+			if stat.SeasonID == uint(seasonID) {
+				fa.MapSeasonStats(stat)
+				break
+			}
+		}
+	}
 
 	return fas
 }
@@ -185,37 +203,45 @@ func SignFreeAgent(offer structs.FreeAgencyOffer, FreeAgent structs.NFLPlayer, t
 	db := dbprovider.GetInstance().GetDB()
 
 	NFLTeam := GetNFLTeamByTeamID(strconv.Itoa(int(offer.TeamID)))
-	FreeAgent.SignPlayer(int(NFLTeam.ID), NFLTeam.TeamAbbr)
+	Contract := structs.NFLContract{}
+	messageStart := "FA "
+	if !FreeAgent.IsPracticeSquad {
+		Contract = structs.NFLContract{
+			PlayerID:       FreeAgent.PlayerID,
+			NFLPlayerID:    FreeAgent.PlayerID,
+			TeamID:         NFLTeam.ID,
+			Team:           NFLTeam.TeamAbbr,
+			OriginalTeamID: NFLTeam.ID,
+			OriginalTeam:   NFLTeam.TeamAbbr,
+			ContractLength: offer.ContractLength,
+			Y1BaseSalary:   offer.Y1BaseSalary,
+			Y1Bonus:        offer.Y1Bonus,
+			Y2BaseSalary:   offer.Y2BaseSalary,
+			Y2Bonus:        offer.Y2Bonus,
+			Y3BaseSalary:   offer.Y3BaseSalary,
+			Y3Bonus:        offer.Y3Bonus,
+			Y4BaseSalary:   offer.Y4BaseSalary,
+			Y4Bonus:        offer.Y4Bonus,
+			Y5BaseSalary:   offer.Y5BaseSalary,
+			Y5Bonus:        offer.Y5Bonus,
+			ContractValue:  offer.ContractValue,
+			IsActive:       true,
+			IsComplete:     false,
+			IsExtended:     false,
+		}
 
-	Contract := structs.NFLContract{
-		PlayerID:       FreeAgent.PlayerID,
-		NFLPlayerID:    FreeAgent.PlayerID,
-		TeamID:         NFLTeam.ID,
-		Team:           NFLTeam.TeamAbbr,
-		OriginalTeamID: NFLTeam.ID,
-		OriginalTeam:   NFLTeam.TeamAbbr,
-		ContractLength: offer.ContractLength,
-		Y1BaseSalary:   offer.Y1BaseSalary,
-		Y1Bonus:        offer.Y1Bonus,
-		Y2BaseSalary:   offer.Y2BaseSalary,
-		Y2Bonus:        offer.Y2Bonus,
-		Y3BaseSalary:   offer.Y3BaseSalary,
-		Y3Bonus:        offer.Y3Bonus,
-		Y4BaseSalary:   offer.Y4BaseSalary,
-		Y4Bonus:        offer.Y4Bonus,
-		Y5BaseSalary:   offer.Y5BaseSalary,
-		Y5Bonus:        offer.Y5Bonus,
-		ContractValue:  offer.ContractValue,
-		IsActive:       true,
-		IsComplete:     false,
-		IsExtended:     false,
+		db.Create(&Contract)
+	} else {
+		Contract = GetContractByPlayerID(strconv.Itoa(int(FreeAgent.ID)))
+		Contract.MapPracticeSquadOffer(offer)
+		db.Save(&Contract)
+		messageStart = "PS "
 	}
-
-	db.Create(&Contract)
+	FreeAgent.SignPlayer(int(NFLTeam.ID), NFLTeam.TeamAbbr)
 	db.Save(&FreeAgent)
 
 	// News Log
-	message := "FA " + FreeAgent.Position + " " + FreeAgent.FirstName + " " + FreeAgent.LastName + " has signed with the " + NFLTeam.TeamName + " with a contract worth approximately $" + strconv.Itoa(int(Contract.ContractValue)) + " Million Dollars."
+	message := messageStart + FreeAgent.Position + " " + FreeAgent.FirstName + " " + FreeAgent.LastName + " has signed with the " + NFLTeam.TeamName + " with a contract worth approximately $" + strconv.Itoa(int(Contract.ContractValue)) + " Million Dollars."
 	CreateNewsLog("NFL", message, "Free Agency", int(offer.TeamID), ts)
 }
 
@@ -285,11 +311,15 @@ func SyncFreeAgencyOffers() {
 			w.ConvertWaivedPlayerToFA()
 			contract := GetContractByPlayerID(strconv.Itoa(int(w.ID)))
 			contract.DeactivateContract()
-			db.Save(&contract)
+			db.Delete(&contract)
 		} else {
 			offers := GetWaiverOffersByPlayerID(strconv.Itoa(int(w.ID)))
 			winningOffer := offers[0]
 			w.SignPlayer(int(winningOffer.TeamID), winningOffer.Team)
+
+			contract := GetContractByPlayerID(strconv.Itoa(int(w.ID)))
+			contract.ReassignTeam(winningOffer.TeamID, winningOffer.Team)
+			db.Save(&contract)
 
 			message := w.Position + " " + w.FirstName + " " + w.LastName + " was picked up on the Waiver Wire by " + winningOffer.Team
 			CreateNewsLog("NFL", message, "Free Agency", int(winningOffer.TeamID), ts)
@@ -401,8 +431,8 @@ func SyncExtensionOffers() {
 					message := ""
 					if odds == 0 || roll > odds {
 						// Rejects offer
-						e.DeclineOffer()
-						player.DeclineOffer()
+						e.DeclineOffer(ts.NFLWeek)
+						player.DeclineOffer(ts.NFLWeek)
 						if e.IsRejected || player.Rejections > 2 {
 							message = player.Position + " " + player.FirstName + " " + player.LastName + " has rejected an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars and will enter Free Agency."
 						} else {
@@ -569,13 +599,13 @@ func CancelWaiverOffer(offer structs.NFLWaiverOffDTO) {
 }
 
 func getExtensionPercentageOdds(percentage float64) float64 {
-	if percentage > 100 {
+	if percentage >= 100 {
 		return 100
-	} else if percentage > 90 {
+	} else if percentage >= 90 {
 		return 75
-	} else if percentage > 80 {
+	} else if percentage >= 80 {
 		return 50
-	} else if percentage > 70 {
+	} else if percentage >= 70 {
 		return 25
 	}
 	return 0
@@ -661,4 +691,14 @@ func validateFreeAgencyPref(playerRecord structs.NFLPlayer, roster []structs.NFL
 func hateCheck(bias []string, teamName string) bool {
 	joinedBias := strings.Join(bias, " ")
 	return joinedBias != teamName
+}
+
+func GetRetiredContracts() []structs.NFLContract {
+	db := dbprovider.GetInstance().GetDB()
+
+	contracts := []structs.NFLContract{}
+
+	db.Where("player_retired = ?", true).Find(&contracts)
+
+	return contracts
 }

@@ -152,23 +152,6 @@ func GetFutureWeatherForecast(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(res)
 }
 
-// GetCollegeGamesByTeamIDAndSeasonID
-func GetCurrentWeekGamesByLeague(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	league := vars["league"]
-	if len(league) == 0 {
-		panic("User did not provide teamID")
-	}
-
-	if league == "simcfb" {
-		collegeGames := managers.GetCFBCurrentWeekSchedule()
-		json.NewEncoder(w).Encode(collegeGames)
-	} else {
-		nflgames := managers.GetNFLCurrentWeekSchedule()
-		json.NewEncoder(w).Encode(nflgames)
-	}
-}
-
 func GetBoxScoreResults(w http.ResponseWriter, r *http.Request) {
 	// gameID := vars["gameID"]
 	// if len(gameID) == 0 {

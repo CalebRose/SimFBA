@@ -18,20 +18,6 @@ func AllRecruits(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(recruits)
 }
 
-func GetRecruitByFirstNameAndLastName(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	firstName := vars["firstName"]
-	lastName := vars["lastName"]
-
-	if len(firstName) == 0 {
-		panic("User did not provide a first name")
-	}
-
-	recruit := managers.GetCollegeRecruitByName(firstName, lastName)
-
-	json.NewEncoder(w).Encode(recruit)
-}
-
 // AllJUCOCollegeRecruits
 func AllJUCOCollegeRecruits(w http.ResponseWriter, r *http.Request) {
 	// Need to write manager code for getting all college recruits who age / year is greater than 18

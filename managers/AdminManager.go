@@ -43,6 +43,11 @@ func MoveUpWeek() structs.Timestamp {
 	if timestamp.NFLWeek > 15 {
 		SyncExtensionOffers()
 	}
+	if timestamp.NFLWeek > 22 {
+		timestamp.MoveUpSeason()
+		// Run Progressions
+		//
+	}
 	db.Save(&timestamp)
 
 	return timestamp

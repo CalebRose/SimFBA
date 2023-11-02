@@ -128,6 +128,11 @@ func ProgressToNextSeason(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(w, "Team Ranks successfully generated.")
 }
 
+func ProgressNFL(w http.ResponseWriter, r *http.Request) {
+	managers.NFLProgressionMain()
+	fmt.Println(w, "Progressions Complete.")
+}
+
 func FillAIBoards(w http.ResponseWriter, r *http.Request) {
 	managers.FillAIRecruitingBoards()
 	fmt.Println(w, "Team Ranks successfully generated.")

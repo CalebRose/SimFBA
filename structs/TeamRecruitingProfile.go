@@ -29,9 +29,15 @@ type RecruitingTeamProfile struct {
 	IsFBS                     bool
 	IsAI                      bool
 	AIBehavior                string
+	WeeksMissed               int
+	BattlesWon                int
+	BattlesLost               int
+	AIMaxStar                 int
+	AIMinThreshold            int
+	AIMaxThreshold            int
+	AIAutoOfferscholarships   bool
 	Recruits                  []RecruitPlayerProfile `gorm:"foreignKey:ProfileID"`
 	Affinities                []ProfileAffinity      `gorm:"foreignKey:ProfileID"`
-	WeeksMissed               int
 }
 
 type SaveProfile interface{}
@@ -121,6 +127,14 @@ func (r *RecruitingTeamProfile) ToggleAIBehavior() {
 	r.IsAI = !r.IsAI
 }
 
+func (r *RecruitingTeamProfile) UpdateAIBehavior(isAi, autoOffer bool, star, min, max int) {
+	r.IsAI = isAi
+	r.AIAutoOfferscholarships = autoOffer
+	r.AIMaxStar = star
+	r.AIMinThreshold = min
+	r.AIMaxThreshold = max
+}
+
 func (r *RecruitingTeamProfile) SetRecruitingClassSize(val int) {
 	if val > 25 && r.IsFBS {
 		r.RecruitClassSize = 25
@@ -130,4 +144,12 @@ func (r *RecruitingTeamProfile) SetRecruitingClassSize(val int) {
 		r.RecruitClassSize = val
 	}
 
+}
+
+func (r *RecruitingTeamProfile) AddBattleWon() {
+	r.BattlesWon += 1
+}
+
+func (r *RecruitingTeamProfile) AddBattleLost() {
+	r.BattlesLost += 1
 }

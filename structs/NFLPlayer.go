@@ -30,6 +30,7 @@ type NFLPlayer struct {
 	DraftedRound      uint
 	DraftedPick       uint
 	ShowLetterGrade   bool
+	HasProgressed     bool
 	Rejections        int
 	Stats             []NFLPlayerStats     `gorm:"foreignKey:NFLPlayerID"`
 	SeasonStats       NFLPlayerSeasonStats `gorm:"foreignKey:NFLPlayerID"`
@@ -80,6 +81,7 @@ func (np *NFLPlayer) ToggleIsFreeAgent() {
 	np.IsOnTradeBlock = false
 	np.IsPracticeSquad = false
 	np.Rejections = 0
+	np.IsWaived = false
 }
 
 func (np *NFLPlayer) SignPlayer(TeamID int, Abbr string) {
@@ -158,6 +160,51 @@ func (np *NFLPlayer) TradePlayer(id uint, team string) {
 	np.IsOnTradeBlock = false
 }
 
-func (f *NFLPlayer) DeclineOffer() {
+func (f *NFLPlayer) DeclineOffer(week int) {
 	f.Rejections += 1
+	if week >= 23 {
+		f.Rejections += 2
+	}
+}
+
+func (f *NFLPlayer) ToggleHasProgressed() {
+	f.HasProgressed = true
+}
+
+func (np *NFLPlayer) Progress(attr CollegePlayerProgressions) {
+	np.Age++
+	np.Experience++
+	np.Agility = attr.Agility
+	np.Speed = attr.Speed
+	np.FootballIQ = attr.FootballIQ
+	np.Carrying = attr.Carrying
+	np.Catching = attr.Catching
+	np.RouteRunning = attr.RouteRunning
+	np.PassBlock = attr.PassBlock
+	np.RunBlock = attr.RunBlock
+	np.PassRush = attr.PassRush
+	np.RunDefense = attr.RunDefense
+	np.Tackle = attr.Tackle
+	np.Strength = attr.Strength
+	np.ManCoverage = attr.ManCoverage
+	np.ZoneCoverage = attr.ZoneCoverage
+	np.KickAccuracy = attr.KickAccuracy
+	np.KickPower = attr.KickPower
+	np.PuntAccuracy = attr.PuntAccuracy
+	np.PuntPower = attr.PuntPower
+	np.ThrowAccuracy = attr.ThrowAccuracy
+	np.ThrowPower = attr.ThrowPower
+	np.HasProgressed = true
+	np.ShowLetterGrade = false
+	np.IsInjured = false
+	np.WeeksOfRecovery = 0
+	np.InjuryType = ""
+	np.InjuryReserve = false
+	if len(attr.PotentialGrade) > 0 {
+		np.PotentialGrade = attr.PotentialGrade
+	}
+}
+
+func (f *NFLPlayer) MapSeasonStats(seasonStats NFLPlayerSeasonStats) {
+	f.SeasonStats = seasonStats
 }

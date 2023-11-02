@@ -143,6 +143,30 @@ func GetTeamScheduleForBot(TeamID string, SeasonID string) []models.CollegeGameR
 	return gameResponses
 }
 
+func GetCFBScheduleByConference(conf string) []structs.CollegeGame {
+	ts := GetTimestamp()
+
+	var games []structs.CollegeGame
+
+	teams := GetCollegeTeamsByConference(conf)
+	teamMap := make(map[uint]bool)
+
+	for _, t := range teams {
+		teamMap[t.ID] = true
+	}
+
+	weekID := strconv.Itoa(int(ts.CollegeWeekID))
+	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
+	matches := GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID)
+	for _, m := range matches {
+		if teamMap[uint(m.HomeTeamID)] || teamMap[uint(m.AwayTeamID)] {
+			games = append(games, m)
+		}
+	}
+
+	return games
+}
+
 func GetCFBCurrentWeekSchedule() []structs.CollegeGame {
 	db := dbprovider.GetInstance().GetDB()
 

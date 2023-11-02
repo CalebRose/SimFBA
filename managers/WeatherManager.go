@@ -279,6 +279,11 @@ func GenerateWeatherForNFLGame(db *gorm.DB, game structs.NFLGame, abbr string, t
 	region := regions[regionName]
 	chances := []structs.WeatherChance{}
 
+	week := game.Week
+	if week > 20 {
+		week = 19
+	}
+
 	precip := ""
 	lowTemp := 0.0
 	highTemp := 0.0
@@ -287,15 +292,15 @@ func GenerateWeatherForNFLGame(db *gorm.DB, game structs.NFLGame, abbr string, t
 	wind := 0.0
 	windCategory := ""
 
-	if region.Forecasts[game.Week].DaysOfRain != 0 {
+	if region.Forecasts[week].DaysOfRain != 0 {
 		chances = append(chances, structs.WeatherChance{Weather: "Rain", DaysOfWeather: region.Forecasts[game.Week].DaysOfRain})
 	}
 
-	if region.Forecasts[game.Week].DaysOfMix != 0 {
+	if region.Forecasts[week].DaysOfMix != 0 {
 		chances = append(chances, structs.WeatherChance{Weather: "Mix", DaysOfWeather: region.Forecasts[game.Week].DaysOfMix})
 	}
 
-	if region.Forecasts[game.Week].DaysOfSnow != 0 {
+	if region.Forecasts[week].DaysOfSnow != 0 {
 		chances = append(chances, structs.WeatherChance{Weather: "Snow", DaysOfWeather: region.Forecasts[game.Week].DaysOfSnow})
 	}
 
@@ -409,13 +414,13 @@ func GenerateWeatherForNFLGame(db *gorm.DB, game structs.NFLGame, abbr string, t
 		windCategory = "Very Windy"
 	}
 
-	lowMean := float64(region.Forecasts[game.Week].AvgLow)
-	lowMin := float64(region.Forecasts[game.Week].MinLow)
+	lowMean := float64(region.Forecasts[week].AvgLow)
+	lowMin := float64(region.Forecasts[week].MinLow)
 	lowStdDev := (lowMean - lowMin) / 1.28
 	lowTemp = rand.NormFloat64()*lowStdDev + lowMean
 
-	highMean := float64(region.Forecasts[game.Week].AvgHigh)
-	highMin := float64(region.Forecasts[game.Week].MinHigh)
+	highMean := float64(region.Forecasts[week].AvgHigh)
+	highMin := float64(region.Forecasts[week].MinHigh)
 	highStdDev := (highMean - highMin) / 1.28
 	highTemp = rand.NormFloat64()*highStdDev + highMean
 

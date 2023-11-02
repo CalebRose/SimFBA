@@ -199,65 +199,6 @@ func GetNFLStatsPageContent(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-func GetCollegePlayerStatsByNameTeamAndWeek(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	firstName := vars["firstName"]
-	lastName := vars["lastName"]
-	teamID := vars["team"]
-	week := vars["week"]
-
-	if len(firstName) == 0 {
-		panic("User did not provide a first name")
-	}
-
-	player := managers.GetCollegePlayerByNameTeamAndWeek(firstName, lastName, teamID, week)
-
-	json.NewEncoder(w).Encode(player)
-}
-
-func GetCurrentSeasonCollegePlayerStatsByNameTeam(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	firstName := vars["firstName"]
-	lastName := vars["lastName"]
-	teamID := vars["team"]
-
-	if len(firstName) == 0 {
-		panic("User did not provide a first name")
-	}
-
-	player := managers.GetSeasonalCollegePlayerByNameTeam(firstName, lastName, teamID)
-
-	json.NewEncoder(w).Encode(player)
-}
-
-func GetWeeklyTeamStatsByTeamAbbrAndWeek(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	teamID := vars["team"]
-	week := vars["week"]
-
-	if len(teamID) == 0 {
-		panic("User did not provide a first name")
-	}
-
-	team := managers.GetTeamStatsByWeekAndTeam(teamID, week)
-
-	json.NewEncoder(w).Encode(team)
-}
-
-func GetSeasonTeamStatsByTeamAbbrAndSeason(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	teamID := vars["team"]
-	season := vars["season"]
-
-	if len(teamID) == 0 {
-		panic("User did not provide a first name")
-	}
-
-	team := managers.GetSeasonalTeamStats(teamID, season)
-
-	json.NewEncoder(w).Encode(team)
-}
-
 func ResetCFBSeasonalStats(w http.ResponseWriter, r *http.Request) {
 	managers.ResetCFBSeasonalStats()
 }

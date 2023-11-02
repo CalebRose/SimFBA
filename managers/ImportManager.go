@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
 	"github.com/jinzhu/gorm"
@@ -803,4 +804,21 @@ func getBonusByYear(round int, pick int) float64 {
 		return 0.25
 	}
 	return 0
+}
+
+func FixOverallRatingDT() {
+	db := dbprovider.GetInstance().GetDB()
+
+	drafteeDTs := []models.NFLDraftee{}
+
+	db.Where("position = ?", "DT").Find(&drafteeDTs)
+
+	for _, dt := range drafteeDTs {
+		if dt.Position != "DT" {
+			continue
+		}
+		OverallGrade := util.GetNFLOverallGrade(util.GenerateIntFromRange(dt.Overall-7, dt.Overall+7))
+		dt.MapNewOverallGrade(OverallGrade)
+		db.Save(&dt)
+	}
 }

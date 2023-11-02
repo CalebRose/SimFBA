@@ -901,6 +901,16 @@ func GetNFLPlayersForRosterPage(TeamID string) []structs.NFLPlayer {
 	return players
 }
 
+func GetNFLPlayersRecordsByTeamID(TeamID string) []structs.NFLPlayer {
+	db := dbprovider.GetInstance().GetDB()
+
+	var players []structs.NFLPlayer
+
+	db.Where("team_id = ?", TeamID).Find(&players)
+
+	return players
+}
+
 func GetNFLPlayersWithContractsByTeamID(TeamID string) []structs.NFLPlayer {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -939,15 +949,13 @@ func PlaceNFLPlayerOnPracticeSquad(playerId string) {
 
 	player := GetOnlyNFLPlayerRecord(playerId)
 	player.ToggleIsPracticeSquad()
-	teamID := strconv.Itoa(player.TeamID)
 
-	contract := GetContractByPlayerID(playerId)
-	contract.DeactivateContract()
-	db.Save(&contract)
-
-	teamCapsheet := GetCapsheetByTeamID(teamID)
-	teamCapsheet.SubtractFromCapsheet(contract)
-	db.Save(&teamCapsheet)
+	if !player.IsPracticeSquad {
+		Offers := GetFreeAgentOffersByPlayerID(strconv.Itoa(int(player.ID)))
+		for _, o := range Offers {
+			db.Delete(&o)
+		}
+	}
 
 	db.Save(&player)
 }
@@ -1056,6 +1064,19 @@ func GetInjuredNFLPlayers() []structs.NFLPlayer {
 	return nflPlayers
 }
 
+func GetExtensionOffersByPlayerID(playerID string) []structs.NFLExtensionOffer {
+	db := dbprovider.GetInstance().GetDB()
+
+	offers := []structs.NFLExtensionOffer{}
+
+	err := db.Where("nfl_player_id = ?", playerID).Find(&offers).Error
+	if err != nil {
+		return offers
+	}
+
+	return offers
+}
+
 func GetExtensionOfferByOfferID(OfferID string) structs.NFLExtensionOffer {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -1104,4 +1125,14 @@ func CancelExtensionOffer(offer structs.FreeAgencyOfferDTO) {
 	freeAgentOffer.CancelOffer()
 
 	db.Save(&freeAgentOffer)
+}
+
+func GetRetiredSimNFLPlayers() []structs.NFLRetiredPlayer {
+	db := dbprovider.GetInstance().GetDB()
+
+	players := []structs.NFLRetiredPlayer{}
+
+	db.Find(&players)
+
+	return players
 }

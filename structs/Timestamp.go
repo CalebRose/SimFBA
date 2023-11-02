@@ -42,6 +42,7 @@ type Timestamp struct {
 	Y4Capspace                 float64
 	Y5Capspace                 float64
 	FreeAgencyRound            uint
+	RunCron                    bool
 }
 
 func (t *Timestamp) MoveUpWeekCollege() {
@@ -76,6 +77,11 @@ func (t *Timestamp) MoveUpSeason() {
 	t.CollegeWeek = 0
 	t.NFLWeek = 0
 	t.NFLSeasonID++
+	t.Y1Capspace = t.Y2Capspace
+	t.Y2Capspace = t.Y3Capspace
+	t.Y3Capspace = t.Y4Capspace
+	t.Y4Capspace = t.Y5Capspace
+	t.Y5Capspace += 5
 }
 
 func (t *Timestamp) ToggleRES() {
@@ -102,9 +108,6 @@ func (t *Timestamp) ToggleFALock() {
 func (t *Timestamp) SyncToNextWeek() {
 	t.MoveUpWeekCollege()
 	t.MoveUpWeekNFL()
-	if t.NFLWeek > 23 {
-		t.MoveUpSeason()
-	}
 	// Reset Toggles
 	t.ThursdayGames = false
 	t.FridayGames = false

@@ -43,10 +43,14 @@ func AllocateCapsheets() {
 		Capsheet.ResetCapsheet()
 
 		sort.Sort(structs.ByTotalContract(players))
-
+		window := 50
 		for idx, player := range players {
-			if idx > 50 {
+			if idx > window {
 				break
+			}
+			if player.IsPracticeSquad {
+				window += 1
+				continue
 			}
 			contract := player.Contract
 
@@ -64,7 +68,8 @@ func GetContractByPlayerID(PlayerID string) structs.NFLContract {
 
 	err := db.Where("nfl_player_id = ? AND is_active = ?", PlayerID, true).Find(&contract).Error
 	if err != nil {
-		log.Fatalln("Could not find active contract for player" + PlayerID)
+		fmt.Println("No active contract for " + PlayerID)
+		return structs.NFLContract{}
 	}
 
 	return contract
@@ -91,5 +96,41 @@ func CalculateContractValues() {
 	for _, c := range contracts {
 		c.CalculateContract()
 		db.Save(&c)
+	}
+}
+
+func AllocateRetiredContracts() {
+	db := dbprovider.GetInstance().GetDB()
+	// Get All Capsheets
+	nflTeams := GetAllNFLTeams()
+	capsheetMap := make(map[uint]*structs.NFLCapsheet)
+
+	// Iterate & Map each capsheet
+	for i := 0; i < len(nflTeams); i++ {
+		team := nflTeams[i]
+		TeamID := strconv.Itoa(int(team.ID))
+
+		Capsheet := GetCapsheetByTeamID(TeamID)
+		Capsheet.ProgressCapsheet()
+
+		capsheetMap[team.ID] = &Capsheet
+	}
+
+	// Get All Retired Players
+	retiredContract := GetRetiredContracts()
+	// Iterate
+	for _, contract := range retiredContract {
+		// Add dead cap to next year
+		capsheet := capsheetMap[uint(contract.TeamID)]
+		capsheet.CutPlayerFromCapsheet(contract)
+		db.Delete(&contract)
+	}
+	// If still active contract, add to dead cap
+	// Then delete contract
+
+	for _, team := range nflTeams {
+		cap := capsheetMap[team.ID]
+
+		db.Save(&cap)
 	}
 }

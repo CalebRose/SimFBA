@@ -58,19 +58,6 @@ func GetRecruitingProfileForTeamBoardByTeamID(w http.ResponseWriter, r *http.Req
 	json.NewEncoder(w).Encode(teamBoardResponse)
 }
 
-func GetRecruitingClassByTeamID(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	teamID := vars["teamID"]
-
-	if len(teamID) == 0 {
-		panic("User did not provide teamID")
-	}
-
-	recruitingProfile := managers.GetRecruitingClassByTeamID(teamID)
-
-	json.NewEncoder(w).Encode(recruitingProfile)
-}
-
 func ToggleAIBehavior(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	teamID := vars["teamID"]

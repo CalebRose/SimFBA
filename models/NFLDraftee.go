@@ -232,3 +232,7 @@ func (n *NFLDraftee) MapUnsignedPlayer(up structs.UnsignedPlayer) {
 	n.PuntPowerGrade = PuntPowerGrade
 	n.PuntAccuracyGrade = PuntAccuracyGrade
 }
+
+func (n *NFLDraftee) MapNewOverallGrade(grade string) {
+	n.OverallGrade = grade
+}

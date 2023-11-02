@@ -27,10 +27,17 @@ type NFLContract struct {
 	IsActive        bool
 	IsComplete      bool
 	IsExtended      bool
+	HasProgressed   bool
+	PlayerRetired   bool
 }
 
 func (c *NFLContract) DeactivateContract() {
 	c.IsActive = false
+}
+
+func (c *NFLContract) ReassignTeam(TeamID uint, Team string) {
+	c.TeamID = TeamID
+	c.Team = Team
 }
 
 func (c *NFLContract) TradePlayer(TeamID uint, Team string, percentage float64) {
@@ -51,6 +58,9 @@ func (c *NFLContract) ProgressContract() {
 	c.Y4Bonus = c.Y5Bonus
 	c.Y5BaseSalary = 0
 	c.Y5Bonus = 0
+	c.ContractLength -= 1
+	c.CalculateContract()
+	c.HasProgressed = true
 
 	if c.Y1BaseSalary == 0 && c.Y1Bonus == 0 {
 		c.IsComplete = true
@@ -71,4 +81,50 @@ func (c *NFLContract) CalculateContract() {
 	y5SalaryVal := c.Y5BaseSalary * 0.05
 	y5BonusVal := c.Y5Bonus * 0.6
 	c.ContractValue = y1SalaryVal + y1BonusVal + y2SalaryVal + y2BonusVal + y3SalaryVal + y3BonusVal + y4SalaryVal + y4BonusVal + y5SalaryVal + y5BonusVal
+}
+
+func (c *NFLContract) MapExtension(e NFLExtensionOffer) {
+	c.ContractLength = e.ContractLength
+	c.Y1BaseSalary = e.Y1BaseSalary
+	c.Y1Bonus = e.Y1Bonus
+	c.Y2BaseSalary = e.Y2BaseSalary
+	c.Y2Bonus = e.Y2Bonus
+	c.Y3BaseSalary = e.Y3BaseSalary
+	c.Y3Bonus = e.Y3Bonus
+	c.Y4BaseSalary = e.Y4BaseSalary
+	c.Y4Bonus = e.Y4Bonus
+	c.Y5BaseSalary = e.Y5BaseSalary
+	c.Y5Bonus = e.Y5Bonus
+	c.BonusPercentage = e.BonusPercentage
+	c.CalculateContract()
+	c.IsActive = true
+	c.IsComplete = false
+	c.IsExtended = true
+}
+
+func (c *NFLContract) MapPracticeSquadOffer(f FreeAgencyOffer) {
+	c.OriginalTeam = c.Team
+	c.OriginalTeamID = c.TeamID
+	c.TeamID = f.TeamID
+	c.Team = f.Team
+	c.ContractLength = f.ContractLength
+	c.Y1BaseSalary = f.Y1BaseSalary
+	c.Y1Bonus = f.Y1Bonus
+	c.Y2BaseSalary = f.Y2BaseSalary
+	c.Y2Bonus = f.Y2Bonus
+	c.Y3BaseSalary = f.Y3BaseSalary
+	c.Y3Bonus = f.Y3Bonus
+	c.Y4BaseSalary = f.Y4BaseSalary
+	c.Y4Bonus = f.Y4Bonus
+	c.Y5BaseSalary = f.Y5BaseSalary
+	c.Y5Bonus = f.Y5Bonus
+	c.BonusPercentage = f.BonusPercentage
+	c.CalculateContract()
+	c.IsActive = true
+	c.IsComplete = false
+	c.IsExtended = true
+}
+
+func (c *NFLContract) ToggleRetirement() {
+	c.PlayerRetired = true
 }
