@@ -52,6 +52,25 @@ func UpdateGameplanPenalties() {
 	}
 }
 
+func GetGameplanDataByTeamID(teamID string) structs.GamePlanResponse {
+	db := dbprovider.GetInstance().GetDB()
+
+	var gamePlan structs.CollegeGameplan
+
+	err := db.Where("id = ?", teamID).Find(&gamePlan).Error
+	if err != nil {
+		fmt.Println(err)
+		log.Fatalln("Gameplan does not exist for team.")
+	}
+
+	depthChart := GetDepthchartByTeamID(teamID)
+
+	return structs.GamePlanResponse{
+		CollegeGP: gamePlan,
+		CollegeDC: depthChart,
+	}
+}
+
 func GetGameplanByTeamID(teamID string) structs.CollegeGameplan {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -62,10 +81,11 @@ func GetGameplanByTeamID(teamID string) structs.CollegeGameplan {
 		fmt.Println(err)
 		log.Fatalln("Gameplan does not exist for team.")
 	}
+
 	return gamePlan
 }
 
-func GetNFLGameplanByTeamID(teamID string) structs.NFLGameplan {
+func GetNFLGameplanDataByTeamID(teamID string) structs.GamePlanResponse {
 	db := dbprovider.GetInstance().GetDB()
 
 	var gamePlan structs.NFLGameplan
@@ -75,7 +95,27 @@ func GetNFLGameplanByTeamID(teamID string) structs.NFLGameplan {
 		fmt.Println(err)
 		log.Fatalln("Gameplan does not exist for team.")
 	}
-	return gamePlan
+
+	depthChart := GetNFLDepthchartByTeamID(teamID)
+
+	return structs.GamePlanResponse{
+		NFLGP: gamePlan,
+		NFLDC: depthChart,
+	}
+}
+
+func GetNFLGameplanByTeamID(teamID string) structs.NFLGameplan {
+	db := dbprovider.GetInstance().GetDB()
+
+	var gp structs.NFLGameplan
+
+	err := db.Where("id = ?", teamID).Find(&gp).Error
+	if err != nil {
+		fmt.Println(err)
+		log.Fatalln("Gameplan does not exist for team.")
+	}
+
+	return gp
 }
 
 func GetGameplanByGameplanID(gameplanID string) structs.CollegeGameplan {
@@ -189,7 +229,7 @@ func UpdateGameplan(updateGameplanDto structs.UpdateGameplanDTO) {
 		db.Create(&newsLog)
 	}
 
-	currentGameplan.UpdateGameplan(updateGameplanDto.UpdatedGameplan)
+	currentGameplan.UpdateCollegeGameplan(updateGameplanDto.UpdatedGameplan)
 
 	db.Save(&currentGameplan)
 }
@@ -237,7 +277,7 @@ func UpdateNFLGameplan(updateGameplanDto structs.UpdateGameplanDTO) {
 		db.Create(&newsLog)
 	}
 
-	currentGameplan.UpdateGameplan(UpdatedGameplan)
+	currentGameplan.UpdateNFLGameplan(UpdatedGameplan)
 
 	db.Save(&currentGameplan)
 }

@@ -24,8 +24,9 @@ func ProgressionMain() {
 
 	collegeTeams := GetAllCollegeTeams()
 	// Loop
+	var graduatingPlayers []models.NFLDraftee
+
 	for _, team := range collegeTeams {
-		var graduatingPlayers []models.NFLDraftee
 		teamID := strconv.Itoa(int(team.ID))
 		roster := GetAllCollegePlayersByTeamId(teamID)
 		croots := GetSignedRecruitsByTeamProfileID(teamID)
@@ -126,8 +127,6 @@ func ProgressionMain() {
 
 	// Unsigned Players
 	unsignedPlayers := GetAllUnsignedPlayers()
-	var graduatingPlayers []models.NFLDraftee
-
 	for _, player := range unsignedPlayers {
 		player = ProgressUnsignedPlayer(player, SeasonID)
 		if (player.IsRedshirt && player.Year > 5) ||

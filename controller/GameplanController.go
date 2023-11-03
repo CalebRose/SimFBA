@@ -19,7 +19,7 @@ func GetTeamGameplanByTeamID(w http.ResponseWriter, r *http.Request) {
 		panic("User did not provide a teamID")
 	}
 
-	gamePlan := managers.GetGameplanByTeamID(teamID)
+	gamePlan := managers.GetGameplanDataByTeamID(teamID)
 
 	json.NewEncoder(w).Encode(gamePlan)
 }
@@ -100,7 +100,7 @@ func GetNFLGameplanByTeamID(w http.ResponseWriter, r *http.Request) {
 		panic("User did not provide a teamID")
 	}
 
-	gamePlan := managers.GetNFLGameplanByTeamID(teamID)
+	gamePlan := managers.GetNFLGameplanDataByTeamID(teamID)
 
 	json.NewEncoder(w).Encode(gamePlan)
 }

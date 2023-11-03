@@ -66,8 +66,17 @@ func GetAllFreeAgentsWithOffers() []structs.NFLPlayer {
 
 	fas := []structs.NFLPlayer{}
 
+	seasonID := 0
+	if !ts.IsNFLOffSeason {
+		seasonID = ts.NFLSeasonID
+	} else {
+		seasonID = ts.NFLSeasonID - 1
+	}
+	seasonStr := strconv.Itoa(seasonID)
 	db.Preload("Offers", func(db *gorm.DB) *gorm.DB {
 		return db.Order("contract_value DESC").Where("is_active = true")
+	}).Preload("SeasonStats", func(db *gorm.DB) *gorm.DB {
+		return db.Where("season_id = ?", seasonStr)
 	}).Order("overall desc").Where("is_free_agent = ? AND overall > ?", true, "43").Find(&fas)
 
 	sort.Slice(fas[:], func(i, j int) bool {
@@ -79,24 +88,6 @@ func GetAllFreeAgentsWithOffers() []structs.NFLPlayer {
 		}
 		return fas[i].Overall > fas[j].Overall
 	})
-
-	for _, fa := range fas {
-		playerID := strconv.Itoa(int(fa.ID))
-		stats := GetAllNFLPlayerSeasonStatsByPlayerID(playerID)
-		seasonID := 0
-		if !ts.IsNFLOffSeason {
-			seasonID = ts.NFLSeasonID
-		} else {
-			seasonID = ts.NFLSeasonID - 1
-		}
-		for _, stat := range stats {
-			if stat.SeasonID == uint(seasonID) {
-				fa.MapSeasonStats(stat)
-				break
-			}
-		}
-	}
-
 	return fas
 }
 
