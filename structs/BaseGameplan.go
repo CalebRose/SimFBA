@@ -28,6 +28,18 @@ type BaseGameplan struct {
 	OffForm3OptionRun            int
 	OffForm3Pass                 int
 	OffForm3RPO                  int
+	OffFormation4Name            string
+	OffForm4Weight               int
+	OffForm4TraditionalRun       int
+	OffForm4OptionRun            int
+	OffForm4Pass                 int
+	OffForm4RPO                  int
+	OffFormation5Name            string
+	OffForm5Weight               int
+	OffForm5TraditionalRun       int
+	OffForm5OptionRun            int
+	OffForm5Pass                 int
+	OffForm5RPO                  int
 	RunnerDistributionQB         int
 	RunnerDistributionRB1        int
 	RunnerDistributionRB2        int
@@ -161,6 +173,16 @@ func (bg *BaseGameplan) UpdateCollegeGameplan(dto CollegeGameplan) {
 	bg.OffForm3TraditionalRun = dto.OffForm3TraditionalRun
 	bg.OffForm3OptionRun = dto.OffForm3OptionRun
 	bg.OffForm3RPO = dto.OffForm3RPO
+	bg.OffFormation4Name = dto.OffFormation4Name
+	bg.OffForm4Weight = dto.OffForm4Weight
+	bg.OffForm4TraditionalRun = dto.OffForm4TraditionalRun
+	bg.OffForm4OptionRun = dto.OffForm4OptionRun
+	bg.OffForm4RPO = dto.OffForm4RPO
+	bg.OffFormation5Name = dto.OffFormation5Name
+	bg.OffForm5Weight = dto.OffForm5Weight
+	bg.OffForm5TraditionalRun = dto.OffForm5TraditionalRun
+	bg.OffForm5OptionRun = dto.OffForm5OptionRun
+	bg.OffForm5RPO = dto.OffForm5RPO
 	bg.RunnerDistributionQB = dto.RunnerDistributionQB
 	bg.RunnerDistributionRB1 = dto.RunnerDistributionRB1
 	bg.RunnerDistributionRB2 = dto.RunnerDistributionRB2
@@ -270,6 +292,16 @@ func (bg *BaseGameplan) UpdateNFLGameplan(dto NFLGameplan) {
 	bg.OffForm3TraditionalRun = dto.OffForm3TraditionalRun
 	bg.OffForm3OptionRun = dto.OffForm3OptionRun
 	bg.OffForm3RPO = dto.OffForm3RPO
+	bg.OffFormation4Name = dto.OffFormation4Name
+	bg.OffForm4Weight = dto.OffForm4Weight
+	bg.OffForm4TraditionalRun = dto.OffForm4TraditionalRun
+	bg.OffForm4OptionRun = dto.OffForm4OptionRun
+	bg.OffForm4RPO = dto.OffForm4RPO
+	bg.OffFormation5Name = dto.OffFormation5Name
+	bg.OffForm5Weight = dto.OffForm5Weight
+	bg.OffForm5TraditionalRun = dto.OffForm5TraditionalRun
+	bg.OffForm5OptionRun = dto.OffForm5OptionRun
+	bg.OffForm5RPO = dto.OffForm5RPO
 	bg.RunnerDistributionQB = dto.RunnerDistributionQB
 	bg.RunnerDistributionRB1 = dto.RunnerDistributionRB1
 	bg.RunnerDistributionRB2 = dto.RunnerDistributionRB2

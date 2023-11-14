@@ -45,8 +45,8 @@ type BasePlayer struct {
 	InjuryType      string
 	WeeksOfRecovery uint
 	InjuryReserve   bool
-	// Clutch int
-	// Shotgun int
+	Clutch          int // 0 is choker, 1 is normal, 2 is clutch, 3 is very clutch
+	Shotgun         int // 0 is Under Center, 1 Balanced, 2 Shotgun
 }
 
 func (cp *BasePlayer) GetOverall() {
