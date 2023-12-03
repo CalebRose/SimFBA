@@ -1136,3 +1136,29 @@ func GetRetiredSimNFLPlayers() []structs.NFLRetiredPlayer {
 
 	return players
 }
+
+func GetHistoricCollegePlayerByID(id string) structs.HistoricCollegePlayer {
+	db := dbprovider.GetInstance().GetDB()
+
+	var player structs.HistoricCollegePlayer
+
+	err := db.Where("id = ?", id).Find(&player).Error
+	if err != nil {
+		fmt.Println("Could not find player in historics DB")
+	}
+
+	return player
+}
+
+func GetNFLDrafteeByID(id string) models.NFLDraftee {
+	db := dbprovider.GetInstance().GetDB()
+
+	var player models.NFLDraftee
+
+	err := db.Where("id = ?", id).Find(&player).Error
+	if err != nil {
+		fmt.Println("Could not find player in historics DB")
+	}
+
+	return player
+}

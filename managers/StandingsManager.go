@@ -173,3 +173,13 @@ func GetAllNFLStandingsBySeasonID(seasonID string) []structs.NFLStandings {
 
 	return standings
 }
+
+func GetCollegeStandingsRecordByTeamID(id string, seasonID string) structs.CollegeStandings {
+	db := dbprovider.GetInstance().GetDB()
+
+	var standing structs.CollegeStandings
+
+	db.Where("team_id = ? AND season_id = ?", id, seasonID).Find(&standing)
+
+	return standing
+}

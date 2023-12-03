@@ -125,6 +125,24 @@ func (c *NFLContract) MapPracticeSquadOffer(f FreeAgencyOffer) {
 	c.IsExtended = true
 }
 
+func (c *NFLContract) FixContract(length int, y1s, y1b, y2s, y2b, y3s, y3b, y4s, y4b, y5s, y5b, bonus float64) {
+	c.ContractLength = length
+	c.Y1BaseSalary = y1s
+	c.Y1Bonus = y1b
+	c.Y2BaseSalary = y2s
+	c.Y2Bonus = y2b
+	c.Y3BaseSalary = y3s
+	c.Y3Bonus = y3b
+	c.Y4BaseSalary = y4s
+	c.Y4Bonus = y4b
+	c.Y5BaseSalary = y5s
+	c.Y5Bonus = y5b
+	c.BonusPercentage = bonus
+	c.CalculateContract()
+	c.IsActive = true
+	c.IsExtended = true
+}
+
 func (c *NFLContract) ToggleRetirement() {
 	c.PlayerRetired = true
 }

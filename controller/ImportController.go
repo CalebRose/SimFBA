@@ -58,6 +58,10 @@ func GetMissingRecruitingClasses(w http.ResponseWriter, r *http.Request) {
 	managers.GetMissingRecruitingClasses()
 }
 
-func FixDTOveralls(w http.ResponseWriter, r *http.Request) {
-	managers.FixOverallRatingDT()
+func UpdateDraftPicksForDraft(w http.ResponseWriter, r *http.Request) {
+	managers.UpdateDraftPicks()
+}
+
+func FixBrokenExtensions(w http.ResponseWriter, r *http.Request) {
+	managers.FixBrokenExtensions()
 }

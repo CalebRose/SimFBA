@@ -266,21 +266,23 @@ func GetRivalsTeamRanking(rp structs.RecruitingTeamProfile, signedCroots []struc
 }
 
 func getRecruitingModifier(stars int) float64 {
+	diceRoll := util.GenerateFloatFromRange(1, 20)
+	if diceRoll == 1 {
+		return 0.02
+	}
 	num := util.GenerateIntFromRange(1, 100)
 	mod := 0.0
 	if num < 11 {
 		mod = util.GenerateFloatFromRange(1.80, 2.00)
 	} else if num < 31 {
-		mod = util.GenerateFloatFromRange(1.66, 1.79)
+		mod = util.GenerateFloatFromRange(1.50, 1.69)
 	} else if num < 71 {
-		mod = util.GenerateFloatFromRange(1.45, 1.65)
+		mod = util.GenerateFloatFromRange(1.15, 1.49)
 	} else if num < 91 {
-		mod = util.GenerateFloatFromRange(1.25, 1.44)
+		mod = util.GenerateFloatFromRange(0.90, 1.14)
 	} else {
-		mod = util.GenerateFloatFromRange(1.1, 1.29)
+		mod = util.GenerateFloatFromRange(0.80, 0.89)
 	}
-	if stars == 5 {
-		mod -= util.GenerateFloatFromRange(0.05, 0.15)
-	}
+
 	return mod
 }

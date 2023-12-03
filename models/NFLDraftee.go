@@ -12,7 +12,13 @@ type NFLDraftee struct {
 	structs.BasePlayer
 	PlayerID           int
 	HighSchool         string
+	CollegeID          uint
 	College            string
+	DraftedTeamID      uint
+	DraftedTeam        string
+	DraftedRound       uint
+	DraftPickID        uint
+	DraftedPick        uint
 	City               string
 	State              string
 	OverallGrade       string
@@ -38,6 +44,7 @@ type NFLDraftee struct {
 	KickPowerGrade     string
 	PuntAccuracyGrade  string
 	PuntPowerGrade     string
+	PrimeAge           uint
 }
 
 func (n *NFLDraftee) Map(cp structs.CollegePlayer) {
@@ -235,4 +242,11 @@ func (n *NFLDraftee) MapUnsignedPlayer(up structs.UnsignedPlayer) {
 
 func (n *NFLDraftee) MapNewOverallGrade(grade string) {
 	n.OverallGrade = grade
+}
+
+func (n *NFLDraftee) AssignDraftedTeam(num uint, pickID uint, teamID uint, team string) {
+	n.DraftedPick = num
+	n.DraftPickID = pickID
+	n.DraftedTeamID = teamID
+	n.DraftedTeam = team
 }

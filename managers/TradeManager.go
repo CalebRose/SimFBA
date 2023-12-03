@@ -318,7 +318,7 @@ func AcceptTradeProposal(proposalID string) {
 				}
 			} else if options.NFLDraftPickID > 0 {
 				draftPick := GetDraftPickByDraftPickID(strconv.Itoa(int(options.NFLDraftPickID)))
-				pickRound := strconv.Itoa(int(draftPick.Round))
+				pickRound := strconv.Itoa(int(draftPick.DraftRound))
 				roundAbbreviation := util.GetRoundAbbreviation(pickRound)
 				season := strconv.Itoa(int(draftPick.Season))
 				newsLogMessage += season + " " + roundAbbreviation + " pick to " + proposal.RecepientTeam + "\n"
@@ -329,7 +329,7 @@ func AcceptTradeProposal(proposalID string) {
 				newsLogMessage += playerRecord.Position + " " + playerRecord.FirstName + " " + playerRecord.LastName + " to " + proposal.NFLTeam + "\n"
 			} else if options.NFLDraftPickID > 0 {
 				draftPick := GetDraftPickByDraftPickID(strconv.Itoa(int(options.NFLDraftPickID)))
-				pickRound := strconv.Itoa(int(draftPick.Round))
+				pickRound := strconv.Itoa(int(draftPick.DraftRound))
 				roundAbbreviation := util.GetRoundAbbreviation(pickRound)
 				season := strconv.Itoa(int(draftPick.Season))
 				newsLogMessage += season + " " + roundAbbreviation + " pick to " + proposal.NFLTeam + "\n"

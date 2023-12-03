@@ -166,3 +166,8 @@ func (t *Timestamp) ToggleAIrecruitingSync() {
 func (t *Timestamp) ToggleAIDepthCharts() {
 	t.AIDepthchartsSync = !t.AIDepthchartsSync
 }
+
+func (t *Timestamp) ToggleDraftTime() {
+	t.IsDraftTime = !t.IsDraftTime
+	// t.IsNBAOffseason = false
+}

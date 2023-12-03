@@ -7,6 +7,7 @@ type NFLPlayer struct {
 	BasePlayer
 	PlayerID          int
 	TeamID            int
+	CollegeID         uint
 	College           string
 	TeamAbbr          string
 	Experience        uint
@@ -28,10 +29,12 @@ type NFLPlayer struct {
 	DraftedTeamID     uint
 	DraftedTeam       string
 	DraftedRound      uint
+	DraftPickID       uint
 	DraftedPick       uint
 	ShowLetterGrade   bool
 	HasProgressed     bool
 	Rejections        int
+	PrimeAge          uint
 	Stats             []NFLPlayerStats     `gorm:"foreignKey:NFLPlayerID"`
 	SeasonStats       NFLPlayerSeasonStats `gorm:"foreignKey:NFLPlayerID"`
 	Contract          NFLContract          `gorm:"foreignKey:NFLPlayerID"`
@@ -51,6 +54,10 @@ func (rp ByTotalContract) Less(i, j int) bool {
 	p1Total := p1.Y1BaseSalary + p1.Y1Bonus + p1.Y2BaseSalary + p1.Y2Bonus + p1.Y3BaseSalary + p1.Y3Bonus + p1.Y4BaseSalary + p1.Y4Bonus + p1.Y5BaseSalary + p1.Y5Bonus
 	p2Total := p2.Y1BaseSalary + p2.Y1Bonus + p2.Y2BaseSalary + p2.Y2Bonus + p2.Y3BaseSalary + p2.Y3Bonus + p2.Y4BaseSalary + p2.Y4Bonus + p2.Y5BaseSalary + p2.Y5Bonus
 	return p1Total > p2Total
+}
+
+func (np *NFLPlayer) SetID(val uint) {
+	np.ID = val
 }
 
 func (np *NFLPlayer) AssignMissingValues(pr int, aca string, fa string, per string, rec string, we string) {
