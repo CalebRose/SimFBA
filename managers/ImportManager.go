@@ -815,6 +815,36 @@ func FixBrokenExtensions() {
 	}
 }
 
+func ImplementNewAttributes() {
+	db := dbprovider.GetInstance().GetDB()
+	// Implement Shotgun, Clutch
+
+	nflDraftees := GetAllNFLDraftees()
+	collegePlayers := GetAllCollegePlayers()
+
+	for _, draftee := range nflDraftees {
+		shotgunVal := getShotgunVal()
+		clutchVal := getClutchValue()
+
+		draftee.AssignNewAttributes(shotgunVal, clutchVal)
+		if shotgunVal == 0 && clutchVal == 0 {
+			continue
+		}
+		db.Save(&draftee)
+	}
+
+	for _, player := range collegePlayers {
+		shotgunVal := getShotgunVal()
+		clutchVal := getClutchValue()
+		if shotgunVal == 0 && clutchVal == 0 {
+			continue
+		}
+		player.AssignNewAttributes(shotgunVal, clutchVal)
+
+		db.Save(&player)
+	}
+}
+
 func getBaseSalaryByYear(round int, pick int) float64 {
 	if round == 1 {
 		if pick == 1 {
@@ -884,4 +914,26 @@ func getBonusByYear(round int, pick int) float64 {
 		return 0.25
 	}
 	return 0
+}
+
+func getShotgunVal() int {
+	shotgunNum := util.GenerateIntFromRange(1, 100)
+	if shotgunNum < 61 {
+		return 0
+	} else if shotgunNum < 86 {
+		return 1
+	}
+	return -1
+}
+
+func getClutchValue() int {
+	clutchNum := util.GenerateIntFromRange(1, 1000)
+	if clutchNum < 145 {
+		return -1
+	} else if clutchNum < 845 {
+		return 0
+	} else if clutchNum < 990 {
+		return 1
+	}
+	return 2
 }

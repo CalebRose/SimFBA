@@ -65,3 +65,7 @@ func UpdateDraftPicksForDraft(w http.ResponseWriter, r *http.Request) {
 func FixBrokenExtensions(w http.ResponseWriter, r *http.Request) {
 	managers.FixBrokenExtensions()
 }
+
+func ImplementShotgunVals(w http.ResponseWriter, r *http.Request) {
+	managers.ImplementNewAttributes()
+}

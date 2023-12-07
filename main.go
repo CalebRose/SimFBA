@@ -121,6 +121,7 @@ func handleRequests() {
 	// myRouter.HandleFunc("/import/simfba/draft/picks", controller.ImportNFLDraftPicks).Methods("GET")
 	// myRouter.HandleFunc("/import/simfba/updated/picks", controller.UpdateDraftPicksForDraft).Methods("GET")
 	// myRouter.HandleFunc("/import/simfba/fix/contracts", controller.FixBrokenExtensions).Methods("GET")
+	// myRouter.HandleFunc("/import/simfba/import/attributes", controller.ImplementShotgunVals).Methods("GET")
 
 	// News Controls
 	myRouter.HandleFunc("/cfb/news/all/", controller.GetAllNewsLogsForASeason).Methods("GET")

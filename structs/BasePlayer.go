@@ -45,8 +45,8 @@ type BasePlayer struct {
 	InjuryType      string
 	WeeksOfRecovery uint
 	InjuryReserve   bool
-	Clutch          int // 0 is choker, 1 is normal, 2 is clutch, 3 is very clutch
-	Shotgun         int // 0 is Under Center, 1 Balanced, 2 Shotgun
+	Clutch          int // -1 is choker, 0 is normal, 1 is clutch, 2 is very clutch
+	Shotgun         int // -1 is Under Center, 0 Balanced, 1 Shotgun
 }
 
 func (cp *BasePlayer) GetOverall() {
@@ -174,6 +174,11 @@ func (cp *BasePlayer) RecoveryCheck() {
 		cp.ResetInjuryStatus()
 	}
 
+}
+
+func (cp *BasePlayer) AssignNewAttributes(shotgun, clutch int) {
+	cp.Shotgun = shotgun
+	cp.Clutch = clutch
 }
 
 func (cp *BasePlayer) ToggleInjuryReserve() {

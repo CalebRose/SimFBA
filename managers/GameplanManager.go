@@ -53,21 +53,33 @@ func UpdateGameplanPenalties() {
 }
 
 func GetGameplanDataByTeamID(teamID string) structs.GamePlanResponse {
-	db := dbprovider.GetInstance().GetDB()
-
-	var gamePlan structs.CollegeGameplan
-
-	err := db.Where("id = ?", teamID).Find(&gamePlan).Error
-	if err != nil {
-		fmt.Println(err)
-		log.Fatalln("Gameplan does not exist for team.")
-	}
+	gamePlan := GetGameplanByTeamID(teamID)
 
 	depthChart := GetDepthchartByTeamID(teamID)
 
+	ts := GetTimestamp()
+	seasonID := strconv.Itoa(ts.CollegeSeasonID)
+	opponentID := ""
+	games := GetCollegeGamesByTeamIdAndSeasonId(teamID, seasonID)
+	for _, g := range games {
+		if g.GameComplete {
+			continue
+		}
+		homeTeamID := strconv.Itoa(g.HomeTeamID)
+		awayTeamID := strconv.Itoa(g.AwayTeamID)
+		if homeTeamID == teamID {
+			opponentID = awayTeamID
+		} else {
+			opponentID = homeTeamID
+		}
+	}
+
+	opponentGameplan := GetGameplanByTeamID(opponentID)
+
 	return structs.GamePlanResponse{
-		CollegeGP: gamePlan,
-		CollegeDC: depthChart,
+		CollegeGP:       gamePlan,
+		CollegeDC:       depthChart,
+		CollegeOpponent: opponentGameplan,
 	}
 }
 
@@ -79,28 +91,38 @@ func GetGameplanByTeamID(teamID string) structs.CollegeGameplan {
 	err := db.Where("id = ?", teamID).Find(&gamePlan).Error
 	if err != nil {
 		fmt.Println(err)
-		log.Fatalln("Gameplan does not exist for team.")
+		return structs.CollegeGameplan{}
 	}
 
 	return gamePlan
 }
 
 func GetNFLGameplanDataByTeamID(teamID string) structs.GamePlanResponse {
-	db := dbprovider.GetInstance().GetDB()
-
-	var gamePlan structs.NFLGameplan
-
-	err := db.Where("id = ?", teamID).Find(&gamePlan).Error
-	if err != nil {
-		fmt.Println(err)
-		log.Fatalln("Gameplan does not exist for team.")
+	ts := GetTimestamp()
+	seasonID := strconv.Itoa(ts.NFLSeasonID)
+	gamePlan := GetNFLGameplanByTeamID(teamID)
+	depthChart := GetNFLDepthchartByTeamID(teamID)
+	nflGames := GetNFLGamesByTeamIdAndSeasonId(teamID, seasonID)
+	opponentID := ""
+	for _, g := range nflGames {
+		if g.GameComplete {
+			continue
+		}
+		homeTeamID := strconv.Itoa(g.HomeTeamID)
+		awayTeamID := strconv.Itoa(g.AwayTeamID)
+		if homeTeamID == teamID {
+			opponentID = awayTeamID
+		} else {
+			opponentID = homeTeamID
+		}
 	}
 
-	depthChart := GetNFLDepthchartByTeamID(teamID)
+	opponentGameplan := GetNFLGameplanByTeamID(opponentID)
 
 	return structs.GamePlanResponse{
-		NFLGP: gamePlan,
-		NFLDC: depthChart,
+		NFLGP:       gamePlan,
+		NFLDC:       depthChart,
+		NFLOpponent: opponentGameplan,
 	}
 }
 
@@ -112,7 +134,7 @@ func GetNFLGameplanByTeamID(teamID string) structs.NFLGameplan {
 	err := db.Where("id = ?", teamID).Find(&gp).Error
 	if err != nil {
 		fmt.Println(err)
-		log.Fatalln("Gameplan does not exist for team.")
+		return structs.NFLGameplan{}
 	}
 
 	return gp
