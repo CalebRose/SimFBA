@@ -29,7 +29,7 @@ func GetDraftPageData(w http.ResponseWriter, r *http.Request) {
 	warRoom := managers.GetNFLWarRoomByTeamID(teamID)
 	draftees := managers.GetNFLDrafteesForDraftPage()
 	allNFLTeams := managers.GetAllNFLTeams()
-	draftPicks := managers.GetAllCurrentSeasonDraftPicks()
+	draftPicks := managers.GetAllCurrentSeasonDraftPicksForDraftRoom()
 
 	res := models.NFLDraftPageResponse{
 		WarRoom:          warRoom,
