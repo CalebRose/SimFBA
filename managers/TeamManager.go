@@ -10,6 +10,17 @@ import (
 	"gorm.io/gorm"
 )
 
+func GetAllCollegeTeamsForRosterPage() models.RosterPageResponse {
+
+	teams := GetAllCollegeTeams()
+	coaches := GetAllCollegeCoaches()
+
+	return models.RosterPageResponse{
+		Teams:   teams,
+		Coaches: coaches,
+	}
+}
+
 func GetAllCollegeTeams() []structs.CollegeTeam {
 	db := dbprovider.GetInstance().GetDB()
 

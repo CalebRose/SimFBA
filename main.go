@@ -211,6 +211,7 @@ func handleRequests() {
 
 	// Team Controls
 	myRouter.HandleFunc("/teams/college/all/", controller.GetAllCollegeTeams).Methods("GET")
+	myRouter.HandleFunc("/teams/college/data/all/", controller.GetAllCollegeTeamsForRosterPage).Methods("GET")
 	myRouter.HandleFunc("/teams/nfl/all/", controller.GetAllNFLTeams).Methods("GET")
 	myRouter.HandleFunc("/teams/nfl/roster/{teamID}/", controller.GetNFLRecordsForRosterPage).Methods("GET")
 	myRouter.HandleFunc("/teams/college/active/", controller.GetAllActiveCollegeTeams).Methods("GET")

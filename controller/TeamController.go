@@ -8,6 +8,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// GetAllCollegeTeamsForRosterPage
+func GetAllCollegeTeamsForRosterPage(w http.ResponseWriter, r *http.Request) {
+	collegeTeams := managers.GetAllCollegeTeamsForRosterPage()
+
+	json.NewEncoder(w).Encode(collegeTeams)
+}
+
 // GetAllCollegeTeams
 func GetAllCollegeTeams(w http.ResponseWriter, r *http.Request) {
 	collegeTeams := managers.GetAllCollegeTeams()
