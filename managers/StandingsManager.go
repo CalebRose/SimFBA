@@ -179,7 +179,10 @@ func GetCollegeStandingsRecordByTeamID(id string, seasonID string) structs.Colle
 
 	var standing structs.CollegeStandings
 
-	db.Where("team_id = ? AND season_id = ?", id, seasonID).Find(&standing)
+	err := db.Where("team_id = ? AND season_id = ?", id, seasonID).Find(&standing).Error
+	if err != nil {
+		return structs.CollegeStandings{}
+	}
 
 	return standing
 }

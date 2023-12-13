@@ -20,6 +20,7 @@ type RecruitPlayerProfile struct {
 	AffinityOneEligible       bool
 	AffinityTwoEligible       bool
 	TeamAbbreviation          string
+	Recruiter                 string
 	RemovedFromBoard          bool
 	IsSigned                  bool
 	IsLocked                  bool

@@ -10,4 +10,5 @@ type CreateRecruitProfileDto struct {
 	AffinityOneEligible bool
 	AffinityTwoEligible bool
 	PlayerRecruit       Recruit
+	Recruiter           string
 }

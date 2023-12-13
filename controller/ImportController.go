@@ -42,6 +42,10 @@ func Import2023DraftedPlayers(w http.ResponseWriter, r *http.Request) {
 	managers.Import2023DraftedPlayers()
 }
 
+func ImportCFBStandings(w http.ResponseWriter, r *http.Request) {
+	managers.ImportSeasonStandings()
+}
+
 func ImportCFBGames(w http.ResponseWriter, r *http.Request) {
 	managers.ImportCFBGames()
 }
@@ -68,4 +72,12 @@ func FixBrokenExtensions(w http.ResponseWriter, r *http.Request) {
 
 func ImplementShotgunVals(w http.ResponseWriter, r *http.Request) {
 	managers.ImplementNewAttributes()
+}
+
+func GenerateDraftWarRooms(w http.ResponseWriter, r *http.Request) {
+	managers.GenerateDraftWarRooms()
+}
+
+func GenerateCoachesForAITeams(w http.ResponseWriter, r *http.Request) {
+	managers.GenerateCoachesForAITeams()
 }

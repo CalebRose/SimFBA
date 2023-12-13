@@ -28,14 +28,20 @@ type RecruitingTeamProfile struct {
 	CaughtCheating            bool
 	IsFBS                     bool
 	IsAI                      bool
+	IsUserTeam                bool
 	AIBehavior                string
+	AIQuality                 string
 	WeeksMissed               int
 	BattlesWon                int
 	BattlesLost               int
-	AIMaxStar                 int
 	AIMinThreshold            int
 	AIMaxThreshold            int
+	AIStarMin                 int
+	AIStarMax                 int
 	AIAutoOfferscholarships   bool
+	OffensiveScheme           string
+	DefensiveScheme           string
+	Recruiter                 string                 // Username
 	Recruits                  []RecruitPlayerProfile `gorm:"foreignKey:ProfileID"`
 	Affinities                []ProfileAffinity      `gorm:"foreignKey:ProfileID"`
 }
@@ -117,22 +123,27 @@ func (r *RecruitingTeamProfile) ApplyCaughtCheating() {
 
 func (r *RecruitingTeamProfile) ActivateAI() {
 	r.IsAI = true
+	r.IsUserTeam = false
 }
 
 func (r *RecruitingTeamProfile) DeactivateAI() {
 	r.IsAI = false
+	r.IsUserTeam = true
 }
 
 func (r *RecruitingTeamProfile) ToggleAIBehavior() {
 	r.IsAI = !r.IsAI
 }
 
-func (r *RecruitingTeamProfile) UpdateAIBehavior(isAi, autoOffer bool, star, min, max int) {
+func (r *RecruitingTeamProfile) UpdateAIBehavior(isAi, autoOffer bool, starMax, starMin, min, max int, offScheme, defScheme string) {
 	r.IsAI = isAi
 	r.AIAutoOfferscholarships = autoOffer
-	r.AIMaxStar = star
+	r.AIStarMax = starMax
+	r.AIStarMin = starMin
 	r.AIMinThreshold = min
 	r.AIMaxThreshold = max
+	r.OffensiveScheme = offScheme
+	r.DefensiveScheme = defScheme
 }
 
 func (r *RecruitingTeamProfile) SetRecruitingClassSize(val int) {
@@ -152,4 +163,8 @@ func (r *RecruitingTeamProfile) AddBattleWon() {
 
 func (r *RecruitingTeamProfile) AddBattleLost() {
 	r.BattlesLost += 1
+}
+
+func (r *RecruitingTeamProfile) AssignRecruiter(name string) {
+	r.Recruiter = name
 }

@@ -96,7 +96,7 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 
 	coach := GetCollegeCoachByCoachName(request.Username)
 
-	coach.SetTeam(request.TeamID)
+	coach.SetTeam(uint(request.TeamID))
 
 	team.AssignUserToTeam(coach.CoachName)
 
@@ -117,7 +117,7 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 	recruitingProfile := GetOnlyRecruitingProfileByTeamID(teamId)
 
 	if recruitingProfile.IsAI {
-		recruitingProfile.ActivateAI()
+		recruitingProfile.DeactivateAI()
 		db.Save(&recruitingProfile)
 	}
 
@@ -249,7 +249,7 @@ func RemoveUserFromTeam(teamId string) {
 
 	recruitingProfile := GetOnlyRecruitingProfileByTeamID(teamId)
 
-	if !recruitingProfile.IsAI {
+	if !recruitingProfile.IsAI || recruitingProfile.IsUserTeam {
 		recruitingProfile.ActivateAI()
 	}
 

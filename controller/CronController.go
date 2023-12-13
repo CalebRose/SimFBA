@@ -30,8 +30,8 @@ func SyncRecruitingViaCron() {
 func SyncFreeAgencyOffersViaCron() {
 	ts := managers.GetTimestamp()
 	if ts.RunCron {
-		managers.MoveUpInOffseasonFreeAgency()
 		managers.SyncFreeAgencyOffers()
+		managers.MoveUpInOffseasonFreeAgency()
 	}
 }
 

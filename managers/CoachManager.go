@@ -47,3 +47,16 @@ func GetNFLUserByUsername(username string) structs.NFLUser {
 
 	return user
 }
+
+func GetAllAICollegeCoaches() []structs.CollegeCoach {
+	db := dbprovider.GetInstance().GetDB()
+
+	var coaches []structs.CollegeCoach
+
+	err := db.Where("is_user = ?", false).Find(&coaches).Error
+	if err != nil || len(coaches) == 0 {
+		return []structs.CollegeCoach{}
+	}
+
+	return coaches
+}

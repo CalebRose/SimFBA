@@ -59,16 +59,16 @@ func GetRecruitingProfileForTeamBoardByTeamID(w http.ResponseWriter, r *http.Req
 }
 
 func ToggleAIBehavior(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	teamID := vars["teamID"]
-
-	if len(teamID) == 0 {
-		panic("User did not provide teamID")
+	var updateRecruitingBoardDto structs.UpdateRecruitingBoardDTO
+	err := json.NewDecoder(r.Body).Decode(&updateRecruitingBoardDto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
-	managers.ToggleTeamAIBehavior(teamID)
+	managers.SaveAIBehavior(updateRecruitingBoardDto.Profile)
 
-	json.NewEncoder(w).Encode("AI Behavior Switched For Team " + teamID)
+	json.NewEncoder(w).Encode("AI Behavior Switched For Team " + updateRecruitingBoardDto.Profile.Team)
 }
 
 // GetOnlyRecruitingProfileByTeamID

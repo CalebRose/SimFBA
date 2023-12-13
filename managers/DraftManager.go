@@ -334,3 +334,33 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 
 	return true
 }
+
+func BoomOrBust() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	SeasonID := strconv.Itoa(ts.NFLSeasonID)
+	draftees := GetAllNFLDraftees()
+
+	for _, player := range draftees {
+		if player.BoomOrBust && player.BoomOrBustStatus == "Bust" {
+			player = BoomBustDraftee(player, SeasonID, 51, false)
+		} else {
+			continue
+		}
+		// diceRoll := util.GenerateIntFromRange(1, 20)
+		// if diceRoll == 1 {
+		// 	// Bust
+		// 	fmt.Println("BUST!")
+		// 	player.AssignBoomBustStatus("Bust")
+		// 	player = BoomBustDraftee(player, SeasonID, 51, false)
+		// } else if diceRoll == 20 {
+		// 	// Boom
+		// 	fmt.Println("BOOM!")
+		// 	player.AssignBoomBustStatus("Boom")
+		// 	player = BoomBustDraftee(player, SeasonID, 51, true)
+		// } else {
+		// 	continue
+		// }
+		db.Save(&player)
+	}
+}

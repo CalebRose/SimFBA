@@ -24,6 +24,17 @@ type SimTeamBoardResponse struct {
 	Rank247Score              float64
 	CompositeScore            float64
 	IsAI                      bool
+	IsUserTeam                bool
+	BattlesWon                int
+	BattlesLost               int
+	AIMinThreshold            int
+	AIMaxThreshold            int
+	AIStarMin                 int
+	AIStarMax                 int
+	AIAutoOfferscholarships   bool
+	OffensiveScheme           string
+	DefensiveScheme           string
+	Recruiter                 string
 	RecruitingClassRank       int
 	Recruits                  []CrootProfile
 	Affinities                []structs.ProfileAffinity `gorm:"foreignKey:ProfileID"`
@@ -50,4 +61,14 @@ func (stbr *SimTeamBoardResponse) Map(rtp structs.RecruitingTeamProfile, c []Cro
 	stbr.Affinities = rtp.Affinities
 	stbr.Recruits = c
 	stbr.RecruitClassSize = rtp.RecruitClassSize
+	stbr.IsUserTeam = rtp.IsUserTeam
+	stbr.BattlesWon = rtp.BattlesWon
+	stbr.BattlesLost = rtp.BattlesLost
+	stbr.AIMinThreshold = rtp.AIMinThreshold
+	stbr.AIMaxThreshold = rtp.AIMaxThreshold
+	stbr.AIStarMin = rtp.AIStarMin
+	stbr.AIStarMax = rtp.AIStarMax
+	stbr.OffensiveScheme = rtp.OffensiveScheme
+	stbr.DefensiveScheme = rtp.DefensiveScheme
+	stbr.Recruiter = rtp.Recruiter
 }

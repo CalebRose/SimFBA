@@ -139,6 +139,9 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 					recruitTeamProfile := teamMap[strconv.Itoa(winningTeamID)]
 					if recruitTeamProfile.TotalCommitments < recruitTeamProfile.RecruitClassSize {
 						recruitTeamProfile.IncreaseCommitCount()
+						if len(recruitProfilesWithScholarship) > 1 {
+							recruitTeamProfile.AddBattleWon()
+						}
 						teamAbbreviation := recruitTeamProfile.TeamAbbreviation
 						recruit.AssignCollege(teamAbbreviation)
 
@@ -166,6 +169,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 								if recruitProfiles[i].Scholarship {
 									tp := teamMap[strconv.Itoa(recruitProfiles[i].ProfileID)]
 									tp.ReallocateScholarship()
+									tp.AddBattleLost()
 									err := db.Save(&tp).Error
 									if err != nil {
 										fmt.Println(err.Error())
@@ -520,11 +524,12 @@ func FillAIRecruitingBoards() {
 			HasBigCityAffinity:     doesCrootHaveAffinity("Big City", croot),
 		}
 		recruitInfos[croot.ID] = info
-
 		crootProfiles := GetRecruitPlayerProfilesByRecruitId(strconv.Itoa(int(croot.ID)))
 		recruitProfileMap[croot.ID] = crootProfiles
 	}
+
 	fmt.Println("Loaded all unsigned recruits.")
+	coachMap := getCoachMap()
 
 	boardCount := 75
 
@@ -534,8 +539,12 @@ func FillAIRecruitingBoards() {
 			continue
 		}
 		fmt.Println("Iterating through " + team.Team + ".")
+		collegeCoach := coachMap[team.ID]
 		existingBoard := GetOnlyRecruitProfilesByTeamProfileID(strconv.Itoa(int(team.ID)))
 		teamNeeds := GetRecruitingNeeds(strconv.Itoa(int(team.ID)))
+		offBadFits := getFitsByScheme(team.OffensiveScheme, true)
+		defBadFits := getFitsByScheme(team.DefensiveScheme, true)
+		totalFitList := append(offBadFits, defBadFits...)
 		// Get Current Count of the existing board
 		for _, r := range existingBoard {
 			if r.RemovedFromBoard {
@@ -561,7 +570,12 @@ func FillAIRecruitingBoards() {
 			}
 
 			if (teamNeeds[croot.Position] < 1) ||
-				(croot.Stars > team.AIMaxStar) {
+				(croot.Stars > team.AIStarMax) || (croot.Stars < team.AIStarMin) {
+				continue
+			}
+
+			archetype := croot.Archetype + " " + croot.Position
+			if checkPlayerFits(archetype, totalFitList) {
 				continue
 			}
 
@@ -588,7 +602,7 @@ func FillAIRecruitingBoards() {
 			}
 
 			closeToHome := util.IsCrootCloseToHome(croot.State, croot.City, team.State, team.TeamAbbreviation, stateMatcher, regionMatcher)
-			oddsObject := getRecruitingOdds(ts, croot, team, closeToHome, recruitInfos)
+			oddsObject := getRecruitingOdds(ts, croot, team, collegeCoach, closeToHome, recruitInfos)
 
 			chance := util.GenerateIntFromRange(1, 100)
 
@@ -613,6 +627,7 @@ func FillAIRecruitingBoards() {
 				RecruitingEfficiencyScore: 1,
 				IsSigned:                  false,
 				IsLocked:                  false,
+				Recruiter:                 collegeCoach.CoachName,
 			}
 
 			err := db.Create(&playerProfile).Error
@@ -638,7 +653,6 @@ func AllocatePointsToAIBoards() {
 	ts := GetTimestamp()
 
 	AITeams := GetOnlyAITeamRecruitingProfiles()
-
 	for _, team := range AITeams {
 		if team.SpentPoints >= team.WeeklyPoints || team.TotalCommitments >= team.RecruitClassSize {
 			continue
@@ -970,7 +984,7 @@ func updateTeamRankings(teamRecruitingProfiles []structs.RecruitingTeamProfile, 
 	}
 }
 
-func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs.RecruitingTeamProfile, closeToHome bool, recruitInfos map[uint]structs.RecruitInfo) structs.OddsAndAffinities {
+func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs.RecruitingTeamProfile, coach structs.CollegeCoach, closeToHome bool, recruitInfos map[uint]structs.RecruitInfo) structs.OddsAndAffinities {
 	odds := 5
 	affinityMod := 0
 	if ts.CollegeWeek > 5 {
@@ -991,45 +1005,58 @@ func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs
 	affinityOneApplicable := false
 	affinityTwoApplicable := false
 
-	if team.AIBehavior == "G5" {
-		if croot.Stars > 3 {
-			odds -= 15
-		} else {
+	if coach.ID > 0 {
+		if croot.Stars == 5 {
+			odds += coach.Odds5
+		} else if croot.Stars == 4 {
+			odds += coach.Odds4
+		} else if croot.Stars == 3 {
+			odds += coach.Odds3
+		} else if croot.Stars == 2 {
+			odds += coach.Odds2
+		} else if croot.Stars == 1 {
+			odds += coach.Odds1
+		}
+
+		if croot.Position == coach.PositionOne || croot.Position == coach.PositionTwo || croot.Position == coach.PositionThree {
 			odds += 5
 		}
 	}
 
-	if team.AIBehavior == "Doormat" {
-		if croot.Stars > 2 {
-			odds -= 20
-		} else {
-			odds += 10
-		}
+	offensiveSchemeFitList := getFitsByScheme(team.OffensiveScheme, false)
+	defSchemeFitList := getFitsByScheme(team.DefensiveScheme, false)
+	totalFitList := append(offensiveSchemeFitList, defSchemeFitList...)
+	archtype := croot.Archetype + " " + croot.Position
+
+	if checkPlayerFits(archtype, totalFitList) {
+		odds += 5
 	}
 
 	crootInfo := recruitInfos[croot.ID]
 
-	for _, affinity := range team.Affinities {
-		if (crootInfo.HasCloseToHomeAffinity) && closeToHome {
-			if team.IsFBS {
-				odds += 33
-			} else if !team.IsFBS && croot.Stars < 3 {
-				odds += 20
-			} else {
-				odds += 5
-			}
-
-			if croot.AffinityOne == "Close to Home" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Close to Home" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+	// Check Close to Home Affinity
+	if (crootInfo.HasCloseToHomeAffinity) && closeToHome {
+		if team.IsFBS {
+			odds += 33
+		} else if !team.IsFBS && croot.Stars < 3 {
+			odds += 20
+		} else {
+			odds += 5
 		}
 
+		if croot.AffinityOne == "Close to Home" {
+			affinityOneApplicable = true
+			affinityMod += 3
+		}
+
+		if croot.AffinityTwo == "Close to Home" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
+
+	// Check for other affinities
+	for _, affinity := range team.Affinities {
 		if crootInfo.HasAcademicAffinity && isAffinityApplicable("Academics", affinity) {
 			if team.IsFBS {
 				odds += 33
@@ -1179,4 +1206,57 @@ func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs
 		Af2:         affinityTwoApplicable,
 		AffinityMod: affinityMod,
 	}
+}
+
+func getCoachMap() map[uint]structs.CollegeCoach {
+	coachMap := make(map[uint]structs.CollegeCoach)
+
+	collegeCoaches := GetAllAICollegeCoaches()
+
+	for _, coach := range collegeCoaches {
+		if coach.TeamID == 0 || coach.IsRetired || coach.IsUser {
+			continue
+		}
+		coachMap[coach.TeamID] = coach
+	}
+	return coachMap
+}
+
+func getFitsByScheme(scheme string, isBadFit bool) []string {
+	fullMap := map[string]structs.SchemeFits{
+		"Power Run":                       {GoodFits: []string{"Power RB", "Blocking FB", "Blocking TE", "Red Zone Threat WR", "Run Blocking OG", "Run Blocking OT", "Run Blocking C"}, BadFits: []string{"Speed RB", "Receiving RB", "Receiving FB", "Receiving TE", "Vertical Threat TE", "Pass Blocking OG", "Pass Blocking OT", "Pass Blocking C"}},
+		"Vertical":                        {GoodFits: []string{"Pocket QB", "Receiving RB", "Receiving TE", "Vertical Threat TE", "Route Runner WR", "Speed WR", "Pass Blocking OG", "Pass Blocking OT", "Pass Blocking C"}, BadFits: []string{"Balanced QB", "Scrambler QB", "Field General QB", "Power RB", "Blocking FB", "Rushing FB", "Blocking TE", "Red Zone Threat WR", "Run Blocking OG", "Run Blocking OT", "Run Blocking C"}},
+		"West Coast":                      {GoodFits: []string{"Field General QB", "Balanced FB", "Receiving FB", "Receiving TE", "Route Runner WR", "Possession WR", "Line Captain C"}, BadFits: []string{"Blocking FB", "Red Zone Threat WR"}},
+		"I-Option":                        {GoodFits: []string{"Scrambler QB", "Power RB", "Rushing FB", "Blocking TE", "Possession WR"}, BadFits: []string{"Pocket QB", "Speed RB", "Receiving RB", "Receiving FB", "Receiving TE", "Vertical Threat TE"}},
+		"Run and Shoot":                   {GoodFits: []string{"Field General QB", "Speed RB", "Receiving RB", "Speed WR", "Line Captain C"}, BadFits: []string{"Balanced RB", "Power RB", "Blocking FB", "Rushing FB", "Blocking TE", "Possession WR"}},
+		"Air Raid":                        {GoodFits: []string{"Pocket QB", "Receiving RB", "Receiving FB", "Receiving TE", "Vertical Threat TE", "Speed WR", "Pass Blocking OG", "Pass Blocking OT", "Pass Blocking C"}, BadFits: []string{"Balanced QB", "Scrambler QB", "Field General QB", "Power RB", "Blocking FB", "Rushing FB", "Blocking TE", "Run Blocking OG", "Run Blocking OT", "Run Blocking C"}},
+		"Pistol":                          {GoodFits: []string{"Balanced QB", "Pocket QB", "Balanced RB", "Rushing FB", "Vertical Threat TE", "Route Runner WR", "Possession WR"}, BadFits: []string{"Balanced FB", "Line Captain C"}},
+		"Spread Option":                   {GoodFits: []string{"Scrambler QB", "Speed RB", "Receiving FB", "Route Runner WR", "Possession WR"}, BadFits: []string{"Balanced RB", "Balanced FB"}},
+		"Wing-T":                          {GoodFits: []string{"Balanced QB", "Balanced RB", "Balanced FB", "Speed WR"}, BadFits: []string{}},
+		"Double Wing":                     {GoodFits: []string{"Power RB", "Blocking FB", "Rushing FB", "Blocking TE", "Red Zone Threat WR", "Run Blocking OG", "Run Blocking OT", "Run Blocking C"}, BadFits: []string{"Pocket QB", "Speed RB", "Receiving RB", "Receiving FB", "Receiving TE", "Vertical Threat TE", "Pass Blocking OG", "Pass Blocking OT", "Pass Blocking C"}},
+		"Wishbone":                        {GoodFits: []string{"Balanced QB", "Field General QB", "Balanced RB", "Red Zone Threat WR"}, BadFits: []string{"Balanced FB", "Route Runner WR", "Line Captain C"}},
+		"Flexbone":                        {GoodFits: []string{"Scrambler QB", "Speed RB", "Balanced FB", "Red Zone Threat WR"}, BadFits: []string{"Balanced RB", "Speed WR", "Possession WR"}},
+		"Old School Front 7 Man":          {GoodFits: []string{"Run Stopper DE", "Run Stopper OLB", "Run Stopper ILB", "Field General ILB", "Man Coverage CB", "Man Coverage FS", "Man Coverage SS"}, BadFits: []string{"Nose Tackle DT", "Coverage OLB", "Coverage ILB", "Zone Coverage CB", "Zone Coverage FS", "Zone Coverage SS"}},
+		"2-Gap Zone":                      {GoodFits: []string{"Run Stopper DE", "Nose Tackle DT", "Run Stopper OLB", "Pass Rush OLB", "Run Stopper ILB", "Zone Coverage CB", "Zone Coverage FS", "Zone Coverage SS"}, BadFits: []string{"Speed Rush DE", "Pass Rusher DT", "Speed OLB", "Speed ILB", "Man Coverage CB", "Man Coverage FS", "Man Coverage SS"}},
+		"4-man Front Spread Stopper Zone": {GoodFits: []string{"Speed Rush DE", "Pass Rusher DT", "Coverage OLB", "Coverage ILB", "Zone Coverage CB", "Zone Coverage FS", "Zone Coverage SS"}, BadFits: []string{"Run Stopper DE", "Nose Tackle DT", "Run Stoppper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS", "Man Coverage CB", "Man Coverage FS", "Man Coverage SS"}},
+		"3-man Front Spread Stopper Zone": {GoodFits: []string{"Nose Tackle DT", "Pash Rush OLB", "Coverage ILB", "Zone Coverage CB", "Zone Coverage FS", "Zone Coverage SS"}, BadFits: []string{"Nose Tackle DT", "Run Stopper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS", "Speed OLB", "Speed ILB", "Field General ILB", "Man Coverage CB", "Man Coverage FS", "Man Coverage SS"}},
+		"Speed Man":                       {GoodFits: []string{"Speed Rush DE", "Pass Rusher DT", "Coverage OLB", "Speed OLB", "Speed ILB", "Man Coverage CB", "Man Coverage FS", "Man Coverage SS"}, BadFits: []string{"Run Stopper DE", "Nose Tackle DT", "Pass Rush OLB", "Field General ILB", "Zone Coverage CB", "Zone Coverage FS", "Zone Coverage SS"}},
+		"Multiple Man":                    {GoodFits: []string{"Run Stopper DE", "Speed OLB", "Speed ILB", "Field General ILB", "Man Coverage CB", "Man Coverage FS", "Man Coverage SS", "Run Stopper FS", "Run Stopper SS"}, BadFits: []string{"Speed Rush DE", "Pass Rusher DT", "Coverage OLB", "Coverage ILB", "Zone Coverage CB", "Zone Coverage FS", "Zone Coverage SS"}},
+	}
+	if schemeFits, ok := fullMap[scheme]; ok {
+		if isBadFit {
+			return schemeFits.BadFits
+		}
+		return schemeFits.GoodFits
+	}
+	return []string{}
+}
+
+func checkPlayerFits(player string, fits []string) bool {
+	for _, fit := range fits {
+		if player == fit {
+			return true
+		}
+	}
+	return false
 }

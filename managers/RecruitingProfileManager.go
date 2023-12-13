@@ -185,6 +185,7 @@ func AddRecruitToBoard(RecruitDTO structs.CreateRecruitProfileDto) structs.Recru
 		TeamAbbreviation:          RecruitDTO.Team,
 		RemovedFromBoard:          false,
 		IsSigned:                  false,
+		Recruiter:                 RecruitDTO.Recruiter,
 	}
 
 	// Save
@@ -289,12 +290,11 @@ func GetRecruitingClassSizeForTeams() {
 	}
 }
 
-// ToggleTeamAIBehavior -- Toggle whether a Team will use AI recruiting or not
-func ToggleTeamAIBehavior(TeamID string) {
+// SaveAIBehavior -- Toggle whether a Team will use AI recruiting or not
+func SaveAIBehavior(profile structs.RecruitingTeamProfile) {
 	db := dbprovider.GetInstance().GetDB()
-
+	TeamID := strconv.Itoa(int(profile.TeamID))
 	recruitingProfile := GetOnlyRecruitingProfileByTeamID(TeamID)
-	recruitingProfile.ToggleAIBehavior()
-
+	recruitingProfile.UpdateAIBehavior(profile.IsAI, profile.AIAutoOfferscholarships, profile.AIStarMax, profile.AIStarMin, profile.AIMinThreshold, profile.AIMaxThreshold, profile.OffensiveScheme, profile.DefensiveScheme)
 	db.Save(&recruitingProfile)
 }

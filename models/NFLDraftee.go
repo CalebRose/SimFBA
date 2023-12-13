@@ -44,6 +44,8 @@ type NFLDraftee struct {
 	KickPowerGrade     string
 	PuntAccuracyGrade  string
 	PuntPowerGrade     string
+	BoomOrBust         bool
+	BoomOrBustStatus   string
 	PrimeAge           uint
 }
 
@@ -249,4 +251,32 @@ func (n *NFLDraftee) AssignDraftedTeam(num uint, pickID uint, teamID uint, team 
 	n.DraftPickID = pickID
 	n.DraftedTeamID = teamID
 	n.DraftedTeam = team
+}
+
+func (n *NFLDraftee) AssignBoomBustStatus(status string) {
+	n.BoomOrBust = true
+	n.BoomOrBustStatus = status
+}
+
+func (np *NFLDraftee) Progress(attr structs.CollegePlayerProgressions) {
+	np.Agility = attr.Agility
+	np.Speed = attr.Speed
+	np.FootballIQ = attr.FootballIQ
+	np.Carrying = attr.Carrying
+	np.Catching = attr.Catching
+	np.RouteRunning = attr.RouteRunning
+	np.PassBlock = attr.PassBlock
+	np.RunBlock = attr.RunBlock
+	np.PassRush = attr.PassRush
+	np.RunDefense = attr.RunDefense
+	np.Tackle = attr.Tackle
+	np.Strength = attr.Strength
+	np.ManCoverage = attr.ManCoverage
+	np.ZoneCoverage = attr.ZoneCoverage
+	np.KickAccuracy = attr.KickAccuracy
+	np.KickPower = attr.KickPower
+	np.PuntAccuracy = attr.PuntAccuracy
+	np.PuntPower = attr.PuntPower
+	np.ThrowAccuracy = attr.ThrowAccuracy
+	np.ThrowPower = attr.ThrowPower
 }

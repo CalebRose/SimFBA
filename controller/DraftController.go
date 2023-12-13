@@ -114,3 +114,9 @@ func ToggleDraftTime(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode("Draft Time Changed")
 }
+
+func BoomOrBust(w http.ResponseWriter, r *http.Request) {
+	managers.BoomOrBust()
+
+	json.NewEncoder(w).Encode("Boom/Bust Complete")
+}

@@ -1492,6 +1492,399 @@ func ProgressUnsignedPlayer(up structs.UnsignedPlayer, SeasonID string) structs.
 	return up
 }
 
+func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, isBoom bool) models.NFLDraftee {
+	Agility := 0
+	ThrowPower := 0
+	ThrowAccuracy := 0
+	Speed := 0
+	FootballIQ := 0
+	Strength := 0
+	RunBlock := 0
+	PassBlock := 0
+	RunDefense := 0
+	PassRush := 0
+	Carrying := 0
+	Tackle := 0
+	RouteRunning := 0
+	Catching := 0
+	PuntPower := 0
+	PuntAccuracy := 0
+	KickPower := 0
+	KickAccuracy := 0
+	ManCoverage := 0
+	ZoneCoverage := 0
+
+	if isBoom {
+		if np.Position == "QB" {
+			// Primary Progressions
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, np.Position, np.Archetype, SnapsPerGame, "Throw Power", false)
+			ThrowAccuracy = PrimaryProgression(np.Progression, np.ThrowAccuracy, np.Position, np.Archetype, SnapsPerGame, "Throw Accuracy", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+
+			// Secondary Progressions
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			Tackle = SecondaryProgression(np.Progression, np.Tackle)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			Catching = SecondaryProgression(np.Progression, np.Catching)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+		} else if np.Position == "RB" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			Catching = PrimaryProgression(np.Progression, np.Catching, np.Position, np.Archetype, SnapsPerGame, "Catching", false)
+			PassBlock = PrimaryProgression(np.Progression, np.PassBlock, np.Position, np.Archetype, SnapsPerGame, "Pass Blocking", false)
+			// Secondary
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			Tackle = SecondaryProgression(np.Progression, np.Tackle)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+		} else if np.Position == "FB" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			Catching = PrimaryProgression(np.Progression, np.Catching, np.Position, np.Archetype, SnapsPerGame, "Catching", false)
+			PassBlock = PrimaryProgression(np.Progression, np.PassBlock, np.Position, np.Archetype, SnapsPerGame, "Pass Blocking", false)
+			RunBlock = PrimaryProgression(np.Progression, np.RunBlock, np.Position, np.Archetype, SnapsPerGame, "Run Blocking", false)
+
+			// Secondary
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			Tackle = SecondaryProgression(np.Progression, np.Tackle)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+
+		} else if np.Position == "TE" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			Catching = PrimaryProgression(np.Progression, np.Catching, np.Position, np.Archetype, SnapsPerGame, "Catching", false)
+			RouteRunning = PrimaryProgression(np.Progression, np.RouteRunning, np.Position, np.Archetype, SnapsPerGame, "Route Running", false)
+			PassBlock = PrimaryProgression(np.Progression, np.PassBlock, np.Position, np.Archetype, SnapsPerGame, "Pass Blocking", false)
+			RunBlock = PrimaryProgression(np.Progression, np.RunBlock, np.Position, np.Archetype, SnapsPerGame, "Run Blocking", false)
+
+			// Secondary
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			Tackle = SecondaryProgression(np.Progression, np.Tackle)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+		} else if np.Position == "WR" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			Catching = PrimaryProgression(np.Progression, np.Catching, np.Position, np.Archetype, SnapsPerGame, "Catching", false)
+			RouteRunning = PrimaryProgression(np.Progression, np.RouteRunning, np.Position, np.Archetype, SnapsPerGame, "Route Running", false)
+
+			// Secondary
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			Tackle = SecondaryProgression(np.Progression, np.Tackle)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+		} else if np.Position == "OT" || np.Position == "OG" || np.Position == "C" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			PassBlock = PrimaryProgression(np.Progression, np.PassBlock, np.Position, np.Archetype, SnapsPerGame, "Pass Blocking", false)
+			RunBlock = PrimaryProgression(np.Progression, np.RunBlock, np.Position, np.Archetype, SnapsPerGame, "Run Blocking", false)
+
+			// Secondary
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			Tackle = SecondaryProgression(np.Progression, np.Tackle)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			Speed = SecondaryProgression(np.Progression, np.Speed)
+			Catching = SecondaryProgression(np.Progression, np.Catching)
+		} else if np.Position == "DT" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			PassRush = PrimaryProgression(np.Progression, np.PassRush, np.Position, np.Archetype, SnapsPerGame, "Pass Rush", false)
+			RunDefense = PrimaryProgression(np.Progression, np.RunDefense, np.Position, np.Archetype, SnapsPerGame, "Run Defense", false)
+			Tackle = PrimaryProgression(np.Progression, np.Tackle, np.Position, np.Archetype, SnapsPerGame, "Tackle", false)
+
+			// Secondary
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			Catching = SecondaryProgression(np.Progression, np.Catching)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			Speed = SecondaryProgression(np.Progression, np.Speed)
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+		} else if np.Position == "DE" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			PassRush = PrimaryProgression(np.Progression, np.PassRush, np.Position, np.Archetype, SnapsPerGame, "Pass Rush", false)
+			RunDefense = PrimaryProgression(np.Progression, np.RunDefense, np.Position, np.Archetype, SnapsPerGame, "Run Defense", false)
+			Tackle = PrimaryProgression(np.Progression, np.Tackle, np.Position, np.Archetype, SnapsPerGame, "Tackle", false)
+
+			// Secondary
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			Catching = SecondaryProgression(np.Progression, np.Catching)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+		} else if np.Position == "OLB" || np.Position == "ILB" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			PassRush = PrimaryProgression(np.Progression, np.PassRush, np.Position, np.Archetype, SnapsPerGame, "Pass Rush", false)
+			RunDefense = PrimaryProgression(np.Progression, np.RunDefense, np.Position, np.Archetype, SnapsPerGame, "Run Defense", false)
+			Tackle = PrimaryProgression(np.Progression, np.Tackle, np.Position, np.Archetype, SnapsPerGame, "Tackle", false)
+			ManCoverage = PrimaryProgression(np.Progression, np.ManCoverage, np.Position, np.Archetype, SnapsPerGame, "Man Coverage", false)
+			ZoneCoverage = PrimaryProgression(np.Progression, np.ZoneCoverage, np.Position, np.Archetype, SnapsPerGame, "Zone Coverage", false)
+
+			// Secondary
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			Catching = SecondaryProgression(np.Progression, np.Catching)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+		} else if np.Position == "CB" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			Tackle = PrimaryProgression(np.Progression, np.Tackle, np.Position, np.Archetype, SnapsPerGame, "Tackle", false)
+			ManCoverage = PrimaryProgression(np.Progression, np.ManCoverage, np.Position, np.Archetype, SnapsPerGame, "Man Coverage", false)
+			ZoneCoverage = PrimaryProgression(np.Progression, np.ZoneCoverage, np.Position, np.Archetype, SnapsPerGame, "Zone Coverage", false)
+			Catching = PrimaryProgression(np.Progression, np.Catching, np.Position, np.Archetype, SnapsPerGame, "Catching", false)
+
+			// Secondary
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+		} else if np.Position == "FS" || np.Position == "SS" {
+			// Primary
+			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
+			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
+			Strength = PrimaryProgression(np.Progression, np.Strength, np.Position, np.Archetype, SnapsPerGame, "Strength", false)
+			Speed = PrimaryProgression(np.Progression, np.Speed, np.Position, np.Archetype, SnapsPerGame, "Speed", false)
+			RunDefense = PrimaryProgression(np.Progression, np.RunDefense, np.Position, np.Archetype, SnapsPerGame, "Run Defense", false)
+			Tackle = PrimaryProgression(np.Progression, np.Tackle, np.Position, np.Archetype, SnapsPerGame, "Tackle", false)
+			ManCoverage = PrimaryProgression(np.Progression, np.ManCoverage, np.Position, np.Archetype, SnapsPerGame, "Man Coverage", false)
+			ZoneCoverage = PrimaryProgression(np.Progression, np.ZoneCoverage, np.Position, np.Archetype, SnapsPerGame, "Zone Coverage", false)
+			Catching = PrimaryProgression(np.Progression, np.Catching, np.Position, np.Archetype, SnapsPerGame, "Catching", false)
+
+			// Secondary
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+		} else if np.Position == "K" {
+			// Primary
+			KickPower = PrimaryProgression(np.Progression, np.KickPower, np.Position, np.Archetype, SnapsPerGame, "Kick Power", false)
+			KickAccuracy = PrimaryProgression(np.Progression, np.KickAccuracy, np.Position, np.Archetype, SnapsPerGame, "Kick Accuracy", false)
+			// Secondary
+			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PuntPower = SecondaryProgression(np.Progression, np.PuntPower)
+			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+			Catching = SecondaryProgression(np.Progression, np.Catching)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			Strength = SecondaryProgression(np.Progression, np.Strength)
+			Speed = SecondaryProgression(np.Progression, np.Speed)
+			Agility = SecondaryProgression(np.Progression, np.Agility)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			FootballIQ = SecondaryProgression(np.Progression, np.FootballIQ)
+			Tackle = SecondaryProgression(np.Progression, np.Tackle)
+		} else if np.Position == "P" {
+			// If David Ross
+			if np.ID == 24984 {
+				ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, np.Position, np.Archetype, SnapsPerGame, "Throw Power", false)
+				ThrowAccuracy = PrimaryProgression(np.Progression, np.ThrowAccuracy, np.Position, np.Archetype, SnapsPerGame, "Throw Accuracy", false)
+			} else {
+				ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
+				ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
+			}
+			// Primary Progressions
+			PuntPower = PrimaryProgression(np.Progression, np.PuntPower, np.Position, np.Archetype, SnapsPerGame, "Punt Power", false)
+			PuntAccuracy = PrimaryProgression(np.Progression, np.PuntAccuracy, np.Position, np.Archetype, SnapsPerGame, "Punt Accuracy", false)
+			// Secondary Progressions
+			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
+			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
+			RunDefense = SecondaryProgression(np.Progression, np.RunDefense)
+			PassRush = SecondaryProgression(np.Progression, np.PassRush)
+			Carrying = SecondaryProgression(np.Progression, np.Carrying)
+			Tackle = SecondaryProgression(np.Progression, np.Tackle)
+			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
+			Catching = SecondaryProgression(np.Progression, np.Catching)
+			KickPower = SecondaryProgression(np.Progression, np.KickPower)
+			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
+			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
+			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
+			Strength = SecondaryProgression(np.Progression, np.Strength)
+			Speed = SecondaryProgression(np.Progression, np.Speed)
+			Agility = SecondaryProgression(np.Progression, np.Agility)
+			FootballIQ = SecondaryProgression(np.Progression, np.FootballIQ)
+		}
+	} else {
+		ThrowPower = RegressAttribute(np.ThrowPower, np.Age, false)
+		ThrowAccuracy = RegressAttribute(np.ThrowAccuracy, np.Age, false)
+		RunBlock = RegressAttribute(np.RunBlock, np.Age, false)
+		PassBlock = RegressAttribute(np.PassBlock, np.Age, false)
+		RunDefense = RegressAttribute(np.RunDefense, np.Age, false)
+		PassRush = RegressAttribute(np.PassRush, np.Age, false)
+		Carrying = RegressAttribute(np.Carrying, np.Age, false)
+		Tackle = RegressAttribute(np.Tackle, np.Age, false)
+		RouteRunning = RegressAttribute(np.RouteRunning, np.Age, false)
+		Catching = RegressAttribute(np.Catching, np.Age, false)
+		KickPower = RegressAttribute(np.KickPower, np.Age, false)
+		KickAccuracy = RegressAttribute(np.KickAccuracy, np.Age, false)
+		ManCoverage = RegressAttribute(np.ManCoverage, np.Age, false)
+		ZoneCoverage = RegressAttribute(np.ZoneCoverage, np.Age, false)
+		Strength = RegressAttribute(np.Strength, np.Age, false)
+		Speed = RegressAttribute(np.Speed, np.Age, false)
+		Agility = RegressAttribute(np.Agility, np.Age, false)
+		FootballIQ = RegressAttribute(np.FootballIQ, np.Age, true)
+		PuntPower = RegressAttribute(np.PuntPower, np.Age, false)
+		PuntAccuracy = RegressAttribute(np.PuntAccuracy, np.Age, false)
+	}
+
+	progressions := structs.CollegePlayerProgressions{
+		Agility:       Agility,
+		Catching:      Catching,
+		Carrying:      Carrying,
+		Speed:         Speed,
+		RouteRunning:  RouteRunning,
+		RunBlock:      RunBlock,
+		PassBlock:     PassBlock,
+		RunDefense:    RunDefense,
+		PassRush:      PassRush,
+		Strength:      Strength,
+		Tackle:        Tackle,
+		ThrowPower:    ThrowPower,
+		ThrowAccuracy: ThrowAccuracy,
+		PuntAccuracy:  PuntAccuracy,
+		PuntPower:     PuntPower,
+		KickAccuracy:  KickAccuracy,
+		KickPower:     KickPower,
+		FootballIQ:    FootballIQ,
+		ManCoverage:   ManCoverage,
+		ZoneCoverage:  ZoneCoverage,
+	}
+
+	np.Progress(progressions)
+
+	np.GetOverall()
+
+	return np
+}
+
 func PrimaryProgression(progression int, input int, position string, archetype string, spg int, attribute string, isRedshirting bool) int {
 	if input == 0 {
 		return 1

@@ -192,7 +192,13 @@ func GetAllNFLDraftees() []models.NFLDraftee {
 
 	var NFLDraftees []models.NFLDraftee
 
-	db.Order("overall desc").Find(&NFLDraftees)
+	db.Find(&NFLDraftees)
+
+	sort.Slice(NFLDraftees, func(i, j int) bool {
+		iVal := util.GetNumericalSortValueByLetterGrade(NFLDraftees[i].OverallGrade)
+		jVal := util.GetNumericalSortValueByLetterGrade(NFLDraftees[j].OverallGrade)
+		return iVal < jVal
+	})
 
 	return NFLDraftees
 }

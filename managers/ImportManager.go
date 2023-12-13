@@ -6,9 +6,11 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
 	"github.com/jinzhu/gorm"
@@ -842,6 +844,67 @@ func ImplementNewAttributes() {
 		player.AssignNewAttributes(shotgunVal, clutchVal)
 
 		db.Save(&player)
+	}
+}
+
+func GenerateDraftWarRooms() {
+	db := dbprovider.GetInstance().GetDB()
+
+	allProfessionalTeams := GetAllNFLTeams()
+
+	for _, n := range allProfessionalTeams {
+		room := GetOnlyNFLWarRoomByTeamID(strconv.Itoa(int(n.ID)))
+		if room.ID > 0 {
+			continue
+		}
+		warRoom := models.NFLWarRoom{
+			TeamID:         n.ID,
+			Team:           n.TeamName + " " + n.Mascot,
+			ScoutingPoints: 400,
+			SpentPoints:    0,
+		}
+		db.Create(&warRoom)
+	}
+}
+
+func ImportSeasonStandings() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	seasonID := strconv.Itoa(ts.CollegeSeasonID)
+	collegeTeams := GetAllCollegeTeams()
+	for _, team := range collegeTeams {
+		teamID := strconv.Itoa(int(team.ID))
+		standings := GetCollegeStandingsRecordByTeamID(teamID, seasonID)
+		if standings.ID > 0 {
+			continue
+		}
+		league := ""
+		leagueID := 0
+		if team.IsFBS {
+			league = "FBS"
+			leagueID = 1
+		} else {
+			league = "FCS"
+			leagueID = 2
+		}
+
+		newStandings := structs.CollegeStandings{
+			TeamID:         int(team.ID),
+			TeamName:       team.TeamName,
+			IsFBS:          team.IsFBS,
+			LeagueID:       uint(leagueID),
+			LeagueName:     league,
+			SeasonID:       ts.CollegeSeasonID,
+			Season:         ts.Season,
+			ConferenceID:   team.ConferenceID,
+			ConferenceName: team.Conference,
+			DivisionID:     team.DivisionID,
+			BaseStandings: structs.BaseStandings{
+				TeamAbbr: team.TeamAbbr,
+				Coach:    team.Coach,
+			},
+		}
+		db.Create(&newStandings)
 	}
 }
 

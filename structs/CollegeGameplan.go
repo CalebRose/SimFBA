@@ -7,3 +7,8 @@ type CollegeGameplan struct {
 	TeamID int
 	BaseGameplan
 }
+
+type SchemeFits struct {
+	GoodFits []string
+	BadFits  []string
+}
