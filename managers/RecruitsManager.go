@@ -19,7 +19,7 @@ func GetAllRecruits() []models.Croot {
 	var recruits []structs.Recruit
 
 	db.Preload("RecruitPlayerProfiles", func(db *gorm.DB) *gorm.DB {
-		return db.Order("total_points DESC").Where("total_points > 0")
+		return db.Order("total_points DESC")
 	}).Find(&recruits)
 
 	var croots []models.Croot
@@ -234,29 +234,6 @@ func SendScholarshipToRecruit(updateRecruitPointsDto structs.UpdateRecruitPoints
 	crootProfile.ToggleScholarship(updateRecruitPointsDto.RewardScholarship, updateRecruitPointsDto.RevokeScholarship)
 	if !crootProfile.ScholarshipRevoked {
 		recruitingProfile.SubtractScholarshipsAvailable()
-
-		// Break the news
-		ts := GetTimestamp()
-
-		recruit := GetCollegeRecruitByRecruitID(strconv.Itoa(updateRecruitPointsDto.RecruitID))
-
-		stars := recruit.Stars
-
-		if stars >= 4 {
-			message := recruit.FirstName + " " + recruit.LastName + ", " + strconv.Itoa(stars) + " star " + recruit.Position + " from " + recruit.HighSchool + ", " + recruit.City + ", " + recruit.State + " has received an offer from " + updateRecruitPointsDto.Team
-			newLog := structs.NewsLog{
-				TeamID:      0,
-				WeekID:      ts.CollegeWeekID,
-				Week:        ts.CollegeWeek,
-				SeasonID:    ts.CollegeSeasonID,
-				MessageType: "Recruiting",
-				Message:     message,
-				League:      "CFB",
-			}
-
-			db.Save(&newLog)
-		}
-
 	} else {
 		recruitingProfile.ReallocateScholarship()
 	}

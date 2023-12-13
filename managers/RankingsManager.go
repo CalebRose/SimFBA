@@ -49,6 +49,9 @@ func AssignAllRecruitRanks() {
 		recruitingModifier := getRecruitingModifier(croot.Stars)
 
 		croot.AssignRecruitingModifier(recruitingModifier)
+		shotgunVal := getShotgunVal()
+		clutchVal := getClutchValue()
+		croot.AssignNewAttributes(shotgunVal, clutchVal)
 
 		db.Save(&croot)
 
@@ -104,18 +107,18 @@ func GetArchetypeModifier(arch string) int {
 		arch == "Ball Hawk" ||
 		arch == "Man Coverage" ||
 		arch == "Pass Rusher" ||
-		arch == "Rushing" {
+		arch == "Rushing" || arch == "Weakside" || arch == "Bandit" ||
+		arch == "Return Specialist" || arch == "Soccer Player" || arch == "Wingback" {
 		return 1
 	} else if arch == "Possession" ||
 		arch == "Field General" ||
-		arch == "Nose Tackle" ||
+		arch == "Nose Tackle" || arch == "Lineman" ||
 		arch == "Blocking" ||
 		arch == "Line Captain" {
 		return -1
 	} else if arch == "Speed Rusher" ||
-		arch == "Pass Rush" || arch == "Scrambler" ||
-		arch == "Vertical Threat" ||
-		arch == "Speed" {
+		arch == "Pass Rush" || arch == "Scrambler" || arch == "Strongside" ||
+		arch == "Vertical Threat" || arch == "Triple-Threat" || arch == "Slotback" || arch == "Speed" {
 		return 2
 	}
 	return 0

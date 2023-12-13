@@ -389,7 +389,7 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 func createCollegeCoach(team structs.RecruitingTeamProfile, almaMaterID uint, almaMater, ethnicity string, firstNameList, lastNameList [][]string, retiredPlayers []structs.NFLRetiredPlayer, retireeMap, coachMap *map[uint]bool) structs.CollegeCoach {
 	firstName := ""
 	lastName := ""
-	diceRoll := util.GenerateIntFromRange(1, 20)
+	diceRoll := util.GenerateIntFromRange(1, 50)
 	formerPlayerID := uint(0)
 	almaID := almaMaterID
 	alma := almaMater
@@ -397,7 +397,7 @@ func createCollegeCoach(team structs.RecruitingTeamProfile, almaMaterID uint, al
 	posOne := ""
 	posTwo := ""
 	posThree := ""
-	if diceRoll == 20 {
+	if diceRoll == 50 {
 		// Get a former player as a coach
 		idx := util.GenerateIntFromRange(0, len(retiredPlayers)-1)
 		retiree := retiredPlayers[idx]

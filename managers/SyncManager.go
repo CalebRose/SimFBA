@@ -169,7 +169,9 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 								if recruitProfiles[i].Scholarship {
 									tp := teamMap[strconv.Itoa(recruitProfiles[i].ProfileID)]
 									tp.ReallocateScholarship()
-									tp.AddBattleLost()
+									if recruitProfiles[i].TotalPoints > 0 {
+										tp.AddBattleLost()
+									}
 									err := db.Save(&tp).Error
 									if err != nil {
 										fmt.Println(err.Error())
