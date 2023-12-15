@@ -112,7 +112,7 @@ func (c *Croot) Map(r structs.Recruit) {
 	}
 
 	for i := 0; i < len(sortedProfiles); i++ {
-		if sortedProfiles[i].TeamReachedMax {
+		if sortedProfiles[i].TeamReachedMax || sortedProfiles[i].RemovedFromBoard {
 			continue
 		}
 		var odds float64 = 0
