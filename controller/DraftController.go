@@ -30,12 +30,14 @@ func GetDraftPageData(w http.ResponseWriter, r *http.Request) {
 	draftees := managers.GetNFLDrafteesForDraftPage()
 	allNFLTeams := managers.GetAllNFLTeams()
 	draftPicks := managers.GetAllCurrentSeasonDraftPicksForDraftRoom()
+	allCollegeTeams := managers.GetAllCollegeTeams()
 
 	res := models.NFLDraftPageResponse{
 		WarRoom:          warRoom,
 		DraftablePlayers: draftees,
 		NFLTeams:         allNFLTeams,
 		AllDraftPicks:    draftPicks,
+		CollegeTeams:     allCollegeTeams,
 	}
 
 	json.NewEncoder(w).Encode(res)

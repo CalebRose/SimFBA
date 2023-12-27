@@ -10,6 +10,7 @@ type NFLDraftPageResponse struct {
 	DraftablePlayers []NFLDraftee
 	NFLTeams         []structs.NFLTeam
 	AllDraftPicks    [7][]structs.NFLDraftPick
+	CollegeTeams     []structs.CollegeTeam
 }
 
 type NFLWarRoom struct {
