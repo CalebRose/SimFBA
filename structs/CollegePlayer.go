@@ -144,13 +144,27 @@ func (cp *CollegePlayer) GetOverall() {
 			(0.45 * float64(cp.PuntAccuracy))
 		cp.Overall = int(ovr)
 	} else if cp.Position == "ATH" {
-		ovr = (float64(cp.FootballIQ) + float64(cp.Speed) + float64(cp.Agility) +
-			float64(cp.Carrying) + float64(cp.Catching) + float64(cp.RouteRunning) +
-			float64(cp.RunBlock) + float64(cp.PassBlock) + float64(cp.PassRush) +
-			float64(cp.RunDefense) + float64(cp.Tackle) + float64(cp.Strength) +
-			float64(cp.ZoneCoverage) + float64(cp.ManCoverage) + float64(cp.ThrowAccuracy) +
-			float64(cp.ThrowPower) + float64(cp.PuntAccuracy) + float64(cp.PuntPower) +
-			float64(cp.KickAccuracy) + float64(cp.KickPower)) / 20
+		if cp.Archetype == "Field General" {
+			ovr = (.20 * float64(cp.FootballIQ)) + (.1 * float64(cp.ZoneCoverage)) + (.1 * float64(cp.ManCoverage)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Speed)) + (.1 * float64(cp.Strength)) + (.1 * float64(cp.Tackle)) + (.1 * float64(cp.ThrowPower)) + (.1 * float64(cp.ThrowAccuracy))
+		} else if cp.Archetype == "Triple-Threat" {
+			ovr = (.10 * float64(cp.FootballIQ)) + (.2 * float64(cp.Agility)) + (.1 * float64(cp.Carrying)) + (.1 * float64(cp.Catching)) + (.2 * float64(cp.Speed)) + (.1 * float64(cp.RouteRunning)) + (.1 * float64(cp.ThrowPower)) + (.1 * float64(cp.ThrowAccuracy))
+		} else if cp.Archetype == "Wingback" {
+			ovr = (.1 * float64(cp.FootballIQ)) + (.2 * float64(cp.Agility)) + (.1 * float64(cp.Carrying)) + (.2 * float64(cp.Catching)) + (.2 * float64(cp.Speed)) + (.1 * float64(cp.RouteRunning)) + (.1 * float64(cp.RunBlock))
+		} else if cp.Archetype == "Slotback" {
+			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.Carrying)) + (.1 * float64(cp.Catching)) + (.2 * float64(cp.Speed)) + (.1 * float64(cp.RouteRunning)) + (.1 * float64(cp.RunBlock)) + (.1 * float64(cp.PassBlock)) + (.1 * float64(cp.Strength))
+		} else if cp.Archetype == "Lineman" {
+			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.RunBlock)) + (.1 * float64(cp.PassBlock)) + (.3 * float64(cp.Strength)) + (.1 * float64(cp.PassRush)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Tackle))
+		} else if cp.Archetype == "Strongside" {
+			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.ZoneCoverage)) + (.1 * float64(cp.ManCoverage)) + (.2 * float64(cp.Strength)) + (.1 * float64(cp.PassRush)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Tackle)) + (.1 * float64(cp.Speed))
+		} else if cp.Archetype == "Weakside" {
+			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.ZoneCoverage)) + (.1 * float64(cp.ManCoverage)) + (.1 * float64(cp.Strength)) + (.1 * float64(cp.PassRush)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Tackle)) + (.2 * float64(cp.Speed))
+		} else if cp.Archetype == "Bandit" {
+			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.ZoneCoverage)) + (.1 * float64(cp.ManCoverage)) + (.1 * float64(cp.Strength)) + (.1 * float64(cp.PassRush)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Tackle)) + (.2 * float64(cp.Speed))
+		} else if cp.Archetype == "Return Specialist" {
+			ovr = (.20 * float64(cp.FootballIQ)) + (.10 * float64(cp.Strength)) + (.20 * float64(cp.Speed)) + (.20 * float64(cp.Agility)) + (.20 * float64(cp.Catching)) + (.1 * float64(cp.Tackle))
+		} else if cp.Archetype == "Soccer Player" {
+			ovr = (.10 * float64(cp.FootballIQ)) + (.10 * float64(cp.Agility)) + (.2 * float64(cp.KickPower)) + (.2 * float64(cp.KickAccuracy)) + (.2 * float64(cp.PuntPower)) + (.2 * float64(cp.PuntAccuracy))
+		}
 		cp.Overall = int(ovr)
 	}
 }
@@ -342,4 +356,14 @@ func (cp *CollegePlayer) SignWithNewTeam(teamID int, teamAbbr string) {
 
 func (cp *CollegePlayer) AddSeasonStats(seasonStats CollegePlayerSeasonStats) {
 	cp.SeasonStats = seasonStats
+}
+
+func (cp *CollegePlayer) RevertRedshirting(isRS bool) {
+	cp.IsRedshirt = false
+	cp.IsRedshirting = isRS
+}
+
+func (cp *CollegePlayer) RevertYearProgression() {
+	cp.RevertAge()
+	cp.Year--
 }

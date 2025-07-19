@@ -147,7 +147,7 @@ func CheckAllUserDepthChartsForInjuredPlayers(w http.ResponseWriter, r *http.Req
 
 // UpdateCollegeAIDepthCharts
 func UpdateCollegeAIDepthCharts(w http.ResponseWriter, r *http.Request) {
-	managers.SetAIGameplan()
+	// managers.SetAIGameplan()
 	managers.UpdateCollegeAIDepthCharts()
 	json.NewEncoder(w).Encode("Updated all CFB Depth Charts")
 }

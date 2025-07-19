@@ -1,5 +1,7 @@
 package structs
 
+import "time"
+
 type JerseyDTO struct {
 	TeamID     string
 	JerseyType uint8
@@ -29,6 +31,11 @@ type BaseTeam struct {
 	SpecialTeamsGrade string
 	PenaltyMarks      uint8
 	JerseyType        uint8
+	LastLogin         time.Time
+}
+
+func (bt *BaseTeam) UpdateLatestInstance() {
+	bt.LastLogin = time.Now()
 }
 
 func (bt *BaseTeam) RemoveUserFromTeam() {

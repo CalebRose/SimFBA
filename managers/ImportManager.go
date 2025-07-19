@@ -1446,3 +1446,72 @@ func ImportCFB2021PlayerStats() {
 
 	repository.CreateCFBPlayerSeasonStatsRecordsBatch(db, seasonStats, 200)
 }
+
+func FixATHProgressions() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	players := GetAllCollegePlayers()
+	collegePlayerMap := MakeCollegePlayerMap(players)
+	snapMap := GetCollegePlayerSeasonSnapMap(strconv.Itoa(int(ts.CollegeSeasonID)))
+	statMap := GetCollegePlayerStatsMap(strconv.Itoa(int(ts.CollegeSeasonID)))
+
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_ATH_Fix.csv"
+
+	playerCSV := util.ReadCSV(path)
+	// Open CSV
+
+	for idx, row := range playerCSV {
+		if idx == 0 {
+			continue
+		}
+		playerID := util.ConvertStringToInt(row[0])
+		p := collegePlayerMap[uint(playerID)]
+		isBroken := p.Position == "ATH"
+		if !isBroken {
+			continue
+		}
+		/*
+			CSV contains letter grades only. Fuck.
+			I will need to generate new values from these letter grades
+			So look through how we get letter grades, and then reverse-engineer a numeric value from that
+			And THEN progress that value
+		*/
+		footballIQ := util.ConvertStringToInt(row[6])
+		speed := util.ConvertStringToInt(row[7])
+		agility := util.ConvertStringToInt(row[9])
+		carrying := util.ConvertStringToInt(row[8])
+		catching := util.ConvertStringToInt(row[10])
+		routeRunning := util.ConvertStringToInt(row[11])
+		zoneCoverage := util.ConvertStringToInt(row[12])
+		manCoverage := util.ConvertStringToInt(row[13])
+		strength := util.ConvertStringToInt(row[14])
+		tackle := util.ConvertStringToInt(row[15])
+		passBlock := util.ConvertStringToInt(row[16])
+		runBlock := util.ConvertStringToInt(row[17])
+		passRush := util.ConvertStringToInt(row[18])
+		runDefense := util.ConvertStringToInt(row[19])
+		throwPower := util.ConvertStringToInt(row[20])
+		throwAccuracy := util.ConvertStringToInt(row[21])
+		kickAccuracy := util.ConvertStringToInt(row[22])
+		kickPower := util.ConvertStringToInt(row[23])
+		puntAccuracy := util.ConvertStringToInt(row[24])
+		puntPower := util.ConvertStringToInt(row[25])
+		isRedshirting := util.ConvertStringToBool(row[27])
+		// Apply to player record
+		p.ApplyFixedATHAttributes(footballIQ, speed, agility, carrying, catching, routeRunning,
+			zoneCoverage, manCoverage, strength, tackle, passBlock, runBlock, passRush, runDefense,
+			throwPower, throwAccuracy, kickAccuracy, kickPower, puntAccuracy, puntPower)
+
+		p.RevertRedshirting(isRedshirting)
+
+		// Then progress
+		stats := statMap[p.ID]
+		snaps := snapMap[p.ID]
+		p = ProgressCollegePlayer(p, strconv.Itoa(int(ts.CollegeSeasonID)), stats, snaps)
+		// Revert year back by 1
+		p.RevertYearProgression()
+
+		// Save player record
+		repository.SaveCFBPlayer(p, db)
+	}
+}

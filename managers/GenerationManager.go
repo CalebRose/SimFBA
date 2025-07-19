@@ -382,7 +382,6 @@ func GenerateCroots() {
 		log.Fatalln("Could not grab last player record from players table...")
 	}
 
-	// var playerList []structs.CollegePlayer
 	fNameMap, lNameMap := getNameMaps()
 	generator := CrootGenerator{
 		firstNameMap:      fNameMap,
@@ -432,37 +431,37 @@ func GenerateWalkOns() {
 	count := 0
 	attributeBlob := getAttributeBlob()
 	highSchoolBlob := getCrootLocations()
-
+	faceDataBlob := getFaceDataBlob()
+	faces := []structs.FaceData{}
+	recruitBatchList := []structs.Recruit{}
+	recruitProfileBatchList := []structs.RecruitPlayerProfile{}
+	globalPlayerList := []structs.Player{}
 	firstNameMap, lastNameMap := getNameMaps()
+	collegePlayers := GetAllCollegePlayers()
+	collegeRosterMap := MakeCollegePlayerMapByTeamID(collegePlayers, true)
 
 	newID := getLatestRecord(db)
 
 	for _, team := range AllTeams {
-		id := strconv.Itoa(int(team.ID))
-		signedRecruits := GetSignedRecruitsByTeamProfileID(id)
-		if len(signedRecruits) == team.RecruitClassSize {
-			continue
-		}
-		positionList := []string{}
-
-		// Get Team Needs
-		teamNeeds := GetRecruitingNeeds(id)
-		limit := team.RecruitClassSize - len(signedRecruits)
-
-		// for _, recruit := range signedRecruits {
-		// 	if teamNeeds[recruit.Position] > 0 {
-		// 		teamNeeds[recruit.Position] -= 1
-		// 	}
-		// }
-
-		// Get All Needed Positions into a list
-		for k, v := range teamNeeds {
-			i := v
-			for i > 0 {
-				positionList = append(positionList, k)
-				i--
+		roster := collegeRosterMap[team.ID]
+		rosterCount := len(roster)
+		for _, p := range roster {
+			if p.Year == 5 || (p.Year == 4 && !p.IsRedshirt) {
+				rosterCount--
 			}
 		}
+		rosterCount += team.TotalCommitments
+		rosterLimit := 105
+		if !team.IsFBS {
+			rosterLimit = 80
+		}
+		if rosterCount >= rosterLimit {
+			continue
+		}
+		positionList := []string{"QB", "FB", "RB", "TE", "WR", "OT", "OG", "C", "DT", "DE", "OLB", "ILB", "CB", "FS", "SS", "K", "P", "ATH"}
+
+		// Get Team Needs
+		walkonLimit := rosterLimit - rosterCount
 
 		// Randomize List
 		rand.Shuffle(len(positionList), func(i, j int) {
@@ -471,7 +470,7 @@ func GenerateWalkOns() {
 
 		// Recruit Generation
 		for _, pos := range positionList {
-			if count >= limit {
+			if count >= walkonLimit {
 				break
 			}
 
@@ -501,16 +500,25 @@ func GenerateWalkOns() {
 			playerRecord.AssignID(newID)
 			count++
 
-			db.Create(&playerRecord)
-			db.Create(&recruit)
-			db.Create(&recruitPlayerRecord)
+			skinColor := getSkinColorByEthnicity(ethnicity)
+
+			face := getFace(newID, recruit.Weight, skinColor, faceDataBlob)
+			faces = append(faces, face)
+			globalPlayerList = append(globalPlayerList, playerRecord)
+			recruitBatchList = append(recruitBatchList, recruit)
+			recruitProfileBatchList = append(recruitProfileBatchList, recruitPlayerRecord)
 			newID++
 			team.IncreaseCommitCount()
-			db.Save(&team)
+			repository.SaveRecruitingTeamProfile(team, db)
+
 		}
 		count = 0
 		fmt.Println("Finished walkon generation for " + team.TeamAbbreviation)
 	}
+	repository.CreateFaceRecordsBatch(db, faces, 500)
+	repository.CreateCFBRecruitRecordsBatch(db, recruitBatchList, 500)
+	repository.CreateCFBRecruitProfileRecordsBatch(db, recruitProfileBatchList, 500)
+	repository.CreateGlobalPlayerRecordsBatch(db, globalPlayerList, 500)
 }
 
 func CreateCustomCroots() {
@@ -773,11 +781,12 @@ func createWalkon(position string, firstNameList [][]string, lastNameList [][]st
 	basePlayer.GetOverall()
 
 	return structs.Recruit{
-		BasePlayer: basePlayer,
-		City:       city,
-		HighSchool: highSchool,
-		State:      state,
-		IsSigned:   true,
+		BasePlayer:      basePlayer,
+		City:            city,
+		HighSchool:      highSchool,
+		State:           state,
+		IsSigned:        true,
+		TopRankModifier: 1,
 	}
 }
 

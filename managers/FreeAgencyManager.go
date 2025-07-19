@@ -487,64 +487,81 @@ func SyncFreeAgencyOffers() {
 
 	ts := GetTimestamp()
 	ts.ToggleFALock()
-	db.Save(&ts)
+	repository.SaveTimestamp(ts, db)
 	FreeAgents := GetAllFreeAgents()
 
 	capsheetMap := getCapsheetMap()
 
 	for _, FA := range FreeAgents {
 		// If the Free Agent is not available in off-season free agency anymore
-		if ts.IsNFLOffSeason && !FA.IsNegotiating && !FA.IsAcceptingOffers {
-			continue
-		}
-
-		// Check if still accepting offers
-		if ts.IsNFLOffSeason && FA.IsAcceptingOffers && ts.FreeAgencyRound < FA.NegotiationRound {
-			continue
-		}
-
-		if ts.IsNFLOffSeason && FA.IsAcceptingOffers && ts.FreeAgencyRound >= FA.NegotiationRound {
-			FA.ToggleIsNegotiating()
-			db.Save(&FA)
+		if ts.IsNFLOffSeason {
 			continue
 		}
 
 		// Is Ready to Sign
 		Offers := GetFreeAgentOffersByPlayerID(strconv.Itoa(int(FA.ID)))
-
-		// Sort by highest contract value
-		sort.Sort(structs.ByContractValue(Offers))
-
-		WinningOffer := structs.FreeAgencyOffer{}
-
-		for _, Offer := range Offers {
-			// Calculate to see if team can afford to pay for contract in Y1
-			capsheet := capsheetMap[Offer.TeamID]
-			if capsheet.ID == 0 {
-				// Invalid!!
-				continue
-			}
-			// y1CapSpace := ts.Y1Capspace - capsheet.Y1Bonus - capsheet.Y1Salary - capsheet.Y1CapHit
-			// y1Remaining := y1CapSpace - Offer.Y1BaseSalary - Offer.Y1Bonus
-			// if y1CapSpace < 0 || y1Remaining < 0 {
-			// 	continue
-			// }
-			// Get the Contract with the best value for the FA
-			if Offer.IsActive && WinningOffer.ID == 0 {
-				WinningOffer = Offer
-			}
-			if Offer.IsActive {
-				Offer.CancelOffer()
-			}
-
-			db.Save(&Offer)
+		if len(Offers) == 0 {
+			continue
 		}
+		maxDay := 1000
 
-		if WinningOffer.ID > 0 {
-			SignFreeAgent(WinningOffer, FA, ts)
-		} else if ts.IsNFLOffSeason {
-			FA.WaitUntilAfterDraft()
-			db.Save(&FA)
+		for _, offer := range Offers {
+			if maxDay > int(offer.Syncs) {
+				maxDay = int(offer.Syncs)
+			}
+		}
+		if maxDay < 3 {
+			for _, offer := range Offers {
+				offer.IncrementSyncs()
+				repository.SaveFreeAgencyOfferRecord(offer, db)
+			}
+		} else {
+			// Sort by highest contract value
+			sort.Sort(structs.ByContractValue(Offers))
+
+			WinningOffer := structs.FreeAgencyOffer{}
+			competingTeams := []structs.FreeAgencyOffer{}
+			highestContractValue := 0.0
+			for _, offer := range Offers {
+				capsheet := capsheetMap[offer.TeamID]
+				if capsheet.ID == 0 {
+					// Invalid!!
+					continue
+				}
+				if offer.ContractValue > highestContractValue {
+					highestContractValue = offer.ContractValue
+					competingTeams = []structs.FreeAgencyOffer{offer}
+				} else if offer.ContractValue == highestContractValue && highestContractValue > 0 {
+					competingTeams = append(competingTeams, offer)
+				} else {
+					break
+				}
+			}
+			idx := 0
+			if len(competingTeams) > 1 {
+				idx = util.GenerateIntFromRange(0, len(competingTeams)-1)
+			}
+			WinningOffer = competingTeams[idx]
+			for _, offer := range Offers {
+				capsheet := capsheetMap[offer.TeamID]
+				if capsheet.ID == 0 {
+					continue
+				}
+				if offer.IsActive && offer.ID != WinningOffer.ID {
+					offer.RejectOffer()
+				} else if offer.IsActive && offer.ID == WinningOffer.ID {
+					offer.DeactivateOffer()
+				}
+
+				repository.SaveFreeAgencyOfferRecord(offer, db)
+			}
+
+			if WinningOffer.ID > 0 {
+				SignFreeAgent(WinningOffer, FA, ts)
+			} else if ts.IsNFLOffSeason {
+				FA.WaitUntilAfterDraft()
+				repository.SaveNFLPlayer(FA, db)
+			}
 		}
 	}
 
@@ -638,12 +655,6 @@ func SyncFreeAgencyOffers() {
 					// Invalid!!
 					continue
 				}
-				// y1CapSpace := ts.Y1Capspace - capsheet.Y1Bonus - capsheet.Y1Salary - capsheet.Y1CapHit
-				// y1Remaining := y1CapSpace - contract.Y1BaseSalary - contract.Y1Bonus
-				// if y1CapSpace < 0 || y1Remaining < 0 {
-				// 	continue
-				// }
-				// Get the Contract with the best value for the FA
 				if Offer.IsActive && WinningOffer.ID == 0 {
 					WinningOffer = Offer
 				}
@@ -671,7 +682,7 @@ func SyncFreeAgencyOffers() {
 		db.Model(&structs.NFLPlayer{}).Where("age > ? and is_free_agent = ? and minimum_value >= 1", "29", true).Update("minimum_value", gorm.Expr("minimum_value * 0.9"))
 	}
 
-	db.Save(&ts)
+	repository.SaveTimestamp(ts, db)
 }
 
 func SyncExtensionOffers() {

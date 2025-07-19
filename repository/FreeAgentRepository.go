@@ -1,8 +1,11 @@
 package repository
 
 import (
+	"log"
+
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/structs"
+	"gorm.io/gorm"
 )
 
 type FreeAgencyQuery struct {
@@ -68,4 +71,11 @@ func FindAllWaiverOffers(clauses FreeAgencyQuery) []structs.NFLWaiverOffer {
 	}
 
 	return offers
+}
+
+func SaveFreeAgencyOfferRecord(contract structs.FreeAgencyOffer, db *gorm.DB) {
+	err := db.Save(&contract).Error
+	if err != nil {
+		log.Panicln("Could not save offer record")
+	}
 }

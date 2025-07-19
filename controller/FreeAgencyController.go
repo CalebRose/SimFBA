@@ -92,3 +92,8 @@ func TagPlayer(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(true)
 }
+
+func SyncExtensions(w http.ResponseWriter, r *http.Request) {
+	managers.SyncExtensionOffers()
+	json.NewEncoder(w).Encode(true)
+}

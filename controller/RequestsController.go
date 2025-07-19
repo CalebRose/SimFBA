@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/CalebRose/SimFBA/managers"
@@ -38,7 +37,7 @@ func CreateTeamRequest(w http.ResponseWriter, r *http.Request) {
 
 	managers.CreateTeamRequest(request)
 
-	fmt.Fprintf(w, "Request Successfully Created")
+	json.NewEncoder(w).Encode(request)
 }
 
 func ApproveTeamRequest(w http.ResponseWriter, r *http.Request) {
@@ -51,8 +50,8 @@ func ApproveTeamRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.ApproveTeamRequest(request)
+	json.NewEncoder(w).Encode(request)
 
-	fmt.Fprintf(w, "Request: %+v", request)
 }
 
 func RejectTeamRequest(w http.ResponseWriter, r *http.Request) {
@@ -65,8 +64,8 @@ func RejectTeamRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.RejectTeamRequest(request)
+	json.NewEncoder(w).Encode(request)
 
-	fmt.Fprintf(w, "Request: %+v", request)
 }
 
 func RemoveUserFromTeam(w http.ResponseWriter, r *http.Request) {
@@ -77,8 +76,8 @@ func RemoveUserFromTeam(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.RemoveUserFromTeam(teamID)
+	json.NewEncoder(w).Encode(true)
 
-	// json.NewEncoder(w).Encode(team)
 }
 
 func ViewCFBTeamUponRequest(w http.ResponseWriter, r *http.Request) {
@@ -115,8 +114,8 @@ func CreateNFLTeamRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.CreateNFLTeamRequest(request)
+	json.NewEncoder(w).Encode(request)
 
-	fmt.Fprintf(w, "Request Successfully Created")
 }
 
 func ApproveNFLTeamRequest(w http.ResponseWriter, r *http.Request) {
@@ -129,8 +128,8 @@ func ApproveNFLTeamRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.ApproveNFLTeamRequest(request)
+	json.NewEncoder(w).Encode(request)
 
-	fmt.Fprintf(w, "Request: %+v", request)
 }
 
 func RejectNFLTeamRequest(w http.ResponseWriter, r *http.Request) {
@@ -143,8 +142,8 @@ func RejectNFLTeamRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.RejectNFLTeamRequest(request)
+	json.NewEncoder(w).Encode(request)
 
-	fmt.Fprintf(w, "Request: %+v", request)
 }
 
 func RemoveNFLUserFromNFLTeam(w http.ResponseWriter, r *http.Request) {
@@ -158,5 +157,5 @@ func RemoveNFLUserFromNFLTeam(w http.ResponseWriter, r *http.Request) {
 
 	managers.RemoveUserFromNFLTeam(request)
 
-	// json.NewEncoder(w).Encode(team)
+	json.NewEncoder(w).Encode(true)
 }

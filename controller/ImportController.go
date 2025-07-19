@@ -97,3 +97,7 @@ func Import2021CFBStats(w http.ResponseWriter, r *http.Request) {
 	// managers.MigrateRetiredAndNFLPlayersToHistoricCFBTable()
 	managers.ImportCFB2021PlayerStats()
 }
+
+func FixATHProgressions(w http.ResponseWriter, r *http.Request) {
+	managers.FixATHProgressions()
+}

@@ -42,7 +42,21 @@ type FreeAgencyOffer struct {
 	ContractValue   float64
 	BonusPercentage float64
 	AAV             float64
+	Syncs           uint8
 	IsActive        bool
+	IsRejected      bool
+}
+
+func (o *FreeAgencyOffer) IncrementSyncs() {
+	o.Syncs++
+}
+
+func (f *FreeAgencyOffer) DeactivateOffer() {
+	f.IsActive = false
+}
+
+func (f *FreeAgencyOffer) RejectOffer() {
+	f.IsRejected = true
 }
 
 func (f *FreeAgencyOffer) CalculateOffer(offer FreeAgencyOfferDTO) {

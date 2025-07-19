@@ -329,7 +329,7 @@ func UpdateGameplan(updateGameplanDto structs.UpdateGameplanDTO) {
 	currentGameplan := GetGameplanByGameplanID(gameplanID)
 	currentGameplan.UpdateCollegeGameplan(updateGameplanDto.UpdatedGameplan)
 
-	db.Save(&currentGameplan)
+	repository.SaveCFBGameplanRecord(currentGameplan, db)
 }
 
 func UpdateNFLGameplan(updateGameplanDto structs.UpdateGameplanDTO) {
@@ -341,7 +341,7 @@ func UpdateNFLGameplan(updateGameplanDto structs.UpdateGameplanDTO) {
 	UpdatedGameplan := updateGameplanDto.UpdatedNFLGameplan
 	currentGameplan.UpdateNFLGameplan(UpdatedGameplan)
 
-	db.Save(&currentGameplan)
+	repository.SaveNFLGameplanRecord(currentGameplan, db)
 }
 
 func UpdateDepthChart(updateDepthchartDTO structs.UpdateDepthChartDTO) {

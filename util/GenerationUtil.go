@@ -727,6 +727,65 @@ func GetNewArchetypeMap() map[string]map[string]map[string]string {
 				"QB": "Balanced",
 			},
 		},
+		"ATH": {
+			"Field General": {
+				"ILB": "Field General",
+				"QB":  "Field General",
+			},
+			"Triple-Threat": {
+				"K":  "Accuracy",
+				"QB": PickFromStringList([]string{"Balanced", "Scrambler"}),
+				"P":  "Accuracy",
+				"WR": "Speed",
+				"RB": "Speed",
+			},
+			"Wingback": {
+				"RB": PickFromStringList([]string{"Balanced", "Speed"}),
+				"WR": "Speed",
+				"TE": "Receiving",
+			},
+			"Slotback": {
+				"RB": "Power",
+				"WR": "Red Zone Threat",
+				"TE": "Vertical Threat",
+			},
+			"Lineman": {
+				"OT": "Balanced",
+				"OG": "Balanced",
+				"C":  "Balanced",
+				"DE": "Balanced",
+				"DT": "Balanced",
+			},
+			"Strongside": {
+				"DE":  PickFromStringList([]string{"Balanced", "Run Stopper"}),
+				"OLB": PickFromStringList([]string{"Coverage", "Run Stopper"}),
+			},
+			"Weakside": {
+				"ILB": "Coverage",
+				"OLB": "Coverage",
+				"FS":  PickFromStringList([]string{"Zone Coverage", "Man Coverage"}),
+				"CB":  PickFromStringList([]string{"Zone Coverage", "Man Coverage"}),
+				"SS":  PickFromStringList([]string{"Zone Coverage", "Man Coverage"}),
+			},
+			"Bandit": {
+				"SS":  "Run Stopper",
+				"CB":  "Ball Hawk",
+				"FS":  "Run Stopper",
+				"OLB": "Run Stopper",
+			},
+			"Return Specialist": {
+				"K":  "Accuracy",
+				"QB": "Balanced",
+				"WR": "Route Runner",
+				"RB": "Balanced",
+			},
+			"Soccer Player": {
+				"K":  "Accuracy",
+				"P":  "Accuracy",
+				"WR": "Speed",
+				"RB": "Speed",
+			},
+		},
 	}
 }
 

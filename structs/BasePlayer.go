@@ -224,3 +224,33 @@ func (bp *BasePlayer) DesignateNewPosition(pos, arch string) {
 	bp.PositionTwo = pos
 	bp.ArchetypeTwo = arch
 }
+
+func (bp *BasePlayer) ApplyFixedATHAttributes(fIQ, spe, agi, car, cat, rr, zc, mc, str, tack, pb, rb, pr, rd, tp, ta, ka, kp, pa, pp int) {
+	bp.FootballIQ = fIQ
+	bp.Speed = spe
+	bp.Agility = agi
+	bp.Carrying = car
+	bp.Catching = cat
+	bp.RouteRunning = rr
+	bp.ZoneCoverage = zc
+	bp.ManCoverage = mc
+	bp.Strength = str
+	bp.Tackle = tack
+	bp.PassBlock = pb
+	bp.RunBlock = rb
+	bp.PassRush = pr
+	bp.RunDefense = rd
+	bp.ThrowPower = tp
+	bp.ThrowAccuracy = ta
+	bp.KickAccuracy = ka
+	bp.KickPower = kp
+	bp.PuntAccuracy = pa
+	bp.PuntPower = pp
+}
+
+func (bp *BasePlayer) RevertAge() {
+	bp.Age--
+	if bp.Age < 18 {
+		bp.Age = 18
+	}
+}
