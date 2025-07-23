@@ -2315,12 +2315,16 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 		}
 
 		// Add to TE List
-		if pos == "FB" || pos == "TE" || pos == "ATH" {
+		if pos == "FB" || pos == "TE" || pos == "WR" || pos == "ATH" {
 			score := 0
 			if pos == "TE" {
 				score += 100
 			} else if pos == "ATH" && (arch == "Slotback") {
 				score += 50
+			} else if pos == "WR" && (arch == "Red Zone Threat") {
+				score += 50
+			} else if pos == "WR" {
+				score += 10
 			}
 
 			if isGoodFit && !isBadFit {
