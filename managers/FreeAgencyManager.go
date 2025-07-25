@@ -262,6 +262,7 @@ func GetAllFreeAgentsWithOffers() []models.FreeAgentResponse {
 			ShowLetterGrade:   fa.ShowLetterGrade,
 			SeasonStats:       fa.SeasonStats,
 			Offers:            offers,
+			AAV:               fa.AAV,
 		}
 	}
 

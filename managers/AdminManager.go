@@ -592,10 +592,10 @@ func GenerateOffseasonData() {
 	GenerateNewSeasonStandings()
 
 	// Reset Recruiting Profiles
-	// ResetTeamRecruitingProfiles()
+	ResetTeamRecruitingProfiles()
 
 	// Generate Next Croot Class
-	// GenerateCroots()
+	GenerateCroots()
 }
 
 // Season Funcs

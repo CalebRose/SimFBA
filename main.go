@@ -80,7 +80,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/simfba/regress/timeslot/{timeslot}", controller.RegressTimeslot).Methods("GET")
 	apiRouter.HandleFunc("/simfba/sync/freeagency/round", controller.SyncFreeAgencyRound).Methods("GET")
 	apiRouter.HandleFunc("/simfba/sync/recruiting/", controller.SyncRecruiting).Methods("GET")
-	apiRouter.HandleFunc("/simfba/sync/season/", controller.SyncToNextSeason).Methods("GET")
+	// apiRouter.HandleFunc("/simfba/sync/season/", controller.SyncToNextSeason).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/sync/missing/", controller.SyncMissingRES).Methods("GET")
 	apiRouter.HandleFunc("/simfba/mass/{off}/{def}", controller.MassUpdateGameplans).Methods("GET")
 	apiRouter.HandleFunc("/simfba/sync/weather/", controller.WeatherGenerator).Methods("GET")
@@ -165,7 +165,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/gameplan/nfl/depthchart/ai/update/", controller.UpdateNFLAIDepthCharts).Methods("GET")
 
 	// Generation Controls
-	apiRouter.HandleFunc("/admin/generate/walkons", controller.GenerateWalkOns).Methods("GET")
+	// apiRouter.HandleFunc("/admin/generate/walkons", controller.GenerateWalkOns).Methods("GET")
 
 	// History Controls
 	apiRouter.HandleFunc("/history/college", controller.GetCollegeHistoryProfile).Methods("GET")
@@ -196,7 +196,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/import/simcfb/college/standings", controller.CreateCollegeStandings).Methods("GET")
 	// apiRouter.HandleFunc("/import/simcfb/2021/stats", controller.Import2021CFBStats).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simcfb/nfl/dts", controller.FixCollegeDTOVRs).Methods("GET")
-	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
+	apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
 	// apiRouter.HandleFunc("/assign/team/grades", controller.ImportTeamGrades).Methods("GET")
 	apiRouter.HandleFunc("/run/predraft/events", controller.RunPreDraftEvents).Methods("GET")
 
@@ -235,7 +235,7 @@ func handleRequests() http.Handler {
 
 	// Rankings Controls
 	// apiRouter.HandleFunc("/simfba/cfb/croots/generate/", controller.GenerateRecruits).Methods("GET")
-	apiRouter.HandleFunc("/rankings/assign/all/croots/", controller.AssignAllRecruitRanks).Methods("GET")
+	// apiRouter.HandleFunc("/rankings/assign/all/croots/", controller.AssignAllRecruitRanks).Methods("GET")
 
 	// Recruiting Controls
 	apiRouter.HandleFunc("/recruiting/overview/dashboard/{teamID}", controller.GetRecruitingProfileForDashboardByTeamID).Methods("GET")

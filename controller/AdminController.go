@@ -6,7 +6,9 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/managers"
+	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/gorilla/mux"
 )
@@ -169,9 +171,9 @@ func SyncRES(w http.ResponseWriter, r *http.Request) {
 }
 
 func SyncToNextSeason(w http.ResponseWriter, r *http.Request) {
-	// db := dbprovider.GetInstance().GetDB()
-	// ts := managers.GetTimestamp()
-	// ts.MoveUpSeason()
-	// repository.SaveTimestamp(ts, db)
+	db := dbprovider.GetInstance().GetDB()
+	ts := managers.GetTimestamp()
+	ts.MoveUpSeason()
+	repository.SaveTimestamp(ts, db)
 	managers.GenerateOffseasonData()
 }

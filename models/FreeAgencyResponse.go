@@ -68,6 +68,7 @@ type FreeAgentResponse struct {
 	IsPracticeSquad   bool
 	IsAcceptingOffers bool
 	IsNegotiating     bool
+	AAV               float64
 	Shotgun           int // -1 is Under Center, 0 Balanced, 1 Shotgun
 	SeasonStats       structs.NFLPlayerSeasonStats
 	Offers            []structs.FreeAgencyOffer
