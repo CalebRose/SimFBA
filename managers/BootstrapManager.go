@@ -263,7 +263,6 @@ func GetSecondBootstrapData(collegeID, proID string) BootstrapDataTwo {
 			log.Println("Fetched College Standings, count:", len(collegeStandings))
 		}()
 		log.Println("Initiated all College data queries.")
-
 	}
 	if len(proID) > 0 && proID != "0" {
 		nflTeamID := util.ConvertStringToInt(proID)
@@ -305,9 +304,9 @@ func GetSecondBootstrapData(collegeID, proID string) BootstrapDataTwo {
 		}()
 
 		log.Println("Initiated all Pro data queries.")
-		wg.Wait()
-		log.Println("Completed all football data queries.")
 	}
+	wg.Wait()
+	log.Println("Completed all football data queries.")
 	return BootstrapDataTwo{
 		CollegeStandings:     collegeStandings,
 		CollegeNews:          collegeNews,
