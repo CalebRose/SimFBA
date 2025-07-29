@@ -493,6 +493,9 @@ func SyncFreeAgencyOffers() {
 
 	capsheetMap := getCapsheetMap()
 
+	offers := repository.FindAllFreeAgentOffers(repository.FreeAgencyQuery{IsActive: true})
+	offerMap := MakeFreeAgencyOffferMapByPlayer(offers)
+
 	for _, FA := range FreeAgents {
 		// If the Free Agent is not available in off-season free agency anymore
 		if ts.IsNFLOffSeason && ts.IsDraftTime {
@@ -500,7 +503,7 @@ func SyncFreeAgencyOffers() {
 		}
 
 		// Is Ready to Sign
-		Offers := GetFreeAgentOffersByPlayerID(strconv.Itoa(int(FA.ID)))
+		Offers := offerMap[FA.ID]
 		if len(Offers) == 0 {
 			continue
 		}
