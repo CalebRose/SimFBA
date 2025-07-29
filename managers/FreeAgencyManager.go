@@ -495,7 +495,7 @@ func SyncFreeAgencyOffers() {
 
 	for _, FA := range FreeAgents {
 		// If the Free Agent is not available in off-season free agency anymore
-		if ts.IsNFLOffSeason {
+		if ts.IsNFLOffSeason && ts.IsDraftTime {
 			continue
 		}
 
