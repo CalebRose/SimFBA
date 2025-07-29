@@ -228,48 +228,45 @@ func ImportNFLPlayersCSV() {
 	}
 }
 
-// Imports 2023-25 Draft Picks
+// Imports 2028-2075 Draft Picks
 func ImportNFLDraftPicks() {
 	db := dbprovider.GetInstance().GetDB()
-	draftpickPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026_draft_picks_official.csv"
-
-	nflCSV := util.ReadCSV(draftpickPath)
-
 	nflTeams := GetAllNFLTeams()
 	teamMap := make(map[uint]structs.NFLTeam)
+	seasonID := 8
+	season := 2028
+	draftPicksToUpload := []structs.NFLDraftPick{}
 
 	for _, team := range nflTeams {
 		teamMap[team.ID] = team
 	}
 
-	for idx, row := range nflCSV {
-		if idx < 1 {
-			continue
+	for season < 2076 {
+		draftNumber := 1
+		for draftRound := 1; draftRound < 8; draftRound++ {
+			for _, team := range nflTeams {
+				tradeValue := util.GetDraftPickValue(draftRound, draftNumber)
+				draftPick := structs.NFLDraftPick{
+					SeasonID:       uint(seasonID),
+					Season:         uint(season),
+					DraftRound:     uint(draftRound),
+					DraftNumber:    uint(draftNumber),
+					Team:           util.GetNFLFullTeamName(team.TeamName, team.Mascot),
+					TeamID:         team.ID,
+					OriginalTeamID: team.ID,
+					OriginalTeam:   util.GetNFLFullTeamName(team.TeamName, team.Mascot),
+					Notes:          "",
+					DraftValue:     tradeValue,
+				}
+
+				draftPicksToUpload = append(draftPicksToUpload, draftPick)
+				draftNumber++
+			}
 		}
-
-		season := util.ConvertStringToInt(row[2])
-		season_id := util.ConvertStringToInt(row[1])
-		round := util.ConvertStringToInt(row[3])
-		pick := util.ConvertStringToInt(row[4])
-		teamID := util.ConvertStringToInt(row[6])
-		team := teamMap[uint(teamID)]
-		tradeValue := util.ConvertStringToFloat(row[12])
-
-		draftPick := structs.NFLDraftPick{
-			SeasonID:       uint(season_id),
-			Season:         uint(season),
-			DraftRound:     uint(round),
-			DraftNumber:    uint(pick),
-			Team:           team.TeamName + " " + team.Mascot,
-			TeamID:         team.ID,
-			OriginalTeamID: team.ID,
-			OriginalTeam:   team.TeamName + " " + team.Mascot,
-			Notes:          "",
-			DraftValue:     tradeValue,
-		}
-
-		db.Create(&draftPick)
+		seasonID++
+		season++
 	}
+	repository.CreateNFLDraftPickBatch(db, draftPicksToUpload, 400)
 }
 
 func ImportMinimumFAValues() {
@@ -473,14 +470,14 @@ func Import2023DraftedPlayers() {
 
 func UpdateDraftPicks() {
 	db := dbprovider.GetInstance().GetDB()
-
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2025\\2025_draft_picks_upload.csv"
+	ts := GetTimestamp()
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_draft_picks_upload.csv"
 
 	draftPickCSV := util.ReadCSV(path)
 
 	draftPicks := GetAllCurrentSeasonDraftPicks()
 	pickMap := make(map[uint]structs.NFLDraftPick)
-	// var latestID uint = 1136 // Latest ID from Draft Pick table in DB
+	var latestID uint = 1135 // Latest ID from Draft Pick table in DB
 
 	for _, pick := range draftPicks {
 		pickMap[pick.ID] = pick
@@ -498,14 +495,14 @@ func UpdateDraftPicks() {
 		team := row[7]
 		draftValue := util.ConvertStringToFloat(row[12])
 		isCompensation := util.ConvertStringToBool(row[17])
-		// if isCompensation {
-		// 	draftPickID = int(latestID)
-		// 	latestID += 1
-		// }
+		if isCompensation {
+			draftPickID = int(latestID)
+			latestID += 1
+		}
 		isVoid := util.ConvertStringToBool(row[18])
 		draftPick := structs.NFLDraftPick{
-			SeasonID: 5,
-			Season:   2025,
+			SeasonID: uint(ts.NFLSeasonID),
+			Season:   uint(ts.Season),
 		}
 		if !isCompensation {
 			draftPick = pickMap[uint(draftPickID)]

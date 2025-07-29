@@ -138,3 +138,38 @@ func getBonusMap() [39][4]float64 {
 		{0, 0, 0, 0},
 	}
 }
+
+func GetDraftPickValue(round int, pickInRound int) float64 {
+	// Map ranges to values (rough estimate)
+	switch round {
+	case 1:
+		switch {
+		case pickInRound == 1:
+			return 17.89
+		case pickInRound <= 5:
+			return 15.19
+		case pickInRound <= 10:
+			return 12.50
+		case pickInRound <= 16:
+			return 10.29
+		case pickInRound <= 24:
+			return 8.33
+		default:
+			return 6.86
+		}
+	case 2:
+		return 5.47
+	case 3:
+		return 4.97
+	case 4:
+		return 2.62
+	case 5:
+		return 2.21
+	case 6:
+		return 1.40
+	case 7:
+		return 1.35
+	default:
+		return 0.0
+	}
+}

@@ -1,0 +1,240 @@
+id,season_id,season,draft_round,draft_number,draftee_id,team_id,team,original_team_id,original_team,previous_team_id,previous_team,draft_value,notes,selected_player_id,selected_player_name,selected_player_position,is_compensation,is_void
+688,6,2026,1,1,0,31,San Francisco 49ers,31,San Francisco 49ers,0,,29.2,,0,,,0,0
+692,6,2026,1,2,0,22,Detroit Lions,27,New Orleans Saints,4,New York Jets,24.8,From New York Jets via New Orleans Saints,0,,,0,0
+699,6,2026,1,3,0,24,Minnesota Vikings,24,Minnesota Vikings,0,,24.8,,0,,,0,0
+690,6,2026,1,4,0,18,New York Giants,18,New York Giants,0,,24.8,,0,,,0,0
+689,6,2026,1,5,0,6,Cincinnati Bengals,4,New York Jets,4,New York Jets,24.8,From New York Jets,0,,,0,0
+705,6,2026,1,6,0,28,Tampa Bay Buccaneers,28,Tampa Bay Buccaneers,0,,20.4,,0,,,0,0
+707,6,2026,1,7,0,14,Kansas City Chiefs,21,Chicago Bears,21,Chicago Bears,20.4,From Chicago Bears,0,,,0,0
+703,6,2026,1,8,0,3,New England Patriots,3,New England Patriots,0,,20.4,,0,,,0,0
+714,6,2026,1,9,0,29,Arizona Cardinals,29,Arizona Cardinals,0,,20.4,,0,,,0,0
+709,6,2026,1,10,0,17,Dallas Cowboys,6,Cincinnati Bengals,4,New York Jets,20.4,From New York Jets via Cincinnati Bengals,0,,,0,0
+702,6,2026,1,11,0,5,Baltimore Ravens,5,Baltimore Ravens,0,,16.8,,0,,,0,0
+713,6,2026,1,12,0,21,Chicago Bears,14,Kansas City Chiefs,14,Kansas City Chiefs,16.8,From Kansas City Chiefs,0,,,0,0
+693,6,2026,1,13,0,9,Houston Texans,9,Houston Texans,0,,16.8,,0,,,0,0
+704,6,2026,1,14,0,1,Buffalo Bills,1,Buffalo Bills,0,,16.8,,0,,,0,0
+696,6,2026,1,15,0,30,Los Angeles Rams,16,Los Angeles Chargers,4,New York Jets,16.8,From New York Jets via Los Angeles Chargers,0,,,0,0
+698,6,2026,1,16,0,22,Detroit Lions,22,Detroit Lions,0,,16.8,,0,,,0,0
+710,6,2026,1,17,0,15,Las Vegas Raiders,15,Las Vegas Raiders,0,,13.6,,0,,,0,0
+695,6,2026,1,18,0,32,Seattle Seahawks,32,Seattle Seahawks,0,,13.6,,0,,,0,0
+697,6,2026,1,19,0,4,New York Jets,11,Jacksonville Jaguars,6,Cincinnati Bengals,13.6,From Cincinnati Bengals via Jacksonville Jaguars,0,,,0,0
+708,6,2026,1,20,0,18,New York Giants,12,Tennessee Titans,4,New York Jets,13.6,From New York Jets via Tennessee Titans,0,,,0,0
+687,6,2026,1,21,0,10,Indianapolis Colts,10,Indianapolis Colts,0,,13.6,,0,,,0,0
+711,6,2026,1,22,0,4,New York Jets,17,Dallas Cowboys,17,Dallas Cowboys,13.6,From Dallas Cowboys,0,,,0,0
+694,6,2026,1,23,0,25,Atlanta Falcons,25,Atlanta Falcons,0,,13.6,,0,,,0,0
+717,6,2026,1,24,0,16,Los Angeles Chargers,30,Los Angeles Rams,13,Denver Broncos,13.6,From Denver Broncos via Los Angeles Rams,0,,,0,0
+715,6,2026,1,25,0,16,Los Angeles Chargers,8,Pittsburgh Steelers,8,Pittsburgh Steelers,11.2,From Pittsburgh Steelers,0,,,0,0
+706,6,2026,1,26,0,19,Philadelphia Eagles,19,Philadelphia Eagles,0,,11.2,,0,,,0,0
+701,6,2026,1,27,0,7,Cleveland Browns,7,Cleveland Browns,0,,11.2,,0,,,0,0
+700,6,2026,1,28,0,23,Green Bay Packers,23,Green Bay Packers,0,,11.2,,0,,,0,0
+691,6,2026,1,29,0,26,Carolina Panthers,26,Carolina Panthers,0,,11.2,,0,,,0,0
+712,6,2026,1,30,0,2,Miami Dolphins,2,Miami Dolphins,0,,11.2,,0,,,0,0
+718,6,2026,1,31,0,29,Arizona Cardinals,13,Denver Broncos,13,Denver Broncos,11.2,From Denver Broncos,0,,,0,0
+716,6,2026,1,32,0,20,Washington Commanders,20,Washington Commanders,0,,11.2,,0,,,0,0
+720,6,2026,2,33,0,15,Las Vegas Raiders,31,San Francisco 49ers,31,San Francisco 49ers,9,From San Francisco 49ers,0,,,0,0
+724,6,2026,2,34,0,27,New Orleans Saints,27,New Orleans Saints,0,,9,,0,,,0,0
+741,6,2026,2,35,0,24,Minnesota Vikings,24,Minnesota Vikings,0,,9,,0,,,0,0
+750,6,2026,2,36,0,9,Houston Texans,18,New York Giants,13,Denver Broncos,9,From Denver Broncos via New York Giants,0,,,0,0
+721,6,2026,2,37,0,17,Dallas Cowboys,4,New York Jets,4,New York Jets,9,From New York Jets,0,,,0,0
+745,6,2026,2,38,0,28,Tampa Bay Buccaneers,28,Tampa Bay Buccaneers,0,,9,,0,,,0,0
+739,6,2026,2,39,0,21,Chicago Bears,21,Chicago Bears,0,,9,,0,,,0,0
+733,6,2026,2,40,0,3,New England Patriots,3,New England Patriots,0,,9,,0,,,0,0
+735,6,2026,2,41,0,29,Arizona Cardinals,29,Arizona Cardinals,0,,9,,0,,,0,0
+737,6,2026,2,42,0,6,Cincinnati Bengals,6,Cincinnati Bengals,0,,9,,0,,,0,0
+734,6,2026,2,43,0,5,Baltimore Ravens,5,Baltimore Ravens,0,,9,,0,,,0,0
+744,6,2026,2,44,0,30,Los Angeles Rams,14,Kansas City Chiefs,14,Kansas City Chiefs,9,From Kansas City Chiefs,0,,,0,0
+725,6,2026,2,45,0,9,Houston Texans,9,Houston Texans,0,,9,,0,,,0,0
+736,6,2026,2,46,0,1,Buffalo Bills,1,Buffalo Bills,0,,9,,0,,,0,0
+730,6,2026,2,47,0,15,Las Vegas Raiders,16,Los Angeles Chargers,4,New York Jets,9,From New York Jets via Los Angeles Chargers,0,,,0,0
+727,6,2026,2,48,0,22,Detroit Lions,22,Detroit Lions,0,,9,,0,,,0,0
+722,6,2026,2,49,0,15,Las Vegas Raiders,15,Las Vegas Raiders,0,,9,,0,,,0,0
+746,6,2026,2,50,0,32,Seattle Seahawks,32,Seattle Seahawks,0,,9,,0,,,0,0
+740,6,2026,2,51,0,12,Tennessee Titans,11,Jacksonville Jaguars,11,Jacksonville Jaguars,9,From Jacksonville Jaguars,0,,,0,0
+738,6,2026,2,52,0,12,Tennessee Titans,12,Tennessee Titans,0,,9,,0,,,0,0
+719,6,2026,2,53,0,10,Indianapolis Colts,10,Indianapolis Colts,0,,9,,0,,,0,0
+743,6,2026,2,54,0,17,Dallas Cowboys,17,Dallas Cowboys,0,,9,,0,,,0,0
+726,6,2026,2,55,0,25,Atlanta Falcons,25,Atlanta Falcons,0,,9,,0,,,0,0
+749,6,2026,2,56,0,16,Los Angeles Chargers,30,Los Angeles Rams,13,Denver Broncos,9,From Denver Broncos via Los Angeles Rams,0,,,0,0
+747,6,2026,2,57,0,8,Pittsburgh Steelers,8,Pittsburgh Steelers,0,,9,,0,,,0,0
+732,6,2026,2,58,0,19,Philadelphia Eagles,19,Philadelphia Eagles,0,,9,,0,,,0,0
+729,6,2026,2,59,0,7,Cleveland Browns,7,Cleveland Browns,0,,9,,0,,,0,0
+728,6,2026,2,60,0,29,Arizona Cardinals,23,Green Bay Packers,23,Green Bay Packers,9,From Green Bay Packers,0,,,0,0
+723,6,2026,2,61,0,4,New York Jets,26,Carolina Panthers,17,Dallas Cowboys,9,From Dallas Cowboys via Carolina Panthers,0,,,0,0
+731,6,2026,2,62,0,4,New York Jets,2,Miami Dolphins,21,Chicago Bears,9,From New York Jets via Miami Dolphins,0,,,0,0
+742,6,2026,2,63,0,14,Kansas City Chiefs,13,Denver Broncos,9,Houston Texans,9,From Houston via Denver Broncos,0,,,0,0
+748,6,2026,2,64,0,5,Baltimore Ravens,20,Washington Commanders,20,Washington Commanders,9,From Washington Commanders,0,,,0,0
+752,6,2026,3,65,0,31,San Francisco 49ers,31,San Francisco 49ers,0,,6.8,,0,,,0,0
+756,6,2026,3,66,0,27,New Orleans Saints,27,New Orleans Saints,0,,6.8,,0,,,0,0
+763,6,2026,3,67,0,9,Houston Texans,24,Minnesota Vikings,24,Minnesota Vikings,6.8,From Minnesota Vikings,0,,,0,0
+754,6,2026,3,68,0,15,Las Vegas Raiders,18,New York Giants,18,New York Giants,6.8,From New York Giants,0,,,0,0
+753,6,2026,3,69,0,10,Indianapolis Colts,4,New York Jets,26,Carolina Panthers,6.8,From Carolina Panthers via New York Jets,0,,,0,0
+769,6,2026,3,70,0,28,Tampa Bay Buccaneers,28,Tampa Bay Buccaneers,0,,6.8,,0,,,0,0
+771,6,2026,3,71,0,17,Dallas Cowboys,21,Chicago Bears,4,New York Jets,6.8,From New York Jets via Chicago Bears,0,,,0,0
+767,6,2026,3,72,0,3,New England Patriots,3,New England Patriots,0,,6.8,,0,,,0,0
+778,6,2026,3,73,0,29,Arizona Cardinals,29,Arizona Cardinals,0,,6.8,,0,,,0,0
+773,6,2026,3,74,0,6,Cincinnati Bengals,6,Cincinnati Bengals,0,,6.8,,0,,,0,0
+766,6,2026,3,75,0,5,Baltimore Ravens,5,Baltimore Ravens,0,,6.8,,0,,,0,0
+777,6,2026,3,76,0,2,Miami Dolphins,14,Kansas City Chiefs,14,Kansas City Chiefs,6.8,From Kansas City Chiefs,0,,,0,0
+757,6,2026,3,77,0,9,Houston Texans,9,Houston Texans,0,,6.8,,0,,,0,0
+768,6,2026,3,78,0,1,Buffalo Bills,1,Buffalo Bills,0,,6.8,,0,,,0,0
+760,6,2026,3,79,0,4,New York Jets,16,Los Angeles Chargers,16,Los Angeles Chargers,6.8,From Los Angeles Chargers,0,,,0,0
+762,6,2026,3,80,0,22,Detroit Lions,22,Detroit Lions,0,,6.8,,0,,,0,0
+774,6,2026,3,81,0,6,Cincinnati Bengals,15,Las Vegas Raiders,4,New York Jets,6.8,From New York Jets via Las Vegas Raiders,0,,,0,0
+759,6,2026,3,82,0,32,Seattle Seahawks,32,Seattle Seahawks,0,,6.8,,0,,,0,0
+761,6,2026,3,83,0,6,Cincinnati Bengals,11,Jacksonville Jaguars,11,Jacksonville Jaguars,6.8,From Jacksonville Jaguars,0,,,0,0
+772,6,2026,3,84,0,14,Kansas City Chiefs,12,Tennessee Titans,12,Tennessee Titans,6.8,From Tennessee Titans,0,,,0,0
+751,6,2026,3,85,0,10,Indianapolis Colts,10,Indianapolis Colts,0,,6.8,,0,,,0,0
+775,6,2026,3,86,0,17,Dallas Cowboys,17,Dallas Cowboys,0,,6.8,,0,,,0,0
+758,6,2026,3,87,0,25,Atlanta Falcons,25,Atlanta Falcons,0,,6.8,,0,,,0,0
+781,6,2026,3,88,0,30,Los Angeles Rams,30,Los Angeles Rams,0,,6.8,,0,,,0,0
+779,6,2026,3,89,0,21,Chicago Bears,8,Pittsburgh Steelers,14,Kansas City Chiefs,6.8,From Kansas City Chiefs via Pittsburgh Steelers,0,,,0,0
+770,6,2026,3,90,0,19,Philadelphia Eagles,19,Philadelphia Eagles,0,,6.8,,0,,,0,0
+765,6,2026,3,91,0,25,Atlanta Falcons,7,Cleveland Browns,20,Washington Commanders,6.8,From Washington Commanders via Cleveland Browns,0,,,0,0
+764,6,2026,3,92,0,23,Green Bay Packers,23,Green Bay Packers,0,,6.8,,0,,,0,0
+755,6,2026,3,93,0,24,Minnesota Vikings,26,Carolina Panthers,26,Carolina Panthers,6.8,From Carolina Panthers,0,,,0,0
+776,6,2026,3,94,0,12,Tennessee Titans,2,Miami Dolphins,2,Miami Dolphins,6.8,From Miami Dolphins,0,,,0,0
+782,6,2026,3,95,0,3,New England Patriots,13,Denver Broncos,13,Denver Broncos,6.8,From Denver Broncos,0,,,0,0
+780,6,2026,3,96,0,5,Baltimore Ravens,20,Washington Commanders,20,Washington Commanders,6.8,From Washington Commanders,0,,,0,0
+1137,6,2026,3,97,0,6,Cincinnati Bengals,6,Cincinnati Bengals,0,,6.8,,0,,,1,0
+1138,6,2026,3,98,0,26,Carolina Panthers,26,Carolina Panthers,0,,6.8,,0,,,1,0
+784,6,2026,4,99,0,24,Minnesota Vikings,31,San Francisco 49ers,31,San Francisco 49ers,5.2,From San Francisco 49ers,0,,,0,0
+788,6,2026,4,100,0,24,Minnesota Vikings,27,New Orleans Saints,27,New Orleans Saints,5.2,From New Orleans Saints,0,,,0,0
+795,6,2026,4,101,0,24,Minnesota Vikings,24,Minnesota Vikings,0,,5.2,,0,,,0,0
+786,6,2026,4,102,0,15,Las Vegas Raiders,18,New York Giants,18,New York Giants,5.2,From New York Giants,0,,,0,0
+785,6,2026,4,103,0,18,New York Giants,4,New York Jets,20,Washington Commanders,5.2,From Washington Commanders via New York Jets,0,,,0,0
+801,6,2026,4,104,0,28,Tampa Bay Buccaneers,28,Tampa Bay Buccaneers,0,,5.2,,0,,,0,0
+803,6,2026,4,105,0,21,Chicago Bears,21,Chicago Bears,0,,5.2,,0,,,0,0
+799,6,2026,4,106,0,9,Houston Texans,3,New England Patriots,14,Kansas City Chiefs,5.2,From KC via Minnesota Vikings via New England Patriots,0,,,0,0
+810,6,2026,4,107,0,29,Arizona Cardinals,29,Arizona Cardinals,0,,5.2,,0,,,0,0
+805,6,2026,4,108,0,4,New York Jets,6,Cincinnati Bengals,6,Cincinnati Bengals,5.2,From Cincinnati Bengals,0,,,0,0
+798,6,2026,4,109,0,5,Baltimore Ravens,5,Baltimore Ravens,0,,5.2,,0,,,0,0
+809,6,2026,4,110,0,30,Los Angeles Rams,14,Kansas City Chiefs,14,Kansas City Chiefs,5.2,From Kansas City Chiefs,0,,,0,0
+789,6,2026,4,111,0,9,Houston Texans,9,Houston Texans,0,,5.2,,0,,,0,0
+800,6,2026,4,112,0,1,Buffalo Bills,1,Buffalo Bills,0,,5.2,,0,,,0,0
+792,6,2026,4,113,0,24,Minnesota Vikings,16,Los Angeles Chargers,16,Los Angeles Chargers,5.2,From Los Angeles Chargers,0,,,0,0
+794,6,2026,4,114,0,22,Detroit Lions,22,Detroit Lions,0,,5.2,,0,,,0,0
+806,6,2026,4,115,0,26,Carolina Panthers,15,Las Vegas Raiders,15,Las Vegas Raiders,5.2,From Las Vegas Raiders,0,,,0,0
+791,6,2026,4,116,0,32,Seattle Seahawks,32,Seattle Seahawks,0,,5.2,,0,,,0,0
+793,6,2026,4,117,0,18,New York Giants,11,Jacksonville Jaguars,11,Jacksonville Jaguars,5.2,From Jacksonville Jaguars,0,,,0,0
+804,6,2026,4,118,0,12,Tennessee Titans,12,Tennessee Titans,0,,5.2,,0,,,0,0
+783,6,2026,4,119,0,10,Indianapolis Colts,10,Indianapolis Colts,0,,5.2,,0,,,0,0
+807,6,2026,4,120,0,17,Dallas Cowboys,17,Dallas Cowboys,0,,5.2,,0,,,0,0
+790,6,2026,4,121,0,25,Atlanta Falcons,25,Atlanta Falcons,0,,5.2,,0,,,0,0
+813,6,2026,4,122,0,30,Los Angeles Rams,30,Los Angeles Rams,0,,5.2,,0,,,0,0
+811,6,2026,4,123,0,24,Minnesota Vikings,8,Pittsburgh Steelers,8,Pittsburgh Steelers,5.2,From Pittsburgh Steelers,0,,,0,0
+802,6,2026,4,124,0,19,Philadelphia Eagles,19,Philadelphia Eagles,0,,5.2,,0,,,0,0
+797,6,2026,4,125,0,17,Dallas Cowboys,7,Cleveland Browns,7,Cleveland Browns,5.2,From Cleveland Browns,0,,,0,0
+796,6,2026,4,126,0,23,Green Bay Packers,23,Green Bay Packers,0,,5.2,,0,,,0,0
+787,6,2026,4,127,0,23,Green Bay Packers,26,Carolina Panthers,4,New York Jets,5.2,From New York Jets via Carolina Panthers,0,,,0,0
+808,6,2026,4,128,0,2,Miami Dolphins,2,Miami Dolphins,0,,5.2,,0,,,0,0
+814,6,2026,4,129,0,1,Buffalo Bills,13,Denver Broncos,13,Denver Broncos,5.2,From Denver Broncos,0,,,0,0
+812,6,2026,4,130,0,16,Los Angeles Chargers,20,Washington Commanders,4,New York Jets,5.2,From New York Jets via Washington Commanders,0,,,0,0
+1140,6,2026,4,131,0,6,Cincinnati Bengals,6,Cincinnati Bengals,0,,5.2,,0,,,1,0
+1141,6,2026,4,132,0,25,Atlanta Falcons,25,Atlanta Falcons,0,,5.2,,0,,,1,0
+1142,6,2026,4,133,0,32,Washington Commanders,32,Washington Commanders,0,,5.2,,0,,,1,0
+816,6,2026,5,134,0,31,San Francisco 49ers,31,San Francisco 49ers,0,,4.4,,0,,,0,0
+820,6,2026,5,135,0,14,Kansas City Chiefs,27,New Orleans Saints,27,New Orleans Saints,4.4,From New Orleans Saints,0,,,0,0
+827,6,2026,5,136,0,3,New England Patriots,24,Minnesota Vikings,24,Minnesota Vikings,4.4,From Minnesota Vikings,0,,,0,0
+818,6,2026,5,137,0,18,New York Giants,18,New York Giants,0,,4.4,,0,,,0,0
+817,6,2026,5,138,0,17,Dallas Cowboys,4,New York Jets,4,New York Jets,4.4,From New York Jets,0,,,0,0
+833,6,2026,5,139,0,28,Tampa Bay Buccaneers,28,Tampa Bay Buccaneers,0,,4.4,,0,,,0,0
+815,6,2026,5,140,0,15,Las Vegas Raiders,21,Chicago Bears,21,Chicago Bears,4.4,From Chicago Bears,0,,,0,0
+831,6,2026,5,141,0,3,New England Patriots,3,New England Patriots,0,,4.4,,0,,,0,0
+842,6,2026,5,142,0,15,Las Vegas Raiders,29,Arizona Cardinals,29,Arizona Cardinals,4.4,From Arizona Cardinals,0,,,0,0
+837,6,2026,5,143,0,24,Minnesota Vikings,6,Cincinnati Bengals,6,Cincinnati Bengals,4.4,From Cincinnati Bengals,0,,,0,0
+830,6,2026,5,144,0,5,Baltimore Ravens,5,Baltimore Ravens,0,,4.4,,0,,,0,0
+841,6,2026,5,145,0,9,Houston Texans,14,Kansas City Chiefs,14,Kansas City Chiefs,4.4,From Kansas City,0,,,0,0
+821,6,2026,5,146,0,9,Houston Texans,9,Houston Texans,0,,4.4,,0,,,0,0
+832,6,2026,5,147,0,1,Buffalo Bills,1,Buffalo Bills,0,,4.4,,0,,,0,0
+824,6,2026,5,148,0,9,Houston Texans,16,Los Angeles Chargers,16,Los Angeles Chargers,4.4,From Los Angeles Chargers,0,,,0,0
+826,6,2026,5,149,0,22,Detroit Lions,22,Detroit Lions,0,,4.4,,0,,,0,0
+838,6,2026,5,150,0,14,Kansas City Chiefs,15,Las Vegas Raiders,4,New York Jets,4.4,From New York Jets via Las Vegas Raiders,0,,,0,0
+835,6,2026,5,151,0,32,Seattle Seahawks,32,Seattle Seahawks,0,,4.4,,0,,,0,0
+825,6,2026,5,152,0,11,Jacksonville Jaguars,11,Jacksonville Jaguars,0,,4.4,,0,,,0,0
+836,6,2026,5,153,0,12,Tennessee Titans,12,Tennessee Titans,0,,4.4,,0,,,0,0
+823,6,2026,5,154,0,10,Indianapolis Colts,10,Indianapolis Colts,0,,4.4,,0,,,0,0
+839,6,2026,5,155,0,3,New England Patriots,17,Dallas Cowboys,17,Dallas Cowboys,4.4,From Dallas Cowboys,0,,,0,0
+822,6,2026,5,156,0,14,Kansas City Chiefs,25,Atlanta Falcons,4,New York Jets,4.4,From New York Jets via Atlanta Falcons,0,,,0,0
+845,6,2026,5,157,0,30,Los Angeles Rams,30,Los Angeles Rams,0,,4.4,,0,,,0,0
+843,6,2026,5,158,0,8,Pittsburgh Steelers,8,Pittsburgh Steelers,0,,4.4,,0,,,0,0
+834,6,2026,5,159,0,19,Philadelphia Eagles,19,Philadelphia Eagles,0,,4.4,,0,,,0,0
+829,6,2026,5,160,0,7,Cleveland Browns,7,Cleveland Browns,0,,4.4,,0,,,0,0
+828,6,2026,5,161,0,23,Green Bay Packers,23,Green Bay Packers,0,,4.4,,0,,,0,0
+819,6,2026,5,162,0,24,Minnesota Vikings,26,Carolina Panthers,25,Atlanta Falcons,4.4,From Atlanta Falcons via Carolina Panthers,0,,,0,0
+840,6,2026,5,163,0,14,Kansas City Chiefs,2,Miami Dolphins,2,Miami Dolphins,4.4,From Miami Dolphins,0,,,0,0
+846,6,2026,5,164,0,1,Buffalo Bills,13,Denver Broncos,13,Denver Broncos,4.4,From Denver Broncos,0,,,0,0
+844,6,2026,5,165,0,24,Minnesota Vikings,20,Washington Commanders,20,Washington Commanders,4.4,From Washington Commanders,0,,,0,0
+1143,6,2026,5,166,0,4,New York Jets,4,New York Jets,0,,4.4,,0,,,1,0
+1144,6,2026,5,167,0,12,Tennessee Titans,12,Tennessee Titans,0,,4.4,,0,,,1,0
+1145,6,2026,5,168,0,25,Atlanta Falcons,25,Atlanta Falcons,0,,4.4,,0,,,1,0
+1146,6,2026,5,169,0,7,Cleveland Browns,7,Cleveland Browns,0,,4.4,,0,,,1,0
+1147,6,2026,5,170,0,32,Washington Commanders,32,Washington Commanders,0,,4.4,,0,,,1,0
+848,6,2026,6,171,0,31,San Francisco 49ers,31,San Francisco 49ers,0,,4,,0,,,0,0
+851,6,2026,6,172,0,15,Las Vegas Raiders,27,New Orleans Saints,4,New York Jets,4,From New York Jets via New Orleans Saints,0,,,0,0
+858,6,2026,6,173,0,12,Tennessee Titans,24,Minnesota Vikings,15,Las Vegas Raiders,4,From Las Vegas Raiders via Minnesota Vikings,0,,,0,0
+849,6,2026,6,174,0,18,New York Giants,18,New York Giants,0,,4,,0,,,0,1
+878,6,2026,6,175,0,12,Tennessee Titans,4,New York Jets,4,New York Jets,4,From New York Jets,0,,,0,0
+864,6,2026,6,176,0,25,Atlanta Falcons,28,Tampa Bay Buccaneers,20,Washington Commanders,4,From Washington Commanders via Tampa Bay Buccaneers,0,,,0,0
+866,6,2026,6,177,0,25,Atlanta Falcons,21,Chicago Bears,21,Chicago Bears,4,From Chicago Bears,0,,,0,0
+862,6,2026,6,178,0,3,New England Patriots,3,New England Patriots,0,,4,,0,,,0,0
+873,6,2026,6,179,0,29,Arizona Cardinals,29,Arizona Cardinals,0,,4,,0,,,0,0
+868,6,2026,6,180,0,6,Cincinnati Bengals,6,Cincinnati Bengals,0,,4,,0,,,0,0
+847,6,2026,6,181,0,5,Baltimore Ravens,5,Baltimore Ravens,0,,4,,0,,,0,0
+872,6,2026,6,182,0,27,New Orleans Saints,14,Kansas City Chiefs,14,Kansas City Chiefs,4,From Kansas City Chiefs,0,,,0,0
+852,6,2026,6,183,0,9,Houston Texans,9,Houston Texans,0,,4,,0,,,0,0
+863,6,2026,6,184,0,22,Detroit Lions,1,Buffalo Bills,13,Denver Broncos,4,From Denver Broncos via Buffalo Bills,0,,,0,0
+855,6,2026,6,185,0,16,Los Angeles Chargers,16,Los Angeles Chargers,0,,4,,0,,,0,0
+857,6,2026,6,186,0,22,Detroit Lions,22,Detroit Lions,0,,4,,0,,,0,0
+869,6,2026,6,187,0,10,Indianapolis Colts,15,Las Vegas Raiders,4,New York Jets,4,From New York Jets via Las Vegas Raiders,0,,,0,0
+854,6,2026,6,188,0,32,Seattle Seahawks,32,Seattle Seahawks,0,,4,,0,,,0,0
+856,6,2026,6,189,0,11,Jacksonville Jaguars,11,Jacksonville Jaguars,0,,4,,0,,,0,0
+867,6,2026,6,190,0,12,Tennessee Titans,12,Tennessee Titans,0,,4,,0,,,0,0
+861,6,2026,6,191,0,10,Indianapolis Colts,10,Indianapolis Colts,0,,4,,0,,,0,0
+870,6,2026,6,192,0,17,Dallas Cowboys,17,Dallas Cowboys,0,,4,,0,,,0,0
+853,6,2026,6,193,0,21,Chicago Bears,25,Atlanta Falcons,25,Atlanta Falcons,4,From Atlanta Falcons,0,,,0,0
+876,6,2026,6,194,0,30,Los Angeles Rams,30,Los Angeles Rams,0,,4,,0,,,0,0
+874,6,2026,6,195,0,8,Pittsburgh Steelers,8,Pittsburgh Steelers,0,,4,,0,,,0,0
+865,6,2026,6,196,0,19,Philadelphia Eagles,19,Philadelphia Eagles,0,,4,,0,,,0,0
+860,6,2026,6,197,0,7,Cleveland Browns,7,Cleveland Browns,0,,4,,0,,,0,0
+859,6,2026,6,198,0,29,Arizona Cardinals,23,Green Bay Packers,23,Green Bay Packers,4,From Green Bay Packers,0,,,0,0
+850,6,2026,6,199,0,21,Chicago Bears,26,Carolina Panthers,4,New York Jets,4,From Chicago Bears via Carolina Panthers,0,,,0,0
+871,6,2026,6,200,0,2,Miami Dolphins,2,Miami Dolphins,0,,4,,0,,,0,0
+877,6,2026,6,201,0,27,New Orleans Saints,13,Denver Broncos,14,Kansas City Chiefs,4,From Kansas City Chiefs via Denver Broncos,0,,,0,0
+875,6,2026,6,202,0,28,Tampa Bay Buccaneers,20,Washington Commanders,20,Washington Commanders,4,From Washington Commanders,0,,,0,0
+1148,6,2026,6,203,0,21,Chicago Bears,21,Chicago Bears,0,,4,,0,,,1,0
+1149,6,2026,6,204,0,25,Atlanta Falcons,25,Atlanta Falcons,0,,4,,0,,,1,0
+1150,6,2026,6,205,0,32,Washington Commanders,32,Washington Commanders,0,,4,,0,,,1,0
+891,6,2026,7,206,0,24,Minnesota Vikings,31,San Francisco 49ers,31,San Francisco 49ers,3.6,From San Francisco 49ers,0,,,0,0
+882,6,2026,7,207,0,27,New Orleans Saints,27,New Orleans Saints,14,Kansas City Chiefs,3.6,From Kansas City Chiefs via New Orleans Saints,0,,,0,0
+880,6,2026,7,208,0,24,Minnesota Vikings,24,Minnesota Vikings,0,,3.6,,0,,,0,0
+884,6,2026,7,209,0,6,Cincinnati Bengals,18,New York Giants,20,Washington Commanders,3.6,From Washington Commanders via New York Giants,0,,,0,0
+881,6,2026,7,210,0,15,Las Vegas Raiders,4,New York Jets,4,New York Jets,3.6,From New York Jets,0,,,0,0
+897,6,2026,7,211,0,28,Tampa Bay Buccaneers,28,Tampa Bay Buccaneers,0,,3.6,,0,,,0,0
+899,6,2026,7,212,0,21,Chicago Bears,21,Chicago Bears,0,,3.6,,0,,,0,0
+895,6,2026,7,213,0,14,Kansas City Chiefs,3,New England Patriots,13,Denver Broncos,3.6,From Denver Broncos via New England Patriots,0,,,0,0
+906,6,2026,7,214,0,27,New Orleans Saints,29,Arizona Cardinals,14,Kansas City Chiefs,3.6,From Kansas City Chiefs via Arizona Cardinals,0,,,0,0
+901,6,2026,7,215,0,26,Carolina Panthers,6,Cincinnati Bengals,6,Cincinnati Bengals,3.6,From Cincinnati Bengals,0,,,0,0
+894,6,2026,7,216,0,5,Baltimore Ravens,5,Baltimore Ravens,0,,3.6,,0,,,0,0
+905,6,2026,7,217,0,14,Kansas City Chiefs,14,Kansas City Chiefs,0,,3.6,,0,,,0,0
+885,6,2026,7,218,0,14,Kansas City Chiefs,9,Houston Texans,13,Denver Broncos,3.6,From Denver Broncos via Houston Texans,0,,,0,0
+896,6,2026,7,219,0,16,Los Angeles Chargers,1,Buffalo Bills,4,New York Jets,3.6,From New York Jets via Buffalo Bills,0,,,0,0
+888,6,2026,7,220,0,16,Los Angeles Chargers,16,Los Angeles Chargers,0,,3.6,,0,,,0,0
+890,6,2026,7,221,0,22,Detroit Lions,22,Detroit Lions,0,,3.6,,0,,,0,0
+902,6,2026,7,222,0,1,Buffalo Bills,15,Las Vegas Raiders,15,Las Vegas Raiders,3.6,From Las Vegas Raiders,0,,,0,0
+887,6,2026,7,223,0,32,Seattle Seahawks,32,Seattle Seahawks,0,,3.6,,0,,,0,0
+889,6,2026,7,224,0,11,Jacksonville Jaguars,11,Jacksonville Jaguars,0,,3.6,,0,,,0,0
+900,6,2026,7,225,0,12,Tennessee Titans,12,Tennessee Titans,0,,3.6,,0,,,0,0
+879,6,2026,7,226,0,10,Indianapolis Colts,10,Indianapolis Colts,0,,3.6,,0,,,0,0
+903,6,2026,7,227,0,17,Dallas Cowboys,17,Dallas Cowboys,0,,3.6,,0,,,0,0
+886,6,2026,7,228,0,25,Atlanta Falcons,25,Atlanta Falcons,0,,3.6,,0,,,0,0
+909,6,2026,7,229,0,30,Los Angeles Rams,30,Los Angeles Rams,0,,3.6,,0,,,0,0
+907,6,2026,7,230,0,24,Minnesota Vikings,8,Pittsburgh Steelers,8,Pittsburgh Steelers,3.6,From Pittsburgh Steelers,0,,,0,0
+898,6,2026,7,231,0,19,Philadelphia Eagles,19,Philadelphia Eagles,0,,3.6,,0,,,0,0
+893,6,2026,7,232,0,7,Cleveland Browns,7,Cleveland Browns,0,,3.6,,0,,,0,0
+892,6,2026,7,233,0,23,Green Bay Packers,23,Green Bay Packers,0,,3.6,,0,,,0,0
+883,6,2026,7,234,0,26,Carolina Panthers,26,Carolina Panthers,0,,3.6,,0,,,0,1
+904,6,2026,7,235,0,2,Miami Dolphins,2,Miami Dolphins,0,,3.6,,0,,,0,0
+910,6,2026,7,236,0,9,Houston Texans,13,Denver Broncos,14,Kansas City Chiefs,3.6,From Denver Broncos,0,,,0,0
+908,6,2026,7,237,0,18,New York Giants,20,Washington Commanders,20,Washington Commanders,3.6,From Washington Commanders,0,,,0,0
+1151,6,2026,7,238,0,29,Arizona Cardinals,29,Arizona Cardinals,0,,3.6,,0,,,1,0
+1152,6,2026,7,239,0,30,Los Angeles Rams,30,Los Angeles Rams,0,,3.6,,0,,,1,0

@@ -420,7 +420,7 @@ func handleCron() *cron.Cron {
 		// Sync Recruiting
 		c.AddFunc("0 16 * * 3", controller.SyncRecruitingViaCron)
 		// Sync Free Agency
-		c.AddFunc("0 16 * * 2", controller.SyncFreeAgencyViaCron)
+		c.AddFunc("0 16 * * *", controller.SyncFreeAgencyViaCron)
 		// Sync Extension Offers
 		// Run the Games
 		c.AddFunc("0 4 * * 4", controller.RunTheGamesViaCron)
