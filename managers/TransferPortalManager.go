@@ -1065,6 +1065,9 @@ func SyncTransferPortal() {
 		eligibleTeams := []structs.TransferPortalProfile{}
 
 		for i := range portalProfiles {
+			if portalProfiles[i].RemovedFromBoard {
+				continue
+			}
 			promise := collegePromiseMap[uint(portalProfiles[i].PromiseID.Int64)]
 
 			multiplier := getMultiplier(promise)
