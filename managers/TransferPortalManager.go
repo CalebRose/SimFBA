@@ -1224,16 +1224,12 @@ func GetTransferPortalProfilesByPlayerID(playerID string) []structs.TransferPort
 }
 
 func GetTransferPortalProfilesForPage(teamID string) []structs.TransferPortalProfileResponse {
-	db := dbprovider.GetInstance().GetDB()
-
-	var profiles []structs.TransferPortalProfile
 	var response []structs.TransferPortalProfileResponse
-	err := db.Where("profile_id = ? AND removed_from_board = ?", teamID, false).Find(&profiles).Error
-	if err != nil {
-		log.Fatalln("Error!: ", err)
-	}
+	allProfiles := GetAllTransferPortalProfiles()
+	teamProfiles := MakePortalProfileMapByTeamID(allProfiles)
+	profiles := teamProfiles[uint(util.ConvertStringToInt(teamID))]
 
-	portalProfileMapByPlayerID := MakePortalProfileMapByPlayerID(profiles)
+	portalProfileMapByPlayerID := MakePortalProfileMapByPlayerID(allProfiles)
 	collegePlayers := GetAllCollegePlayers()
 	collegePlayerMap := MakeCollegePlayerMap(collegePlayers)
 
@@ -1247,10 +1243,10 @@ func GetTransferPortalProfilesForPage(teamID string) []structs.TransferPortalPro
 		cp := collegePlayerMap[p.CollegePlayerID]
 		cpResponse := structs.TransferPlayerResponse{}
 		ovr := util.GetOverallGrade(cp.Overall, cp.Year)
-		cpResponse.Map(cp, ovr, portalProfileMapByPlayerID[cp.ID])
 		teamPromises := promisesTeamMap[p.ProfileID]
 		promiseMapByPlayerID := MakePromiseMapByPlayerIDByTeam(teamPromises)
 		playerPromise := promiseMapByPlayerID[p.CollegePlayerID]
+		cpResponse.Map(cp, ovr, portalProfileMapByPlayerID[cp.ID])
 
 		pResponse := structs.TransferPortalProfileResponse{
 			ID:                    p.ID,
