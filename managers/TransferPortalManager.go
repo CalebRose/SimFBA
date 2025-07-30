@@ -1228,7 +1228,7 @@ func GetTransferPortalProfilesForPage(teamID string) []structs.TransferPortalPro
 
 	var profiles []structs.TransferPortalProfile
 	var response []structs.TransferPortalProfileResponse
-	err := db.Preload("removed_from_board = ?", false).Preload("Promise").Where("profile_id = ? AND removed_from_board = ?", teamID, false).Find(&profiles).Error
+	err := db.Where("profile_id = ? AND removed_from_board = ?", teamID, false).Find(&profiles).Error
 	if err != nil {
 		log.Fatalln("Error!: ", err)
 	}
