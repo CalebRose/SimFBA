@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"sort"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type CollegePromise struct {
@@ -66,8 +66,6 @@ type TransferPortalProfile struct {
 	LockProfile           bool
 	IsSigned              bool
 	Recruiter             string
-	CollegePlayer         CollegePlayer  `gorm:"foreignKey:CollegePlayerID"`
-	Promise               CollegePromise `gorm:"foreignKey:PromiseID"`
 }
 
 func (p *TransferPortalProfile) Reactivate() {
@@ -178,7 +176,7 @@ type TransferPlayerResponse struct {
 	LeadingTeams        []LeadingTeams
 }
 
-func (c *TransferPlayerResponse) Map(r CollegePlayer, ovr string) {
+func (c *TransferPlayerResponse) Map(r CollegePlayer, ovr string, profiles []TransferPortalProfile) {
 	c.PlayerID = uint(r.PlayerID)
 	c.TeamID = uint(r.TeamID)
 	c.FirstName = r.FirstName
@@ -230,7 +228,7 @@ func (c *TransferPlayerResponse) Map(r CollegePlayer, ovr string) {
 	var totalPoints float64 = 0
 	var runningThreshold float64 = 0
 
-	sortedProfiles := r.Profiles
+	sortedProfiles := profiles
 
 	sort.Slice(sortedProfiles, func(i, j int) bool {
 		return sortedProfiles[i].TotalPoints > sortedProfiles[j].TotalPoints
@@ -259,8 +257,8 @@ func (c *TransferPlayerResponse) Map(r CollegePlayer, ovr string) {
 			odds = float64(sortedProfiles[i].TotalPoints) / totalPoints
 		}
 		leadingTeam := LeadingTeams{
-			TeamID:   r.Profiles[i].ProfileID,
-			TeamAbbr: r.Profiles[i].TeamAbbreviation,
+			TeamID:   sortedProfiles[i].ProfileID,
+			TeamAbbr: sortedProfiles[i].TeamAbbreviation,
 			Odds:     odds,
 		}
 		c.LeadingTeams = append(c.LeadingTeams, leadingTeam)

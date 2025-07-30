@@ -195,8 +195,10 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/import/simfba/import/attributes", controller.ImplementPrimeAge).Methods("GET")
 	// apiRouter.HandleFunc("/import/simcfb/college/standings", controller.CreateCollegeStandings).Methods("GET")
 	// apiRouter.HandleFunc("/import/simcfb/2021/stats", controller.Import2021CFBStats).Methods("GET")
+	// apiRouter.HandleFunc("/import/additional/dc/positions", controller.ImportAdditionalDCPositions).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simcfb/nfl/dts", controller.FixCollegeDTOVRs).Methods("GET")
-	apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
+	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
+	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
 	// apiRouter.HandleFunc("/assign/team/grades", controller.ImportTeamGrades).Methods("GET")
 	apiRouter.HandleFunc("/run/predraft/events", controller.RunPreDraftEvents).Methods("GET")
 
@@ -418,7 +420,7 @@ func handleCron() *cron.Cron {
 		// Run RES
 		c.AddFunc("0 7 * * 4", controller.RunRESViaCron)
 		// Sync Recruiting
-		c.AddFunc("0 16 * * 3", controller.SyncRecruitingViaCron)
+		c.AddFunc("0 7 * * 3", controller.SyncRecruitingViaCron)
 		// Sync Free Agency
 		c.AddFunc("0 16 * * *", controller.SyncFreeAgencyViaCron)
 		// Sync Extension Offers

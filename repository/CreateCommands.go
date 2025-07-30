@@ -462,3 +462,48 @@ func CreateCFBRecruitPointAllocationRecordsBatch(db *gorm.DB, profiles []structs
 	}
 	return nil
 }
+
+func CreateCFBDepthChartPositionRecordsBatch(db *gorm.DB, profiles []structs.CollegeDepthChartPosition, batchSize int) error {
+	total := len(profiles)
+	for i := 0; i < total; i += batchSize {
+		end := i + batchSize
+		if end > total {
+			end = total
+		}
+
+		if err := db.CreateInBatches(profiles[i:end], batchSize).Error; err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func CreateCFBDepthChartPositionTESTRecordsBatch(db *gorm.DB, profiles []structs.CollegeDepthChartPositionTEST, batchSize int) error {
+	total := len(profiles)
+	for i := 0; i < total; i += batchSize {
+		end := i + batchSize
+		if end > total {
+			end = total
+		}
+
+		if err := db.CreateInBatches(profiles[i:end], batchSize).Error; err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func CreateNFLDepthChartPositionRecordsBatch(db *gorm.DB, profiles []structs.NFLDepthChartPosition, batchSize int) error {
+	total := len(profiles)
+	for i := 0; i < total; i += batchSize {
+		end := i + batchSize
+		if end > total {
+			end = total
+		}
+
+		if err := db.CreateInBatches(profiles[i:end], batchSize).Error; err != nil {
+			return err
+		}
+	}
+	return nil
+}

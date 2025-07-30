@@ -449,6 +449,22 @@ func AICoachPromisePhase() {
 	}
 }
 
+func GetAllCollegePromises() []structs.CollegePromise {
+	db := dbprovider.GetInstance().GetDB()
+
+	p := []structs.CollegePromise{}
+
+	err := db.Find(&p).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return []structs.CollegePromise{}
+		} else {
+			log.Fatal(err)
+		}
+	}
+	return p
+}
+
 func GetCollegePromiseByID(id string) structs.CollegePromise {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -693,20 +709,18 @@ func AICoachFillBoardsPhase() {
 		AITeams[i], AITeams[j] = AITeams[j], AITeams[i]
 	})
 	transferPortalPlayers := GetTransferPortalPlayers()
-	coachMap := GetActiveCollegeCoachMap()
 	teamMap := GetCollegeTeamMap()
 	standingsMap := GetCollegeStandingsMap(seasonID)
 	profiles := []structs.TransferPortalProfile{}
 
 	for idx, teamProfile := range AITeams {
-		if teamProfile.IsUserTeam || teamProfile.ID < 195 {
+		if teamProfile.IsUserTeam {
 			continue
 		}
 		fmt.Println("Iterating "+teamProfile.TeamAbbreviation+" on IDX: ", idx)
 		team := teamMap[teamProfile.ID]
 		teamStandings := standingsMap[uint(teamProfile.TeamID)]
 		teamID := strconv.Itoa(int(teamProfile.ID))
-		coach := coachMap[teamProfile.ID]
 		portalProfileMap := getTransferPortalProfileMapByTeamID(teamID)
 		if len(portalProfileMap) > 100 {
 			continue
@@ -773,7 +787,7 @@ func AICoachFillBoardsPhase() {
 				}
 			} else if bias == differentState && tp.State != team.State {
 				biasMod += 15
-			} else if bias == specificCoach && tp.LegacyID == coach.ID {
+			} else if bias == specificCoach && tp.LegacyID == team.ID {
 				biasMod += 25
 			} else if bias == legacy && tp.LegacyID == team.ID {
 				biasMod += 25
@@ -807,8 +821,12 @@ func AICoachAllocateAndPromisePhase() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
 	AITeams := GetOnlyAITeamRecruitingProfiles()
-	transferPortalPlayerMap := GetCollegePlayerMap()
-	coachMap := GetActiveCollegeCoachMap()
+	portalProfiles := GetAllTransferPortalProfiles()
+	profileMapByTeamID := MakePortalProfileMapByTeamID(portalProfiles)
+	profileMapByPlayerID := MakePortalProfileMapByPlayerID(portalProfiles)
+	collegePlayers := GetAllCollegePlayers()
+	transferPortalPlayerMap := MakeCollegePlayerMap(collegePlayers)
+	collegePlayerMap := MakeCollegePlayerMapByTeamID(collegePlayers, true)
 	// regionMap := util.GetRegionMap()
 	// Shuffles the list of AI teams so that it's not always iterating from A-Z. Gives the teams at the lower end of the list a chance to recruit other croots
 	rand.Shuffle(len(AITeams), func(i, j int) {
@@ -820,8 +838,7 @@ func AICoachAllocateAndPromisePhase() {
 			continue
 		}
 
-		teamID := strconv.Itoa(int(teamProfile.ID))
-		roster := GetAllCollegePlayersByTeamId(teamID)
+		roster := collegePlayerMap[teamProfile.ID]
 		teamCap := 105
 		if !teamProfile.IsFBS {
 			teamCap = 80
@@ -841,7 +858,7 @@ func AICoachAllocateAndPromisePhase() {
 		teamProfile.ResetSpentPoints()
 		points := 0.0
 
-		portalProfiles := GetTransferPortalProfilesByTeamID(teamID)
+		portalProfiles := profileMapByTeamID[teamProfile.ID]
 		for _, profile := range portalProfiles {
 			if points >= teamProfile.WeeklyPoints {
 				break
@@ -857,7 +874,6 @@ func AICoachAllocateAndPromisePhase() {
 				repository.SaveTransferPortalProfile(profile, db)
 				continue
 			}
-			playerID := strconv.Itoa(int(profile.CollegePlayerID))
 			pointsRemaining := teamProfile.WeeklyPoints - teamProfile.SpentPoints
 			if teamProfile.SpentPoints >= teamProfile.WeeklyPoints || pointsRemaining <= 0 || (pointsRemaining < 1 && pointsRemaining > 0) {
 				break
@@ -866,7 +882,7 @@ func AICoachAllocateAndPromisePhase() {
 			removePlayerFromBoard := false
 			num := 0.0
 
-			profiles := GetTransferPortalProfilesByPlayerID(playerID)
+			profiles := profileMapByPlayerID[profile.CollegePlayerID]
 			leadingTeamVal := IsAITeamContendingForPortalPlayer(profiles)
 			if profile.CurrentWeeksPoints > 0 && profile.TotalPoints+float64(profile.CurrentWeeksPoints) >= float64(leadingTeamVal)*0.66 {
 				// continue, leave everything alone
@@ -886,12 +902,17 @@ func AICoachAllocateAndPromisePhase() {
 			if (chance < 2 && ts.TransferPortalPhase <= 3) || (chance < 4 && ts.TransferPortalPhase > 3) {
 				continue
 			}
-			coach := coachMap[uint(teamProfile.TeamID)]
 
-			min := coach.PointMin
-			max := coach.PointMax
+			min := teamProfile.AIMaxThreshold
+			max := teamProfile.AIMinThreshold
 			if max > 10 {
 				max = 10
+			}
+			if !teamProfile.IsUserTeam && !teamProfile.IsFBS && max > 5 {
+				max = 5
+			}
+			if min >= max {
+				min = 4
 			}
 			num = util.GenerateFloatFromRange(float64(min), float64(max))
 			if num > pointsRemaining {
@@ -915,12 +936,12 @@ func AICoachAllocateAndPromisePhase() {
 
 			// Generate Promise based on coach bias
 			if profile.PromiseID.Int64 == 0 && !profile.RolledOnPromise {
-				promiseOdds := getBasePromiseOdds(coach.TeambuildingPreference, coach.PromiseTendency)
+				promiseOdds := getBasePromiseOdds("", "")
 				diceRoll := util.GenerateIntFromRange(1, 100)
 
 				if diceRoll < promiseOdds {
 					// Commit Promise
-					promiseLevel := getPromiseLevel(coach.PromiseTendency)
+					promiseLevel := getPromiseLevel("")
 					promiseWeight := "Medium"
 					promiseType := ""
 					benchmarkStr := ""
@@ -958,7 +979,7 @@ func AICoachAllocateAndPromisePhase() {
 					} else if bias == legacy && tp.LegacyID == uint(teamProfile.TeamID) {
 						promiseType = "Legacy"
 						promiseWeight = "Medium"
-					} else if bias == specificCoach && tp.LegacyID == coach.ID {
+					} else if bias == specificCoach && tp.LegacyID == teamProfile.ID {
 						promiseType = "Specific Coach"
 						promiseWeight = "Low"
 					} else if bias == differentState && teamProfile.State != tp.State {
@@ -999,8 +1020,11 @@ func SyncTransferPortal() {
 	// Use IsRecruitingLocked to lock the TP when not in use
 	teamProfileMap := GetTeamProfileMap()
 	transferPortalPlayers := GetTransferPortalPlayers()
-	transferPortalProfileMap := getTransferPortalProfileMap(transferPortalPlayers)
+	transferPortalProfiles := GetAllTransferPortalProfiles()
+	transferPortalProfileMap := MakePortalProfileMapByPlayerID(transferPortalProfiles)
 	rosterMap := GetFullTeamRosterWithCrootsMap()
+	collegePromises := GetAllCollegePromises()
+	collegePromiseMap := MakeCollegePromiseMap(collegePromises)
 
 	if !ts.IsRecruitingLocked {
 		ts.ToggleLockRecruiting()
@@ -1041,12 +1065,7 @@ func SyncTransferPortal() {
 		eligibleTeams := []structs.TransferPortalProfile{}
 
 		for i := range portalProfiles {
-			if portalProfiles[i].ProfileID < 195 {
-				continue
-			}
-			promiseID := strconv.Itoa(int(portalProfiles[i].PromiseID.Int64))
-
-			promise := GetCollegePromiseByID(promiseID)
+			promise := collegePromiseMap[uint(portalProfiles[i].PromiseID.Int64)]
 
 			multiplier := getMultiplier(promise)
 			portalProfiles[i].AddPointsToTotal(multiplier)
@@ -1057,14 +1076,11 @@ func SyncTransferPortal() {
 		})
 
 		for i := range portalProfiles {
-			roster := rosterMap[portalProfiles[i].ProfileID]
-			tp := teamProfileMap[strconv.Itoa(int(portalProfiles[i].ProfileID))]
-			if portalProfiles[i].ProfileID < 195 {
-				continue
-			}
-			if (len(roster) > 105 && tp.IsFBS) || (len(roster) > 80 && !tp.IsFBS) {
-				continue
-			}
+			// roster := rosterMap[portalProfiles[i].ProfileID]
+			// tp := teamProfileMap[strconv.Itoa(int(portalProfiles[i].ProfileID))]
+			// // if (len(roster) > 105 && tp.IsFBS) || (len(roster) > 80 && !tp.IsFBS) {
+			// // 	continue
+			// // }
 			if eligiblePointThreshold == 0.0 {
 				eligiblePointThreshold = portalProfiles[i].TotalPoints * signingMinimum
 			}
@@ -1082,7 +1098,7 @@ func SyncTransferPortal() {
 
 		}
 
-		if (teamCount >= 1 && minSpendingCount >= 2) || (teamCount > 1 && minSpendingCount > 3) || (ts.TransferPortalRound == 10) {
+		if (teamCount >= 1 && minSpendingCount >= 2) || (teamCount > 1 && minSpendingCount > 3) || (ts.TransferPortalRound >= 5) {
 			// threshold met
 			readyToSign = true
 		}
@@ -1100,10 +1116,6 @@ func SyncTransferPortal() {
 						odds = profile.TotalPoints / totalPointsOnPlayer * 100
 						break
 					}
-				}
-
-				if portalPlayer.ID == 15055 {
-					winningTeamID = 115
 				}
 
 				if winningTeamID > 0 {
@@ -1213,19 +1225,29 @@ func GetTransferPortalProfilesForPage(teamID string) []structs.TransferPortalPro
 
 	var profiles []structs.TransferPortalProfile
 	var response []structs.TransferPortalProfileResponse
-	err := db.Preload("CollegePlayer.Profiles", "removed_from_board = ?", false).Preload("Promise").Where("profile_id = ? AND removed_from_board = ?", teamID, false).Find(&profiles).Error
+	err := db.Preload("removed_from_board = ?", false).Preload("Promise").Where("profile_id = ? AND removed_from_board = ?", teamID, false).Find(&profiles).Error
 	if err != nil {
 		log.Fatalln("Error!: ", err)
 	}
+
+	portalProfileMapByPlayerID := MakePortalProfileMapByPlayerID(profiles)
+	collegePlayers := GetAllCollegePlayers()
+	collegePlayerMap := MakeCollegePlayerMap(collegePlayers)
+
+	promises := GetAllCollegePromises()
+	promisesTeamMap := MakePromiseMapByTeamID(promises)
 
 	for _, p := range profiles {
 		if p.RemovedFromBoard {
 			continue
 		}
-		cp := p.CollegePlayer
+		cp := collegePlayerMap[p.CollegePlayerID]
 		cpResponse := structs.TransferPlayerResponse{}
 		ovr := util.GetOverallGrade(cp.Overall, cp.Year)
-		cpResponse.Map(cp, ovr)
+		cpResponse.Map(cp, ovr, portalProfileMapByPlayerID[cp.ID])
+		teamPromises := promisesTeamMap[p.ProfileID]
+		promiseMapByPlayerID := MakePromiseMapByPlayerIDByTeam(teamPromises)
+		playerPromise := promiseMapByPlayerID[p.CollegePlayerID]
 
 		pResponse := structs.TransferPortalProfileResponse{
 			ID:                    p.ID,
@@ -1244,7 +1266,7 @@ func GetTransferPortalProfilesForPage(teamID string) []structs.TransferPortalPro
 			IsSigned:              p.IsSigned,
 			Recruiter:             p.Recruiter,
 			CollegePlayer:         cpResponse,
-			Promise:               p.Promise,
+			Promise:               playerPromise,
 		}
 
 		response = append(response, pResponse)
@@ -1260,6 +1282,16 @@ func GetTransferPortalProfilesByTeamID(teamID string) []structs.TransferPortalPr
 	var profiles []structs.TransferPortalProfile
 
 	db.Preload("CollegePlayer.Profiles").Where("profile_id = ?", teamID).Find(&profiles)
+
+	return profiles
+}
+
+func GetAllTransferPortalProfiles() []structs.TransferPortalProfile {
+	db := dbprovider.GetInstance().GetDB()
+
+	var profiles []structs.TransferPortalProfile
+
+	db.Find(&profiles)
 
 	return profiles
 }
@@ -1346,16 +1378,19 @@ func GetTransferPortalData(teamID string) structs.TransferPortalResponse {
 func GetTransferPortalPlayersForPage() []structs.TransferPlayerResponse {
 	db := dbprovider.GetInstance().GetDB()
 
+	portalProfiles := GetAllTransferPortalProfiles()
+	portalProfileMap := MakePortalProfileMapByPlayerID(portalProfiles)
+
 	var players []structs.CollegePlayer
 
-	db.Preload("Profiles").Where("transfer_status = 2").Order("overall DESC").Find(&players)
+	db.Where("transfer_status = 2").Order("overall DESC").Find(&players)
 
 	playerList := []structs.TransferPlayerResponse{}
 
 	for _, p := range players {
 		res := structs.TransferPlayerResponse{}
 		ovr := util.GetOverallGrade(p.Overall, p.Year)
-		res.Map(p, ovr)
+		res.Map(p, ovr, portalProfileMap[p.ID])
 
 		playerList = append(playerList, res)
 	}

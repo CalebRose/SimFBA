@@ -29,8 +29,6 @@ func DeleteNFLPlayerRecord(player structs.NFLPlayer, db *gorm.DB) {
 }
 
 func DeleteTransferPortalProfile(profile structs.TransferPortalProfile, db *gorm.DB) {
-	profile.CollegePlayer = structs.CollegePlayer{}
-	profile.Promise = structs.CollegePromise{}
 	err := db.Delete(&profile).Error
 	if err != nil {
 		log.Panicln("Could not delete old college player record.")

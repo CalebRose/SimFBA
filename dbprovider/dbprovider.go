@@ -9,6 +9,7 @@ import (
 	"time"
 
 	config "github.com/CalebRose/SimFBA/secrets"
+	"github.com/CalebRose/SimFBA/structs"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"golang.org/x/crypto/ssh"
 	"gorm.io/driver/mysql"
@@ -47,6 +48,15 @@ func (p *Provider) InitDatabase() bool {
 		return false
 	}
 
+	sqlDB, err := db.DB()
+	if err != nil {
+		return false
+	}
+
+	sqlDB.SetMaxIdleConns(10)
+	sqlDB.SetMaxOpenConns(100)
+	sqlDB.SetConnMaxLifetime(time.Hour)
+
 	// AutoMigrations -- uncomment when needing to update a table
 	//
 	// General
@@ -54,9 +64,9 @@ func (p *Provider) InitDatabase() bool {
 
 	// College
 
-	// db.AutoMigrate(&structs.CollegePlayer{})
+	db.AutoMigrate(&structs.CollegePlayer{})
 	// db.AutoMigrate(&structs.HistoricCollegePlayer{})
-	// db.AutoMigrate(&structs.TransferPortalProfile{})
+	db.AutoMigrate(&structs.TransferPortalProfile{})
 	// db.AutoMigrate(&structs.Player{})
 	// db.AutoMigrate(&structs.CollegePlayerSeasonStats{})
 	// db.AutoMigrate(&structs.CollegePlayerStats{})

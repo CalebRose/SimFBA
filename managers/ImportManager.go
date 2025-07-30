@@ -1512,3 +1512,289 @@ func FixATHProgressions() {
 		repository.SaveCFBPlayer(p, db)
 	}
 }
+
+func ImportNewDepthChartPositionRecords() {
+	db := dbprovider.GetInstance().GetDB()
+
+	positionsUpload := []structs.CollegeDepthChartPosition{}
+	positionsUploadTEST := []structs.CollegeDepthChartPositionTEST{}
+
+	nflPositionsUpload := []structs.NFLDepthChartPosition{}
+
+	collegeTeams := GetAllCollegeTeams()
+	nflTeams := GetAllNFLTeams()
+
+	for _, team := range collegeTeams {
+		newPositions := []structs.CollegeDepthChartPosition{
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "RB",
+				PositionLevel: "4",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "LT",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "LG",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "C",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "RG",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "RT",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "LE",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "RE",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "LOLB",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "ROLB",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "FS",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "SS",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "KR",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPosition{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "PR",
+				PositionLevel: "3",
+			},
+		}
+
+		newPositionsTEST := []structs.CollegeDepthChartPositionTEST{
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "RB",
+				PositionLevel: "4",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "LT",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "LG",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "C",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "RG",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "RT",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "LE",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "RE",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "LOLB",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "ROLB",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "FS",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "SS",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "KR",
+				PositionLevel: "3",
+			},
+			structs.CollegeDepthChartPositionTEST{
+				DepthChartID:  int(team.ID),
+				PlayerID:      0,
+				Position:      "PR",
+				PositionLevel: "3",
+			},
+		}
+
+		positionsUpload = append(positionsUpload, newPositions...)
+		positionsUploadTEST = append(positionsUploadTEST, newPositionsTEST...)
+	}
+
+	for _, team := range nflTeams {
+		newPositions := []structs.NFLDepthChartPosition{
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "RB",
+				PositionLevel: "4",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "LT",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "LG",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "C",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "RG",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "RT",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "LE",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "RE",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "LOLB",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "ROLB",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "FS",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "SS",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "KR",
+				PositionLevel: "3",
+			},
+			structs.NFLDepthChartPosition{
+				DepthChartID:  team.ID,
+				PlayerID:      0,
+				Position:      "PR",
+				PositionLevel: "3",
+			},
+		}
+
+		nflPositionsUpload = append(nflPositionsUpload, newPositions...)
+	}
+
+	repository.CreateCFBDepthChartPositionRecordsBatch(db, positionsUpload, 200)
+	repository.CreateCFBDepthChartPositionTESTRecordsBatch(db, positionsUploadTEST, 200)
+	repository.CreateNFLDepthChartPositionRecordsBatch(db, nflPositionsUpload, 200)
+}

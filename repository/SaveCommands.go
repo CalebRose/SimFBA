@@ -164,8 +164,6 @@ func SaveNFLTeamRecord(team structs.NFLTeam, db *gorm.DB) {
 }
 
 func SaveTransferPortalProfile(profile structs.TransferPortalProfile, db *gorm.DB) {
-	profile.CollegePlayer = structs.CollegePlayer{}
-	profile.Promise = structs.CollegePromise{}
 
 	err := db.Save(&profile).Error
 	if err != nil {
@@ -176,8 +174,6 @@ func SaveTransferPortalProfile(profile structs.TransferPortalProfile, db *gorm.D
 func SaveCollegePlayerRecord(player structs.CollegePlayer, db *gorm.DB) {
 	player.Stats = nil
 	player.SeasonStats = structs.CollegePlayerSeasonStats{}
-	player.Profiles = nil
-
 	err := db.Save(&player).Error
 	if err != nil {
 		log.Panicln("Could not save player record")
