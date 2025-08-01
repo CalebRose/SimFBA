@@ -36,7 +36,7 @@ func FindCollegePlayerGameStatsRecords(SeasonID, WeekID, GameType, GameID string
 	}
 
 	if len(WeekID) > 0 {
-		query = query.Where("week_id = ?", SeasonID)
+		query = query.Where("week_id = ?", WeekID)
 	}
 
 	if len(GameType) > 0 {

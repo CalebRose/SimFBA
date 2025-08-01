@@ -1982,7 +1982,7 @@ func SearchCollegeStats(seasonID, weekID, viewType, gameType string) structs.Sea
 		playerGameStatsChan := make(chan []structs.CollegePlayerStats)
 		teamGameStatsChan := make(chan []structs.CollegeTeamStats)
 		go func() {
-			pGameStats := GetCollegePlayerGameStatsByWeek(seasonID, gameType)
+			pGameStats := GetCollegePlayerGameStatsByWeek(weekID, gameType)
 			playerGameStatsChan <- pGameStats
 		}()
 
@@ -1990,7 +1990,7 @@ func SearchCollegeStats(seasonID, weekID, viewType, gameType string) structs.Sea
 		close(playerGameStatsChan)
 
 		go func() {
-			tGameStats := GetCollegeTeamGameStatsByWeek(seasonID, gameType)
+			tGameStats := GetCollegeTeamGameStatsByWeek(weekID, gameType)
 			teamGameStatsChan <- tGameStats
 		}()
 		teamGameStats = <-teamGameStatsChan
