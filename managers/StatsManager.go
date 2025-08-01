@@ -1926,24 +1926,40 @@ func GetCFBPlayerIndividualStatMapBySeason(SeasonID string) map[uint][]structs.C
 	return statMap
 }
 
+func GetCollegePlayerGameStatsByWeek(weekID, gameType string) []structs.CollegePlayerStats {
+	return repository.FindCollegePlayerGameStatsRecords("", weekID, gameType, "")
+}
+
 func GetCollegePlayerGameStatsBySeason(SeasonID, gameType string) []structs.CollegePlayerStats {
-	return repository.FindCollegePlayerGameStatsRecords(SeasonID, gameType, "")
+	return repository.FindCollegePlayerGameStatsRecords(SeasonID, "", gameType, "")
+}
+
+func GetCollegeTeamGameStatsByWeek(weekID, gameType string) []structs.CollegeTeamStats {
+	return repository.FindCollegeTeamGameStatsRecords("", weekID, gameType)
 }
 
 func GetCollegeTeamGameStatsBySeason(SeasonID, gameType string) []structs.CollegeTeamStats {
-	return repository.FindCollegeTeamGameStatsRecords(SeasonID, gameType)
+	return repository.FindCollegeTeamGameStatsRecords(SeasonID, "", gameType)
 }
 
 func GetAllCollegeTeamSeasonStatsBySeason(SeasonID, gameType string) []structs.CollegeTeamSeasonStats {
 	return repository.FindCollegeTeamSeasonStatsRecords(SeasonID, gameType)
 }
 
+func GetProPlayerGameStatsByWeek(WeekID, gameType string) []structs.NFLPlayerStats {
+	return repository.FindProPlayerGameStatsRecords("", WeekID, gameType, "")
+}
+
 func GetProPlayerGameStatsBySeason(SeasonID, gameType string) []structs.NFLPlayerStats {
-	return repository.FindProPlayerGameStatsRecords(SeasonID, gameType, "")
+	return repository.FindProPlayerGameStatsRecords(SeasonID, "", gameType, "")
+}
+
+func GetProTeamGameStatsByWeek(WeekID, gameType string) []structs.NFLTeamStats {
+	return repository.FindProTeamGameStatsRecords("", WeekID, gameType)
 }
 
 func GetProTeamGameStatsBySeason(SeasonID, gameType string) []structs.NFLTeamStats {
-	return repository.FindProTeamGameStatsRecords(SeasonID, gameType)
+	return repository.FindProTeamGameStatsRecords(SeasonID, "", gameType)
 }
 
 func GetProPlayerSeasonStatsBySeason(SeasonID, gameType string) []structs.NFLPlayerSeasonStats {
@@ -1966,7 +1982,7 @@ func SearchCollegeStats(seasonID, weekID, viewType, gameType string) structs.Sea
 		playerGameStatsChan := make(chan []structs.CollegePlayerStats)
 		teamGameStatsChan := make(chan []structs.CollegeTeamStats)
 		go func() {
-			pGameStats := GetCollegePlayerGameStatsBySeason(seasonID, gameType)
+			pGameStats := GetCollegePlayerGameStatsByWeek(seasonID, gameType)
 			playerGameStatsChan <- pGameStats
 		}()
 
@@ -1974,7 +1990,7 @@ func SearchCollegeStats(seasonID, weekID, viewType, gameType string) structs.Sea
 		close(playerGameStatsChan)
 
 		go func() {
-			tGameStats := GetCollegeTeamGameStatsBySeason(seasonID, gameType)
+			tGameStats := GetCollegeTeamGameStatsByWeek(seasonID, gameType)
 			teamGameStatsChan <- tGameStats
 		}()
 		teamGameStats = <-teamGameStatsChan
@@ -2020,7 +2036,7 @@ func SearchProStats(seasonID, weekID, viewType, gameType string) structs.SearchS
 		playerGameStatsChan := make(chan []structs.NFLPlayerStats)
 		teamGameStatsChan := make(chan []structs.NFLTeamStats)
 		go func() {
-			pGameStats := GetProPlayerGameStatsBySeason(seasonID, gameType)
+			pGameStats := GetProPlayerGameStatsByWeek(seasonID, gameType)
 			playerGameStatsChan <- pGameStats
 		}()
 
@@ -2028,7 +2044,7 @@ func SearchProStats(seasonID, weekID, viewType, gameType string) structs.SearchS
 		close(playerGameStatsChan)
 
 		go func() {
-			tGameStats := GetProTeamGameStatsBySeason(seasonID, gameType)
+			tGameStats := GetProTeamGameStatsByWeek(seasonID, gameType)
 			teamGameStatsChan <- tGameStats
 		}()
 		teamGameStats = <-teamGameStatsChan
