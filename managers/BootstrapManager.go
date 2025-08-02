@@ -14,22 +14,23 @@ import (
 )
 
 type BootstrapData struct {
-	CollegeTeam          structs.CollegeTeam
-	AllCollegeTeams      []structs.CollegeTeam
-	CollegeRosterMap     map[uint][]structs.CollegePlayer
-	TopCFBPassers        []structs.CollegePlayer
-	TopCFBRushers        []structs.CollegePlayer
-	TopCFBReceivers      []structs.CollegePlayer
-	PortalPlayers        []structs.CollegePlayer
-	CollegeInjuryReport  []structs.CollegePlayer
-	CollegeNotifications []structs.Notification
-	CollegeGameplan      structs.CollegeGameplan
-	CollegeDepthChart    structs.CollegeTeamDepthChart
-	ProTeam              structs.NFLTeam
-	AllProTeams          []structs.NFLTeam
-	ProNotifications     []structs.Notification
-	NFLGameplan          structs.NFLGameplan
-	NFLDepthChart        structs.NFLDepthChart
+	CollegeTeam            structs.CollegeTeam
+	AllCollegeTeams        []structs.CollegeTeam
+	CollegeRosterMap       map[uint][]structs.CollegePlayer
+	HistoricCollegePlayers []structs.HistoricCollegePlayer
+	TopCFBPassers          []structs.CollegePlayer
+	TopCFBRushers          []structs.CollegePlayer
+	TopCFBReceivers        []structs.CollegePlayer
+	PortalPlayers          []structs.CollegePlayer
+	CollegeInjuryReport    []structs.CollegePlayer
+	CollegeNotifications   []structs.Notification
+	CollegeGameplan        structs.CollegeGameplan
+	CollegeDepthChart      structs.CollegeTeamDepthChart
+	ProTeam                structs.NFLTeam
+	AllProTeams            []structs.NFLTeam
+	ProNotifications       []structs.Notification
+	NFLGameplan            structs.NFLGameplan
+	NFLDepthChart          structs.NFLDepthChart
 }
 
 type BootstrapDataTwo struct {
@@ -41,6 +42,7 @@ type BootstrapDataTwo struct {
 	AllProGames          []structs.NFLGame
 	CapsheetMap          map[uint]structs.NFLCapsheet
 	ProRosterMap         map[uint][]structs.NFLPlayer
+	RetiredPlayers       []structs.NFLRetiredPlayer
 	PracticeSquadPlayers []structs.NFLPlayer
 	TopNFLPassers        []structs.NFLPlayer
 	TopNFLRushers        []structs.NFLPlayer
@@ -95,17 +97,18 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 
 	// College Data
 	var (
-		collegeTeam           structs.CollegeTeam
-		collegePlayers        []structs.CollegePlayer
-		collegePlayerMap      map[uint][]structs.CollegePlayer
-		portalPlayers         []structs.CollegePlayer
-		injuredCollegePlayers []structs.CollegePlayer
-		collegeNotifications  []structs.Notification
-		collegeGameplan       structs.CollegeGameplan
-		collegeDepthChart     structs.CollegeTeamDepthChart
-		topPassers            []structs.CollegePlayer
-		topRushers            []structs.CollegePlayer
-		topReceivers          []structs.CollegePlayer
+		collegeTeam            structs.CollegeTeam
+		collegePlayers         []structs.CollegePlayer
+		collegePlayerMap       map[uint][]structs.CollegePlayer
+		historicCollegePlayers []structs.HistoricCollegePlayer
+		portalPlayers          []structs.CollegePlayer
+		injuredCollegePlayers  []structs.CollegePlayer
+		collegeNotifications   []structs.Notification
+		collegeGameplan        structs.CollegeGameplan
+		collegeDepthChart      structs.CollegeTeamDepthChart
+		topPassers             []structs.CollegePlayer
+		topRushers             []structs.CollegePlayer
+		topReceivers           []structs.CollegePlayer
 	)
 
 	// Professional Data
@@ -124,7 +127,7 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 	// Start concurrent queries
 
 	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(5)
+		wg.Add(6)
 		go func() {
 			defer wg.Done()
 			mu.Lock()
@@ -159,7 +162,10 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 		go func() {
 			defer wg.Done()
 			collegeDepthChart = GetDepthchartByTeamID(collegeID)
-
+		}()
+		go func() {
+			defer wg.Done()
+			historicCollegePlayers = GetAllHistoricCollegePlayers()
 		}()
 	}
 	if len(proID) > 0 && proID != "0" {
@@ -189,20 +195,21 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 
 	wg.Wait()
 	return BootstrapData{
-		CollegeTeam:          collegeTeam,
-		CollegeRosterMap:     collegePlayerMap,
-		CollegeInjuryReport:  injuredCollegePlayers,
-		CollegeNotifications: collegeNotifications,
-		CollegeGameplan:      collegeGameplan,
-		CollegeDepthChart:    collegeDepthChart,
-		PortalPlayers:        portalPlayers,
-		ProTeam:              proTeam,
-		ProNotifications:     proNotifications,
-		NFLGameplan:          proGameplan,
-		NFLDepthChart:        proDepthChart,
-		TopCFBPassers:        topPassers,
-		TopCFBRushers:        topRushers,
-		TopCFBReceivers:      topReceivers,
+		CollegeTeam:            collegeTeam,
+		CollegeRosterMap:       collegePlayerMap,
+		CollegeInjuryReport:    injuredCollegePlayers,
+		CollegeNotifications:   collegeNotifications,
+		CollegeGameplan:        collegeGameplan,
+		CollegeDepthChart:      collegeDepthChart,
+		PortalPlayers:          portalPlayers,
+		ProTeam:                proTeam,
+		ProNotifications:       proNotifications,
+		NFLGameplan:            proGameplan,
+		NFLDepthChart:          proDepthChart,
+		TopCFBPassers:          topPassers,
+		TopCFBRushers:          topRushers,
+		TopCFBReceivers:        topReceivers,
+		HistoricCollegePlayers: historicCollegePlayers,
 	}
 }
 
@@ -230,6 +237,7 @@ func GetSecondBootstrapData(collegeID, proID string) BootstrapDataTwo {
 		topPassers           []structs.NFLPlayer
 		topRushers           []structs.NFLPlayer
 		topReceivers         []structs.NFLPlayer
+		retiredPlayers       []structs.NFLRetiredPlayer
 	)
 	ts := GetTimestamp()
 	log.Println("Timestamp:", ts)
@@ -266,7 +274,7 @@ func GetSecondBootstrapData(collegeID, proID string) BootstrapDataTwo {
 	}
 	if len(proID) > 0 && proID != "0" {
 		nflTeamID := util.ConvertStringToInt(proID)
-		wg.Add(4)
+		wg.Add(5)
 		go func() {
 			defer wg.Done()
 			log.Println("Fetching NFL Standings for seasonID:", ts.NFLSeasonID)
@@ -283,6 +291,12 @@ func GetSecondBootstrapData(collegeID, proID string) BootstrapDataTwo {
 			defer wg.Done()
 			log.Println("Fetching Capsheet Map...")
 			capsheetMap = getCapsheetMap()
+			log.Println("Fetched Capsheet Map, count:", len(capsheetMap))
+		}()
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching Capsheet Map...")
+			retiredPlayers = GetAllRetiredPlayers()
 			log.Println("Fetched Capsheet Map, count:", len(capsheetMap))
 		}()
 		go func() {
@@ -321,6 +335,7 @@ func GetSecondBootstrapData(collegeID, proID string) BootstrapDataTwo {
 		TopNFLPassers:        topPassers,
 		TopNFLRushers:        topRushers,
 		TopNFLReceivers:      topReceivers,
+		RetiredPlayers:       retiredPlayers,
 	}
 }
 
