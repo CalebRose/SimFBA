@@ -2036,7 +2036,7 @@ func SearchProStats(seasonID, weekID, viewType, gameType string) structs.SearchS
 		playerGameStatsChan := make(chan []structs.NFLPlayerStats)
 		teamGameStatsChan := make(chan []structs.NFLTeamStats)
 		go func() {
-			pGameStats := GetProPlayerGameStatsByWeek(seasonID, gameType)
+			pGameStats := GetProPlayerGameStatsByWeek(weekID, gameType)
 			playerGameStatsChan <- pGameStats
 		}()
 
@@ -2044,7 +2044,7 @@ func SearchProStats(seasonID, weekID, viewType, gameType string) structs.SearchS
 		close(playerGameStatsChan)
 
 		go func() {
-			tGameStats := GetProTeamGameStatsByWeek(seasonID, gameType)
+			tGameStats := GetProTeamGameStatsByWeek(weekID, gameType)
 			teamGameStatsChan <- tGameStats
 		}()
 		teamGameStats = <-teamGameStatsChan
