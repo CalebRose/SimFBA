@@ -1097,35 +1097,35 @@ func CutCFBPlayer(playerId string) {
 	player.WillTransfer()
 	ts := GetTimestamp()
 	if ts.IsOffSeason || ts.CollegeWeek <= 1 || ts.CollegeWeek >= 21 || ts.TransferPortalPhase == 3 {
-		previousTeamID := strconv.Itoa(int(player.PreviousTeamID))
-		deduction := 0
-		promiseDeduction := 0
-		if player.Stars > 2 {
-			deduction = player.Stars / 2
-		}
-		collegePromise := GetCollegePromiseByCollegePlayerID(strconv.Itoa(int(player.ID)), previousTeamID)
-		if collegePromise.IsActive && collegePromise.PromiseMade {
-			weight := collegePromise.PromiseWeight
-			if weight == "Vew Low" {
-				promiseDeduction = 3
-			} else if weight == "Low" {
-				promiseDeduction = 8
-			} else if weight == "Medium" {
-				promiseDeduction = 13
-			} else if weight == "High" {
-				promiseDeduction = 23
-			} else if weight == "Very High" {
-				promiseDeduction = 28
-			}
-		}
+		// previousTeamID := strconv.Itoa(int(player.PreviousTeamID))
+		// deduction := 0
+		// promiseDeduction := 0
+		// if player.Stars > 2 {
+		// 	deduction = player.Stars / 2
+		// }
+		// collegePromise := GetCollegePromiseByCollegePlayerID(strconv.Itoa(int(player.ID)), previousTeamID)
+		// if collegePromise.IsActive && collegePromise.PromiseMade {
+		// 	weight := collegePromise.PromiseWeight
+		// 	if weight == "Vew Low" {
+		// 		promiseDeduction = 3
+		// 	} else if weight == "Low" {
+		// 		promiseDeduction = 8
+		// 	} else if weight == "Medium" {
+		// 		promiseDeduction = 13
+		// 	} else if weight == "High" {
+		// 		promiseDeduction = 23
+		// 	} else if weight == "Very High" {
+		// 		promiseDeduction = 28
+		// 	}
+		// }
 
-		points := (-1 * deduction) - promiseDeduction
-		teamProfile := GetOnlyRecruitingProfileByTeamID(previousTeamID)
-		teamProfile.IncrementClassSize()
-		if player.Stars > 0 {
-			teamProfile.AdjustPortalReputation(points)
-			repository.SaveRecruitingTeamProfile(teamProfile, db)
-		}
+		// points := (-1 * deduction) - promiseDeduction
+		// teamProfile := GetOnlyRecruitingProfileByTeamID(previousTeamID)
+		// teamProfile.IncrementClassSize()
+		// if player.Stars > 0 {
+		// 	teamProfile.AdjustPortalReputation(0)
+		// 	repository.SaveRecruitingTeamProfile(teamProfile, db)
+		// }
 	}
 	repository.SaveCFBPlayer(player, db)
 }
