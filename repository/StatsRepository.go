@@ -10,7 +10,7 @@ func FindCollegePlayerSeasonStatsRecords(SeasonID, gameType string) []structs.Co
 
 	var playerStats []structs.CollegePlayerSeasonStats
 
-	db.Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&playerStats)
+	db.Order("passing_yards desc").Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&playerStats)
 
 	return playerStats
 }
@@ -20,7 +20,7 @@ func FindProPlayerSeasonStatsRecords(SeasonID, gameType string) []structs.NFLPla
 
 	var playerStats []structs.NFLPlayerSeasonStats
 
-	db.Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&playerStats)
+	db.Order("passing_yards desc").Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&playerStats)
 
 	return playerStats
 }
@@ -47,7 +47,7 @@ func FindCollegePlayerGameStatsRecords(SeasonID, WeekID, GameType, GameID string
 		query = query.Where("game_id = ?", GameID)
 	}
 
-	query.Find(&playerStats)
+	query.Order("passing_yards desc").Find(&playerStats)
 
 	return playerStats
 }
@@ -73,7 +73,7 @@ func FindProPlayerGameStatsRecords(SeasonID, WeekID, GameType, GameID string) []
 		query = query.Where("game_id = ?", GameID)
 	}
 
-	query.Find(&playerStats)
+	query.Order("passing_yards desc").Find(&playerStats)
 
 	return playerStats
 }
@@ -83,7 +83,7 @@ func FindCollegeTeamSeasonStatsRecords(SeasonID, gameType string) []structs.Coll
 
 	var teamStats []structs.CollegeTeamSeasonStats
 
-	db.Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&teamStats)
+	db.Order("passing_yards desc").Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&teamStats)
 
 	return teamStats
 }
@@ -115,7 +115,7 @@ func FindCollegeTeamGameStatsRecords(SeasonID, WeekID, gameType string) []struct
 		query = query.Where("game_type = ?", gameType)
 	}
 
-	query.Find(&teamStats)
+	query.Order("passing_yards desc").Find(&teamStats)
 
 	return teamStats
 }
@@ -138,7 +138,7 @@ func FindProTeamGameStatsRecords(SeasonID, WeekID, gameType string) []structs.NF
 		query = query.Where("game_type = ?", gameType)
 	}
 
-	query.Find(&teamStats)
+	query.Order("passing_yards desc").Find(&teamStats)
 
 	return teamStats
 }
