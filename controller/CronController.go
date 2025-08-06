@@ -47,7 +47,7 @@ func SyncRecruitingViaCron() {
 	if ts.RunCron && !ts.IsOffSeason && !ts.CollegeSeasonOver && !ts.CFBSpringGames && ts.CollegeWeek > 0 && ts.CollegeWeek < 21 {
 		managers.SyncRecruiting(ts)
 	}
-	if ts.RunCron && ts.IsOffSeason && ts.TransferPortalPhase == 2 {
+	if ts.RunCron && ts.IsOffSeason && ts.TransferPortalPhase == 2 && ts.TransferPortalRound < 10 {
 		managers.EnterTheTransferPortal()
 	} else if ts.RunCron && ts.IsOffSeason && ts.TransferPortalPhase == 3 {
 		managers.SyncTransferPortal()
