@@ -650,7 +650,7 @@ func ExportCollegePlayerStatsToCSV(cp []structs.CollegePlayerResponse, viewType 
 		weekStr = "WEEK_" + strconv.Itoa(ts.CollegeWeek) + "_"
 	}
 	fileName := "toucans_secret_" + seasonStr + "_" + weekStr + "stats"
-	w.Header().Set("Content-Disposition", "attachment;filename="+fileName+".csv")
+	w.Header().Set("Content-Disposition", "attachment;"+fileName+".csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
 	writer := csv.NewWriter(w)
@@ -731,7 +731,7 @@ func ExportNFLPlayerStatsToCSV(cp []structs.NFLPlayerResponse, viewType string, 
 		weekStr = "WEEK_" + strconv.Itoa(ts.NFLWeek) + "_"
 	}
 	fileName := "toucans_other_secret_" + seasonStr + "_" + weekStr + "stats"
-	w.Header().Set("Content-Disposition", "attachment;filename="+fileName+".csv")
+	w.Header().Set("Content-Disposition", "attachment;"+fileName+".csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
 	writer := csv.NewWriter(w)
