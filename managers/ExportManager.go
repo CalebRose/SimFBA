@@ -12,6 +12,7 @@ import (
 )
 
 func ExportAllRostersToCSV(w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename=2023_Rosters.csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -69,6 +70,7 @@ func ExportAllRostersToCSV(w http.ResponseWriter) {
 func ExportTeamToCSV(TeamID string, w http.ResponseWriter) {
 	// Get Team Data
 	team := GetTeamByTeamID(TeamID)
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename="+team.TeamName+".csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -127,6 +129,7 @@ func ExportTeamToCSV(TeamID string, w http.ResponseWriter) {
 func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 	// Get Team Data
 	team := GetNFLTeamByTeamID(TeamID)
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename="+team.TeamName+".csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -182,6 +185,7 @@ func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 }
 
 func ExportCrootsToCSV(w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename=2022SimNFLDraftClass.csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -235,6 +239,7 @@ func ExportCrootsToCSV(w http.ResponseWriter) {
 }
 
 func ExportDrafteesToCSV(w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename=2024SimNFLDraftClass.csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -289,6 +294,7 @@ func ExportDrafteesToCSV(w http.ResponseWriter) {
 }
 
 func ExportPlayerStatsToCSV(cp []structs.CollegePlayerResponse, w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename=special_season_stats.csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -353,6 +359,7 @@ func ExportPlayerStatsToCSV(cp []structs.CollegePlayerResponse, w http.ResponseW
 }
 
 func ExportTransferPlayersToCSV(transfers []structs.CollegePlayer, w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename=transferStats.csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -406,6 +413,7 @@ func ExportNFLPlayByPlayToCSV(gameID string, w http.ResponseWriter) {
 
 	// Begin Writing
 	fileName := gameID + "_" + game.HomeTeam + "_vs_" + game.AwayTeam + "_play_by_play"
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename="+fileName+".csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -477,6 +485,7 @@ func ExportCFBPlayByPlayToCSV(gameID string, w http.ResponseWriter) {
 
 	// Begin Writing
 	fileName := gameID + "_" + game.HomeTeam + "_vs_" + game.AwayTeam + "_play_by_play"
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename="+fileName+".csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
@@ -650,7 +659,8 @@ func ExportCollegePlayerStatsToCSV(cp []structs.CollegePlayerResponse, viewType 
 		weekStr = "WEEK_" + strconv.Itoa(ts.CollegeWeek) + "_"
 	}
 	fileName := "toucans_secret_" + seasonStr + "_" + weekStr + "stats"
-	w.Header().Set("Content-Disposition", "attachment;"+fileName+".csv")
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
+	w.Header().Set("Content-Disposition", "attachment;filename="+fileName+".csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
 	writer := csv.NewWriter(w)
@@ -731,7 +741,8 @@ func ExportNFLPlayerStatsToCSV(cp []structs.NFLPlayerResponse, viewType string, 
 		weekStr = "WEEK_" + strconv.Itoa(ts.NFLWeek) + "_"
 	}
 	fileName := "toucans_other_secret_" + seasonStr + "_" + weekStr + "stats"
-	w.Header().Set("Content-Disposition", "attachment;"+fileName+".csv")
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
+	w.Header().Set("Content-Disposition", "attachment;filename="+fileName+".csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
 	writer := csv.NewWriter(w)
