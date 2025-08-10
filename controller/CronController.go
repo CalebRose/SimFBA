@@ -58,7 +58,7 @@ func SyncFreeAgencyViaCron() {
 	ts := managers.GetTimestamp()
 	if ts.RunCron {
 		managers.SyncFreeAgencyOffers()
-		if ts.FreeAgencyRound >= 1 && ts.FreeAgencyRound < 11 {
+		if ts.FreeAgencyRound >= 1 && ts.FreeAgencyRound < 25 {
 			managers.MoveUpInOffseasonFreeAgency()
 		}
 		managers.AllocateCapsheets()

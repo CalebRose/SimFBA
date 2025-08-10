@@ -81,7 +81,7 @@ func (t *Timestamp) MoveUpWeekNFL() {
 
 func (t *Timestamp) MoveUpFreeAgencyRound() {
 	t.FreeAgencyRound++
-	if t.FreeAgencyRound > 10 {
+	if t.FreeAgencyRound > 24 {
 		t.FreeAgencyRound = 0
 		t.IsFreeAgencyLocked = true
 		t.IsDraftTime = true
