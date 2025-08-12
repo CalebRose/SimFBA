@@ -4,6 +4,7 @@ import (
 	"log"
 	"strconv"
 
+	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/structs"
 	"gorm.io/gorm"
 )
@@ -40,6 +41,13 @@ func SaveNFLGameRecord(gameRecord structs.NFLGame, db *gorm.DB) {
 	err := db.Save(&gameRecord).Error
 	if err != nil {
 		log.Panicln("Could not save Game " + strconv.Itoa(int(gameRecord.ID)) + "Between " + gameRecord.HomeTeam + " and " + gameRecord.AwayTeam)
+	}
+}
+
+func SaveNFLDrafteeRecord(player models.NFLDraftee, db *gorm.DB) {
+	err := db.Save(&player).Error
+	if err != nil {
+		log.Panicln("Could not save player record")
 	}
 }
 

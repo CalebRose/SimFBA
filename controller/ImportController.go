@@ -102,6 +102,10 @@ func FixATHProgressions(w http.ResponseWriter, r *http.Request) {
 	managers.FixATHProgressions()
 }
 
+func FixSecondaryPositions(w http.ResponseWriter, r *http.Request) {
+	managers.FixSecondaryPositions()
+}
+
 func ImportAdditionalDCPositions(w http.ResponseWriter, r *http.Request) {
 	// managers.MigrateRetiredAndNFLPlayersToHistoricCFBTable()
 	managers.ImportNewDepthChartPositionRecords()

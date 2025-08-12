@@ -445,6 +445,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 	ZoneCoverage := 0
 
 	mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, np.Position)
+	totalSnaps -= int(snaps.STSnaps)
 	posThreshold := float64(totalSnaps) * 0.8
 
 	if mostPlayedPosition != np.Position && float64(mostPlayedSnaps) > posThreshold {
@@ -1084,6 +1085,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 
 	// Get most played position
 	mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, cp.Position)
+	totalSnaps -= int(snaps.STSnaps)
 	posThreshold := float64(totalSnaps) * 0.8
 
 	if mostPlayedPosition != cp.Position && float64(mostPlayedSnaps) > posThreshold {

@@ -404,12 +404,13 @@ type OffensiveFormation struct {
 	InvertedOptionRight          int
 	TripleOptionLeft             int
 	TripleOptionRight            int
-	PassQuick                    int
-	PassShort                    int
+	PassQuick                    int // Now Pass Short
+	PassShort                    int // Now Pass Medium
 	PassLong                     int
 	PassDeep                     int
 	PassScreen                   int
 	PassPAShort                  int
+	PassPAMedium                 int
 	PassPALong                   int
 	PassPADeep                   int
 	LeftVsRight                  int
@@ -530,6 +531,7 @@ func (bg *BaseGameplan) UpdateCollegeGameplanTEST(dto CollegeGameplanTEST) {
 	bg.PassDeep = dto.PassDeep
 	bg.PassScreen = dto.PassScreen
 	bg.PassPAShort = dto.PassPAShort
+	bg.PassPAMedium = dto.PassPAMedium
 	bg.PassPALong = dto.PassPALong
 	bg.PassPADeep = dto.PassPADeep
 	bg.LeftVsRight = dto.LeftVsRight

@@ -1798,3 +1798,115 @@ func ImportNewDepthChartPositionRecords() {
 	repository.CreateCFBDepthChartPositionTESTRecordsBatch(db, positionsUploadTEST, 200)
 	repository.CreateNFLDepthChartPositionRecordsBatch(db, nflPositionsUpload, 200)
 }
+
+func FixSecondaryPositions() {
+	db := dbprovider.GetInstance().GetDB()
+
+	ts := GetTimestamp()
+	seasonID := ts.CollegeSeasonID - 1
+	collegePlayers := GetAllCollegePlayers()
+	nflDraftees := GetAllNFLDraftees()
+	nflPlayers := GetAllNFLPlayers()
+
+	snapMap := GetCollegePlayerSeasonSnapMap(strconv.Itoa(seasonID))
+	nflSnapMap := GetNFLPlayerSeasonSnapMap(strconv.Itoa(seasonID))
+
+	for _, cp := range collegePlayers {
+		if len(cp.PositionTwo) > 0 {
+			continue
+		}
+		snaps := snapMap[cp.ID]
+		hasSecondaryPosition := false
+		totalSnaps := snaps.GetTotalSnaps()
+		if snaps.ID == 0 || totalSnaps == 0 {
+			continue
+		}
+		totalSnaps -= int(snaps.STSnaps)
+		mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, cp.Position)
+		posThreshold := float64(totalSnaps) * 0.8
+
+		if mostPlayedSnaps == 0 {
+			continue
+		}
+
+		if mostPlayedPosition != cp.Position && float64(mostPlayedSnaps) > posThreshold {
+			// Designate New Position
+			newArchetype, archCheck := getNewArchetype(cp.Position, cp.Archetype, mostPlayedPosition)
+			// If Archhetype exists, assign new position. Otherwise, progress by old position
+			hasSecondaryPosition = true
+			if archCheck {
+				cp.DesignateNewPosition(mostPlayedPosition, newArchetype)
+			}
+		}
+		if !hasSecondaryPosition {
+			continue
+		}
+		repository.SaveCFBPlayer(cp, db)
+	}
+
+	for _, p := range nflDraftees {
+		if len(p.PositionTwo) > 0 {
+			continue
+		}
+		snaps := snapMap[p.ID]
+		hasSecondaryPosition := false
+		totalSnaps := snaps.GetTotalSnaps()
+		if snaps.ID == 0 || totalSnaps == 0 {
+			continue
+		}
+		totalSnaps -= int(snaps.STSnaps)
+		mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, p.Position)
+		posThreshold := float64(totalSnaps) * 0.8
+
+		if mostPlayedSnaps == 0 {
+			continue
+		}
+
+		if mostPlayedPosition != p.Position && float64(mostPlayedSnaps) > posThreshold {
+			// Designate New Position
+			newArchetype, archCheck := getNewArchetype(p.Position, p.Archetype, mostPlayedPosition)
+			// If Archhetype exists, assign new position. Otherwise, progress by old position
+			hasSecondaryPosition = true
+			if archCheck {
+				p.DesignateNewPosition(mostPlayedPosition, newArchetype)
+			}
+		}
+		if !hasSecondaryPosition {
+			continue
+		}
+		repository.SaveNFLDrafteeRecord(p, db)
+	}
+
+	for _, p := range nflPlayers {
+		if len(p.PositionTwo) > 0 {
+			continue
+		}
+		snaps := nflSnapMap[p.ID]
+		hasSecondaryPosition := false
+		totalSnaps := snaps.GetTotalSnaps()
+		if snaps.ID == 0 || totalSnaps == 0 {
+			continue
+		}
+		totalSnaps -= int(snaps.STSnaps)
+		mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, p.Position)
+		posThreshold := float64(totalSnaps) * 0.8
+
+		if mostPlayedSnaps == 0 {
+			continue
+		}
+
+		if mostPlayedPosition != p.Position && float64(mostPlayedSnaps) > posThreshold {
+			// Designate New Position
+			newArchetype, archCheck := getNewArchetype(p.Position, p.Archetype, mostPlayedPosition)
+			// If Archhetype exists, assign new position. Otherwise, progress by old position
+			hasSecondaryPosition = true
+			if archCheck {
+				p.DesignateNewPosition(mostPlayedPosition, newArchetype)
+			}
+		}
+		if !hasSecondaryPosition {
+			continue
+		}
+		repository.SaveNFLPlayer(p, db)
+	}
+}
