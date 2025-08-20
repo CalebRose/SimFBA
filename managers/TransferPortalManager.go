@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"sync"
 
+	"github.com/CalebRose/SimFBA/constants"
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/repository"
@@ -1038,7 +1039,7 @@ func SyncTransferPortal() {
 		}
 
 		portalProfiles := transferPortalProfileMap[portalPlayer.ID]
-		if len(portalProfiles) == 0 && ts.TransferPortalRound < 10 {
+		if len(portalProfiles) == 0 && ts.TransferPortalRound < constants.FinalPortalRound {
 			continue
 		}
 
@@ -1046,7 +1047,7 @@ func SyncTransferPortal() {
 		if len(portalProfiles) == 0 && ts.TransferPortalRound == 10 && len(portalPlayer.TransferLikeliness) > 0 {
 			roster := rosterMap[portalPlayer.PreviousTeamID]
 			tp := teamProfileMap[strconv.Itoa(int(portalPlayer.PreviousTeamID))]
-			if (len(roster) > 105 && tp.IsFBS) || (len(roster) > 80 && !tp.IsFBS) {
+			if (len(roster) > constants.MaxFBSRosterSize && tp.IsFBS) || (len(roster) > constants.MaxFCSRosterSize && !tp.IsFBS) {
 				continue
 			}
 			rosterMap[portalPlayer.PreviousTeamID] = append(rosterMap[portalPlayer.PreviousTeamID], portalPlayer)
@@ -1060,7 +1061,7 @@ func SyncTransferPortal() {
 		readyToSign := false
 		minSpendingCount := 100
 		maxSpendingCount := 0
-		signingMinimum := 0.66
+		signingMinimum := constants.PortalSigningMinimum
 		teamCount := 0
 		eligibleTeams := []structs.TransferPortalProfile{}
 
@@ -1101,14 +1102,14 @@ func SyncTransferPortal() {
 
 		}
 
-		if (teamCount >= 1 && minSpendingCount >= 2) || (teamCount > 1 && minSpendingCount > 3) || (ts.TransferPortalRound >= 5) {
+		if (teamCount >= 1 && minSpendingCount >= 2) || (teamCount > 1 && minSpendingCount > 3) || (ts.TransferPortalRound >= constants.FinalPortalRound) && totalPointsOnPlayer > 0 {
 			// threshold met
 			readyToSign = true
 		}
 		var winningTeamID uint = 0
 		var odds float64 = 0
 		if readyToSign {
-			for winningTeamID == 0 {
+			for winningTeamID == 0 && len(eligibleTeams) > 0 {
 				percentageOdds := rand.Float64() * (totalPointsOnPlayer)
 				currentProbability := 0.0
 				for _, profile := range eligibleTeams {
@@ -1126,9 +1127,9 @@ func SyncTransferPortal() {
 
 					teamProfile := teamProfileMap[winningTeamIDSTR]
 					currentRoster := rosterMap[teamProfile.ID]
-					teamCap := 105
+					teamCap := constants.MaxFBSRosterSize
 					if !teamProfile.IsFBS {
-						teamCap = 80
+						teamCap = constants.MaxFCSRosterSize
 					}
 					if len(currentRoster) < teamCap {
 						promise := GetCollegePromiseByCollegePlayerID(strconv.Itoa(int(portalPlayer.ID)), winningTeamIDSTR)
@@ -1176,7 +1177,7 @@ func SyncTransferPortal() {
 				repository.SaveTransferPortalProfile(p, db)
 			}
 			fmt.Println("Save transfer portal profile from " + portalPlayer.TeamAbbr + " towards " + portalPlayer.FirstName + " " + portalPlayer.LastName)
-			if winningTeamID > 0 && p.ID != winningTeamID {
+			if winningTeamID > 0 && p.ProfileID != winningTeamID {
 				promise := GetCollegePromiseByCollegePlayerID(strconv.Itoa(int(portalPlayer.ID)), strconv.Itoa(int(p.ProfileID)))
 				if promise.ID > 0 {
 					repository.DeleteCollegePromise(promise, db)
