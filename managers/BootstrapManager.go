@@ -13,62 +13,99 @@ import (
 	"github.com/CalebRose/SimFBA/util"
 )
 
-type BootstrapData struct {
-	CollegeTeam            structs.CollegeTeam
-	AllCollegeTeams        []structs.CollegeTeam
-	CollegeRosterMap       map[uint][]structs.CollegePlayer
-	HistoricCollegePlayers []structs.HistoricCollegePlayer
-	TopCFBPassers          []structs.CollegePlayer
-	TopCFBRushers          []structs.CollegePlayer
-	TopCFBReceivers        []structs.CollegePlayer
-	PortalPlayers          []structs.CollegePlayer
-	CollegeInjuryReport    []structs.CollegePlayer
-	CollegeNotifications   []structs.Notification
-	CollegeGameplan        structs.CollegeGameplan
-	CollegeGameplanMap     map[uint]structs.CollegeGameplan
-	CollegeDepthChart      structs.CollegeTeamDepthChart
-	ProTeam                structs.NFLTeam
-	AllProTeams            []structs.NFLTeam
-	ProNotifications       []structs.Notification
-	NFLGameplan            structs.NFLGameplan
-	NFLGameplanMap         map[uint]structs.NFLGameplan
-	NFLDepthChart          structs.NFLDepthChart
+/*
+ * IF ANY OF THE BELOW MODELS ARE MODIFIED, THE EASYJSON HELPER WILL NEED TO BE REGENERATED.
+ * To do this, delete BootstrapManager_easyjson.go, then run the following command in a terminal in the root directory:
+ * easyjson -all .\managers\BootstrapManager.go
+ */
+type BootstrapDataTeams struct {
+	AllCollegeTeams []structs.CollegeTeam
+	AllProTeams     []structs.NFLTeam
 }
 
-type BootstrapDataTwo struct {
-	CollegeNews          []structs.NewsLog
-	AllCollegeGames      []structs.CollegeGame
-	TeamProfileMap       map[string]*structs.RecruitingTeamProfile
+type BootstrapDataLanding struct {
+	CollegeTeam          structs.CollegeTeam
+	CollegeRosterMap     map[uint][]structs.CollegePlayer
 	CollegeStandings     []structs.CollegeStandings
+	AllCollegeGames      []structs.CollegeGame
+	OfficialPolls        []structs.CollegePollOfficial
+	TopCFBPassers        []structs.CollegePlayer
+	TopCFBRushers        []structs.CollegePlayer
+	TopCFBReceivers      []structs.CollegePlayer
+	PortalPlayers        []structs.CollegePlayer
+	CollegeInjuryReport  []structs.CollegePlayer
+	CollegeNotifications []structs.Notification
+	ProTeam              structs.NFLTeam
+	ProNotifications     []structs.Notification
 	ProStandings         []structs.NFLStandings
 	AllProGames          []structs.NFLGame
-	CapsheetMap          map[uint]structs.NFLCapsheet
-	ProRosterMap         map[uint][]structs.NFLPlayer
-	RetiredPlayers       []structs.NFLRetiredPlayer
-	PracticeSquadPlayers []structs.NFLPlayer
+	PollSubmission       structs.CollegePollSubmission
 	TopNFLPassers        []structs.NFLPlayer
 	TopNFLRushers        []structs.NFLPlayer
 	TopNFLReceivers      []structs.NFLPlayer
+	ProRosterMap         map[uint][]structs.NFLPlayer
 	ProInjuryReport      []structs.NFLPlayer
+	PracticeSquadPlayers []structs.NFLPlayer
+	CapsheetMap          map[uint]structs.NFLCapsheet
+	RetiredPlayers       []structs.NFLRetiredPlayer
 }
 
-type BootstrapDataThree struct {
-	Recruits             []structs.Croot
-	RecruitProfiles      []structs.RecruitPlayerProfile
+type BootstrapDataTeamRoster struct {
+	ContractMap     map[uint]structs.NFLContract
+	ExtensionMap    map[uint]structs.NFLExtensionOffer
+	CollegePromises []structs.CollegePromise
+}
+
+type BootstrapDataRecruiting struct {
+	Recruits        []structs.Croot
+	RecruitProfiles []structs.RecruitPlayerProfile
+	TeamProfileMap  map[string]*structs.RecruitingTeamProfile
+}
+
+type BootstrapDataFreeAgency struct {
+	FreeAgents      []structs.NFLPlayer
+	WaiverPlayers   []structs.NFLPlayer
+	FreeAgentOffers []structs.FreeAgencyOffer
+	WaiverOffers    []structs.NFLWaiverOffer
+}
+
+type BootstrapDataScheduling struct {
+	OfficialPolls  []structs.CollegePollOfficial
+	PollSubmission structs.CollegePollSubmission
+}
+
+type BootstrapDataDraft struct {
+	NFLDraftees             []models.NFLDraftee
+	NFLWarRoomMap           map[uint]models.NFLWarRoom      // BY TEAM
+	DraftScoutingProfileMap map[uint]models.ScoutingProfile // BY TEAM
+}
+
+type BootstrapDataPortal struct {
+	TeamProfileMap         map[string]*structs.RecruitingTeamProfile // Get Just in Case because this page also uses this data
+	TransferPortalProfiles []structs.TransferPortalProfile
+	CollegePromises        []structs.CollegePromise
+}
+
+type BootstrapDataGameplan struct {
+	CollegeGameplanMap   map[uint]structs.CollegeGameplan
+	CollegeDepthChart    structs.CollegeTeamDepthChart
+	ProGameplanMap       map[uint]structs.NFLGameplan
+	ProDepthChart        structs.NFLDepthChart
 	CollegeDepthChartMap map[uint]structs.CollegeTeamDepthChart
-	FreeAgentOffers      []structs.FreeAgencyOffer
-	WaiverWireOffers     []structs.NFLWaiverOffer
-	FreeAgents           []structs.NFLPlayer
-	WaiverPlayers        []structs.NFLPlayer
-	NFLDraftees          []models.NFLDraftee
-	ProNews              []structs.NewsLog
-	NFLDepthChartMap     map[uint]structs.NFLDepthChart
-	ContractMap          map[uint]structs.NFLContract
-	ExtensionMap         map[uint]structs.NFLExtensionOffer
-	FaceData             map[uint]structs.FaceDataResponse
+	ProDepthChartMap     map[uint]structs.NFLDepthChart
 }
 
-func GetTeamsBootstrap() BootstrapData {
+type BootstrapDataNews struct {
+	CollegeNews []structs.NewsLog
+	ProNews     []structs.NewsLog
+}
+
+/*
+ * IF ANY OF THE ABOVE MODELS ARE MODIFIED, THE EASYJSON HELPER WILL NEED TO BE REGENERATED.
+ * See the comment at the top of the file for instructions.
+ */
+
+func GetTeamsBootstrap() BootstrapDataTeams {
 	var wg sync.WaitGroup
 
 	var (
@@ -87,50 +124,56 @@ func GetTeamsBootstrap() BootstrapData {
 	}()
 	wg.Wait()
 
-	return BootstrapData{
+	return BootstrapDataTeams{
 		AllCollegeTeams: allCollegeTeams,
 		AllProTeams:     allProTeams,
 	}
 }
 
-func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
+func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 	var wg sync.WaitGroup
 	var mu sync.Mutex
 
 	// College Data
 	var (
-		collegeTeam            structs.CollegeTeam
-		collegePlayers         []structs.CollegePlayer
-		collegePlayerMap       map[uint][]structs.CollegePlayer
-		historicCollegePlayers []structs.HistoricCollegePlayer
-		portalPlayers          []structs.CollegePlayer
-		injuredCollegePlayers  []structs.CollegePlayer
-		collegeNotifications   []structs.Notification
-		collegeGameplanMap     map[uint]structs.CollegeGameplan
-		collegeDepthChart      structs.CollegeTeamDepthChart
-		topPassers             []structs.CollegePlayer
-		topRushers             []structs.CollegePlayer
-		topReceivers           []structs.CollegePlayer
+		collegeTeam           structs.CollegeTeam
+		collegePlayers        []structs.CollegePlayer
+		collegePlayerMap      map[uint][]structs.CollegePlayer
+		portalPlayers         []structs.CollegePlayer
+		injuredCollegePlayers []structs.CollegePlayer
+		collegeNotifications  []structs.Notification
+		topCfbPassers         []structs.CollegePlayer
+		topCfbRushers         []structs.CollegePlayer
+		topCfbReceivers       []structs.CollegePlayer
+		collegeStandings      []structs.CollegeStandings
+		collegeGames          []structs.CollegeGame
 	)
 
 	// Professional Data
 	var (
-		proTeam          structs.NFLTeam
-		proNotifications []structs.Notification
-		proGameplan      structs.NFLGameplan
-		proGameplanMap   map[uint]structs.NFLGameplan
-		proDepthChart    structs.NFLDepthChart
+		proTeam              structs.NFLTeam
+		proNotifications     []structs.Notification
+		topNflPassers        []structs.NFLPlayer
+		topNflRushers        []structs.NFLPlayer
+		topNflReceivers      []structs.NFLPlayer
+		proRosterMap         map[uint][]structs.NFLPlayer
+		practiceSquadPlayers []structs.NFLPlayer
+		injuredProPlayers    []structs.NFLPlayer
+		capsheetMap          map[uint]structs.NFLCapsheet
+		retiredPlayers       []structs.NFLRetiredPlayer
+		proStandings         []structs.NFLStandings
+		proGames             []structs.NFLGame
 	)
 
 	ts := GetTimestamp()
 
-	_, gtStr := ts.GetCFBCurrentGameType()
-	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
-
 	// Start concurrent queries
 
 	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(6)
+		_, gtStr := ts.GetCFBCurrentGameType()
+		seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
+		cfbTeamId := util.ConvertStringToInt(collegeID)
+		wg.Add(5)
 		go func() {
 			defer wg.Done()
 			mu.Lock()
@@ -147,9 +190,9 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 			mu.Lock()
 			collegePlayerMap = MakeCollegePlayerMapByTeamID(collegePlayers, true)
 			fullCollegePlayerMap := MakeCollegePlayerMap(collegePlayers)
-			topPassers = getCFBOrderedListByStatType("PASSING", collegeTeam.ID, cfbStats, fullCollegePlayerMap)
-			topRushers = getCFBOrderedListByStatType("RUSHING", collegeTeam.ID, cfbStats, fullCollegePlayerMap)
-			topReceivers = getCFBOrderedListByStatType("RECEIVING", collegeTeam.ID, cfbStats, fullCollegePlayerMap)
+			topCfbPassers = getCFBOrderedListByStatType("PASSING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
+			topCfbRushers = getCFBOrderedListByStatType("RUSHING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
+			topCfbReceivers = getCFBOrderedListByStatType("RECEIVING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
 			injuredCollegePlayers = MakeCollegeInjuryList(collegePlayers)
 			portalPlayers = MakeCollegePortalList(collegePlayers)
 			mu.Unlock()
@@ -160,20 +203,22 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 		}()
 		go func() {
 			defer wg.Done()
-			gameplans := GetAllCollegeGameplans()
-			collegeGameplanMap = MakeCollegeGameplanMap(gameplans)
+			log.Println("Fetching College Games for seasonID:", seasonID)
+			collegeGames = GetCollegeGamesBySeasonID(seasonID)
+			log.Println("Fetched College Games, count:", len(collegeGames))
 		}()
 		go func() {
 			defer wg.Done()
-			collegeDepthChart = GetDepthchartByTeamID(collegeID)
-		}()
-		go func() {
-			defer wg.Done()
-			historicCollegePlayers = GetAllHistoricCollegePlayers()
+			log.Println("Fetching College Standings for seasonID:", seasonID)
+			collegeStandings = GetAllCollegeStandingsBySeasonID(seasonID)
+			log.Println("Fetched College Standings, count:", len(collegeStandings))
 		}()
 	}
 	if len(proID) > 0 && proID != "0" {
-		wg.Add(4)
+		_, gtStr := ts.GetNFLCurrentGameType()
+		seasonID := strconv.Itoa(int(ts.NFLSeasonID))
+		nflTeamID := util.ConvertStringToInt(proID)
+		wg.Add(7)
 		go func() {
 			defer wg.Done()
 			mu.Lock()
@@ -189,124 +234,6 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 		}()
 		go func() {
 			defer wg.Done()
-			proGameplans := GetAllNFLGameplans()
-			proGameplanMap = MakeNFLGameplanMap(proGameplans)
-		}()
-		go func() {
-			defer wg.Done()
-			proDepthChart = GetNFLDepthchartByTeamID(proID)
-		}()
-	}
-
-	wg.Wait()
-	return BootstrapData{
-		CollegeTeam:            collegeTeam,
-		CollegeRosterMap:       collegePlayerMap,
-		CollegeInjuryReport:    injuredCollegePlayers,
-		CollegeNotifications:   collegeNotifications,
-		CollegeGameplanMap:     collegeGameplanMap,
-		CollegeDepthChart:      collegeDepthChart,
-		PortalPlayers:          portalPlayers,
-		ProTeam:                proTeam,
-		ProNotifications:       proNotifications,
-		NFLGameplan:            proGameplan,
-		NFLGameplanMap:         proGameplanMap,
-		NFLDepthChart:          proDepthChart,
-		TopCFBPassers:          topPassers,
-		TopCFBRushers:          topRushers,
-		TopCFBReceivers:        topReceivers,
-		HistoricCollegePlayers: historicCollegePlayers,
-	}
-}
-
-func GetSecondBootstrapData(collegeID, proID string) BootstrapDataTwo {
-	log.Println("GetSecondBootstrapData called with collegeID:", collegeID, "and proID:", proID)
-
-	var wg sync.WaitGroup
-	var mu sync.Mutex
-	// College Data
-	var (
-		collegeStandings []structs.CollegeStandings
-		teamProfileMap   map[string]*structs.RecruitingTeamProfile
-		collegeNews      []structs.NewsLog
-		collegeGames     []structs.CollegeGame
-	)
-
-	// Professional Data
-	var (
-		proStandings         []structs.NFLStandings
-		proRosterMap         map[uint][]structs.NFLPlayer
-		practiceSquadPlayers []structs.NFLPlayer
-		capsheetMap          map[uint]structs.NFLCapsheet
-		injuredProPlayers    []structs.NFLPlayer
-		proGames             []structs.NFLGame
-		topPassers           []structs.NFLPlayer
-		topRushers           []structs.NFLPlayer
-		topReceivers         []structs.NFLPlayer
-		retiredPlayers       []structs.NFLRetiredPlayer
-	)
-	ts := GetTimestamp()
-	log.Println("Timestamp:", ts)
-	_, gtStr := ts.GetNFLCurrentGameType()
-	seasonID := strconv.Itoa(int(ts.NFLSeasonID))
-	// Start concurrent queries
-	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(4)
-		go func() {
-			defer wg.Done()
-			log.Println("Fetching College News Logs...")
-			collegeNews = GetAllNewsLogs()
-			log.Println("Fetched College News Logs, count:", len(collegeNews))
-		}()
-		go func() {
-			defer wg.Done()
-			log.Println("Fetching College Games for seasonID:", ts.CollegeSeasonID)
-			collegeGames = GetCollegeGamesBySeasonID(strconv.Itoa(int(ts.CollegeSeasonID)))
-			log.Println("Fetched College Games, count:", len(collegeGames))
-		}()
-		go func() {
-			defer wg.Done()
-			log.Println("Fetching Team Profile Map...")
-			teamProfileMap = GetTeamProfileMap()
-			log.Println("Fetched Team Profile Map, count:", len(teamProfileMap))
-		}()
-		go func() {
-			defer wg.Done()
-			log.Println("Fetching College Standings for seasonID:", ts.CollegeSeasonID)
-			collegeStandings = GetAllCollegeStandingsBySeasonID(strconv.Itoa(int(ts.CollegeSeasonID)))
-			log.Println("Fetched College Standings, count:", len(collegeStandings))
-		}()
-		log.Println("Initiated all College data queries.")
-	}
-	if len(proID) > 0 && proID != "0" {
-		nflTeamID := util.ConvertStringToInt(proID)
-		wg.Add(5)
-		go func() {
-			defer wg.Done()
-			log.Println("Fetching NFL Standings for seasonID:", ts.NFLSeasonID)
-			proStandings = GetAllNFLStandingsBySeasonID(strconv.Itoa(int(ts.NFLSeasonID)))
-			log.Println("Fetched NFL Standings, count:", len(proStandings))
-		}()
-		go func() {
-			defer wg.Done()
-			log.Println("Fetching NFL Games for seasonID:", ts.NFLSeasonID)
-			proGames = GetNFLGamesBySeasonID(strconv.Itoa(int(ts.NFLSeasonID)))
-			log.Println("Fetched NFL Games, count:", len(proGames))
-		}()
-		go func() {
-			defer wg.Done()
-			log.Println("Fetching Capsheet Map...")
-			capsheetMap = getCapsheetMap()
-			log.Println("Fetched Capsheet Map, count:", len(capsheetMap))
-		}()
-		go func() {
-			defer wg.Done()
-			log.Println("Fetching Capsheet Map...")
-			retiredPlayers = GetAllRetiredPlayers()
-			log.Println("Fetched Capsheet Map, count:", len(capsheetMap))
-		}()
-		go func() {
-			defer wg.Done()
 			log.Println("Fetching NFL Players for roster mapping...")
 			proPlayers := GetAllNFLPlayers()
 			nflStats := GetNFLPlayerSeasonStatsBySeason(seasonID, gtStr)
@@ -316,58 +243,106 @@ func GetSecondBootstrapData(collegeID, proID string) BootstrapDataTwo {
 			proRosterMap = MakeNFLPlayerMapByTeamID(proPlayers, true)
 			injuredProPlayers = MakeProInjuryList(proPlayers)
 			practiceSquadPlayers = MakePracticeSquadList(proPlayers)
-			topPassers = getNFLOrderedListByStatType("PASSING", uint(nflTeamID), nflStats, nflPlayerMap)
-			topRushers = getNFLOrderedListByStatType("RUSHING", uint(nflTeamID), nflStats, nflPlayerMap)
-			topReceivers = getNFLOrderedListByStatType("RECEIVING", uint(nflTeamID), nflStats, nflPlayerMap)
+			topNflPassers = getNFLOrderedListByStatType("PASSING", uint(nflTeamID), nflStats, nflPlayerMap)
+			topNflRushers = getNFLOrderedListByStatType("RUSHING", uint(nflTeamID), nflStats, nflPlayerMap)
+			topNflReceivers = getNFLOrderedListByStatType("RECEIVING", uint(nflTeamID), nflStats, nflPlayerMap)
 			mu.Unlock()
 			log.Println("Fetched NFL Players, roster count:", len(proRosterMap), "injured count:", len(injuredProPlayers))
 		}()
-
-		log.Println("Initiated all Pro data queries.")
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching Capsheet Map...")
+			capsheetMap = getCapsheetMap()
+			log.Println("Fetched Capsheet Map, count:", len(capsheetMap))
+		}()
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching Retired Players...")
+			retiredPlayers = GetAllRetiredPlayers()
+			log.Println("Fetched Retired Players, count:", len(retiredPlayers))
+		}()
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching NFL Standings for seasonID:", seasonID)
+			proStandings = GetAllNFLStandingsBySeasonID(seasonID)
+			log.Println("Fetched NFL Standings, count:", len(proStandings))
+		}()
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching NFL Games for seasonID:", seasonID)
+			proGames = GetNFLGamesBySeasonID(seasonID)
+			log.Println("Fetched NFL Games, count:", len(proGames))
+		}()
 	}
+
 	wg.Wait()
-	log.Println("Completed all football data queries.")
-	return BootstrapDataTwo{
-		CollegeStandings:     collegeStandings,
-		CollegeNews:          collegeNews,
+	return BootstrapDataLanding{
+		CollegeTeam:          collegeTeam,
+		CollegeRosterMap:     collegePlayerMap,
+		CollegeInjuryReport:  injuredCollegePlayers,
+		CollegeNotifications: collegeNotifications,
 		AllCollegeGames:      collegeGames,
-		TeamProfileMap:       teamProfileMap,
-		ProStandings:         proStandings,
+		PortalPlayers:        portalPlayers,
+		ProTeam:              proTeam,
+		ProNotifications:     proNotifications,
+		AllProGames:          proGames,
+		TopCFBPassers:        topCfbPassers,
+		TopCFBRushers:        topCfbRushers,
+		TopCFBReceivers:      topCfbReceivers,
+		TopNFLPassers:        topNflPassers,
+		TopNFLRushers:        topNflRushers,
+		TopNFLReceivers:      topNflReceivers,
 		ProRosterMap:         proRosterMap,
 		PracticeSquadPlayers: practiceSquadPlayers,
-		CapsheetMap:          capsheetMap,
 		ProInjuryReport:      injuredProPlayers,
-		AllProGames:          proGames,
-		TopNFLPassers:        topPassers,
-		TopNFLRushers:        topRushers,
-		TopNFLReceivers:      topReceivers,
+		CapsheetMap:          capsheetMap,
 		RetiredPlayers:       retiredPlayers,
+		CollegeStandings:     collegeStandings,
+		ProStandings:         proStandings,
 	}
 }
 
-func GetThirdBootstrapData(collegeID, proID string) BootstrapDataThree {
+func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 	var wg sync.WaitGroup
-	var mu sync.Mutex
-
-	// College Data
 	var (
-		recruits             []structs.Croot
-		recruitProfiles      []structs.RecruitPlayerProfile
-		collegeDepthChartMap map[uint]structs.CollegeTeamDepthChart
-		faceDataMap          map[uint]structs.FaceDataResponse
+		contractMap     map[uint]structs.NFLContract
+		extensionMap    map[uint]structs.NFLExtensionOffer
+		collegePromises []structs.CollegePromise
 	)
 
-	// Professional Data
+	if len(collegeID) > 0 && collegeID != "0" {
+		wg.Add(1)
+		go func() {
+			promises := GetCollegePromisesByTeamID(collegeID)
+			collegePromises = promises
+		}()
+	}
+
+	if len(nflID) > 0 && nflID != "0" {
+		wg.Add(2)
+		go func() {
+			defer wg.Done()
+			contractMap = GetContractMap()
+		}()
+
+		go func() {
+			defer wg.Done()
+			extensionMap = GetExtensionMap()
+		}()
+	}
+	return BootstrapDataTeamRoster{
+		ContractMap:     contractMap,
+		ExtensionMap:    extensionMap,
+		CollegePromises: collegePromises,
+	}
+}
+
+func GetRecruitingBootstrap(collegeID string) BootstrapDataRecruiting {
+	var wg sync.WaitGroup
 	var (
-		proNews          []structs.NewsLog
-		proDepthChartMap map[uint]structs.NFLDepthChart
-		contractMap      map[uint]structs.NFLContract
-		extensionMap     map[uint]structs.NFLExtensionOffer
-		freeAgents       []structs.NFLPlayer
-		waiverPlayers    []structs.NFLPlayer
-		freeAgentoffers  []structs.FreeAgencyOffer
-		waiverOffers     []structs.NFLWaiverOffer
-		nflDraftees      []models.NFLDraftee
+		recruits        []structs.Croot
+		recruitProfiles []structs.RecruitPlayerProfile
+		teamProfileMap  map[string]*structs.RecruitingTeamProfile
 	)
 
 	if len(collegeID) > 0 && collegeID != "0" {
@@ -379,8 +354,7 @@ func GetThirdBootstrapData(collegeID, proID string) BootstrapDataThree {
 
 		go func() {
 			defer wg.Done()
-			collegeDCs := GetAllCollegeDepthcharts()
-			collegeDepthChartMap = MakeCollegeDepthChartMap(collegeDCs)
+			teamProfileMap = GetTeamProfileMap()
 		}()
 		go func() {
 			defer wg.Done()
@@ -388,20 +362,26 @@ func GetThirdBootstrapData(collegeID, proID string) BootstrapDataThree {
 		}()
 	}
 
-	if len(proID) > 0 && proID != "0" {
-		wg.Add(9)
+	wg.Wait()
 
-		go func() {
-			defer wg.Done()
-			dcs := GetAllNFLDepthcharts()
-			mu.Lock()
-			proDepthChartMap = MakeNFLDepthChartMap(dcs)
-			mu.Unlock()
-		}()
-		go func() {
-			defer wg.Done()
-			proNews = GetAllNFLNewsLogs()
-		}()
+	return BootstrapDataRecruiting{
+		Recruits:        recruits,
+		RecruitProfiles: recruitProfiles,
+		TeamProfileMap:  teamProfileMap,
+	}
+}
+
+func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
+	var wg sync.WaitGroup
+	var (
+		freeAgents      []structs.NFLPlayer
+		waiverPlayers   []structs.NFLPlayer
+		freeAgentoffers []structs.FreeAgencyOffer
+		waiverOffers    []structs.NFLWaiverOffer
+	)
+
+	if len(proID) > 0 && proID != "0" {
+		wg.Add(4)
 
 		go func() {
 			defer wg.Done()
@@ -415,15 +395,6 @@ func GetThirdBootstrapData(collegeID, proID string) BootstrapDataThree {
 
 		go func() {
 			defer wg.Done()
-			contractMap = GetContractMap()
-		}()
-
-		go func() {
-			defer wg.Done()
-			extensionMap = GetExtensionMap()
-		}()
-		go func() {
-			defer wg.Done()
 			freeAgents = GetAllFreeAgents()
 		}()
 
@@ -432,35 +403,215 @@ func GetThirdBootstrapData(collegeID, proID string) BootstrapDataThree {
 			waiverPlayers = GetAllWaiverWirePlayers()
 		}()
 
+	}
+
+	wg.Wait()
+
+	return BootstrapDataFreeAgency{
+		FreeAgentOffers: freeAgentoffers,
+		WaiverOffers:    waiverOffers,
+		FreeAgents:      freeAgents,
+		WaiverPlayers:   waiverPlayers,
+	}
+}
+
+func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDataScheduling {
+	var wg sync.WaitGroup
+	var (
+		officialPolls  []structs.CollegePollOfficial
+		pollSubmission structs.CollegePollSubmission
+	)
+	if len(collegeID) > 0 && collegeID != "0" {
+		wg.Add(2)
+		go func() {
+			defer wg.Done()
+			officialPolls = GetOfficialPollBySeasonID(seasonID)
+		}()
+		go func() {
+			defer wg.Done()
+			pollSubmission = GetPollSubmissionByUsernameWeekAndSeason(username)
+		}()
+		wg.Wait()
+	}
+
+	return BootstrapDataScheduling{
+		PollSubmission: pollSubmission,
+		OfficialPolls:  officialPolls,
+	}
+}
+
+func GetDraftBootstrap(proID string) BootstrapDataDraft {
+	var wg sync.WaitGroup
+
+	var (
+		nflDraftees        []models.NFLDraftee
+		warRoomMap         map[uint]models.NFLWarRoom      // BY TEAM
+		scoutingProfileMap map[uint]models.ScoutingProfile // By TEAM
+	)
+
+	if len(proID) > 0 && proID != "0" {
+		wg.Add(3)
 		go func() {
 			defer wg.Done()
 			nflDraftees = GetAllNFLDraftees()
 		}()
 
-	}
+		go func() {
+			defer wg.Done()
+			nflWarRooms := GetNFLWarRooms()
+			warRoomMap = MakeNFLWarRoomMap(nflWarRooms)
+		}()
 
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		faceDataMap = GetAllFaces()
-	}()
+		go func() {
+			defer wg.Done()
+			scoutingProfiles := GetAllScoutingProfiles()
+			scoutingProfileMap = MakeScoutingProfileMapByTeam(scoutingProfiles)
+
+		}()
+
+		log.Println("Initiated all Pro data queries.")
+	}
+	wg.Wait()
+
+	return BootstrapDataDraft{
+		NFLDraftees:             nflDraftees,
+		NFLWarRoomMap:           warRoomMap,
+		DraftScoutingProfileMap: scoutingProfileMap,
+	}
+}
+
+func GetPortalBootstrap(collegeID string) BootstrapDataPortal {
+	// On assumption that initial bootstrap still returns an entire college player map including transfers
+	var wg sync.WaitGroup
+	var (
+		teamProfileMap         map[string]*structs.RecruitingTeamProfile // Get Just in Case because this page also uses this data
+		transferPortalProfiles []structs.TransferPortalProfile
+		collegePromises        []structs.CollegePromise
+	)
+
+	if len(collegeID) > 0 && collegeID != "0" {
+		wg.Add(3)
+		go func() {
+			defer wg.Done()
+			transferPortalProfiles = GetTransferPortalProfilesByTeamID(collegeID)
+		}()
+
+		go func() {
+			defer wg.Done()
+			teamProfileMap = GetTeamProfileMap()
+		}()
+
+		go func() {
+			promises := GetCollegePromisesByTeamID(collegeID)
+			collegePromises = promises
+		}()
+
+	}
 
 	wg.Wait()
 
-	return BootstrapDataThree{
+	return BootstrapDataPortal{
+		TransferPortalProfiles: transferPortalProfiles,
+		TeamProfileMap:         teamProfileMap,
+		CollegePromises:        collegePromises,
+	}
+}
+
+func GetGameplanBootstrap(collegeID, proID string) BootstrapDataGameplan {
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+	var (
+		collegeGameplanMap   map[uint]structs.CollegeGameplan
+		collegeDepthChart    structs.CollegeTeamDepthChart
+		proGameplanMap       map[uint]structs.NFLGameplan
+		proDepthChart        structs.NFLDepthChart
+		collegeDepthChartMap map[uint]structs.CollegeTeamDepthChart
+		proDepthChartMap     map[uint]structs.NFLDepthChart
+	)
+
+	if len(collegeID) > 0 && collegeID != "0" {
+		wg.Add(3)
+		go func() {
+			defer wg.Done()
+			collegeGameplanMap = GetCollegeGameplanMap()
+		}()
+		go func() {
+			defer wg.Done()
+			collegeDepthChart = GetDepthchartByTeamID(collegeID)
+		}()
+
+		go func() {
+			defer wg.Done()
+			collegeDCs := GetAllCollegeDepthcharts()
+			collegeDepthChartMap = MakeCollegeDepthChartMap(collegeDCs)
+		}()
+	}
+
+	if len(proID) > 0 && proID != "0" {
+		wg.Add(3)
+		go func() {
+			defer wg.Done()
+			gameplans := GetAllNFLGameplans()
+			proGameplanMap = MakeNFLGameplanMap(gameplans)
+		}()
+		go func() {
+			defer wg.Done()
+			proDepthChart = GetNFLDepthchartByTeamID(proID)
+		}()
+		go func() {
+			defer wg.Done()
+			dcs := GetAllNFLDepthcharts()
+			mu.Lock()
+			proDepthChartMap = MakeNFLDepthChartMap(dcs)
+			mu.Unlock()
+		}()
+
+	}
+
+	wg.Wait()
+	return BootstrapDataGameplan{
+		CollegeGameplanMap:   collegeGameplanMap,
+		CollegeDepthChart:    collegeDepthChart,
 		CollegeDepthChartMap: collegeDepthChartMap,
-		Recruits:             recruits,
-		RecruitProfiles:      recruitProfiles,
-		FreeAgentOffers:      freeAgentoffers,
-		WaiverWireOffers:     waiverOffers,
-		ProNews:              proNews,
-		NFLDepthChartMap:     proDepthChartMap,
-		ContractMap:          contractMap,
-		ExtensionMap:         extensionMap,
-		FreeAgents:           freeAgents,
-		WaiverPlayers:        waiverPlayers,
-		FaceData:             faceDataMap,
-		NFLDraftees:          nflDraftees,
+		ProGameplanMap:       proGameplanMap,
+		ProDepthChart:        proDepthChart,
+		ProDepthChartMap:     proDepthChartMap,
+	}
+}
+
+func GetNewsBootstrap(collegeID, proID string) BootstrapDataNews {
+	var wg sync.WaitGroup
+
+	var (
+		collegeNews []structs.NewsLog
+		proNews     []structs.NewsLog
+	)
+
+	if len(collegeID) > 0 && collegeID != "0" {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching College News Logs...")
+			collegeNews = GetAllCFBNewsLogs()
+			log.Println("Fetched College News Logs, count:", len(collegeNews))
+		}()
+		log.Println("Initiated all College data queries.")
+	}
+
+	if len(proID) > 0 && proID != "0" {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			proNews = GetAllNFLNewsLogs()
+		}()
+
+	}
+
+	wg.Wait()
+
+	return BootstrapDataNews{
+		CollegeNews: collegeNews,
+		ProNews:     proNews,
 	}
 }
 

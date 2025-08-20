@@ -1,6 +1,9 @@
 package managers
 
-import "github.com/CalebRose/SimFBA/structs"
+import (
+	"github.com/CalebRose/SimFBA/models"
+	"github.com/CalebRose/SimFBA/structs"
+)
 
 func MapNFLPlayers(nflPlayers []structs.NFLPlayer) map[uint]structs.NFLPlayer {
 	playerMap := make(map[uint]structs.NFLPlayer)
@@ -263,6 +266,27 @@ func MakePromiseMapByTeamID(profiles []structs.CollegePromise) map[uint][]struct
 	}
 
 	return playerMap
+}
+
+
+func MakeNFLWarRoomMap(warRooms []models.NFLWarRoom) map[uint]models.NFLWarRoom {
+	warRoomMap := make(map[uint]models.NFLWarRoom)
+
+	for _, t := range warRooms {
+		warRoomMap[t.TeamID] = t
+	}
+
+	return warRoomMap
+}
+
+func MakeScoutingProfileMapByTeam(profiles []models.ScoutingProfile) map[uint]models.ScoutingProfile {
+	profileMap := make(map[uint]models.ScoutingProfile)
+
+	for _, t := range profiles {
+		profileMap[t.TeamID] = t
+	}
+
+	return profileMap
 }
 
 func MakePromiseMapByPlayerIDByTeam(promises []structs.CollegePromise) map[uint]structs.CollegePromise {
