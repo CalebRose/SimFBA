@@ -8,6 +8,7 @@ import (
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/models"
+	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
 )
@@ -235,7 +236,7 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 	ts := GetTimestamp()
 
 	newNFLPlayerRecords := []structs.NFLPlayer{}
-	// newNFLContractRecords := []structs.NFLContract{}
+	newNFLContractRecords := []structs.NFLContract{}
 	nflPlayerMap := GetAllNFLPlayersMap()
 	for _, pick := range picks {
 		if pick.IsVoid {
@@ -274,36 +275,36 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 		if playerReference.ID > 0 {
 			continue
 		}
-		// year1Salary := util.GetDrafteeSalary(pick.DraftNumber, 1, pick.DraftRound, true)
-		// year2Salary := util.GetDrafteeSalary(pick.DraftNumber, 2, pick.DraftRound, true)
-		// year3Salary := util.GetDrafteeSalary(pick.DraftNumber, 3, pick.DraftRound, true)
-		// year4Salary := util.GetDrafteeSalary(pick.DraftNumber, 4, pick.DraftRound, true)
-		// year1Bonus := util.GetDrafteeSalary(pick.DraftNumber, 1, pick.DraftRound, false)
-		// year2Bonus := util.GetDrafteeSalary(pick.DraftNumber, 2, pick.DraftRound, false)
-		// year3Bonus := util.GetDrafteeSalary(pick.DraftNumber, 3, pick.DraftRound, false)
-		// year4Bonus := util.GetDrafteeSalary(pick.DraftNumber, 4, pick.DraftRound, false)
-		// yearsRemaining := 4
-		// contract := structs.NFLContract{
-		// 	PlayerID:       NFLPlayer.PlayerID,
-		// 	TeamID:         uint(NFLPlayer.TeamID),
-		// 	Team:           NFLPlayer.TeamAbbr,
-		// 	OriginalTeamID: uint(NFLPlayer.TeamID),
-		// 	OriginalTeam:   NFLPlayer.TeamAbbr,
-		// 	ContractLength: yearsRemaining,
-		// 	ContractType:   "Rookie",
-		// 	Y1BaseSalary:   year1Salary,
-		// 	Y2BaseSalary:   year2Salary,
-		// 	Y3BaseSalary:   year3Salary,
-		// 	Y4BaseSalary:   year4Salary,
-		// 	Y1Bonus:        year1Bonus,
-		// 	Y2Bonus:        year2Bonus,
-		// 	Y3Bonus:        year3Bonus,
-		// 	Y4Bonus:        year4Bonus,
-		// 	IsActive:       true,
-		// }
-		// newNFLContractRecords = append(newNFLContractRecords, contract)
+		year1Salary := util.GetDrafteeSalary(pick.DraftNumber, 1, pick.DraftRound, true)
+		year2Salary := util.GetDrafteeSalary(pick.DraftNumber, 2, pick.DraftRound, true)
+		year3Salary := util.GetDrafteeSalary(pick.DraftNumber, 3, pick.DraftRound, true)
+		year4Salary := util.GetDrafteeSalary(pick.DraftNumber, 4, pick.DraftRound, true)
+		year1Bonus := util.GetDrafteeSalary(pick.DraftNumber, 1, pick.DraftRound, false)
+		year2Bonus := util.GetDrafteeSalary(pick.DraftNumber, 2, pick.DraftRound, false)
+		year3Bonus := util.GetDrafteeSalary(pick.DraftNumber, 3, pick.DraftRound, false)
+		year4Bonus := util.GetDrafteeSalary(pick.DraftNumber, 4, pick.DraftRound, false)
+		yearsRemaining := 4
+		contract := structs.NFLContract{
+			PlayerID:       NFLPlayer.PlayerID,
+			TeamID:         uint(NFLPlayer.TeamID),
+			Team:           NFLPlayer.TeamAbbr,
+			OriginalTeamID: uint(NFLPlayer.TeamID),
+			OriginalTeam:   NFLPlayer.TeamAbbr,
+			ContractLength: yearsRemaining,
+			ContractType:   "Rookie",
+			Y1BaseSalary:   year1Salary,
+			Y2BaseSalary:   year2Salary,
+			Y3BaseSalary:   year3Salary,
+			Y4BaseSalary:   year4Salary,
+			Y1Bonus:        year1Bonus,
+			Y2Bonus:        year2Bonus,
+			Y3Bonus:        year3Bonus,
+			Y4Bonus:        year4Bonus,
+			IsActive:       true,
+		}
+		newNFLContractRecords = append(newNFLContractRecords, contract)
 		newNFLPlayerRecords = append(newNFLPlayerRecords, NFLPlayer)
-		// db.Save(&draftee)
+		db.Save(&draftee)
 	}
 
 	draftablePlayers := GetAllNFLDraftees()
@@ -349,8 +350,8 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 			fmt.Println("Error:", err)
 		}
 	}
-	// repository.CreateNFLPlayerRecordsBatch(db, newNFLPlayerRecords, 250)
-	// repository.CreateNFLContractRecordsBatch(db, newNFLContractRecords, 250)
+	repository.CreateNFLPlayerRecordsBatch(db, newNFLPlayerRecords, 250)
+	repository.CreateNFLContractRecordsBatch(db, newNFLContractRecords, 250)
 
 	ts.DraftIsOver()
 	db.Save(&ts)
