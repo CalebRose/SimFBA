@@ -286,6 +286,7 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 		yearsRemaining := 4
 		contract := structs.NFLContract{
 			PlayerID:       NFLPlayer.PlayerID,
+			NFLPlayerID:    NFLPlayer.PlayerID,
 			TeamID:         uint(NFLPlayer.TeamID),
 			Team:           NFLPlayer.TeamAbbr,
 			OriginalTeamID: uint(NFLPlayer.TeamID),
@@ -344,17 +345,11 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 		newNFLPlayerRecords = append(newNFLPlayerRecords, nflPlayer)
 	}
 
-	for _, p := range newNFLPlayerRecords {
-		err := db.Create(&p).Error
-		if err != nil {
-			fmt.Println("Error:", err)
-		}
-	}
 	repository.CreateNFLPlayerRecordsBatch(db, newNFLPlayerRecords, 250)
 	repository.CreateNFLContractRecordsBatch(db, newNFLContractRecords, 250)
 
 	ts.DraftIsOver()
-	db.Save(&ts)
+	repository.SaveTimestamp(ts, db)
 	return true
 }
 
