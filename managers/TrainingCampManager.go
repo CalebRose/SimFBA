@@ -194,9 +194,9 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 		strconv.Itoa(changedAttrs.ThrowPower), strconv.Itoa(changedAttrs.ThrowAccuracy), strconv.Itoa(changedAttrs.KickAccuracy),
 		strconv.Itoa(changedAttrs.KickPower), strconv.Itoa(changedAttrs.PuntAccuracy), strconv.Itoa(changedAttrs.PuntPower)},
 	)
-	// COMMENT THE BELOW 3 LINES IF YOU WANT TO TEST LOCALLY
 	player.ApplyTrainingCampInfo(*changedAttrs)
 	player.GetOverall()
+
 	repository.SaveNFLPlayer(player, db)
 }
 
@@ -829,7 +829,12 @@ func getAttribute(position string, archetype string, drill string) string {
 		case "power":
 			return "kick_power"
 		default:
-			return "football_iq"
+			// for team drills, pick a kicking attribute at random. K/P progressions could use the extra bonus.
+			if rand.IntN(2) == 0 {
+				return "kick_accuracy"
+			} else {
+				return "kick_power"
+			}
 		}
 	} else if position == "P" {
 		switch drill {
@@ -838,7 +843,12 @@ func getAttribute(position string, archetype string, drill string) string {
 		case "power":
 			return "punt_power"
 		default:
-			return "football_iq"
+			// for team drills, pick a punting attribute at random. K/P progressions could use the extra bonus.
+			if rand.IntN(2) == 0 {
+				return "punt_accuracy"
+			} else {
+				return "punt_power"
+			}
 		}
 	}
 	return "bad position"
