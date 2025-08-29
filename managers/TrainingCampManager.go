@@ -3,6 +3,7 @@ package managers
 import (
 	"bufio"
 	"encoding/csv"
+	"errors"
 	"log"
 	"math/rand/v2"
 	"os"
@@ -10,8 +11,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/CalebRose/SimFBA/dbprovider"
+	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
+	"gorm.io/gorm"
 )
 
 /*func UploadTrainingCampCSV() {
@@ -64,10 +68,25 @@ import (
 	}
 }*/
 
-func RunTrainingCamps() {
-	//readPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\trainingcamp.csv"
-	readPath := "C:\\Code\\SimSN\\SimFBA\\data\\2026\\trainingcamp.csv"
-	writePath := "C:\\Code\\SimSN\\SimFBA\\data\\2026\\trainingcamp_results.csv"
+func RunTrainingCamps(year string) error {
+	db := dbprovider.GetInstance().GetDB()
+
+	readPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\" + year + "\\trainingcamp.csv"
+	writePath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\" + year + "\\trainingcamp_results.csv"
+
+	_, err := os.Stat(readPath)
+	if errors.Is(err, os.ErrNotExist) {
+		return errors.New("Training camp CSV not found for year " + year)
+	} else if err != nil {
+		return errors.New("Error checking for training camp CSV for " + year + ": " + err.Error())
+	}
+
+	_, err = os.Stat(writePath)
+	if err == nil {
+		return errors.New("Training camp output CSV already exists for " + year + ". Training camp may have already applied.")
+	} else if !errors.Is(err, os.ErrNotExist) {
+		return errors.New("Something weird happened. Training camp output may already exist for " + year + ", but an unrelated error occurred while checking for it: " + err.Error())
+	}
 
 	drillSelectionsCSV := util.ReadCSV(readPath)
 
@@ -78,7 +97,7 @@ func RunTrainingCamps() {
 
 	csvWriter := csv.NewWriter(bufio.NewWriter(drillResultsCSV))
 
-	csvWriter.Write([]string{"Team", "DrillPosition", "Archetype", "FirstName", "LastName", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
+	csvWriter.Write([]string{"Team", "DrillPosition", "Archetype", "FirstName", "LastName", "Experience", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
 		"TeamDrillResult", "EventText", "InjuryText", "WeeksOut", "FootballIQ", "Speed", "Carrying", "Agility", "Catching", "RouteRunning", "ZoneCoverage", "ManCoverage", "Strength",
 		"Tackle", "PassBlock", "RunBlock", "PassRush", "RunDefense", "ThrowPower", "ThrowAccuracy", "KickAccuracy", "KickPower", "PuntAccuracy", "PuntPower"})
 
@@ -107,12 +126,13 @@ func RunTrainingCamps() {
 			positionDrill := getPositionDrill(drillPosition, row, player)
 			teamDrill := row[12]
 
-			runDrills(player, drillPosition, drillArchetype, positionDrill, teamDrill, csvWriter)
+			runDrills(player, drillPosition, drillArchetype, positionDrill, teamDrill, csvWriter, db)
 		}
 	}
+	return nil
 }
 
-func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype string, positionDrill string, teamDrill string, csvWriter *csv.Writer) {
+func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype string, positionDrill string, teamDrill string, csvWriter *csv.Writer, db *gorm.DB) {
 	positionDrillAttribute := getAttribute(drillPosition, drillArchetype, positionDrill)
 	teamDrillAttribute := getAttribute(drillPosition, drillArchetype, teamDrill)
 
@@ -164,7 +184,7 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 	applyDrillResult(changedAttrs, positionDrillAttribute, positionDrillResult)
 	applyDrillResult(changedAttrs, teamDrillAttribute, teamDrillResult)
 
-	csvWriter.Write([]string{player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, positionDrill, positionDrillAttribute,
+	csvWriter.Write([]string{player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.FormatUint(uint64(player.Experience), 10), positionDrill, positionDrillAttribute,
 		strconv.Itoa(positionDrillResult), teamDrill, teamDrillAttribute, strconv.Itoa(teamDrillResult), eventText, injuryText,
 		strconv.Itoa(injuryWeeks), strconv.Itoa(changedAttrs.FootballIQ), strconv.Itoa(changedAttrs.Speed),
 		strconv.Itoa(changedAttrs.Carrying), strconv.Itoa(changedAttrs.Agility), strconv.Itoa(changedAttrs.Catching),
@@ -174,6 +194,10 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 		strconv.Itoa(changedAttrs.ThrowPower), strconv.Itoa(changedAttrs.ThrowAccuracy), strconv.Itoa(changedAttrs.KickAccuracy),
 		strconv.Itoa(changedAttrs.KickPower), strconv.Itoa(changedAttrs.PuntAccuracy), strconv.Itoa(changedAttrs.PuntPower)},
 	)
+	// COMMENT THE BELOW 3 LINES IF YOU WANT TO TEST LOCALLY
+	player.ApplyTrainingCampInfo(*changedAttrs)
+	player.GetOverall()
+	repository.SaveNFLPlayer(player, db)
 }
 
 func getPositionOverrides(overrides string) []string {
