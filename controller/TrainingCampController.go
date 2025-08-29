@@ -8,8 +8,8 @@ import (
 )
 
 // GetAllCollegeTeamsForRosterPage
-func UploadTrainingCampCSVData(w http.ResponseWriter, r *http.Request) {
-	managers.UploadTrainingCampCSV()
+func RunTrainingCamps(w http.ResponseWriter, r *http.Request) {
+	managers.RunTrainingCamps()
 
 	json.NewEncoder(w).Encode("Training Camp Complete")
 }

@@ -343,7 +343,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/trades/nfl/proposal/cancel/{proposalID}", controller.CancelTradeOffer).Methods("GET")
 
 	// Training Camp
-	apiRouter.HandleFunc("/nfl/training/camp/upload", controller.UploadTrainingCampCSVData).Methods("GET")
+	apiRouter.HandleFunc("/nfl/training/camp", controller.RunTrainingCamps).Methods("GET")
 
 	// Transfer Intentions
 	apiRouter.HandleFunc("/simfba/sync/transfer/intention", controller.ProcessTransferIntention).Methods("GET")
