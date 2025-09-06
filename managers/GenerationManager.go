@@ -816,6 +816,9 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 	affinityOne := croot[13]
 	affinityTwo := croot[14]
 	ethnicity := croot[15]
+	if ethnicity == "" {
+		ethnicity = pickEthnicity()
+	}
 	gender := croot[16]
 	hasNoAffinities := affinityOne == "" && affinityTwo == ""
 	age := 18
@@ -900,7 +903,9 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 
 	basePlayer.GetOverall()
 
-	faceData := getFace(id, weight, ethnicity, gender, faceDataBlob)
+	skinColor := getSkinColorByEthnicity(ethnicity)
+
+	faceData := getFace(id, weight, skinColor, gender, faceDataBlob)
 	recruit := structs.Recruit{
 		BasePlayer:     basePlayer,
 		PlayerID:       int(id),

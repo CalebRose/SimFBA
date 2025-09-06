@@ -255,7 +255,7 @@ func getFace(id uint, weight int, ethnicity, gender string, faceDataBlob map[str
 	}
 	hairKey := ethnicity + "Hair"
 	if gender == "f" {
-		hairKey += gender
+		hairKey += "Female"
 	}
 	genderUint := 0
 	if gender == "f" {
