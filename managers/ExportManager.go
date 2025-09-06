@@ -139,7 +139,7 @@ func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 	players := GetNFLPlayersWithContractsByTeamID(TeamID)
 
 	HeaderRow := []string{
-		"Team", "First Name", "Last Name", "Position",
+		"Team", "ID", "First Name", "Last Name", "Position",
 		"Archetype", "Position Two", "Archetype Two", "Year", "Age",
 		"High School", "Hometown", "State", "Height",
 		"Weight", "Overall", "Speed",
@@ -159,7 +159,7 @@ func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 	for _, player := range players {
 		csvModel := structs.MapNFLPlayerToCSVModel(player)
 		playerRow := []string{
-			team.TeamName, csvModel.FirstName, csvModel.LastName, csvModel.Position,
+			team.TeamName, strconv.Itoa(int(player.ID)), csvModel.FirstName, csvModel.LastName, csvModel.Position,
 			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(player.Age),
 			player.HighSchool, player.Hometown, player.State, strconv.Itoa(player.Height),
 			strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,
@@ -217,7 +217,7 @@ func ExportCrootsToCSV(w http.ResponseWriter) {
 		}
 
 		crootRow := []string{
-			strconv.Itoa(croot.PlayerID), croot.FirstName, croot.LastName, croot.Position,
+			strconv.Itoa(int(croot.ID)), croot.FirstName, croot.LastName, croot.Position,
 			croot.Archetype, strconv.Itoa(croot.Stars), croot.College,
 			croot.HighSchool, croot.City, croot.State, strconv.Itoa(croot.Height),
 			strconv.Itoa(croot.Weight), croot.OverallGrade, croot.PotentialGrade,
@@ -268,7 +268,7 @@ func ExportDrafteesToCSV(w http.ResponseWriter) {
 
 	for _, player := range draftees {
 		playerRow := []string{
-			strconv.Itoa(player.PlayerID), player.FirstName, player.LastName, player.Position,
+			strconv.Itoa(int(player.ID)), player.FirstName, player.LastName, player.Position,
 			player.Archetype, player.PositionTwo, player.ArchetypeTwo, strconv.Itoa(player.Age), strconv.Itoa(player.Stars), player.College,
 			player.HighSchool, player.City, player.State, strconv.Itoa(player.Height),
 			strconv.Itoa(player.Weight), player.OverallGrade, player.SpeedGrade,
@@ -303,7 +303,7 @@ func ExportPlayerStatsToCSV(cp []structs.CollegePlayerResponse, w http.ResponseW
 	// Get Players
 
 	HeaderRow := []string{
-		"First Name", "Last Name", "Position", "Position Two",
+		"ID", "First Name", "Last Name", "Position", "Position Two",
 		"Archetype", "Archetype Two", "Year", "Is Redshirt?", "Team", "Conference", "Age", "Stars",
 		"Passing Yards", "Pass Attempts", "Pass Completions", "Passing Avg",
 		"Passing TDs", "Interceptions", "Longest Pass", "QB Sacks",
@@ -329,7 +329,7 @@ func ExportPlayerStatsToCSV(cp []structs.CollegePlayerResponse, w http.ResponseW
 		Year, RedshirtStatus := util.GetYearAndRedshirtStatus(p.Year, p.IsRedshirt)
 		seasonStats := p.SeasonStats
 
-		pr := []string{p.FirstName, p.LastName, p.Position, p.PositionTwo,
+		pr := []string{strconv.Itoa(int(p.ID)), p.FirstName, p.LastName, p.Position, p.PositionTwo,
 			p.Archetype, p.ArchetypeTwo, Year, RedshirtStatus, p.TeamAbbr, p.Conference, strconv.Itoa(p.Age), strconv.Itoa(p.Stars),
 			strconv.Itoa(seasonStats.PassingYards), strconv.Itoa(seasonStats.PassAttempts), strconv.Itoa(seasonStats.PassCompletions), strconv.Itoa(int(seasonStats.PassingAvg)),
 			strconv.Itoa(seasonStats.PassingTDs), strconv.Itoa(seasonStats.Interceptions), strconv.Itoa(seasonStats.LongestPass), strconv.Itoa(seasonStats.Sacks),
@@ -365,7 +365,7 @@ func ExportTransferPlayersToCSV(transfers []structs.CollegePlayer, w http.Respon
 	// Initialize writer
 	writer := csv.NewWriter(w)
 	HeaderRow := []string{
-		"Team", "First Name", "Last Name", "Stars",
+		"Team", "ID", "First Name", "Last Name", "Stars",
 		"Archetype", "Position", "Year", "Age", "Redshirt Status",
 		"Overall", "Transfer Weight", "Dice Roll",
 	}
@@ -378,7 +378,7 @@ func ExportTransferPlayersToCSV(transfers []structs.CollegePlayer, w http.Respon
 	for _, player := range transfers {
 		csvModel := structs.MapPlayerToCSVModel(player)
 		playerRow := []string{
-			player.TeamAbbr, csvModel.FirstName, csvModel.LastName, strconv.Itoa(player.Stars),
+			player.TeamAbbr, strconv.Itoa(int(player.ID)), csvModel.FirstName, csvModel.LastName, strconv.Itoa(player.Stars),
 			csvModel.Archetype, csvModel.Position,
 			csvModel.Year, strconv.Itoa(player.Age), csvModel.RedshirtStatus,
 			csvModel.OverallGrade,

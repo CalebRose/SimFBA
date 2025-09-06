@@ -237,7 +237,7 @@ func handleRequests() http.Handler {
 
 	// Rankings Controls
 	// apiRouter.HandleFunc("/simfba/cfb/croots/generate/", controller.GenerateRecruits).Methods("GET")
-	apiRouter.HandleFunc("/rankings/assign/all/croots/", controller.AssignAllRecruitRanks).Methods("GET")
+	// apiRouter.HandleFunc("/rankings/assign/all/croots/", controller.AssignAllRecruitRanks).Methods("GET")
 
 	// Recruiting Controls
 	apiRouter.HandleFunc("/recruiting/overview/dashboard/{teamID}", controller.GetRecruitingProfileForDashboardByTeamID).Methods("GET")
