@@ -35,6 +35,7 @@ type FaceData struct {
 	SmileLineSize   float32 // 0.25 to 2.25
 	SkinTone        string
 	SkinColor       uint8
+	Gender          uint
 }
 
 // Will need to come up with a range of allowable characteristics for this view.

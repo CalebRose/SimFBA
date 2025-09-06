@@ -187,7 +187,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/admin/import/missing/draftees", controller.ImportMissingDraftees).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/missing/cfb/stats", controller.ImportMissingStats).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/preferences", controller.ImportTradePreferences).Methods("GET")
-	// apiRouter.HandleFunc("/import/custom/croots", controller.ImportCustomCroots).Methods("GET")
+	apiRouter.HandleFunc("/import/custom/croots", controller.ImportCustomCroots).Methods("GET")
 	// apiRouter.HandleFunc("/import/simnfl/updated/values", controller.ImportSimNFLMinimumValues).Methods("GET")
 	// apiRouter.HandleFunc("/import/simfba/draft/picks", controller.ImportNFLDraftPicks).Methods("GET")
 	// apiRouter.HandleFunc("/import/simfba/updated/picks", controller.UpdateDraftPicksForDraft).Methods("GET")
@@ -200,7 +200,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simfba/secondary/positions/", controller.FixSecondaryPositions).Methods("GET")
 	// apiRouter.HandleFunc("/assign/team/grades", controller.ImportTeamGrades).Methods("GET")
-	apiRouter.HandleFunc("/run/predraft/events", controller.RunPreDraftEvents).Methods("GET")
+	// apiRouter.HandleFunc("/run/predraft/events", controller.RunPreDraftEvents).Methods("GET")
 
 	// News Controls
 	apiRouter.HandleFunc("/cfb/news/all/", controller.GetAllNewsLogsForASeason).Methods("GET")

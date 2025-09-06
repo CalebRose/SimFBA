@@ -65,7 +65,12 @@ func GetAllFaces() map[uint]structs.FaceDataResponse {
 				// (Assuming face.SkinTone is a string field.)
 				skinBlob := faceBlob[face.SkinTone+"Skin"]
 				hairColorBlob := faceBlob[face.SkinTone+"HairColor"]
-				hairBlob := faceBlob[face.SkinTone+"Hair"]
+				genderKey := getGenderKey(face.Gender)
+				hairKey := face.SkinTone + "Hair"
+				if genderKey == "f" {
+					hairKey += "Female"
+				}
+				hairBlob := faceBlob[hairKey]
 
 				// Build facialHairShave string using no-allocation methods.
 				buf = buf[:0] // reset buffer
@@ -138,7 +143,7 @@ func MigrateFaceDataToRecruits() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(r.ID, r.Weight, skinColor, faceDataBlob)
+		face := getFace(r.ID, r.Weight, skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -160,7 +165,7 @@ func MigrateFaceDataToCollegePlayers() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(p.ID, p.Weight, skinColor, faceDataBlob)
+		face := getFace(p.ID, p.Weight, skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -182,7 +187,7 @@ func MigrateFaceDataToHistoricCollegePlayers() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(p.ID, p.Weight, skinColor, faceDataBlob)
+		face := getFace(p.ID, p.Weight, skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -207,7 +212,7 @@ func MigrateFaceDataToNFLPlayers() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(p.ID, p.Weight, skinColor, faceDataBlob)
+		face := getFace(p.ID, p.Weight, skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -229,7 +234,7 @@ func MigrateFaceDataToRetiredPlayers() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(p.ID, p.Weight, skinColor, faceDataBlob)
+		face := getFace(p.ID, p.Weight, skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -237,7 +242,7 @@ func MigrateFaceDataToRetiredPlayers() {
 	repository.CreateFaceRecordsBatch(db, faceDataList, 500)
 }
 
-func getFace(id uint, weight int, ethnicity string, faceDataBlob map[string][]string) structs.FaceData {
+func getFace(id uint, weight int, ethnicity, gender string, faceDataBlob map[string][]string) structs.FaceData {
 	hairColorIdx := uint8(0)
 	hairColorLen := len(faceDataBlob[ethnicity+"HairColor"]) - 1
 	if hairColorLen > 0 {
@@ -247,6 +252,14 @@ func getFace(id uint, weight int, ethnicity string, faceDataBlob map[string][]st
 	skinColorLen := len(faceDataBlob[ethnicity+"Skin"]) - 1
 	if skinColorLen > 0 {
 		skinColorIdx = uint8(util.GenerateIntFromRange(0, len(faceDataBlob[ethnicity+"Skin"])-1))
+	}
+	hairKey := ethnicity + "Hair"
+	if gender == "f" {
+		hairKey += gender
+	}
+	genderUint := 0
+	if gender == "f" {
+		genderUint = 1
 	}
 	face := structs.FaceData{
 		PlayerID:        id,
@@ -264,7 +277,7 @@ func getFace(id uint, weight int, ethnicity string, faceDataBlob map[string][]st
 		FacialHair:      getFacialHair(len(faceDataBlob["facialHair"]) - 1),
 		FacialHairShave: getShaveStyle(),
 		Glasses:         0,
-		Hair:            uint8(util.GenerateIntFromRange(0, len(faceDataBlob[ethnicity+"Hair"])-1)),
+		Hair:            uint8(util.GenerateIntFromRange(0, len(faceDataBlob[hairKey])-1)),
 		HairBG:          getHairBackground(),
 		HairColor:       uint8(hairColorIdx),
 		HairFlip:        util.GenerateIntFromRange(1, 2) == 1,
@@ -280,6 +293,7 @@ func getFace(id uint, weight int, ethnicity string, faceDataBlob map[string][]st
 		SkinColor:       skinColorIdx,
 		SmileLine:       uint8(util.GenerateIntFromRange(0, len(faceDataBlob["smileLine"])-1)),
 		SmileLineSize:   float32(util.GenerateFloatFromRange(0.25, 2.25)),
+		Gender:          uint(genderUint),
 	}
 
 	return face
@@ -400,4 +414,11 @@ func getFacialHair(len int) uint8 {
 		return 0
 	}
 	return uint8(util.GenerateIntFromRange(0, len))
+}
+
+func getGenderKey(gen uint) string {
+	if gen == 1 {
+		return "f"
+	}
+	return ""
 }

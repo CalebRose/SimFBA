@@ -233,7 +233,7 @@ func (pg *CrootGenerator) generatePlayer() (structs.Recruit, structs.Player) {
 
 	skinColor := getSkinColorByEthnicity(pg.pickedEthnicity)
 
-	face := getFace(pg.newID, player.Weight, skinColor, pg.faceDataBlob)
+	face := getFace(pg.newID, player.Weight, skinColor, "", pg.faceDataBlob)
 
 	pg.FacesList = append(pg.FacesList, face)
 
@@ -277,7 +277,7 @@ func (pg *CrootGenerator) generateTwin(player *structs.Recruit) (structs.Recruit
 	globalPlayer.AssignID(uint(firstTwinRelativeID))
 	skinColor := getSkinColorByEthnicity(pg.pickedEthnicity)
 
-	face := getFace(secondTwinRelativeID, twinPlayer.Weight, skinColor, pg.faceDataBlob)
+	face := getFace(secondTwinRelativeID, twinPlayer.Weight, skinColor, "", pg.faceDataBlob)
 
 	pg.FacesList = append(pg.FacesList, face)
 	return twinPlayer, globalTwinPlayer
@@ -506,7 +506,7 @@ func GenerateWalkOns() {
 
 			skinColor := getSkinColorByEthnicity(ethnicity)
 
-			face := getFace(newID, recruit.Weight, skinColor, faceDataBlob)
+			face := getFace(newID, recruit.Weight, skinColor, "", faceDataBlob)
 			faces = append(faces, face)
 			globalPlayerList = append(globalPlayerList, playerRecord)
 			recruitBatchList = append(recruitBatchList, recruit)
@@ -527,12 +527,15 @@ func GenerateWalkOns() {
 
 func CreateCustomCroots() {
 	db := dbprovider.GetInstance().GetDB()
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2025\\2025_Custom_Croot_Class.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_Custom_Croot_Class.csv"
 	crootCSV := util.ReadCSV(path)
 	attributeBlob := getAttributeBlob()
 	latestID := getLatestRecord(db)
 
 	crootList := []structs.Recruit{}
+	globalList := []structs.Player{}
+	faceData := []structs.FaceData{}
+	faceDataBlob := getFaceDataBlob()
 
 	for idx, row := range crootCSV {
 		if idx < 1 {
@@ -541,13 +544,8 @@ func CreateCustomCroots() {
 		if row[0] == "" {
 			break
 		}
-		croot := createCustomCroot(row, latestID, attributeBlob)
+		croot, face := createCustomCroot(row, latestID, attributeBlob, faceDataBlob)
 		croot.AssignID(int(latestID))
-		latestID++
-		crootList = append(crootList, croot)
-	}
-
-	for _, croot := range crootList {
 		gp := structs.Player{
 			CollegePlayerID: int(croot.ID),
 			NFLPlayerID:     int(croot.ID),
@@ -555,10 +553,15 @@ func CreateCustomCroots() {
 		}
 
 		gp.AssignID(croot.ID)
-
-		db.Create(&croot)
-		db.Create(&gp)
+		latestID++
+		globalList = append(globalList, gp)
+		crootList = append(crootList, croot)
+		faceData = append(faceData, face)
 	}
+
+	repository.CreateFaceRecordsBatch(db, faceData, 100)
+	repository.CreateCFBRecruitRecordsBatch(db, crootList, 100)
+	repository.CreateGlobalPlayerRecordsBatch(db, globalList, 100)
 }
 
 func GenerateCoachesForAITeams() {
@@ -794,7 +797,7 @@ func createWalkon(position string, firstNameList [][]string, lastNameList [][]st
 	}
 }
 
-func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[string]map[string]interface{}) structs.Recruit {
+func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[string]map[string]interface{}, faceDataBlob map[string][]string) (structs.Recruit, structs.FaceData) {
 	firstName := croot[0]
 	lastName := croot[1]
 	position := croot[2]
@@ -812,6 +815,8 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 	notes := croot[12]
 	affinityOne := croot[13]
 	affinityTwo := croot[14]
+	ethnicity := croot[15]
+	gender := croot[16]
 	hasNoAffinities := affinityOne == "" && affinityTwo == ""
 	age := 18
 	footballIQ := getAttributeValue(position, archetype, stars, "Football IQ", blob)
@@ -895,7 +900,8 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 
 	basePlayer.GetOverall()
 
-	return structs.Recruit{
+	faceData := getFace(id, weight, ethnicity, gender, faceDataBlob)
+	recruit := structs.Recruit{
 		BasePlayer:     basePlayer,
 		PlayerID:       int(id),
 		City:           city,
@@ -907,6 +913,8 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 		AffinityOne:    affinityOne,
 		AffinityTwo:    affinityTwo,
 	}
+
+	return recruit, faceData
 }
 
 func createCollegeCoach(team structs.RecruitingTeamProfile, almaMaterID uint, almaMater string, firstNameList, lastNameList [][]string, retiredPlayers []structs.NFLRetiredPlayer, retireeMap, coachMap *map[uint]bool) structs.CollegeCoach {
