@@ -494,9 +494,18 @@ func GetThirdBootstrapData(collegeID, proID string) BootstrapDataThree {
 func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapData {
 	var wg sync.WaitGroup
 	var (
-		contractMap  map[uint]structs.NFLContract
-		extensionMap map[uint]structs.NFLExtensionOffer
+		contractMap     map[uint]structs.NFLContract
+		extensionMap    map[uint]structs.NFLExtensionOffer
+		collegePromises []structs.CollegePromise
 	)
+
+	if len(collegeID) > 0 && collegeID != "0" {
+		wg.Add(1)
+		go func() {
+			promises := GetCollegePromisesByTeamID(collegeID)
+			collegePromises = promises
+		}()
+	}
 
 	if len(nflID) > 0 && nflID != "0" {
 		wg.Add(2)
@@ -511,8 +520,9 @@ func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapData {
 		}()
 	}
 	return BootstrapData{
-		ContractMap:  contractMap,
-		ExtensionMap: extensionMap,
+		ContractMap:     contractMap,
+		ExtensionMap:    extensionMap,
+		CollegePromises: collegePromises,
 	}
 }
 
