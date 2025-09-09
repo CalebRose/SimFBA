@@ -97,7 +97,7 @@ func RunTrainingCamps(year string) error {
 
 	csvWriter := csv.NewWriter(bufio.NewWriter(drillResultsCSV))
 
-	csvWriter.Write([]string{"Team", "DrillPosition", "Archetype", "FirstName", "LastName", "Experience", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
+	csvWriter.Write([]string{"Team", "DrillPosition", "Archetype", "FirstName", "LastName", "Age", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
 		"TeamDrillResult", "EventText", "InjuryText", "WeeksOut", "FootballIQ", "Speed", "Carrying", "Agility", "Catching", "RouteRunning", "ZoneCoverage", "ManCoverage", "Strength",
 		"Tackle", "PassBlock", "RunBlock", "PassRush", "RunDefense", "ThrowPower", "ThrowAccuracy", "KickAccuracy", "KickPower", "PuntAccuracy", "PuntPower"})
 
@@ -184,7 +184,7 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 	applyDrillResult(changedAttrs, positionDrillAttribute, positionDrillResult)
 	applyDrillResult(changedAttrs, teamDrillAttribute, teamDrillResult)
 
-	csvWriter.Write([]string{player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.FormatUint(uint64(player.Experience), 10), positionDrill, positionDrillAttribute,
+	csvWriter.Write([]string{player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.Itoa(player.Age), positionDrill, positionDrillAttribute,
 		strconv.Itoa(positionDrillResult), teamDrill, teamDrillAttribute, strconv.Itoa(teamDrillResult), eventText, injuryText,
 		strconv.Itoa(injuryWeeks), strconv.Itoa(changedAttrs.FootballIQ), strconv.Itoa(changedAttrs.Speed),
 		strconv.Itoa(changedAttrs.Carrying), strconv.Itoa(changedAttrs.Agility), strconv.Itoa(changedAttrs.Catching),
@@ -250,10 +250,10 @@ func getEventModifier(player structs.NFLPlayer) int {
 	positive := (.6 * discipline) + negative
 
 	// Older veterans are more acclimated to the NFL and are less likely to have camp events, positive or negative.
-	if player.Experience > 2 {
+	if player.Age > 24 {
 		negative = negative / 2
 		positive = positive / 2
-	} else if player.Experience > 5 {
+	} else if player.Age > 27 {
 		negative = negative / 4
 		positive = positive / 4
 	}
@@ -417,7 +417,7 @@ func getDrillResult(player structs.NFLPlayer, eventModifier int) int {
 	goodDrillThreshold := 80
 
 	// Older veterans are less likely to have major breakthroughs at camp
-	if player.Experience >= 5 {
+	if player.Age > 27 {
 		badDrillThreshold = 5
 		neutralDrillThreshold = 40
 		okayDrillThreshold = 80
