@@ -5,11 +5,18 @@ import (
 	"net/http"
 
 	"github.com/CalebRose/SimFBA/managers"
+	"github.com/gorilla/mux"
 )
 
 // GetAllCollegeTeamsForRosterPage
-func UploadTrainingCampCSVData(w http.ResponseWriter, r *http.Request) {
-	managers.UploadTrainingCampCSV()
+func RunTrainingCamps(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	year := vars["year"]
+	err := managers.RunTrainingCamps(year)
 
-	json.NewEncoder(w).Encode("Training Camp Complete")
+	if err != nil {
+		json.NewEncoder(w).Encode(err.Error())
+	} else {
+		json.NewEncoder(w).Encode("Training Camp Complete")
+	}
 }
