@@ -19,7 +19,7 @@ func GetNewsLogs(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetAllNewsLogsForASeason(w http.ResponseWriter, r *http.Request) {
-	newsLogs := managers.GetAllNewsLogs()
+	newsLogs := managers.GetAllCFBNewsLogs()
 	json.NewEncoder(w).Encode(newsLogs)
 }
 
