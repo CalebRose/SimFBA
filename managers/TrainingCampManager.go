@@ -47,7 +47,7 @@ func RunTrainingCamps(year string) error {
 
 	csvWriter := csv.NewWriter(bufio.NewWriter(drillResultsCSV))
 
-	csvWriter.Write([]string{"Team", "DrillPosition", "Archetype", "FirstName", "LastName", "Age", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
+	csvWriter.Write([]string{"PlayerID", "Team", "DrillPosition", "Archetype", "FirstName", "LastName", "Age", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
 		"TeamDrillResult", "EventText", "InjuryText", "WeeksOut", "FootballIQ", "Speed", "Carrying", "Agility", "Catching", "RouteRunning", "ZoneCoverage", "ManCoverage", "Strength",
 		"Tackle", "PassBlock", "RunBlock", "PassRush", "RunDefense", "ThrowPower", "ThrowAccuracy", "KickAccuracy", "KickPower", "PuntAccuracy", "PuntPower"})
 
@@ -68,7 +68,7 @@ func RunTrainingCamps(year string) error {
 		for _, player := range players {
 			drillPosition := player.Position
 			drillArchetype := player.Archetype
-			if (slices.Contains(positionOverrides, strings.ToLower(player.FirstName+player.LastName)) && player.PositionTwo != "") || player.Position == "ATH" {
+			if slices.Contains(positionOverrides, strconv.Itoa(player.PlayerID)) || player.Position == "ATH" {
 				drillPosition = player.PositionTwo
 				drillArchetype = player.ArchetypeTwo
 			}
@@ -134,7 +134,7 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 	applyDrillResult(changedAttrs, positionDrillAttribute, positionDrillResult)
 	applyDrillResult(changedAttrs, teamDrillAttribute, teamDrillResult)
 
-	csvWriter.Write([]string{player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.Itoa(player.Age), positionDrill, positionDrillAttribute,
+	csvWriter.Write([]string{strconv.Itoa(player.PlayerID), player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.Itoa(player.Age), positionDrill, positionDrillAttribute,
 		strconv.Itoa(positionDrillResult), teamDrill, teamDrillAttribute, strconv.Itoa(teamDrillResult), eventText, injuryText,
 		strconv.Itoa(injuryWeeks), strconv.Itoa(changedAttrs.FootballIQ), strconv.Itoa(changedAttrs.Speed),
 		strconv.Itoa(changedAttrs.Carrying), strconv.Itoa(changedAttrs.Agility), strconv.Itoa(changedAttrs.Catching),
