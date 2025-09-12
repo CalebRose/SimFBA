@@ -18,56 +18,6 @@ import (
 	"gorm.io/gorm"
 )
 
-/*func UploadTrainingCampCSV() {
-	db := dbprovider.GetInstance().GetDB()
-
-	teamPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2025\\2025_simnfl_rookie_camp_results.csv"
-
-	resultsCSV := util.ReadCSV(teamPath)
-
-	nflPlayerMap := GetAllNFLPlayersMap()
-
-	for idx, row := range resultsCSV {
-		if idx == 0 {
-			continue
-		}
-		idStr := row[0]
-		id := uint(util.ConvertStringToInt(idStr))
-
-		nflPlayer := nflPlayerMap[id]
-
-		changedAttrs := structs.CollegePlayerProgressions{
-			FootballIQ:      util.ConvertStringToInt(row[2]),
-			Speed:           util.ConvertStringToInt(row[3]),
-			Carrying:        util.ConvertStringToInt(row[4]),
-			Agility:         util.ConvertStringToInt(row[5]),
-			Catching:        util.ConvertStringToInt(row[6]),
-			RouteRunning:    util.ConvertStringToInt(row[7]),
-			ZoneCoverage:    util.ConvertStringToInt(row[8]),
-			ManCoverage:     util.ConvertStringToInt(row[9]),
-			Strength:        util.ConvertStringToInt(row[10]),
-			Tackle:          util.ConvertStringToInt(row[11]),
-			PassBlock:       util.ConvertStringToInt(row[12]),
-			RunBlock:        util.ConvertStringToInt(row[13]),
-			PassRush:        util.ConvertStringToInt(row[14]),
-			RunDefense:      util.ConvertStringToInt(row[15]),
-			ThrowPower:      util.ConvertStringToInt(row[16]),
-			ThrowAccuracy:   util.ConvertStringToInt(row[17]),
-			KickAccuracy:    util.ConvertStringToInt(row[18]),
-			KickPower:       util.ConvertStringToInt(row[19]),
-			PuntAccuracy:    util.ConvertStringToInt(row[20]),
-			PuntPower:       util.ConvertStringToInt(row[21]),
-			InjuryText:      row[22],
-			WeeksOfRecovery: util.ConvertStringToInt(row[23]),
-		}
-
-		nflPlayer.ApplyTrainingCampInfo(changedAttrs)
-		nflPlayer.GetOverall()
-
-		repository.SaveNFLPlayer(nflPlayer, db)
-	}
-}*/
-
 func RunTrainingCamps(year string) error {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -97,7 +47,7 @@ func RunTrainingCamps(year string) error {
 
 	csvWriter := csv.NewWriter(bufio.NewWriter(drillResultsCSV))
 
-	csvWriter.Write([]string{"Team", "DrillPosition", "Archetype", "FirstName", "LastName", "Age", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
+	csvWriter.Write([]string{"PlayerID", "Team", "DrillPosition", "Archetype", "FirstName", "LastName", "Age", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
 		"TeamDrillResult", "EventText", "InjuryText", "WeeksOut", "FootballIQ", "Speed", "Carrying", "Agility", "Catching", "RouteRunning", "ZoneCoverage", "ManCoverage", "Strength",
 		"Tackle", "PassBlock", "RunBlock", "PassRush", "RunDefense", "ThrowPower", "ThrowAccuracy", "KickAccuracy", "KickPower", "PuntAccuracy", "PuntPower"})
 
@@ -118,7 +68,7 @@ func RunTrainingCamps(year string) error {
 		for _, player := range players {
 			drillPosition := player.Position
 			drillArchetype := player.Archetype
-			if (slices.Contains(positionOverrides, strings.ToLower(player.FirstName+player.LastName)) && player.PositionTwo != "") || player.Position == "ATH" {
+			if slices.Contains(positionOverrides, strconv.Itoa(player.PlayerID)) || player.Position == "ATH" {
 				drillPosition = player.PositionTwo
 				drillArchetype = player.ArchetypeTwo
 			}
@@ -184,7 +134,7 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 	applyDrillResult(changedAttrs, positionDrillAttribute, positionDrillResult)
 	applyDrillResult(changedAttrs, teamDrillAttribute, teamDrillResult)
 
-	csvWriter.Write([]string{player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.Itoa(player.Age), positionDrill, positionDrillAttribute,
+	csvWriter.Write([]string{strconv.Itoa(player.PlayerID), player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.Itoa(player.Age), positionDrill, positionDrillAttribute,
 		strconv.Itoa(positionDrillResult), teamDrill, teamDrillAttribute, strconv.Itoa(teamDrillResult), eventText, injuryText,
 		strconv.Itoa(injuryWeeks), strconv.Itoa(changedAttrs.FootballIQ), strconv.Itoa(changedAttrs.Speed),
 		strconv.Itoa(changedAttrs.Carrying), strconv.Itoa(changedAttrs.Agility), strconv.Itoa(changedAttrs.Catching),
@@ -507,7 +457,35 @@ func applyDrillResult(progression *structs.CollegePlayerProgressions, attribute 
 
 // Returns which attribute to change
 func getAttribute(position string, archetype string, drill string) string {
-	if drill == "speed" {
+	if position == "K" {
+		switch drill {
+		case "accuracy":
+			return "kick_accuracy"
+		case "power":
+			return "kick_power"
+		default:
+			// for team drills, pick a kicking attribute at random. K/P progressions could use the extra bonus.
+			if rand.IntN(2) == 0 {
+				return "kick_accuracy"
+			} else {
+				return "kick_power"
+			}
+		}
+	} else if position == "P" {
+		switch drill {
+		case "accuracy":
+			return "punt_accuracy"
+		case "power":
+			return "punt_power"
+		default:
+			// for team drills, pick a punting attribute at random. K/P progressions could use the extra bonus.
+			if rand.IntN(2) == 0 {
+				return "punt_accuracy"
+			} else {
+				return "punt_power"
+			}
+		}
+	} else if drill == "speed" {
 		return "speed"
 	} else if drill == "lift" {
 		return "strength"
@@ -821,34 +799,6 @@ func getAttribute(position string, archetype string, drill string) string {
 			}
 		} else {
 			return "tackle"
-		}
-	} else if position == "K" {
-		switch drill {
-		case "accuracy":
-			return "kick_accuracy"
-		case "power":
-			return "kick_power"
-		default:
-			// for team drills, pick a kicking attribute at random. K/P progressions could use the extra bonus.
-			if rand.IntN(2) == 0 {
-				return "kick_accuracy"
-			} else {
-				return "kick_power"
-			}
-		}
-	} else if position == "P" {
-		switch drill {
-		case "accuracy":
-			return "punt_accuracy"
-		case "power":
-			return "punt_power"
-		default:
-			// for team drills, pick a punting attribute at random. K/P progressions could use the extra bonus.
-			if rand.IntN(2) == 0 {
-				return "punt_accuracy"
-			} else {
-				return "punt_power"
-			}
 		}
 	}
 	return "bad position"
