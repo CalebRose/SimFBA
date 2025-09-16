@@ -1957,9 +1957,6 @@ func AssignTeamGrades() {
 	collegeTeamGrades := make(map[uint]*structs.TeamGrade)
 
 	for _, t := range collegeTeams {
-		if !t.IsActive {
-			continue
-		}
 		depthChart := collegeDepthChartMap[t.ID]
 		gameplan := collegeGameplanMap[t.ID]
 		offenseGrade := OffenseGradeCFB(depthChart, gameplan)
