@@ -2036,9 +2036,6 @@ func AssignTeamGrades() {
 
 	// Assign those letter grades to that team's grade properties
 	for _, collegeTeam := range collegeTeams {
-		if collegeTeam.ID > 194 {
-			break
-		}
 		collegeTeam.AssignTeamGrades(collegeTeamGrades[collegeTeam.ID].OverallGradeLetter, collegeTeamGrades[collegeTeam.ID].OffenseGradeLetter,
 			collegeTeamGrades[collegeTeam.ID].DefenseGradeLetter, collegeTeamGrades[collegeTeam.ID].SpecialTeamsGradeLetter)
 
