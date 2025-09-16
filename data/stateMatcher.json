@@ -30,7 +30,7 @@
     "MSVU",
     "CARK"
   ],
-  "AZ": ["ZONA", "AZST", "UNLV", "NAU", "USD"],
+  "AZ": ["ZONA", "AZST", "UNLV", "NAU", "USD", "SUU", "UTU", "USC", "UCLA"],
   "CA(N)": [
     "CAL",
     "STAN",
@@ -68,7 +68,8 @@
     "FOR",
     "COLU",
     "BRWN",
-    "SHU"
+    "SHU",
+    "CCSU"
   ],
   "DE": [
     "TEMP",
@@ -187,7 +188,7 @@
     "SDST",
     "DRKE"
   ],
-  "KS": ["KANS", "KSST", "MIZZ", "NEB", "TULS", "OKST", "USAF", "ARK"],
+  "KS": ["KANS", "KSST", "MIZZ", "NEB", "TULS", "OKST", "USAF", "COLO", "CSU"],
   "KY": [
     "UKEN",
     "LOU",
@@ -225,7 +226,7 @@
     "NWST",
     "SELA"
   ],
-  "ME": ["BC", "MASS", "HC", "HARV", "DART", "ME"],
+  "ME": ["BC", "MASS", "HC", "HARV", "DART", "ME", "UNH"],
   "MD": [
     "UMD",
     "NAVY",
@@ -238,7 +239,10 @@
     "PENN",
     "JMU",
     "TOW",
-    "MORG"
+    "MORG",
+    "HOW",
+    "DEL",
+    "DSU"
   ],
   "MA": [
     "BC",
@@ -330,7 +334,7 @@
     "UCD",
     "SSU"
   ],
-  "NH": ["BC", "MASS", "CUSE", "CONN", "HC", "HARV", "DART", "UNH"],
+  "NH": ["BC", "MASS", "CUSE", "CONN", "HC", "HARV", "DART", "UNH", "ME"],
   "NJ": [
     "RUGT",
     "TEMP",
@@ -448,7 +452,9 @@
     "DUQ",
     "RMU",
     "MRCY",
-    "SFPA"
+    "SFPA",
+    "DEL",
+    "DSU"
   ],
   "RI": [
     "CONN",
@@ -461,9 +467,7 @@
     "HARV",
     "BRWN",
     "BRY",
-    "URI",
-    "DEL",
-    "DSU"
+    "URI"
   ],
   "SC": [
     "SOCA",
@@ -521,7 +525,9 @@
     "PV",
     "TXSO",
     "TAR",
-    "LAM"
+    "ETAM",
+    "ACU",
+    "SFA"
   ],
   "TX(S)": [
     "TEX",
@@ -539,8 +545,8 @@
     "SFA",
     "HCU",
     "UIW",
-    "ETAM",
-    "RGV"
+    "RGV",
+    "LAM"
   ],
   "TX(W)": ["TTU", "UTEP", "UNM", "NMSU", "ACU"],
   "UT": [
@@ -560,7 +566,7 @@
     "SUU",
     "UTU"
   ],
-  "VT": ["BC", "MASS", "CUSE", "CONN", "ARMY", "DART"],
+  "VT": ["BC", "MASS", "CUSE", "CONN", "ARMY", "DART", "UNH", "ME"],
   "VA": [
     "UVA",
     "VT",
@@ -581,7 +587,9 @@
     "HAMP",
     "RICH",
     "W&M",
-    "NORF"
+    "NORF",
+    "HOW",
+    "TOW"
   ],
   "WA": ["WASH", "WAST", "OREG", "ORST", "BOIS", "IDHO", "MONT", "PRST", "EWU"],
   "WV": [
@@ -596,7 +604,7 @@
     "VMI",
     "JMU"
   ],
-  "WI": ["WISC", "MINN", "NW", "IOWA", "IAST", "WMU", "UNI"],
+  "WI": ["WISC", "MINN", "NW", "IOWA", "IAST", "WMU", "UNI", "STMN"],
   "WY": [
     "WYOM",
     "CSU",
@@ -610,5 +618,17 @@
     "MTST",
     "WEB"
   ],
-  "DC": ["LU", "UMD", "UVA", "GEOT", "JMU", "VMI", "RICH", "W&M", "TOW", "NORF"]
+  "DC": [
+    "LU",
+    "UMD",
+    "UVA",
+    "GEOT",
+    "JMU",
+    "VMI",
+    "RICH",
+    "W&M",
+    "TOW",
+    "NORF",
+    "HOW"
+  ]
 }
