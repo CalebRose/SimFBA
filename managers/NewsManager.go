@@ -44,7 +44,7 @@ func GetNFLRelatedNews(TeamID string) []structs.NewsLog {
 func GetCFBRelatedNews(TeamID string) []structs.NewsLog {
 	ts := GetTimestamp()
 
-	newsLogs := GetAllNewsLogs()
+	newsLogs := GetAllCFBNewsLogs()
 
 	sort.Slice(newsLogs, func(i, j int) bool {
 		return newsLogs[i].CreatedAt.Unix() > newsLogs[j].CreatedAt.Unix()
