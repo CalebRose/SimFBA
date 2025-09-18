@@ -2125,9 +2125,9 @@ func MassUpdateGameplanSchemesTEST(off, def string) {
 	offensiveSchemes := GetOffensiveDefaultSchemes()
 	defensiveSchemes := GetDefensiveDefaultSchemes()
 	for _, team := range teams {
-		if team.ID > 194 {
+		/*if team.ID > 194 {
 			continue
-		}
+		}*/
 		teamID := strconv.Itoa(int(team.ID))
 		gp := GetGameplanTESTByTeamID(teamID)
 		gp.UpdateSchemes(off, def)
