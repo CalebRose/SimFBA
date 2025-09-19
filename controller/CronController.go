@@ -67,6 +67,9 @@ func SyncFreeAgencyViaCron() {
 
 func SyncToNextWeekViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	if ts.RunCron {
 		if !ts.IsOffSeason && !ts.IsNFLOffSeason {
 			ts = managers.MoveUpWeek()
@@ -117,6 +120,11 @@ func RunTheGamesViaCron() {
 
 func ShowCFBThursdayViaCron() {
 	ts := managers.GetTimestamp()
+
+	if !ts.RunGames {
+		return
+	}
+
 	timeslot := ""
 	if !ts.ThursdayGames {
 		timeslot = "Thursday Night"
@@ -128,6 +136,9 @@ func ShowCFBThursdayViaCron() {
 
 func ShowNFLThursdayViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.NFLThursday {
 		timeslot = "Thursday Night Football"
@@ -139,6 +150,9 @@ func ShowNFLThursdayViaCron() {
 
 func ShowCFBFridayViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.FridayGames {
 		timeslot = "Friday Night"
@@ -150,6 +164,9 @@ func ShowCFBFridayViaCron() {
 
 func ShowCFBSatMornViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.SaturdayMorning {
 		timeslot = "Saturday Morning"
@@ -161,6 +178,9 @@ func ShowCFBSatMornViaCron() {
 
 func ShowCFBSatAftViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.SaturdayNoon {
 		timeslot = "Saturday Afternoon"
@@ -172,6 +192,9 @@ func ShowCFBSatAftViaCron() {
 
 func ShowCFBSatEveViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.SaturdayEvening {
 		timeslot = "Saturday Evening"
@@ -183,27 +206,12 @@ func ShowCFBSatEveViaCron() {
 
 func ShowCFBSatNitViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
-	if !ts.ThursdayGames {
-		timeslot = "Thursday Night"
-	} else if !ts.NFLThursday {
-		timeslot = "Thursday Night Football"
-	} else if !ts.SaturdayMorning {
-		timeslot = "Saturday Morning"
-	} else if !ts.SaturdayNoon {
-		timeslot = "Saturday Afternoon"
-	} else if !ts.SaturdayEvening {
-		timeslot = "Saturday Evening"
-	} else if !ts.SaturdayNight {
+	if !ts.SaturdayNight {
 		timeslot = "Saturday Night"
-	} else if !ts.NFLSundayNoon {
-		timeslot = "Sunday Noon"
-	} else if !ts.NFLSundayAfternoon {
-		timeslot = "Sunday Afternoon"
-	} else if !ts.NFLSundayEvening {
-		timeslot = "Sunday Night Football"
-	} else if !ts.NFLMondayEvening {
-		timeslot = "Monday Night Football"
 	}
 	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
 		managers.SyncTimeslot(timeslot)
@@ -212,6 +220,9 @@ func ShowCFBSatNitViaCron() {
 
 func ShowNFLSunNoonViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.NFLSundayNoon {
 		timeslot = "Sunday Noon"
@@ -223,6 +234,9 @@ func ShowNFLSunNoonViaCron() {
 
 func ShowNFLSunAftViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.NFLSundayAfternoon {
 		timeslot = "Sunday Afternoon"
@@ -234,6 +248,9 @@ func ShowNFLSunAftViaCron() {
 
 func ShowNFLSunNitViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.NFLSundayEvening {
 		timeslot = "Sunday Night Football"
@@ -245,6 +262,9 @@ func ShowNFLSunNitViaCron() {
 
 func ShowNFLMonNitViaCron() {
 	ts := managers.GetTimestamp()
+	if !ts.RunGames {
+		return
+	}
 	timeslot := ""
 	if !ts.NFLMondayEvening {
 		timeslot = "Monday Night Football"
