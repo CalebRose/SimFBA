@@ -554,16 +554,16 @@ func ImportUDFAs() {
 	}
 }
 
-func ImportCFBGames() {
+func ImportCFBGames(isSpringGames bool) {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_cfb_games_preseason.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_cfb_games_regular.csv"
 
 	gamesCSV := util.ReadCSV(path)
 
-	ts := GetTimestamp()
-
 	teamMap := make(map[string]structs.CollegeTeam)
+
+	games := []structs.CollegeGame{}
 
 	allCollegeTeams := GetAllCollegeTeams()
 
@@ -580,7 +580,7 @@ func ImportCFBGames() {
 		season := util.ConvertStringToInt(row[1])
 		seasonID := season - 2020
 		week := util.ConvertStringToInt(row[2])
-		weekID := week + 88 // Week 43 is week 0 of the 2023 Season
+		weekID := util.GetWeekID(uint(seasonID), uint(week))
 		homeTeamAbbr := row[3]
 		awayTeamAbbr := row[4]
 		ht := teamMap[homeTeamAbbr]
@@ -596,8 +596,8 @@ func ImportCFBGames() {
 		state := row[19]
 		isDomed := util.ConvertStringToBool(row[20])
 		// Need to check for if a game is in a domed stadium or not
-		isConferenceGame := ht.ConferenceID == at.ConferenceID
-		isDivisionGame := isConferenceGame && ht.DivisionID == at.DivisionID && ht.DivisionID > 0
+		isConferenceGame := !isSpringGames && ht.ConferenceID == at.ConferenceID
+		isDivisionGame := !isSpringGames && isConferenceGame && ht.DivisionID == at.DivisionID && ht.DivisionID > 0
 		conferenceID := 0
 		if isConferenceGame {
 			conferenceID = ht.ConferenceID
@@ -616,7 +616,7 @@ func ImportCFBGames() {
 		game := structs.CollegeGame{
 			Model:                    gorm.Model{ID: uint(gameID)},
 			SeasonID:                 seasonID,
-			WeekID:                   weekID,
+			WeekID:                   int(weekID),
 			Week:                     week,
 			HomeTeamID:               int(homeTeamID),
 			AwayTeamID:               int(awayTeamID),
@@ -625,7 +625,7 @@ func ImportCFBGames() {
 			HomeTeamCoach:            homeTeamCoach,
 			AwayTeamCoach:            awayTeamCoach,
 			IsConferenceChampionship: isConferenceChampionship,
-			IsSpringGame:             ts.CFBSpringGames,
+			IsSpringGame:             isSpringGames,
 			IsBowlGame:               isBowlGame,
 			IsNeutral:                isNeutralSite,
 			IsPlayoffGame:            isPlayoffGame,
@@ -645,8 +645,10 @@ func ImportCFBGames() {
 			ConferenceID:             uint(conferenceID),
 		}
 
-		db.Create(&game)
+		games = append(games, game)
 	}
+	repository.CreateCFBGameRecordsBatch(db, games, 250)
+
 	GenerateWeatherForGames()
 }
 
