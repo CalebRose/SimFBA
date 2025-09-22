@@ -486,7 +486,7 @@ func SignFreeAgent(offer structs.FreeAgencyOffer, FreeAgent structs.NFLPlayer, t
 func DecreaseMinimumValues(db *gorm.DB, ts structs.Timestamp) {
 	if ts.NFLWeek < 10 && !ts.NFLSeasonOver && !ts.IsDraftTime {
 		// Update all veteran players' minimum value requirements by 10%
-		db.Model(&structs.NFLPlayer{}).Where("is_free_agent = ? and minimum_value >= 1", true).Updates(map[string]interface{}{
+		db.Model(&structs.NFLPlayer{}).Where("age >= ? and is_free_agent = ? and minimum_value >= 1", "24", true).Updates(map[string]interface{}{
 			"minimum_value": gorm.Expr("minimum_value * 0.9"),
 			"aav":           gorm.Expr("aav * 0.9"),
 		})
