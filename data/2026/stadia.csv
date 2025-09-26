@@ -1,0 +1,3 @@
+id,stadium_name,team_id,team_abbr,city,state,country,region,capacity,record_attendance,first_season,league_id,league_name,is_domed
+290,SeatGeek Stadium,265,CHST,Bridgeview,IL,USA,,20000,20000,2027,2,FCS,0
+291,Ralph F. DellaCamera Stadium,266,NHU,New Haven,CT,USA,,5000,5000,2027,2,FCS,0

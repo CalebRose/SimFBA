@@ -756,9 +756,9 @@ func ImportNFLGames() {
 func ImportCFBTeams() {
 	db := dbprovider.GetInstance().GetDB()
 
-	teamPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2024\\teams.csv"
-	stadiumPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2024\\stadia.csv"
-	profilePath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2024\\profiles.csv"
+	teamPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\teams.csv"
+	stadiumPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\stadia.csv"
+	profilePath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\profiles.csv"
 
 	teamCSV := util.ReadCSV(teamPath)
 	stadiumCSV := util.ReadCSV(stadiumPath)
