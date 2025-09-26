@@ -64,7 +64,7 @@ func SyncTimeslot(w http.ResponseWriter, r *http.Request) {
 func SyncFreeAgencyRound(w http.ResponseWriter, r *http.Request) {
 	managers.SyncFreeAgencyOffers()
 	managers.MoveUpInOffseasonFreeAgency()
-
+	// managers.AttemptToDecreaseMinimumValues()
 	json.NewEncoder(w).Encode("Moved to next free agency round")
 }
 
