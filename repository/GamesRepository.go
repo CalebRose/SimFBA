@@ -3,6 +3,7 @@ package repository
 import (
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/structs"
+	"gorm.io/gorm"
 )
 
 func FindCollegeGamesRecords(SeasonID string, isSpringGames bool) []structs.CollegeGame {
@@ -37,4 +38,34 @@ func FindNFLGamesRecords(SeasonID string, isSpringGames bool) []structs.NFLGame 
 		return []structs.NFLGame{}
 	}
 	return games
+}
+
+func CreateCFBGameRecordsBatch(db *gorm.DB, games []structs.CollegeGame, batchSize int) error {
+	total := len(games)
+	for i := 0; i < total; i += batchSize {
+		end := i + batchSize
+		if end > total {
+			end = total
+		}
+
+		if err := db.CreateInBatches(games[i:end], batchSize).Error; err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func CreateNFLGameRecordsBatch(db *gorm.DB, games []structs.NFLGame, batchSize int) error {
+	total := len(games)
+	for i := 0; i < total; i += batchSize {
+		end := i + batchSize
+		if end > total {
+			end = total
+		}
+
+		if err := db.CreateInBatches(games[i:end], batchSize).Error; err != nil {
+			return err
+		}
+	}
+	return nil
 }

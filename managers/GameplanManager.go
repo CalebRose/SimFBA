@@ -526,9 +526,6 @@ func UpdateCollegeAIDepthChartsTEST() {
 	db := dbprovider.GetInstance().GetDB()
 	teams := GetAllCollegeTeams()
 	for _, team := range teams {
-		// if len(team.Coach) > 0 && team.Coach != "AI" {
-		// 	continue
-		// }
 
 		teamID := strconv.Itoa(int(team.ID))
 		gp := GetGameplanTESTByTeamID(teamID)
@@ -2125,9 +2122,6 @@ func MassUpdateGameplanSchemesTEST(off, def string) {
 	offensiveSchemes := GetOffensiveDefaultSchemes()
 	defensiveSchemes := GetDefensiveDefaultSchemes()
 	for _, team := range teams {
-		/*if team.ID > 194 {
-			continue
-		}*/
 		teamID := strconv.Itoa(int(team.ID))
 		gp := GetGameplanTESTByTeamID(teamID)
 		gp.UpdateSchemes(off, def)
@@ -2202,7 +2196,7 @@ func UpdateIndividualGameplanSchemeTEST(teamID, off, def string) {
 	gp.UpdateCollegeGameplanTEST(dto)
 
 	// Autosort Depth Chart
-	ReAlignCollegeDepthChartTEST(db, teamID, gp)
+	// ReAlignCollegeDepthChartTEST(db, teamID, gp)
 
 	db.Save(&gp)
 

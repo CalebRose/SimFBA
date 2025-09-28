@@ -51,8 +51,12 @@ func ImportCFBStandings(w http.ResponseWriter, r *http.Request) {
 	managers.ImportSeasonStandings()
 }
 
-func ImportCFBGames(w http.ResponseWriter, r *http.Request) {
-	managers.ImportCFBGames()
+func ImportCFBRegularSeasonGames(w http.ResponseWriter, r *http.Request) {
+	managers.ImportCFBGames(false)
+}
+
+func ImportCFBSpringGames(w http.ResponseWriter, r *http.Request) {
+	managers.ImportCFBGames(true)
 }
 
 func ImportNFLGames(w http.ResponseWriter, r *http.Request) {
