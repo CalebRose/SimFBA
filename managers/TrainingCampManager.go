@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"encoding/csv"
 	"errors"
-	"log"
 	"math/rand/v2"
 	"os"
 	"slices"
@@ -86,20 +85,13 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 	positionDrillAttribute := getAttribute(drillPosition, drillArchetype, positionDrill)
 	teamDrillAttribute := getAttribute(drillPosition, drillArchetype, teamDrill)
 
-	log.Printf("Running drills for: %s %s %s %s %s. Position Drill: %s (attr: %s), Team Drill: %s (attr: %s)\n",
-		player.TeamAbbr, drillArchetype, drillPosition, player.FirstName, player.LastName, positionDrill, positionDrillAttribute, teamDrill, teamDrillAttribute)
-
 	eventModifier := getEventModifier(player)
 	eventText := ""
 	if eventModifier != 0 {
 		eventText = events[0][eventModifier][rand.IntN(len(events[0][eventModifier]))]
-		log.Printf("Camp event occurred for %s %s %s %s: %s Modifier: %d\n", player.TeamAbbr, player.Position, player.FirstName, player.LastName, eventText, eventModifier)
 	}
 
 	injuryText, injuryWeeks := checkInjury(player)
-	if injuryWeeks > 0 {
-		log.Printf("%s %s %s %s suffered an injury during minicamp! %s, out for %d weeks.\n", player.TeamAbbr, player.Position, player.FirstName, player.LastName, injuryText, injuryWeeks)
-	}
 
 	changedAttrs := &structs.CollegePlayerProgressions{
 		FootballIQ:      player.FootballIQ,
@@ -127,9 +119,7 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 	}
 
 	positionDrillResult := getDrillResult(player, eventModifier)
-	log.Printf("Position Drill Result for %s %s %s %s: %s (attr: %s) Result: %d\n", player.TeamAbbr, player.Position, player.FirstName, player.LastName, positionDrill, positionDrillAttribute, positionDrillResult)
 	teamDrillResult := getDrillResult(player, eventModifier)
-	log.Printf("Team Drill Result for %s %s %s %s: %s (attr: %s) Result: %d\n", player.TeamAbbr, player.Position, player.FirstName, player.LastName, teamDrill, teamDrillAttribute, teamDrillResult)
 
 	applyDrillResult(changedAttrs, positionDrillAttribute, positionDrillResult)
 	applyDrillResult(changedAttrs, teamDrillAttribute, teamDrillResult)
