@@ -47,8 +47,7 @@ func RunTrainingCamps(year string) error {
 	csvWriter := csv.NewWriter(bufio.NewWriter(drillResultsCSV))
 
 	csvWriter.Write([]string{"PlayerID", "Team", "DrillPosition", "Archetype", "FirstName", "LastName", "Age", "PositionDrill", "PositionDrillAttribute", "PositionDrillResult", "TeamDrill", "TeamDrillAttribute",
-		"TeamDrillResult", "EventText", "InjuryText", "WeeksOut", "FootballIQ", "Speed", "Carrying", "Agility", "Catching", "RouteRunning", "ZoneCoverage", "ManCoverage", "Strength",
-		"Tackle", "PassBlock", "RunBlock", "PassRush", "RunDefense", "ThrowPower", "ThrowAccuracy", "KickAccuracy", "KickPower", "PuntAccuracy", "PuntPower"})
+		"TeamDrillResult", "EventText", "InjuryText", "WeeksOut"})
 
 	defer drillResultsCSV.Close()
 	defer csvWriter.Flush()
@@ -126,13 +125,7 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 
 	csvWriter.Write([]string{strconv.Itoa(player.PlayerID), player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.Itoa(player.Age), positionDrill, positionDrillAttribute,
 		strconv.Itoa(positionDrillResult), teamDrill, teamDrillAttribute, strconv.Itoa(teamDrillResult), eventText, injuryText,
-		strconv.Itoa(injuryWeeks), strconv.Itoa(changedAttrs.FootballIQ), strconv.Itoa(changedAttrs.Speed),
-		strconv.Itoa(changedAttrs.Carrying), strconv.Itoa(changedAttrs.Agility), strconv.Itoa(changedAttrs.Catching),
-		strconv.Itoa(changedAttrs.RouteRunning), strconv.Itoa(changedAttrs.ZoneCoverage), strconv.Itoa(changedAttrs.ManCoverage),
-		strconv.Itoa(changedAttrs.Strength), strconv.Itoa(changedAttrs.Tackle), strconv.Itoa(changedAttrs.PassBlock),
-		strconv.Itoa(changedAttrs.RunBlock), strconv.Itoa(changedAttrs.PassRush), strconv.Itoa(changedAttrs.RunDefense),
-		strconv.Itoa(changedAttrs.ThrowPower), strconv.Itoa(changedAttrs.ThrowAccuracy), strconv.Itoa(changedAttrs.KickAccuracy),
-		strconv.Itoa(changedAttrs.KickPower), strconv.Itoa(changedAttrs.PuntAccuracy), strconv.Itoa(changedAttrs.PuntPower)},
+		strconv.Itoa(injuryWeeks)},
 	)
 	player.ApplyTrainingCampInfo(*changedAttrs)
 	player.GetOverall()
