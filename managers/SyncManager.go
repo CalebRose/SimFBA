@@ -852,7 +852,7 @@ func ResetAIBoardsForCompletedTeams() {
 				db.Save(&croot)
 			}
 			team.ResetSpentPoints()
-			db.Save(&team)
+			repository.SaveRecruitingTeamProfile(team, db)
 		}
 	}
 }

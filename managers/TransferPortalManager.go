@@ -772,13 +772,14 @@ func AICoachFillBoardsPhase() {
 					biasMod += 20
 				}
 			} else if bias == nationalChampionshipContender {
-				if postSeasonStatus == "Bowl Game" {
+				switch postSeasonStatus {
+				case "Bowl Game":
 					biasMod += 10
-				} else if postSeasonStatus == "Playoffs" {
+				case "Playoffs":
 					biasMod += 15
-				} else if postSeasonStatus == "National Championship Participant" {
+				case "National Championship Participant":
 					biasMod += 20
-				} else if postSeasonStatus == "National Champions" {
+				case "National Champions":
 					biasMod += 25
 				}
 			} else if bias == upcomingTeam {
