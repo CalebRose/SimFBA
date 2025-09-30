@@ -149,15 +149,20 @@ func ExportNFLRosterToCSV(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.ExportNFLTeamToCSV(teamId, w)
-
 	// ?
 }
 
-func ExportAllRostersToCSV(w http.ResponseWriter, r *http.Request) {
+func ExportAllCFBRostersToCSV(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/csv")
 
 	managers.ExportAllRostersToCSV(w)
 	// ?
+}
+
+func ExportAllNFLRostersToCSV(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/csv")
+
+	managers.ExportAllNFLTeamsToCSV(w)
 }
 
 // Place player on NFL Trade block

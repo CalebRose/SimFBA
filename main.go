@@ -223,11 +223,12 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/nflplayers/team/{teamID}/", controller.AllNFLPlayersByTeamIDForDC).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/freeagency/available/{teamID}", controller.FreeAgencyAvailablePlayers).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/team/export/{teamID}/", controller.ExportNFLRosterToCSV).Methods("GET")
+	apiRouter.HandleFunc("/nflplayers/teams/export/all/", controller.ExportAllNFLRostersToCSV).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/tag/player/", controller.TagPlayer).Methods("POST")
 	apiRouter.HandleFunc("/nflplayers/cut/player/{PlayerID}/", controller.CutNFLPlayerFromRoster).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/place/player/squad/{PlayerID}/", controller.PlaceNFLPlayerOnPracticeSquad).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/injury/reserve/player/{PlayerID}/", controller.PlaceNFLPlayerOnInjuryReserve).Methods("GET")
-	apiRouter.HandleFunc("/collegeplayers/teams/export/", controller.ExportAllRostersToCSV).Methods("GET") // DO NOT USE
+	apiRouter.HandleFunc("/collegeplayers/teams/export/", controller.ExportAllCFBRostersToCSV).Methods("GET") // DO NOT USE
 
 	// Poll Controls
 	apiRouter.HandleFunc("/college/poll/create/", controller.CreatePollSubmission).Methods("POST")

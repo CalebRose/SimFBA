@@ -184,6 +184,70 @@ func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 	}
 }
 
+func ExportAllNFLTeamsToCSV(w http.ResponseWriter) {
+	// Get Team Data
+	nflPlayers := GetAllNFLPlayers()
+	nflPlayerMap := MakeNFLPlayerMapByTeamID(nflPlayers, true)
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
+	w.Header().Set("Content-Disposition", "attachment;filename=all_nfl_players_on_roster.csv")
+	w.Header().Set("Transfer-Encoding", "chunked")
+	// Initialize writer
+	writer := csv.NewWriter(w)
+
+	// Get Players
+	nflTeams := GetAllNFLTeams()
+
+	HeaderRow := []string{
+		"Team", "ID", "First Name", "Last Name", "Position",
+		"Archetype", "Position Two", "Archetype Two", "Year", "Age",
+		"High School", "Hometown", "State", "Height",
+		"Weight", "Overall", "Speed",
+		"Football IQ", "Agility", "Carrying",
+		"Catching", "Route Running", "Zone Coverage", "Man Coverage",
+		"Strength", "Tackle", "Pass Block", "Run Block",
+		"Pass Rush", "Run Defense", "Throw Power", "Throw Accuracy",
+		"Kick Power", "Kick Accuracy", "Punt Power", "Punt Accuracy",
+		"Stamina", "Injury", "Potential Grade",
+	}
+
+	err := writer.Write(HeaderRow)
+	if err != nil {
+		log.Fatal("Cannot write header row", err)
+	}
+
+	for _, team := range nflTeams {
+		players := nflPlayerMap[team.ID]
+
+		for _, player := range players {
+			csvModel := structs.MapNFLPlayerToCSVModel(player)
+			playerRow := []string{
+				team.TeamName, strconv.Itoa(int(player.ID)), csvModel.FirstName, csvModel.LastName, csvModel.Position,
+				csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(player.Age),
+				player.HighSchool, player.Hometown, player.State, strconv.Itoa(player.Height),
+				strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,
+				csvModel.FootballIQGrade, csvModel.AgilityGrade, csvModel.CarryingGrade,
+				csvModel.CatchingGrade, csvModel.RouteRunningGrade, csvModel.ZoneCoverageGrade, csvModel.ManCoverageGrade,
+				csvModel.StrengthGrade, csvModel.TackleGrade, csvModel.PassBlockGrade, csvModel.RunBlockGrade,
+				csvModel.PassRushGrade, csvModel.RunDefenseGrade, csvModel.ThrowPowerGrade, csvModel.ThrowAccuracyGrade,
+				csvModel.KickPowerGrade, csvModel.KickAccuracyGrade, csvModel.PuntPowerGrade, csvModel.PuntAccuracyGrade,
+				csvModel.StaminaGrade, csvModel.InjuryGrade, csvModel.PotentialGrade,
+			}
+
+			err = writer.Write(playerRow)
+			if err != nil {
+				log.Fatal("Cannot write player row to CSV", err)
+			}
+
+			writer.Flush()
+			err = writer.Error()
+			if err != nil {
+				log.Fatal("Error while writing to file ::", err)
+			}
+		}
+	}
+
+}
+
 func ExportCrootsToCSV(w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;filename=2022SimNFLDraftClass.csv")
@@ -425,6 +489,9 @@ func ExportNFLPlayByPlayToCSV(gameID string, w http.ResponseWriter) {
 		"Defensive Tendency", "# of Blitzers", "LB Coverage", "CB Coverage", "S Coverage",
 		"QB Player ID", "Ballcarrier ID", "Tackler1 ID", "Tackler2 ID", "Yards Gained",
 		"Result",
+		"QB Id", "Back1 Id", "Back2 Id", "Back3 Id", "Slot1 Id", "Slot2 Id", "Le Id", "Re Id", "Lt Id", "LG id", "C id", "Rg Id", "Rt Id",
+		"Rde id", "Rdt Id", "Nt Id", "Ldt Id", "Lde Id", "Rolb Id", "Rilb Id", "Mlb Id", "Lilb Id", "Lolb Id", "Rcb Id", "DB1 Id", "DB2 Id", "DB3 ID", "Fs ID", "SS Id", "Lcb Id",
+		"Blitzer1 Id", "Blitzer2 Id", "Blitzer3 Id",
 	}
 	err := writer.Write(HeaderRow)
 	if err != nil {
@@ -452,6 +519,15 @@ func ExportNFLPlayByPlayToCSV(gameID string, w http.ResponseWriter) {
 			play.DefensiveTendency, blitzNumber, play.LBCoverage, play.CBCoverage, play.SCoverage,
 			qbID, bcID, t1ID, t2ID, yards,
 			play.Result,
+			strconv.Itoa(int(play.Qb)), strconv.Itoa(int(play.Back1)), strconv.Itoa(int(play.Back2)), strconv.Itoa(int(play.Back3)),
+			strconv.Itoa(int(play.Slot1)), strconv.Itoa(int(play.Slot2)), strconv.Itoa(int(play.Le)), strconv.Itoa(int(play.Re)),
+			strconv.Itoa(int(play.Lt)), strconv.Itoa(int(play.Lg)), strconv.Itoa(int(play.C)), strconv.Itoa(int(play.Rg)), strconv.Itoa(int(play.Rt)),
+			strconv.Itoa(int(play.Rde)), strconv.Itoa(int(play.Rdt)), strconv.Itoa(int(play.Nt)), strconv.Itoa(int(play.Ldt)), strconv.Itoa(int(play.Lde)),
+			strconv.Itoa(int(play.Rolb)), strconv.Itoa(int(play.Rilb)), strconv.Itoa(int(play.Mlb)), strconv.Itoa(int(play.Lilb)), strconv.Itoa(int(play.Lolb)),
+			strconv.Itoa(int(play.Rcb)),
+			strconv.Itoa(int(play.Extradb1)), strconv.Itoa(int(play.Extradb2)), strconv.Itoa(int(play.Extradb3)),
+			strconv.Itoa(int(play.Fs)), strconv.Itoa(int(play.Ss)), strconv.Itoa(int(play.Fcb)),
+			strconv.Itoa(int(play.Blitzer1)), strconv.Itoa(int(play.Blitzer2)), strconv.Itoa(int(play.Blitzer3)),
 		}
 
 		err = writer.Write(row)
@@ -497,6 +573,9 @@ func ExportCFBPlayByPlayToCSV(gameID string, w http.ResponseWriter) {
 		"Defensive Tendency", "# of Blitzers", "LB Coverage", "CB Coverage", "S Coverage",
 		"QB Player ID", "Ballcarrier ID", "Tackler1 ID", "Tackler2 ID", "Yards Gained",
 		"Result",
+		"QB Id", "Back1 Id", "Back2 Id", "Back3 Id", "Slot1 Id", "Slot2 Id", "Le Id", "Re Id", "Lt Id", "LG id", "C id", "Rg Id", "Rt Id",
+		"Rde id", "Rdt Id", "Nt Id", "Ldt Id", "Lde Id", "Rolb Id", "Rilb Id", "Mlb Id", "Lilb Id", "Lolb Id", "Rcb Id", "DB1 Id", "DB2 Id", "DB3 ID", "Fs ID", "SS Id", "Lcb Id",
+		"Blitzer1 Id", "Blitzer2 Id", "Blitzer3 Id",
 	}
 	err := writer.Write(HeaderRow)
 	if err != nil {
@@ -524,6 +603,15 @@ func ExportCFBPlayByPlayToCSV(gameID string, w http.ResponseWriter) {
 			play.DefensiveTendency, blitzNumber, play.LBCoverage, play.CBCoverage, play.SCoverage,
 			qbID, bcID, t1ID, t2ID, yards,
 			play.Result,
+			strconv.Itoa(int(play.Qb)), strconv.Itoa(int(play.Back1)), strconv.Itoa(int(play.Back2)), strconv.Itoa(int(play.Back3)),
+			strconv.Itoa(int(play.Slot1)), strconv.Itoa(int(play.Slot2)), strconv.Itoa(int(play.Le)), strconv.Itoa(int(play.Re)),
+			strconv.Itoa(int(play.Lt)), strconv.Itoa(int(play.Lg)), strconv.Itoa(int(play.C)), strconv.Itoa(int(play.Rg)), strconv.Itoa(int(play.Rt)),
+			strconv.Itoa(int(play.Rde)), strconv.Itoa(int(play.Rdt)), strconv.Itoa(int(play.Nt)), strconv.Itoa(int(play.Ldt)), strconv.Itoa(int(play.Lde)),
+			strconv.Itoa(int(play.Rolb)), strconv.Itoa(int(play.Rilb)), strconv.Itoa(int(play.Mlb)), strconv.Itoa(int(play.Lilb)), strconv.Itoa(int(play.Lolb)),
+			strconv.Itoa(int(play.Rcb)),
+			strconv.Itoa(int(play.Extradb1)), strconv.Itoa(int(play.Extradb2)), strconv.Itoa(int(play.Extradb3)),
+			strconv.Itoa(int(play.Fs)), strconv.Itoa(int(play.Ss)), strconv.Itoa(int(play.Fcb)),
+			strconv.Itoa(int(play.Blitzer1)), strconv.Itoa(int(play.Blitzer2)), strconv.Itoa(int(play.Blitzer3)),
 		}
 
 		err = writer.Write(row)

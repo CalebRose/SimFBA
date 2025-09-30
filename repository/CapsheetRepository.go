@@ -16,3 +16,13 @@ func FindAllNFLCapsheets() []structs.NFLCapsheet {
 	}
 	return capsheets
 }
+
+func FindAllActiveNFLContracts() []structs.NFLContract {
+	var contracts []structs.NFLContract
+	db := dbprovider.GetInstance().GetDB()
+	err := db.Where("is_active = ?", true).Find(&contracts).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+	return contracts
+}

@@ -225,26 +225,26 @@ func (f *NFLPlayer) AddTagType(tagType uint8) {
 }
 
 func (np *NFLPlayer) ApplyTrainingCampInfo(attr CollegePlayerProgressions) {
-	np.Agility = attr.Agility
-	np.Speed = attr.Speed
-	np.FootballIQ = attr.FootballIQ
-	np.Carrying = attr.Carrying
-	np.Catching = attr.Catching
-	np.RouteRunning = attr.RouteRunning
-	np.PassBlock = attr.PassBlock
-	np.RunBlock = attr.RunBlock
-	np.PassRush = attr.PassRush
-	np.RunDefense = attr.RunDefense
-	np.Tackle = attr.Tackle
-	np.Strength = attr.Strength
-	np.ManCoverage = attr.ManCoverage
-	np.ZoneCoverage = attr.ZoneCoverage
-	np.KickAccuracy = attr.KickAccuracy
-	np.KickPower = attr.KickPower
-	np.PuntAccuracy = attr.PuntAccuracy
-	np.PuntPower = attr.PuntPower
-	np.ThrowAccuracy = attr.ThrowAccuracy
-	np.ThrowPower = attr.ThrowPower
+	np.Agility = AddAttribute(attr.Agility)
+	np.Speed = AddAttribute(attr.Speed)
+	np.FootballIQ = AddAttribute(attr.FootballIQ)
+	np.Carrying = AddAttribute(attr.Carrying)
+	np.Catching = AddAttribute(attr.Catching)
+	np.RouteRunning = AddAttribute(attr.RouteRunning)
+	np.PassBlock = AddAttribute(attr.PassBlock)
+	np.RunBlock = AddAttribute(attr.RunBlock)
+	np.PassRush = AddAttribute(attr.PassRush)
+	np.RunDefense = AddAttribute(attr.RunDefense)
+	np.Tackle = AddAttribute(attr.Tackle)
+	np.Strength = AddAttribute(attr.Strength)
+	np.ManCoverage = AddAttribute(attr.ManCoverage)
+	np.ZoneCoverage = AddAttribute(attr.ZoneCoverage)
+	np.KickAccuracy = AddAttribute(attr.KickAccuracy)
+	np.KickPower = AddAttribute(attr.KickPower)
+	np.PuntAccuracy = AddAttribute(attr.PuntAccuracy)
+	np.PuntPower = AddAttribute(attr.PuntPower)
+	np.ThrowAccuracy = AddAttribute(attr.ThrowAccuracy)
+	np.ThrowPower = AddAttribute(attr.ThrowPower)
 	np.IsInjured = attr.WeeksOfRecovery > 0
 	np.WeeksOfRecovery = uint(attr.WeeksOfRecovery)
 	np.InjuryName = attr.InjuryText
@@ -254,4 +254,14 @@ func (np *NFLPlayer) ApplyTrainingCampInfo(attr CollegePlayerProgressions) {
 
 func (cp *NFLPlayer) AddSeasonStats(seasonStats NFLPlayerSeasonStats) {
 	cp.SeasonStats = seasonStats
+}
+
+func AddAttribute(attr int) int {
+	newVal := attr
+	if newVal > 99 {
+		newVal = 99
+	} else if newVal < 1 {
+		newVal = 1
+	}
+	return newVal
 }
