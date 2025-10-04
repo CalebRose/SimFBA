@@ -274,3 +274,23 @@ func MakePromiseMapByPlayerIDByTeam(promises []structs.CollegePromise) map[uint]
 
 	return playerMap
 }
+
+func MakeCollegeGameMapByID(collegeGames []structs.CollegeGame) map[uint]structs.CollegeGame {
+	gamesMap := make(map[uint]structs.CollegeGame)
+
+	for _, c := range collegeGames {
+		gamesMap[uint(c.ID)] = c
+	}
+
+	return gamesMap
+}
+
+func MakeCollegeGameplanMap(gameplans []structs.CollegeGameplan) map[uint]structs.CollegeGameplan {
+	gamesMap := make(map[uint]structs.CollegeGameplan)
+
+	for _, c := range gameplans {
+		gamesMap[uint(c.ID)] = c
+	}
+
+	return gamesMap
+}

@@ -1235,10 +1235,8 @@ func ReAlignCollegeDepthChart(db *gorm.DB, teamID string, gp structs.CollegeGame
 	for _, dcp := range dcPositions {
 		positionList := positionMap[dcp.Position]
 		for _, pos := range positionList {
-			if starterMap[pos.CollegePlayer.ID] &&
-				dcp.Position != "FG" &&
-				dcp.Position != "PR" &&
-				dcp.Position != "KR" {
+			playerID := pos.CollegePlayer.ID
+			if starterMap[playerID] && !isSpecialTeams(dcp.Position) {
 				continue
 			}
 			if backupMap[pos.CollegePlayer.ID] && dcp.PositionLevel != "1" && dcp.Position != "STU" {
@@ -1275,6 +1273,15 @@ func ReAlignCollegeDepthChart(db *gorm.DB, teamID string, gp structs.CollegeGame
 			db.Save(&dcp)
 			break
 		}
+	}
+}
+
+func isSpecialTeams(pos string) bool {
+	switch pos {
+	case "FG", "PR", "KR":
+		return true
+	default:
+		return false
 	}
 }
 

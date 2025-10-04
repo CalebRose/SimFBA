@@ -8,6 +8,42 @@ type NFLPlayByPlay struct {
 	PlayByPlay
 }
 
+type PlayersInvoledInPlay struct {
+	Qb       uint
+	Back1    uint
+	Back2    uint
+	Back3    uint
+	Slot1    uint
+	Slot2    uint
+	Le       uint
+	Re       uint
+	Lt       uint
+	Lg       uint
+	C        uint
+	Rg       uint
+	Rt       uint
+	Rde      uint
+	Rdt      uint
+	Nt       uint
+	Ldt      uint
+	Lde      uint
+	Rolb     uint
+	Rilb     uint
+	Mlb      uint
+	Lilb     uint
+	Lolb     uint
+	Rcb      uint
+	Extradb1 uint
+	Extradb2 uint
+	Extradb3 uint
+	Fs       uint
+	Ss       uint
+	Fcb      uint
+	Blitzer1 uint
+	Blitzer2 uint
+	Blitzer3 uint
+}
+
 type PlayByPlay struct {
 	ID                   uint
 	GameID               uint
@@ -67,6 +103,7 @@ type PlayByPlay struct {
 	OnOffense            bool
 	KickDistance         int8
 	PressureID           uint
+	PlayersInvoledInPlay
 }
 
 func (p *PlayByPlay) Map(play PlayByPlayDTO) {
@@ -127,6 +164,7 @@ func (p *PlayByPlay) Map(play PlayByPlayDTO) {
 	p.OnOffense = play.OnOffense
 	p.HomeHasBall = play.HomeHasBall
 	p.PressureID = uint(play.PressureID)
+	p.PlayersInvoledInPlay = play.PlayersInvoledInPlay
 }
 
 type PlayByPlayDTO struct {
@@ -187,6 +225,7 @@ type PlayByPlayDTO struct {
 	OnOffense            bool
 	KickDistance         int
 	PressureID           int
+	PlayersInvoledInPlay
 }
 
 type PlayByPlayResponse struct {
@@ -219,6 +258,7 @@ type PlayByPlayResponse struct {
 	ResultYards        int8
 	Result             string
 	StreamResult       []string
+	PlayersInvoledInPlay
 }
 
 func (p *PlayByPlayResponse) AddPlayInformation(playType, playName, offFormation, defFormation, poa string) {
