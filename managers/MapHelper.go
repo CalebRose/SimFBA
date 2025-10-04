@@ -294,3 +294,13 @@ func MakeCollegeGameplanMap(gameplans []structs.CollegeGameplan) map[uint]struct
 
 	return gamesMap
 }
+
+func MakeNFLGameplanMap(gameplans []structs.NFLGameplan) map[uint]structs.NFLGameplan {
+	gamesMap := make(map[uint]structs.NFLGameplan)
+
+	for _, c := range gameplans {
+		gamesMap[uint(c.ID)] = c
+	}
+
+	return gamesMap
+}
