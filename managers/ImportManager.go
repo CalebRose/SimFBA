@@ -557,11 +557,13 @@ func ImportUDFAs() {
 func ImportCFBGames(isSpringGames bool) {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_cfb_games_regular.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_cfb_games_preseason.csv"
 
 	gamesCSV := util.ReadCSV(path)
-
+	ts := GetTimestamp()
 	teamMap := make(map[string]structs.CollegeTeam)
+	collegeGames := GetCollegeGamesBySeasonID(strconv.Itoa(int(ts.CollegeSeasonID)))
+	collegeGameMap := MakeCollegeGameMapByID(collegeGames)
 
 	games := []structs.CollegeGame{}
 
@@ -577,6 +579,10 @@ func ImportCFBGames(isSpringGames bool) {
 		}
 
 		gameID := util.ConvertStringToInt(row[0])
+		existingGame := collegeGameMap[uint(gameID)]
+		if existingGame.ID > 0 {
+			continue
+		}
 		season := util.ConvertStringToInt(row[1])
 		seasonID := season - 2020
 		week := util.ConvertStringToInt(row[2])
@@ -655,16 +661,15 @@ func ImportCFBGames(isSpringGames bool) {
 func ImportNFLGames() {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2025\\2025_nfl_postseason_games.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_nfl_regularseason_games.csv"
 
 	gamesCSV := util.ReadCSV(path)
-
-	ts := GetTimestamp()
 
 	teamMap := make(map[string]structs.NFLTeam)
 
 	allNFLTeams := GetAllNFLTeams()
 
+	games := []structs.NFLGame{}
 	for _, t := range allNFLTeams {
 		teamMap[t.TeamAbbr] = t
 	}
@@ -678,10 +683,7 @@ func ImportNFLGames() {
 		season := util.ConvertStringToInt(row[1])
 		seasonID := season - 2020
 		week := util.ConvertStringToInt(row[2])
-		weekID := week + 23 // Week 43 is week 0 of the 2024 Season
-		if gameID > 381 {
-			weekID = week + 51
-		}
+		weekID := util.GetWeekID(uint(seasonID), uint(week))
 		homeTeamAbbr := row[3]
 		awayTeamAbbr := row[4]
 		ht := teamMap[homeTeamAbbr]
@@ -704,27 +706,27 @@ func ImportNFLGames() {
 		if len(awayTeamCoach) == 0 {
 			awayTeamCoach = "AI"
 		}
-		timeSlot := row[18]
+		timeSlot := row[12]
 		// Need to implement Stadium ID
 		stadium := ht.Stadium
 		city := ht.City
 		state := ht.State
 		// Need to check for if a game is in a domed stadium or not
-		isConferenceGame := util.ConvertStringToBool(row[9])
-		isDivisionGame := util.ConvertStringToBool(row[10])
-		isNeutralSite := util.ConvertStringToBool(row[11])
-		// isPreseasonGame := util.ConvertStringToBool(row[12])
-		// isConferenceChampionship := util.ConvertStringToBool(row[13])
-		isPlayoffGame := util.ConvertStringToBool(row[14])
-		isNationalChampionship := util.ConvertStringToBool(row[15])
-		gameTitle := row[23]
-		nextGame := util.ConvertStringToInt(row[24])
-		nextGameHOA := row[25]
+		isConferenceGame := ht.ConferenceID == at.ConferenceID
+		isDivisionGame := ht.DivisionID == at.DivisionID && ht.DivisionID > 0
+		isNeutralSite := util.ConvertStringToBool(row[5])
+		isPreseasonGame := util.ConvertStringToBool(row[6])
+		// isConferenceChampionship := util.ConvertStringToBool(row[7])
+		isPlayoffGame := util.ConvertStringToBool(row[8])
+		isNationalChampionship := util.ConvertStringToBool(row[9])
+		gameTitle := row[17]
+		nextGame := util.ConvertStringToInt(row[18])
+		nextGameHOA := row[19]
 
 		game := structs.NFLGame{
 			Model:           gorm.Model{ID: uint(gameID)},
 			SeasonID:        seasonID,
-			WeekID:          weekID,
+			WeekID:          int(weekID),
 			Week:            week,
 			HomeTeamID:      int(homeTeamID),
 			AwayTeamID:      int(awayTeamID),
@@ -732,7 +734,7 @@ func ImportNFLGames() {
 			AwayTeam:        awayTeamName,
 			HomeTeamCoach:   homeTeamCoach,
 			AwayTeamCoach:   awayTeamCoach,
-			IsPreseasonGame: ts.NFLPreseason,
+			IsPreseasonGame: isPreseasonGame,
 			IsNeutral:       isNeutralSite,
 			IsConference:    isConferenceGame,
 			IsDivisional:    isDivisionGame,
@@ -747,9 +749,10 @@ func ImportNFLGames() {
 			IsSuperBowl:     isNationalChampionship,
 		}
 
-		db.Create(&game)
+		games = append(games, game)
 	}
 
+	repository.CreateNFLGameRecordsBatch(db, games, 250)
 	GenerateWeatherForGames()
 }
 

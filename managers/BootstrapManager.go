@@ -25,6 +25,7 @@ type BootstrapData struct {
 	CollegeInjuryReport    []structs.CollegePlayer
 	CollegeNotifications   []structs.Notification
 	CollegeGameplan        structs.CollegeGameplan
+	CollegeGameplanMap     map[uint]structs.CollegeGameplan
 	CollegeDepthChart      structs.CollegeTeamDepthChart
 	ProTeam                structs.NFLTeam
 	AllProTeams            []structs.NFLTeam
@@ -104,7 +105,7 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 		portalPlayers          []structs.CollegePlayer
 		injuredCollegePlayers  []structs.CollegePlayer
 		collegeNotifications   []structs.Notification
-		collegeGameplan        structs.CollegeGameplan
+		collegeGameplanMap     map[uint]structs.CollegeGameplan
 		collegeDepthChart      structs.CollegeTeamDepthChart
 		topPassers             []structs.CollegePlayer
 		topRushers             []structs.CollegePlayer
@@ -157,7 +158,8 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 		}()
 		go func() {
 			defer wg.Done()
-			collegeGameplan = GetGameplanByTeamID(collegeID)
+			gameplans := GetAllCollegeGameplans()
+			collegeGameplanMap = MakeCollegeGameplanMap(gameplans)
 		}()
 		go func() {
 			defer wg.Done()
@@ -199,7 +201,7 @@ func GetFirstBootstrapData(collegeID, proID string) BootstrapData {
 		CollegeRosterMap:       collegePlayerMap,
 		CollegeInjuryReport:    injuredCollegePlayers,
 		CollegeNotifications:   collegeNotifications,
-		CollegeGameplan:        collegeGameplan,
+		CollegeGameplanMap:     collegeGameplanMap,
 		CollegeDepthChart:      collegeDepthChart,
 		PortalPlayers:          portalPlayers,
 		ProTeam:                proTeam,
