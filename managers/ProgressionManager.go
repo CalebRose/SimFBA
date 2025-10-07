@@ -47,6 +47,10 @@ func CFBProgressionMain() {
 				willDeclare := DetermineIfDeclaring(player, avgSnaps)
 
 				// Progress the Player
+				if player.PrimeAge == 0 {
+					pa := util.GetPrimeAge(player.Position, player.Archetype)
+					player.AssignPrimeAge(uint(pa))
+				}
 				player = ProgressCollegePlayer(player, SeasonID, stats, snaps)
 
 				if willDeclare {
@@ -165,6 +169,11 @@ func CFBProgressionMain() {
 					}
 				}
 
+				if cp.PrimeAge == 0 {
+					pa := util.GetPrimeAge(cp.Position, cp.Archetype)
+					cp.AssignPrimeAge(uint(pa))
+				}
+
 				fmt.Println("Adding " + croot.FirstName + " " + croot.LastName + "to " + team.TeamAbbr)
 
 				// Save College Player Record
@@ -183,6 +192,10 @@ func CFBProgressionMain() {
 	unsignedPlayers := GetAllCollegePlayersByTeamId("0")
 	for _, player := range unsignedPlayers {
 		player = ProgressCollegePlayer(player, SeasonID, []structs.CollegePlayerStats{}, structs.CollegePlayerSeasonSnaps{})
+		if player.PrimeAge == 0 {
+			pa := util.GetPrimeAge(player.Position, player.Archetype)
+			player.AssignPrimeAge(uint(pa))
+		}
 		if (player.IsRedshirt && player.Year > 5) ||
 			(!player.IsRedshirt && player.Year > 4) {
 			player.GraduatePlayer()
@@ -217,21 +230,22 @@ func CFBProgressionMain() {
 			}
 
 			// Generate Tier
-			if diceRoll == 1 {
+			switch diceRoll {
+			case 1:
 				boomBustStatus = "Bust"
 				enableBoomBust = true
 				// Bust
 				fmt.Println("BUST!")
 				draftee.AssignBoomBustStatus(boomBustStatus)
 
-			} else if diceRoll == 20 {
+			case 20:
 				enableBoomBust = true
 				// Boom
 				fmt.Println("BOOM!")
 				boomBustStatus = "Boom"
 				isBoom = true
 				draftee.AssignBoomBustStatus(boomBustStatus)
-			} else {
+			default:
 				tier = 0
 			}
 			if enableBoomBust {
@@ -338,6 +352,10 @@ func ProgressNFLPlayers() {
 			willRetire := DetermineIfRetiring(player, lastTwoStatMap)
 
 			// Progress the Player
+			if player.PrimeAge == 0 {
+				pa := util.GetPrimeAge(player.Position, player.Archetype)
+				player.AssignPrimeAge(uint(pa))
+			}
 			player = ProgressNFLPlayer(player, SeasonID, totalSnaps, avgSnaps, snaps)
 
 			playerID := strconv.Itoa(int(player.ID))

@@ -106,7 +106,8 @@ func (pg *CrootGenerator) generatePlayer() (structs.Recruit, structs.Player) {
 	relativeIdx := 0
 	if relativeRoll == roof {
 		relativeType = getRelativeType()
-		if relativeType == 2 {
+		switch relativeType {
+		case 2:
 			// Brother of college player
 			fmt.Println("BROTHER")
 			relativeIdx = util.GenerateIntFromRange(0, cpLen)
@@ -118,7 +119,7 @@ func (pg *CrootGenerator) generatePlayer() (structs.Recruit, structs.Player) {
 			lastName = cp.LastName
 			state = cp.State
 			notes = "Brother of " + cp.TeamAbbr + " " + cp.Position + " " + cp.FirstName + " " + cp.LastName
-		} else if relativeType == 3 {
+		case 3:
 			fmt.Println("COUSIN")
 			// Cousin
 			relativeIdx = util.GenerateIntFromRange(0, cpLen)
@@ -136,7 +137,7 @@ func (pg *CrootGenerator) generatePlayer() (structs.Recruit, structs.Player) {
 			}
 			state = cp.State
 			notes = "Cousin of " + cp.TeamAbbr + " " + cp.Position + " " + cp.FirstName + " " + cp.LastName
-		} else if relativeType == 4 {
+		case 4:
 			// Half Brother
 			fmt.Println("HALF BROTHER GENERATED")
 			relativeIdx = util.GenerateIntFromRange(0, cpLen)
@@ -154,11 +155,11 @@ func (pg *CrootGenerator) generatePlayer() (structs.Recruit, structs.Player) {
 			}
 			state = cp.State
 			notes = "Half-Brother of " + cp.TeamAbbr + " " + cp.Position + " " + cp.FirstName + " " + cp.LastName
-		} else if relativeType == 5 {
+		case 5:
 			// Twin
 			relativeType = 5
 			relativeID = int(pg.newID)
-		} else if relativeType == 6 {
+		case 6:
 			// Coach's Son
 			fmt.Println("COACH'S SON")
 			relativeIdx = util.GenerateIntFromRange(0, coachLen)
@@ -181,7 +182,7 @@ func (pg *CrootGenerator) generatePlayer() (structs.Recruit, structs.Player) {
 			notes = "Son of Coach " + coach.CoachName + " of " + coach.Team
 			coachTeamID = int(coach.TeamID)
 			coachTeamAbbr = coach.Team
-		} else if relativeType == 7 {
+		case 7:
 			// Coach's Nephew
 			fmt.Println("COACH'S NEPHEW")
 			relativeIdx = util.GenerateIntFromRange(0, coachLen)
@@ -284,52 +285,54 @@ func (pg *CrootGenerator) generateTwin(player *structs.Recruit) (structs.Recruit
 }
 
 func (pg *CrootGenerator) updateStatistics(player structs.Recruit) {
-	if player.Stars == 5 {
+	switch player.Stars {
+	case 5:
 		pg.star5++
-	} else if player.Stars == 4 {
+	case 4:
 		pg.star4++
-	} else if player.Stars == 3 {
+	case 3:
 		pg.star3++
-	} else if player.Stars == 2 {
+	case 2:
 		pg.star2++
-	} else {
+	default:
 		pg.star1++
 	}
-	if player.Position == "QB" {
+	switch player.Position {
+	case "QB":
 		pg.qbCount++
-	} else if player.Position == "RB" {
+	case "RB":
 		pg.rbCount++
-	} else if player.Position == "FB" {
+	case "FB":
 		pg.fbCount++
-	} else if player.Position == "WR" {
+	case "WR":
 		pg.wrCount++
-	} else if player.Position == "TE" {
+	case "TE":
 		pg.teCount++
-	} else if player.Position == "OT" {
+	case "OT":
 		pg.otCount++
-	} else if player.Position == "OG" {
+	case "OG":
 		pg.ogCount++
-	} else if player.Position == "C" {
+	case "C":
 		pg.cCount++
-	} else if player.Position == "DT" {
+	case "DT":
 		pg.dtCount++
-	} else if player.Position == "DE" {
+	case "DE":
 		pg.deCount++
-	} else if player.Position == "ILB" {
+	case "ILB":
 		pg.ilbCount++
-	} else if player.Position == "OLB" {
+	case "OLB":
 		pg.olbCount++
-	} else if player.Position == "CB" {
+	case "CB":
 		pg.cbCount++
-	} else if player.Position == "FS" {
+	case "FS":
 		pg.fsCount++
-	} else if player.Position == "SS" {
+	case "SS":
 		pg.ssCount++
-	} else if player.Position == "K" {
+	case "K":
 		pg.kCount++
-	} else if player.Position == "P" {
+	case "P":
 		pg.pCount++
-	} else if player.Position == "ATH" {
+	case "ATH":
 		pg.athCount++
 	}
 
@@ -646,6 +649,8 @@ func createRecruit(position string, stars int, firstName, lastName string, blob 
 	affinityOne := util.PickAffinity(stars, "", false)
 	affinityTwo := util.PickAffinity(stars, affinityOne, true)
 
+	primeAge := util.GetPrimeAge(position, archetype)
+
 	basePlayer := structs.BasePlayer{
 		FirstName:      firstName,
 		LastName:       lastName,
@@ -685,6 +690,7 @@ func createRecruit(position string, stars int, firstName, lastName string, blob 
 		RecruitingBias: recruitingBias,
 		WorkEthic:      workEthic,
 		AcademicBias:   academicBias,
+		PrimeAge:       uint(primeAge),
 	}
 
 	basePlayer.GetOverall()
@@ -743,7 +749,7 @@ func createWalkon(position string, firstNameList [][]string, lastNameList [][]st
 	workEthic := util.GetWorkEthic()
 	academicBias := util.GetAcademicBias()
 	potentialGrade := util.GetWeightedPotentialGrade(int(progression))
-
+	primeAge := util.GetPrimeAge(position, archetype)
 	basePlayer := structs.BasePlayer{
 		FirstName:      firstName,
 		LastName:       lastName,
@@ -783,6 +789,7 @@ func createWalkon(position string, firstNameList [][]string, lastNameList [][]st
 		RecruitingBias: recruitingBias,
 		WorkEthic:      workEthic,
 		AcademicBias:   academicBias,
+		PrimeAge:       uint(primeAge),
 	}
 
 	basePlayer.GetOverall()
@@ -856,7 +863,7 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 		affinityOne = util.PickAffinity(stars, "", false)
 		affinityTwo = util.PickAffinity(stars, affinityOne, true)
 	}
-
+	primeAge := util.GetPrimeAge(position, archetype)
 	basePlayer := structs.BasePlayer{
 		FirstName:      firstName,
 		LastName:       lastName,
@@ -899,6 +906,7 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 		RelativeID:     uint(util.ConvertStringToInt(relativeID)),
 		RelativeType:   uint(util.ConvertStringToInt(relativeType)),
 		Notes:          notes,
+		PrimeAge:       uint(primeAge),
 	}
 
 	basePlayer.GetOverall()
@@ -976,15 +984,16 @@ func createCollegeCoach(team structs.RecruitingTeamProfile, almaMaterID uint, al
 	}
 
 	for _, star := range starList {
-		if star == 1 {
+		switch star {
+		case 1:
 			odds1 = 10
-		} else if star == 2 {
+		case 2:
 			odds2 = 10
-		} else if star == 3 {
+		case 3:
 			odds3 = 8
-		} else if star == 4 {
+		case 4:
 			odds4 = 5
-		} else if star == 5 {
+		case 5:
 			odds5 = 5
 		}
 	}
@@ -1086,99 +1095,100 @@ func pickEthnicity() string {
 }
 
 func pickWalkonState(state string) string {
-	if state == "AL" {
+	switch state {
+	case "AL":
 		return util.PickFromStringList([]string{"AL", "LA", "MS", "TN", "GA", "FL"})
-	} else if state == "AR" {
+	case "AR":
 		return util.PickFromStringList([]string{"AR", "LA", "MO", "TN", "TX"})
-	} else if state == "AZ" {
+	case "AZ":
 		return util.PickFromStringList([]string{"AZ", "NM", "CA"})
-	} else if state == "CA" {
+	case "CA":
 		return util.PickFromStringList([]string{"CA", "AZ", "HI"})
-	} else if state == "CO" {
+	case "CO":
 		return util.PickFromStringList([]string{"CO", "KS", "UT", "WY"})
-	} else if state == "CT" {
+	case "CT":
 		return util.PickFromStringList([]string{"CT", "NY", "NJ", "RI"})
-	} else if state == "DC" {
+	case "DC":
 		return util.PickFromStringList([]string{"DC", "MD", "VA"})
-	} else if state == "FL" {
+	case "FL":
 		return util.PickFromStringList([]string{"FL", "GA", "AL"})
-	} else if state == "GA" {
+	case "GA":
 		return util.PickFromStringList([]string{"GA", "FL", "SC", "AL"})
-	} else if state == "HI" {
+	case "HI":
 		return util.PickFromStringList([]string{"HI"})
-	} else if state == "IA" {
+	case "IA":
 		return util.PickFromStringList([]string{"IA", "MN", "WI", "NE"})
-	} else if state == "ID" {
+	case "ID":
 		return util.PickFromStringList([]string{"ID", "WA", "UT"})
-	} else if state == "IN" {
+	case "IN":
 		return util.PickFromStringList([]string{"IN", "IL", "OH", "MI", "AK"})
-	} else if state == "IL" {
+	case "IL":
 		return util.PickFromStringList([]string{"IL", "IN", "WI", "MI"})
-	} else if state == "KS" {
+	case "KS":
 		return util.PickFromStringList([]string{"KS", "MO", "NE"})
-	} else if state == "KY" {
+	case "KY":
 		return util.PickFromStringList([]string{"KY", "OH", "TN"})
-	} else if state == "LA" {
+	case "LA":
 		return util.PickFromStringList([]string{"LA", "TX", "MS"})
-	} else if state == "MA" {
+	case "MA":
 		return util.PickFromStringList([]string{"MA", "CT", "RI", "NH", "VT", "ME"})
-	} else if state == "MD" {
+	case "MD":
 		return util.PickFromStringList([]string{"DC", "MD", "VA", "DE"})
-	} else if state == "MI" {
+	case "MI":
 		return util.PickFromStringList([]string{"MI", "OH", "IN"})
-	} else if state == "MN" {
+	case "MN":
 		return util.PickFromStringList([]string{"MN", "WI", "IA"})
-	} else if state == "MO" {
+	case "MO":
 		return util.PickFromStringList([]string{"MO", "AR", "KS"})
-	} else if state == "MS" {
+	case "MS":
 		return util.PickFromStringList([]string{"MS", "LA", "AL"})
-	} else if state == "MT" {
+	case "MT":
 		return util.PickFromStringList([]string{"MT", "ID", "WY"})
-	} else if state == "NC" {
+	case "NC":
 		return util.PickFromStringList([]string{"NC", "SC", "VA"})
-	} else if state == "ND" {
+	case "ND":
 		return util.PickFromStringList([]string{"ND", "SD", "MN"})
-	} else if state == "NE" {
+	case "NE":
 		return util.PickFromStringList([]string{"NE", "KS", "SD", "IA"})
-	} else if state == "NH" {
+	case "NH":
 		return util.PickFromStringList([]string{"NH", "VT", "ME", "MA"})
-	} else if state == "NJ" {
+	case "NJ":
 		return util.PickFromStringList([]string{"NJ", "DE", "NY", "CT", "PA"})
-	} else if state == "NM" {
+	case "NM":
 		return util.PickFromStringList([]string{"NM", "AZ", "TX"})
-	} else if state == "NV" {
+	case "NV":
 		return util.PickFromStringList([]string{"NV", "UT", "CA"})
-	} else if state == "NY" {
+	case "NY":
 		return util.PickFromStringList([]string{"NY", "NJ", "PA", "CT"})
-	} else if state == "OH" {
+	case "OH":
 		return util.PickFromStringList([]string{"OH", "KY", "MI", "PA"})
-	} else if state == "OK" {
+	case "OK":
 		return util.PickFromStringList([]string{"OK", "TX", "KS", "AR"})
-	} else if state == "OR" {
+	case "OR":
 		return util.PickFromStringList([]string{"OR", "WA", "CA"})
-	} else if state == "PA" {
+	case "PA":
 		return util.PickFromStringList([]string{"PA", "NJ", "DE", "OH", "WV"})
-	} else if state == "RI" {
+	case "RI":
 		return util.PickFromStringList([]string{"RI", "MA", "CT", "NY"})
-	} else if state == "SC" {
+	case "SC":
 		return util.PickFromStringList([]string{"SC", "NC", "GA"})
-	} else if state == "SD" {
+	case "SD":
 		return util.PickFromStringList([]string{"SD", "ND", "MN", "NE"})
-	} else if state == "TN" {
+	case "TN":
 		return util.PickFromStringList([]string{"TN", "KY", "GA", "AL", "AR"})
-	} else if state == "TX" {
+	case "TX":
 		return util.PickFromStringList([]string{"TX"})
-	} else if state == "UT" {
+	case "UT":
 		return util.PickFromStringList([]string{"UT", "CO", "ID", "AZ"})
-	} else if state == "VA" {
+	case "VA":
 		return util.PickFromStringList([]string{"VA", "WV", "DC", "MD"})
-	} else if state == "WA" {
+	case "WA":
 		return util.PickFromStringList([]string{"WA", "OR", "ID", "AK"})
-	} else if state == "WI" {
+	case "WI":
 		return util.PickFromStringList([]string{"WI", "MN", "IL", "MI"})
-	} else if state == "WV" {
+	case "WV":
 		return util.PickFromStringList([]string{"WV", "PA", "VA"})
-	} else if state == "WY" {
+	case "WY":
 		return util.PickFromStringList([]string{"WY", "CO", "UT", "MO", "ID"})
 	}
 
@@ -1223,31 +1233,32 @@ func getNameList(ethnicity string, isFirstName bool) [][]string {
 	path := filepath.Join(os.Getenv("ROOT"), "data")
 	// path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data"
 	var fileName string
-	if ethnicity == "Caucasian" {
+	switch ethnicity {
+	case "Caucasian":
 		if isFirstName {
 			fileName = "FNameW.csv"
 		} else {
 			fileName = "LNameW.csv"
 		}
-	} else if ethnicity == "African" {
+	case "African":
 		if isFirstName {
 			fileName = "FNameB.csv"
 		} else {
 			fileName = "LNameB.csv"
 		}
-	} else if ethnicity == "Asian" {
+	case "Asian":
 		if isFirstName {
 			fileName = "FNameA.csv"
 		} else {
 			fileName = "LNameA.csv"
 		}
-	} else if ethnicity == "NativeAmerican" {
+	case "NativeAmerican":
 		if isFirstName {
 			fileName = "FNameN.csv"
 		} else {
 			fileName = "LNameN.csv"
 		}
-	} else {
+	default:
 		if isFirstName {
 			fileName = "FNameH.csv"
 		} else {
@@ -1325,35 +1336,36 @@ func getName(list [][]string) string {
 }
 
 func getArchetype(pos string) string {
-	if pos == "QB" {
+	switch pos {
+	case "QB":
 		return util.PickFromStringList([]string{"Balanced", "Pocket", "Scrambler", "Field General"})
-	} else if pos == "RB" {
+	case "RB":
 		return util.PickFromStringList([]string{"Balanced", "Power", "Speed", "Receiving"})
-	} else if pos == "FB" {
+	case "FB":
 		return util.PickFromStringList([]string{"Balanced", "Blocking", "Receiving", "Rushing"})
-	} else if pos == "WR" {
+	case "WR":
 		return util.PickFromStringList([]string{"Speed", "Possession", "Route Runner", "Red Zone Threat"})
-	} else if pos == "TE" {
+	case "TE":
 		return util.PickFromStringList([]string{"Blocking", "Receiving", "Vertical Threat"})
-	} else if pos == "OT" || pos == "OG" {
+	case "OT", "OG":
 		return util.PickFromStringList([]string{"Balanced", "Pass Blocking", "Run Blocking"})
-	} else if pos == "C" {
+	case "C":
 		return util.PickFromStringList([]string{"Balanced", "Pass Blocking", "Run Blocking", "Line Captain"})
-	} else if pos == "DT" {
+	case "DT":
 		return util.PickFromStringList([]string{"Balanced", "Nose Tackle", "Pass Rusher"})
-	} else if pos == "DE" {
+	case "DE":
 		return util.PickFromStringList([]string{"Balanced", "Run Stopper", "Speed Rusher"})
-	} else if pos == "ILB" {
+	case "ILB":
 		return util.PickFromStringList([]string{"Coverage", "Field General", "Run Stopper", "Speed"})
-	} else if pos == "OLB" {
+	case "OLB":
 		return util.PickFromStringList([]string{"Coverage", "Pass Rush", "Run Stopper", "Speed"})
-	} else if pos == "CB" {
+	case "CB":
 		return util.PickFromStringList([]string{"Ball Hawk", "Man Coverage", "Zone Coverage"})
-	} else if pos == "FS" || pos == "SS" {
+	case "FS", "SS":
 		return util.PickFromStringList([]string{"Run Stopper", "Ball Hawk", "Man Coverage", "Zone Coverage"})
-	} else if pos == "K" || pos == "P" {
+	case "K", "P":
 		return util.PickFromStringList([]string{"Balanced", "Accuracy", "Power"})
-	} else if pos == "ATH" {
+	case "ATH":
 		return util.PickFromStringList([]string{"Bandit", "Return Specialist", "Wingback", "Soccer Player", "Slotback", "Lineman", "Strongside", "Weakside", "Triple-Threat", "Field General"})
 	}
 	return ""
@@ -1363,121 +1375,138 @@ func getArchetype(pos string) string {
 // Going to be honest, this should be a JSON file. This would be a huge blob of a map.
 func getAttributeValue(pos string, arch string, star int, attr string, blob map[string]map[string]map[string]map[string]interface{}) int {
 	starStr := strconv.Itoa(star)
-	if pos == "QB" {
-		if attr == "Catching" || attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Tackle" {
+	switch pos {
+	case "QB":
+		switch attr {
+		case "Catching", "Zone Coverage", "Man Coverage", "Tackle":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Pass Rush" || attr == "Run Defense" || attr == "Route Running" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Pass Rush", "Run Defense", "Route Running":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
 
-	} else if pos == "RB" {
-		if attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Tackle" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "RB":
+		switch attr {
+		case "Zone Coverage", "Man Coverage", "Tackle", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Pass Rush" || attr == "Run Defense" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Pass Rush", "Run Defense":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "FB" {
-		if attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Tackle" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "FB":
+		switch attr {
+		case "Zone Coverage", "Man Coverage", "Tackle", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Rush" || attr == "Run Defense" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Rush", "Run Defense":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "WR" {
-		if attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Tackle" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "WR":
+		switch attr {
+		case "Zone Coverage", "Man Coverage", "Tackle", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Pass Rush" || attr == "Run Defense" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Pass Rush", "Run Defense":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "TE" {
-		if attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Tackle" || attr == "Pass Rush" || attr == "Run Defense" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "TE":
+		switch attr {
+		case "Zone Coverage", "Man Coverage", "Tackle", "Pass Rush", "Run Defense", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "OT" || pos == "OG" {
-		if attr == "Carrying" || attr == "Catching" || attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Tackle" {
+	case "OT", "OG":
+		switch attr {
+		case "Carrying", "Catching", "Zone Coverage", "Man Coverage", "Tackle":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Rush" || attr == "Run Defense" || attr == "Route Running" || attr == "Throw Power" || attr == "Throw Accuracy" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Rush", "Run Defense", "Route Running", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "C" {
-		if attr == "Carrying" || attr == "Catching" || attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Tackle" {
+	case "C":
+		switch attr {
+		case "Carrying", "Catching", "Zone Coverage", "Man Coverage", "Tackle":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Rush" || attr == "Run Defense" || attr == "Route Running" || attr == "Throw Power" || attr == "Throw Accuracy" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Rush", "Run Defense", "Route Running", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "DT" {
-		if attr == "Carrying" || attr == "Catching" || attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "DT":
+		switch attr {
+		case "Carrying", "Catching", "Zone Coverage", "Man Coverage", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Route Running" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Route Running":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
 
-	} else if pos == "DE" {
-		if attr == "Carrying" || attr == "Catching" || attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "DE":
+		switch attr {
+		case "Carrying", "Catching", "Zone Coverage", "Man Coverage", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Route Running" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Route Running":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "ILB" {
-		if attr == "Carrying" || attr == "Catching" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "ILB":
+		switch attr {
+		case "Carrying", "Catching", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Route Running" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Route Running":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "OLB" {
-		if attr == "Carrying" || attr == "Catching" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "OLB":
+		switch attr {
+		case "Carrying", "Catching", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Route Running" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Route Running":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "CB" {
-		if attr == "Carrying" || attr == "Throw Power" || attr == "Throw Accuracy" || attr == "Route Running" {
+	case "CB":
+		switch attr {
+		case "Carrying", "Throw Power", "Throw Accuracy", "Route Running":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Pass Rush" || attr == "Run Defense" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Pass Rush", "Run Defense":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "FS" {
-		if attr == "Carrying" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "FS":
+		switch attr {
+		case "Carrying", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Pass Rush" || attr == "Route Running" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Pass Rush", "Route Running":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "SS" {
-		if attr == "Carrying" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "SS":
+		switch attr {
+		case "Carrying", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Pass Block" || attr == "Run Block" || attr == "Pass Rush" || attr == "Route Running" {
+		case "Kick Accuracy", "Kick Power", "Punt Accuracy", "Punt Power", "Pass Block", "Run Block", "Pass Rush", "Route Running":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "K" {
-		if attr == "Carrying" || attr == "Agility" || attr == "Catching" || attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Punt Accuracy" || attr == "Punt Power" || attr == "Speed" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "K":
+		switch attr {
+		case "Carrying", "Agility", "Catching", "Zone Coverage", "Man Coverage", "Punt Accuracy", "Punt Power", "Speed", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Pass Block" || attr == "Run Block" || attr == "Pass Rush" || attr == "Run Defense" || attr == "Route Running" || attr == "Tackle" || attr == "Strength" {
+		case "Pass Block", "Run Block", "Pass Rush", "Run Defense", "Route Running", "Tackle", "Strength":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "P" {
-		if attr == "Carrying" || attr == "Agility" || attr == "Catching" || attr == "Zone Coverage" || attr == "Man Coverage" || attr == "Kick Accuracy" || attr == "Kick Power" || attr == "Speed" || attr == "Throw Power" || attr == "Throw Accuracy" {
+	case "P":
+		switch attr {
+		case "Carrying", "Agility", "Catching", "Zone Coverage", "Man Coverage", "Kick Accuracy", "Kick Power", "Speed", "Throw Power", "Throw Accuracy":
 			return getValueFromInterfaceRange(starStr, blob["Default"]["Default"]["Default"])
-		} else if attr == "Pass Block" || attr == "Run Block" || attr == "Pass Rush" || attr == "Run Defense" || attr == "Route Running" || attr == "Tackle" || attr == "Strength" {
+		case "Pass Block", "Run Block", "Pass Rush", "Run Defense", "Route Running", "Tackle", "Strength":
 			return getValueFromInterfaceRange(starStr, blob["Under"]["Under"]["Under"])
 		}
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
-	} else if pos == "ATH" {
+	case "ATH":
 		return getValueFromInterfaceRange(starStr, blob[pos][arch][attr])
 	}
 	return util.GenerateIntFromRange(5, 15)
@@ -1577,14 +1606,16 @@ func getCoachAge() int {
 func getGoodHire(schoolQuality, adminBehavior string) bool {
 	diceRoll := util.GenerateIntFromRange(1, 20)
 	mod := 0
-	if schoolQuality == "P6" || schoolQuality == "Playoff Buster" {
+	switch schoolQuality {
+	case "P6", "Playoff Buster":
 		mod += 1
-	} else if schoolQuality == "Blue Blood" {
+	case "Blue Blood":
 		mod += 3
 	}
-	if adminBehavior == "Aggressive" {
+	switch adminBehavior {
+	case "Aggressive":
 		mod += 3
-	} else if adminBehavior == "Conservative" {
+	case "Conservative":
 		mod -= 3
 	}
 
@@ -1595,25 +1626,26 @@ func getGoodHire(schoolQuality, adminBehavior string) bool {
 
 func getStarRange(schoolQuality string, goodHire bool) (int, int) {
 
-	if schoolQuality == "Blue Blood" {
+	switch schoolQuality {
+	case "Blue Blood":
 		if goodHire {
 			return 3, 5
 		} else {
 			return 3, 4
 		}
-	} else if schoolQuality == "Playoff Buster" {
+	case "Playoff Buster":
 		if goodHire {
 			return 2, 4
 		} else {
 			return 2, 3
 		}
-	} else if schoolQuality == "Normal" {
+	case "Normal":
 		if goodHire {
 			return 2, 4
 		} else {
 			return 2, 3
 		}
-	} else {
+	default:
 		if goodHire {
 			return 1, 3
 		} else {
@@ -1625,7 +1657,8 @@ func getStarRange(schoolQuality string, goodHire bool) (int, int) {
 func getPointRange(schoolQuality string, goodHire bool) (int, int) {
 	min := 0
 	max := 15
-	if schoolQuality == "Blue Blood" {
+	switch schoolQuality {
+	case "Blue Blood":
 		if goodHire {
 			min = util.GenerateIntFromRange(7, 8)
 			max = util.GenerateIntFromRange(12, 16)
@@ -1633,7 +1666,7 @@ func getPointRange(schoolQuality string, goodHire bool) (int, int) {
 			min = util.GenerateIntFromRange(6, 7)
 			max = util.GenerateIntFromRange(10, 13)
 		}
-	} else if schoolQuality == "Playoff Buster" {
+	case "Playoff Buster":
 		if goodHire {
 			min = util.GenerateIntFromRange(5, 7)
 			max = util.GenerateIntFromRange(10, 15)
@@ -1641,7 +1674,7 @@ func getPointRange(schoolQuality string, goodHire bool) (int, int) {
 			min = util.GenerateIntFromRange(4, 6)
 			max = util.GenerateIntFromRange(10, 12)
 		}
-	} else if schoolQuality == "Normal" {
+	case "Normal":
 		if goodHire {
 			min = util.GenerateIntFromRange(5, 8)
 			max = util.GenerateIntFromRange(10, 14)
@@ -1649,7 +1682,7 @@ func getPointRange(schoolQuality string, goodHire bool) (int, int) {
 			min = util.GenerateIntFromRange(4, 6)
 			max = util.GenerateIntFromRange(8, 12)
 		}
-	} else {
+	default:
 		if goodHire {
 			min = util.GenerateIntFromRange(3, 6)
 			max = util.GenerateIntFromRange(8, 12)

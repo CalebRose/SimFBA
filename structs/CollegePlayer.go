@@ -51,117 +51,119 @@ func (p *CollegePlayer) SetRedshirtStatus() {
 
 func (cp *CollegePlayer) GetOverall() {
 	var ovr float64 = 0
-	if cp.Position == "QB" {
+	switch cp.Position {
+	case "QB":
 		ovr = (0.1 * float64(cp.Agility)) + (0.25 * float64(cp.ThrowPower)) + (0.25 * float64(cp.ThrowAccuracy)) + (0.1 * float64(cp.Speed)) + (0.2 * float64(cp.FootballIQ)) + (0.1 * float64(cp.Strength))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "RB" {
+	case "RB":
 		ovr = (0.2 * float64(cp.Agility)) + (0.05 * float64(cp.PassBlock)) +
 			(0.1 * float64(cp.Carrying)) + (0.25 * float64(cp.Speed)) +
 			(0.15 * float64(cp.FootballIQ)) + (0.2 * float64(cp.Strength)) +
 			(0.05 * float64(cp.Catching))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "FB" {
+	case "FB":
 		ovr = (0.1 * float64(cp.Agility)) + (0.1 * float64(cp.PassBlock)) +
 			(0.1 * float64(cp.Carrying)) + (0.05 * float64(cp.Speed)) +
 			(0.15 * float64(cp.FootballIQ)) + (0.2 * float64(cp.Strength)) +
 			(0.05 * float64(cp.Catching)) + (0.25 * float64(cp.RunBlock))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "WR" {
+	case "WR":
 		ovr = (0.15 * float64(cp.FootballIQ)) + (0.2 * float64(cp.Speed)) +
 			(0.1 * float64(cp.Agility)) + (0.05 * float64(cp.Carrying)) +
 			(0.05 * float64(cp.Strength)) + (0.25 * float64(cp.Catching)) +
 			(0.2 * float64(cp.RouteRunning))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "TE" {
+	case "TE":
 		ovr = (0.15 * float64(cp.FootballIQ)) + (0.1 * float64(cp.Speed)) +
 			(0.1 * float64(cp.Agility)) + (0.05 * float64(cp.Carrying)) +
 			(0.05 * float64(cp.PassBlock)) + (0.15 * float64(cp.RunBlock)) +
 			(0.1 * float64(cp.Strength)) + (0.20 * float64(cp.Catching)) +
 			(0.1 * float64(cp.RouteRunning))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "OT" || cp.Position == "OG" {
+	case "OT", "OG":
 		ovr = (0.15 * float64(cp.FootballIQ)) + (0.05 * float64(cp.Agility)) +
 			(0.3 * float64(cp.RunBlock)) + (0.2 * float64(cp.Strength)) +
 			(0.3 * float64(cp.PassBlock))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "C" {
+	case "C":
 		ovr = (0.2 * float64(cp.FootballIQ)) + (0.05 * float64(cp.Agility)) +
 			(0.3 * float64(cp.RunBlock)) + (0.15 * float64(cp.Strength)) +
 			(0.3 * float64(cp.PassBlock))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "DT" {
+	case "DT":
 		ovr = (0.15 * float64(cp.FootballIQ)) + (0.05 * float64(cp.Agility)) +
 			(0.25 * float64(cp.RunDefense)) + (0.2 * float64(cp.Strength)) +
 			(0.15 * float64(cp.PassRush)) + (0.2 * float64(cp.Tackle))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "DE" {
+	case "DE":
 		ovr = (0.15 * float64(cp.FootballIQ)) + (0.1 * float64(cp.Speed)) +
 			(0.15 * float64(cp.RunDefense)) + (0.1 * float64(cp.Strength)) +
 			(0.2 * float64(cp.PassRush)) + (0.2 * float64(cp.Tackle)) +
 			(0.1 * float64(cp.Agility))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "ILB" {
+	case "ILB":
 		ovr = (0.2 * float64(cp.FootballIQ)) + (0.1 * float64(cp.Speed)) +
 			(0.15 * float64(cp.RunDefense)) + (0.1 * float64(cp.Strength)) +
 			(0.1 * float64(cp.PassRush)) + (0.15 * float64(cp.Tackle)) +
 			(0.1 * float64(cp.ZoneCoverage)) + (0.05 * float64(cp.ManCoverage)) +
 			(0.05 * float64(cp.Agility))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "OLB" {
+	case "OLB":
 		ovr = (0.15 * float64(cp.FootballIQ)) + (0.1 * float64(cp.Speed)) +
 			(0.15 * float64(cp.RunDefense)) + (0.1 * float64(cp.Strength)) +
 			(0.15 * float64(cp.PassRush)) + (0.15 * float64(cp.Tackle)) +
 			(0.1 * float64(cp.ZoneCoverage)) + (0.05 * float64(cp.ManCoverage)) +
 			(0.05 * float64(cp.Agility))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "CB" {
+	case "CB":
 		ovr = (0.15 * float64(cp.FootballIQ)) + (0.25 * float64(cp.Speed)) +
 			(0.05 * float64(cp.Tackle)) + (0.05 * float64(cp.Strength)) +
 			(0.15 * float64(cp.Agility)) + (0.15 * float64(cp.ZoneCoverage)) +
 			(0.15 * float64(cp.ManCoverage)) + (0.05 * float64(cp.Catching))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "FS" {
+	case "FS":
 		ovr = (0.2 * float64(cp.FootballIQ)) + (0.2 * float64(cp.Speed)) +
 			(0.05 * float64(cp.RunDefense)) + (0.05 * float64(cp.Strength)) +
 			(0.05 * float64(cp.Catching)) + (0.05 * float64(cp.Tackle)) +
 			(0.15 * float64(cp.ZoneCoverage)) + (0.15 * float64(cp.ManCoverage)) +
 			(0.1 * float64(cp.Agility))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "SS" {
+	case "SS":
 		ovr = (0.15 * float64(cp.FootballIQ)) + (0.2 * float64(cp.Speed)) +
 			(0.05 * float64(cp.RunDefense)) + (0.05 * float64(cp.Strength)) +
 			(0.05 * float64(cp.Catching)) + (0.1 * float64(cp.Tackle)) +
 			(0.15 * float64(cp.ZoneCoverage)) + (0.15 * float64(cp.ManCoverage)) +
 			(0.1 * float64(cp.Agility))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "K" {
+	case "K":
 		ovr = (0.2 * float64(cp.FootballIQ)) + (0.45 * float64(cp.KickPower)) +
 			(0.45 * float64(cp.KickAccuracy))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "P" {
+	case "P":
 		ovr = (0.2 * float64(cp.FootballIQ)) + (0.45 * float64(cp.PuntPower)) +
 			(0.45 * float64(cp.PuntAccuracy))
 		cp.Overall = int(ovr)
-	} else if cp.Position == "ATH" {
-		if cp.Archetype == "Field General" {
+	case "ATH":
+		switch cp.Archetype {
+		case "Field General":
 			ovr = (.20 * float64(cp.FootballIQ)) + (.1 * float64(cp.ZoneCoverage)) + (.1 * float64(cp.ManCoverage)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Speed)) + (.1 * float64(cp.Strength)) + (.1 * float64(cp.Tackle)) + (.1 * float64(cp.ThrowPower)) + (.1 * float64(cp.ThrowAccuracy))
-		} else if cp.Archetype == "Triple-Threat" {
+		case "Triple-Threat":
 			ovr = (.10 * float64(cp.FootballIQ)) + (.2 * float64(cp.Agility)) + (.1 * float64(cp.Carrying)) + (.1 * float64(cp.Catching)) + (.2 * float64(cp.Speed)) + (.1 * float64(cp.RouteRunning)) + (.1 * float64(cp.ThrowPower)) + (.1 * float64(cp.ThrowAccuracy))
-		} else if cp.Archetype == "Wingback" {
+		case "Wingback":
 			ovr = (.1 * float64(cp.FootballIQ)) + (.2 * float64(cp.Agility)) + (.1 * float64(cp.Carrying)) + (.2 * float64(cp.Catching)) + (.2 * float64(cp.Speed)) + (.1 * float64(cp.RouteRunning)) + (.1 * float64(cp.RunBlock))
-		} else if cp.Archetype == "Slotback" {
+		case "Slotback":
 			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.Carrying)) + (.1 * float64(cp.Catching)) + (.2 * float64(cp.Speed)) + (.1 * float64(cp.RouteRunning)) + (.1 * float64(cp.RunBlock)) + (.1 * float64(cp.PassBlock)) + (.1 * float64(cp.Strength))
-		} else if cp.Archetype == "Lineman" {
+		case "Lineman":
 			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.RunBlock)) + (.1 * float64(cp.PassBlock)) + (.3 * float64(cp.Strength)) + (.1 * float64(cp.PassRush)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Tackle))
-		} else if cp.Archetype == "Strongside" {
+		case "Strongside":
 			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.ZoneCoverage)) + (.1 * float64(cp.ManCoverage)) + (.2 * float64(cp.Strength)) + (.1 * float64(cp.PassRush)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Tackle)) + (.1 * float64(cp.Speed))
-		} else if cp.Archetype == "Weakside" {
+		case "Weakside":
 			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.ZoneCoverage)) + (.1 * float64(cp.ManCoverage)) + (.1 * float64(cp.Strength)) + (.1 * float64(cp.PassRush)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Tackle)) + (.2 * float64(cp.Speed))
-		} else if cp.Archetype == "Bandit" {
+		case "Bandit":
 			ovr = (.1 * float64(cp.FootballIQ)) + (.1 * float64(cp.Agility)) + (.1 * float64(cp.ZoneCoverage)) + (.1 * float64(cp.ManCoverage)) + (.1 * float64(cp.Strength)) + (.1 * float64(cp.PassRush)) + (.1 * float64(cp.RunDefense)) + (.1 * float64(cp.Tackle)) + (.2 * float64(cp.Speed))
-		} else if cp.Archetype == "Return Specialist" {
+		case "Return Specialist":
 			ovr = (.20 * float64(cp.FootballIQ)) + (.10 * float64(cp.Strength)) + (.20 * float64(cp.Speed)) + (.20 * float64(cp.Agility)) + (.20 * float64(cp.Catching)) + (.1 * float64(cp.Tackle))
-		} else if cp.Archetype == "Soccer Player" {
+		case "Soccer Player":
 			ovr = (.10 * float64(cp.FootballIQ)) + (.10 * float64(cp.Agility)) + (.2 * float64(cp.KickPower)) + (.2 * float64(cp.KickAccuracy)) + (.2 * float64(cp.PuntPower)) + (.2 * float64(cp.PuntAccuracy))
 		}
 		cp.Overall = int(ovr)
