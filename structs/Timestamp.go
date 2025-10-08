@@ -60,6 +60,7 @@ func (t *Timestamp) MoveUpWeekCollege() {
 	t.CollegeWeek++
 	if t.CollegeWeek > 3 && t.CFBSpringGames {
 		t.CollegeWeek = 0
+		t.CollegeWeekID -= 4
 		t.CFBSpringGames = false
 	}
 	if t.CollegeWeek > 20 {
@@ -71,7 +72,8 @@ func (t *Timestamp) MoveUpWeekNFL() {
 	t.NFLWeekID++
 	t.NFLWeek++
 	if t.NFLPreseason && t.NFLWeek > 3 {
-		t.NFLWeek = 1
+		t.NFLWeek = 0
+		t.NFLWeekID -= 4
 		t.NFLPreseason = false
 	}
 	if t.NFLWeek > 21 {
