@@ -7,7 +7,6 @@ import (
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
-	"github.com/CalebRose/SimFBA/util"
 )
 
 func CompareTwoCFBTeams(t1ID, t2ID string) structs.FlexComparisonModel {
@@ -379,17 +378,9 @@ func GetCFBTeamDataForDiscord(id string) structs.CollegeTeamResponseData {
 	}
 }
 
-func GetCFBPlayByPlayStreamData(timeslot, week string, isFBS bool) []structs.StreamResponse {
+func GetCFBPlayByPlayStreamData(timeslot string, isFBS bool) []structs.StreamResponse {
 	ts := GetTimestamp()
-	weekNum := util.ConvertStringToInt(week)
-	collegeWeek := ts.CollegeWeek
 	collegeWeekID := ts.CollegeWeekID
-	if collegeWeek == weekNum {
-		// Continue
-	} else {
-		diff := collegeWeek - weekNum
-		collegeWeekID = ts.CollegeWeekID - diff
-	}
 	teamMap := GetCollegeTeamMap()
 	games := GetCollegeGamesByTimeslotAndWeekId(strconv.Itoa(collegeWeekID), timeslot, ts.CFBSpringGames)
 
@@ -509,17 +500,9 @@ func GetCFBPlayByPlayStreamData(timeslot, week string, isFBS bool) []structs.Str
 	return streams
 }
 
-func GetNFLPlayByPlayStreamData(timeslot, week string) []structs.StreamResponse {
+func GetNFLPlayByPlayStreamData(timeslot string) []structs.StreamResponse {
 	ts := GetTimestamp()
-	weekNum := util.ConvertStringToInt(week)
-	nflWeek := ts.NFLWeek
 	nflWeekID := ts.NFLWeekID
-	if nflWeek == weekNum {
-		// Continue
-	} else {
-		diff := nflWeek - weekNum
-		nflWeekID = ts.NFLWeekID - diff
-	}
 	games := GetNFLGamesByTimeslotAndWeekId(strconv.Itoa(nflWeekID), timeslot, ts.NFLPreseason)
 
 	streams := []structs.StreamResponse{}

@@ -386,9 +386,9 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/ds/cfb/flex/{teamOneID}/{teamTwoID}/", controller.CompareCFBTeams).Methods("GET")
 	apiRouter.HandleFunc("/ds/nfl/flex/{teamOneID}/{teamTwoID}/", controller.CompareNFLTeams).Methods("GET")
 	apiRouter.HandleFunc("/ds/cfb/conference/{conference}/", controller.GetCollegeConferenceStandings).Methods("GET")
-	apiRouter.HandleFunc("/ds/cfb/fbs/stream/{timeslot}/{week}/", controller.GetFBSGameStreams).Methods("GET")
-	apiRouter.HandleFunc("/ds/cfb/fcs/stream/{timeslot}/{week}/", controller.GetFCSGameStreams).Methods("GET")
-	apiRouter.HandleFunc("/ds/nfl/league/stream/{timeslot}/{week}/", controller.GetNFLGameStreams).Methods("GET")
+	apiRouter.HandleFunc("/ds/cfb/fbs/stream/{timeslot}/", controller.GetFBSGameStreams).Methods("GET")
+	apiRouter.HandleFunc("/ds/cfb/fcs/stream/{timeslot}/", controller.GetFCSGameStreams).Methods("GET")
+	apiRouter.HandleFunc("/ds/nfl/league/stream/{timeslot}/", controller.GetNFLGameStreams).Methods("GET")
 
 	// Easter Controls
 	apiRouter.HandleFunc("/easter/egg/collude/", controller.CollusionButton).Methods("POST")

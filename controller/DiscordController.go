@@ -279,11 +279,7 @@ func GetFBSGameStreams(w http.ResponseWriter, r *http.Request) {
 	if len(timeslot) == 0 {
 		panic("User did not provide timeslot")
 	}
-	week := vars["week"]
-	if len(timeslot) == 0 {
-		panic("User did not provide week")
-	}
-	streams := managers.GetCFBPlayByPlayStreamData(timeslot, week, true)
+	streams := managers.GetCFBPlayByPlayStreamData(timeslot, true)
 	json.NewEncoder(w).Encode(streams)
 }
 
@@ -293,11 +289,7 @@ func GetFCSGameStreams(w http.ResponseWriter, r *http.Request) {
 	if len(timeslot) == 0 {
 		panic("User did not provide timeslot")
 	}
-	week := vars["week"]
-	if len(timeslot) == 0 {
-		panic("User did not provide week")
-	}
-	streams := managers.GetCFBPlayByPlayStreamData(timeslot, week, false)
+	streams := managers.GetCFBPlayByPlayStreamData(timeslot, false)
 	json.NewEncoder(w).Encode(streams)
 }
 
@@ -307,11 +299,7 @@ func GetNFLGameStreams(w http.ResponseWriter, r *http.Request) {
 	if len(timeslot) == 0 {
 		panic("User did not provide timeslot")
 	}
-	week := vars["week"]
-	if len(timeslot) == 0 {
-		panic("User did not provide week")
-	}
-	streams := managers.GetNFLPlayByPlayStreamData(timeslot, week)
+	streams := managers.GetNFLPlayByPlayStreamData(timeslot)
 	json.NewEncoder(w).Encode(streams)
 }
 

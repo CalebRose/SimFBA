@@ -511,8 +511,10 @@ func GetCurrentWeekWeather() []structs.GameResponse {
 
 	nflGames := GetNFLGamesByWeekAndSeasonID(nflWeekID, nflSeasonID)
 
+	isPreseason := ts.CFBSpringGames && ts.NFLPreseason
+
 	for _, cg := range collegeGames {
-		if cg.GameComplete {
+		if cg.GameComplete || ((!cg.IsSpringGame && isPreseason) || (cg.IsSpringGame && !isPreseason)) {
 			continue
 		}
 		homeTeamStandings := GetCFBStandingsByTeamIDAndSeasonID(strconv.Itoa(int(cg.HomeTeamID)), seasonID)
@@ -567,7 +569,7 @@ func GetCurrentWeekWeather() []structs.GameResponse {
 	}
 
 	for _, nflG := range nflGames {
-		if nflG.GameComplete {
+		if nflG.GameComplete || ((!nflG.IsPreseasonGame && isPreseason) || (nflG.IsPreseasonGame && !isPreseason)) {
 			continue
 		}
 		homeTeamStandings := GetNFLStandingsByTeamIDAndSeasonID(strconv.Itoa(int(nflG.HomeTeamID)), nflSeasonID)
