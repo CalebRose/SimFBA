@@ -704,10 +704,14 @@ func SyncFreeAgencyOffers() {
 
 	if ts.NFLWeek < 10 && !ts.NFLSeasonOver && !ts.IsDraftTime {
 		// Update all veteran players' minimum value requirements by 10%
-		db.Model(&structs.NFLPlayer{}).Where("age > ? and is_free_agent = ? and minimum_value >= 1", "29", true).Updates(map[string]interface{}{
-			"minimum_value": gorm.Expr("minimum_value * 0.95"),
-			"aav":           gorm.Expr("aav * 0.95"),
-		})
+		for _, fa := range FreeAgents {
+			if fa.Age < 24 || fa.MinimumValue < 1 {
+				continue
+			}
+
+			fa.DecreaseMinimumValue()
+			repository.SaveNFLPlayer(fa, db)
+		}
 	}
 
 	repository.SaveTimestamp(ts, db)

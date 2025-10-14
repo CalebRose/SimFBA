@@ -177,6 +177,21 @@ func (f *NFLPlayer) DeclineOffer(week int) {
 	}
 }
 
+func (f *NFLPlayer) DecreaseMinimumValue() {
+	if f.Age < 24 || f.MinimumValue < 1 {
+		return
+	}
+
+	f.MinimumValue = float64(f.MinimumValue) * 0.9
+	if f.MinimumValue < 1 {
+		f.MinimumValue = 1
+	}
+	f.AAV = float64(f.AAV) * 0.9
+	if f.AAV < 0.7 {
+		f.AAV = 0.7
+	}
+}
+
 func (f *NFLPlayer) ToggleHasProgressed() {
 	f.HasProgressed = true
 }

@@ -609,6 +609,11 @@ func ImportCFBGames(isSpringGames bool) {
 			conferenceID = ht.ConferenceID
 		}
 		isNeutralSite := util.ConvertStringToBool(row[7])
+		if !isNeutralSite {
+			stadium = ht.Stadium
+			city = ht.City
+			state = ht.State
+		}
 		isConferenceChampionship := util.ConvertStringToBool(row[8])
 		isBowlGame := util.ConvertStringToBool(row[9])
 		isPlayoffGame := util.ConvertStringToBool(row[10])

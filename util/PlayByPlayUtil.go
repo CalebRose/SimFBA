@@ -145,11 +145,11 @@ func getPlayNameMap() map[uint8]string {
 		26: "Peek Outside Left",
 		27: "Peek Power Right",
 		28: "Peek Power Left",
-		29: "Quick",
-		30: "Short",
+		29: "Short",
+		30: "Medium",
 		31: "Long",
 		32: "Screen",
-		33: "Play Action Short",
+		33: "Play Action Medium",
 		34: "Play Action Long",
 	}
 }
