@@ -187,8 +187,8 @@ func (f *NFLPlayer) DecreaseMinimumValue() {
 		f.MinimumValue = 0.7
 	}
 	f.AAV = float64(f.AAV) * 0.9
-	if f.AAV < 0.7 {
-		f.AAV = 0.7
+	if f.AAV < 0.5 {
+		f.AAV = 0.5
 	}
 }
 
