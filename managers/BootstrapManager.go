@@ -89,10 +89,10 @@ type BootstrapDataPortal struct {
 type BootstrapDataGameplan struct {
 	CollegeGameplanMap   map[uint]structs.CollegeGameplan
 	CollegeDepthChart    structs.CollegeTeamDepthChart
-	ProGameplanMap       map[uint]structs.NFLGameplan
-	ProDepthChart        structs.NFLDepthChart
 	CollegeDepthChartMap map[uint]structs.CollegeTeamDepthChart
-	ProDepthChartMap     map[uint]structs.NFLDepthChart
+	NFLGameplanMap       map[uint]structs.NFLGameplan
+	NFLDepthChart        structs.NFLDepthChart
+	NFLDepthChartMap     map[uint]structs.NFLDepthChart
 }
 
 type BootstrapDataNews struct {
@@ -573,9 +573,9 @@ func GetGameplanBootstrap(collegeID, proID string) BootstrapDataGameplan {
 		CollegeGameplanMap:   collegeGameplanMap,
 		CollegeDepthChart:    collegeDepthChart,
 		CollegeDepthChartMap: collegeDepthChartMap,
-		ProGameplanMap:       proGameplanMap,
-		ProDepthChart:        proDepthChart,
-		ProDepthChartMap:     proDepthChartMap,
+		NFLGameplanMap:       proGameplanMap,
+		NFLDepthChart:        proDepthChart,
+		NFLDepthChartMap:     proDepthChartMap,
 	}
 }
 

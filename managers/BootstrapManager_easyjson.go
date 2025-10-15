@@ -20577,24 +20577,6 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers8(in *jlexer.Lexer, o
 			}
 		case "CollegeDepthChart":
 			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in, &out.CollegeDepthChart)
-		case "ProGameplanMap":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				out.ProGameplanMap = make(map[uint]structs.NFLGameplan)
-				for !in.IsDelim('}') {
-					key := uint(in.UintStr())
-					in.WantColon()
-					var v186 structs.NFLGameplan
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &v186)
-					(out.ProGameplanMap)[key] = v186
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
-		case "ProDepthChart":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &out.ProDepthChart)
 		case "CollegeDepthChartMap":
 			if in.IsNull() {
 				in.Skip()
@@ -20604,25 +20586,43 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers8(in *jlexer.Lexer, o
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v187 structs.CollegeTeamDepthChart
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in, &v187)
-					(out.CollegeDepthChartMap)[key] = v187
+					var v186 structs.CollegeTeamDepthChart
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in, &v186)
+					(out.CollegeDepthChartMap)[key] = v186
 					in.WantComma()
 				}
 				in.Delim('}')
 			}
-		case "ProDepthChartMap":
+		case "NFLGameplanMap":
 			if in.IsNull() {
 				in.Skip()
 			} else {
 				in.Delim('{')
-				out.ProDepthChartMap = make(map[uint]structs.NFLDepthChart)
+				out.NFLGameplanMap = make(map[uint]structs.NFLGameplan)
+				for !in.IsDelim('}') {
+					key := uint(in.UintStr())
+					in.WantColon()
+					var v187 structs.NFLGameplan
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &v187)
+					(out.NFLGameplanMap)[key] = v187
+					in.WantComma()
+				}
+				in.Delim('}')
+			}
+		case "NFLDepthChart":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &out.NFLDepthChart)
+		case "NFLDepthChartMap":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				in.Delim('{')
+				out.NFLDepthChartMap = make(map[uint]structs.NFLDepthChart)
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
 					var v188 structs.NFLDepthChart
 					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &v188)
-					(out.ProDepthChartMap)[key] = v188
+					(out.NFLDepthChartMap)[key] = v188
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -20668,14 +20668,14 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers8(out *jwriter.Writer
 		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out, in.CollegeDepthChart)
 	}
 	{
-		const prefix string = ",\"ProGameplanMap\":"
+		const prefix string = ",\"CollegeDepthChartMap\":"
 		out.RawString(prefix)
-		if in.ProGameplanMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+		if in.CollegeDepthChartMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
 			v190First := true
-			for v190Name, v190Value := range in.ProGameplanMap {
+			for v190Name, v190Value := range in.CollegeDepthChartMap {
 				if v190First {
 					v190First = false
 				} else {
@@ -20683,25 +20683,20 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers8(out *jwriter.Writer
 				}
 				out.UintStr(uint(v190Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v190Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out, v190Value)
 			}
 			out.RawByte('}')
 		}
 	}
 	{
-		const prefix string = ",\"ProDepthChart\":"
+		const prefix string = ",\"NFLGameplanMap\":"
 		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out, in.ProDepthChart)
-	}
-	{
-		const prefix string = ",\"CollegeDepthChartMap\":"
-		out.RawString(prefix)
-		if in.CollegeDepthChartMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+		if in.NFLGameplanMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
 			v191First := true
-			for v191Name, v191Value := range in.CollegeDepthChartMap {
+			for v191Name, v191Value := range in.NFLGameplanMap {
 				if v191First {
 					v191First = false
 				} else {
@@ -20709,20 +20704,25 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers8(out *jwriter.Writer
 				}
 				out.UintStr(uint(v191Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out, v191Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v191Value)
 			}
 			out.RawByte('}')
 		}
 	}
 	{
-		const prefix string = ",\"ProDepthChartMap\":"
+		const prefix string = ",\"NFLDepthChart\":"
 		out.RawString(prefix)
-		if in.ProDepthChartMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out, in.NFLDepthChart)
+	}
+	{
+		const prefix string = ",\"NFLDepthChartMap\":"
+		out.RawString(prefix)
+		if in.NFLDepthChartMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
 			v192First := true
-			for v192Name, v192Value := range in.ProDepthChartMap {
+			for v192Name, v192Value := range in.NFLDepthChartMap {
 				if v192First {
 					v192First = false
 				} else {
