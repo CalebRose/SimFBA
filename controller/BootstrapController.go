@@ -121,7 +121,7 @@ func BootstrapGameplanData(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	collegeID := vars["collegeID"]
 	proID := vars["proID"]
-	data := managers.GetTeamRosterBootstrap(collegeID, proID)
+	data := managers.GetGameplanBootstrap(collegeID, proID)
 	bootstrapData, err := easyjson.Marshal(data)
 	if err != nil {
 		log.Printf("Failed to encode JSON response: %v", err)
