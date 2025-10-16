@@ -112,6 +112,34 @@ func GetNFLWarRoomByTeamID(TeamID string) models.NFLWarRoom {
 	return warRoom
 }
 
+
+func GetNFLWarRooms() []models.NFLWarRoom {
+	db := dbprovider.GetInstance().GetDB()
+
+	warRooms := []models.NFLWarRoom{}
+	ts := GetTimestamp()
+	err := db.Preload("DraftPicks", "season_id = ?", strconv.Itoa(int(ts.NFLSeasonID))).
+		Find(&warRooms).Error
+	if err != nil {
+		return warRooms
+	}
+
+	return warRooms
+}
+
+func GetAllScoutingProfiles() []models.ScoutingProfile {
+	db := dbprovider.GetInstance().GetDB()
+
+	profiles := []models.ScoutingProfile{}
+	err := db.Where("removed_from_board = ?", false).
+		Find(&profiles).Error
+	if err != nil {
+		return profiles
+	}
+
+	return profiles
+}
+
 func GetNFLDrafteesForDraftPage() []models.NFLDraftee {
 	db := dbprovider.GetInstance().GetDB()
 	draftees := []models.NFLDraftee{}

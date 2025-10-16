@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -16,4 +17,11 @@ func MigrateFaceData(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("All Faces have been generated")
 	w.WriteHeader(http.StatusOK)
+}
+
+func GetAllFaces(w http.ResponseWriter, r *http.Request) {
+	faceData := managers.GetAllFaces()
+
+	fmt.Println("Face data retrieved")
+	json.NewEncoder(w).Encode(faceData)
 }

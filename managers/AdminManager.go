@@ -621,7 +621,7 @@ func GetNewsLogs(weekID string, seasonID string) []structs.NewsLog {
 	return logs
 }
 
-func GetAllNewsLogs() []structs.NewsLog {
+func GetAllCFBNewsLogs() []structs.NewsLog {
 	db := dbprovider.GetInstance().GetDB()
 
 	var logs []structs.NewsLog
