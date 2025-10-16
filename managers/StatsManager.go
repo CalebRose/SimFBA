@@ -1438,7 +1438,8 @@ func generateResultsString(play structs.PlayByPlay, playType string, participant
 	secondSegment := ""
 	thirdSegment := ""
 	// First Segment
-	if playType == "Pass" {
+	switch playType {
+	case "Pass":
 		qbLabel := getPlayerLabel(participantMap[qbID])
 		yards := util.GetYardsString(play.ResultYards)
 		firstSegment = qbLabel
@@ -1476,12 +1477,12 @@ func generateResultsString(play structs.PlayByPlay, playType string, participant
 			}
 		}
 
-	} else if playType == "Run" {
+	case "Run":
 		bcLabel := getPlayerLabel(participantMap[bcID])
 		firstSegment = bcLabel + " carries for " + yardsSTR
 		yards := util.GetYardsString(play.ResultYards)
 		firstSegment += yards
-	} else if playType == "Kickoff" {
+	case "Kickoff":
 		// Need assistance for kickign player ID and returner ID
 		kickerLabel := getPlayerLabel(participantMap[qbID])
 		recLabel := getPlayerLabel(participantMap[bcID])
@@ -1505,7 +1506,7 @@ func generateResultsString(play structs.PlayByPlay, playType string, participant
 			resultYards := util.GetYardsString(play.ResultYards)
 			firstSegment += recLabel + " returns the ball " + resultYdsStr + resultYards
 		}
-	} else if playType == "Punt" {
+	case "Punt":
 		// Need assistance for punting player ID and returner ID
 		// Need assistance for kickign player ID and returner ID
 		kickerLabel := getPlayerLabel(participantMap[qbID])
@@ -1535,7 +1536,7 @@ func generateResultsString(play structs.PlayByPlay, playType string, participant
 		} else {
 			firstSegment += recLabel + " returns the ball " + resultYdsStr + resultYards
 		}
-	} else if playType == "XP" {
+	case "XP":
 		// Need assistance for kicking player ID and outcome
 		kickerLabel := getPlayerLabel(participantMap[qbID])
 		firstSegment = kickerLabel + "'s extra point attempt is "
@@ -1547,7 +1548,7 @@ func generateResultsString(play structs.PlayByPlay, playType string, participant
 		} else {
 			firstSegment += "no good. "
 		}
-	} else if playType == "FG" {
+	case "FG":
 		kickerLabel := getPlayerLabel(participantMap[qbID])
 		kickDistance := strconv.Itoa(int(play.KickDistance))
 		firstSegment = kickerLabel + "'s " + kickDistance + " field goal attempt is "
@@ -1656,7 +1657,8 @@ func generateStreamString(play structs.PlayByPlay, playType, playName, poa strin
 	}
 
 	// First Segment
-	if playType == "Pass" {
+	switch playType {
+	case "Pass":
 		qbLabel := getPlayerLabel(participantMap[qbID])
 		recLabel := ""
 		if bcID > 0 {
@@ -1684,13 +1686,13 @@ func generateStreamString(play structs.PlayByPlay, playType, playName, poa strin
 			firstSegment += yardsSTR + yards
 		}
 
-	} else if playType == "Run" {
+	case "Run":
 		runStatement := util.GetRunVerb(int(play.ResultYards), playName, poa, play.IsTouchdown, play.IsOutOfBounds, twoPtCheck, play.IsFumble, play.IsSafety)
 		bcLabel := getPlayerLabel(participantMap[bcID])
 		firstSegment = bcLabel + runStatement + yardsSTR
 		yards := util.GetYardsString(play.ResultYards)
 		firstSegment += yards
-	} else if playType == "Kickoff" {
+	case "Kickoff":
 		// Need assistance for kickign player ID and returner ID
 		kickerLabel := getPlayerLabel(participantMap[qbID])
 		recLabel := getPlayerLabel(participantMap[bcID])
@@ -1719,7 +1721,7 @@ func generateStreamString(play structs.PlayByPlay, playType, playName, poa strin
 			verb := util.GetReturnVerb(netReturnYards, play.IsTouchdown, play.IsOutOfBounds)
 			firstSegment += recLabel + verb + resultYdsStr + resultYards
 		}
-	} else if playType == "Punt" {
+	case "Punt":
 		// Need assistance for punting player ID and returner ID
 		// Need assistance for kickign player ID and returner ID
 		kickerLabel := getPlayerLabel(participantMap[qbID])
@@ -1753,7 +1755,7 @@ func generateStreamString(play structs.PlayByPlay, playType, playName, poa strin
 			verb := util.GetReturnVerb(int(netReturnYards), play.IsTouchdown, play.IsOutOfBounds)
 			firstSegment += recLabel + verb + resultYdsStr + resultYards
 		}
-	} else if playType == "XP" {
+	case "XP":
 		// Need assistance for kicking player ID and outcome
 		kickerLabel := getPlayerLabel(participantMap[qbID])
 		startingStatement := util.GetFGStartingStatement(false)
@@ -1767,7 +1769,7 @@ func generateStreamString(play structs.PlayByPlay, playType, playName, poa strin
 		} else {
 			firstSegment += "no good. "
 		}
-	} else if playType == "FG" {
+	case "FG":
 		kickerLabel := getPlayerLabel(participantMap[qbID])
 		kickDistance := strconv.Itoa(int(play.KickDistance))
 		startingStatement := util.GetFGStartingStatement(true)
