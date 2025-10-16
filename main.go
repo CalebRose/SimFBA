@@ -64,7 +64,7 @@ func handleRequests() http.Handler {
 
 	memcached, err := memory.NewAdapter(
 		memory.AdapterWithAlgorithm(memory.LRU),
-		memory.AdapterWithStorageCapacity(1000000000), // try 1GB max capacity at first
+		memory.AdapterWithStorageCapacity(500000000), // 0.5GB max capacity
 	)
 	if err != nil {
 		log.Fatal(err)
