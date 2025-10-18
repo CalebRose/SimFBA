@@ -268,7 +268,6 @@ func MakePromiseMapByTeamID(profiles []structs.CollegePromise) map[uint][]struct
 	return playerMap
 }
 
-
 func MakeNFLWarRoomMap(warRooms []models.NFLWarRoom) map[uint]models.NFLWarRoom {
 	warRoomMap := make(map[uint]models.NFLWarRoom)
 
@@ -327,4 +326,14 @@ func MakeNFLGameplanMap(gameplans []structs.NFLGameplan) map[uint]structs.NFLGam
 	}
 
 	return gamesMap
+}
+
+func MakeNFLTradePreferencesMap(tradePreferences []structs.NFLTradePreferences) map[uint]structs.NFLTradePreferences {
+	preferencesMap := make(map[uint]structs.NFLTradePreferences)
+
+	for _, c := range tradePreferences {
+		preferencesMap[uint(c.NFLTeamID)] = c
+	}
+
+	return preferencesMap
 }

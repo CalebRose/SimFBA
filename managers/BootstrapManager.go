@@ -51,9 +51,11 @@ type BootstrapDataLanding struct {
 }
 
 type BootstrapDataTeamRoster struct {
-	ContractMap     map[uint]structs.NFLContract
-	ExtensionMap    map[uint]structs.NFLExtensionOffer
-	CollegePromises []structs.CollegePromise
+	ContractMap      map[uint]structs.NFLContract
+	ExtensionMap     map[uint]structs.NFLExtensionOffer
+	CollegePromises  []structs.CollegePromise
+	TradeProposals   structs.NFLTeamProposals
+	TradePreferences map[uint]structs.NFLTradePreferences
 }
 
 type BootstrapDataRecruiting struct {
@@ -305,9 +307,11 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 	var wg sync.WaitGroup
 	var (
-		contractMap     map[uint]structs.NFLContract
-		extensionMap    map[uint]structs.NFLExtensionOffer
-		collegePromises []structs.CollegePromise
+		contractMap         map[uint]structs.NFLContract
+		extensionMap        map[uint]structs.NFLExtensionOffer
+		collegePromises     []structs.CollegePromise
+		tradeProposals      structs.NFLTeamProposals
+		tradePreferencesMap map[uint]structs.NFLTradePreferences
 	)
 
 	if len(collegeID) > 0 && collegeID != "0" {
@@ -319,7 +323,7 @@ func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 	}
 
 	if len(nflID) > 0 && nflID != "0" {
-		wg.Add(2)
+		wg.Add(4)
 		go func() {
 			defer wg.Done()
 			contractMap = GetContractMap()
@@ -329,11 +333,25 @@ func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 			defer wg.Done()
 			extensionMap = GetExtensionMap()
 		}()
+
+		go func() {
+			defer wg.Done()
+			tradeProposals = GetTradeProposalsByNFLID(nflID)
+		}()
+
+		go func() {
+			defer wg.Done()
+			tradePreferencesMap = GetTradePreferencesMap()
+		}()
 	}
+
+	wg.Wait()
 	return BootstrapDataTeamRoster{
-		ContractMap:     contractMap,
-		ExtensionMap:    extensionMap,
-		CollegePromises: collegePromises,
+		ContractMap:      contractMap,
+		ExtensionMap:     extensionMap,
+		CollegePromises:  collegePromises,
+		TradeProposals:   tradeProposals,
+		TradePreferences: tradePreferencesMap,
 	}
 }
 

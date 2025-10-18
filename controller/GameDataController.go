@@ -135,22 +135,24 @@ func GetHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetNFLHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+
 	vars := mux.Vars(r)
 	gameID := vars["gameID"]
 
-	gameChan := make(chan structs.NFLGame)
-	go func() {
-		g := managers.GetNFLGameByGameID(gameID)
-		gameChan <- g
-	}()
-	game := <-gameChan
-	close(gameChan)
+	g := managers.GetNFLGameByGameID(gameID)
+	if g.ID == 0 {
+		w.WriteHeader(http.StatusNotFound)
+		_ = json.NewEncoder(w).Encode(map[string]string{"error": "game not found"})
+		return
+	}
 
 	responseModel := models.NFLSimGameDataResponse{
-		GameID:   int(game.ID),
-		WeekID:   game.WeekID,
-		SeasonID: game.SeasonID,
+		GameID:   int(g.ID),
+		WeekID:   g.WeekID,
+		SeasonID: g.SeasonID,
 	}
+
 	var waitgroup sync.WaitGroup
 	waitgroup.Add(2)
 	var rosterGroup sync.WaitGroup
@@ -177,13 +179,13 @@ func GetNFLHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
 
 	go func() {
 		defer waitgroup.Done()
-		ht := managers.GetNFLTeamByTeamIDForSim(strconv.Itoa(game.HomeTeamID))
+		ht := managers.GetNFLTeamByTeamIDForSim(strconv.Itoa(g.HomeTeamID))
 		homeTeamChan <- ht
 	}()
 
 	go func() {
 		defer waitgroup.Done()
-		at := managers.GetNFLTeamByTeamIDForSim(strconv.Itoa(game.AwayTeamID))
+		at := managers.GetNFLTeamByTeamIDForSim(strconv.Itoa(g.AwayTeamID))
 		awayTeamChan <- at
 	}()
 
@@ -191,7 +193,7 @@ func GetNFLHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
 	awayTeam := <-awayTeamChan
 	homeTeamID := strconv.Itoa(int(homeTeam.ID))
 	awayTeamID := strconv.Itoa(int(awayTeam.ID))
-	stadiumID := strconv.Itoa(int(game.StadiumID))
+	stadiumID := strconv.Itoa(int(g.StadiumID))
 
 	go func() {
 		defer rosterGroup.Done()
@@ -241,9 +243,9 @@ func GetNFLHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
 	awayTeamResponse.Map(awayTeam, awayDCResponse)
 	responseModel.AssignHomeTeam(homeTeamResponse, homeTeamRoster)
 	responseModel.AssignAwayTeam(awayTeamResponse, awayTeamRoster)
-	responseModel.AssignWeather(game.GameTemp, game.Cloud, game.Precip, game.WindCategory, game.WindSpeed)
+	responseModel.AssignWeather(g.GameTemp, g.Cloud, g.Precip, g.WindCategory, g.WindSpeed)
 	responseModel.AssignStadium(stadium)
-	responseModel.AssignPostSeasonStatus(game.IsConferenceChampionship || game.IsSuperBowl || game.IsPlayoffGame, game.IsNeutral)
+	responseModel.AssignPostSeasonStatus(g.IsConferenceChampionship || g.IsSuperBowl || g.IsPlayoffGame, g.IsNeutral)
 	json.NewEncoder(w).Encode(responseModel)
 }
 
