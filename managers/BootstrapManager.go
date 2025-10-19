@@ -56,6 +56,7 @@ type BootstrapDataTeamRoster struct {
 	CollegePromises  []structs.CollegePromise
 	TradeProposals   structs.NFLTeamProposals
 	TradePreferences map[uint]structs.NFLTradePreferences
+	NFLDraftPicks    []structs.NFLDraftPick
 }
 
 type BootstrapDataRecruiting struct {
@@ -312,18 +313,20 @@ func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 		collegePromises     []structs.CollegePromise
 		tradeProposals      structs.NFLTeamProposals
 		tradePreferencesMap map[uint]structs.NFLTradePreferences
+		draftPicks          []structs.NFLDraftPick
 	)
 
 	if len(collegeID) > 0 && collegeID != "0" {
 		wg.Add(1)
 		go func() {
+			defer wg.Done()
 			promises := GetCollegePromisesByTeamID(collegeID)
 			collegePromises = promises
 		}()
 	}
 
 	if len(nflID) > 0 && nflID != "0" {
-		wg.Add(4)
+		wg.Add(5)
 		go func() {
 			defer wg.Done()
 			contractMap = GetContractMap()
@@ -343,6 +346,10 @@ func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 			defer wg.Done()
 			tradePreferencesMap = GetTradePreferencesMap()
 		}()
+		go func() {
+			defer wg.Done()
+			draftPicks = GetAllRelevantNFLDraftPicks()
+		}()
 	}
 
 	wg.Wait()
@@ -352,6 +359,7 @@ func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 		CollegePromises:  collegePromises,
 		TradeProposals:   tradeProposals,
 		TradePreferences: tradePreferencesMap,
+		NFLDraftPicks:    draftPicks,
 	}
 }
 
@@ -443,7 +451,7 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 		wg.Add(2)
 		go func() {
 			defer wg.Done()
-			officialPolls = GetOfficialPollBySeasonID(seasonID)
+			officialPolls = GetAllOfficialPolls()
 		}()
 		go func() {
 			defer wg.Done()

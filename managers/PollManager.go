@@ -265,6 +265,18 @@ func CreatePoll(dto structs.CollegePollSubmission) structs.CollegePollSubmission
 	return dto
 }
 
+func GetAllOfficialPolls() []structs.CollegePollOfficial {
+	db := dbprovider.GetInstance().GetDB()
+	officialPoll := []structs.CollegePollOfficial{}
+
+	err := db.Find(&officialPoll).Error
+	if err != nil {
+		return []structs.CollegePollOfficial{}
+	}
+
+	return officialPoll
+}
+
 func GetOfficialPollBySeasonID(seasonID string) []structs.CollegePollOfficial {
 	db := dbprovider.GetInstance().GetDB()
 	officialPoll := []structs.CollegePollOfficial{}
