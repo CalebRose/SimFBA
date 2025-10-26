@@ -47,6 +47,22 @@ func GetDraftPickByDraftPickID(DraftPickID string) structs.NFLDraftPick {
 	return pick
 }
 
+func GetAllRelevantNFLDraftPicks() []structs.NFLDraftPick {
+	db := dbprovider.GetInstance().GetDB()
+
+	ts := GetTimestamp()
+
+	seasonID := strconv.Itoa(int(ts.NFLSeasonID))
+
+	seasonIDPlusFive := strconv.Itoa(int(ts.NFLSeasonID + 5))
+
+	draftPicks := []structs.NFLDraftPick{}
+
+	db.Order("season_id asc").Order("draft_number asc").Where("season_id >= ? AND season_id <= ?", seasonID, seasonIDPlusFive).Find(&draftPicks)
+
+	return draftPicks
+}
+
 func GetAllCurrentSeasonDraftPicks() []structs.NFLDraftPick {
 	db := dbprovider.GetInstance().GetDB()
 
@@ -111,7 +127,6 @@ func GetNFLWarRoomByTeamID(TeamID string) models.NFLWarRoom {
 
 	return warRoom
 }
-
 
 func GetNFLWarRooms() []models.NFLWarRoom {
 	db := dbprovider.GetInstance().GetDB()
