@@ -25,7 +25,7 @@ func GetCollegeGamesByTimeslotAndWeekId(id, timeslot string, springGames bool) [
 
 	var games []structs.CollegeGame
 
-	db.Order("time_slot asc").Where("week_id = ? AND time_slot = ? AND is_spring_game = ?", id, timeslot, springGames).Find(&games)
+	db.Order("time_slot asc").Where("week_id = ? AND is_spring_game = ?", id, springGames).Find(&games)
 
 	return games
 }
@@ -77,7 +77,7 @@ func GetNFLGamesByTimeslotAndWeekId(id, timeslot string, isPreseason bool) []str
 
 	var games []structs.NFLGame
 
-	db.Order("time_slot asc").Where("week_id = ? AND time_slot = ? AND is_preseason_game = ?", id, timeslot, isPreseason).Find(&games)
+	db.Order("time_slot asc").Where("week_id = ? AND is_preseason_game = ?", id, isPreseason).Find(&games)
 
 	return games
 }

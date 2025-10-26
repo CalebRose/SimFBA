@@ -629,6 +629,7 @@ func ExportCFBPlayByPlayToCSV(gameID string, w http.ResponseWriter) {
 
 func ExportCFBGameResults(w http.ResponseWriter, seasonID, weekID, nflWeekID, timeslot string) {
 	fileName := "slippery_jim_secret_results_list.csv"
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment;"+fileName)
 	w.Header().Set("Transfer-Encoding", "chunked")
 	writer := csv.NewWriter(w)
