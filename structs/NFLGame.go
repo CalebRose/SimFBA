@@ -111,3 +111,11 @@ func (ng *NFLGame) AssignByeWeek(id uint) {
 		ng.AwayPreviousBye = true
 	}
 }
+
+func (cg *NFLGame) HideScore() {
+	cg.HomeTeamScore = 0
+	cg.AwayTeamScore = 0
+	cg.HomeTeamWin = false
+	cg.AwayTeamWin = false
+	cg.GameComplete = false
+}
