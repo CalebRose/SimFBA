@@ -514,7 +514,7 @@ func SyncFreeAgencyOffers() {
 	capsheetMap := getCapsheetMap()
 
 	offers := repository.FindAllFreeAgentOffers(repository.FreeAgencyQuery{IsActive: true})
-	offerMap := MakeFreeAgencyOffferMapByPlayer(offers)
+	offerMap := MakeFreeAgencyOfferMapByPlayer(offers)
 
 	for _, FA := range FreeAgents {
 		// If the Free Agent is not available in off-season free agency anymore
@@ -703,18 +703,24 @@ func SyncFreeAgencyOffers() {
 	ts.ToggleGMActions()
 
 	if ts.NFLWeek < 10 && !ts.NFLSeasonOver && !ts.IsDraftTime {
-		// Update all veteran players' minimum value requirements by 10%
-		for _, fa := range FreeAgents {
-			if fa.Age < 24 || fa.MinimumValue < 1 {
-				continue
-			}
-
-			fa.DecreaseMinimumValue()
-			repository.SaveNFLPlayer(fa, db)
-		}
+		LowerFreeAgencyMinimums(db)
 	}
 
 	repository.SaveTimestamp(ts, db)
+}
+
+func LowerFreeAgencyMinimums(db *gorm.DB) {
+	freeAgents := GetAllFreeAgents()
+
+	// Update all veteran players' minimum value requirements by 10%
+	for _, fa := range freeAgents {
+		if fa.Age < 24 || fa.MinimumValue < 1 {
+			continue
+		}
+
+		fa.DecreaseMinimumValue()
+		repository.SaveNFLPlayer(fa, db)
+	}
 }
 
 func SyncExtensionOffers() {

@@ -190,7 +190,7 @@ func MakeHistoricGamesMapByTeamID(games []structs.CollegeGame) map[uint][]struct
 	return gamesMap
 }
 
-func MakeFreeAgencyOffferMapByPlayer(offers []structs.FreeAgencyOffer) map[uint][]structs.FreeAgencyOffer {
+func MakeFreeAgencyOfferMapByPlayer(offers []structs.FreeAgencyOffer) map[uint][]structs.FreeAgencyOffer {
 	playerMap := make(map[uint][]structs.FreeAgencyOffer)
 
 	for _, p := range offers {
@@ -267,7 +267,6 @@ func MakePromiseMapByTeamID(profiles []structs.CollegePromise) map[uint][]struct
 
 	return playerMap
 }
-
 
 func MakeNFLWarRoomMap(warRooms []models.NFLWarRoom) map[uint]models.NFLWarRoom {
 	warRoomMap := make(map[uint]models.NFLWarRoom)
