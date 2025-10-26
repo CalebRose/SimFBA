@@ -91,6 +91,16 @@ func GetOnlyTradeProposalByProposalID(proposalID string) structs.NFLTradeProposa
 	return proposal
 }
 
+func GetTradePreferencesMap() map[uint]structs.NFLTradePreferences {
+	db := dbprovider.GetInstance().GetDB()
+
+	preferences := []structs.NFLTradePreferences{}
+
+	db.Find(&preferences)
+
+	return MakeNFLTradePreferencesMap(preferences)
+}
+
 func GetTradePreferencesByTeamID(TeamID string) structs.NFLTradePreferences {
 	db := dbprovider.GetInstance().GetDB()
 
