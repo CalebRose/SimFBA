@@ -176,6 +176,7 @@ func getPointOfAttackMap() map[uint8]string {
 		10: "Short",
 		11: "Medium",
 		12: "Long",
+		13: "Deep",
 	}
 }
 
@@ -384,12 +385,13 @@ func GetPuntVerb() string {
 
 func GetKickoffVerb(num int) string {
 	var list []string
-	if num == 1 {
+	switch num {
+	case 1:
 		// First verb
 		list = []string{" kicks for ", " kicks it off for "}
-	} else if num == 2 {
+	case 2:
 		list = []string{" Fielded at the goalline by ", " there to catch it by the goalline is "}
-	} else if num == 3 {
+	case 3:
 		list = []string{" Fielded at the goalline by ", " caught in the endzone by ", " what a kick! Fielded deep in the endzone by "}
 	}
 

@@ -6,31 +6,32 @@ func GetRunVerb(yards int, playName, poa string, touchdown, outOfBounds, twoPtCo
 		list = append(list, " carries for ", " runs the ball ", " runs it for ", " runs it by for ", " advances the ball for ", " hustles for ")
 	}
 	// Basic run
-	if playName == "Inside Run Left" || playName == "Inside Run Right" {
+	switch playName {
+	case "Inside Run Left", "Inside Run Right":
 		list = append(list, getInsideRunList(yards, playName == "Inside Run Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Outside Run Left" || playName == "Outside Run Right" {
+	case "Outside Run Left", "Outside Run Right":
 		list = append(list, getOutsideRunList(yards, playName == "Outside Run Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Power Run Left" || playName == "Power Run Right" {
+	case "Power Run Left", "Power Run Right":
 		list = append(list, getPowerRunList(yards, playName == "Power Run Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Draw Left" || playName == "Draw Right" {
+	case "Draw Left", "Draw Right":
 		list = append(list, getDrawRunList(yards, playName == "Draw Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Read Option Left" || playName == "Read Option Right" {
+	case "Read Option Left", "Read Option Right":
 		list = append(list, getReadOptionList(yards, playName == "Read Option Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Speed Option Left" || playName == "Speed Option Right" {
+	case "Speed Option Left", "Speed Option Right":
 		list = append(list, getSpeedOptionList(yards, playName == "Speed Option Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Inverted Option Left" || playName == "Inverted Option Right" {
+	case "Inverted Option Left", "Inverted Option Right":
 		list = append(list, getInvertedOptionList(yards, playName == "Inverted Option Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Triple Option Left" || playName == "Triple Option Right" {
+	case "Triple Option Left", "Triple Option Right":
 		list = append(list, getTripleOptionList(yards, playName == "Triple Option Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Choice Inside Left" || playName == "Choice Inside Right" {
+	case "Choice Inside Left", "Choice Inside Right":
 		list = append(list, getInsideRunList(yards, poa == "Inside Run Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Choice Outside Left" || playName == "Choice Outside Right" {
+	case "Choice Outside Left", "Choice Outside Right":
 		list = append(list, getOutsideRunList(yards, poa == "Outside Run Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Peek Inside Left" || playName == "Peek Inside Right" {
+	case "Peek Inside Left", "Peek Inside Right":
 		list = append(list, getInsideRunList(yards, poa == "Inside Run Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Peek Outside Left" || playName == "Peek Outside Right" {
+	case "Peek Outside Left", "Peek Outside Right":
 		list = append(list, getOutsideRunList(yards, poa == "Outside Run Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
-	} else if playName == "Peek Power Left" || playName == "Peek Power Right" {
+	case "Peek Power Left", "Peek Power Right":
 		list = append(list, getPowerRunList(yards, poa == "Power Run Left", touchdown, outOfBounds, twoPtConversion, fumble, safety)...)
 	}
 

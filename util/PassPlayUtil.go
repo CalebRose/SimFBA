@@ -434,12 +434,13 @@ func getDistance(yards int) string {
 	direction := GenerateIntFromRange(1, 3) // 1 == left, 2 == Middle, 3 == right
 	dirs := ""
 	var dirsList []string
-	if direction == 1 {
+	switch direction {
+	case 1:
 		dirsList = []string{"towards the left sideline", "towards the left"}
 		dirs = "left"
-	} else if direction == 2 {
+	case 2:
 		dirsList = []string{"towards the middle of the field", "towards the middle", "over the middle"}
-	} else {
+	default:
 		dirsList = []string{"towards the right sideline", "towards the right"}
 		dirs = "right"
 	}
