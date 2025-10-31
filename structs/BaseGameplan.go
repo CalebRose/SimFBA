@@ -124,6 +124,7 @@ func (bg *BaseGameplan) UpdateCollegeGameplan(dto CollegeGameplan) {
 	bg.TripleOptionRight = dto.TripleOptionRight
 	bg.PassQuick = dto.PassQuick
 	bg.PassShort = dto.PassShort
+	bg.PassMedium = dto.PassMedium
 	bg.PassLong = dto.PassLong
 	bg.PassDeep = dto.PassDeep
 	bg.PassScreen = dto.PassScreen
@@ -265,6 +266,7 @@ func (bg *BaseGameplan) UpdateNFLGameplan(dto NFLGameplan) {
 	bg.TripleOptionRight = dto.TripleOptionRight
 	bg.PassQuick = dto.PassQuick
 	bg.PassShort = dto.PassShort
+	bg.PassMedium = dto.PassMedium
 	bg.PassLong = dto.PassLong
 	bg.PassDeep = dto.PassDeep
 	bg.PassScreen = dto.PassScreen
