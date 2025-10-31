@@ -20,12 +20,22 @@ func GetCollegeGamesByWeekIdAndSeasonID(WeekID string, SeasonID string) []struct
 	return games
 }
 
-func GetCollegeGamesByTimeslotAndWeekId(id, timeslot string, springGames bool) []structs.CollegeGame {
+func GetCollegeGamesByWeekId(id, timeslot string, springGames bool) []structs.CollegeGame {
 	db := dbprovider.GetInstance().GetDB()
 
 	var games []structs.CollegeGame
 
 	db.Order("time_slot asc").Where("week_id = ? AND is_spring_game = ?", id, springGames).Find(&games)
+
+	return games
+}
+
+func GetCollegeGamesByTimeslotAndWeekId(id, timeslot string, springGames bool) []structs.CollegeGame {
+	db := dbprovider.GetInstance().GetDB()
+
+	var games []structs.CollegeGame
+
+	db.Order("time_slot asc").Where("week_id = ? AND time_slot = ? AND is_spring_game = ?", id, timeslot, springGames).Find(&games)
 
 	return games
 }
@@ -72,12 +82,22 @@ func GetNFLGamesBySeasonID(SeasonID string) []structs.NFLGame {
 	return repository.FindNFLGamesRecords(SeasonID, ts.NFLPreseason)
 }
 
-func GetNFLGamesByTimeslotAndWeekId(id, timeslot string, isPreseason bool) []structs.NFLGame {
+func GetNFLGamesByWeekId(id string, isPreseason bool) []structs.NFLGame {
 	db := dbprovider.GetInstance().GetDB()
 
 	var games []structs.NFLGame
 
 	db.Order("time_slot asc").Where("week_id = ? AND is_preseason_game = ?", id, isPreseason).Find(&games)
+
+	return games
+}
+
+func GetNFLGamesByTimeslotAndWeekId(id, timeslot string, isPreseason bool) []structs.NFLGame {
+	db := dbprovider.GetInstance().GetDB()
+
+	var games []structs.NFLGame
+
+	db.Order("time_slot asc").Where("week_id = ? AND time_slot = ? AND is_preseason_game = ?", id, timeslot, isPreseason).Find(&games)
 
 	return games
 }
