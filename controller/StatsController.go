@@ -90,6 +90,14 @@ func ExportPlayByPlayToCSV(w http.ResponseWriter, r *http.Request) {
 	managers.ExportCFBPlayByPlayToCSV(gameID, w)
 }
 
+func ExportAllSpringGamesPbPToCSV(w http.ResponseWriter, r *http.Request) {
+	managers.ExportCFBSpringPlayByPlayToCSV(w)
+}
+
+func ExportAllPreseasonGamesPbPToCSV(w http.ResponseWriter, r *http.Request) {
+	managers.ExportNFLPreseasonPlayByPlayToCSV(w)
+}
+
 func GetInjuryReport(w http.ResponseWriter, r *http.Request) {
 
 	// GetInjuredCollegePlayers
