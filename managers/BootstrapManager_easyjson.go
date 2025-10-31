@@ -4092,6 +4092,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in *jlexer.Lexer, o
 			out.PassQuick = int(in.Int())
 		case "PassShort":
 			out.PassShort = int(in.Int())
+		case "PassMedium":
+			out.PassMedium = int(in.Int())
 		case "PassLong":
 			out.PassLong = int(in.Int())
 		case "PassDeep":
@@ -4699,6 +4701,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out *jwriter.Writer
 		const prefix string = ",\"PassShort\":"
 		out.RawString(prefix)
 		out.Int(int(in.PassShort))
+	}
+	{
+		const prefix string = ",\"PassMedium\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassMedium))
 	}
 	{
 		const prefix string = ",\"PassLong\":"
@@ -10679,6 +10686,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in *jlexer.Lexer, o
 			out.PassQuick = int(in.Int())
 		case "PassShort":
 			out.PassShort = int(in.Int())
+		case "PassMedium":
+			out.PassMedium = int(in.Int())
 		case "PassLong":
 			out.PassLong = int(in.Int())
 		case "PassDeep":
@@ -11286,6 +11295,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out *jwriter.Writer
 		const prefix string = ",\"PassShort\":"
 		out.RawString(prefix)
 		out.Int(int(in.PassShort))
+	}
+	{
+		const prefix string = ",\"PassMedium\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassMedium))
 	}
 	{
 		const prefix string = ",\"PassLong\":"

@@ -17,6 +17,7 @@ import (
  * IF ANY OF THE BELOW MODELS ARE MODIFIED, THE EASYJSON HELPER WILL NEED TO BE REGENERATED.
  * To do this, delete BootstrapManager_easyjson.go, then run the following command in a terminal in the root directory:
  * easyjson -all .\managers\BootstrapManager.go
+ * or easyjson -all ./managers/BootstrapManager.go   on Mac/Linux
  */
 type BootstrapDataTeams struct {
 	AllCollegeTeams []structs.CollegeTeam
