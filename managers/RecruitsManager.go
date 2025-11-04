@@ -201,7 +201,7 @@ func CreateRecruitingProfileForRecruit(recruitPointsDto structs.CreateRecruitPro
 	if recruitEntry.RecruitID != 0 && recruitEntry.ProfileID != 0 {
 		// Replace Recruit
 		recruitEntry.ToggleRemoveFromBoard()
-		db.Save(&recruitEntry)
+		repository.SaveRecruitProfile(recruitEntry, db)
 		return recruitEntry
 	}
 
@@ -222,8 +222,7 @@ func CreateRecruitingProfileForRecruit(recruitPointsDto structs.CreateRecruitPro
 	}
 
 	// Create
-	db.Create(&createRecruitEntry)
-
+	repository.CreateRecruitProfileRecord(createRecruitEntry, db)
 	return createRecruitEntry
 }
 
