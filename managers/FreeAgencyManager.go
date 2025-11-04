@@ -651,50 +651,63 @@ func SyncFreeAgencyOffers() {
 	practiceSquad := GetAllPracticeSquadPlayers()
 
 	for _, p := range practiceSquad {
-		Offers := GetFreeAgentOffersByPlayerID(strconv.Itoa(int(p.ID)))
-		// contract := GetContractByPlayerID(strconv.Itoa(int(p.ID)))
+		Offers := offerMap[p.ID]
 		if len(Offers) == 0 {
 			continue
 		}
-		ownerTeam := p.TeamID
-		ownerOffer := structs.FreeAgencyOffer{}
+		maxDay := 1000
 
-		for _, o := range Offers {
-			if int(o.TeamID) == ownerTeam && o.IsActive {
-				ownerOffer = o
-				break
+		for _, offer := range Offers {
+			if maxDay > int(offer.Syncs) {
+				maxDay = int(offer.Syncs)
 			}
 		}
-		if ownerOffer.ID > 0 {
-			SignFreeAgent(ownerOffer, p, ts)
-			db.Save(&p)
-		} else {
-			sort.Sort(structs.ByContractValue(Offers))
-
-			WinningOffer := structs.FreeAgencyOffer{}
-
-			for _, Offer := range Offers {
-				// Calculate to see if team can afford to pay for contract in Y1
-				capsheet := capsheetMap[Offer.TeamID]
-				if capsheet.ID == 0 {
-					// Invalid!!
-					continue
-				}
-				if Offer.IsActive && WinningOffer.ID == 0 {
-					WinningOffer = Offer
-				}
-				if Offer.IsActive {
-					Offer.CancelOffer()
-				}
-
-				db.Save(&Offer)
+		if maxDay < 3 {
+			for _, offer := range Offers {
+				offer.IncrementSyncs()
+				repository.SaveFreeAgencyOfferRecord(offer, db)
 			}
+		} else {
+			ownerTeam := p.TeamID
+			ownerOffer := structs.FreeAgencyOffer{}
 
-			if WinningOffer.ID > 0 {
-				SignFreeAgent(WinningOffer, p, ts)
-			} else if ts.IsNFLOffSeason {
-				p.WaitUntilAfterDraft()
-				db.Save(&p)
+			for _, o := range Offers {
+				if int(o.TeamID) == ownerTeam && o.IsActive {
+					ownerOffer = o
+					break
+				}
+			}
+			if ownerOffer.ID > 0 {
+				SignFreeAgent(ownerOffer, p, ts)
+				repository.SaveNFLPlayer(p, db)
+			} else {
+				sort.Sort(structs.ByContractValue(Offers))
+
+				WinningOffer := structs.FreeAgencyOffer{}
+
+				for _, Offer := range Offers {
+					// Calculate to see if team can afford to pay for contract in Y1
+					capsheet := capsheetMap[Offer.TeamID]
+					if capsheet.ID == 0 {
+						// Invalid!!
+						continue
+					}
+					if Offer.IsActive && WinningOffer.ID == 0 {
+						WinningOffer = Offer
+					}
+					if Offer.IsActive {
+						Offer.CancelOffer()
+					}
+
+					db.Save(&Offer)
+				}
+
+				if WinningOffer.ID > 0 {
+					SignFreeAgent(WinningOffer, p, ts)
+				} else if ts.IsNFLOffSeason {
+					p.WaitUntilAfterDraft()
+					repository.SaveNFLPlayer(p, db)
+				}
 			}
 		}
 	}
