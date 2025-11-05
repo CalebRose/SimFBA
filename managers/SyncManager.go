@@ -492,7 +492,7 @@ func SyncTeamRankings() {
 func FixSmallTownBigCityAIBoards() {
 	db := dbprovider.GetInstance().GetDB()
 
-	teams := GetAllCollegeTeams()
+	teams := GetAllTeamRecruitingProfiles()
 
 	for _, t := range teams {
 
@@ -516,42 +516,28 @@ func FixSmallTownBigCityAIBoards() {
 			individualProfile := GetRecruitProfileByPlayerId(strconv.Itoa(int(r.ID)), teamID)
 			fixApplied := false
 
-			for _, affinity := range profile.Affinities {
-				if affinity.AffinityName != "Small Town" && affinity.AffinityName != "Big City" {
-					continue
-				}
+			if r.AffinityOne == "Small Town" && t.SmallTownAffinity && !individualProfile.AffinityOneEligible {
+				// Fix Affinity One in recruiting player profile
+				individualProfile.ToggleAffinityOne()
+				fixApplied = true
+			}
 
-				if affinity.AffinityName == "Small Town" && !affinity.IsApplicable {
-					smallTownApplicable = false
-					continue
-				}
-				if affinity.AffinityName == "Big City" && !affinity.IsApplicable {
-					bigCityApplicable = false
-					continue
-				}
-				if r.AffinityOne == "Small Town" && isAffinityApplicable("Small Town", affinity) && !individualProfile.AffinityOneEligible {
-					// Fix Affinity One in recruiting player profile
-					individualProfile.ToggleAffinityOne()
-					fixApplied = true
-				}
+			if r.AffinityTwo == "Small Town" && t.SmallTownAffinity && !individualProfile.AffinityTwoEligible {
+				// Fix Affinity One in recruiting player profile
+				individualProfile.ToggleAffinityTwo()
+				fixApplied = true
+			}
 
-				if r.AffinityTwo == "Small Town" && isAffinityApplicable("Small Town", affinity) && !individualProfile.AffinityTwoEligible {
-					// Fix Affinity One in recruiting player profile
-					individualProfile.ToggleAffinityTwo()
-					fixApplied = true
-				}
+			if r.AffinityOne == "Big City" && t.BigCityAffinity && !individualProfile.AffinityOneEligible {
+				// Fix Affinity One in recruiting player profile
+				individualProfile.ToggleAffinityOne()
+				fixApplied = true
+			}
 
-				if r.AffinityOne == "Big City" && isAffinityApplicable("Big City", affinity) && !individualProfile.AffinityOneEligible {
-					// Fix Affinity One in recruiting player profile
-					individualProfile.ToggleAffinityOne()
-					fixApplied = true
-				}
-
-				if r.AffinityTwo == "Big City" && isAffinityApplicable("Big City", affinity) && !individualProfile.AffinityTwoEligible {
-					// Fix Affinity One in recruiting player profile
-					individualProfile.ToggleAffinityTwo()
-					fixApplied = true
-				}
+			if r.AffinityTwo == "Big City" && t.BigCityAffinity && !individualProfile.AffinityTwoEligible {
+				// Fix Affinity One in recruiting player profile
+				individualProfile.ToggleAffinityTwo()
+				fixApplied = true
 			}
 
 			if !smallTownApplicable && !bigCityApplicable {
@@ -861,10 +847,6 @@ func isBlueBlood(behavior string) bool {
 	return behavior == "Blue Blood"
 }
 
-func isAffinityApplicable(affinity string, af structs.ProfileAffinity) bool {
-	return af.AffinityName == affinity && af.IsApplicable
-}
-
 func doesCrootHaveAffinity(affinity string, croot structs.Recruit) bool {
 	return croot.AffinityOne == affinity || croot.AffinityTwo == affinity
 }
@@ -1109,204 +1091,199 @@ func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs
 	}
 
 	// Check for other affinities
-	for _, affinity := range team.Affinities {
-		if !affinity.IsApplicable {
-			continue
-		}
-		if crootInfo.HasAcademicAffinity && isAffinityApplicable("Academics", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else if !team.IsFBS && croot.Stars < 3 {
-				odds += 17
-			} else {
-				odds += 5
-			}
-
-			if croot.AffinityOne == "Academics" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Academics" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+	if crootInfo.HasAcademicAffinity && team.AcademicsAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else if !team.IsFBS && croot.Stars < 3 {
+			odds += 17
+		} else {
+			odds += 5
 		}
 
-		if crootInfo.HasFrontRunnerAffinity && isAffinityApplicable("Frontrunner", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else if !team.IsFBS && croot.Stars < 3 {
-				odds += 17
-			} else {
-				odds += 5
-			}
-
-			if isBlueBlood(team.AIBehavior) || team.AIBehavior == "Playoff Buster" {
-				odds += 5
-			}
-
-			if croot.AffinityOne == "Frontrunner" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Frontrunner" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+		if croot.AffinityOne == "Academics" {
+			affinityOneApplicable = true
+			affinityMod += 3
 		}
 
-		if crootInfo.HasReligionAffinity && isAffinityApplicable("Religion", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else if !team.IsFBS && croot.Stars < 3 {
-				odds += 17
-			} else {
-				odds += 5
-			}
+		if croot.AffinityTwo == "Academics" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
 
-			if croot.AffinityOne == "Religion" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Religion" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+	if crootInfo.HasFrontRunnerAffinity && team.FrontrunnerAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else if !team.IsFBS && croot.Stars < 3 {
+			odds += 17
+		} else {
+			odds += 5
 		}
 
-		if crootInfo.HasServiceAffinity && isAffinityApplicable("Service", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else if !team.IsFBS && croot.Stars < 3 {
-				odds += 17
-			} else {
-				odds += 5
-			}
-
-			if croot.AffinityOne == "Service" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Service" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+		if isBlueBlood(team.AIBehavior) || team.AIBehavior == "Playoff Buster" {
+			odds += 5
 		}
 
-		if crootInfo.HasSmallSchoolAffinity && isAffinityApplicable("Small School", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else if !team.IsFBS && croot.Stars < 3 {
-				odds += 17
-			} else {
-				odds += 5
-			}
-
-			if croot.AffinityOne == "Small School" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Small School" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+		if croot.AffinityOne == "Frontrunner" {
+			affinityOneApplicable = true
+			affinityMod += 3
 		}
 
-		if crootInfo.HasSmallTownAffinity && isAffinityApplicable("Small Town", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else if !team.IsFBS && croot.Stars < 3 {
-				odds += 17
-			} else {
-				odds += 5
-			}
+		if croot.AffinityTwo == "Frontrunner" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
 
-			if croot.AffinityOne == "Small Town" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Small Town" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+	if crootInfo.HasReligionAffinity && team.ReligionAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else if !team.IsFBS && croot.Stars < 3 {
+			odds += 17
+		} else {
+			odds += 5
 		}
 
-		if crootInfo.HasBigCityAffinity && isAffinityApplicable("Big City", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else {
-				odds += 17
-			}
-
-			if croot.AffinityOne == "Big City" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Big City" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+		if croot.AffinityOne == "Religion" {
+			affinityOneApplicable = true
+			affinityMod += 3
 		}
 
-		if crootInfo.HasMediaSpotlightAffinity && isAffinityApplicable("Media Spotlight", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else {
-				odds += 17
-			}
+		if croot.AffinityTwo == "Religion" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
 
-			if croot.AffinityOne == "Media Spotlight" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Media Spotlight" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+	if crootInfo.HasServiceAffinity && team.ServiceAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else if !team.IsFBS && croot.Stars < 3 {
+			odds += 17
+		} else {
+			odds += 5
 		}
 
-		if crootInfo.HasLargeCrowdAffinity && isAffinityApplicable("Large Crowds", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else {
-				odds += 17
-			}
-
-			if croot.AffinityOne == "Large Crowds" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
-
-			if croot.AffinityTwo == "Large Crowds" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+		if croot.AffinityOne == "Service" {
+			affinityOneApplicable = true
+			affinityMod += 3
 		}
 
-		if crootInfo.HasRisingStars && isAffinityApplicable("Rising Stars", affinity) {
-			if team.IsFBS {
-				odds += 33
-			} else {
-				odds += 17
-			}
+		if croot.AffinityTwo == "Service" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
 
-			if croot.AffinityOne == "Rising Stars" {
-				affinityOneApplicable = true
-				affinityMod += 3
-			}
+	if crootInfo.HasSmallSchoolAffinity && team.SmallSchoolAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else if !team.IsFBS && croot.Stars < 3 {
+			odds += 17
+		} else {
+			odds += 5
+		}
 
-			if croot.AffinityTwo == "Rising Stars" {
-				affinityTwoApplicable = true
-				affinityMod += 3
-			}
+		if croot.AffinityOne == "Small School" {
+			affinityOneApplicable = true
+			affinityMod += 3
+		}
+
+		if croot.AffinityTwo == "Small School" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
+
+	if crootInfo.HasSmallTownAffinity && team.SmallTownAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else if !team.IsFBS && croot.Stars < 3 {
+			odds += 17
+		} else {
+			odds += 5
+		}
+
+		if croot.AffinityOne == "Small Town" {
+			affinityOneApplicable = true
+			affinityMod += 3
+		}
+
+		if croot.AffinityTwo == "Small Town" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
+
+	if crootInfo.HasBigCityAffinity && team.BigCityAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else {
+			odds += 17
+		}
+
+		if croot.AffinityOne == "Big City" {
+			affinityOneApplicable = true
+			affinityMod += 3
+		}
+
+		if croot.AffinityTwo == "Big City" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
+
+	if crootInfo.HasMediaSpotlightAffinity && team.MediaSpotlightAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else {
+			odds += 17
+		}
+
+		if croot.AffinityOne == "Media Spotlight" {
+			affinityOneApplicable = true
+			affinityMod += 3
+		}
+
+		if croot.AffinityTwo == "Media Spotlight" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
+
+	if crootInfo.HasLargeCrowdAffinity && team.LargeCrowdsAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else {
+			odds += 17
+		}
+
+		if croot.AffinityOne == "Large Crowds" {
+			affinityOneApplicable = true
+			affinityMod += 3
+		}
+
+		if croot.AffinityTwo == "Large Crowds" {
+			affinityTwoApplicable = true
+			affinityMod += 3
+		}
+	}
+
+	if crootInfo.HasRisingStars && team.RisingStarsAffinity {
+		if team.IsFBS {
+			odds += 33
+		} else {
+			odds += 17
+		}
+
+		if croot.AffinityOne == "Rising Stars" {
+			affinityOneApplicable = true
+			affinityMod += 3
+		}
+
+		if croot.AffinityTwo == "Rising Stars" {
+			affinityTwoApplicable = true
+			affinityMod += 3
 		}
 	}
 

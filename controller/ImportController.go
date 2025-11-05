@@ -114,3 +114,7 @@ func ImportAdditionalDCPositions(w http.ResponseWriter, r *http.Request) {
 	// managers.MigrateRetiredAndNFLPlayersToHistoricCFBTable()
 	managers.ImportNewDepthChartPositionRecords()
 }
+
+func FixCollegeStandings(w http.ResponseWriter, r *http.Request) {
+	managers.ResetCollegeStandings()
+}

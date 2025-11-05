@@ -516,6 +516,8 @@ func SyncFreeAgencyOffers() {
 	offers := repository.FindAllFreeAgentOffers(repository.FreeAgencyQuery{IsActive: true})
 	offerMap := MakeFreeAgencyOfferMapByPlayer(offers)
 
+	offersToRemove := []string{}
+
 	for _, FA := range FreeAgents {
 		// If the Free Agent is not available in off-season free agency anymore
 		// Commenting out until friday
@@ -553,6 +555,7 @@ func SyncFreeAgencyOffers() {
 					// Invalid!!
 					continue
 				}
+
 				if offer.ContractValue > highestContractValue {
 					highestContractValue = offer.ContractValue
 					competingTeams = []structs.FreeAgencyOffer{offer}
@@ -572,6 +575,8 @@ func SyncFreeAgencyOffers() {
 				if capsheet.ID == 0 {
 					continue
 				}
+				id := strconv.Itoa(int(offer.ID))
+				offersToRemove = append(offersToRemove, id)
 				if offer.IsActive && offer.ID != WinningOffer.ID {
 					offer.RejectOffer()
 				} else if offer.IsActive && offer.ID == WinningOffer.ID {
@@ -685,21 +690,23 @@ func SyncFreeAgencyOffers() {
 
 				WinningOffer := structs.FreeAgencyOffer{}
 
-				for _, Offer := range Offers {
+				for _, offer := range Offers {
 					// Calculate to see if team can afford to pay for contract in Y1
-					capsheet := capsheetMap[Offer.TeamID]
+					capsheet := capsheetMap[offer.TeamID]
 					if capsheet.ID == 0 {
 						// Invalid!!
 						continue
 					}
-					if Offer.IsActive && WinningOffer.ID == 0 {
-						WinningOffer = Offer
+					id := strconv.Itoa(int(offer.ID))
+					offersToRemove = append(offersToRemove, id)
+					if offer.IsActive && WinningOffer.ID == 0 {
+						WinningOffer = offer
 					}
-					if Offer.IsActive {
-						Offer.CancelOffer()
+					if offer.IsActive {
+						offer.CancelOffer()
 					}
 
-					db.Save(&Offer)
+					repository.SaveFreeAgencyOfferRecord(offer, db)
 				}
 
 				if WinningOffer.ID > 0 {
@@ -718,7 +725,7 @@ func SyncFreeAgencyOffers() {
 	if ts.NFLWeek < 10 && !ts.NFLSeasonOver && !ts.IsDraftTime {
 		LowerFreeAgencyMinimums(db)
 	}
-
+	repository.MassDeleteFreeAgencyOffers(offersToRemove, db)
 	repository.SaveTimestamp(ts, db)
 }
 

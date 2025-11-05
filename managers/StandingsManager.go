@@ -256,6 +256,26 @@ func ResetCollegeStandingsRanks() {
 	db.Model(&structs.CollegeStandings{}).Where("season_id = ?", seasonID).Updates(structs.CollegeStandings{Rank: 0})
 }
 
+func ResetCollegeStandings() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
+	collegeStandings := repository.FindAllCollegeStandingsRecords(repository.StandingsQuery{SeasonID: seasonID})
+	for _, standings := range collegeStandings {
+		standings.ResetCFBStandings()
+
+		teamID := strconv.Itoa(standings.TeamID)
+		games := GetCollegeGamesByTeamIdAndSeasonId(teamID, seasonID, false)
+		for _, game := range games {
+			if game.GameComplete {
+				continue
+			}
+			standings.UpdateCollegeStandings(game)
+		}
+		repository.SaveCFBStandingsRecord(standings, db)
+	}
+}
+
 func GetCollegeStandingsMap(seasonID string) map[uint]structs.CollegeStandings {
 	standingsMap := make(map[uint]structs.CollegeStandings)
 

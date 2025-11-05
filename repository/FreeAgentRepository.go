@@ -79,3 +79,10 @@ func SaveFreeAgencyOfferRecord(contract structs.FreeAgencyOffer, db *gorm.DB) {
 		log.Panicln("Could not save offer record")
 	}
 }
+
+func MassDeleteFreeAgencyOffers(offerIDs []string, db *gorm.DB) {
+	err := db.Unscoped().Where("id IN ?", offerIDs).Delete(&structs.FreeAgencyOffer{}).Error
+	if err != nil {
+		log.Panicln("Could not delete free agency offers")
+	}
+}
