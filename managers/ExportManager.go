@@ -611,7 +611,7 @@ func ExportCFBPlayByPlayToCSV(gameID string, w http.ResponseWriter) {
 			strconv.Itoa(int(play.Rolb)), strconv.Itoa(int(play.Rilb)), strconv.Itoa(int(play.Mlb)), strconv.Itoa(int(play.Lilb)), strconv.Itoa(int(play.Lolb)),
 			strconv.Itoa(int(play.Rcb)),
 			strconv.Itoa(int(play.Extradb1)), strconv.Itoa(int(play.Extradb2)), strconv.Itoa(int(play.Extradb3)),
-			strconv.Itoa(int(play.Fs)), strconv.Itoa(int(play.Ss)), strconv.Itoa(int(play.Fcb)),
+			strconv.Itoa(int(play.Fs)), strconv.Itoa(int(play.Ss)), strconv.Itoa(int(play.Lcb)),
 			strconv.Itoa(int(play.Blitzer1)), strconv.Itoa(int(play.Blitzer2)), strconv.Itoa(int(play.Blitzer3)),
 		}
 
@@ -1043,7 +1043,7 @@ func ExportCFBSpringPlayByPlayToCSV(w http.ResponseWriter) {
 				strconv.Itoa(int(play.Rolb)), strconv.Itoa(int(play.Rilb)), strconv.Itoa(int(play.Mlb)), strconv.Itoa(int(play.Lilb)), strconv.Itoa(int(play.Lolb)),
 				strconv.Itoa(int(play.Rcb)),
 				strconv.Itoa(int(play.Extradb1)), strconv.Itoa(int(play.Extradb2)), strconv.Itoa(int(play.Extradb3)),
-				strconv.Itoa(int(play.Fs)), strconv.Itoa(int(play.Ss)), strconv.Itoa(int(play.Fcb)),
+				strconv.Itoa(int(play.Fs)), strconv.Itoa(int(play.Ss)), strconv.Itoa(int(play.Lcb)),
 				strconv.Itoa(int(play.Blitzer1)), strconv.Itoa(int(play.Blitzer2)), strconv.Itoa(int(play.Blitzer3)),
 			}
 
@@ -1137,7 +1137,7 @@ func ExportNFLPreseasonPlayByPlayToCSV(w http.ResponseWriter) {
 				strconv.Itoa(int(play.Rolb)), strconv.Itoa(int(play.Rilb)), strconv.Itoa(int(play.Mlb)), strconv.Itoa(int(play.Lilb)), strconv.Itoa(int(play.Lolb)),
 				strconv.Itoa(int(play.Rcb)),
 				strconv.Itoa(int(play.Extradb1)), strconv.Itoa(int(play.Extradb2)), strconv.Itoa(int(play.Extradb3)),
-				strconv.Itoa(int(play.Fs)), strconv.Itoa(int(play.Ss)), strconv.Itoa(int(play.Fcb)),
+				strconv.Itoa(int(play.Fs)), strconv.Itoa(int(play.Ss)), strconv.Itoa(int(play.Lcb)),
 				strconv.Itoa(int(play.Blitzer1)), strconv.Itoa(int(play.Blitzer2)), strconv.Itoa(int(play.Blitzer3)),
 			}
 
