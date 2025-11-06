@@ -39,6 +39,7 @@ type PlayersInvoledInPlay struct {
 	Fs       uint
 	Ss       uint
 	Fcb      uint
+	Lcb      uint
 	Blitzer1 uint
 	Blitzer2 uint
 	Blitzer3 uint

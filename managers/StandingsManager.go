@@ -267,7 +267,7 @@ func ResetCollegeStandings() {
 		teamID := strconv.Itoa(standings.TeamID)
 		games := GetCollegeGamesByTeamIdAndSeasonId(teamID, seasonID, false)
 		for _, game := range games {
-			if game.GameComplete {
+			if !game.GameComplete {
 				continue
 			}
 			standings.UpdateCollegeStandings(game)
