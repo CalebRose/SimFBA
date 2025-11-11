@@ -162,7 +162,6 @@ export class NFLGameplan {
     TripleOptionRight: number;
     PassQuick: number;
     PassShort: number;
-    PassMedium: number;
     PassLong: number;
     PassDeep: number;
     PassScreen: number;
@@ -306,7 +305,6 @@ export class NFLGameplan {
         this.TripleOptionRight = source["TripleOptionRight"];
         this.PassQuick = source["PassQuick"];
         this.PassShort = source["PassShort"];
-        this.PassMedium = source["PassMedium"];
         this.PassLong = source["PassLong"];
         this.PassDeep = source["PassDeep"];
         this.PassScreen = source["PassScreen"];
@@ -2726,7 +2724,6 @@ export class CollegeGameplan {
     TripleOptionRight: number;
     PassQuick: number;
     PassShort: number;
-    PassMedium: number;
     PassLong: number;
     PassDeep: number;
     PassScreen: number;
@@ -2870,7 +2867,6 @@ export class CollegeGameplan {
         this.TripleOptionRight = source["TripleOptionRight"];
         this.PassQuick = source["PassQuick"];
         this.PassShort = source["PassShort"];
-        this.PassMedium = source["PassMedium"];
         this.PassLong = source["PassLong"];
         this.PassDeep = source["PassDeep"];
         this.PassScreen = source["PassScreen"];
@@ -5195,184 +5191,9 @@ export class CollegeGame {
 	    return a;
 	}
 }
-export class HistoricCollegePlayer {
-    ID: number;
-    CreatedAt: Time;
-    UpdatedAt: Time;
-    DeletedAt: Time;
-    FirstName: string;
-    LastName: string;
-    Position: string;
-    Archetype: string;
-    PreviousTeamID: number;
-    PreviousTeam: string;
-    Height: number;
-    Weight: number;
-    Age: number;
-    Stars: number;
-    Overall: number;
-    Stamina: number;
-    Injury: number;
-    FootballIQ: number;
-    Speed: number;
-    Carrying: number;
-    Agility: number;
-    Catching: number;
-    RouteRunning: number;
-    ZoneCoverage: number;
-    ManCoverage: number;
-    Strength: number;
-    Tackle: number;
-    PassBlock: number;
-    RunBlock: number;
-    PassRush: number;
-    RunDefense: number;
-    ThrowPower: number;
-    ThrowAccuracy: number;
-    KickAccuracy: number;
-    KickPower: number;
-    PuntAccuracy: number;
-    PuntPower: number;
-    Progression: number;
-    Discipline: number;
-    PotentialGrade: string;
-    FreeAgency: string;
-    Personality: string;
-    RecruitingBias: string;
-    WorkEthic: string;
-    AcademicBias: string;
-    IsInjured: boolean;
-    InjuryName: string;
-    InjuryType: string;
-    WeeksOfRecovery: number;
-    InjuryReserve: boolean;
-    PrimeAge: number;
-    Clutch: number;
-    Shotgun: number;
-    PositionTwo: string;
-    ArchetypeTwo: string;
-    RelativeID: number;
-    RelativeType: number;
-    Notes: string;
-    PlayerID: number;
-    TeamID: number;
-    TeamAbbr: string;
-    HighSchool: string;
-    City: string;
-    State: string;
-    Year: number;
-    IsRedshirt: boolean;
-    IsRedshirting: boolean;
-    HasGraduated: boolean;
-    TransferStatus: number;
-    TransferLikeliness: string;
-    Stats: CollegePlayerStats[];
-    SeasonStats: CollegePlayerSeasonStats;
-    HasProgressed: boolean;
-    WillDeclare: boolean;
-    LegacyID: number;
-
-    constructor(source: any = {}) {
-        if ('string' === typeof source) source = JSON.parse(source);
-        this.ID = source["ID"];
-        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
-        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
-        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
-        this.FirstName = source["FirstName"];
-        this.LastName = source["LastName"];
-        this.Position = source["Position"];
-        this.Archetype = source["Archetype"];
-        this.PreviousTeamID = source["PreviousTeamID"];
-        this.PreviousTeam = source["PreviousTeam"];
-        this.Height = source["Height"];
-        this.Weight = source["Weight"];
-        this.Age = source["Age"];
-        this.Stars = source["Stars"];
-        this.Overall = source["Overall"];
-        this.Stamina = source["Stamina"];
-        this.Injury = source["Injury"];
-        this.FootballIQ = source["FootballIQ"];
-        this.Speed = source["Speed"];
-        this.Carrying = source["Carrying"];
-        this.Agility = source["Agility"];
-        this.Catching = source["Catching"];
-        this.RouteRunning = source["RouteRunning"];
-        this.ZoneCoverage = source["ZoneCoverage"];
-        this.ManCoverage = source["ManCoverage"];
-        this.Strength = source["Strength"];
-        this.Tackle = source["Tackle"];
-        this.PassBlock = source["PassBlock"];
-        this.RunBlock = source["RunBlock"];
-        this.PassRush = source["PassRush"];
-        this.RunDefense = source["RunDefense"];
-        this.ThrowPower = source["ThrowPower"];
-        this.ThrowAccuracy = source["ThrowAccuracy"];
-        this.KickAccuracy = source["KickAccuracy"];
-        this.KickPower = source["KickPower"];
-        this.PuntAccuracy = source["PuntAccuracy"];
-        this.PuntPower = source["PuntPower"];
-        this.Progression = source["Progression"];
-        this.Discipline = source["Discipline"];
-        this.PotentialGrade = source["PotentialGrade"];
-        this.FreeAgency = source["FreeAgency"];
-        this.Personality = source["Personality"];
-        this.RecruitingBias = source["RecruitingBias"];
-        this.WorkEthic = source["WorkEthic"];
-        this.AcademicBias = source["AcademicBias"];
-        this.IsInjured = source["IsInjured"];
-        this.InjuryName = source["InjuryName"];
-        this.InjuryType = source["InjuryType"];
-        this.WeeksOfRecovery = source["WeeksOfRecovery"];
-        this.InjuryReserve = source["InjuryReserve"];
-        this.PrimeAge = source["PrimeAge"];
-        this.Clutch = source["Clutch"];
-        this.Shotgun = source["Shotgun"];
-        this.PositionTwo = source["PositionTwo"];
-        this.ArchetypeTwo = source["ArchetypeTwo"];
-        this.RelativeID = source["RelativeID"];
-        this.RelativeType = source["RelativeType"];
-        this.Notes = source["Notes"];
-        this.PlayerID = source["PlayerID"];
-        this.TeamID = source["TeamID"];
-        this.TeamAbbr = source["TeamAbbr"];
-        this.HighSchool = source["HighSchool"];
-        this.City = source["City"];
-        this.State = source["State"];
-        this.Year = source["Year"];
-        this.IsRedshirt = source["IsRedshirt"];
-        this.IsRedshirting = source["IsRedshirting"];
-        this.HasGraduated = source["HasGraduated"];
-        this.TransferStatus = source["TransferStatus"];
-        this.TransferLikeliness = source["TransferLikeliness"];
-        this.Stats = this.convertValues(source["Stats"], CollegePlayerStats);
-        this.SeasonStats = this.convertValues(source["SeasonStats"], CollegePlayerSeasonStats);
-        this.HasProgressed = source["HasProgressed"];
-        this.WillDeclare = source["WillDeclare"];
-        this.LegacyID = source["LegacyID"];
-    }
-
-	convertValues(a: any, classs: any, asMap: boolean = false): any {
-	    if (!a) {
-	        return a;
-	    }
-	    if (Array.isArray(a)) {
-	        return (a as any[]).map(elem => this.convertValues(elem, classs));
-	    } else if ("object" === typeof a) {
-	        if (asMap) {
-	            for (const key of Object.keys(a)) {
-	                a[key] = new classs(a[key]);
-	            }
-	            return a;
-	        }
-	        return new classs(a);
-	    }
-	    return a;
-	}
-}
 export class BootstrapDataLanding {
     CollegeTeam: CollegeTeam;
     CollegeRosterMap: {[key: uint]: CollegePlayer[]};
-    HistoricCollegePlayers: HistoricCollegePlayer[];
     CollegeStandings: CollegeStandings[];
     AllCollegeGames: CollegeGame[];
     OfficialPolls: CollegePollOfficial[];
@@ -5400,7 +5221,6 @@ export class BootstrapDataLanding {
         if ('string' === typeof source) source = JSON.parse(source);
         this.CollegeTeam = this.convertValues(source["CollegeTeam"], CollegeTeam);
         this.CollegeRosterMap = source["CollegeRosterMap"];
-        this.HistoricCollegePlayers = this.convertValues(source["HistoricCollegePlayers"], HistoricCollegePlayer);
         this.CollegeStandings = this.convertValues(source["CollegeStandings"], CollegeStandings);
         this.AllCollegeGames = this.convertValues(source["AllCollegeGames"], CollegeGame);
         this.OfficialPolls = this.convertValues(source["OfficialPolls"], CollegePollOfficial);
@@ -5717,7 +5537,6 @@ export class BootstrapDataTeamRoster {
     CollegePromises: CollegePromise[];
     TradeProposals: NFLTeamProposals;
     TradePreferences: {[key: uint]: NFLTradePreferences};
-    NFLDraftPicks: NFLDraftPick[];
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
@@ -5726,7 +5545,6 @@ export class BootstrapDataTeamRoster {
         this.CollegePromises = this.convertValues(source["CollegePromises"], CollegePromise);
         this.TradeProposals = this.convertValues(source["TradeProposals"], NFLTeamProposals);
         this.TradePreferences = this.convertValues(source["TradePreferences"], NFLTradePreferences, true);
-        this.NFLDraftPicks = this.convertValues(source["NFLDraftPicks"], NFLDraftPick);
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -8315,7 +8133,180 @@ export class CollegePlayerCSV {
 
 
 
+export class HistoricCollegePlayer {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    FirstName: string;
+    LastName: string;
+    Position: string;
+    Archetype: string;
+    PreviousTeamID: number;
+    PreviousTeam: string;
+    Height: number;
+    Weight: number;
+    Age: number;
+    Stars: number;
+    Overall: number;
+    Stamina: number;
+    Injury: number;
+    FootballIQ: number;
+    Speed: number;
+    Carrying: number;
+    Agility: number;
+    Catching: number;
+    RouteRunning: number;
+    ZoneCoverage: number;
+    ManCoverage: number;
+    Strength: number;
+    Tackle: number;
+    PassBlock: number;
+    RunBlock: number;
+    PassRush: number;
+    RunDefense: number;
+    ThrowPower: number;
+    ThrowAccuracy: number;
+    KickAccuracy: number;
+    KickPower: number;
+    PuntAccuracy: number;
+    PuntPower: number;
+    Progression: number;
+    Discipline: number;
+    PotentialGrade: string;
+    FreeAgency: string;
+    Personality: string;
+    RecruitingBias: string;
+    WorkEthic: string;
+    AcademicBias: string;
+    IsInjured: boolean;
+    InjuryName: string;
+    InjuryType: string;
+    WeeksOfRecovery: number;
+    InjuryReserve: boolean;
+    PrimeAge: number;
+    Clutch: number;
+    Shotgun: number;
+    PositionTwo: string;
+    ArchetypeTwo: string;
+    RelativeID: number;
+    RelativeType: number;
+    Notes: string;
+    PlayerID: number;
+    TeamID: number;
+    TeamAbbr: string;
+    HighSchool: string;
+    City: string;
+    State: string;
+    Year: number;
+    IsRedshirt: boolean;
+    IsRedshirting: boolean;
+    HasGraduated: boolean;
+    TransferStatus: number;
+    TransferLikeliness: string;
+    Stats: CollegePlayerStats[];
+    SeasonStats: CollegePlayerSeasonStats;
+    HasProgressed: boolean;
+    WillDeclare: boolean;
+    LegacyID: number;
 
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.FirstName = source["FirstName"];
+        this.LastName = source["LastName"];
+        this.Position = source["Position"];
+        this.Archetype = source["Archetype"];
+        this.PreviousTeamID = source["PreviousTeamID"];
+        this.PreviousTeam = source["PreviousTeam"];
+        this.Height = source["Height"];
+        this.Weight = source["Weight"];
+        this.Age = source["Age"];
+        this.Stars = source["Stars"];
+        this.Overall = source["Overall"];
+        this.Stamina = source["Stamina"];
+        this.Injury = source["Injury"];
+        this.FootballIQ = source["FootballIQ"];
+        this.Speed = source["Speed"];
+        this.Carrying = source["Carrying"];
+        this.Agility = source["Agility"];
+        this.Catching = source["Catching"];
+        this.RouteRunning = source["RouteRunning"];
+        this.ZoneCoverage = source["ZoneCoverage"];
+        this.ManCoverage = source["ManCoverage"];
+        this.Strength = source["Strength"];
+        this.Tackle = source["Tackle"];
+        this.PassBlock = source["PassBlock"];
+        this.RunBlock = source["RunBlock"];
+        this.PassRush = source["PassRush"];
+        this.RunDefense = source["RunDefense"];
+        this.ThrowPower = source["ThrowPower"];
+        this.ThrowAccuracy = source["ThrowAccuracy"];
+        this.KickAccuracy = source["KickAccuracy"];
+        this.KickPower = source["KickPower"];
+        this.PuntAccuracy = source["PuntAccuracy"];
+        this.PuntPower = source["PuntPower"];
+        this.Progression = source["Progression"];
+        this.Discipline = source["Discipline"];
+        this.PotentialGrade = source["PotentialGrade"];
+        this.FreeAgency = source["FreeAgency"];
+        this.Personality = source["Personality"];
+        this.RecruitingBias = source["RecruitingBias"];
+        this.WorkEthic = source["WorkEthic"];
+        this.AcademicBias = source["AcademicBias"];
+        this.IsInjured = source["IsInjured"];
+        this.InjuryName = source["InjuryName"];
+        this.InjuryType = source["InjuryType"];
+        this.WeeksOfRecovery = source["WeeksOfRecovery"];
+        this.InjuryReserve = source["InjuryReserve"];
+        this.PrimeAge = source["PrimeAge"];
+        this.Clutch = source["Clutch"];
+        this.Shotgun = source["Shotgun"];
+        this.PositionTwo = source["PositionTwo"];
+        this.ArchetypeTwo = source["ArchetypeTwo"];
+        this.RelativeID = source["RelativeID"];
+        this.RelativeType = source["RelativeType"];
+        this.Notes = source["Notes"];
+        this.PlayerID = source["PlayerID"];
+        this.TeamID = source["TeamID"];
+        this.TeamAbbr = source["TeamAbbr"];
+        this.HighSchool = source["HighSchool"];
+        this.City = source["City"];
+        this.State = source["State"];
+        this.Year = source["Year"];
+        this.IsRedshirt = source["IsRedshirt"];
+        this.IsRedshirting = source["IsRedshirting"];
+        this.HasGraduated = source["HasGraduated"];
+        this.TransferStatus = source["TransferStatus"];
+        this.TransferLikeliness = source["TransferLikeliness"];
+        this.Stats = this.convertValues(source["Stats"], CollegePlayerStats);
+        this.SeasonStats = this.convertValues(source["SeasonStats"], CollegePlayerSeasonStats);
+        this.HasProgressed = source["HasProgressed"];
+        this.WillDeclare = source["WillDeclare"];
+        this.LegacyID = source["LegacyID"];
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
 
 
 
@@ -8623,7 +8614,6 @@ export class PlayByPlayResponse {
     Fs: number;
     Ss: number;
     Fcb: number;
-    Lcb: number;
     Blitzer1: number;
     Blitzer2: number;
     Blitzer3: number;
@@ -8689,7 +8679,6 @@ export class PlayByPlayResponse {
         this.Fs = source["Fs"];
         this.Ss = source["Ss"];
         this.Fcb = source["Fcb"];
-        this.Lcb = source["Lcb"];
         this.Blitzer1 = source["Blitzer1"];
         this.Blitzer2 = source["Blitzer2"];
         this.Blitzer3 = source["Blitzer3"];

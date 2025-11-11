@@ -957,11 +957,12 @@ func TagPlayer(tagDTO structs.NFLTagDTO) {
 
 	// Get the tag type
 	tagTypeStr := "Basic"
-	if tagDTO.TagType == 1 {
+	switch tagDTO.TagType {
+	case 1:
 		tagTypeStr = "Franchise"
-	} else if tagDTO.TagType == 2 {
+	case 2:
 		tagTypeStr = "Transition"
-	} else if tagDTO.TagType == 3 {
+	case 3:
 		tagTypeStr = "Playtime"
 	}
 

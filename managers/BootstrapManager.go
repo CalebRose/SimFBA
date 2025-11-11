@@ -25,30 +25,31 @@ type BootstrapDataTeams struct {
 }
 
 type BootstrapDataLanding struct {
-	CollegeTeam          structs.CollegeTeam
-	CollegeRosterMap     map[uint][]structs.CollegePlayer
-	CollegeStandings     []structs.CollegeStandings
-	AllCollegeGames      []structs.CollegeGame
-	OfficialPolls        []structs.CollegePollOfficial
-	TopCFBPassers        []structs.CollegePlayer
-	TopCFBRushers        []structs.CollegePlayer
-	TopCFBReceivers      []structs.CollegePlayer
-	PortalPlayers        []structs.CollegePlayer
-	CollegeInjuryReport  []structs.CollegePlayer
-	CollegeNotifications []structs.Notification
-	ProTeam              structs.NFLTeam
-	ProNotifications     []structs.Notification
-	ProStandings         []structs.NFLStandings
-	AllProGames          []structs.NFLGame
-	PollSubmission       structs.CollegePollSubmission
-	TopNFLPassers        []structs.NFLPlayer
-	TopNFLRushers        []structs.NFLPlayer
-	TopNFLReceivers      []structs.NFLPlayer
-	ProRosterMap         map[uint][]structs.NFLPlayer
-	ProInjuryReport      []structs.NFLPlayer
-	PracticeSquadPlayers []structs.NFLPlayer
-	CapsheetMap          map[uint]structs.NFLCapsheet
-	RetiredPlayers       []structs.NFLRetiredPlayer
+	CollegeTeam            structs.CollegeTeam
+	CollegeRosterMap       map[uint][]structs.CollegePlayer
+	HistoricCollegePlayers []structs.HistoricCollegePlayer
+	CollegeStandings       []structs.CollegeStandings
+	AllCollegeGames        []structs.CollegeGame
+	OfficialPolls          []structs.CollegePollOfficial
+	TopCFBPassers          []structs.CollegePlayer
+	TopCFBRushers          []structs.CollegePlayer
+	TopCFBReceivers        []structs.CollegePlayer
+	PortalPlayers          []structs.CollegePlayer
+	CollegeInjuryReport    []structs.CollegePlayer
+	CollegeNotifications   []structs.Notification
+	ProTeam                structs.NFLTeam
+	ProNotifications       []structs.Notification
+	ProStandings           []structs.NFLStandings
+	AllProGames            []structs.NFLGame
+	PollSubmission         structs.CollegePollSubmission
+	TopNFLPassers          []structs.NFLPlayer
+	TopNFLRushers          []structs.NFLPlayer
+	TopNFLReceivers        []structs.NFLPlayer
+	ProRosterMap           map[uint][]structs.NFLPlayer
+	ProInjuryReport        []structs.NFLPlayer
+	PracticeSquadPlayers   []structs.NFLPlayer
+	CapsheetMap            map[uint]structs.NFLCapsheet
+	RetiredPlayers         []structs.NFLRetiredPlayer
 }
 
 type BootstrapDataTeamRoster struct {
@@ -140,17 +141,18 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 
 	// College Data
 	var (
-		collegeTeam           structs.CollegeTeam
-		collegePlayers        []structs.CollegePlayer
-		collegePlayerMap      map[uint][]structs.CollegePlayer
-		portalPlayers         []structs.CollegePlayer
-		injuredCollegePlayers []structs.CollegePlayer
-		collegeNotifications  []structs.Notification
-		topCfbPassers         []structs.CollegePlayer
-		topCfbRushers         []structs.CollegePlayer
-		topCfbReceivers       []structs.CollegePlayer
-		collegeStandings      []structs.CollegeStandings
-		collegeGames          []structs.CollegeGame
+		collegeTeam            structs.CollegeTeam
+		collegePlayers         []structs.CollegePlayer
+		collegePlayerMap       map[uint][]structs.CollegePlayer
+		historicCollegePlayers []structs.HistoricCollegePlayer
+		portalPlayers          []structs.CollegePlayer
+		injuredCollegePlayers  []structs.CollegePlayer
+		collegeNotifications   []structs.Notification
+		topCfbPassers          []structs.CollegePlayer
+		topCfbRushers          []structs.CollegePlayer
+		topCfbReceivers        []structs.CollegePlayer
+		collegeStandings       []structs.CollegeStandings
+		collegeGames           []structs.CollegeGame
 	)
 
 	// Professional Data
@@ -189,16 +191,18 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		go func() {
 			defer wg.Done()
 			collegePlayers = GetAllCollegePlayers()
+			historicCollegePlayers = GetAllHistoricCollegePlayers()
+
 			cfbStats := GetCollegePlayerSeasonStatsBySeason(seasonID, gtStr)
 
 			mu.Lock()
 			collegePlayerMap = MakeCollegePlayerMapByTeamID(collegePlayers, true)
+			injuredCollegePlayers = MakeCollegeInjuryList(collegePlayers)
+			portalPlayers = MakeCollegePortalList(collegePlayers)
 			fullCollegePlayerMap := MakeCollegePlayerMap(collegePlayers)
 			topCfbPassers = getCFBOrderedListByStatType("PASSING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
 			topCfbRushers = getCFBOrderedListByStatType("RUSHING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
 			topCfbReceivers = getCFBOrderedListByStatType("RECEIVING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
-			injuredCollegePlayers = MakeCollegeInjuryList(collegePlayers)
-			portalPlayers = MakeCollegePortalList(collegePlayers)
 			mu.Unlock()
 		}()
 		go func() {
@@ -281,28 +285,29 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 
 	wg.Wait()
 	return BootstrapDataLanding{
-		CollegeTeam:          collegeTeam,
-		CollegeRosterMap:     collegePlayerMap,
-		CollegeInjuryReport:  injuredCollegePlayers,
-		CollegeNotifications: collegeNotifications,
-		AllCollegeGames:      collegeGames,
-		PortalPlayers:        portalPlayers,
-		ProTeam:              proTeam,
-		ProNotifications:     proNotifications,
-		AllProGames:          proGames,
-		TopCFBPassers:        topCfbPassers,
-		TopCFBRushers:        topCfbRushers,
-		TopCFBReceivers:      topCfbReceivers,
-		TopNFLPassers:        topNflPassers,
-		TopNFLRushers:        topNflRushers,
-		TopNFLReceivers:      topNflReceivers,
-		ProRosterMap:         proRosterMap,
-		PracticeSquadPlayers: practiceSquadPlayers,
-		ProInjuryReport:      injuredProPlayers,
-		CapsheetMap:          capsheetMap,
-		RetiredPlayers:       retiredPlayers,
-		CollegeStandings:     collegeStandings,
-		ProStandings:         proStandings,
+		CollegeTeam:            collegeTeam,
+		CollegeRosterMap:       collegePlayerMap,
+		HistoricCollegePlayers: historicCollegePlayers,
+		CollegeInjuryReport:    injuredCollegePlayers,
+		CollegeNotifications:   collegeNotifications,
+		AllCollegeGames:        collegeGames,
+		PortalPlayers:          portalPlayers,
+		ProTeam:                proTeam,
+		ProNotifications:       proNotifications,
+		AllProGames:            proGames,
+		TopCFBPassers:          topCfbPassers,
+		TopCFBRushers:          topCfbRushers,
+		TopCFBReceivers:        topCfbReceivers,
+		TopNFLPassers:          topNflPassers,
+		TopNFLRushers:          topNflRushers,
+		TopNFLReceivers:        topNflReceivers,
+		ProRosterMap:           proRosterMap,
+		PracticeSquadPlayers:   practiceSquadPlayers,
+		ProInjuryReport:        injuredProPlayers,
+		CapsheetMap:            capsheetMap,
+		RetiredPlayers:         retiredPlayers,
+		CollegeStandings:       collegeStandings,
+		ProStandings:           proStandings,
 	}
 }
 
