@@ -353,7 +353,7 @@ func GetAllCollegePlayersWithStatsBySeasonID(cMap map[int]int, cNMap map[int]str
 		}).Where("id in ?", distinctCollegePlayerIDs).Find(&collegePlayers)
 	} else {
 		db.Preload("Stats", func(db *gorm.DB) *gorm.DB {
-			return db.Where("season_id = ? AND week_id = ? and snaps > 0 AND reveal_results = ?", seasonID, weekID, true)
+			return db.Where("season_id = ? AND week_id = ? and snaps > 0 AND reveal_results = ? AND game_type = ?", seasonID, weekID, true, gameType)
 		}).Where("id in ?", distinctCollegePlayerIDs).Find(&collegePlayers)
 	}
 
@@ -397,7 +397,7 @@ func GetAllCollegePlayersWithStatsBySeasonID(cMap map[int]int, cNMap map[int]str
 			}).Where("id in ?", distinctCollegePlayerIDs).Find(&historicCollegePlayers)
 		} else {
 			db.Preload("Stats", func(db *gorm.DB) *gorm.DB {
-				return db.Where("season_id = ? AND week_id = ?", seasonID, weekID)
+				return db.Where("season_id = ? AND week_id = ? AND game_type = ?", seasonID, weekID, gameType)
 			}).Where("id in ?", distinctCollegePlayerIDs).Find(&historicCollegePlayers)
 		}
 
@@ -453,7 +453,7 @@ func GetAllNFLPlayersWithStatsBySeasonID(cMap, dMap map[int]int, cNMap, dNMap ma
 		}).Where("id in ?", distinctCollegePlayerIDs).Find(&nflPlayers)
 	} else {
 		db.Preload("Stats", func(db *gorm.DB) *gorm.DB {
-			return db.Where("season_id = ? AND week_id = ? and snaps > 0 AND reveal_results = ?", seasonID, weekID, true)
+			return db.Where("season_id = ? AND week_id = ? and snaps > 0 AND reveal_results = ? AND game_type = ?", seasonID, weekID, true, gameType)
 		}).Where("id in ?", distinctCollegePlayerIDs).Find(&nflPlayers)
 	}
 
@@ -497,7 +497,7 @@ func GetAllNFLPlayersWithStatsBySeasonID(cMap, dMap map[int]int, cNMap, dNMap ma
 			}).Where("id in ?", distinctCollegePlayerIDs).Find(&historicNFLPlayers)
 		} else {
 			db.Preload("Stats", func(db *gorm.DB) *gorm.DB {
-				return db.Where("season_id = ? AND week_id = ?", seasonID, weekID)
+				return db.Where("season_id = ? AND week_id = ? AND game_type = ?", seasonID, weekID, gameType)
 			}).Where("id in ?", distinctCollegePlayerIDs).Find(&historicNFLPlayers)
 		}
 
