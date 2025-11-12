@@ -330,7 +330,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/statistics/interface/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetNFLStatsPageContent).Methods("GET")
 	apiRouter.HandleFunc("/statistics/interface/v2/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetCFBStatsPageContent).Methods("GET")
 	apiRouter.HandleFunc("/statistics/interface/v2/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetProStatsPageContent).Methods("GET")
-	// apiRouter.HandleFunc("/statistics/reset/cfb/season/", controller.ResetCFBSeasonalStats).Methods("GET")
+	apiRouter.HandleFunc("/statistics/reset/cfb/season/", controller.ResetCFBSeasonalStats).Methods("GET")
 	// apiRouter.HandleFunc("/statistics/reset/nfl/season/", controller.ResetNFLSeasonalStats).Methods("GET")
 	apiRouter.HandleFunc("/statistics/cfb/export/crootforthecrootgod/", controller.ExportAllSpringGamesPbPToCSV).Methods("GET")
 	apiRouter.HandleFunc("/statistics/nfl/export/crootforthecrootgod/", controller.ExportAllPreseasonGamesPbPToCSV).Methods("GET")
@@ -453,7 +453,7 @@ func handleCron() *cron.Cron {
 		// Run RES
 		c.AddFunc("0 7 * * 4", controller.RunRESViaCron)
 		// Sync Recruiting
-		c.AddFunc("0 16 * * 3", controller.SyncRecruitingViaCron)
+		c.AddFunc("0 17 * * 3", controller.SyncRecruitingViaCron)
 		// Sync Free Agency
 		c.AddFunc("0 16 * * *", controller.SyncFreeAgencyViaCron)
 		// Sync Extension Offers

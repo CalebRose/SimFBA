@@ -178,15 +178,12 @@ func MigrateNFLTeamSnapsFromPreviousSeason() {
 func MigrateCFBTeamSnapsFromPreviousSeason() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
-	seasonID2024 := ts.CollegeSeasonID - 1
-	seasonID := strconv.Itoa(seasonID2024)
+	seasonID2026 := ts.CollegeSeasonID
+	seasonID := strconv.Itoa(seasonID2026)
 
 	collegeTeams := GetAllCollegeTeams()
 
 	for _, t := range collegeTeams {
-		if t.ID > 194 {
-			continue
-		}
 		teamID := strconv.Itoa(int(t.ID))
 		seasonStats := GetALLCollegeTeamSeasonStatsBySeasonANDTeam(teamID, seasonID)
 		if len(seasonStats) == 0 {
@@ -239,15 +236,15 @@ func MigrateCFBTeamSnapsFromPreviousSeason() {
 
 			if g.IsSpringGame {
 				stat.AddGameType(1)
-				preSeasonStats.MapStats([]structs.CollegeTeamStats{stat}, seasonID2024)
+				preSeasonStats.MapStats([]structs.CollegeTeamStats{stat}, seasonID2026)
 				preSeasonStats.AddTeamSnaps(uint16(offensiveSnaps), uint16(defensiveSnaps), uint16(specialTeamSnaps))
 			} else if g.IsPlayoffGame || g.IsNationalChampionship || g.IsConferenceChampionship || g.IsBowlGame {
 				stat.AddGameType(3)
-				postSeasonStats.MapStats([]structs.CollegeTeamStats{stat}, seasonID2024)
+				postSeasonStats.MapStats([]structs.CollegeTeamStats{stat}, seasonID2026)
 				postSeasonStats.AddTeamSnaps(uint16(offensiveSnaps), uint16(defensiveSnaps), uint16(specialTeamSnaps))
 			} else {
 				stat.AddGameType(2)
-				regularSeasonStats.MapStats([]structs.CollegeTeamStats{stat}, seasonID2024)
+				regularSeasonStats.MapStats([]structs.CollegeTeamStats{stat}, seasonID2026)
 				regularSeasonStats.AddTeamSnaps(uint16(offensiveSnaps), uint16(defensiveSnaps), uint16(specialTeamSnaps))
 			}
 			// Add Team Stats to individual record
@@ -343,8 +340,8 @@ func migrateNFLPlayerSeasonStats(nflPlayerSeasonStatMap map[uint][]structs.NFLPl
 func MigrateCFBPlayerStatsFromPreviousSeason() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
-	seasonID2024 := ts.CollegeSeasonID
-	seasonID := strconv.Itoa(seasonID2024)
+	seasonID2026 := ts.CollegeSeasonID
+	seasonID := strconv.Itoa(seasonID2026)
 	cfbPlayerSeasonStatMap := GetALLCFBPlayerSeasonStatMapBySeason(seasonID)
 	cfbPlayerStatMap := GetCFBPlayerIndividualStatMapBySeason(seasonID)
 	unsignedPlayers := GetAllUnsignedPlayers()

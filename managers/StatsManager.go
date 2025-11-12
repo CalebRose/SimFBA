@@ -469,7 +469,7 @@ func GetALLCollegeTeamSeasonStatsBySeasonANDTeam(TeamID, SeasonID string) []stru
 
 	var teamStats []structs.CollegeTeamSeasonStats
 
-	db.Where("team_id = ? AND season_id = ? AND game_type = ?", TeamID, SeasonID).Find(&teamStats)
+	db.Where("team_id = ? AND season_id = ?", TeamID, SeasonID).Find(&teamStats)
 
 	return teamStats
 }
