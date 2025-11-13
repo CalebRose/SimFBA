@@ -36,7 +36,7 @@ func (rp *RecruitPlayerProfile) AllocateCurrentWeekPoints(points float64) {
 
 func (rp *RecruitPlayerProfile) AddCurrentWeekPointsToTotal(CurrentPoints float64) {
 	// If user spends points on a recruit
-	if CurrentPoints > 0 {
+	if CurrentPoints >= 0 {
 		rp.TotalPoints += CurrentPoints
 		if rp.SpendingCount < 5 && rp.CurrentWeeksPoints >= 1 {
 			rp.SpendingCount++

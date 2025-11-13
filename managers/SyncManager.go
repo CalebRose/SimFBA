@@ -131,9 +131,10 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 				curr *= (1 + streakFormula)
 			}
 
+			// Until I figure out wtf is going on this is commented out
 			if (recruitProfiles)[i].CurrentWeeksPoints < 0 || (recruitProfiles)[i].CurrentWeeksPoints > float64(pointLimit) {
-				curr = 0
-				rpa.ApplyCaughtCheating()
+				// curr = 0
+				// rpa.ApplyCaughtCheating()
 			}
 
 			rpa.UpdatePointsSpent((recruitProfiles)[i].CurrentWeeksPoints, curr)
@@ -226,7 +227,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 						db.Create(&newsLog)
 						fmt.Println("Created new log!")
 
-						db.Save(&recruitTeamProfile)
+						repository.SaveRecruitingTeamProfile(*recruitTeamProfile, db)
 						fmt.Println("Saved " + recruitTeamProfile.TeamAbbreviation + " profile.")
 
 						for i := range recruitProfiles {
@@ -240,11 +241,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 									if recruitProfiles[i].TotalPoints > 0 {
 										tp.AddBattleLost()
 									}
-									err := db.Save(&tp).Error
-									if err != nil {
-										fmt.Println(err.Error())
-										log.Fatalf("Could not sync recruiting profile.")
-									}
+									repository.SaveRecruitingTeamProfile(*tp, db)
 
 									fmt.Println("Reallocated Scholarship to " + tp.TeamAbbreviation)
 								}
@@ -271,22 +268,17 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 		// Save Player Files towards Recruit
 		for _, rp := range recruitProfiles {
 			// Save Team Profile
-			err := db.Save(&rp).Error
-			if err != nil {
-				fmt.Println(err.Error())
-				log.Fatalf("Could not sync recruiting profile.")
-			}
-
+			repository.SaveRecruitProfile(rp, db)
 			fmt.Println("Save recruit profile from " + rp.TeamAbbreviation + " towards " + recruit.FirstName + " " + recruit.LastName)
 		}
-		db.Save(&recruit)
+		repository.SaveRecruitRecord(recruit, db)
 	}
 
 	updateTeamRankings(teamRecruitingProfiles, recruitProfilePointsMap, db)
 
 	if timestamp.IsRecruitingLocked {
 		timestamp.ToggleLockRecruiting()
-		db.Save(&timestamp)
+		repository.SaveTimestamp(timestamp, db)
 	}
 
 }
@@ -938,7 +930,7 @@ func processRecruitProfile(i int, recruit structs.Recruit, recruitProfiles *[]st
 
 	if (*recruitProfiles)[i].CurrentWeeksPoints < 0 || (*recruitProfiles)[i].CurrentWeeksPoints > float64(pointLimit) {
 		curr = 0
-		rpa.ApplyCaughtCheating()
+		// rpa.ApplyCaughtCheating()
 	}
 
 	rpa.UpdatePointsSpent((*recruitProfiles)[i].CurrentWeeksPoints, curr)
@@ -1003,7 +995,8 @@ func updateTeamRankings(teamRecruitingProfiles []structs.RecruitingTeamProfile, 
 
 	for _, rp := range teamRecruitingProfiles {
 		if recruitProfilePointsMap[rp.TeamAbbreviation] > rp.WeeklyPoints {
-			rp.ApplyCaughtCheating()
+			// Until I figure out wtf is going on, just apply caught cheating
+			// rp.ApplyCaughtCheating()
 		}
 
 		var avg float64 = 0
@@ -1028,11 +1021,7 @@ func updateTeamRankings(teamRecruitingProfiles []structs.RecruitingTeamProfile, 
 		rp.ResetSpentPoints()
 
 		// Save TEAM Recruiting Profile
-		err := db.Save(&rp).Error
-		if err != nil {
-			fmt.Println(err.Error())
-			log.Fatalf("Could not save timestamp")
-		}
+		repository.SaveRecruitingTeamProfile(rp, db)
 		fmt.Println("Saved Rank Scores for Team " + rp.TeamAbbreviation)
 	}
 }
