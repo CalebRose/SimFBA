@@ -1,29 +1,30 @@
 package util
 
 func GetNumericalSortValueByLetterGrade(grade string) int {
-	if grade == "A+" {
+	switch grade {
+	case "A+":
 		return 1
-	} else if grade == "A" {
+	case "A":
 		return 2
-	} else if grade == "A-" {
+	case "A-":
 		return 3
-	} else if grade == "B+" {
+	case "B+":
 		return 4
-	} else if grade == "B" {
+	case "B":
 		return 5
-	} else if grade == "B-" {
+	case "B-":
 		return 6
-	} else if grade == "C+" {
+	case "C+":
 		return 7
-	} else if grade == "C" {
+	case "C":
 		return 8
-	} else if grade == "C-" {
+	case "C-":
 		return 9
-	} else if grade == "D+" {
+	case "D+":
 		return 10
-	} else if grade == "D" {
+	case "D":
 		return 11
-	} else if grade == "D-" {
+	case "D-":
 		return 12
 	}
 	return 13

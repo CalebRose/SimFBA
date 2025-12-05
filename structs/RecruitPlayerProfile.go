@@ -107,6 +107,13 @@ func (rp *RecruitPlayerProfile) AssignRES(res float64) {
 	rp.RecruitingEfficiencyScore = res
 }
 
+func (rp *RecruitPlayerProfile) FixPoints(CurrentPoints, PreviousPoints float64, streak int) {
+	rp.TotalPoints = CurrentPoints
+	rp.PreviousWeekPoints = PreviousPoints
+	rp.SpendingCount = streak
+	rp.CaughtCheating = false
+}
+
 // Sorting Funcs
 type ByPoints []RecruitPlayerProfile
 

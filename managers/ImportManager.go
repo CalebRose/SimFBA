@@ -1920,3 +1920,43 @@ func FixSecondaryPositions() {
 		repository.SaveNFLPlayer(p, db)
 	}
 }
+
+func FixRecruitingProfiles() {
+	db := dbprovider.GetInstance().GetDB()
+
+	recruitProfiles := repository.FindRecruitPlayerProfileRecords("", "", false, false, false)
+	recruitPointAllocations := repository.FindRecruitPointAllocationRecords(repository.RecruitingClauses{
+		WeekID: "2600",
+	})
+
+	recruitPointAllocationsMap := make(map[uint][]structs.RecruitPointAllocation)
+	for _, rpa := range recruitPointAllocations {
+		if _, ok := recruitPointAllocationsMap[uint(rpa.RecruitProfileID)]; !ok {
+			recruitPointAllocationsMap[uint(rpa.RecruitProfileID)] = []structs.RecruitPointAllocation{}
+		}
+		recruitPointAllocationsMap[uint(rpa.RecruitProfileID)] = append(recruitPointAllocationsMap[uint(rpa.RecruitProfileID)], rpa)
+	}
+
+	for _, rp := range recruitProfiles {
+		if !rp.CaughtCheating {
+			continue
+		}
+
+		pointAllocations, ok := recruitPointAllocationsMap[rp.ID]
+		if !ok {
+			continue
+		}
+
+		totalPoints := 0.0
+		previousWeekPoints := 0.0
+		for _, pa := range pointAllocations {
+			totalPoints += float64(pa.RESAffectedPoints)
+			previousWeekPoints = pa.RESAffectedPoints
+		}
+		streak := len(pointAllocations)
+
+		rp.FixPoints(totalPoints, previousWeekPoints, streak)
+
+		repository.SaveRecruitProfile(rp, db)
+	}
+}

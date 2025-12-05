@@ -118,3 +118,7 @@ func ImportAdditionalDCPositions(w http.ResponseWriter, r *http.Request) {
 func FixCollegeStandings(w http.ResponseWriter, r *http.Request) {
 	managers.ResetCollegeStandings()
 }
+
+func FixRecruitPoints(w http.ResponseWriter, r *http.Request) {
+	managers.FixRecruitingProfiles()
+}
