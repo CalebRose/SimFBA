@@ -1951,7 +1951,7 @@ func FixRecruitingProfiles() {
 		previousWeekPoints := 0.0
 		for _, pa := range pointAllocations {
 			totalPoints += float64(pa.RESAffectedPoints)
-			previousWeekPoints = pa.RESAffectedPoints
+			previousWeekPoints = float64(pa.RESAffectedPoints)
 		}
 		streak := len(pointAllocations)
 

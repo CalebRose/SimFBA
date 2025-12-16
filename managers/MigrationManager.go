@@ -475,7 +475,7 @@ func FixSpendingCount() {
 		for _, p := range profiles {
 			spendingCount := 0
 			profileAllocations := allocationMap[uint(p.ID)]
-			weekPointMap := make(map[int]float64)
+			weekPointMap := make(map[uint]float32)
 
 			for _, a := range profileAllocations {
 				weekPointMap[a.WeekID] += a.Points
@@ -483,12 +483,12 @@ func FixSpendingCount() {
 
 			weeks := []int{}
 			for week := range weekPointMap {
-				weeks = append(weeks, week)
+				weeks = append(weeks, int(week))
 			}
 			sort.Ints(weeks)
 			prevWeek := -1
 			for _, week := range weeks {
-				points := weekPointMap[week]
+				points := weekPointMap[uint(week)]
 
 				if prevWeek != -1 && week-prevWeek > 1 {
 					// Missed one or more weeks – reset the streak
@@ -503,6 +503,141 @@ func FixSpendingCount() {
 			}
 
 			p.UpdateSpendingCount(spendingCount)
+			repository.SaveRecruitProfile(p, db)
+		}
+	}
+}
+
+func FixPointAmount() {
+	db := dbprovider.GetInstance().GetDB()
+	teamRecruitingProfiles := GetRecruitingProfileForRecruitSync()
+
+	teamProfileMap := make(map[uint]*structs.RecruitingTeamProfile)
+
+	for i := range teamRecruitingProfiles {
+		teamProfileMap[teamRecruitingProfiles[i].ID] = &teamRecruitingProfiles[i]
+	}
+	recruits := GetAllRecruitRecords()
+	unsignedIDs := []string{}
+	for _, r := range recruits {
+		if r.IsSigned {
+			continue
+		}
+		id := strconv.Itoa(int(r.ID))
+		unsignedIDs = append(unsignedIDs, id)
+	}
+
+	allProfiles := []structs.RecruitPlayerProfile{}
+
+	db.Where("recruit_id in (?)", unsignedIDs).Find(&allProfiles)
+
+	profileIDs := []string{}
+	profileMap := make(map[uint][]structs.RecruitPlayerProfile)
+
+	for _, p := range allProfiles {
+		if p.RemovedFromBoard {
+			continue
+		}
+		id := strconv.Itoa(int(p.ProfileID))
+		profileIDs = append(profileIDs, id)
+		if len(profileMap[uint(p.RecruitID)]) == 0 {
+			profileMap[uint(p.RecruitID)] = []structs.RecruitPlayerProfile{p}
+		} else {
+			profileMap[uint(p.RecruitID)] = append(profileMap[uint(p.RecruitID)], p)
+		}
+	}
+
+	allocations := []structs.RecruitPointAllocation{}
+
+	db.Where("team_profile_id in (?)", profileIDs).Find(&allocations)
+
+	allocationMap := make(map[uint][]structs.RecruitPointAllocation)
+
+	for _, a := range allocations {
+		if len(allocationMap[uint(a.RecruitProfileID)]) == 0 {
+			allocationMap[uint(a.RecruitProfileID)] = []structs.RecruitPointAllocation{a}
+		} else {
+			allocationMap[uint(a.RecruitProfileID)] = append(allocationMap[uint(a.RecruitProfileID)], a)
+		}
+	}
+	affinityBonus := 0.1
+	for _, r := range recruits {
+		if r.IsSigned {
+			continue
+		}
+
+		profiles := profileMap[r.ID]
+
+		for _, p := range profiles {
+			profileAllocations := allocationMap[uint(p.ID)]
+			p.ResetSpendingCount()
+			originalTotalPoints := p.TotalPoints
+			p.SoftReset()
+
+			for _, a := range profileAllocations {
+				// Check if the original allocation was valid (not cheating/over limit)
+				if a.RESAffectedPoints == 0 && a.Points > 0 {
+					// This was likely an invalid allocation (cheating/over limit), skip it
+					continue
+				}
+
+				// If we have the RES-affected points, we can reverse-engineer what happened
+				if a.RESAffectedPoints > 0 && a.Points > 0 {
+					// Calculate what the original affinity bonuses were
+					originalAffinityBonuses := 0.0
+					if a.AffinityOneApplied {
+						originalAffinityBonuses += affinityBonus
+					}
+					if a.AffinityTwoApplied {
+						originalAffinityBonuses += affinityBonus
+					}
+
+					// Calculate what the correct affinity bonuses should be
+					correctAffinityBonuses := 0.0
+					if p.AffinityOneEligible {
+						correctAffinityBonuses += affinityBonus
+					}
+					if p.AffinityTwoEligible {
+						correctAffinityBonuses += affinityBonus
+					}
+
+					// Calculate the difference in affinity bonuses
+					affinityDifference := correctAffinityBonuses - originalAffinityBonuses
+
+					// Apply the corrected RES calculation
+					// Start with the original RES points and adjust for the affinity difference
+					// The spending multiplier from the original calculation is preserved
+					var correctedRESPoints float32
+					if affinityDifference != 0 {
+						// Calculate the spending multiplier that was applied originally
+						// We need to estimate this from the data we have
+						originalMultiplier := a.RESAffectedPoints / a.Points
+
+						// Apply the affinity correction while preserving the spending effect
+						// This assumes the base RES + original affinities was reasonable
+						correctedRESPoints = a.RESAffectedPoints + (float32(a.Points) * float32(affinityDifference) * originalMultiplier)
+					} else {
+						// No affinity change needed
+						correctedRESPoints = a.RESAffectedPoints
+					}
+
+					// Use the corrected points
+					p.AddCurrentWeekPointsToTotal(float64(correctedRESPoints))
+				} else if a.RESAffectedPoints > 0 {
+					// Fallback: if we don't have enough info, use what we have
+					p.AddCurrentWeekPointsToTotal(float64(a.RESAffectedPoints))
+				}
+			}
+			if p.TotalPoints == 0 {
+				continue
+			}
+			// Log to compare the original total points with the new total
+			fmt.Printf("Recruit ID: %d, Original Total Points: %.2f, New Total Points: %.2f\n", r.ID, originalTotalPoints, p.TotalPoints)
+
+			if originalTotalPoints != p.TotalPoints {
+				fmt.Printf("Recruit ID: %d had a point recalibration from %.2f to %.2f\n", r.ID, originalTotalPoints, p.TotalPoints)
+			}
+
 			repository.SaveRecruitProfile(p, db)
 		}
 	}

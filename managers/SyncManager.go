@@ -5,10 +5,8 @@ import (
 	"log"
 	"math"
 	"math/rand"
-	"runtime"
 	"sort"
 	"strconv"
-	"sync"
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
@@ -99,10 +97,10 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 			}
 
 			rpa := structs.RecruitPointAllocation{
-				RecruitID:        (recruitProfiles)[i].RecruitID,
-				TeamProfileID:    (recruitProfiles)[i].ProfileID,
-				RecruitProfileID: int((recruitProfiles)[i].ID),
-				WeekID:           timestamp.CollegeWeekID,
+				RecruitID:        uint((recruitProfiles)[i].RecruitID),
+				TeamProfileID:    uint((recruitProfiles)[i].ProfileID),
+				RecruitProfileID: (recruitProfiles)[i].ID,
+				WeekID:           uint(timestamp.CollegeWeekID),
 			}
 
 			var curr float64 = 0
@@ -851,100 +849,6 @@ func isHighlyContestedCroot(mod int, teams int, CollegeWeek int) bool {
 	chance += mod
 
 	return chance > teams
-}
-
-func allocatePointsToRecruit(recruit structs.Recruit, recruitProfiles *[]structs.RecruitPlayerProfile, pointLimit float64, spendingCountAdjusted *bool, pointsPlaced *bool, timestamp structs.Timestamp, recruitProfilePointsMap *map[string]float64, db *gorm.DB) {
-	// numWorkers := 3
-	numWorkers := min(runtime.NumCPU(), 3)
-	jobs := make(chan int, len(*recruitProfiles))
-	results := make(chan error, len(*recruitProfiles))
-	var m sync.Mutex
-
-	// This starts up numWorkers number of workers, initially blocked because there are no jobs yet.
-	for w := 1; w <= numWorkers; w++ {
-		go func(jobs <-chan int, results chan<- error, w int) {
-			for i := range jobs {
-				err := processRecruitProfile(i, recruit, recruitProfiles, pointLimit, spendingCountAdjusted, pointsPlaced, timestamp, recruitProfilePointsMap, db, &m)
-				results <- err
-			}
-		}(jobs, results, w)
-	}
-
-	// Here we send len(*recruitProfiles) jobs and then close the channel.
-	for i := 0; i < len(*recruitProfiles); i++ {
-		jobs <- i
-	}
-	close(jobs)
-
-	// Finally, we collect all the results.
-	// This ensures the function doesn't return until we've processed all recruit profiles.
-	for i := 0; i < len(*recruitProfiles); i++ {
-		err := <-results
-		if err != nil {
-			fmt.Println(err)
-			log.Fatalf("Could not process recruit profile: %v", err)
-		}
-	}
-}
-
-func processRecruitProfile(i int, recruit structs.Recruit, recruitProfiles *[]structs.RecruitPlayerProfile, pointLimit float64, spendingCountAdjusted *bool, pointsPlaced *bool, timestamp structs.Timestamp, recruitProfilePointsMap *map[string]float64, db *gorm.DB, m *sync.Mutex) error {
-	affinityBonus := 0.1
-
-	if (*recruitProfiles)[i].CurrentWeeksPoints == 0 {
-		if (*recruitProfiles)[i].SpendingCount > 0 {
-			(*recruitProfiles)[i].ResetSpendingCount()
-			*spendingCountAdjusted = true
-			fmt.Println("Resetting spending count for " + recruit.FirstName + " " + recruit.LastName + " for " + (*recruitProfiles)[i].TeamAbbreviation)
-		}
-		return nil
-	} else {
-		*pointsPlaced = true
-	}
-
-	rpa := structs.RecruitPointAllocation{
-		RecruitID:        (*recruitProfiles)[i].RecruitID,
-		TeamProfileID:    (*recruitProfiles)[i].ProfileID,
-		RecruitProfileID: int((*recruitProfiles)[i].ID),
-		WeekID:           timestamp.CollegeWeekID,
-	}
-
-	var curr float64 = 0
-
-	var res float64 = (*recruitProfiles)[i].RecruitingEfficiencyScore
-
-	if (*recruitProfiles)[i].AffinityOneEligible {
-		res += affinityBonus
-		rpa.ApplyAffinityOne()
-	}
-	if (*recruitProfiles)[i].AffinityTwoEligible {
-		res += affinityBonus
-		rpa.ApplyAffinityTwo()
-	}
-
-	curr = float64((*recruitProfiles)[i].CurrentWeeksPoints) * res
-
-	if (*recruitProfiles)[i].SpendingCount > 0 {
-		streakFormula := affinityBonus * float64((*recruitProfiles)[i].SpendingCount)
-		curr *= (1 + streakFormula)
-	}
-
-	if (*recruitProfiles)[i].CurrentWeeksPoints < 0 || (*recruitProfiles)[i].CurrentWeeksPoints > float64(pointLimit) {
-		curr = 0
-		// rpa.ApplyCaughtCheating()
-	}
-
-	rpa.UpdatePointsSpent((*recruitProfiles)[i].CurrentWeeksPoints, curr)
-	(*recruitProfiles)[i].AddCurrentWeekPointsToTotal(curr)
-	m.Lock()
-	(*recruitProfilePointsMap)[(*recruitProfiles)[i].TeamAbbreviation] += (*recruitProfiles)[i].CurrentWeeksPoints
-	m.Unlock()
-
-	// Add RPA to point allocations list
-	err := db.Create(&rpa).Error
-	if err != nil {
-		return fmt.Errorf("could not save point allocation: %v", err)
-	}
-	return nil
 }
 
 func updateTeamRankings(teamRecruitingProfiles []structs.RecruitingTeamProfile, recruitProfilePointsMap map[string]float64, db *gorm.DB) {

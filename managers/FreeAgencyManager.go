@@ -521,9 +521,9 @@ func SyncFreeAgencyOffers() {
 	for _, FA := range FreeAgents {
 		// If the Free Agent is not available in off-season free agency anymore
 		// Commenting out until friday
-		// if ts.IsNFLOffSeason && ts.IsDraftTime {
-		// 	continue
-		// }
+		if ts.IsNFLOffSeason && ts.IsDraftTime {
+			continue
+		}
 
 		// Is Ready to Sign
 		Offers := offerMap[FA.ID]

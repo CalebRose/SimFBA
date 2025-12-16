@@ -109,6 +109,19 @@ func MakeExtensionMap(extensions []structs.NFLExtensionOffer) map[uint]structs.N
 	return contractMap
 }
 
+func MakeCollegeStandingsMapByTeamID(standings []structs.CollegeStandings) map[uint]structs.CollegeStandings {
+	standingsMap := make(map[uint]structs.CollegeStandings)
+
+	for _, p := range standings {
+		if p.TeamID == 0 {
+			continue
+		}
+		standingsMap[uint(p.TeamID)] = p
+	}
+
+	return standingsMap
+}
+
 func MakeHistoricCollegeStandingsMapByTeamID(standings []structs.CollegeStandings) map[uint][]structs.CollegeStandings {
 	standingsMap := make(map[uint][]structs.CollegeStandings)
 
@@ -305,6 +318,27 @@ func MakeCollegeGameMapByID(collegeGames []structs.CollegeGame) map[uint]structs
 		gamesMap[uint(c.ID)] = c
 	}
 
+	return gamesMap
+}
+
+func MakeCollegeGameMapByTeamID(collegeGames []structs.CollegeGame) map[uint][]structs.CollegeGame {
+	gamesMap := make(map[uint][]structs.CollegeGame)
+
+	for _, c := range collegeGames {
+		if c.IsSpringGame || c.IsPlayoffGame || c.IsBowlGame {
+			continue
+		}
+		if len(gamesMap[uint(c.HomeTeamID)]) > 0 {
+			gamesMap[uint(c.HomeTeamID)] = append(gamesMap[uint(c.HomeTeamID)], c)
+		} else {
+			gamesMap[uint(c.HomeTeamID)] = []structs.CollegeGame{c}
+		}
+		if len(gamesMap[uint(c.AwayTeamID)]) > 0 {
+			gamesMap[uint(c.AwayTeamID)] = append(gamesMap[uint(c.AwayTeamID)], c)
+		} else {
+			gamesMap[uint(c.AwayTeamID)] = []structs.CollegeGame{c}
+		}
+	}
 	return gamesMap
 }
 

@@ -114,7 +114,8 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/admin/recruiting/class/size", controller.GetRecruitingClassSizeForTeams).Methods("GET")
 	apiRouter.HandleFunc("/admin/ai/fill/boards", controller.FillAIBoards).Methods("GET")
 	apiRouter.HandleFunc("/admin/ai/sync/boards", controller.SyncAIBoards).Methods("GET")
-	apiRouter.HandleFunc("/admin/fix/affinities", controller.RecalibrateCrootProfiles).Methods("GET")
+	// apiRouter.HandleFunc("/admin/fix/affinities", controller.RecalibrateCrootProfiles).Methods("GET")
+	apiRouter.HandleFunc("/admin/fix/recruit/points", controller.RecalibrateRecruitPoints).Methods("GET")
 	apiRouter.HandleFunc("/admin/run/the/games/", controller.RunTheGames).Methods("GET")
 	// apiRouter.HandleFunc("/admin/overall/progressions/next/season", controller.ProgressToNextSeason).Methods("GET")
 	apiRouter.HandleFunc("/admin/overall/progressions/nfl", controller.ProgressNFL).Methods("GET")
@@ -133,6 +134,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/bootstrap/portal/{collegeID}", controller.BootstrapPortalData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/gameplan/{collegeID}/{proID}", controller.BootstrapGameplanData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/news/{collegeID}/{proID}", controller.BootstrapNewsData).Methods("GET")
+	apiRouter.HandleFunc("/bootstrap/stats/{collegeID}/{proID}", controller.BootstrapStatsData).Methods("GET")
 
 	// Capsheet Controls
 	apiRouter.HandleFunc("/nfl/capsheet/generate", controller.GenerateCapsheets).Methods("GET")

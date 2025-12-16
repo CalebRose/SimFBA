@@ -93,6 +93,11 @@ func FixSpendingCount(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode("Players Fixed")
 }
 
+func RecalibrateRecruitPoints(w http.ResponseWriter, r *http.Request) {
+	managers.FixPointAmount()
+	json.NewEncoder(w).Encode("Players Fixed")
+}
+
 func ImportCFBRivals(w http.ResponseWriter, r *http.Request) {
 	managers.ImportCFBRivals()
 }

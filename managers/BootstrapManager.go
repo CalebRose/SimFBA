@@ -105,6 +105,10 @@ type BootstrapDataNews struct {
 	ProNews     []structs.NewsLog
 }
 
+type BootstrapDataStats struct {
+	HeismanWatchList []models.HeismanWatchModel
+}
+
 /*
  * IF ANY OF THE ABOVE MODELS ARE MODIFIED, THE EASYJSON HELPER WILL NEED TO BE REGENERATED.
  * See the comment at the top of the file for instructions.
@@ -644,6 +648,35 @@ func GetNewsBootstrap(collegeID, proID string) BootstrapDataNews {
 	return BootstrapDataNews{
 		CollegeNews: collegeNews,
 		ProNews:     proNews,
+	}
+}
+
+func GetStatsBootstrap(collegeID, proID string) BootstrapDataStats {
+	var wg sync.WaitGroup
+
+	var (
+		heismanWatchList []models.HeismanWatchModel
+	)
+
+	if len(collegeID) > 0 && collegeID != "0" {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching Heisman Watch List...")
+			heismanWatchList = GetHeismanList()
+			log.Println("Fetched Heisman Watch List, count:", len(heismanWatchList))
+		}()
+		log.Println("Initiated all College data queries.")
+	}
+
+	if len(proID) > 0 && proID != "0" {
+
+	}
+
+	wg.Wait()
+
+	return BootstrapDataStats{
+		HeismanWatchList: heismanWatchList,
 	}
 }
 

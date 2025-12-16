@@ -98,6 +98,12 @@ func (rp *RecruitPlayerProfile) ResetSpendingCount() {
 	rp.SpendingCount = 0
 }
 
+func (rp *RecruitPlayerProfile) SoftReset() {
+	rp.TotalPoints = 0
+	rp.PreviousWeekPoints = 0
+	rp.CurrentWeeksPoints = 0
+}
+
 func (rp *RecruitPlayerProfile) ResetTotalPoints() {
 	rp.TotalPoints = 0
 	rp.TeamReachedMax = true

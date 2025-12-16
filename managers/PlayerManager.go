@@ -910,12 +910,16 @@ func GetHeismanList() []models.HeismanWatchModel {
 	db := dbprovider.GetInstance().GetDB()
 
 	ts := GetTimestamp()
+	seasonID := strconv.Itoa(ts.CollegeSeasonID)
 
 	var collegePlayers []structs.CollegePlayer
 
 	var heismanCandidates []models.HeismanWatchModel
-
-	teamWithStandings := GetAllCollegeTeamsWithCurrentYearStandings()
+	collegeTeams := GetAllCollegeTeams()
+	collegeStandings := GetAllCollegeStandingsBySeasonID(seasonID)
+	cfbStandingsMap := MakeCollegeStandingsMapByTeamID(collegeStandings)
+	collegeGames := repository.FindCollegeGamesRecords(seasonID, false)
+	cfbGameMap := MakeCollegeGameMapByTeamID(collegeGames)
 
 	var teamWeight = make(map[string]float64)
 
@@ -923,18 +927,16 @@ func GetHeismanList() []models.HeismanWatchModel {
 	teamCountMap := make(map[int]int)
 	var teamGameMapper = make(map[int][]structs.CollegeGame)
 
-	for _, team := range teamWithStandings {
+	for _, team := range collegeTeams {
 		homeTeamMapper[int(team.ID)] = team.TeamAbbr
+		games := cfbGameMap[team.ID]
+		currentYearStandings := cfbStandingsMap[team.ID]
 
-		games := GetCollegeGamesByTeamIdAndSeasonId(strconv.Itoa(int(team.ID)), strconv.Itoa(ts.CollegeSeasonID), false)
-
-		if len(games) == 0 || len(team.TeamStandings) == 0 {
+		if len(games) == 0 || currentYearStandings.ID == 0 {
 			continue
 		}
 
 		teamGameMapper[int(team.ID)] = games
-
-		currentYearStandings := team.TeamStandings[0]
 
 		var weight float64 = 0 // 1
 		if currentYearStandings.TotalLosses+currentYearStandings.TotalWins > 0 {
@@ -949,10 +951,6 @@ func GetHeismanList() []models.HeismanWatchModel {
 		teamWeight[team.TeamAbbr] = weight
 	}
 
-	// db.Preload("Stats", func(db *gorm.DB) *gorm.DB {
-	// 	return db.Where("snaps > 0 and season_id = ? and week_id < ?", strconv.Itoa(ts.CollegeSeasonID), strconv.Itoa(ts.CollegeWeekID))
-	// }).Where("Stats.snaps > 0").Find(&collegePlayers)
-
 	var distinctCollegeStats []structs.CollegePlayerStats
 
 	db.Distinct("college_player_id").Where("snaps > 0").Find(&distinctCollegeStats)
@@ -960,7 +958,7 @@ func GetHeismanList() []models.HeismanWatchModel {
 	distinctCollegePlayerIDs := GetCollegePlayerIDs(distinctCollegeStats)
 
 	db.Preload("Stats", func(db *gorm.DB) *gorm.DB {
-		return db.Where("snaps > 0 and season_id = ? and week_id < ? and game_type = ?", strconv.Itoa(ts.CollegeSeasonID), strconv.Itoa(ts.CollegeWeekID), "2")
+		return db.Where("snaps > 0 and season_id = ? and week_id < ? and game_type = ?", seasonID, strconv.Itoa(ts.CollegeWeekID), "2")
 	}).Where("id IN ?", distinctCollegePlayerIDs).Find(&collegePlayers)
 
 	for _, cp := range collegePlayers {
