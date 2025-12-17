@@ -127,3 +127,7 @@ func FixCollegeStandings(w http.ResponseWriter, r *http.Request) {
 func FixRecruitPoints(w http.ResponseWriter, r *http.Request) {
 	managers.FixRecruitingProfiles()
 }
+
+func FixOffensiveFormationNames(w http.ResponseWriter, r *http.Request) {
+	managers.FixOffensiveFormationNames()
+}

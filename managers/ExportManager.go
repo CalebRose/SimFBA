@@ -264,7 +264,8 @@ func ExportCrootsToCSV(w http.ResponseWriter) {
 		"Archetype", "Stars", "College",
 		"High School", "City", "State", "Height",
 		"Weight", "Overall", "Potential Grade", "Affinity One", "Affinity Two", "Personality",
-		"Recruiting Bias", "Academic Bias", "Work Ethic", "LeadingTeams",
+		"Recruiting Bias", "Academic Bias", "Work Ethic",
+		"Signing Status", "Expectations", "LeadingTeams",
 	}
 
 	err := writer.Write(HeaderRow)
@@ -280,14 +281,15 @@ func ExportCrootsToCSV(w http.ResponseWriter) {
 				leadingAbbr = append(leadingAbbr, lt.TeamAbbr)
 			}
 		}
-
+		recruitingTendency := util.GetRecruitingTendency(croot.RecruitModifier)
 		crootRow := []string{
 			strconv.Itoa(int(croot.ID)), croot.FirstName, croot.LastName, croot.Position,
 			croot.Archetype, strconv.Itoa(croot.Stars), croot.College,
 			croot.HighSchool, croot.City, croot.State, strconv.Itoa(croot.Height),
 			strconv.Itoa(croot.Weight), croot.OverallGrade, croot.PotentialGrade,
 			croot.AffinityOne, croot.AffinityTwo, croot.Personality, croot.RecruitingBias,
-			croot.AcademicBias, croot.WorkEthic, strings.Join(leadingAbbr, ", "),
+			croot.AcademicBias, croot.WorkEthic,
+			croot.RecruitingStatus, recruitingTendency, strings.Join(leadingAbbr, ", "),
 		}
 
 		err = writer.Write(crootRow)
