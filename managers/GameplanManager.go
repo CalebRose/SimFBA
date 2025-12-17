@@ -326,9 +326,12 @@ func UpdateGameplan(updateGameplanDto structs.UpdateGameplanDTO) {
 	db := dbprovider.GetInstance().GetDB()
 
 	gameplanID := updateGameplanDto.GameplanID
+	defaultOffensiveSchemes := GetOffensiveDefaultSchemes()
+
 	currentGameplan := GetGameplanByGameplanID(gameplanID)
 	currentGameplan.UpdateCollegeGameplan(updateGameplanDto.UpdatedGameplan)
-
+	defaultFormations := defaultOffensiveSchemes[currentGameplan.OffensiveScheme]
+	currentGameplan.UpdateFormations(defaultFormations)
 	repository.SaveCFBGameplanRecord(currentGameplan, db)
 }
 
@@ -336,11 +339,12 @@ func UpdateNFLGameplan(updateGameplanDto structs.UpdateGameplanDTO) {
 	db := dbprovider.GetInstance().GetDB()
 
 	gameplanID := updateGameplanDto.GameplanID
-
+	defaultOffensiveSchemes := GetOffensiveDefaultSchemes()
 	currentGameplan := GetNFLGameplanByTeamID(gameplanID)
 	UpdatedGameplan := updateGameplanDto.UpdatedNFLGameplan
 	currentGameplan.UpdateNFLGameplan(UpdatedGameplan)
-
+	defaultFormations := defaultOffensiveSchemes[currentGameplan.OffensiveScheme]
+	currentGameplan.UpdateFormations(defaultFormations)
 	repository.SaveNFLGameplanRecord(currentGameplan, db)
 }
 
@@ -3423,5 +3427,25 @@ func CheckForSchemePenalties() {
 		if schemePenalty {
 			repository.SaveNFLGameplanRecord(gameplan, db)
 		}
+	}
+}
+
+func FixOffensiveFormationNames() {
+	db := dbprovider.GetInstance().GetDB()
+	gameplans := GetAllCollegeGameplans()
+	defaultOffensiveSchemes := GetOffensiveDefaultSchemes()
+	for _, gp := range gameplans {
+		offensiveScheme := gp.OffensiveScheme
+		defaultFormations := defaultOffensiveSchemes[offensiveScheme]
+		gp.UpdateFormations(defaultFormations)
+		repository.SaveCFBGameplanRecord(gp, db)
+	}
+
+	nflGameplans := GetAllNFLGameplans()
+	for _, gp := range nflGameplans {
+		offensiveScheme := gp.OffensiveScheme
+		defaultFormations := defaultOffensiveSchemes[offensiveScheme]
+		gp.UpdateFormations(defaultFormations)
+		repository.SaveNFLGameplanRecord(gp, db)
 	}
 }

@@ -613,6 +613,14 @@ func (bg *BaseGameplan) UpdateCollegeGameplanTEST(dto CollegeGameplanTEST) {
 	bg.DoubleTeam = dto.DoubleTeam
 }
 
+func (bg *BaseGameplan) UpdateFormations(offFormations OffensiveFormation) {
+	bg.OffFormation1Name = offFormations.OffFormation1Name
+	bg.OffFormation2Name = offFormations.OffFormation2Name
+	bg.OffFormation3Name = offFormations.OffFormation3Name
+	bg.OffFormation4Name = offFormations.OffFormation4Name
+	bg.OffFormation5Name = offFormations.OffFormation5Name
+}
+
 type SchemeCount struct {
 	PowerRun      int
 	Vertical      int
