@@ -54,7 +54,7 @@ func GetAllCollegeCoaches() []structs.CollegeCoach {
 
 	var coaches []structs.CollegeCoach
 
-	err := db.Find(&coaches).Error
+	err := db.Where("is_active = ?", true).Find(&coaches).Error
 	if err != nil || len(coaches) == 0 {
 		return []structs.CollegeCoach{}
 	}
