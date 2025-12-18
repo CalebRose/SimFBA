@@ -51,19 +51,16 @@ func UpdateGameplanPenalties() {
 	collegeGPs := GetAllCollegeGameplans()
 
 	for _, gp := range collegeGPs {
-		if gp.HasSchemePenalty {
-			gp.LowerPenalty()
-			repository.SaveCFBGameplanRecord(gp, db)
-		}
+		gp.LowerPenalty()
+		repository.SaveCFBGameplanRecord(gp, db)
+
 	}
 
 	nflGPs := GetAllNFLGameplans()
 
 	for _, gp := range nflGPs {
-		if gp.HasSchemePenalty {
-			gp.LowerPenalty()
-			repository.SaveNFLGameplanRecord(gp, db)
-		}
+		gp.LowerPenalty()
+		repository.SaveNFLGameplanRecord(gp, db)
 	}
 }
 

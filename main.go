@@ -231,6 +231,8 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simcfb/standings/", controller.FixCollegeStandings).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simfba/secondary/positions/", controller.FixSecondaryPositions).Methods("GET")
+	// apiRouter.HandleFunc("/fix/spending/count", controller.FixSpendingCount).Methods("GET")
+	// apiRouter.HandleFunc("/fix/scheme/penalties", controller.CheckForSchemePenalties).Methods("GET")
 	// apiRouter.HandleFunc("/fix/recruit/points", controller.FixRecruitPoints).Methods("GET")
 	// apiRouter.HandleFunc("/fix/formation/names", controller.FixOffensiveFormationNames).Methods("GET")
 	// apiRouter.HandleFunc("/assign/team/grades", controller.ImportTeamGrades).Methods("GET")

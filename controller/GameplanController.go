@@ -214,3 +214,8 @@ func DetermineAIGameplan(w http.ResponseWriter, r *http.Request) {
 	managers.DetermineAIGameplan()
 	json.NewEncoder(w).Encode("Updated all AI gameplans")
 }
+
+func CheckForSchemePenalties(w http.ResponseWriter, r *http.Request) {
+	managers.CheckForSchemePenalties()
+	json.NewEncoder(w).Encode("Updated all AI gameplans")
+}

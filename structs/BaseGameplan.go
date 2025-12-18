@@ -54,10 +54,10 @@ func (cg *BaseGameplan) ApplySchemePenalty(IsOffense bool, diff int) {
 
 func (cg *BaseGameplan) LowerPenalty() {
 	if cg.OffenseSchemePenalty > 0 {
-		cg.OffenseSchemePenalty--
+		cg.OffenseSchemePenalty -= 1
 	}
 	if cg.DefenseSchemePenalty > 0 {
-		cg.DefenseSchemePenalty--
+		cg.DefenseSchemePenalty -= 1
 	}
 	if cg.OffenseSchemePenalty == 0 && cg.DefenseSchemePenalty == 0 {
 		cg.HasSchemePenalty = false

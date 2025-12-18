@@ -453,7 +453,7 @@ func FixSpendingCount() {
 
 	allocations := []structs.RecruitPointAllocation{}
 
-	db.Where("team_profile_id in (?)", profileIDs).Find(&allocations)
+	db.Order("week_id asc").Where("team_profile_id in (?)", profileIDs).Find(&allocations)
 
 	allocationMap := make(map[uint][]structs.RecruitPointAllocation)
 
@@ -473,7 +473,6 @@ func FixSpendingCount() {
 		profiles := profileMap[r.ID]
 
 		for _, p := range profiles {
-			spendingCount := 0
 			profileAllocations := allocationMap[uint(p.ID)]
 			weekPointMap := make(map[uint]float32)
 
@@ -481,29 +480,36 @@ func FixSpendingCount() {
 				weekPointMap[a.WeekID] += a.Points
 			}
 
+			// Find the longest consecutive streak of weeks with points >= 1
 			weeks := []int{}
 			for week := range weekPointMap {
-				weeks = append(weeks, int(week))
+				if weekPointMap[week] >= 1 {
+					weeks = append(weeks, int(week))
+				}
 			}
 			sort.Ints(weeks)
-			prevWeek := -1
-			for _, week := range weeks {
-				points := weekPointMap[uint(week)]
 
-				if prevWeek != -1 && week-prevWeek > 1 {
-					// Missed one or more weeks – reset the streak
-					spendingCount = 0
+			maxStreak := 0
+			currentStreak := 0
+
+			for i, week := range weeks {
+				if i == 0 || week == weeks[i-1]+1 {
+					// First week or consecutive week
+					currentStreak++
+				} else {
+					// Gap found, start new streak
+					currentStreak = 1
 				}
 
-				if points > 0 {
-					spendingCount++
+				if currentStreak > maxStreak {
+					maxStreak = currentStreak
 				}
-
-				prevWeek = week
 			}
 
-			p.UpdateSpendingCount(spendingCount)
-			repository.SaveRecruitProfile(p, db)
+			p.UpdateSpendingCount(maxStreak)
+			if p.SpendingCount > 0 {
+				repository.SaveRecruitProfile(p, db)
+			}
 		}
 	}
 }
@@ -574,6 +580,9 @@ func FixPointAmount() {
 			originalTotalPoints := p.TotalPoints
 			p.SoftReset()
 
+			// Group allocations by week to calculate correct spending count
+			weeklyPoints := make(map[uint]float64)
+
 			for _, a := range profileAllocations {
 				// Check if the original allocation was valid (not cheating/over limit)
 				if a.RESAffectedPoints == 0 && a.Points > 0 {
@@ -621,11 +630,24 @@ func FixPointAmount() {
 						correctedRESPoints = a.RESAffectedPoints
 					}
 
-					// Use the corrected points
-					p.AddCurrentWeekPointsToTotal(float64(correctedRESPoints))
+					// Accumulate corrected points by week
+					weeklyPoints[a.WeekID] += float64(correctedRESPoints)
 				} else if a.RESAffectedPoints > 0 {
 					// Fallback: if we don't have enough info, use what we have
-					p.AddCurrentWeekPointsToTotal(float64(a.RESAffectedPoints))
+					weeklyPoints[a.WeekID] += float64(a.RESAffectedPoints)
+				}
+			}
+
+			// Now add points week by week to properly calculate spending count
+			weeks := make([]uint, 0, len(weeklyPoints))
+			for week := range weeklyPoints {
+				weeks = append(weeks, week)
+			}
+			sort.Slice(weeks, func(i, j int) bool { return weeks[i] < weeks[j] })
+
+			for _, week := range weeks {
+				if weeklyPoints[week] > 0 {
+					p.AddCurrentWeekPointsToTotal(weeklyPoints[week])
 				}
 			}
 			if p.TotalPoints == 0 {
