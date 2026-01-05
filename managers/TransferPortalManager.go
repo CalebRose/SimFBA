@@ -98,13 +98,14 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 		}
 		snapsPerGame := totalSnaps / 12
 
-		if p.Position == "P" || p.Position == "K" {
+		switch p.Position {
+		case "P", "K":
 			if snapsPerGame > 1 {
 				snapMod = bigDrop
 			} else {
 				snapMod = smallGain
 			}
-		} else if p.Position == "QB" {
+		case "QB":
 			if snapsPerGame > 50 {
 				snapMod = bigDrop
 			} else if snapsPerGame > 30 {
@@ -114,7 +115,7 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 			} else {
 				snapMod = bigGain
 			}
-		} else if p.Position == "OG" || p.Position == "OT" || p.Position == "C" {
+		case "OG", "OT", "C":
 			if snapsPerGame > 50 {
 				snapMod = bigDrop
 			} else if snapsPerGame > 30 {
@@ -124,7 +125,7 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 			} else {
 				snapMod = bigGain
 			}
-		} else if p.Position == "SS" || p.Position == "FS" || p.Position == "RB" {
+		case "SS", "FS", "RB":
 			/// next positions are usually single full time starters, but could also have backups playing ST so more tiers needed
 			if snapsPerGame > 35 {
 				snapMod = bigDrop
@@ -135,7 +136,7 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 			} else {
 				snapMod = bigGain
 			}
-		} else if p.Position == "FB" || p.Position == "TE" {
+		case "FB", "TE":
 			if snapsPerGame > 30 {
 				snapMod = bigDrop
 			} else if snapsPerGame > 10 {
@@ -145,7 +146,7 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 			} else {
 				snapMod = bigGain
 			}
-		} else if p.Position == "RB" || p.Position == "DT" || p.Position == "ILB" {
+		case "DT", "ILB":
 			if snapsPerGame > 35 {
 				snapMod = bigDrop
 			} else if snapsPerGame > 20 {
@@ -155,7 +156,7 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 			} else {
 				snapMod = bigGain
 			}
-		} else if p.Position == "CB" || p.Position == "OLB" || p.Position == "WR" || p.Position == "DE" {
+		case "CB", "OLB", "WR", "DE":
 			if snapsPerGame > 35 {
 				snapMod = bigDrop
 			} else if snapsPerGame > 25 {
@@ -190,17 +191,18 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 		}
 
 		/// Higher star players are more likely to transfer
-		if p.Stars == 0 {
+		switch p.Stars {
+		case 0:
 			starMod = 1
-		} else if p.Stars == 1 {
+		case 1:
 			starMod = .66
-		} else if p.Stars == 2 {
+		case 2:
 			starMod = .75
-		} else if p.Stars == 3 {
+		case 3:
 			starMod = util.GenerateFloatFromRange(0.9, 1.1)
-		} else if p.Stars == 4 {
+		case 4:
 			starMod = util.GenerateFloatFromRange(1.11, 1.3)
-		} else if p.Stars == 5 {
+		case 5:
 			starMod = util.GenerateFloatFromRange(1.31, 1.75)
 		}
 
@@ -412,9 +414,10 @@ func AICoachPromisePhase() {
 					promiseType = "Snaps"
 					// REWRITE
 					promiseBenchmark = 0
-					if promiseLevel == 1 {
+					switch promiseLevel {
+					case 1:
 						promiseBenchmark += 10
-					} else if promiseLevel == -1 {
+					case -1:
 						promiseBenchmark -= 1
 					}
 
@@ -423,9 +426,10 @@ func AICoachPromisePhase() {
 					// Promise based on wins
 					promiseBenchmark = 6
 					promiseType = "Wins"
-					if promiseLevel == 1 {
+					switch promiseLevel {
+					case 1:
 						promiseBenchmark += 3
-					} else if promiseLevel == -1 {
+					case -1:
 						promiseBenchmark -= 3
 					}
 					promiseWeight = getPromiseWeightBySnapsOrWins(p.Position, "Wins", promiseBenchmark)
@@ -958,12 +962,13 @@ func AICoachAllocateAndPromisePhase() {
 					} else if bias == immediateStart && tp.Overall > 40 {
 						promiseType = "Snaps"
 						// Rewrite
-						if promiseLevel == 1 {
+						switch promiseLevel {
+						case 1:
 							promiseBenchmark += 5
 							if promiseBenchmark > tp.Stamina {
 								promiseBenchmark = tp.Stamina - 1
 							}
-						} else if promiseLevel == -1 {
+						case -1:
 							promiseBenchmark -= 1
 						}
 
@@ -972,9 +977,10 @@ func AICoachAllocateAndPromisePhase() {
 						// Promise based on wins
 						promiseBenchmark = 6
 						promiseType = "Wins"
-						if promiseLevel == 1 {
+						switch promiseLevel {
+						case 1:
 							promiseBenchmark += 3
-						} else if promiseLevel == -1 {
+						case -1:
 							promiseBenchmark -= 3
 						}
 						promiseWeight = getPromiseWeightBySnapsOrWins(tp.Position, "Snap Count", promiseBenchmark)
@@ -1540,12 +1546,13 @@ func getTransferPortalProfileMap(players []structs.CollegePlayer) map[uint][]str
 func getTransferFloor(likeliness string) int {
 	min := 25
 	max := 100
-	if likeliness == "Low" {
+	switch likeliness {
+	case "Low":
 		max = 40
-	} else if likeliness == "Medium" {
+	case "Medium":
 		min = 45
 		max = 70
-	} else {
+	default:
 		min = 75
 	}
 
@@ -1677,9 +1684,10 @@ func getTransferStatus(weight int) string {
 
 func getPromiseLevel(pt string) int {
 	promiseLevel := 0
-	if pt == "Over-Promise" {
+	switch pt {
+	case "Over-Promise":
 		promiseLevel = 1
-	} else if pt == "Under-Promise" {
+	case "Under-Promise":
 		promiseLevel = -1
 	}
 	return promiseLevel
@@ -1690,13 +1698,14 @@ func getMultiplier(pr structs.CollegePromise) float64 {
 		return 1
 	}
 	weight := pr.PromiseWeight
-	if weight == "Very Low" {
+	switch weight {
+	case "Very Low":
 		return 1.05
-	} else if weight == "Low" {
+	case "Low":
 		return 1.1
-	} else if weight == "Medium" {
+	case "Medium":
 		return 1.3
-	} else if weight == "High" {
+	case "High":
 		return 1.5
 	}
 	// Very High

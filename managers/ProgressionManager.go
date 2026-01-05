@@ -297,14 +297,15 @@ func CFBProgressionMain() {
 		}
 
 		// Generate Tier
-		if diceRoll == 1 {
+		switch diceRoll {
+		case 1:
 
 			enableBoomBust = true
-		} else if diceRoll == 20 {
+		case 20:
 
 			enableBoomBust = true
 			isBoom = true
-		} else {
+		default:
 			tier = 0
 		}
 		if enableBoomBust {
@@ -487,7 +488,8 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 
 	*/
 
-	if mostPlayedPosition == "QB" {
+	switch mostPlayedPosition {
+	case "QB":
 		// Primary Progressions
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Throw Power", np.IsPracticeSquad)
@@ -511,7 +513,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
 		ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
 		ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
-	} else if mostPlayedPosition == "RB" {
+	case "RB":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		Carrying = PrimaryProgression(np.Progression, np.Carrying, mostPlayedPosition, np.Archetype, SnapsPerGame, "Carrying", np.IsPracticeSquad)
@@ -534,7 +536,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 		ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-	} else if mostPlayedPosition == "FB" {
+	case "FB":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		Carrying = PrimaryProgression(np.Progression, np.Carrying, mostPlayedPosition, np.Archetype, SnapsPerGame, "Carrying", np.IsPracticeSquad)
@@ -559,7 +561,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
 
-	} else if mostPlayedPosition == "TE" {
+	case "TE":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		Carrying = PrimaryProgression(np.Progression, np.Carrying, mostPlayedPosition, np.Archetype, SnapsPerGame, "Carrying", np.IsPracticeSquad)
@@ -583,7 +585,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 		ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-	} else if mostPlayedPosition == "WR" {
+	case "WR":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		Carrying = PrimaryProgression(np.Progression, np.Carrying, mostPlayedPosition, np.Archetype, SnapsPerGame, "Carrying", np.IsPracticeSquad)
@@ -607,7 +609,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 		ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-	} else if mostPlayedPosition == "OT" || mostPlayedPosition == "OG" || mostPlayedPosition == "C" {
+	case "OT", "OG", "C":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
@@ -631,7 +633,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		Carrying = SecondaryProgression(np.Progression, np.Carrying)
 		Speed = SecondaryProgression(np.Progression, np.Speed)
 		Catching = SecondaryProgression(np.Progression, np.Catching)
-	} else if mostPlayedPosition == "DT" {
+	case "DT":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
@@ -655,7 +657,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		Speed = SecondaryProgression(np.Progression, np.Speed)
 		RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 		PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-	} else if mostPlayedPosition == "DE" {
+	case "DE":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
@@ -679,7 +681,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 		RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 		PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-	} else if mostPlayedPosition == "OLB" || mostPlayedPosition == "ILB" {
+	case "OLB", "ILB":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
@@ -703,7 +705,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 		RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 		PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-	} else if mostPlayedPosition == "CB" {
+	case "CB":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
@@ -727,7 +729,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 		PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
 		RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
-	} else if mostPlayedPosition == "FS" || mostPlayedPosition == "SS" {
+	case "FS", "SS":
 		// Primary
 		Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 		FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
@@ -751,7 +753,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 		PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
 		RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
-	} else if mostPlayedPosition == "K" {
+	case "K":
 		// Primary
 		KickPower = PrimaryProgression(np.Progression, np.KickPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Kick Power", np.IsPracticeSquad)
 		KickAccuracy = PrimaryProgression(np.Progression, np.KickAccuracy, mostPlayedPosition, np.Archetype, SnapsPerGame, "Kick Accuracy", np.IsPracticeSquad)
@@ -774,7 +776,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 		FootballIQ = SecondaryProgression(np.Progression, np.FootballIQ)
 		Tackle = SecondaryProgression(np.Progression, np.Tackle)
-	} else if mostPlayedPosition == "P" {
+	case "P":
 		// If David Ross
 		if np.ID == 24984 {
 			ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Throw Power", np.IsPracticeSquad)
@@ -803,10 +805,11 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		Speed = SecondaryProgression(np.Progression, np.Speed)
 		Agility = SecondaryProgression(np.Progression, np.Agility)
 		FootballIQ = SecondaryProgression(np.Progression, np.FootballIQ)
-	} else if mostPlayedPosition == "ATH" {
+	case "ATH":
 		// Use Archetype
 		archetype := np.Archetype
-		if archetype == "Field General" {
+		switch archetype {
+		case "Field General":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Throw Power", np.IsPracticeSquad)
 			ThrowAccuracy = PrimaryProgression(np.Progression, np.ThrowAccuracy, mostPlayedPosition, np.Archetype, SnapsPerGame, "Throw Accuracy", np.IsPracticeSquad)
@@ -829,7 +832,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			PuntAccuracy = SecondaryProgression(np.Progression, np.PuntAccuracy)
 			KickPower = SecondaryProgression(np.Progression, np.KickPower)
 			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
-		} else if archetype == "Triple-Threat" {
+		case "Triple-Threat":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Throw Power", np.IsPracticeSquad)
 			ThrowAccuracy = PrimaryProgression(np.Progression, np.ThrowAccuracy, mostPlayedPosition, np.Archetype, SnapsPerGame, "Throw Accuracy", np.IsPracticeSquad)
@@ -849,7 +852,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			Strength = SecondaryProgression(np.Progression, np.Strength)
-		} else if archetype == "Wingback" {
+		case "Wingback":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			Speed = PrimaryProgression(np.Progression, np.Speed, mostPlayedPosition, np.Archetype, SnapsPerGame, "Speed", np.IsPracticeSquad)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
@@ -870,7 +873,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			Strength = SecondaryProgression(np.Progression, np.Strength)
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-		} else if archetype == "Slotback" {
+		case "Slotback":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			Speed = PrimaryProgression(np.Progression, np.Speed, mostPlayedPosition, np.Archetype, SnapsPerGame, "Speed", np.IsPracticeSquad)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
@@ -891,7 +894,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-		} else if archetype == "Lineman" {
+		case "Lineman":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
 			Strength = PrimaryProgression(np.Progression, np.Strength, mostPlayedPosition, np.Archetype, SnapsPerGame, "Strength", np.IsPracticeSquad)
@@ -912,7 +915,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			Catching = SecondaryProgression(np.Progression, np.Catching)
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 			Speed = SecondaryProgression(np.Progression, np.Speed)
-		} else if archetype == "Strongside" {
+		case "Strongside":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
 			Strength = PrimaryProgression(np.Progression, np.Strength, mostPlayedPosition, np.Archetype, SnapsPerGame, "Strength", np.IsPracticeSquad)
@@ -933,7 +936,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if archetype == "Weakside" {
+		case "Weakside":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
 			Strength = PrimaryProgression(np.Progression, np.Strength, mostPlayedPosition, np.Archetype, SnapsPerGame, "Strength", np.IsPracticeSquad)
@@ -954,7 +957,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if archetype == "Bandit" {
+		case "Bandit":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, mostPlayedPosition, np.Archetype, SnapsPerGame, "Football IQ", np.IsPracticeSquad)
 			Strength = PrimaryProgression(np.Progression, np.Strength, mostPlayedPosition, np.Archetype, SnapsPerGame, "Strength", np.IsPracticeSquad)
@@ -975,7 +978,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if archetype == "Return Specialist" {
+		case "Return Specialist":
 			Agility = PrimaryProgression(np.Progression, np.Agility, mostPlayedPosition, np.Archetype, SnapsPerGame, "Agility", np.IsPracticeSquad)
 			Speed = PrimaryProgression(np.Progression, np.Speed, mostPlayedPosition, np.Archetype, SnapsPerGame, "Speed", np.IsPracticeSquad)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, mostPlayedPosition, np.Archetype, SnapsPerGame, "Carrying", np.IsPracticeSquad)
@@ -991,7 +994,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
 			Strength = SecondaryProgression(np.Progression, np.Strength)
-		} else if archetype == "Soccer Player" {
+		case "Soccer Player":
 			KickPower = PrimaryProgression(np.Progression, np.KickPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Kick Power", np.IsPracticeSquad)
 			KickAccuracy = PrimaryProgression(np.Progression, np.KickAccuracy, mostPlayedPosition, np.Archetype, SnapsPerGame, "Kick Accuracy", np.IsPracticeSquad)
 			PuntPower = PrimaryProgression(np.Progression, np.PuntPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Punt Power", np.IsPracticeSquad)
@@ -1119,7 +1122,8 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		mostPlayedPosition = cp.Position
 	}
 
-	if mostPlayedPosition == "QB" {
+	switch mostPlayedPosition {
+	case "QB":
 		// Primary Progressions
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		ThrowPower = PrimaryProgression(cp.Progression, cp.ThrowPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Throw Power", cp.IsRedshirting)
@@ -1143,7 +1147,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		KickAccuracy = SecondaryProgression(cp.Progression, cp.KickAccuracy)
 		ManCoverage = SecondaryProgression(cp.Progression, cp.ManCoverage)
 		ZoneCoverage = SecondaryProgression(cp.Progression, cp.ZoneCoverage)
-	} else if mostPlayedPosition == "RB" {
+	case "RB":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		Carrying = PrimaryProgression(cp.Progression, cp.Carrying, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Carrying", cp.IsRedshirting)
@@ -1166,7 +1170,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		ZoneCoverage = SecondaryProgression(cp.Progression, cp.ZoneCoverage)
 		ThrowPower = SecondaryProgression(cp.Progression, cp.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(cp.Progression, cp.ThrowAccuracy)
-	} else if mostPlayedPosition == "FB" {
+	case "FB":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		Carrying = PrimaryProgression(cp.Progression, cp.Carrying, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Carrying", cp.IsRedshirting)
@@ -1191,7 +1195,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		ThrowPower = SecondaryProgression(cp.Progression, cp.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(cp.Progression, cp.ThrowAccuracy)
 
-	} else if mostPlayedPosition == "TE" {
+	case "TE":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		Carrying = PrimaryProgression(cp.Progression, cp.Carrying, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Carrying", cp.IsRedshirting)
@@ -1215,7 +1219,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		ZoneCoverage = SecondaryProgression(cp.Progression, cp.ZoneCoverage)
 		ThrowPower = SecondaryProgression(cp.Progression, cp.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(cp.Progression, cp.ThrowAccuracy)
-	} else if mostPlayedPosition == "WR" {
+	case "WR":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		Carrying = PrimaryProgression(cp.Progression, cp.Carrying, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Carrying", cp.IsRedshirting)
@@ -1239,7 +1243,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		ZoneCoverage = SecondaryProgression(cp.Progression, cp.ZoneCoverage)
 		ThrowPower = SecondaryProgression(cp.Progression, cp.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(cp.Progression, cp.ThrowAccuracy)
-	} else if mostPlayedPosition == "OT" || mostPlayedPosition == "OG" || mostPlayedPosition == "C" {
+	case "OT", "OG", "C":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
@@ -1263,7 +1267,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		Carrying = SecondaryProgression(cp.Progression, cp.Carrying)
 		Speed = SecondaryProgression(cp.Progression, cp.Speed)
 		Catching = SecondaryProgression(cp.Progression, cp.Catching)
-	} else if mostPlayedPosition == "DT" {
+	case "DT":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
@@ -1287,7 +1291,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		Speed = SecondaryProgression(cp.Progression, cp.Speed)
 		RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 		PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
-	} else if mostPlayedPosition == "DE" {
+	case "DE":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
@@ -1311,7 +1315,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
 		RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 		PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
-	} else if mostPlayedPosition == "OLB" || mostPlayedPosition == "ILB" {
+	case "OLB", "ILB":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
@@ -1335,7 +1339,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
 		RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 		PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
-	} else if mostPlayedPosition == "CB" {
+	case "CB":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
@@ -1359,7 +1363,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 		PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
 		RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
-	} else if mostPlayedPosition == "FS" || mostPlayedPosition == "SS" {
+	case "FS", "SS":
 		// Primary
 		Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 		FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
@@ -1383,7 +1387,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 		PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
 		RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
-	} else if mostPlayedPosition == "K" {
+	case "K":
 		// Primary
 		KickPower = PrimaryProgression(cp.Progression, cp.KickPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Kick Power", cp.IsRedshirting)
 		KickAccuracy = PrimaryProgression(cp.Progression, cp.KickAccuracy, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Kick Accuracy", cp.IsRedshirting)
@@ -1406,7 +1410,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		ZoneCoverage = SecondaryProgression(cp.Progression, cp.ZoneCoverage)
 		FootballIQ = SecondaryProgression(cp.Progression, cp.FootballIQ)
 		Tackle = SecondaryProgression(cp.Progression, cp.Tackle)
-	} else if mostPlayedPosition == "P" {
+	case "P":
 		// If David Ross
 		if cp.ID == 24984 {
 			ThrowPower = PrimaryProgression(cp.Progression, cp.ThrowPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Throw Power", cp.IsRedshirting)
@@ -1436,10 +1440,11 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		Strength = SecondaryProgression(cp.Progression, cp.Strength)
 		Speed = SecondaryProgression(cp.Progression, cp.Speed)
 		Agility = SecondaryProgression(cp.Progression, cp.Agility)
-	} else if mostPlayedPosition == "ATH" {
+	case "ATH":
 		// Use Archetype
 		archetype := cp.Archetype
-		if archetype == "Field General" {
+		switch archetype {
+		case "Field General":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			ThrowPower = PrimaryProgression(cp.Progression, cp.ThrowPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Throw Power", cp.IsRedshirting)
 			ThrowAccuracy = PrimaryProgression(cp.Progression, cp.ThrowAccuracy, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Throw Accuracy", cp.IsRedshirting)
@@ -1462,7 +1467,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			PuntAccuracy = SecondaryProgression(cp.Progression, cp.PuntAccuracy)
 			KickPower = SecondaryProgression(cp.Progression, cp.KickPower)
 			KickAccuracy = SecondaryProgression(cp.Progression, cp.KickAccuracy)
-		} else if archetype == "Triple-Threat" {
+		case "Triple-Threat":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			ThrowPower = PrimaryProgression(cp.Progression, cp.ThrowPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Throw Power", cp.IsRedshirting)
 			ThrowAccuracy = PrimaryProgression(cp.Progression, cp.ThrowAccuracy, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Throw Accuracy", cp.IsRedshirting)
@@ -1483,7 +1488,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			ManCoverage = SecondaryProgression(cp.Progression, cp.ManCoverage)
 			ZoneCoverage = SecondaryProgression(cp.Progression, cp.ZoneCoverage)
 			Strength = SecondaryProgression(cp.Progression, cp.Strength)
-		} else if archetype == "Wingback" {
+		case "Wingback":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			Speed = PrimaryProgression(cp.Progression, cp.Speed, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Speed", cp.IsRedshirting)
 			FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
@@ -1504,7 +1509,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			Strength = SecondaryProgression(cp.Progression, cp.Strength)
 			ThrowPower = SecondaryProgression(cp.Progression, cp.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(cp.Progression, cp.ThrowAccuracy)
-		} else if archetype == "Slotback" {
+		case "Slotback":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			Speed = PrimaryProgression(cp.Progression, cp.Speed, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Speed", cp.IsRedshirting)
 			FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
@@ -1525,7 +1530,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			ZoneCoverage = SecondaryProgression(cp.Progression, cp.ZoneCoverage)
 			ThrowPower = SecondaryProgression(cp.Progression, cp.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(cp.Progression, cp.ThrowAccuracy)
-		} else if archetype == "Lineman" {
+		case "Lineman":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
 			Strength = PrimaryProgression(cp.Progression, cp.Strength, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Strength", cp.IsRedshirting)
@@ -1546,7 +1551,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			Catching = SecondaryProgression(cp.Progression, cp.Catching)
 			RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
 			Speed = SecondaryProgression(cp.Progression, cp.Speed)
-		} else if archetype == "Strongside" {
+		case "Strongside":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
 			Strength = PrimaryProgression(cp.Progression, cp.Strength, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Strength", cp.IsRedshirting)
@@ -1567,7 +1572,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
 			RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 			PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
-		} else if archetype == "Weakside" {
+		case "Weakside":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
 			Strength = PrimaryProgression(cp.Progression, cp.Strength, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Strength", cp.IsRedshirting)
@@ -1588,7 +1593,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
 			RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 			PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
-		} else if archetype == "Bandit" {
+		case "Bandit":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			FootballIQ = PrimaryProgression(cp.Progression, cp.FootballIQ, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Football IQ", cp.IsRedshirting)
 			Strength = PrimaryProgression(cp.Progression, cp.Strength, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Strength", cp.IsRedshirting)
@@ -1609,7 +1614,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
 			RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 			PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
-		} else if archetype == "Return Specialist" {
+		case "Return Specialist":
 			Agility = PrimaryProgression(cp.Progression, cp.Agility, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Agility", cp.IsRedshirting)
 			Speed = PrimaryProgression(cp.Progression, cp.Speed, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Speed", cp.IsRedshirting)
 			Carrying = PrimaryProgression(cp.Progression, cp.Carrying, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Carrying", cp.IsRedshirting)
@@ -1630,7 +1635,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			Tackle = SecondaryProgression(cp.Progression, cp.Tackle)
 			PassRush = SecondaryProgression(cp.Progression, cp.PassRush)
 			RunDefense = SecondaryProgression(cp.Progression, cp.RunDefense)
-		} else if archetype == "Soccer Player" {
+		case "Soccer Player":
 			KickPower = PrimaryProgression(cp.Progression, cp.KickPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Kick Power", cp.IsRedshirting)
 			KickAccuracy = PrimaryProgression(cp.Progression, cp.KickAccuracy, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Kick Accuracy", cp.IsRedshirting)
 			PuntPower = PrimaryProgression(cp.Progression, cp.PuntPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Punt Power", cp.IsRedshirting)
@@ -1711,7 +1716,8 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 	ZoneCoverage := 0
 
 	if isBoom {
-		if np.Position == "QB" {
+		switch np.Position {
+		case "QB":
 			// Primary Progressions
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, np.Position, np.Archetype, SnapsPerGame, "Throw Power", false)
@@ -1735,7 +1741,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
 			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
-		} else if np.Position == "RB" {
+		case "RB":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
@@ -1758,7 +1764,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-		} else if np.Position == "FB" {
+		case "FB":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
@@ -1783,7 +1789,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
 
-		} else if np.Position == "TE" {
+		case "TE":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
@@ -1807,7 +1813,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-		} else if np.Position == "WR" {
+		case "WR":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
@@ -1831,7 +1837,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-		} else if np.Position == "OT" || np.Position == "OG" || np.Position == "C" {
+		case "OT", "OG", "C":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -1855,7 +1861,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			Carrying = SecondaryProgression(np.Progression, np.Carrying)
 			Speed = SecondaryProgression(np.Progression, np.Speed)
 			Catching = SecondaryProgression(np.Progression, np.Catching)
-		} else if np.Position == "DT" {
+		case "DT":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -1879,7 +1885,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			Speed = SecondaryProgression(np.Progression, np.Speed)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if np.Position == "DE" {
+		case "DE":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -1903,7 +1909,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if np.Position == "OLB" || np.Position == "ILB" {
+		case "OLB", "ILB":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -1927,7 +1933,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if np.Position == "CB" {
+		case "CB":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -1951,7 +1957,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
-		} else if np.Position == "FS" || np.Position == "SS" {
+		case "FS", "SS":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -1975,7 +1981,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
-		} else if np.Position == "K" {
+		case "K":
 			// Primary
 			KickPower = PrimaryProgression(np.Progression, np.KickPower, np.Position, np.Archetype, SnapsPerGame, "Kick Power", false)
 			KickAccuracy = PrimaryProgression(np.Progression, np.KickAccuracy, np.Position, np.Archetype, SnapsPerGame, "Kick Accuracy", false)
@@ -1998,7 +2004,7 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			FootballIQ = SecondaryProgression(np.Progression, np.FootballIQ)
 			Tackle = SecondaryProgression(np.Progression, np.Tackle)
-		} else if np.Position == "P" {
+		case "P":
 			// If David Ross
 			if np.ID == 24984 {
 				ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, np.Position, np.Archetype, SnapsPerGame, "Throw Power", false)
@@ -2105,7 +2111,8 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 	ZoneCoverage := 0
 
 	if isBoom {
-		if np.Position == "QB" {
+		switch np.Position {
+		case "QB":
 			// Primary Progressions
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, np.Position, np.Archetype, SnapsPerGame, "Throw Power", false)
@@ -2129,7 +2136,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			KickAccuracy = SecondaryProgression(np.Progression, np.KickAccuracy)
 			ManCoverage = SecondaryProgression(np.Progression, np.ManCoverage)
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
-		} else if np.Position == "RB" {
+		case "RB":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
@@ -2152,7 +2159,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-		} else if np.Position == "FB" {
+		case "FB":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
@@ -2177,7 +2184,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
 
-		} else if np.Position == "TE" {
+		case "TE":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
@@ -2201,7 +2208,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-		} else if np.Position == "WR" {
+		case "WR":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			Carrying = PrimaryProgression(np.Progression, np.Carrying, np.Position, np.Archetype, SnapsPerGame, "Carrying", false)
@@ -2225,7 +2232,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
-		} else if np.Position == "OT" || np.Position == "OG" || np.Position == "C" {
+		case "OT", "OG", "C":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -2249,7 +2256,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			Carrying = SecondaryProgression(np.Progression, np.Carrying)
 			Speed = SecondaryProgression(np.Progression, np.Speed)
 			Catching = SecondaryProgression(np.Progression, np.Catching)
-		} else if np.Position == "DT" {
+		case "DT":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -2273,7 +2280,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			Speed = SecondaryProgression(np.Progression, np.Speed)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if np.Position == "DE" {
+		case "DE":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -2297,7 +2304,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if np.Position == "OLB" || np.Position == "ILB" {
+		case "OLB", "ILB":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -2321,7 +2328,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
-		} else if np.Position == "CB" {
+		case "CB":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -2345,7 +2352,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
-		} else if np.Position == "FS" || np.Position == "SS" {
+		case "FS", "SS":
 			// Primary
 			Agility = PrimaryProgression(np.Progression, np.Agility, np.Position, np.Archetype, SnapsPerGame, "Agility", false)
 			FootballIQ = PrimaryProgression(np.Progression, np.FootballIQ, np.Position, np.Archetype, SnapsPerGame, "Football IQ", false)
@@ -2369,7 +2376,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 			PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
 			RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
-		} else if np.Position == "K" {
+		case "K":
 			// Primary
 			KickPower = PrimaryProgression(np.Progression, np.KickPower, np.Position, np.Archetype, SnapsPerGame, "Kick Power", false)
 			KickAccuracy = PrimaryProgression(np.Progression, np.KickAccuracy, np.Position, np.Archetype, SnapsPerGame, "Kick Accuracy", false)
@@ -2392,7 +2399,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			ZoneCoverage = SecondaryProgression(np.Progression, np.ZoneCoverage)
 			FootballIQ = SecondaryProgression(np.Progression, np.FootballIQ)
 			Tackle = SecondaryProgression(np.Progression, np.Tackle)
-		} else if np.Position == "P" {
+		case "P":
 			// If David Ross
 			if np.ID == 24984 {
 				ThrowPower = PrimaryProgression(np.Progression, np.ThrowPower, np.Position, np.Archetype, SnapsPerGame, "Throw Power", false)
@@ -2421,7 +2428,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			Speed = SecondaryProgression(np.Progression, np.Speed)
 			Agility = SecondaryProgression(np.Progression, np.Agility)
 			FootballIQ = SecondaryProgression(np.Progression, np.FootballIQ)
-		} else if np.Position == "ATH" {
+		case "ATH":
 			ThrowPower = np.ThrowPower + util.GenerateNormalizedIntFromRange(1, 3)
 			ThrowAccuracy = np.ThrowAccuracy + util.GenerateNormalizedIntFromRange(1, 3)
 			PuntPower = np.PuntPower + util.GenerateNormalizedIntFromRange(1, 3)
@@ -2552,23 +2559,26 @@ func GetModifiers(position string, archetype string, spg int, attrib string) flo
 }
 
 func GetArchetypeMod(pos string, arch string, attribute string) float64 {
-	if pos == "QB" {
-		if arch == "Pocket" {
+	switch pos {
+	case "QB":
+		switch arch {
+		case "Pocket":
 			if attribute == "Throw Power" || attribute == "Throw Accuracy" {
 				return 0.05
 			}
-		} else if arch == "Balanced" {
-			if attribute == "Agility" {
+		case "Balanced":
+			switch attribute {
+			case "Agility":
 				return 0.05
-			} else if attribute == "Throw Power" || attribute == "Throw Accuracy" {
+			case "Throw Power", "Throw Accuracy":
 				return 0.025
 			}
 
-		} else if arch == "Field General" {
+		case "Field General":
 			if attribute == "Football IQ" || attribute == "Throw Accuracy" {
 				return 0.05
 			}
-		} else if arch == "Scrambler" {
+		case "Scrambler":
 			if attribute == "Agility" || attribute == "Speed" {
 				return 0.05
 			}
@@ -2577,30 +2587,31 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 			}
 		}
 		return 0
-	} else if pos == "RB" {
-		if arch == "Speed" {
+	case "RB":
+		switch arch {
+		case "Speed":
 			if attribute == "Speed" || attribute == "Carrying" {
 				return 0.05
 			}
 			return 0.0
-		} else if arch == "Power" {
+		case "Power":
 			if attribute == "Carrying" || attribute == "Strength" {
 				return 0.05
 			}
 			return 0.0
-		} else if arch == "Balanced" {
+		case "Balanced":
 			if attribute == "Agility" || attribute == "Pass Block" {
 				return 0.05
 			}
 			return 0.0
-		} else if arch == "Receiving" {
+		case "Receiving":
 			if attribute == "Agility" || attribute == "Catching" {
 				return 0.05
 			}
 			return 0.0
 		}
 		return 0
-	} else if pos == "FB" {
+	case "FB":
 		if arch == "Blocking" && (attribute == "Pass Blocking" || attribute == "Run Blocking") {
 			return 0.05
 		} else if arch == "Rushing" && (attribute == "Carrying" || attribute == "Strength") {
@@ -2611,7 +2622,7 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 			return 0.05
 		}
 		return 0
-	} else if pos == "WR" {
+	case "WR":
 		if arch == "Possession" && (attribute == "Carrying" || attribute == "Catching") {
 			return 0.05
 		} else if arch == "Route Runner" && (attribute == "Agility" || attribute == "Route Running") {
@@ -2622,7 +2633,7 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 			return 0.05
 		}
 		return 0
-	} else if pos == "TE" {
+	case "TE":
 		if arch == "Blocking" && (attribute == "Pass Blocking" || attribute == "Run Blocking") {
 			return 0.05
 		} else if arch == "Vertical Threat" && (attribute == "Catching" || attribute == "Speed") {
@@ -2631,49 +2642,53 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 			return 0.05
 		}
 		return 0
-	} else if pos == "OT" {
+	case "OT":
 		if arch == "Pass Blocking" && (attribute == "Pass Blocking" || attribute == "Strength") {
 			return 0.05
 		} else if arch == "Run Blocking" && (attribute == "Run Blocking" || attribute == "Strength") {
 			return 0.05
 		} else if arch == "Balanced" {
-			if attribute == "Run Blocking" || attribute == "Pass Blocking" {
+			switch attribute {
+			case "Run Blocking", "Pass Blocking":
 				return 0.025
-			} else if attribute == "Strength" {
+			case "Strength":
 				return 0.05
 			}
 		}
-	} else if pos == "OG" {
+	case "OG":
 		if arch == "Pass Blocking" && (attribute == "Pass Blocking" || attribute == "Strength") {
 			return 0.05
 		} else if arch == "Run Blocking" && (attribute == "Run Blocking" || attribute == "Strength") {
 			return 0.05
 		} else if arch == "Balanced" {
-			if attribute == "Run Blocking" || attribute == "Pass Blocking" {
+			switch attribute {
+			case "Run Blocking", "Pass Blocking":
 				return 0.025
-			} else if attribute == "Strength" {
+			case "Strength":
 				return 0.05
 			}
 		}
-	} else if pos == "C" {
+	case "C":
 		if arch == "Pass Blocking" && (attribute == "Pass Blocking" || attribute == "Strength") {
 			return 0.05
 		} else if arch == "Run Blocking" && (attribute == "Run Blocking" || attribute == "Strength") {
 			return 0.05
 		} else if arch == "Balanced" {
-			if attribute == "Run Blocking" || attribute == "Pass Blocking" {
+			switch attribute {
+			case "Run Blocking", "Pass Blocking":
 				return 0.025
-			} else if attribute == "Strength" {
+			case "Strength":
 				return 0.05
 			}
 		} else if arch == "Line Captain" {
-			if attribute == "Run Blocking" || attribute == "Pass Blocking" {
+			switch attribute {
+			case "Run Blocking", "Pass Blocking":
 				return 0.025
-			} else if attribute == "Football IQ" {
+			case "Football IQ":
 				return 0.05
 			}
 		}
-	} else if pos == "DT" {
+	case "DT":
 		if arch == "Pass Rusher" && (attribute == "Pass Rush" || attribute == "Strength") {
 			return 0.05
 		} else if arch == "Nose Tackle" && (attribute == "Run Defense" || attribute == "Strength") {
@@ -2681,7 +2696,7 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 		} else if arch == "Balanced" && (attribute == "Tackle" || attribute == "Strength") {
 			return 0.05
 		}
-	} else if pos == "DE" {
+	case "DE":
 		if arch == "Speed Rusher" && attribute == "Pass Rush" {
 			return 0.1
 		} else if arch == "Run Stopper" && attribute == "Run Defense" {
@@ -2689,7 +2704,7 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 		} else if arch == "Balanced" && (attribute == "Pass Rush" || attribute == "Run Defense") {
 			return 0.05
 		}
-	} else if pos == "ILB" {
+	case "ILB":
 		if arch == "Field General" && (attribute == "Football IQ" || attribute == "Tackle") {
 			return 0.05
 		} else if arch == "Run Stopper" && (attribute == "Run Defense" || attribute == "Strength") {
@@ -2699,7 +2714,7 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 		} else if arch == "Speed" && (attribute == "Speed" || attribute == "Agility") {
 			return 0.05
 		}
-	} else if pos == "OLB" {
+	case "OLB":
 		if arch == "Pass Rush" && attribute == "Pass Rush" {
 			return 0.1
 		} else if arch == "Run Stopper" && (attribute == "Run Defense" || attribute == "Strength") {
@@ -2709,33 +2724,35 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 		} else if arch == "Speed" && (attribute == "Speed" || attribute == "Agility") {
 			return 0.05
 		}
-	} else if pos == "CB" {
+	case "CB":
 		if arch == "Man Coverage" && (attribute == "Man Coverage" || attribute == "Speed") {
 			return 0.05
 		} else if arch == "Zone Coverage" && (attribute == "Zone Coverage" || attribute == "Football IQ") {
 			return 0.05
 		} else if arch == "Ball Hawk" {
-			if attribute == "Man Coverage" || attribute == "Zone Coverage" {
+			switch attribute {
+			case "Man Coverage", "Zone Coverage":
 				return 0.025
-			} else if attribute == "Catching" {
+			case "Catching":
 				return 0.05
 			}
 		}
-	} else if pos == "FS" || pos == "SS" {
+	case "FS", "SS":
 		if arch == "Man Coverage" && (attribute == "Man Coverage" || attribute == "Speed") {
 			return 0.05
 		} else if arch == "Zone Coverage" && (attribute == "Zone Coverage" || attribute == "Football IQ") {
 			return 0.05
 		} else if arch == "Ball Hawk" {
-			if attribute == "Man Coverage" || attribute == "Zone Coverage" {
+			switch attribute {
+			case "Man Coverage", "Zone Coverage":
 				return 0.025
-			} else if attribute == "Catching" {
+			case "Catching":
 				return 0.05
 			}
 		} else if arch == "Run Stopper" && (attribute == "Run Defense" || attribute == "Tackle") {
 			return 0.05
 		}
-	} else if pos == "K" {
+	case "K":
 		if arch == "Power" && attribute == "Kick Power" {
 			return 0.1
 		} else if arch == "Accuracy" && attribute == "Kick Accuracy" {
@@ -2743,7 +2760,7 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 		} else if arch == "Balanced" && (attribute == "Kick Power" || attribute == "Kick Accuracy") {
 			return 0.05
 		}
-	} else if pos == "P" {
+	case "P":
 		if arch == "Power" && attribute == "Punt Power" {
 			return 0.1
 		} else if arch == "Accuracy" && attribute == "Punt Accuracy" {
@@ -2751,7 +2768,7 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 		} else if arch == "Balanced" && (attribute == "Punt Power" || attribute == "Punt Accuracy") {
 			return 0.05
 		}
-	} else if pos == "ATH" {
+	case "ATH":
 		return 0.0075
 	}
 	return 0

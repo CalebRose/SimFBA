@@ -98,21 +98,22 @@ func CFBProgressionExport(w http.ResponseWriter) {
 					}
 
 					// Generate Tier
-					if diceRoll == 1 {
+					switch diceRoll {
+					case 1:
 						boomBustStatus = "Bust"
 						enableBoomBust = true
 						// Bust
 						fmt.Println("BUST!")
 						draftee.AssignBoomBustStatus(boomBustStatus)
 
-					} else if diceRoll == 20 {
+					case 20:
 						enableBoomBust = true
 						// Boom
 						fmt.Println("BOOM!")
 						boomBustStatus = "Boom"
 						isBoom = true
 						draftee.AssignBoomBustStatus(boomBustStatus)
-					} else {
+					default:
 						tier = 0
 					}
 					if enableBoomBust {
@@ -180,14 +181,15 @@ func CFBProgressionExport(w http.ResponseWriter) {
 				}
 				boomBustStatus := "None"
 				// Generate Tier
-				if diceRoll == 1 {
+				switch diceRoll {
+				case 1:
 					boomBustStatus = "Bust"
 					enableBoomBust = true
-				} else if diceRoll == 20 {
+				case 20:
 					boomBustStatus = "Boom"
 					enableBoomBust = true
 					isBoom = true
-				} else {
+				default:
 					tier = 0
 				}
 				if enableBoomBust {

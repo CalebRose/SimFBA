@@ -8,17 +8,18 @@ import (
 )
 
 func GetRoundAbbreviation(str string) string {
-	if str == "1" {
+	switch str {
+	case "1":
 		return "1st Round"
-	} else if str == "2" {
+	case "2":
 		return "2nd Round"
-	} else if str == "3" {
+	case "3":
 		return "3rd Round"
-	} else if str == "4" {
+	case "4":
 		return "4th Round"
-	} else if str == "5" {
+	case "5":
 		return "5th Round"
-	} else if str == "6" {
+	case "6":
 		return "6th Round"
 	}
 	return "7th Round"

@@ -261,31 +261,32 @@ func GetNewAttributeRating(grade string, mapping map[string]map[string]map[strin
 }
 
 func TranslateLetterGradeToStdDevs(grade string) float32 {
-	if grade == "A+" {
+	switch grade {
+	case "A+":
 		return 2.5
-	} else if grade == "A" {
+	case "A":
 		return 2
-	} else if grade == "A-" {
+	case "A-":
 		return 1.75
-	} else if grade == "B+" {
+	case "B+":
 		return 1.5
-	} else if grade == "B" {
+	case "B":
 		return 1
-	} else if grade == "B-" {
+	case "B-":
 		return 0.75
-	} else if grade == "C+" {
+	case "C+":
 		return 0.5
-	} else if grade == "C" {
+	case "C":
 		return 0
-	} else if grade == "C-" {
+	case "C-":
 		return -0.5
-	} else if grade == "D+" {
+	case "D+":
 		return -0.75
-	} else if grade == "D" {
+	case "D":
 		return -1
-	} else if grade == "D-" {
+	case "D-":
 		return -1.5
-	} else { // F
+	default: // F
 		return -2
 	}
 }

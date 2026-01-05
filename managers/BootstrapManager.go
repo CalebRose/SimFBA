@@ -106,7 +106,7 @@ type BootstrapDataNews struct {
 }
 
 type BootstrapDataStats struct {
-	HeismanWatchList []models.HeismanWatchModel
+	PostSeasonAwards AwardsList
 }
 
 /*
@@ -655,7 +655,7 @@ func GetStatsBootstrap(collegeID, proID string) BootstrapDataStats {
 	var wg sync.WaitGroup
 
 	var (
-		heismanWatchList []models.HeismanWatchModel
+		postSeasonAwards AwardsList
 	)
 
 	if len(collegeID) > 0 && collegeID != "0" {
@@ -663,8 +663,8 @@ func GetStatsBootstrap(collegeID, proID string) BootstrapDataStats {
 		go func() {
 			defer wg.Done()
 			log.Println("Fetching Heisman Watch List...")
-			heismanWatchList = GetHeismanList()
-			log.Println("Fetched Heisman Watch List, count:", len(heismanWatchList))
+			postSeasonAwards = GetAllPostSeasonAwardsLists()
+			log.Println("Fetched Heisman Watch List, count:", len(postSeasonAwards.HeismanList))
 		}()
 		log.Println("Initiated all College data queries.")
 	}
@@ -676,7 +676,7 @@ func GetStatsBootstrap(collegeID, proID string) BootstrapDataStats {
 	wg.Wait()
 
 	return BootstrapDataStats{
-		HeismanWatchList: heismanWatchList,
+		PostSeasonAwards: postSeasonAwards,
 	}
 }
 

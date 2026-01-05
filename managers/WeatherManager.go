@@ -447,23 +447,25 @@ func GenerateWeatherForNFLGame(db *gorm.DB, game structs.NFLGame, abbr string, t
 
 	if game.Week < 11 {
 		// Summer Weather
-		if cloud == "Clear" {
+		switch cloud {
+		case "Clear":
 			mod := util.GenerateFloatFromRange(0, 3)
 			gameTemp += mod
-		} else if cloud == "Mostly Cloudy" {
+		case "Mostly Cloudy":
 			mod := util.GenerateFloatFromRange(0, 3)
 			gameTemp -= mod
-		} else if cloud == "Overcast" {
+		case "Overcast":
 			mod := util.GenerateFloatFromRange(0, 3)
 			gameTemp -= mod
 		}
 	} else {
 		// IT'S FALL, BABY!
 		// Summer Weather
-		if cloud == "Clear" {
+		switch cloud {
+		case "Clear":
 			mod := util.GenerateFloatFromRange(0, 3)
 			gameTemp -= mod
-		} else if cloud == "Overcast" {
+		case "Overcast":
 			mod := util.GenerateFloatFromRange(0, 3)
 			gameTemp += mod
 		}

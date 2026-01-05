@@ -1943,11 +1943,12 @@ func ReAlignNFLDepthChart(db *gorm.DB, teamID string, gp structs.NFLGameplan, dc
 		// STU
 		if pos == "FB" || pos == "TE" || pos == "ILB" || pos == "OLB" || pos == "RB" || pos == "CB" || pos == "FS" || pos == "SS" {
 			score := 0
-			if cp.Experience == 2 {
+			switch cp.Experience {
+			case 2:
 				score += 50
-			} else if cp.Experience == 1 {
+			case 1:
 				score += 45
-			} else if cp.Experience == 3 {
+			case 3:
 				score += 15
 			}
 

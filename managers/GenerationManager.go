@@ -1526,17 +1526,17 @@ func getValueFromInterfaceRange(star string, starMap map[string]interface{}) int
 
 	minMax, ok := u.([]interface{})
 	if !ok {
-		fmt.Printf("This is not an int: " + star)
+		fmt.Printf("%s", "This is not an int: "+star)
 	}
 
 	min, ok := minMax[0].(float64)
 	if !ok {
-		fmt.Printf("This is not an int: " + star)
+		fmt.Printf("%s", "This is not an int: "+star)
 	}
 
 	max, ok := minMax[1].(float64)
 	if !ok {
-		fmt.Printf("This is not an int: " + star)
+		fmt.Printf("%s", "This is not an int: "+star)
 	}
 	return util.GenerateIntFromRange(int(min), int(max))
 }

@@ -67,21 +67,22 @@ func MigrateHistoricPlayersToNFLDraftees() {
 		}
 
 		// Generate Tier
-		if diceRoll == 1 {
+		switch diceRoll {
+		case 1:
 			boomBustStatus = "Bust"
 			enableBoomBust = true
 			// Bust
 			fmt.Println(draftee.FirstName + " " + draftee.LastName + " has BUSTED!")
 			draftee.AssignBoomBustStatus(boomBustStatus)
 
-		} else if diceRoll == 20 {
+		case 20:
 			enableBoomBust = true
 			// Boom
 			fmt.Println(draftee.FirstName + " " + draftee.LastName + " has BOOMED!")
 			boomBustStatus = "Boom"
 			isBoom = true
 			draftee.AssignBoomBustStatus(boomBustStatus)
-		} else {
+		default:
 			tier = 0
 		}
 		if enableBoomBust {

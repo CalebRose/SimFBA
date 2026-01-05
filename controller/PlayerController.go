@@ -83,7 +83,7 @@ func GetCollegePlayerByCollegePlayerId(w http.ResponseWriter, r *http.Request) {
 
 func GetHeismanList(w http.ResponseWriter, r *http.Request) {
 
-	heismanList := managers.GetHeismanList()
+	heismanList := managers.GetAllPostSeasonAwardsLists()
 
 	json.NewEncoder(w).Encode(heismanList)
 }

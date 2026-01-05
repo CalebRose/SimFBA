@@ -155,9 +155,6 @@ func GetSignedRecruitsByTeamProfileID(ProfileID string) []structs.Recruit {
 			log.Fatal(err)
 		}
 	}
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	return croots
 }
@@ -264,7 +261,7 @@ func RevokeScholarshipFromRecruit(updateRecruitPointsDto structs.UpdateRecruitPo
 	)
 
 	if !recruitingPointsProfile.Scholarship {
-		fmt.Printf("\nCannot revoke an inexistant scholarship from Recruit " + strconv.Itoa(recruitingPointsProfile.RecruitID))
+		fmt.Printf("%s", "\nCannot revoke an inexistant scholarship from Recruit "+strconv.Itoa(recruitingPointsProfile.RecruitID))
 		return recruitingPointsProfile, recruitingProfile
 	}
 

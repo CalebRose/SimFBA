@@ -404,17 +404,18 @@ func BoomOrBust() {
 
 	for _, player := range draftees {
 		diceRoll := util.GenerateIntFromRange(1, 20)
-		if diceRoll == 1 {
+		switch diceRoll {
+		case 1:
 			// Bust
 			fmt.Println("BUST!")
 			player.AssignBoomBustStatus("Bust")
 			player = BoomBustDraftee(player, SeasonID, 51, false)
-		} else if diceRoll == 20 {
+		case 20:
 			// Boom
 			fmt.Println("BOOM!")
 			player.AssignBoomBustStatus("Boom")
 			player = BoomBustDraftee(player, SeasonID, 51, true)
-		} else {
+		default:
 			continue
 		}
 		db.Save(&player)
