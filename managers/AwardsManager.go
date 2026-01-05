@@ -11,6 +11,7 @@ import (
 )
 
 type AwardsModel struct {
+	PlayerID  uint
 	TeamID    int
 	FirstName string
 	LastName  string
@@ -336,6 +337,7 @@ func GenerateAwardsList(awardKey string, collegePlayers []structs.CollegePlayer,
 		score := calculator.CalculatePlayerScore(cp, teamGameMapper[cp.TeamID], config.ScoreModifier)
 
 		candidate := AwardsModel{
+			PlayerID:  cp.ID,
 			TeamID:    cp.TeamID,
 			FirstName: cp.FirstName,
 			LastName:  cp.LastName,

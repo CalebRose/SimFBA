@@ -53,6 +53,7 @@ func CreateTSModelsFile(w http.ResponseWriter, r *http.Request) {
 		Add(managers.BootstrapDataPortal{}).
 		Add(managers.BootstrapDataGameplan{}).
 		Add(managers.BootstrapDataNews{}).
+		Add(managers.BootstrapDataStats{}).
 		Add(managers.CollegeTeamProfileData{}).
 		Add(structs.SearchStatsResponse{}).
 		Add(structs.FaceDataResponse{}).
