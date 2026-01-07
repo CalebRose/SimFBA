@@ -371,3 +371,17 @@ func MakeNFLTradePreferencesMap(tradePreferences []structs.NFLTradePreferences) 
 
 	return preferencesMap
 }
+
+func MakeRecruitProfileMapByRecruitID(profiles []structs.RecruitPlayerProfile) map[uint][]structs.RecruitPlayerProfile {
+	profileMap := make(map[uint][]structs.RecruitPlayerProfile)
+
+	for _, rp := range profiles {
+		if len(profileMap[uint(rp.RecruitID)]) > 0 {
+			profileMap[uint(rp.RecruitID)] = append(profileMap[uint(rp.RecruitID)], rp)
+		} else {
+			profileMap[uint(rp.RecruitID)] = []structs.RecruitPlayerProfile{rp}
+		}
+	}
+
+	return profileMap
+}

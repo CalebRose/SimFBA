@@ -60,12 +60,12 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 	// Get every recruit
 	recruits := GetAllUnsignedRecruits()
 
+	allRecruitProfiles := repository.FindRecruitPlayerProfileRecords("", "", false, false, true)
+	recruitProfileMap := MakeRecruitProfileMapByRecruitID(allRecruitProfiles)
+
 	// Iterate through every recruit
 	for _, recruit := range recruits {
-		if recruit.ID < 101229 {
-			continue
-		}
-		recruitProfiles = GetRecruitPlayerProfilesByRecruitId(strconv.Itoa(int(recruit.ID)))
+		recruitProfiles = recruitProfileMap[uint(recruit.ID)]
 
 		if len(recruitProfiles) == 0 {
 			fmt.Println("Skipping over " + recruit.FirstName + " " + recruit.LastName + " because no one is recruiting them.")
