@@ -230,7 +230,7 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		_, gtStr := ts.GetNFLCurrentGameType()
 		seasonID := strconv.Itoa(int(ts.NFLSeasonID))
 		nflTeamID := util.ConvertStringToInt(proID)
-		wg.Add(7)
+		wg.Add(6)
 		go func() {
 			defer wg.Done()
 			mu.Lock()
