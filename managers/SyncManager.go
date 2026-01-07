@@ -62,9 +62,6 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 
 	// Iterate through every recruit
 	for _, recruit := range recruits {
-		if recruit.ID < 101229 {
-			continue
-		}
 		recruitProfiles = GetRecruitPlayerProfilesByRecruitId(strconv.Itoa(int(recruit.ID)))
 
 		if len(recruitProfiles) == 0 {
