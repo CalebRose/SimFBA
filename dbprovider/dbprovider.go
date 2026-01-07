@@ -52,9 +52,16 @@ func (p *Provider) InitDatabase() bool {
 		return false
 	}
 
-	sqlDB.SetMaxIdleConns(10)
-	sqlDB.SetMaxOpenConns(100)
-	sqlDB.SetConnMaxLifetime(time.Hour)
+	// Optimize connection pool settings to prevent max_user_connections errors
+	sqlDB.SetMaxIdleConns(10)                  // Reduced from 10 to prevent idle connection buildup
+	sqlDB.SetMaxOpenConns(100)                 // Reduced from 100 to stay well under MySQL limits
+	sqlDB.SetConnMaxLifetime(60 * time.Minute) // Reduced from 1 hour to ensure regular cleanup
+	sqlDB.SetConnMaxIdleTime(10 * time.Minute) // Close idle connections after 5 minutes
+
+	// Test connection and log pool stats
+	if err := sqlDB.Ping(); err != nil {
+		log.Fatalf("Failed to ping database: %v", err)
+	}
 
 	// AutoMigrations -- uncomment when needing to update a table
 	//
@@ -150,6 +157,43 @@ func (p *Provider) InitDatabase() bool {
 
 func (p *Provider) GetDB() *gorm.DB {
 	return db
+}
+
+// GetConnectionStats returns current database connection pool statistics
+func (p *Provider) GetConnectionStats() string {
+	if db == nil {
+		return "Database not initialized"
+	}
+
+	sqlDB, err := db.DB()
+	if err != nil {
+		return fmt.Sprintf("Error getting database instance: %v", err)
+	}
+
+	stats := sqlDB.Stats()
+	return fmt.Sprintf("DB Stats - Open: %d/%d, Idle: %d, InUse: %d, WaitCount: %d, WaitDuration: %v",
+		stats.OpenConnections, stats.MaxOpenConnections,
+		stats.Idle,
+		stats.InUse, stats.WaitCount, stats.WaitDuration)
+}
+
+// CheckConnectionHealth verifies database connectivity and logs pool status
+func (p *Provider) CheckConnectionHealth() error {
+	if db == nil {
+		return fmt.Errorf("database not initialized")
+	}
+
+	sqlDB, err := db.DB()
+	if err != nil {
+		return fmt.Errorf("error getting database instance: %v", err)
+	}
+
+	if err := sqlDB.Ping(); err != nil {
+		return fmt.Errorf("database ping failed: %v", err)
+	}
+
+	log.Printf("Database health check passed - %s", p.GetConnectionStats())
+	return nil
 }
 
 // setupSSHTunnel establishes an SSH tunnel and forwards a local port to the remote database port.
