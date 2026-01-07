@@ -25,31 +25,30 @@ type BootstrapDataTeams struct {
 }
 
 type BootstrapDataLanding struct {
-	CollegeTeam            structs.CollegeTeam
-	CollegeRosterMap       map[uint][]structs.CollegePlayer
-	HistoricCollegePlayers []structs.HistoricCollegePlayer
-	CollegeStandings       []structs.CollegeStandings
-	AllCollegeGames        []structs.CollegeGame
-	OfficialPolls          []structs.CollegePollOfficial
-	TopCFBPassers          []structs.CollegePlayer
-	TopCFBRushers          []structs.CollegePlayer
-	TopCFBReceivers        []structs.CollegePlayer
-	PortalPlayers          []structs.CollegePlayer
-	CollegeInjuryReport    []structs.CollegePlayer
-	CollegeNotifications   []structs.Notification
-	ProTeam                structs.NFLTeam
-	ProNotifications       []structs.Notification
-	ProStandings           []structs.NFLStandings
-	AllProGames            []structs.NFLGame
-	PollSubmission         structs.CollegePollSubmission
-	TopNFLPassers          []structs.NFLPlayer
-	TopNFLRushers          []structs.NFLPlayer
-	TopNFLReceivers        []structs.NFLPlayer
-	ProRosterMap           map[uint][]structs.NFLPlayer
-	ProInjuryReport        []structs.NFLPlayer
-	PracticeSquadPlayers   []structs.NFLPlayer
-	CapsheetMap            map[uint]structs.NFLCapsheet
-	RetiredPlayers         []structs.NFLRetiredPlayer
+	CollegeTeam          structs.CollegeTeam
+	CollegeRosterMap     map[uint][]structs.CollegePlayer
+	CollegeStandings     []structs.CollegeStandings
+	AllCollegeGames      []structs.CollegeGame
+	OfficialPolls        []structs.CollegePollOfficial
+	TopCFBPassers        []structs.CollegePlayer
+	TopCFBRushers        []structs.CollegePlayer
+	TopCFBReceivers      []structs.CollegePlayer
+	PortalPlayers        []structs.CollegePlayer
+	CollegeInjuryReport  []structs.CollegePlayer
+	CollegeNotifications []structs.Notification
+	ProTeam              structs.NFLTeam
+	ProNotifications     []structs.Notification
+	ProStandings         []structs.NFLStandings
+	AllProGames          []structs.NFLGame
+	PollSubmission       structs.CollegePollSubmission
+	TopNFLPassers        []structs.NFLPlayer
+	TopNFLRushers        []structs.NFLPlayer
+	TopNFLReceivers      []structs.NFLPlayer
+	ProRosterMap         map[uint][]structs.NFLPlayer
+	ProInjuryReport      []structs.NFLPlayer
+	PracticeSquadPlayers []structs.NFLPlayer
+	CapsheetMap          map[uint]structs.NFLCapsheet
+	RetiredPlayers       []structs.NFLRetiredPlayer
 }
 
 type BootstrapDataTeamRoster struct {
@@ -75,8 +74,10 @@ type BootstrapDataFreeAgency struct {
 }
 
 type BootstrapDataScheduling struct {
-	OfficialPolls  []structs.CollegePollOfficial
-	PollSubmission structs.CollegePollSubmission
+	OfficialPolls          []structs.CollegePollOfficial
+	PollSubmission         structs.CollegePollSubmission
+	HistoricCollegePlayers []structs.HistoricCollegePlayer
+	RetiredPlayers         []structs.NFLRetiredPlayer
 }
 
 type BootstrapDataDraft struct {
@@ -106,7 +107,9 @@ type BootstrapDataNews struct {
 }
 
 type BootstrapDataStats struct {
-	PostSeasonAwards AwardsList
+	PostSeasonAwards       AwardsList
+	HistoricCollegePlayers []structs.HistoricCollegePlayer
+	RetiredPlayers         []structs.NFLRetiredPlayer
 }
 
 /*
@@ -145,18 +148,17 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 
 	// College Data
 	var (
-		collegeTeam            structs.CollegeTeam
-		collegePlayers         []structs.CollegePlayer
-		collegePlayerMap       map[uint][]structs.CollegePlayer
-		historicCollegePlayers []structs.HistoricCollegePlayer
-		portalPlayers          []structs.CollegePlayer
-		injuredCollegePlayers  []structs.CollegePlayer
-		collegeNotifications   []structs.Notification
-		topCfbPassers          []structs.CollegePlayer
-		topCfbRushers          []structs.CollegePlayer
-		topCfbReceivers        []structs.CollegePlayer
-		collegeStandings       []structs.CollegeStandings
-		collegeGames           []structs.CollegeGame
+		collegeTeam           structs.CollegeTeam
+		collegePlayers        []structs.CollegePlayer
+		collegePlayerMap      map[uint][]structs.CollegePlayer
+		portalPlayers         []structs.CollegePlayer
+		injuredCollegePlayers []structs.CollegePlayer
+		collegeNotifications  []structs.Notification
+		topCfbPassers         []structs.CollegePlayer
+		topCfbRushers         []structs.CollegePlayer
+		topCfbReceivers       []structs.CollegePlayer
+		collegeStandings      []structs.CollegeStandings
+		collegeGames          []structs.CollegeGame
 	)
 
 	// Professional Data
@@ -170,7 +172,6 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		practiceSquadPlayers []structs.NFLPlayer
 		injuredProPlayers    []structs.NFLPlayer
 		capsheetMap          map[uint]structs.NFLCapsheet
-		retiredPlayers       []structs.NFLRetiredPlayer
 		proStandings         []structs.NFLStandings
 		proGames             []structs.NFLGame
 	)
@@ -195,7 +196,6 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		go func() {
 			defer wg.Done()
 			collegePlayers = GetAllCollegePlayers()
-			historicCollegePlayers = GetAllHistoricCollegePlayers()
 
 			cfbStats := GetCollegePlayerSeasonStatsBySeason(seasonID, gtStr)
 
@@ -269,12 +269,6 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		}()
 		go func() {
 			defer wg.Done()
-			log.Println("Fetching Retired Players...")
-			retiredPlayers = GetAllRetiredPlayers()
-			log.Println("Fetched Retired Players, count:", len(retiredPlayers))
-		}()
-		go func() {
-			defer wg.Done()
 			log.Println("Fetching NFL Standings for seasonID:", seasonID)
 			proStandings = GetAllNFLStandingsBySeasonID(seasonID)
 			log.Println("Fetched NFL Standings, count:", len(proStandings))
@@ -289,29 +283,27 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 
 	wg.Wait()
 	return BootstrapDataLanding{
-		CollegeTeam:            collegeTeam,
-		CollegeRosterMap:       collegePlayerMap,
-		HistoricCollegePlayers: historicCollegePlayers,
-		CollegeInjuryReport:    injuredCollegePlayers,
-		CollegeNotifications:   collegeNotifications,
-		AllCollegeGames:        collegeGames,
-		PortalPlayers:          portalPlayers,
-		ProTeam:                proTeam,
-		ProNotifications:       proNotifications,
-		AllProGames:            proGames,
-		TopCFBPassers:          topCfbPassers,
-		TopCFBRushers:          topCfbRushers,
-		TopCFBReceivers:        topCfbReceivers,
-		TopNFLPassers:          topNflPassers,
-		TopNFLRushers:          topNflRushers,
-		TopNFLReceivers:        topNflReceivers,
-		ProRosterMap:           proRosterMap,
-		PracticeSquadPlayers:   practiceSquadPlayers,
-		ProInjuryReport:        injuredProPlayers,
-		CapsheetMap:            capsheetMap,
-		RetiredPlayers:         retiredPlayers,
-		CollegeStandings:       collegeStandings,
-		ProStandings:           proStandings,
+		CollegeTeam:          collegeTeam,
+		CollegeRosterMap:     collegePlayerMap,
+		CollegeInjuryReport:  injuredCollegePlayers,
+		CollegeNotifications: collegeNotifications,
+		AllCollegeGames:      collegeGames,
+		PortalPlayers:        portalPlayers,
+		ProTeam:              proTeam,
+		ProNotifications:     proNotifications,
+		AllProGames:          proGames,
+		TopCFBPassers:        topCfbPassers,
+		TopCFBRushers:        topCfbRushers,
+		TopCFBReceivers:      topCfbReceivers,
+		TopNFLPassers:        topNflPassers,
+		TopNFLRushers:        topNflRushers,
+		TopNFLReceivers:      topNflReceivers,
+		ProRosterMap:         proRosterMap,
+		PracticeSquadPlayers: practiceSquadPlayers,
+		ProInjuryReport:      injuredProPlayers,
+		CapsheetMap:          capsheetMap,
+		CollegeStandings:     collegeStandings,
+		ProStandings:         proStandings,
 	}
 }
 
@@ -454,11 +446,13 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDataScheduling {
 	var wg sync.WaitGroup
 	var (
-		officialPolls  []structs.CollegePollOfficial
-		pollSubmission structs.CollegePollSubmission
+		officialPolls          []structs.CollegePollOfficial
+		pollSubmission         structs.CollegePollSubmission
+		historicCollegePlayers []structs.HistoricCollegePlayer
+		retiredPlayers         []structs.NFLRetiredPlayer
 	)
 	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(2)
+		wg.Add(3)
 		go func() {
 			defer wg.Done()
 			officialPolls = GetAllOfficialPolls()
@@ -467,12 +461,25 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 			defer wg.Done()
 			pollSubmission = GetPollSubmissionByUsernameWeekAndSeason(username)
 		}()
-		wg.Wait()
+		go func() {
+			defer wg.Done()
+			historicCollegePlayers = GetAllHistoricCollegePlayers()
+		}()
 	}
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		log.Println("Fetching Retired Players...")
+		retiredPlayers = GetAllRetiredPlayers()
+		log.Println("Fetched Retired Players, count:", len(retiredPlayers))
+	}()
+	wg.Wait()
 
 	return BootstrapDataScheduling{
-		PollSubmission: pollSubmission,
-		OfficialPolls:  officialPolls,
+		PollSubmission:         pollSubmission,
+		OfficialPolls:          officialPolls,
+		HistoricCollegePlayers: historicCollegePlayers,
+		RetiredPlayers:         retiredPlayers,
 	}
 }
 
@@ -655,28 +662,43 @@ func GetStatsBootstrap(collegeID, proID string) BootstrapDataStats {
 	var wg sync.WaitGroup
 
 	var (
-		postSeasonAwards AwardsList
+		postSeasonAwards       AwardsList
+		historicCollegePlayers []structs.HistoricCollegePlayer
+		retiredPlayers         []structs.NFLRetiredPlayer
 	)
 
 	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(1)
+		wg.Add(2)
 		go func() {
 			defer wg.Done()
 			log.Println("Fetching Heisman Watch List...")
 			postSeasonAwards = GetAllPostSeasonAwardsLists()
 			log.Println("Fetched Heisman Watch List, count:", len(postSeasonAwards.HeismanList))
 		}()
+
+		go func() {
+			defer wg.Done()
+			historicCollegePlayers = GetAllHistoricCollegePlayers()
+		}()
 		log.Println("Initiated all College data queries.")
 	}
 
 	if len(proID) > 0 && proID != "0" {
-
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching Retired Players...")
+			retiredPlayers = GetAllRetiredPlayers()
+			log.Println("Fetched Retired Players, count:", len(retiredPlayers))
+		}()
 	}
 
 	wg.Wait()
 
 	return BootstrapDataStats{
-		PostSeasonAwards: postSeasonAwards,
+		PostSeasonAwards:       postSeasonAwards,
+		HistoricCollegePlayers: historicCollegePlayers,
+		RetiredPlayers:         retiredPlayers,
 	}
 }
 
