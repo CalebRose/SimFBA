@@ -18,7 +18,7 @@ func FindAllTradeProposalsRecords(clauses TradeClauses) []structs.NFLTradePropos
 	query := db.Model(&proposal)
 
 	if clauses.PreloadTradeOptions {
-		query = query.Preload("TeamTradeOptions").Preload("RecepientTeamTradeOptions")
+		query = query.Preload("NFLTeamTradeOptions").Preload("RecepientTeamTradeOptions")
 	}
 
 	if clauses.IsAccepted {
