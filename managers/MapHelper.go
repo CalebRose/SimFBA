@@ -385,3 +385,17 @@ func MakeRecruitProfileMapByRecruitID(profiles []structs.RecruitPlayerProfile) m
 
 	return profileMap
 }
+
+func MakeTradeProposalMap(proposals []structs.NFLTradeProposal) map[uint][]structs.NFLTradeProposal {
+	proposalMap := make(map[uint][]structs.NFLTradeProposal)
+
+	for _, proposal := range proposals {
+		if len(proposalMap[proposal.NFLTeamID]) > 0 {
+			proposalMap[proposal.NFLTeamID] = append(proposalMap[uint(proposal.NFLTeamID)], proposal)
+		} else {
+			proposalMap[proposal.NFLTeamID] = []structs.NFLTradeProposal{proposal}
+		}
+	}
+
+	return proposalMap
+}

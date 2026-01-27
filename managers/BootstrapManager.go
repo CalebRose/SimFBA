@@ -55,7 +55,7 @@ type BootstrapDataTeamRoster struct {
 	ContractMap      map[uint]structs.NFLContract
 	ExtensionMap     map[uint]structs.NFLExtensionOffer
 	CollegePromises  []structs.CollegePromise
-	TradeProposals   structs.NFLTeamProposals
+	TradeProposals   map[uint][]structs.NFLTradeProposal
 	TradePreferences map[uint]structs.NFLTradePreferences
 	NFLDraftPicks    []structs.NFLDraftPick
 }
@@ -313,7 +313,7 @@ func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 		contractMap         map[uint]structs.NFLContract
 		extensionMap        map[uint]structs.NFLExtensionOffer
 		collegePromises     []structs.CollegePromise
-		tradeProposals      structs.NFLTeamProposals
+		tradeProposals      map[uint][]structs.NFLTradeProposal
 		tradePreferencesMap map[uint]structs.NFLTradePreferences
 		draftPicks          []structs.NFLDraftPick
 	)
@@ -341,7 +341,7 @@ func GetTeamRosterBootstrap(collegeID, nflID string) BootstrapDataTeamRoster {
 
 		go func() {
 			defer wg.Done()
-			tradeProposals = GetTradeProposalsByNFLID(nflID)
+			tradeProposals = GetTradeProposalsMap()
 		}()
 
 		go func() {

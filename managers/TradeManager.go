@@ -7,6 +7,7 @@ import (
 	"sync"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
 	"gorm.io/gorm"
@@ -181,6 +182,11 @@ func GetRejectedTradeProposals() []structs.NFLTradeProposal {
 	db.Preload("NFLTeamTradeOptions").Where("is_trade_rejected = ?", true).Find(&proposals)
 
 	return proposals
+}
+
+func GetTradeProposalsMap() map[uint][]structs.NFLTradeProposal {
+	proposals := repository.FindAllTradeProposalsRecords(repository.TradeClauses{PreloadTradeOptions: true})
+	return MakeTradeProposalMap(proposals)
 }
 
 // GetTradeProposalsByNFLID -- Returns all trade proposals that were either sent or received
