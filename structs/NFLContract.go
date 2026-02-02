@@ -163,6 +163,11 @@ func (c *NFLContract) FixContract(length int, y1s, y1b, y2s, y2b, y3s, y3b, y4s,
 
 func (c *NFLContract) ToggleRetirement() {
 	c.PlayerRetired = true
+	c.Y1BaseSalary = 0
+	c.Y2BaseSalary = 0
+	c.Y3BaseSalary = 0
+	c.Y4BaseSalary = 0
+	c.Y5BaseSalary = 0
 }
 
 func (c *NFLContract) TagContract(tagType uint8, salary, bonus float64) {
