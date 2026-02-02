@@ -139,6 +139,7 @@ type NFLExtensionOffer struct {
 	IsAccepted      bool
 	IsActive        bool
 	IsRejected      bool
+	IsTag           bool
 }
 
 func (f *NFLExtensionOffer) AssignID(id uint) {

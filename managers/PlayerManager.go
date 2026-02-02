@@ -1251,14 +1251,14 @@ func CreateExtensionOffer(offer structs.FreeAgencyOfferDTO) structs.NFLExtension
 	if extensionOffer.ID == 0 {
 		id := GetLatestExtensionOfferInDB(db)
 		extensionOffer.AssignID(id)
-		db.Create(&extensionOffer)
+		repository.CreateNFLExtensionOffer(extensionOffer, db)
 		fmt.Println("Creating Extension Offer!")
 
 		message := offer.Team + " have offered a " + strconv.Itoa(offer.ContractLength) + " year contract extension for " + player.Position + " " + player.FirstName + " " + player.LastName + "."
 		CreateNewsLog("NFL", message, "Free Agency", player.TeamID, ts)
 	} else {
 		fmt.Println("Updating Extension Offer!")
-		db.Save(&extensionOffer)
+		repository.SaveNFLExtensionOffer(extensionOffer, db)
 	}
 
 	return extensionOffer

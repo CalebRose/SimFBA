@@ -116,6 +116,7 @@ func (c *NFLContract) MapExtension(e NFLExtensionOffer) {
 	c.IsActive = true
 	c.IsComplete = false
 	c.IsExtended = true
+	c.IsTagged = e.IsTag
 }
 
 func (c *NFLContract) MapPracticeSquadOffer(f FreeAgencyOffer) {
@@ -139,6 +140,7 @@ func (c *NFLContract) MapPracticeSquadOffer(f FreeAgencyOffer) {
 	c.IsActive = true
 	c.IsComplete = false
 	c.IsExtended = false
+	c.IsTagged = false
 }
 
 func (c *NFLContract) FixContract(length int, y1s, y1b, y2s, y2b, y3s, y3b, y4s, y4b, y5s, y5b, bonus float64) {

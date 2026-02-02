@@ -986,11 +986,20 @@ func TagPlayer(tagDTO structs.NFLTagDTO) {
 	fifthYearSalary := 0.5
 	fifthYearBonus := tagDataBlob[tagDTO.Position][tagTypeStr]
 
-	// Tag the player with the appropriate tag information
-	nflContract.TagContract(tagDTO.TagType, fifthYearSalary, fifthYearBonus)
+	extensionOffer := structs.NFLExtensionOffer{
+		NFLPlayerID:    nflPlayerRecord.ID,
+		TeamID:         nflContract.TeamID,
+		Team:           nflContract.Team,
+		ContractLength: 1,
+		Y1BaseSalary:   fifthYearSalary,
+		Y1Bonus:        fifthYearBonus,
+		IsAccepted:     true,
+		IsActive:       true,
+		IsTag:          true,
+	}
 
 	// SAVE
-	repository.SaveNFLContract(nflContract, db)
+	repository.CreateNFLExtensionOffer(extensionOffer, db)
 	repository.SaveNFLPlayer(nflPlayerRecord, db)
 }
 

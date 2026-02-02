@@ -86,3 +86,17 @@ func MassDeleteFreeAgencyOffers(offerIDs []string, db *gorm.DB) {
 		log.Panicln("Could not delete free agency offers")
 	}
 }
+
+func CreateNFLExtensionOffer(offer structs.NFLExtensionOffer, db *gorm.DB) {
+	err := db.Create(&offer).Error
+	if err != nil {
+		log.Panicln("Could not create NFL extension offer")
+	}
+}
+
+func SaveNFLExtensionOffer(offer structs.NFLExtensionOffer, db *gorm.DB) {
+	err := db.Save(&offer).Error
+	if err != nil {
+		log.Panicln("Could not save NFL extension offer")
+	}
+}
