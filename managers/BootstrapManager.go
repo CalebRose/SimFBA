@@ -33,7 +33,6 @@ type BootstrapDataLanding struct {
 	TopCFBPassers        []structs.CollegePlayer
 	TopCFBRushers        []structs.CollegePlayer
 	TopCFBReceivers      []structs.CollegePlayer
-	PortalPlayers        []structs.CollegePlayer
 	CollegeInjuryReport  []structs.CollegePlayer
 	CollegeNotifications []structs.Notification
 	ProTeam              structs.NFLTeam
@@ -90,6 +89,7 @@ type BootstrapDataPortal struct {
 	TeamProfileMap         map[string]*structs.RecruitingTeamProfile // Get Just in Case because this page also uses this data
 	TransferPortalProfiles []structs.TransferPortalProfile
 	CollegePromises        []structs.CollegePromise
+	PortalPlayers          []structs.CollegePlayer
 }
 
 type BootstrapDataGameplan struct {
@@ -151,7 +151,6 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		collegeTeam           structs.CollegeTeam
 		collegePlayers        []structs.CollegePlayer
 		collegePlayerMap      map[uint][]structs.CollegePlayer
-		portalPlayers         []structs.CollegePlayer
 		injuredCollegePlayers []structs.CollegePlayer
 		collegeNotifications  []structs.Notification
 		topCfbPassers         []structs.CollegePlayer
@@ -202,7 +201,6 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 			mu.Lock()
 			collegePlayerMap = MakeCollegePlayerMapByTeamID(collegePlayers, true)
 			injuredCollegePlayers = MakeCollegeInjuryList(collegePlayers)
-			portalPlayers = MakeCollegePortalList(collegePlayers)
 			fullCollegePlayerMap := MakeCollegePlayerMap(collegePlayers)
 			topCfbPassers = getCFBOrderedListByStatType("PASSING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
 			topCfbRushers = getCFBOrderedListByStatType("RUSHING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
@@ -288,7 +286,6 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		CollegeInjuryReport:  injuredCollegePlayers,
 		CollegeNotifications: collegeNotifications,
 		AllCollegeGames:      collegeGames,
-		PortalPlayers:        portalPlayers,
 		ProTeam:              proTeam,
 		ProNotifications:     proNotifications,
 		AllProGames:          proGames,
@@ -530,10 +527,11 @@ func GetPortalBootstrap(collegeID string) BootstrapDataPortal {
 		teamProfileMap         map[string]*structs.RecruitingTeamProfile // Get Just in Case because this page also uses this data
 		transferPortalProfiles []structs.TransferPortalProfile
 		collegePromises        []structs.CollegePromise
+		portalPlayers          []structs.CollegePlayer
 	)
 
 	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(3)
+		wg.Add(4)
 		go func() {
 			defer wg.Done()
 			transferPortalProfiles = GetTransferPortalProfilesByTeamID(collegeID)
@@ -545,8 +543,14 @@ func GetPortalBootstrap(collegeID string) BootstrapDataPortal {
 		}()
 
 		go func() {
+			defer wg.Done()
 			promises := GetCollegePromisesByTeamID(collegeID)
 			collegePromises = promises
+		}()
+
+		go func() {
+			defer wg.Done()
+			portalPlayers = GetTransferPortalPlayers()
 		}()
 
 	}
@@ -557,6 +561,7 @@ func GetPortalBootstrap(collegeID string) BootstrapDataPortal {
 		TransferPortalProfiles: transferPortalProfiles,
 		TeamProfileMap:         teamProfileMap,
 		CollegePromises:        collegePromises,
+		PortalPlayers:          portalPlayers,
 	}
 }
 
