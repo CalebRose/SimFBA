@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 
@@ -35,8 +34,6 @@ func CreatePromise(w http.ResponseWriter, r *http.Request) {
 	promise := managers.CreatePromise(createPromiseDto)
 
 	json.NewEncoder(w).Encode(promise)
-
-	fmt.Fprintf(w, "New Promise Created")
 }
 
 func UpdatePromise(w http.ResponseWriter, r *http.Request) {
@@ -49,8 +46,6 @@ func UpdatePromise(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.UpdatePromise(createPromiseDto)
-
-	fmt.Fprintf(w, "Promise Updated")
 }
 
 func CancelPromise(w http.ResponseWriter, r *http.Request) {
@@ -63,8 +58,6 @@ func CancelPromise(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.CancelPromise(promiseID)
-
-	fmt.Fprintf(w, "Promise Cancelled.")
 }
 
 func GetPromiseByPlayerID(w http.ResponseWriter, r *http.Request) {
@@ -118,8 +111,6 @@ func AddTransferPlayerToBoard(w http.ResponseWriter, r *http.Request) {
 	profile := managers.AddTransferPlayerToBoard(transferPortalProfile)
 
 	json.NewEncoder(w).Encode(profile)
-
-	fmt.Fprintf(w, "New Promise Created")
 }
 
 func RemovePlayerFromTransferPortalBoard(w http.ResponseWriter, r *http.Request) {
@@ -141,8 +132,6 @@ func SaveTransferBoard(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.AllocatePointsToTransferPlayer(transferPortalProfile)
-
-	fmt.Fprintf(w, "Transfer Board Saved")
 }
 
 func GetScoutingDataByTransfer(w http.ResponseWriter, r *http.Request) {
