@@ -46,18 +46,10 @@ type RecruitingTeamProfile struct {
 	OffensiveScheme           string
 	DefensiveScheme           string
 	Recruiter                 string // Username
-	AcademicsAffinity         bool
-	FrontrunnerAffinity       bool
-	LargeCrowdsAffinity       bool
-	ReligionAffinity          bool
-	ServiceAffinity           bool
-	SmallSchoolAffinity       bool
-	SmallTownAffinity         bool
-	BigCityAffinity           bool
-	MediaSpotlightAffinity    bool
-	RisingStarsAffinity       bool
-	Recruits                  []RecruitPlayerProfile `gorm:"foreignKey:ProfileID"`
-	Affinities                []ProfileAffinity      `gorm:"foreignKey:ProfileID"`
+	TeamAffinities
+	TeamProfileAffinities
+	Recruits   []RecruitPlayerProfile `gorm:"foreignKey:ProfileID"`
+	Affinities []ProfileAffinity      `gorm:"foreignKey:ProfileID"`
 }
 
 type SaveProfile interface{}
@@ -217,15 +209,47 @@ func (r *RecruitingTeamProfile) ResetStarCount() {
 }
 
 func (r *RecruitingTeamProfile) AddStarPlayer(stars int) {
-	if stars == 3 {
+	switch stars {
+	case 3:
 		r.ThreeStars += 1
-	} else if stars == 4 {
+	case 4:
 		r.FourStars += 1
-	} else if stars == 5 {
+	case 5:
 		r.FiveStars += 1
 	}
 }
 
 func (r *RecruitingTeamProfile) AssignRecruiter(name string) {
 	r.Recruiter = name
+}
+
+func (r *RecruitingTeamProfile) UpdateTeamProfileAffinities(profile TeamProfileAffinities) {
+	r.TeamProfileAffinities = profile
+}
+
+type TeamAffinities struct {
+	AcademicsAffinity      bool
+	FrontrunnerAffinity    bool
+	LargeCrowdsAffinity    bool
+	ReligionAffinity       bool
+	ServiceAffinity        bool
+	SmallSchoolAffinity    bool
+	SmallTownAffinity      bool
+	BigCityAffinity        bool
+	MediaSpotlightAffinity bool
+	RisingStarsAffinity    bool
+}
+
+type TeamProfileAffinities struct {
+	ProgramPrestige      uint8
+	ProfessionalPrestige uint8
+	Traditions           uint8
+	Facilities           uint8
+	Atmosphere           uint8
+	Academics            uint8
+	CampusLife           uint8
+	ConferencePrestige   uint8
+	CoachRating          uint8
+	SeasonMomentum       uint8
+	MediaSpotlight       uint8
 }

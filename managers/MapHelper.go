@@ -399,3 +399,13 @@ func MakeTradeProposalMap(proposals []structs.NFLTradeProposal) map[uint][]struc
 
 	return proposalMap
 }
+
+func MakeRecruitTeamProfileMapByTeamID(profiles []structs.RecruitingTeamProfile) map[uint]structs.RecruitingTeamProfile {
+	profileMap := make(map[uint]structs.RecruitingTeamProfile)
+
+	for _, rp := range profiles {
+		profileMap[rp.ID] = rp
+	}
+
+	return profileMap
+}

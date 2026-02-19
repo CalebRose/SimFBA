@@ -248,6 +248,10 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/notification/toggle/{notiID}", controller.ToggleNotificationAsRead).Methods("GET")
 	apiRouter.HandleFunc("/notification/delete/{notiID}", controller.DeleteNotification).Methods("GET")
 
+	// Offseason
+	apiRouter.HandleFunc("/offseason/fix/postseason/status", controller.FixPostseasonStatus).Methods("GET")
+	apiRouter.HandleFunc("/offseason/update/team/profile/affinities", controller.UpdateTeamProfileAffinities).Methods("GET")
+
 	// Player Controls
 	apiRouter.HandleFunc("/players/all/", controller.AllPlayers).Methods("GET")
 	apiRouter.HandleFunc("/collegeplayers/cut/player/{PlayerID}/", controller.CutCFBPlayerFromRoster).Methods("GET")
