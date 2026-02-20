@@ -291,11 +291,15 @@ func MakeNFLWarRoomMap(warRooms []models.NFLWarRoom) map[uint]models.NFLWarRoom 
 	return warRoomMap
 }
 
-func MakeScoutingProfileMapByTeam(profiles []models.ScoutingProfile) map[uint]models.ScoutingProfile {
-	profileMap := make(map[uint]models.ScoutingProfile)
+func MakeScoutingProfileMapByTeam(profiles []models.ScoutingProfile) map[uint][]models.ScoutingProfile {
+	profileMap := make(map[uint][]models.ScoutingProfile)
 
 	for _, t := range profiles {
-		profileMap[t.TeamID] = t
+		if len(profileMap[t.TeamID]) > 0 {
+			profileMap[t.TeamID] = append(profileMap[t.TeamID], t)
+		} else {
+			profileMap[t.TeamID] = []models.ScoutingProfile{t}
+		}
 	}
 
 	return profileMap

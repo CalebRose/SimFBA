@@ -81,8 +81,8 @@ type BootstrapDataScheduling struct {
 
 type BootstrapDataDraft struct {
 	NFLDraftees             []models.NFLDraftee
-	NFLWarRoomMap           map[uint]models.NFLWarRoom      // BY TEAM
-	DraftScoutingProfileMap map[uint]models.ScoutingProfile // BY TEAM
+	NFLWarRoomMap           map[uint]models.NFLWarRoom        // BY TEAM
+	DraftScoutingProfileMap map[uint][]models.ScoutingProfile // BY TEAM
 }
 
 type BootstrapDataPortal struct {
@@ -485,8 +485,8 @@ func GetDraftBootstrap(proID string) BootstrapDataDraft {
 
 	var (
 		nflDraftees        []models.NFLDraftee
-		warRoomMap         map[uint]models.NFLWarRoom      // BY TEAM
-		scoutingProfileMap map[uint]models.ScoutingProfile // By TEAM
+		warRoomMap         map[uint]models.NFLWarRoom        // BY TEAM
+		scoutingProfileMap map[uint][]models.ScoutingProfile // By TEAM
 	)
 
 	if len(proID) > 0 && proID != "0" {

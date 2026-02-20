@@ -1,0 +1,5 @@
+id,stadium_name,team_id,team_abbr,city,state,country,region,capacity,record_attendance,first_season,league_id,league_name,is_domed
+290,SeatGeek Stadium,265,CHST,Chicago,IL,USA,Midwest,20000,0,2027,2,FCS,0
+291,Ralph F. DellaCamera Stadium,266,UNH,New Haven,CT,USA,Northeast,5000,0,2027,2,FCS,0
+292,,267,UOG,Mangilao,GM,USA,Pacific,,0,2027,2,FCS,0
+293,,268,SAMO,Pago Pago,AS,USA,Pacific,,0,2027,2,FCS,0
