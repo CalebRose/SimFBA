@@ -1,0 +1,3 @@
+id,team_id,team,team_abbr,state,scholarships,points,points,size,is_ai,ai_behavior,ai_quality,min,max,offer,starmin,starmax,offensive scheme,defensive scheme
+267,267,Guam,UOG,GM,40,100,0,20,1,Normal,Doormat,15,20,1,1,3,I Option,Old School
+268,268,American Samoa,SAMO,AS,40,100,0,20,1,Normal,Doormat,15,20,1,1,3,Power Run,Old School

@@ -1063,15 +1063,15 @@ func MigrateCFBGameplansAndDepthChartsForRemainingFCSTeams() {
 	var testDCList []structs.CollegeTeamDepthChartTEST
 	var dcPList []structs.CollegeDepthChartPosition
 	var testDCPList []structs.CollegeDepthChartPositionTEST
-	for i := 195; i < 265; i++ {
+	for i := 266; i < 269; i++ {
 		gp := structs.CollegeGameplan{
 			TeamID: i,
 			Model: gorm.Model{
 				ID: uint(i),
 			},
 			BaseGameplan: structs.BaseGameplan{
-				OffensiveScheme: "Pistol",
-				DefensiveScheme: "Multiple",
+				OffensiveScheme: "Power Run",
+				DefensiveScheme: "Old School",
 			},
 		}
 		gpt := structs.CollegeGameplanTEST{
@@ -1080,8 +1080,8 @@ func MigrateCFBGameplansAndDepthChartsForRemainingFCSTeams() {
 				ID: uint(i),
 			},
 			BaseGameplan: structs.BaseGameplan{
-				OffensiveScheme: "Pistol",
-				DefensiveScheme: "Multiple",
+				OffensiveScheme: "Power Run",
+				DefensiveScheme: "Old School",
 			},
 		}
 
@@ -1530,12 +1530,13 @@ func ImportNewDepthChartPositionRecords() {
 	var positionsUpload []structs.CollegeDepthChartPosition
 	var positionsUploadTEST []structs.CollegeDepthChartPositionTEST
 
-	var nflPositionsUpload []structs.NFLDepthChartPosition
-
 	collegeTeams := GetAllCollegeTeams()
-	nflTeams := GetAllNFLTeams()
 
 	for _, team := range collegeTeams {
+		// Import for new FCS teams
+		if team.ID <= 264 {
+			continue
+		}
 		newPositions := []structs.CollegeDepthChartPosition{
 			{
 				DepthChartID:  int(team.ID),
@@ -1714,100 +1715,8 @@ func ImportNewDepthChartPositionRecords() {
 		positionsUploadTEST = append(positionsUploadTEST, newPositionsTEST...)
 	}
 
-	for _, team := range nflTeams {
-		newPositions := []structs.NFLDepthChartPosition{
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "RB",
-				PositionLevel: "4",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "LT",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "LG",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "C",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "RG",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "RT",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "LE",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "RE",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "LOLB",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "ROLB",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "FS",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "SS",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "KR",
-				PositionLevel: "3",
-			},
-			{
-				DepthChartID:  team.ID,
-				PlayerID:      0,
-				Position:      "PR",
-				PositionLevel: "3",
-			},
-		}
-
-		nflPositionsUpload = append(nflPositionsUpload, newPositions...)
-	}
-
 	repository.CreateCFBDepthChartPositionRecordsBatch(db, positionsUpload, 200)
 	repository.CreateCFBDepthChartPositionTESTRecordsBatch(db, positionsUploadTEST, 200)
-	repository.CreateNFLDepthChartPositionRecordsBatch(db, nflPositionsUpload, 200)
 }
 
 func FixSecondaryPositions() {

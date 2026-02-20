@@ -210,7 +210,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/admin/import/cfb/regular/games", controller.ImportCFBRegularSeasonGames).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/cfb/spring/games", controller.ImportCFBSpringGames).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/cfb/rivals", controller.ImportCFBRivals).Methods("GET")
-	// apiRouter.HandleFunc("/admin/import/cfb/teams", controller.ImportCFBTeams).Methods("GET")
+	apiRouter.HandleFunc("/admin/import/cfb/teams", controller.ImportCFBTeams).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/nfl/games", controller.ImportNFLGames).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/nfl/warroom", controller.GenerateDraftWarRooms).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/nfl/udfas", controller.ImportUDFAs).Methods("GET")
