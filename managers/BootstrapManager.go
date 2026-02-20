@@ -83,6 +83,7 @@ type BootstrapDataDraft struct {
 	NFLDraftees             []models.NFLDraftee
 	NFLWarRoomMap           map[uint]models.NFLWarRoom        // BY TEAM
 	DraftScoutingProfileMap map[uint][]models.ScoutingProfile // BY TEAM
+	NFLGameplanMap          map[uint]structs.NFLGameplan
 }
 
 type BootstrapDataPortal struct {
@@ -487,10 +488,11 @@ func GetDraftBootstrap(proID string) BootstrapDataDraft {
 		nflDraftees        []models.NFLDraftee
 		warRoomMap         map[uint]models.NFLWarRoom        // BY TEAM
 		scoutingProfileMap map[uint][]models.ScoutingProfile // By TEAM
+		proGameplanMap     map[uint]structs.NFLGameplan
 	)
 
 	if len(proID) > 0 && proID != "0" {
-		wg.Add(3)
+		wg.Add(4)
 		go func() {
 			defer wg.Done()
 			nflDraftees = GetAllNFLDraftees()
@@ -509,6 +511,12 @@ func GetDraftBootstrap(proID string) BootstrapDataDraft {
 
 		}()
 
+		go func() {
+			defer wg.Done()
+			gameplans := GetAllNFLGameplans()
+			proGameplanMap = MakeNFLGameplanMap(gameplans)
+		}()
+
 		log.Println("Initiated all Pro data queries.")
 	}
 	wg.Wait()
@@ -517,6 +525,7 @@ func GetDraftBootstrap(proID string) BootstrapDataDraft {
 		NFLDraftees:             nflDraftees,
 		NFLWarRoomMap:           warRoomMap,
 		DraftScoutingProfileMap: scoutingProfileMap,
+		NFLGameplanMap:          proGameplanMap,
 	}
 }
 
