@@ -8,6 +8,7 @@ import (
 	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
+	"github.com/CalebRose/SimFBA/util"
 )
 
 func GetCollegeGamesByWeekIdAndSeasonID(WeekID string, SeasonID string) []structs.CollegeGame {
@@ -405,4 +406,46 @@ func GetCFBGamesMapSeasonId(SeasonID string) map[uint]structs.CollegeGame {
 	}
 
 	return gameMap
+}
+
+func SelectTimeslotForGameByConferenceID(confID uint) string {
+	timeslot := "Thursday Night"
+
+	switch confID {
+	// ACC
+	case 3, 15:
+		return util.PickFromStringList([]string{"Saturday Morning", "Saturday Afternoon", "Friday Night"})
+		// Big Ten
+	case 4, 14, 17:
+		return util.PickFromStringList([]string{"Saturday Morning", "Saturday Afternoon", "Saturday Evening", "Friday Night"})
+		// Big 12
+	case 5, 16, 26:
+		return util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Evening", "Friday Night"})
+		// Pac 12
+	case 6:
+		return util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Evening", "Saturday Night", "Friday Night"})
+		// SEC
+	case 7, 18:
+		return util.PickFromStringList([]string{"Saturday Morning", "Saturday Afternoon", "Saturday Evening", "Thursday Night", "Friday Night"})
+		// American
+	case 8, 19:
+		return util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Morning", "Thursday Night", "Friday Night"})
+		// C-USA
+	case 9, 20, 23:
+		return util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Morning", "Thursday Night", "Friday Night"})
+		// MAC
+	case 10, 21:
+		return util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Morning", "Thursday Night", "Friday Night"})
+		// Mountain West
+	case 11, 25:
+		return util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Night", "Thursday Night", "Friday Night"})
+		// Sun Belt
+	case 12, 24, 27:
+		return util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Morning", "Thursday Night", "Friday Night"})
+	case 13, 22:
+		return util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Morning", "Thursday Night", "Friday Night", "Saturday Evening"})
+	default:
+		timeslot = util.PickFromStringList([]string{"Saturday Afternoon", "Saturday Morning", "Saturday Evening"})
+	}
+	return timeslot
 }

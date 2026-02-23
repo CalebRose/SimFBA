@@ -23590,6 +23590,29 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers13(in *jlexer.Lexer, 
 				}
 				in.Delim('}')
 			}
+		case "NFLDraftPicks":
+			if in.IsNull() {
+				in.Skip()
+				out.NFLDraftPicks = nil
+			} else {
+				in.Delim('[')
+				if out.NFLDraftPicks == nil {
+					if !in.IsDelim(']') {
+						out.NFLDraftPicks = make([]structs.NFLDraftPick, 0, 0)
+					} else {
+						out.NFLDraftPicks = []structs.NFLDraftPick{}
+					}
+				} else {
+					out.NFLDraftPicks = (out.NFLDraftPicks)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v289 structs.NFLDraftPick
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v289)
+					out.NFLDraftPicks = append(out.NFLDraftPicks, v289)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
 		default:
 			in.SkipRecursive()
 		}
@@ -23611,11 +23634,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v289, v290 := range in.NFLDraftees {
-				if v289 > 0 {
+			for v290, v291 := range in.NFLDraftees {
+				if v290 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out, v290)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out, v291)
 			}
 			out.RawByte(']')
 		}
@@ -23627,16 +23650,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v291First := true
-			for v291Name, v291Value := range in.NFLWarRoomMap {
-				if v291First {
-					v291First = false
+			v292First := true
+			for v292Name, v292Value := range in.NFLWarRoomMap {
+				if v292First {
+					v292First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v291Name))
+				out.UintStr(uint(v292Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels1(out, v291Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels1(out, v292Value)
 			}
 			out.RawByte('}')
 		}
@@ -23648,24 +23671,24 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v292First := true
-			for v292Name, v292Value := range in.DraftScoutingProfileMap {
-				if v292First {
-					v292First = false
+			v293First := true
+			for v293Name, v293Value := range in.DraftScoutingProfileMap {
+				if v293First {
+					v293First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v292Name))
+				out.UintStr(uint(v293Name))
 				out.RawByte(':')
-				if v292Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+				if v293Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 					out.RawString("null")
 				} else {
 					out.RawByte('[')
-					for v293, v294 := range v292Value {
-						if v293 > 0 {
+					for v294, v295 := range v293Value {
+						if v294 > 0 {
 							out.RawByte(',')
 						}
-						easyjson83226b63EncodeGithubComCalebRoseSimFBAModels2(out, v294)
+						easyjson83226b63EncodeGithubComCalebRoseSimFBAModels2(out, v295)
 					}
 					out.RawByte(']')
 				}
@@ -23680,18 +23703,34 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v295First := true
-			for v295Name, v295Value := range in.NFLGameplanMap {
-				if v295First {
-					v295First = false
+			v296First := true
+			for v296Name, v296Value := range in.NFLGameplanMap {
+				if v296First {
+					v296First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v295Name))
+				out.UintStr(uint(v296Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v295Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v296Value)
 			}
 			out.RawByte('}')
+		}
+	}
+	{
+		const prefix string = ",\"NFLDraftPicks\":"
+		out.RawString(prefix)
+		if in.NFLDraftPicks == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v297, v298 := range in.NFLDraftPicks {
+				if v297 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v298)
+			}
+			out.RawByte(']')
 		}
 	}
 	out.RawByte('}')
@@ -23942,9 +23981,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAModels1(in *jlexer.Lexer, out
 					out.DraftPicks = (out.DraftPicks)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v296 structs.NFLDraftPick
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v296)
-					out.DraftPicks = append(out.DraftPicks, v296)
+					var v299 structs.NFLDraftPick
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v299)
+					out.DraftPicks = append(out.DraftPicks, v299)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -23965,9 +24004,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAModels1(in *jlexer.Lexer, out
 					out.ScoutProfiles = (out.ScoutProfiles)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v297 models.ScoutingProfile
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels2(in, &v297)
-					out.ScoutProfiles = append(out.ScoutProfiles, v297)
+					var v300 models.ScoutingProfile
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels2(in, &v300)
+					out.ScoutProfiles = append(out.ScoutProfiles, v300)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -24035,11 +24074,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAModels1(out *jwriter.Writer, 
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v298, v299 := range in.DraftPicks {
-				if v298 > 0 {
+			for v301, v302 := range in.DraftPicks {
+				if v301 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v299)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v302)
 			}
 			out.RawByte(']')
 		}
@@ -24051,11 +24090,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAModels1(out *jwriter.Writer, 
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v300, v301 := range in.ScoutProfiles {
-				if v300 > 0 {
+			for v303, v304 := range in.ScoutProfiles {
+				if v303 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels2(out, v301)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels2(out, v304)
 			}
 			out.RawByte(']')
 		}

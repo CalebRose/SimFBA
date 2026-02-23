@@ -219,7 +219,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/admin/import/missing/cfb/stats", controller.ImportMissingStats).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/preferences", controller.ImportTradePreferences).Methods("GET")
 	// apiRouter.HandleFunc("/import/custom/croots", controller.ImportCustomCroots).Methods("GET")
-	// apiRouter.HandleFunc("/import/simnfl/updated/values", controller.ImportSimNFLMinimumValues).Methods("GET")
+	apiRouter.HandleFunc("/import/simnfl/updated/values", controller.ImportSimNFLMinimumValues).Methods("GET")
 	// apiRouter.HandleFunc("/import/simfba/draft/picks", controller.ImportNFLDraftPicks).Methods("GET")
 	// apiRouter.HandleFunc("/import/simfba/updated/picks", controller.UpdateDraftPicksForDraft).Methods("GET")
 	// apiRouter.HandleFunc("/import/simfba/fix/contracts", controller.FixBrokenExtensions).Methods("GET")

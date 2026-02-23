@@ -1,0 +1,2029 @@
+﻿ID,Team,Name, Value Expect , AAV Expect 
+1,Washington,Angel Loe, 23.95 , 9.58 
+3,Tennessee,Tommy Marimon, 32.00 , 12.80 
+4,Cleveland,Clinton Gregerson, 20.03 , 8.01 
+5,Tampa Bay,James Taylor, 12.76 , 5.10 
+7,NY Jets,Jhan Peters, 12.76 , 5.10 
+8,Cincinnati,Jameill Lopez, 3.09 , 1.23 
+10,Jacksonville,Matt Howard, 6.72 , 2.69 
+11,LA Rams,Bruce Dawson, 15.86 , 6.34 
+12,Philadelphia,Ryan Reininger, 7.38 , 2.95 
+16,Baltimore,Allan Sterling, 2.07 , 0.83 
+17,Washington,Phil O'Malley, 6.99 , 2.79 
+18,Green Bay,Joshua Hathaway, 6.05 , 2.42 
+19,Kansas City,Luis Van Slyke, 15.20 , 6.08 
+20,Pittsburgh,Danny Kipnis, 9.57 , 3.83 
+21,Houston,Elijhaa Rader, 27.59 , 11.03 
+22,New Orleans,Anthony Upton, 1.02 , 0.50 
+23,LA Rams,Ramon Newton, 23.90 , 9.56 
+24,Atlanta,Rashaan Lyons, 15.59 , 6.24 
+25,Pittsburgh,Alex Williams III, 21.31 , 8.52 
+26,Las Vegas,Andrew Richards, 22.55 , 9.02 
+27,Cleveland,Duncan Terrero, 3.08 , 1.23 
+28,Carolina,Dekoda Link, 36.03 , 14.41 
+29,Philadelphia,Mark Soto, 37.88 , 15.15 
+30,Houston,Will Thomas, 8.88 , 3.55 
+31,Chicago,Jehu Ginn, 29.86 , 11.95 
+32,LA Rams,Carlos Bostick, 20.03 , 8.01 
+33,Denver,Ryan Johnson, 9.57 , 3.83 
+43,NY Giants,Marquis Rudolph, 6.90 , 2.76 
+46,Minnesota,Dustin Woodson-Luster, 16.85 , 6.74 
+49,Tennessee,Ray-Ray Thompson, 19.30 , 7.72 
+53,Miami,Jeremy Moreland, 18.48 , 7.39 
+55,NY Giants,Wil Castillo, 4.51 , 1.80 
+58,Kansas City,Shabazz Foreman, 1.17 , 0.50 
+60,San Francisco,Brandon Ramirez, 1.55 , 0.62 
+62,Cleveland,Kendall Lincoln, 3.81 , 1.52 
+63,Indianapolis,Elijah Ellis, 18.48 , 7.39 
+69,New England,Quinterrius Parsons, 8.28 , 3.31 
+72,NY Giants,Telvin Acuna, 0.95 , 0.50 
+75,Miami,Tyson Buss, 4.57 , 1.83 
+76,Cincinnati,Alec Cozens, 6.70 , 2.68 
+81,New Orleans,Richie Gasol, 1.17 , 0.50 
+89,Seattle,Mike Hargreaves, 13.85 , 5.54 
+95,LA Rams,Jordan Stanley, 3.29 , 1.32 
+102,San Francisco,Nefi Kipnis, 2.18 , 0.87 
+125,Washington,Phillip Calhoun, 20.03 , 8.01 
+129,Seattle,Briean Smith, 1.26 , 0.50 
+136,Carolina,Le'Veon Hester, 1.42 , 0.57 
+142,Seattle,Godwin Johnson, 21.06 , 8.42 
+145,Kansas City,Bruce Puello, 21.06 , 8.42 
+147,Tennessee,Adonis President, 8.10 , 3.24 
+150,Detroit,Mike Pressly, 13.85 , 5.54 
+156,Cleveland,Jake Campos, 6.93 , 2.77 
+162,Washington,Steven Humphries, 22.00 , 8.80 
+163,Detroit,Braedon Lopez, 2.13 , 0.85 
+168,Cincinnati,Jevoni Rosenberg, 9.57 , 3.83 
+178,Kansas City,Chaz Esch, 6.18 , 2.47 
+186,NY Jets,Jason West, 7.38 , 2.95 
+187,New Orleans,Kyle Dickson, 8.28 , 3.31 
+203,Atlanta,Corey Randle, 1.58 , 0.63 
+204,Tennessee,Terry Jackson, 8.34 , 3.34 
+205,NY Jets,Patrick Viola, 25.90 , 10.36 
+209,Tampa Bay,Luis Wong, 18.48 , 7.39 
+214,Tennessee,Noah Pillar, 3.80 , 1.52 
+215,LA Chargers,Nathan Burke, 14.32 , 5.73 
+228,New Orleans,Jalen Johnson, 1.94 , 0.78 
+231,,Kenneth Woods, 0.70 , 0.50 
+242,Cincinnati,Dustin Blackley, 9.98 , 3.99 
+244,Baltimore,Zack Ellington, 4.27 , 1.71 
+249,San Francisco,Carlos Ramos, 19.30 , 7.72 
+252,Indianapolis,Willis Bruce, 4.59 , 1.83 
+255,Kansas City,Addison Crosby, 0.90 , 0.50 
+256,Detroit,Abel Hughes, 2.07 , 0.83 
+274,Houston,Matt Brown, 19.30 , 7.72 
+275,Houston,Eduardo Jackson, 12.76 , 5.10 
+280,Tennessee,Davin Cozart, 1.94 , 0.78 
+281,Detroit,Jaylen Lengel, 1.94 , 0.78 
+282,Dallas,Amara Rodriguez, 28.93 , 11.57 
+285,Buffalo,Marquez Allen, 22.00 , 8.80 
+290,Jacksonville,Quincy Wile, 23.95 , 9.58 
+295,LA Chargers,Gary Albers, 6.45 , 2.58 
+300,LA Rams,Brandon Lawson, 3.50 , 1.40 
+302,LA Chargers,Jack Jackson, 4.08 , 1.63 
+309,Houston,Steve Lucas, 20.03 , 8.01 
+317,LA Chargers,Rey Easton, 32.00 , 12.80 
+319,Cleveland,Cory Wanamaker, 1.90 , 0.76 
+321,Houston,Mike Turner, 18.48 , 7.39 
+328,New Orleans,Duane DePaula, 20.03 , 8.01 
+331,Jacksonville,Jonas Skipper, 4.51 , 1.80 
+332,Las Vegas,Ariel Calderon, 6.99 , 2.79 
+335,Pittsburgh,Marcell Cain, 6.93 , 2.77 
+337,Cleveland,Kolton Hayes, 24.60 , 9.84 
+345,LA Chargers,Diego Johnson, 23.95 , 9.58 
+346,Minnesota,Neal Swoope, 1.17 , 0.50 
+347,Baltimore,Robin Reynolds, 4.10 , 1.64 
+349,Baltimore,Matt Perez, 21.06 , 8.42 
+364,,Kavon Hoes,,
+365,New England,R.J. Foster, 4.27 , 1.71 
+366,Buffalo,John Hollis-Jefferson, 1.98 , 0.79 
+383,Cleveland,Damien Shead, 6.05 , 2.42 
+387,Buffalo,Yusei Asencio, 24.95 , 9.98 
+388,Atlanta,Joseph Saric, 3.29 , 1.32 
+390,Cincinnati,Chris Frazier, 15.59 , 6.24 
+400,NY Giants,Bruce Allen, 13.60 , 5.44 
+408,New England,Fish Liggins, 5.76 , 2.30 
+409,Minnesota,DeAndre Carle, 14.05 , 5.62 
+412,Baltimore,Steven Labissiere, 19.30 , 7.72 
+419,New Orleans,Michael Dyson, 43.75 , 17.50 
+421,Green Bay,Trey McMillan, 18.48 , 7.39 
+423,NY Giants,Matt Bass, 25.85 , 10.34 
+428,Washington,Luke Trahan, 15.59 , 6.24 
+435,Detroit,Brendan Porter, 0.70 , 0.50 
+436,LA Chargers,David Forbath, 4.54 , 1.82 
+441,Pittsburgh,Devontae McKinney, 14.80 , 5.92 
+444,Kansas City,Andres Harrison, 14.05 , 5.62 
+488,Denver,Danilo Shakir, 8.10 , 3.24 
+489,,Rob Guthrie, 8.10 , 3.24 
+541,Kansas City,Jon Pinto, 9.77 , 3.91 
+542,Kansas City,Wyatt LaCosse, 1.17 , 0.50 
+554,Miami,Phillip Christian, 3.81 , 1.52 
+574,New England,Jimmy Aumont, 9.77 , 3.91 
+587,Las Vegas,Josh Holloway, 22.00 , 8.80 
+594,NY Giants,Anthony Ahmed, 1.90 , 0.76 
+632,Tennessee,Nolan Moscot, 4.51 , 1.80 
+649,Chicago,Pat Flexen, 0.70 , 0.50 
+666,Atlanta,Nathan McKinney, 6.83 , 2.73 
+676,Green Bay,Junior Ogbah, 19.30 , 7.72 
+680,Pittsburgh,Kenny Fisher, 8.10 , 3.24 
+704,San Francisco,Joe Hawkins, 4.07 , 1.63 
+712,Baltimore,A.J. Hicks, 6.45 , 2.58 
+715,New England,Tye Gardewine, 8.10 , 3.24 
+730,Cleveland,Craig Boscan, 0.70 , 0.50 
+737,,Russell Grantham, 6.40 , 2.56 
+751,Philadelphia,Aron Perez, 4.54 , 1.82 
+805,Buffalo,Neil Faulkner, 6.05 , 2.42 
+810,LA Rams,Isaiah Alburquerque, 4.04 , 1.62 
+818,Philadelphia,John Robinson, 8.10 , 3.24 
+849,LA Rams,Kevin Blanco, 7.25 , 2.90 
+856,LA Chargers,Gabriel Campbell, 6.21 , 2.49 
+870,Denver,Pat Mathieu, 1.58 , 0.63 
+987,Carolina,Chad Labourt, 6.60 , 2.64 
+988,LA Chargers,Senorise Calderon, 4.57 , 1.83 
+1083,Carolina,Adam Ijalana, 23.90 , 9.56 
+1108,NY Giants,Melky Hughes, 2.68 , 1.07 
+1114,Carolina,Daniel Lopez, 2.62 , 1.05 
+1124,NY Jets,Luke Garvin, 6.83 , 2.73 
+1128,Philadelphia,Brandon Ramczyk, 0.70 , 0.50 
+1168,Green Bay,Koyie Davies, 10.38 , 4.15 
+1199,Denver,Adrian Rivera, 4.57 , 1.83 
+1233,Tennessee,Josh Aquino, 7.15 , 2.86 
+1244,Green Bay,Aaron DeValve, 6.21 , 2.49 
+1286,Dallas,Tanzel Harvey, 2.40 , 0.96 
+1340,Green Bay,Jason Stites, 11.98 , 4.79 
+1348,NY Giants,Kevin Sanchez, 1.90 , 0.76 
+1350,LA Chargers,Josh Hawkins, 6.18 , 2.47 
+1395,Detroit,Ryan Hicks, 6.99 , 2.79 
+1426,Kansas City,Cole Aminu, 0.95 , 0.50 
+1430,LA Chargers,Rasul Miller, 13.85 , 5.54 
+1459,Carolina,Brian Simmons, 3.81 , 1.52 
+1579,NY Giants,Vance Osemele, 7.15 , 2.86 
+1610,,Will Beal,,
+1620,Pittsburgh,Simeon Rea, 6.99 , 2.79 
+1652,New Orleans,Michael Atchison, 8.10 , 3.24 
+1661,Minnesota,Adrian Daniels, 6.60 , 2.64 
+1675,New England,Matthew Odor, 1.17 , 0.50 
+1685,Minnesota,Lane Worth, 1.17 , 0.50 
+1711,Minnesota,Frank Tarpley, 7.15 , 2.86 
+1750,Kansas City,Reymin Ortiz, 6.21 , 2.49 
+1757,Washington,Trevor Dunn, 8.10 , 3.24 
+1761,Cleveland,Trenton Adam, 7.15 , 2.86 
+1789,Houston,Ronald Kieschnick, 3.08 , 1.23 
+1811,Indianapolis,Trevor Herrera, 2.18 , 0.87 
+1817,Seattle,Christian Carter, 25.90 , 10.36 
+1825,Chicago,Matt Wallace, 0.70 , 0.50 
+3418,Atlanta,Jim Stanley, 1.90 , 0.76 
+4986,Dallas,Joe Medeiros, 7.25 , 2.90 
+4987,Kansas City,Tony Macura, 21.03 , 8.41 
+4988,Baltimore,Don Scott, 34.59 , 13.84 
+4990,Baltimore,Kam Wentz, 16.09 , 6.44 
+4991,Baltimore,Ryan Dunn, 26.03 , 10.41 
+4992,Pittsburgh,Jacob Grant, 25.15 , 10.06 
+4993,Jacksonville,Garrison Hoes, 21.03 , 8.41 
+4994,Buffalo,Joshua Wingenter, 7.25 , 2.90 
+4995,Buffalo,Matt McCants, 21.03 , 8.41 
+4996,Carolina,Zack Trawick, 22.11 , 8.85 
+4997,San Francisco,Rubby Stewart, 28.96 , 11.59 
+4998,Houston,Austin Bledsoe, 28.47 , 11.39 
+4999,Philadelphia,Elih Obada, 4.51 , 1.80 
+5000,Detroit,Kyle Wilson, 21.03 , 8.41 
+5001,Green Bay,Ramik Phelps, 34.59 , 13.84 
+5002,Minnesota,Marcus Sirles, 21.03 , 8.41 
+5003,Carolina,Caleb Suarez, 21.03 , 8.41 
+5005,Buffalo,Ola Cunningham, 8.70 , 3.48 
+5006,Indianapolis,Jakeem Erlin, 10.89 , 4.36 
+5007,New England,Danny Maronde, 20.27 , 8.11 
+5009,Baltimore,Andrew Jones, 22.37 , 8.95 
+5011,NY Giants,Chris Whalen, 0.70 , 0.50 
+5012,Chicago,Jackson Freitas, 21.12 , 8.45 
+5015,Las Vegas,Wandy Realmuto, 20.27 , 8.11 
+5016,Chicago,Jawun Hilton, 21.03 , 8.41 
+5017,Miami,Darqueze Basile, 9.35 , 3.74 
+5018,San Francisco,Jim Turley, 17.69 , 7.08 
+5020,Cincinnati,Tim Agholor, 0.70 , 0.50 
+5022,Atlanta,Adoree' Cloyd, 7.28 , 2.91 
+5024,Buffalo,Jaydon Hagadone, 6.93 , 2.77 
+5033,Seattle,Garrett Albies, 1.00 , 0.50 
+5037,Dallas,Stephen Mahtook, 25.10 , 10.04 
+5046,Tennessee,Robert Canady, 19.40 , 7.76 
+5051,Houston,John Fernandez, 7.51 , 3.00 
+5052,LA Chargers,Josh Nelson, 2.67 , 1.07 
+5053,Tampa Bay,Chris Williams, 14.18 , 5.67 
+5061,Houston,Wilton St. Brown, 0.70 , 0.50 
+5062,Kansas City,Noah Prater, 17.69 , 7.08 
+5064,Denver,Eric Graham, 14.28 , 5.71 
+5065,Tampa Bay,Damien Knebel, 24.57 , 9.83 
+5067,Buffalo,Wayne Murray, 1.62 , 0.65 
+5073,Miami,Carlos Lackey, 17.69 , 7.08 
+5074,Miami,Steve West, 3.27 , 1.31 
+5076,Tennessee,Durham Simmons, 20.27 , 8.11 
+5077,LA Rams,Huston Philips, 3.45 , 1.38 
+5078,Tampa Bay,Adrian Figaro, 0.70 , 0.50 
+5081,New Orleans,Preston Miller, 21.03 , 8.41 
+5085,Carolina,Erik Smith, 14.18 , 5.67 
+5090,Jacksonville,J.P. Bracy, 10.07 , 4.03 
+5097,Dallas,Michael Garrett, 10.07 , 4.03 
+5100,Dallas,Alex Henderson, 20.27 , 8.11 
+5102,Houston,Cory Donahue, 7.14 , 2.86 
+5103,LA Chargers,Xavier Means, 0.70 , 0.50 
+5105,Philadelphia,Denzel Green, 20.27 , 8.11 
+5108,NY Jets,Gordon Diallo, 20.00 , 8.00 
+5109,Arizona,Adam Germen, 14.54 , 5.82 
+5116,Pittsburgh,Jeimer Valera, 26.03 , 10.41 
+5118,Green Bay,Rashad Jones, 10.48 , 4.19 
+5119,Chicago,Daniel Lawrence, 14.28 , 5.71 
+5124,NY Giants,Miles Walsh, 7.74 , 3.10 
+5144,Carolina,Theo Scribner, 3.54 , 1.42 
+5148,,Jordan Suter, 3.27 , 1.31 
+5151,Seattle,Harrison Scott, 6.40 , 2.56 
+5153,Pittsburgh,Aaron McNitt, 25.10 , 10.04 
+5157,Tampa Bay,Darnell Hale, 7.61 , 3.05 
+5159,New England,Allen Harrison, 0.70 , 0.50 
+5163,Baltimore,Alex Taijeron, 7.14 , 2.86 
+5166,Baltimore,Dietrich Smith, 14.18 , 5.67 
+5167,Buffalo,Jermaine Shuck, 14.54 , 5.82 
+5170,Arizona,Kendall Dunn, 14.66 , 5.86 
+5177,San Francisco,Fernando Thomas, 20.67 , 8.27 
+5178,Indianapolis,Blake Hamilton, 10.48 , 4.19 
+5183,Philadelphia,Daurice Maile, 0.95 , 0.50 
+5184,New Orleans,Ben Rivera, 3.54 , 1.42 
+5188,Dallas,Trevor Morris, 25.15 , 10.06 
+5193,Houston,Ramon Fry, 24.59 , 9.84 
+5195,Indianapolis,Gonzalez Roberts, 7.04 , 2.81 
+5197,Green Bay,Gregory Hannemann, 11.56 , 4.63 
+5198,Kansas City,Chris Butera, 25.15 , 10.06 
+5199,Philadelphia,Tyler Hill, 0.70 , 0.50 
+5203,Tennessee,Fabian Powell, 10.07 , 4.03 
+5204,Philadelphia,Christian Palardy, 27.20 , 10.88 
+5205,Minnesota,Andres Reavis, 0.70 , 0.50 
+5206,NY Giants,J.J. Murray, 7.34 , 2.93 
+5209,Atlanta,Walter Guy, 19.40 , 7.76 
+5214,Detroit,Tim Guerra, 23.10 , 9.24 
+5222,Detroit,Jacob Carlin, 24.59 , 9.84 
+5223,Detroit,Jimmy Amukamara, 0.70 , 0.50 
+5227,NY Giants,Wilfredo Joseph, 21.28 , 8.51 
+5230,Philadelphia,Daryl Shaw, 10.26 , 4.10 
+5234,Tennessee,Sergio Collins, 24.59 , 9.84 
+5235,Atlanta,Ryan Monroe, 6.78 , 2.71 
+5239,Cincinnati,Pat Smith, 3.76 , 1.50 
+5247,LA Chargers,Brad Jones, 11.10 , 4.44 
+5248,Arizona,Craig Crosby, 10.64 , 4.26 
+5251,Pittsburgh,Kyle Higbee, 16.37 , 6.55 
+5257,Seattle,Alejandro Rua, 21.03 , 8.41 
+5258,Pittsburgh,Niuman Dahl, 0.70 , 0.50 
+5259,Carolina,Marco Thompson, 20.67 , 8.27 
+5265,Cincinnati,Albert Hutchison, 0.70 , 0.50 
+5272,Carolina,Jaime McManis, 23.10 , 9.24 
+5274,Cleveland,Delino Bertolet, 6.95 , 2.78 
+5279,Dallas,Elijah Randle, 8.34 , 3.34 
+5281,New England,Jerry Lawson, 8.34 , 3.34 
+5284,Baltimore,DeAndre Wieters, 14.18 , 5.67 
+5289,NY Giants,Alex Moore, 8.69 , 3.48 
+5291,Cleveland,Ian Last Name, 14.66 , 5.86 
+5295,Cincinnati,Tommy Montero, 9.35 , 3.74 
+5297,NY Giants,Richard Plutko, 28.96 , 11.59 
+5306,Atlanta,Richie Igwebuike, 20.27 , 8.11 
+5317,Green Bay,Joey McCrary, 11.56 , 4.63 
+5324,Seattle,Johnny Blach, 16.09 , 6.44 
+5328,Jacksonville,Trayvon Johnson, 8.51 , 3.40 
+5332,New England,Miguel Peterson, 21.03 , 8.41 
+5335,San Francisco,Joe Clemens, 6.49 , 2.60 
+5339,Miami,J'Mon McCoy, 20.27 , 8.11 
+5343,Houston,Peter Obada, 8.69 , 3.48 
+5347,Baltimore,Doug LaFromboise, 10.64 , 4.26 
+5355,Buffalo,Henry Valaika, 8.70 , 3.48 
+5359,Detroit,Jason Manhertz, 17.69 , 7.08 
+5363,Chicago,Jerald Paulsen, 10.89 , 4.36 
+5369,,Chris Sanders, 0.70 , 0.50 
+5371,Baltimore,Pedro Gathers, 6.72 , 2.69 
+5372,Buffalo,Mike Wynn, 4.73 , 1.89 
+5373,Dallas,Seth Mazzoni, 7.04 , 2.81 
+5374,Seattle,Kemoko Allard, 16.37 , 6.55 
+5380,Buffalo,J.C. Lacy, 10.29 , 4.12 
+5381,Las Vegas,Brett Zunino, 27.20 , 10.88 
+5383,Buffalo,Tyler Jackson, 5.25 , 2.10 
+5385,Detroit,LaAdrian Buchanan, 10.89 , 4.36 
+5386,Arizona,Xavier Gipson, 2.40 , 0.96 
+5390,San Francisco,Ben Cole, 0.70 , 0.50 
+5400,LA Chargers,Rocky Rosario, 8.51 , 3.40 
+5429,NY Giants,Darrel Chapman, 0.70 , 0.50 
+5433,Miami,Korey Gonzalez, 0.70 , 0.50 
+5490,Green Bay,Cam Schlottmann, 14.28 , 5.71 
+5495,Cleveland,Ben Gohara, 12.57 , 5.03 
+5502,Seattle,Austin Duvernay-Tardif, 14.28 , 5.71 
+5506,Washington,Thurston Kemp, 7.28 , 2.91 
+5519,Kansas City,Scott Dozier, 4.81 , 1.93 
+5533,LA Rams,Isaiah Williams, 7.04 , 2.81 
+5583,Dallas,Torrey Solano, 7.17 , 2.87 
+5599,Cincinnati,Matt Dwelley, 7.28 , 2.91 
+5613,Chicago,Henry Blackson, 0.70 , 0.50 
+5618,LA Rams,Cole Jones, 0.70 , 0.50 
+5629,Baltimore,Trevon Romero, 20.00 , 8.00 
+5631,LA Chargers,Jermey Longoria, 8.34 , 3.34 
+5640,Minnesota,Tevin Barrett, 6.68 , 2.67 
+5670,Houston,David Buckner, 8.70 , 3.48 
+5672,Dallas,Vladimir Dawson, 14.18 , 5.67 
+5705,Arizona,Mike Adams, 3.04 , 1.22 
+5715,NY Giants,Wes Osuna, 4.79 , 1.92 
+5732,Tennessee,Adam Boyle, 0.70 , 0.50 
+5772,Houston,Ruben Davis, 0.70 , 0.50 
+5775,Houston,Ryan Loyd, 7.28 , 2.91 
+5778,Cincinnati,Tanner Mickens, 4.28 , 1.71 
+5782,Tennessee,Matt Paddack, 6.49 , 2.60 
+5784,LA Chargers,Phillip Bell, 6.52 , 2.61 
+5787,Chicago,Jon Cracraft, 0.70 , 0.50 
+5922,Philadelphia,Nate Semien, 25.10 , 10.04 
+5942,Buffalo,Kasen Reed, 14.28 , 5.71 
+5945,Chicago,Chasen Garvin, 5.25 , 2.10 
+5955,Pittsburgh,Andrew Jack, 4.24 , 1.70 
+5993,Arizona,Franchy Washington, 8.51 , 3.40 
+5997,Buffalo,Thad Downs, 3.12 , 1.25 
+6000,Washington,Shane Armenteros, 7.51 , 3.00 
+6001,Chicago,Chanceller Stewart, 0.70 , 0.50 
+6090,Seattle,Reggie Ladendorf, 14.54 , 5.82 
+6095,Arizona,Chris Hill, 0.70 , 0.50 
+6124,Denver,Ersan Smith, 0.70 , 0.50 
+6132,Minnesota,Anthony Fulmer, 8.51 , 3.40 
+6137,Arizona,Vontarrius Robinson, 6.35 , 2.54 
+6176,Miami,David Dennard, 6.49 , 2.60 
+6197,LA Rams,Rafael Hefner, 1.62 , 0.65 
+6200,Tennessee,Chris Jansen, 7.04 , 2.81 
+6242,Pittsburgh,Daniel Ennis III, 20.27 , 8.11 
+6270,Minnesota,Jemile Hekker, 9.35 , 3.74 
+6271,Green Bay,Nevin Koufos, 11.10 , 4.44 
+6294,New England,Weston McCoil, 4.48 , 1.79 
+6300,Miami,J.D. Mendez, 9.35 , 3.74 
+6336,Tennessee,Darren Bjelica, 17.69 , 7.08 
+6375,Dallas,Lyndon Portis, 8.51 , 3.40 
+6387,New Orleans,Anthony Danks, 7.51 , 3.00 
+6418,LA Rams,Seunghwan Vieira, 8.69 , 3.48 
+6427,New England,Abraham Devey, 7.28 , 2.91 
+6459,Green Bay,Maikel Infante, 0.70 , 0.50 
+6469,Jacksonville,Travis Lucas, 8.70 , 3.48 
+6474,Buffalo,Jamon Ridley, 17.69 , 7.08 
+6505,San Francisco,Chris Igwebuike, 3.04 , 1.22 
+6527,Chicago,Alex Harris, 1.00 , 0.50 
+6535,Washington,Brendan Hightower, 9.35 , 3.74 
+6558,NY Giants,L.J. Campos, 0.70 , 0.50 
+6575,NY Jets,Matt Siri, 6.35 , 2.54 
+6584,Washington,Hunter Stauffer, 10.89 , 4.36 
+6596,Dallas,D.J. Maile, 0.70 , 0.50 
+6602,Dallas,Khalid Bolt, 7.34 , 2.93 
+6618,LA Rams,Toru Alvarez, 7.61 , 3.05 
+6642,Minnesota,Brogan Teague, 8.51 , 3.40 
+6649,Denver,Zaza LaRoche, 5.88 , 2.35 
+6653,Buffalo,Jordan Burris, 0.70 , 0.50 
+6686,Tampa Bay,L.P. Davis, 7.34 , 2.93 
+6692,Arizona,Tarell Griffin, 4.79 , 1.92 
+6743,New England,Matthew Cunningham, 20.27 , 8.11 
+7514,San Francisco,Elie Randle, 7.17 , 2.87 
+9998,Carolina,Hunter Familia, 13.17 , 5.27 
+9999,Houston,Ruben Shazier, 26.35 , 10.54 
+10000,Jacksonville,Kenny Daniel, 28.49 , 11.40 
+10001,New England,Ben Frare, 2.15 , 0.86 
+10002,Atlanta,Logan Lopez, 6.84 , 2.73 
+10003,Seattle,Clayton McGee, 14.88 , 5.95 
+10004,Tampa Bay,Troy Jackson, 0.70 , 0.50 
+10005,Cleveland,Brandon Rasmussen, 0.70 , 0.50 
+10006,LA Chargers,Jorge Jacobs, 18.54 , 7.41 
+10007,Jacksonville,Dashaun Ceciliani, 8.91 , 3.56 
+10008,Atlanta,David Brown Jr., 0.70 , 0.50 
+10009,Houston,Travis Knebel, 39.63 , 15.85 
+10010,NY Jets,Ronald Baker, 4.51 , 1.80 
+10011,Philadelphia,Whit Wilson, 15.35 , 6.14 
+10012,Tampa Bay,T.Y. Hubbard, 15.35 , 6.14 
+10013,Tampa Bay,Ike Tauchman, 2.80 , 1.12 
+10014,Buffalo,Adam Anderson, 6.66 , 2.66 
+10015,Cincinnati,DaVonte Logan, 24.20 , 9.68 
+10016,NY Jets,Michael Elias, 7.92 , 3.17 
+10017,Tennessee,Garrett Smith, 8.11 , 3.25 
+10018,San Francisco,Mike Barr, 0.70 , 0.50 
+10020,Cincinnati,Jose Jones, 14.96 , 5.98 
+10021,LA Chargers,Hiram Maronde, 7.40 , 2.96 
+10022,Houston,Jeff Holley, 8.76 , 3.50 
+10023,Houston,Sebastian Amichia, 8.53 , 3.41 
+10024,Carolina,Kelvin Dupree, 18.50 , 7.40 
+10026,Carolina,Vince Gresham, 22.03 , 8.81 
+10027,NY Giants,Paul Canha, 21.23 , 8.49 
+10030,Tennessee,Robinzon Terrell, 15.35 , 6.14 
+10032,Atlanta,Alex Hitchens, 6.16 , 2.47 
+10034,Philadelphia,Sherman Cobbs, 4.44 , 1.78 
+10035,Washington,Yohan Moore, 0.70 , 0.50 
+10040,Atlanta,Reynaldo Falah, 7.37 , 2.95 
+10051,Baltimore,Cesar Whitehead, 22.03 , 8.81 
+10052,New Orleans,Thaddeus Pestano, 0.70 , 0.50 
+10053,Seattle,Meyers Wilson, 0.70 , 0.50 
+10054,Dallas,Francisco Smith, 4.48 , 1.79 
+10056,Tennessee,Brandon Alexander, 0.70 , 0.50 
+10058,Chicago,Giannis Wright, 9.79 , 3.92 
+10060,Chicago,Stanley Segovia, 8.76 , 3.50 
+10062,Tampa Bay,Darrell Sadler, 0.70 , 0.50 
+10068,New Orleans,Hakeem Judd, 3.27 , 1.31 
+10069,Green Bay,Rashard Nall, 0.70 , 0.50 
+10070,Cleveland,Mike Penny, 19.58 , 7.83 
+10073,Baltimore,Josh Harris, 6.16 , 2.47 
+10075,LA Chargers,Nick Pounders, 6.72 , 2.69 
+10077,,Jason Marte, 0.70 , 0.50 
+10078,Indianapolis,Justin Cooper, 6.16 , 2.47 
+10080,New Orleans,Stansly Alvarez, 11.63 , 4.65 
+10081,New England,Bucky Smith, 0.70 , 0.50 
+10087,Philadelphia,Chris Holmes, 0.70 , 0.50 
+10090,Kansas City,Myles Bolles, 0.70 , 0.50 
+10097,New Orleans,Chaz Zeitler, 7.51 , 3.00 
+10099,Philadelphia,Frank Valdes-Scantling, 7.37 , 2.95 
+10102,Baltimore,Deante Hedges, 11.63 , 4.65 
+10104,,Ervin Dotson, 0.70 , 0.50 
+10106,Buffalo,Javy Axelrod, 10.98 , 4.39 
+10107,New Orleans,Matt Zavala, 6.65 , 2.66 
+10108,Minnesota,Rasheed Downs, 15.75 , 6.30 
+10109,Denver,Tim Hutchison, 0.70 , 0.50 
+10110,Tampa Bay,Ja'Wuan Gray, 28.49 , 11.40 
+10111,New Orleans,O'Koyea Landrum, 11.08 , 4.43 
+10112,NY Jets,Hunter Suh, 15.46 , 6.18 
+10113,LA Chargers,Derrick Vasquez, 0.70 , 0.50 
+10116,Las Vegas,Andrew Zagunis, 6.20 , 2.48 
+10119,LA Rams,Jake Duda, 14.88 , 5.95 
+10121,Miami,Robert Hernandez, 3.62 , 1.45 
+10122,Indianapolis,Mitchell Reynolds, 26.65 , 10.66 
+10126,LA Chargers,Chad Walters, 0.70 , 0.50 
+10127,Buffalo,John Jefferson, 0.70 , 0.50 
+10130,Green Bay,Sean Lee, 0.70 , 0.50 
+10131,Baltimore,Burch Ramos, 10.75 , 4.30 
+10133,Cleveland,Kyle Shell, 6.65 , 2.66 
+10137,New Orleans,Gregory Donnal, 11.41 , 4.57 
+10139,Philadelphia,Michael Deayon, 0.70 , 0.50 
+10140,Tampa Bay,Trevon Ingram, 0.70 , 0.50 
+10142,Tampa Bay,Owa Flaherty, 2.45 , 0.98 
+10145,Jacksonville,Armani Williams, 0.70 , 0.50 
+10149,Green Bay,Connor Hardison, 26.29 , 10.52 
+10150,Buffalo,Chandler McKay, 3.52 , 1.41 
+10151,Pittsburgh,Felix Rodriguez, 7.37 , 2.95 
+10153,Tampa Bay,Jarrett Liddi, 3.62 , 1.45 
+10155,Indianapolis,Alex Atkins, 4.44 , 1.78 
+10158,Baltimore,John Lauer, 7.37 , 2.95 
+10159,Pittsburgh,Chris Diaz, 0.70 , 0.50 
+10162,Minnesota,Kaelin Swanson, 7.98 , 3.19 
+10164,Las Vegas,Logan Travis, 1.51 , 0.61 
+10168,Atlanta,Isaiah Lewis, 1.70 , 0.68 
+10170,Tampa Bay,Victor Odom, 7.51 , 3.00 
+10182,Green Bay,Michael Rozier, 7.68 , 3.07 
+10185,NY Giants,Sam Voth, 8.91 , 3.56 
+10187,Carolina,Meyers Ross, 0.70 , 0.50 
+10190,LA Chargers,James McKinnon, 10.98 , 4.39 
+10192,Cleveland,Tim McRae, 5.02 , 2.01 
+10193,Baltimore,Nate Adam, 6.80 , 2.72 
+10195,LA Rams,Isaiah Rogers, 8.76 , 3.50 
+10200,Las Vegas,Chris Crawford, 0.70 , 0.50 
+10201,Buffalo,Randal Holmes, 0.70 , 0.50 
+10203,,Ian Jennings,,
+10205,Jacksonville,Justin Marsh, 7.62 , 3.05 
+10208,Atlanta,Amir Tankersley, 7.51 , 3.00 
+10211,Tennessee,Lorenzo Carr, 6.72 , 2.69 
+10212,Tennessee,Mike Urias, 6.80 , 2.72 
+10214,Detroit,Joel Chirinos, 0.70 , 0.50 
+10220,Cincinnati,Danny Garcia, 8.91 , 3.56 
+10222,Dallas,Darius Kontos, 2.28 , 0.91 
+10223,Jacksonville,Zac McCutchen, 26.29 , 10.52 
+10225,Washington,Al Solis, 7.98 , 3.19 
+10227,Green Bay,Cody Casspi, 14.88 , 5.95 
+10231,Buffalo,Nick Jones, 2.40 , 0.96 
+10234,Dallas,Jose Moustakas, 4.96 , 1.98 
+10235,Philadelphia,DaQuan Badgley, 14.88 , 5.95 
+10236,Philadelphia,Andrew Moncrief, 0.70 , 0.50 
+10238,Cincinnati,Shaquil Watkins, 2.45 , 0.98 
+10239,Green Bay,DeAndre Tuiasosopo, 0.70 , 0.50 
+10240,Arizona,Elfrid Putkonen, 7.48 , 2.99 
+10241,Indianapolis,Ty Bogdanovic, 0.70 , 0.50 
+10242,Carolina,Spencer Marshall, 0.70 , 0.50 
+10243,Philadelphia,Riley Correa, 8.91 , 3.56 
+10245,San Francisco,Paul Fowler, 0.70 , 0.50 
+10247,Cleveland,Skai Esch, 0.70 , 0.50 
+10249,Seattle,Brett Maxey, 8.91 , 3.56 
+10250,Cleveland,Isaiah Williams, 15.24 , 6.09 
+10253,Cincinnati,Josh Varvaro, 0.70 , 0.50 
+10254,LA Rams,Andre LeMahieu, 0.70 , 0.50 
+10256,Philadelphia,Taylor Armbrister, 0.70 , 0.50 
+10259,Philadelphia,Joe Harris, 7.62 , 3.05 
+10262,Cleveland,Carlos Blacknall, 7.68 , 3.07 
+10265,Philadelphia,Keibert House, 6.20 , 2.48 
+10266,Jacksonville,Julian Longacre, 1.70 , 0.68 
+10267,Miami,Arden Ejiofor, 21.23 , 8.49 
+10268,Houston,Dominique Miller, 8.91 , 3.56 
+10270,Las Vegas,Jake Sosa, 10.75 , 4.30 
+10271,NY Jets,Davis Covey, 7.68 , 3.07 
+10273,San Francisco,Andrew Solano, 3.71 , 1.48 
+10275,Tampa Bay,Ryan Wiggins, 18.54 , 7.41 
+10277,LA Chargers,Arnold Smith, 7.51 , 3.00 
+10278,Philadelphia,Jarrod Young, 0.70 , 0.50 
+10280,Philadelphia,Johnathan Kling, 0.70 , 0.50 
+10287,Arizona,Mike LeVert, 0.70 , 0.50 
+10288,Seattle,Breshad Barnes, 10.55 , 4.22 
+10289,Tennessee,Will Outman, 0.99 , 0.50 
+10290,Arizona,Damien Chachere, 0.70 , 0.50 
+10291,New England,Rishard Ward, 21.44 , 8.58 
+10292,New Orleans,Ronald Bazemore, 0.70 , 0.50 
+10294,New Orleans,Justin Ramirez, 6.20 , 2.48 
+10297,Las Vegas,Edward Colon, 5.04 , 2.02 
+10299,Seattle,Joe Edmunds, 21.23 , 8.49 
+10306,Tennessee,Hayes Edwards, 7.26 , 2.90 
+10312,Tampa Bay,Brandon Rowen, 0.70 , 0.50 
+10318,Pittsburgh,Trenton Williams, 0.70 , 0.50 
+10320,Buffalo,Corey Cabrera, 6.16 , 2.47 
+10321,San Francisco,Mike Bates, 6.72 , 2.69 
+10322,Pittsburgh,Tony Varvaro, 10.75 , 4.30 
+10325,Philadelphia,Evan Gordon, 7.26 , 2.90 
+10326,Tennessee,Drew Evans, 0.70 , 0.50 
+10327,Baltimore,Kyle Grant, 6.65 , 2.66 
+10331,Carolina,Wilkin Tatum, 0.70 , 0.50 
+10333,Jacksonville,Rashard Hilliard, 8.91 , 3.56 
+10334,LA Chargers,J'Mon Wolters, 4.48 , 1.79 
+10336,Atlanta,Moises Walker, 0.70 , 0.50 
+10337,Tennessee,Clinton Marte, 0.70 , 0.50 
+10338,Denver,Brandon Campbell, 0.70 , 0.50 
+10342,Las Vegas,Evan Duke, 7.51 , 3.00 
+10346,Carolina,Justice Thomas, 0.70 , 0.50 
+10347,Tennessee,Joe Yanda, 0.70 , 0.50 
+10350,Green Bay,David Rader, 8.91 , 3.56 
+10351,Carolina,DeAndre Wisdom, 0.70 , 0.50 
+10352,Baltimore,Travis Chirinos, 7.26 , 2.90 
+10353,Jacksonville,Jordan Hicks, 5.02 , 2.01 
+10354,New England,Alex Wolfe, 6.80 , 2.72 
+10356,Tampa Bay,Niko Suarez, 0.70 , 0.50 
+10358,Buffalo,Sammy Langford, 6.84 , 2.73 
+10359,LA Chargers,Aqib Lynch, 7.10 , 2.84 
+10361,Indianapolis,Jonathan Parks, 8.91 , 3.56 
+10365,San Francisco,Blake Robinson, 0.70 , 0.50 
+10366,LA Chargers,Josh Tom, 7.04 , 2.82 
+10373,Miami,Ali Sandoval, 0.70 , 0.50 
+10374,San Francisco,Jester Soroka, 1.40 , 0.56 
+10377,LA Rams,Bobby Britton, 4.69 , 1.88 
+10381,Miami,Brad Portis, 15.24 , 6.09 
+10382,Baltimore,Nick Concepcion, 15.46 , 6.18 
+10386,Jacksonville,Trevor Wood, 6.65 , 2.66 
+10389,Washington,Ronald Cimber, 7.86 , 3.15 
+10390,LA Chargers,Da'Norris White, 24.20 , 9.68 
+10396,Detroit,Richard Bianchi, 10.80 , 4.32 
+10398,Detroit,Shaq Ryan, 3.19 , 1.27 
+10399,Cleveland,Marvin Thomas, 14.96 , 5.98 
+10401,Seattle,Frank Robinson, 0.70 , 0.50 
+10403,Buffalo,Jourdan Conner, 10.55 , 4.22 
+10405,Seattle,Carlos Mateo, 35.20 , 14.08 
+10406,Tampa Bay,Jake Hosmer, 4.48 , 1.79 
+10409,LA Rams,Matt Mathis, 2.40 , 0.96 
+10410,Baltimore,Corey Reid, 0.70 , 0.50 
+10411,Washington,Wayne Hughes, 10.80 , 4.32 
+10414,LA Chargers,Tim Robinson, 2.28 , 0.91 
+10415,Miami,Mike Hubbard, 24.20 , 9.68 
+10416,Pittsburgh,Benardrick Taylor, 0.70 , 0.50 
+10417,Seattle,Lyndon Hart, 0.70 , 0.50 
+10419,Houston,Skye Lattimore, 7.98 , 3.19 
+10420,Carolina,Brad Thomas, 0.70 , 0.50 
+10421,Las Vegas,Chris Mama, 0.70 , 0.50 
+10422,Arizona,Beau Martin, 0.70 , 0.50 
+10424,New England,Logan Njoku, 11.41 , 4.57 
+10425,Baltimore,Ito Herrera, 0.70 , 0.50 
+10429,Philadelphia,Trayvon Wadley, 0.70 , 0.50 
+10433,Detroit,Whitney Robinson, 7.51 , 3.00 
+10437,Las Vegas,Sam Moxey, 10.98 , 4.39 
+10439,New England,Freddy Gervacio, 0.70 , 0.50 
+10441,Indianapolis,Josh Joyner, 0.70 , 0.50 
+10443,Houston,John Massie, 12.11 , 4.85 
+10444,Carolina,Terrence Ramos, 0.70 , 0.50 
+10455,NY Jets,Nick Suarez, 15.56 , 6.22 
+10484,Pittsburgh,Deon Jones, 3.27 , 1.31 
+10493,Pittsburgh,Tim Keller, 1.76 , 0.70 
+10494,Cincinnati,Tyrell Albies, 0.75 , 0.50 
+10497,Seattle,Jon Roberts, 0.70 , 0.50 
+10539,Washington,Robert Mozgov, 3.42 , 1.37 
+10547,Miami,Derek Apple, 0.70 , 0.50 
+10571,NY Giants,Xavier Wheeler, 0.70 , 0.50 
+10577,San Francisco,Zack Labourt, 7.59 , 3.04 
+10595,Atlanta,Chris Avery, 5.51 , 2.20 
+10606,Cleveland,Dominique Ankou, 17.15 , 6.86 
+10611,Tennessee,Micah Golson, 5.51 , 2.20 
+10633,Las Vegas,Vyncint McRae, 7.51 , 3.00 
+10667,New England,Tre'Von Sherfield, 0.70 , 0.50 
+10709,Tennessee,Quinterrius Koo, 3.52 , 1.41 
+10716,Philadelphia,Ryan Witherspoon, 2.45 , 0.98 
+10725,Tampa Bay,David Bembry, 3.19 , 1.27 
+10739,New England,Cesar Roethlisberger, 1.51 , 0.61 
+10797,Detroit,Quentin Tilson, 7.51 , 3.00 
+10842,Denver,Jamie Fitzpatrick, 0.97 , 0.50 
+10848,Washington,Harold Burke, 6.65 , 2.66 
+10861,New England,Zach Ledezma, 7.04 , 2.82 
+10864,Carolina,Jace Taylor, 0.70 , 0.50 
+10871,Philadelphia,Jordan Marte, 7.10 , 2.84 
+10897,,Aaron Susac, 0.70 , 0.50 
+10900,Tennessee,Demar LeMahieu, 0.70 , 0.50 
+10916,Arizona,Joel Guerra, 0.70 , 0.50 
+10917,NY Jets,Andrew Michael, 0.70 , 0.50 
+10967,Indianapolis,Jay Vernon, 7.68 , 3.07 
+10968,Atlanta,Naashon Elder, 7.51 , 3.00 
+10975,LA Rams,Gonzalez Tyson, 4.49 , 1.79 
+10990,Tampa Bay,Devon Alford, 3.42 , 1.37 
+11001,New England,Franklin McFadden, 2.28 , 0.91 
+11010,Pittsburgh,Mark Nelson, 8.76 , 3.50 
+11014,Carolina,Tucker Odum, 0.70 , 0.50 
+11048,Las Vegas,Adam Wilson, 3.95 , 1.58 
+11057,Miami,Jake Cuthbert, 35.20 , 14.08 
+11089,NY Giants,David Whitesell, 0.70 , 0.50 
+11098,NY Giants,Steve Thuney, 0.70 , 0.50 
+11117,Kansas City,Ben Smith, 0.70 , 0.50 
+11128,New England,Ian Beverley, 4.44 , 1.78 
+11151,NY Jets,Jamil Webster, 3.19 , 1.27 
+11181,LA Rams,Donnie Jenkins, 0.70 , 0.50 
+11183,San Francisco,Dante Gates, 22.03 , 8.81 
+11198,Philadelphia,Frank Noel, 0.70 , 0.50 
+11209,Cincinnati,Marquel Gott, 0.70 , 0.50 
+11212,Minnesota,Yogi Oladipo, 6.72 , 2.69 
+11217,,Stephen Hernandez, 3.52 , 1.41 
+11228,Indianapolis,Jordan Virgin, 0.70 , 0.50 
+11241,Las Vegas,Rey Scott, 0.70 , 0.50 
+11309,Washington,Chad Dolis, 14.88 , 5.95 
+11327,Minnesota,Fish Vander Laan, 0.70 , 0.50 
+11332,Arizona,Lance Guilmet, 7.86 , 3.15 
+11341,New England,Toby Kearse, 0.70 , 0.50 
+11351,Arizona,Chris Snell, 0.70 , 0.50 
+11366,Carolina,Brian Lindsey, 1.51 , 0.61 
+11406,Arizona,Marcell Maysonet, 1.05 , 0.50 
+11426,Arizona,Bobo Sims, 0.70 , 0.50 
+11428,NY Giants,Christian Simon, 2.27 , 0.91 
+11447,Tampa Bay,Huascar Stupar, 0.70 , 0.50 
+11449,Baltimore,Dallas Maulet, 0.70 , 0.50 
+11462,Las Vegas,Matthew Cano, 35.20 , 14.08 
+11478,Buffalo,Matt Schwarber, 3.95 , 1.58 
+11488,Pittsburgh,Naz Fiers, 0.70 , 0.50 
+11501,Carolina,Tyler Rapada, 0.70 , 0.50 
+11503,Chicago,DeShawn Miles, 0.70 , 0.50 
+11505,Arizona,Cordrea Hahn, 0.70 , 0.50 
+11527,Seattle,Joe Calhoun, 1.76 , 0.70 
+11560,Atlanta,Angel Norris, 4.69 , 1.88 
+11569,Indianapolis,Zack Robinson, 0.70 , 0.50 
+11582,Tennessee,Alfonzo Cook, 0.70 , 0.50 
+11590,Buffalo,Mickey Brogdon, 18.50 , 7.40 
+11600,Pittsburgh,Eury Zimmer, 0.70 , 0.50 
+11603,Washington,Victor Brown, 4.96 , 1.98 
+11615,NY Giants,Willie Garcia, 0.70 , 0.50 
+11616,Miami,Jordan Dickson, 15.39 , 6.16 
+11634,Kansas City,Antone Weeks, 0.70 , 0.50 
+11652,New Orleans,Carl Melton, 0.70 , 0.50 
+11660,Chicago,Jorge Turner, 0.70 , 0.50 
+11693,Tampa Bay,Trevon Cothran, 0.99 , 0.50 
+11702,Arizona,Nikola LeBlanc, 7.04 , 2.82 
+11767,Las Vegas,Mike Campbell, 6.72 , 2.69 
+11770,LA Rams,Kyle Nimmo, 5.02 , 2.01 
+11951,Chicago,Will Singleton, 0.70 , 0.50 
+11958,Tampa Bay,Brett Durham, 0.70 , 0.50 
+12488,Indianapolis,Mike Witherspoon, 0.70 , 0.50 
+13007,Miami,Marquette Locke, 7.98 , 3.19 
+13104,Philadelphia,J.R. Campbell, 0.70 , 0.50 
+13316,Minnesota,Hroniss Wells, 2.80 , 1.12 
+14947,Pittsburgh,Matt Corbin, 12.16 , 4.86 
+14948,Detroit,Tony Sherman, 11.93 , 4.77 
+14949,Jacksonville,Victor Selsky, 25.30 , 10.12 
+14950,Las Vegas,A.J. Kanter, 7.71 , 3.08 
+14951,New England,Michael Oliveros, 3.88 , 1.55 
+14952,Detroit,Travis Cravens, 16.47 , 6.59 
+14953,Houston,Chandler Lamb, 0.70 , 0.50 
+14954,Indianapolis,Ryan Herget, 15.93 , 6.37 
+14955,Detroit,Benardrick Goodwin, 0.70 , 0.50 
+14956,Tampa Bay,Daniel Hester, 6.96 , 2.78 
+14957,Green Bay,Terry Kalis, 0.70 , 0.50 
+14958,Detroit,Seby Bazardo, 22.20 , 8.88 
+14959,NY Jets,Denver Litton, 23.03 , 9.21 
+14960,Philadelphia,Oren Colon, 7.59 , 3.04 
+14961,Dallas,Deolis Francisco, 0.70 , 0.50 
+14962,Kansas City,Mitch Forrest, 9.32 , 3.73 
+14963,Seattle,Taylor Allen, 7.94 , 3.17 
+14964,Atlanta,Josh Gaudin, 22.20 , 8.88 
+14965,San Francisco,Bobby Gonzalez, 10.24 , 4.10 
+14966,Las Vegas,Rodney Ladler, 15.64 , 6.26 
+14967,Buffalo,Weston Shackelford, 0.70 , 0.50 
+14968,Arizona,Omarius Beasley, 7.82 , 3.13 
+14969,Kansas City,Jalen Jones, 16.16 , 6.46 
+14970,San Francisco,Malcolm Kahnle, 11.48 , 4.59 
+14971,Chicago,Brandon Ioannidis, 7.97 , 3.19 
+14972,New Orleans,Devonte Todd, 7.97 , 3.19 
+14973,Indianapolis,Casey Hatcher, 5.19 , 2.07 
+14974,Arizona,Nathan Hungalu, 25.30 , 10.12 
+14975,Detroit,Chad Ceciliani, 9.60 , 3.84 
+14976,Arizona,Caleb Reiter, 7.15 , 2.86 
+14978,Minnesota,Reggie Newton, 0.70 , 0.50 
+14979,Las Vegas,Torrey Barbato, 7.11 , 2.84 
+14981,Minnesota,Adolphus Litton, 0.70 , 0.50 
+14985,Pittsburgh,Marcus Alcantara, 1.58 , 0.63 
+14988,San Francisco,Duron Motte, 0.70 , 0.50 
+14990,Baltimore,Joshua Martin, 8.48 , 3.39 
+14991,LA Rams,Ariel Malleck, 0.70 , 0.50 
+14992,Seattle,Kirk Sandoval, 5.25 , 2.10 
+14993,Miami,Brandon Anderson, 2.51 , 1.00 
+14994,NY Giants,Anthony Singleton, 0.70 , 0.50 
+14995,Arizona,Jamie McCoy, 7.59 , 3.04 
+14996,Detroit,Josh Thornton, 0.70 , 0.50 
+14998,Jacksonville,Kyle Bembry, 0.70 , 0.50 
+14999,Philadelphia,Drew Parsons, 0.70 , 0.50 
+15000,Cleveland,Ryan White, 0.70 , 0.50 
+15001,NY Jets,Nate Tevi, 0.70 , 0.50 
+15002,Cleveland,Steven Ware, 0.70 , 0.50 
+15003,,Mike Davis, 0.70 , 0.50 
+15005,Arizona,Ryan Segovia, 7.71 , 3.08 
+15006,Kansas City,Patrick Hurst, 0.70 , 0.50 
+15008,Indianapolis,Joey Acklin, 0.70 , 0.50 
+15009,Cincinnati,Andre Brignac, 0.70 , 0.50 
+15011,Kansas City,Yasiel Jones, 0.70 , 0.50 
+15013,Washington,Johnny Wentz, 0.70 , 0.50 
+15014,Baltimore,Joshua Bacon, 0.70 , 0.50 
+15016,,Ka'imi Cole,,
+15017,NY Jets,Dallas Denker, 0.70 , 0.50 
+15019,Detroit,Emmanuel Murdock, 0.70 , 0.50 
+15021,Denver,Nick McCourty, 4.68 , 1.87 
+15022,New Orleans,Dylan Palmer, 7.11 , 2.84 
+15023,NY Jets,Andrew Freitas, 0.70 , 0.50 
+15026,Cleveland,Adrian Pederson, 1.09 , 0.50 
+15028,Atlanta,Shareece Hinojosa, 7.04 , 2.82 
+15029,Chicago,Willie Parms, 1.47 , 0.59 
+15030,LA Rams,Tomas Baez, 0.79 , 0.50 
+15032,NY Jets,Josh Jernigan, 0.70 , 0.50 
+15033,Philadelphia,Sean Rogers, 15.64 , 6.26 
+15035,Buffalo,James White, 7.36 , 2.94 
+15036,Pittsburgh,Michael Scales, 0.70 , 0.50 
+15037,Cleveland,Travis Cole, 7.04 , 2.82 
+15040,Atlanta,Rashaan Wilkerson, 0.70 , 0.50 
+15042,NY Giants,Jon Walters, 0.70 , 0.50 
+15043,Atlanta,Izaah Plawecki, 1.78 , 0.71 
+15044,Miami,Caleb Collins, 1.01 , 0.50 
+15045,Carolina,Paul Buckner, 9.32 , 3.73 
+15047,Kansas City,Cody Jordan, 1.58 , 0.63 
+15048,Buffalo,Vernon Mack, 0.70 , 0.50 
+15050,Green Bay,Brian Ciuffo, 15.93 , 6.37 
+15051,Washington,Zhaire Philon, 7.04 , 2.82 
+15052,Tampa Bay,Lamar Pacheco, 0.70 , 0.50 
+15054,Arizona,Ricardo Kershaw, 0.70 , 0.50 
+15055,Indianapolis,Kelly Jarwin, 0.70 , 0.50 
+15059,Jacksonville,Ryan Pederson, 9.18 , 3.67 
+15060,Pittsburgh,Daniel Clarke, 0.70 , 0.50 
+15063,Jacksonville,Phillippe Johnson, 7.04 , 2.82 
+15065,Miami,Devin Holtz, 0.70 , 0.50 
+15066,Philadelphia,Richaun Alsadek, 16.30 , 6.52 
+15068,Buffalo,Ryan Blacknall, 3.33 , 1.33 
+15070,Houston,Dominic Flexen, 7.36 , 2.94 
+15074,New Orleans,Christian Barraclough, 33.47 , 13.39 
+15075,New Orleans,Anthony Koch, 6.96 , 2.78 
+15076,Buffalo,Daniel Sanchez, 0.70 , 0.50 
+15077,Buffalo,Tyler Winslow, 0.70 , 0.50 
+15078,Arizona,Chris Fleer, 0.70 , 0.50 
+15079,NY Jets,Yuta Cubillan, 0.70 , 0.50 
+15082,Las Vegas,Willie Irving, 15.59 , 6.24 
+15083,Atlanta,Deiondre' Morales, 0.70 , 0.50 
+15086,Pittsburgh,Sherman Leclerc, 4.91 , 1.96 
+15087,Buffalo,Donatello Scott, 22.20 , 8.88 
+15089,Kansas City,Jon Wahl, 1.12 , 0.50 
+15092,Cleveland,D.J. Jenkins, 0.70 , 0.50 
+15093,Denver,Sony Ogletree, 0.70 , 0.50 
+15094,Carolina,Cobi Tulowitzki, 0.70 , 0.50 
+15095,Philadelphia,Carlton Moore, 1.01 , 0.50 
+15097,Las Vegas,Matt Qualls, 7.71 , 3.08 
+15100,Houston,Pat Walker, 0.70 , 0.50 
+15101,Green Bay,Roy Mejia, 0.70 , 0.50 
+15102,New Orleans,Mike Fulton, 0.70 , 0.50 
+15103,LA Rams,Anthony Butler, 0.70 , 0.50 
+15104,Arizona,Darren Albers, 11.32 , 4.53 
+15105,Dallas,Anthony Brown, 0.70 , 0.50 
+15107,Washington,Brandon Carpenter, 9.32 , 3.73 
+15109,Indianapolis,Ethan Diaz, 0.70 , 0.50 
+15110,Kansas City,Sergio Guice, 7.04 , 2.82 
+15115,Detroit,Omari Stanley, 8.34 , 3.34 
+15117,NY Giants,Freddie Koch, 3.68 , 1.47 
+15118,Cleveland,Eddie Wisniewski, 8.03 , 3.21 
+15120,Detroit,Jose Colabello, 7.59 , 3.04 
+15121,Buffalo,Ken Flagel, 0.70 , 0.50 
+15122,Las Vegas,Rey Scott, 1.04 , 0.50 
+15123,Houston,Ryan Lydon, 11.93 , 4.77 
+15124,Pittsburgh,Duke Okafor, 2.51 , 1.00 
+15125,Baltimore,Kendry Malleck, 0.70 , 0.50 
+15126,Las Vegas,Chi Chi Colome, 4.69 , 1.88 
+15127,Buffalo,Rick Guerra, 0.70 , 0.50 
+15129,Arizona,Arden Niang, 3.08 , 1.23 
+15131,Kansas City,Jalen Peterson, 0.70 , 0.50 
+15132,Minnesota,Luke Leesman, 0.70 , 0.50 
+15133,NY Giants,Garrett Witherspoon, 0.70 , 0.50 
+15135,Detroit,Curtis Tracy, 0.70 , 0.50 
+15138,Arizona,Kwon Wilson, 0.70 , 0.50 
+15139,LA Rams,Jon Gore, 0.70 , 0.50 
+15141,Tampa Bay,J.D. Jones, 0.70 , 0.50 
+15142,Minnesota,Sealver Nkemdiche, 3.68 , 1.47 
+15143,Atlanta,Alex Smith, 0.70 , 0.50 
+15144,Detroit,Geoff Alburquerque, 7.04 , 2.82 
+15147,Cleveland,Wandy Jones, 7.85 , 3.14 
+15149,Washington,Jerry Hager, 0.70 , 0.50 
+15151,Pittsburgh,Rashaan Sanchez, 0.70 , 0.50 
+15152,Arizona,Mike Coke, 0.70 , 0.50 
+15153,Houston,Miguel Eifert, 0.70 , 0.50 
+15155,NY Jets,Tyler Love, 0.70 , 0.50 
+15157,Minnesota,Eric Braverman, 7.19 , 2.88 
+15158,Atlanta,Henry Brown, 0.70 , 0.50 
+15159,Cleveland,Jose Mazzoni, 6.45 , 2.58 
+15160,,Quenton Ogbah,,
+15161,Green Bay,David Nelson, 0.70 , 0.50 
+15163,Minnesota,Georges Garcia, 6.96 , 2.78 
+15164,Minnesota,Elfrid Worley, 2.38 , 0.95 
+15166,San Francisco,Scott Romero, 1.78 , 0.71 
+15167,NY Jets,Cam Atchison, 0.70 , 0.50 
+15168,Cleveland,Roy Clark, 9.18 , 3.67 
+15169,Dallas,Vernon Johnson, 0.70 , 0.50 
+15170,Carolina,Jonathon Durant, 0.70 , 0.50 
+15171,Washington,Matt Williams, 0.70 , 0.50 
+15173,Cleveland,Evan Jernigan, 0.70 , 0.50 
+15174,Arizona,Yacksel Redmond, 0.70 , 0.50 
+15176,Cleveland,Leo McDonald, 0.70 , 0.50 
+15177,Baltimore,Jaeden Thames, 0.70 , 0.50 
+15178,Arizona,Jake Greenberg, 7.59 , 3.04 
+15179,Pittsburgh,Rafael Miller, 0.70 , 0.50 
+15180,Green Bay,Wilton Pankey, 0.70 , 0.50 
+15181,NY Giants,Tommy Garcia, 0.70 , 0.50 
+15182,Miami,DeVante Mizzell, 3.42 , 1.37 
+15183,LA Rams,Glover Evans, 2.38 , 0.95 
+15186,Minnesota,Greer Daniels, 0.70 , 0.50 
+15188,NY Giants,Matt Teheran, 0.70 , 0.50 
+15191,Indianapolis,Ray-Ray Last Name, 1.09 , 0.50 
+15194,New England,Justin Irwin, 0.70 , 0.50 
+15195,NY Jets,Ramik Harris, 0.70 , 0.50 
+15197,Minnesota,Julio Robinson, 0.70 , 0.50 
+15201,Philadelphia,James Owens, 0.70 , 0.50 
+15202,Minnesota,Scott Franco, 0.70 , 0.50 
+15205,Pittsburgh,Tim Blair, 7.04 , 2.82 
+15206,Kansas City,Robertson Moore, 0.70 , 0.50 
+15207,New Orleans,Jacob Onwualu, 0.70 , 0.50 
+15208,Dallas,Jonathon Callahan, 11.23 , 4.49 
+15210,Buffalo,Datone Dozier, 0.70 , 0.50 
+15211,Washington,Don Williamson, 0.70 , 0.50 
+15215,Kansas City,Xavier Smith, 0.70 , 0.50 
+15219,Kansas City,Lavon Iribarren, 7.42 , 2.97 
+15221,Kansas City,Jevon Majewski, 0.70 , 0.50 
+15223,Kansas City,Phillip Adams, 7.59 , 3.04 
+15224,Green Bay,DeAndre' Anau, 5.76 , 2.30 
+15225,Cleveland,Dzanan Huff, 23.03 , 9.21 
+15227,Cincinnati,Lonnie Adams, 0.70 , 0.50 
+15229,Tampa Bay,Jonas Lawrence, 0.70 , 0.50 
+15231,Seattle,Alex Figueroa, 7.42 , 2.97 
+15234,Baltimore,Mike Knox, 0.70 , 0.50 
+15236,Cincinnati,Antonio Toomer, 0.70 , 0.50 
+15238,Chicago,Mickey Oxspring, 16.05 , 6.42 
+15239,Houston,Eric Faulkner, 0.70 , 0.50 
+15240,NY Jets,Kendrick Mateo, 0.70 , 0.50 
+15241,Washington,Tanner Murray, 0.70 , 0.50 
+15242,Minnesota,Marcus Dade, 15.59 , 6.24 
+15243,Tampa Bay,Phillip Rogers, 0.70 , 0.50 
+15246,LA Chargers,JT Jungmann, 4.69 , 1.88 
+15247,Houston,Kerwynn Urias, 6.48 , 2.59 
+15248,Pittsburgh,Erick Boehringer, 0.70 , 0.50 
+15249,Tampa Bay,Preston Snodgress, 16.05 , 6.42 
+15253,Washington,JaVale Ni, 24.51 , 9.80 
+15255,Arizona,Darius Mabry, 6.48 , 2.59 
+15257,Las Vegas,Darius Bell, 0.70 , 0.50 
+15258,Denver,Yoenis Gholston, 7.04 , 2.82 
+15259,NY Giants,Tanner Heston, 0.70 , 0.50 
+15260,Seattle,Travin Adams, 3.33 , 1.33 
+15261,NY Jets,Klay Hudson, 5.25 , 2.10 
+15263,San Francisco,Vontae Knebel, 15.95 , 6.38 
+15265,NY Giants,Jonathon Perez, 15.59 , 6.24 
+15266,Houston,Dayan Holley, 3.68 , 1.47 
+15267,Detroit,Kyle Darvish, 0.70 , 0.50 
+15269,Carolina,Justin Hudson, 2.38 , 0.95 
+15272,Arizona,Thairo Thomas, 0.70 , 0.50 
+15273,Cincinnati,Jomal Carson, 7.11 , 2.84 
+15274,Arizona,Jo-Jo Faulkner, 0.70 , 0.50 
+15278,New Orleans,Chris Watkins, 0.70 , 0.50 
+15279,Buffalo,Joaquin Williams, 4.68 , 1.87 
+15283,Buffalo,Trevor Gentry, 0.70 , 0.50 
+15284,NY Jets,Will Huber, 25.93 , 10.37 
+15285,Minnesota,Kelvin Sanchez, 0.70 , 0.50 
+15286,Detroit,Tremaine Craig, 22.46 , 8.99 
+15288,Las Vegas,Ian Rogers, 3.68 , 1.47 
+15292,Minnesota,Parker Boling, 0.70 , 0.50 
+15293,Atlanta,Scott Banner, 7.42 , 2.97 
+15295,San Francisco,Daniel Piscotty, 0.70 , 0.50 
+15296,New England,Nick Conner, 0.70 , 0.50 
+15297,Detroit,Chris Quintanilla, 1.58 , 0.63 
+15299,Cleveland,Andre Bell, 0.70 , 0.50 
+15301,Dallas,Bam Bozeman, 1.04 , 0.50 
+15302,Indianapolis,Tray Gustave, 20.47 , 8.19 
+15305,Green Bay,JC Gentry, 7.97 , 3.19 
+15306,Jacksonville,Tommy Murton, 1.09 , 0.50 
+15307,NY Jets,David Ponce de Leon, 0.70 , 0.50 
+15308,Tennessee,Jason Yabusele, 0.70 , 0.50 
+15309,Detroit,Cole Cole, 0.70 , 0.50 
+15310,Tennessee,Jerry Reyes, 0.70 , 0.50 
+15311,Carolina,Austin Rosario, 8.03 , 3.21 
+15312,Arizona,Kony Ramirez, 3.78 , 1.51 
+15313,Jacksonville,Jake Bolden, 22.64 , 9.05 
+15314,Buffalo,Joe Gotay, 0.70 , 0.50 
+15315,Baltimore,Quandre Quintanilla, 0.70 , 0.50 
+15318,Kansas City,Dean Leary, 1.01 , 0.50 
+15320,Arizona,Marcus Pena, 0.70 , 0.50 
+15323,New England,Kevin Smith, 1.01 , 0.50 
+15326,Las Vegas,Tim Grugier-Hill, 0.70 , 0.50 
+15327,Detroit,John Sanchez, 3.08 , 1.23 
+15329,Cleveland,Wendell Bonilla, 3.58 , 1.43 
+15330,Tampa Bay,Beau Oh, 8.03 , 3.21 
+15335,,Dante Smith, 0.70 , 0.50 
+15337,Detroit,Matt Richardson, 0.70 , 0.50 
+15339,Tampa Bay,Travis Kingery, 1.04 , 0.50 
+15342,Chicago,Tyler Pivetta, 0.70 , 0.50 
+15344,New England,Andy Martin, 0.70 , 0.50 
+15345,Green Bay,Kyle Jenkins, 0.70 , 0.50 
+15348,San Francisco,Caraun Pringle, 0.70 , 0.50 
+15350,Las Vegas,Alec Garner, 9.32 , 3.73 
+15353,Atlanta,John David, 2.76 , 1.10 
+15354,Washington,Denyi Featherston, 0.70 , 0.50 
+15357,Minnesota,Jacob Williams, 7.42 , 2.97 
+15358,Carolina,Quadree Weatherly, 11.03 , 4.41 
+15360,NY Giants,Troy Young, 0.70 , 0.50 
+15363,Atlanta,A.J. Stewart, 2.38 , 0.95 
+15364,Detroit,Mike Hu, 1.04 , 0.50 
+15368,New Orleans,Kevin Gomber, 7.42 , 2.97 
+15369,,Shawn Pomeranz,,
+15371,Cincinnati,Jonathan Anderson, 0.70 , 0.50 
+15376,Detroit,Tyler Heredia, 0.70 , 0.50 
+15378,Kansas City,Maikel Milligan, 0.70 , 0.50 
+15379,Seattle,Tony Gates, 7.85 , 3.14 
+15380,NY Giants,Cordrea Kaczmarski, 0.70 , 0.50 
+15381,Arizona,Alexei Castro, 0.70 , 0.50 
+15383,Miami,Arthur Leathersich, 0.70 , 0.50 
+15384,Cincinnati,KeShun Perez, 0.70 , 0.50 
+15385,Chicago,Ricky Dean, 0.70 , 0.50 
+15386,Arizona,Dan Johnson, 0.70 , 0.50 
+15387,NY Giants,Craig Thomas, 0.70 , 0.50 
+15388,Arizona,Jake Gonzalez, 1.84 , 0.74 
+15393,Minnesota,Harrison Kendricks, 0.70 , 0.50 
+15395,Miami,Corey Brockers, 15.95 , 6.38 
+15396,Seattle,Whitney Enright, 5.76 , 2.30 
+15398,New England,Zach Lundblade, 0.70 , 0.50 
+15399,NY Jets,Jake Kendricks, 0.70 , 0.50 
+15400,NY Giants,Wilton Longa, 1.18 , 0.50 
+15401,Dallas,James Wilson, 8.48 , 3.39 
+15406,Minnesota,Dewayne Dimick, 0.70 , 0.50 
+15407,Washington,Justin Saffold, 0.70 , 0.50 
+15408,Buffalo,Logan Mejia, 0.70 , 0.50 
+15409,Cleveland,Brennan Dominguez, 6.96 , 2.78 
+15411,Baltimore,Tyler Tonkin, 0.70 , 0.50 
+15414,Houston,David Saubert, 3.58 , 1.43 
+15415,Buffalo,Drew Howell, 3.78 , 1.51 
+15418,NY Jets,Reggie Posey, 0.70 , 0.50 
+15431,Las Vegas,Julio Freeland, 1.47 , 0.59 
+15439,Minnesota,Joe Martis, 3.58 , 1.43 
+15443,Cleveland,Tyler Adams, 1.18 , 0.50 
+15445,Baltimore,MarShon Pryor, 0.70 , 0.50 
+15450,NY Jets,Brant Taylor, 0.70 , 0.50 
+15474,Cleveland,Blake LaFell, 0.70 , 0.50 
+15476,Chicago,Jonathan Watson, 0.70 , 0.50 
+15480,Arizona,Mike Thorpe, 0.70 , 0.50 
+15484,Carolina,Ruben Peters, 0.70 , 0.50 
+15495,NY Giants,Jonathan Burke, 0.70 , 0.50 
+15500,Houston,Noel Poole, 0.70 , 0.50 
+15508,Philadelphia,Rudy Bostic, 0.70 , 0.50 
+15520,Cleveland,Tanner Bradley, 0.70 , 0.50 
+15521,NY Giants,D.J. Acosta, 0.70 , 0.50 
+15539,Cleveland,Stephon Mathieu, 0.70 , 0.50 
+15543,Denver,Troy Thomas, 0.70 , 0.50 
+15555,Pittsburgh,Chris Cecil, 0.70 , 0.50 
+15556,Cleveland,Jordan Allen, 0.70 , 0.50 
+15567,Chicago,Cameron Chung, 1.18 , 0.50 
+15572,Houston,Alex Blevins, 4.14 , 1.65 
+15577,Philadelphia,Enrique Shamet, 3.08 , 1.23 
+15578,Las Vegas,Curtis Billingsley, 3.68 , 1.47 
+15584,Seattle,Travis Fatu, 0.70 , 0.50 
+15589,Chicago,Josh Graves, 0.70 , 0.50 
+15601,Indianapolis,Pascal Kieschnick, 0.70 , 0.50 
+15602,Baltimore,Austin Kelly, 4.14 , 1.65 
+15604,Houston,Michael Korkmaz, 0.70 , 0.50 
+15605,Philadelphia,Sammy Phillips, 0.70 , 0.50 
+15606,Detroit,Adrian Morris, 0.70 , 0.50 
+15619,Miami,Cesar Reed, 0.70 , 0.50 
+15623,Philadelphia,Josh Coyle, 1.01 , 0.50 
+15624,Houston,Peter Richardson, 0.70 , 0.50 
+15632,Minnesota,Chase Brown, 2.51 , 1.00 
+15634,Seattle,Yuta Bell, 0.70 , 0.50 
+15638,Arizona,Charvarius Forbes, 8.34 , 3.34 
+15642,Minnesota,Bennie Daniels, 1.18 , 0.50 
+15644,Atlanta,Christopher Merritt, 0.70 , 0.50 
+15649,Cleveland,Albert Bryant, 0.70 , 0.50 
+15660,Seattle,Tevin Griffin III, 0.70 , 0.50 
+15672,,Cody Hedges, 0.70 , 0.50 
+15673,Atlanta,Ryan Temple, 7.04 , 2.82 
+15685,NY Jets,Ryan Parmelee, 0.70 , 0.50 
+15688,Cincinnati,John Bonifacio, 2.51 , 1.00 
+15701,NY Giants,Stefen Foster, 0.70 , 0.50 
+15703,Dallas,Buddy Hays, 23.40 , 9.36 
+15706,Dallas,Marcus Goeddel, 0.70 , 0.50 
+15715,Seattle,Omarius Perry, 0.70 , 0.50 
+15725,Jacksonville,Daniel Septimo, 1.58 , 0.63 
+15731,Chicago,Darwinzon Lucroy, 0.70 , 0.50 
+15734,,James Mager, 0.70 , 0.50 
+15735,Baltimore,Martin Williams, 0.70 , 0.50 
+15736,Dallas,Colby Peterson, 0.70 , 0.50 
+15740,,Danny Dunbar, 0.70 , 0.50 
+15745,Minnesota,John Grant, 0.70 , 0.50 
+15751,Seattle,Ricky Marte, 0.70 , 0.50 
+15755,New Orleans,Shohei Cueto, 0.70 , 0.50 
+15760,LA Rams,Dorren Fuller, 0.70 , 0.50 
+15783,Chicago,Ron Wright, 0.70 , 0.50 
+15786,NY Jets,Jordy Breeland, 0.70 , 0.50 
+15789,Minnesota,Milos Frare, 3.68 , 1.47 
+15800,Denver,David Muscala, 3.08 , 1.23 
+15806,Seattle,Aroldis Rodgers, 0.70 , 0.50 
+15810,Chicago,Josh Morales, 1.58 , 0.63 
+15821,Buffalo,James Gamboa, 0.70 , 0.50 
+15824,Tampa Bay,Adam Rice, 0.70 , 0.50 
+15827,Philadelphia,Jaye Bonnafon, 0.70 , 0.50 
+15835,Arizona,Tommy Nieves, 0.70 , 0.50 
+15842,Miami,George Stammen, 7.15 , 2.86 
+15848,Tampa Bay,Robert Moxey, 0.70 , 0.50 
+15854,Las Vegas,Mat Kazmir, 0.70 , 0.50 
+15856,Kansas City,Jawun Burfict, 0.70 , 0.50 
+15864,Tennessee,Michael Mata, 0.70 , 0.50 
+15872,Buffalo,Vince Alford, 0.70 , 0.50 
+15878,Baltimore,Leyson Escobar, 0.70 , 0.50 
+15884,Tampa Bay,Bam Hunter, 0.70 , 0.50 
+15889,Arizona,Jonathan Killebrew, 0.70 , 0.50 
+15891,New Orleans,Jose Jordan, 3.68 , 1.47 
+15892,Philadelphia,Josh Ellenson, 7.85 , 3.14 
+15900,Baltimore,Preston Jimenez, 0.70 , 0.50 
+15901,Denver,Christian Colon, 0.70 , 0.50 
+15917,Buffalo,Andrew Woods, 0.70 , 0.50 
+15923,Minnesota,Jackie Evans, 8.22 , 3.29 
+15932,Indianapolis,Jordan Ziegler, 0.79 , 0.50 
+15935,Houston,Jake Iglesias, 0.70 , 0.50 
+15944,Las Vegas,Michael Brown, 0.70 , 0.50 
+15954,LA Chargers,Kam Jackson, 2.51 , 1.00 
+15956,NY Jets,Lou Wheeler, 3.68 , 1.47 
+15965,Miami,Patrick Hatley, 22.64 , 9.05 
+15975,Indianapolis,Josh Barnes, 5.25 , 2.10 
+15976,Seattle,Corey Bosa, 0.70 , 0.50 
+15983,Houston,Chad Lopez, 0.70 , 0.50 
+15985,Washington,Zac Hicks, 0.70 , 0.50 
+15989,Dallas,Felix Bonifacio, 0.70 , 0.50 
+15992,Dallas,Mike Littell, 0.70 , 0.50 
+15995,Dallas,Ken Toussaint, 0.70 , 0.50 
+16002,Minnesota,Steve Stratton, 0.70 , 0.50 
+16003,Miami,Andy Hart, 0.70 , 0.50 
+16004,Chicago,Cory Escalona, 0.70 , 0.50 
+16010,Detroit,Ryan Romine, 0.70 , 0.50 
+16020,,Jamison Grant, 0.70 , 0.50 
+16026,Green Bay,Elfrid Lynch, 3.42 , 1.37 
+16029,Cleveland,Lou Avery, 0.70 , 0.50 
+16030,Carolina,Shohei Flande, 0.70 , 0.50 
+16045,Miami,Kevin Casilla, 0.70 , 0.50 
+16054,Houston,Geronimo Lewis, 0.70 , 0.50 
+16061,Seattle,Mark Rosario, 0.70 , 0.50 
+16062,Philadelphia,Jon Redmond, 0.70 , 0.50 
+16067,Dallas,Ryan Jackson, 0.70 , 0.50 
+16069,,Sherrick Payamps, 0.70 , 0.50 
+16074,NY Jets,Malik Oberg, 0.70 , 0.50 
+16077,Detroit,Connor Gutierrez, 0.70 , 0.50 
+16084,Kansas City,Hroniss Barnette, 0.70 , 0.50 
+16088,Miami,Rafael Miller, 0.70 , 0.50 
+16092,Minnesota,Randy Tuioti-Mariner, 43.58 , 17.43 
+16106,Miami,Wilfredo Smith, 0.70 , 0.50 
+16119,Denver,Wenyen Clinton-Dix, 2.38 , 0.95 
+16122,LA Rams,Nicky Graveman, 1.47 , 0.59 
+16124,LA Chargers,Josh Bunche, 0.70 , 0.50 
+16126,Philadelphia,Randy Romero, 0.70 , 0.50 
+16127,Atlanta,Ben Miller, 0.70 , 0.50 
+16130,Las Vegas,Anthony Biagini, 0.70 , 0.50 
+16132,Indianapolis,Brian Hardy, 0.70 , 0.50 
+16133,Arizona,Tim Barr, 0.70 , 0.50 
+16135,Las Vegas,Wilkin Valdez, 0.70 , 0.50 
+16137,Jacksonville,Dalton Miley, 0.70 , 0.50 
+16138,Tampa Bay,Mike Acevedo, 0.70 , 0.50 
+16140,,Taijuan Fillmyer, 0.70 , 0.50 
+16143,San Francisco,Joel Worley, 4.14 , 1.65 
+16153,Miami,Christopher Hathaway, 0.70 , 0.50 
+16159,Buffalo,Brandon Moncrief, 3.78 , 1.51 
+16166,NY Giants,Eddie Jensen, 0.70 , 0.50 
+16168,Chicago,Colby Hassenauer, 0.70 , 0.50 
+16184,Las Vegas,Joakim Negron, 0.70 , 0.50 
+16190,Indianapolis,Bruce Williams, 0.70 , 0.50 
+16200,Pittsburgh,Ariel Lemon Jr., 15.59 , 6.24 
+16202,Cincinnati,Darren Evans, 0.70 , 0.50 
+16212,Tennessee,Adalberto Penny, 0.70 , 0.50 
+16235,Tennessee,Sean Curtiss, 0.70 , 0.50 
+16241,Tampa Bay,Jerod Guy, 4.14 , 1.65 
+16244,San Francisco,Steven Edwards, 0.70 , 0.50 
+16246,Chicago,Oscar Nicasio, 0.70 , 0.50 
+16248,Tampa Bay,Nate Walker IV, 0.70 , 0.50 
+16254,Dallas,Chris Brooks, 11.32 , 4.53 
+16266,Minnesota,Zach Graterol, 7.04 , 2.82 
+16281,Green Bay,Kyle Lee, 3.78 , 1.51 
+16285,Tampa Bay,Ivan Hector, 0.70 , 0.50 
+16296,Tampa Bay,Jamarco Woods, 0.70 , 0.50 
+16297,Washington,Matt Lewis, 0.70 , 0.50 
+16301,Green Bay,Shohei Wormley, 8.22 , 3.29 
+16318,New England,Keith Jackson, 0.70 , 0.50 
+16320,Dallas,Lou Jackson, 0.70 , 0.50 
+16323,,Zach Pivetta, 0.70 , 0.50 
+16325,Indianapolis,Boban Donahue, 0.70 , 0.50 
+16328,New England,Eddie Russell, 0.70 , 0.50 
+16344,Chicago,Justin Fields, 0.70 , 0.50 
+16353,Miami,Pierre Mantiply, 0.70 , 0.50 
+16355,Dallas,Omar Payamps, 0.70 , 0.50 
+16370,Jacksonville,Noah Pressly, 0.70 , 0.50 
+16373,Tampa Bay,Derek Castillo, 0.70 , 0.50 
+16374,Miami,Ryan Bowman, 7.04 , 2.82 
+16378,Philadelphia,Billy Wright, 12.16 , 4.86 
+16384,Washington,KC Stinnie, 0.70 , 0.50 
+16406,Indianapolis,Everson Cohen, 0.70 , 0.50 
+16415,Tennessee,Oscar Hand, 0.70 , 0.50 
+16416,NY Jets,Marcelis Jones, 0.70 , 0.50 
+16422,Philadelphia,Justin Marquez, 0.70 , 0.50 
+16424,Baltimore,Cory Smith, 0.70 , 0.50 
+16430,Cincinnati,Ariel Pyke, 0.70 , 0.50 
+16434,Green Bay,Leon Tolliver, 0.70 , 0.50 
+16460,Tampa Bay,Aaron Marshall, 0.70 , 0.50 
+16463,Minnesota,Akeem Bailey, 0.70 , 0.50 
+16465,Las Vegas,John Milner, 7.04 , 2.82 
+16468,Pittsburgh,Patrick Thompson, 0.70 , 0.50 
+16469,Chicago,Avery Gonzalez, 0.70 , 0.50 
+16470,Tampa Bay,Patrick Nuno, 1.09 , 0.50 
+16471,Atlanta,Kristjan Herrmann, 0.70 , 0.50 
+16488,,Johnathan Qvale, 0.70 , 0.50 
+16496,Denver,Clark Whitehead, 0.70 , 0.50 
+16502,Denver,Kenny Valdes, 0.70 , 0.50 
+16506,Tennessee,Jalen Jackson Jr., 2.38 , 0.95 
+16514,LA Chargers,Zack Beck, 6.96 , 2.78 
+16517,Atlanta,Keibert Watson, 7.04 , 2.82 
+16521,LA Chargers,Joey Pamphile, 11.03 , 4.41 
+16526,Houston,Alex Sullivan, 0.70 , 0.50 
+16535,New England,Gorgui Liggins, 0.70 , 0.50 
+16560,Indianapolis,J.P. Mitchell, 7.04 , 2.82 
+16564,Philadelphia,Kareem James, 0.70 , 0.50 
+16575,Pittsburgh,L.T. Conklin, 0.70 , 0.50 
+16577,Houston,Curtis Wright, 0.70 , 0.50 
+16584,Miami,A.J. Madison, 0.70 , 0.50 
+16587,Minnesota,Caleb Armenteros, 0.70 , 0.50 
+16591,NY Jets,Daniel Hemingway, 0.70 , 0.50 
+16593,Indianapolis,Taylor Mortensen, 0.70 , 0.50 
+16599,New England,Chaz Tuivailala, 0.70 , 0.50 
+16600,Indianapolis,Skyler Simmons, 0.70 , 0.50 
+16604,Las Vegas,Julius Dunbar, 0.70 , 0.50 
+16627,Minnesota,Gabriel Gosewisch, 0.70 , 0.50 
+16646,Dallas,Hector Street, 0.70 , 0.50 
+16650,New England,Marco Gurka, 0.70 , 0.50 
+16651,San Francisco,Gerhard Guaipe, 7.71 , 3.08 
+16655,Indianapolis,Darin Bautista, 0.70 , 0.50 
+16662,LA Rams,Duke Conforto, 0.70 , 0.50 
+16671,Arizona,Austin Brown, 0.70 , 0.50 
+16672,Chicago,Du'Vonta Williams, 1.47 , 0.59 
+16673,Baltimore,Albert Falu, 0.70 , 0.50 
+16680,Seattle,Jeremy Merrifield, 0.70 , 0.50 
+16681,Chicago,A.J. Kalu, 0.70 , 0.50 
+16695,Miami,Julius Liberatore, 0.70 , 0.50 
+16720,Tennessee,Trevor Hauschka, 0.70 , 0.50 
+16734,Washington,Drew Floro, 0.70 , 0.50 
+16736,NY Jets,Jhonatan Perry, 0.70 , 0.50 
+16737,Dallas,Solomon Lowe, 0.70 , 0.50 
+16738,San Francisco,Felix Ponce de Leon, 0.70 , 0.50 
+16752,Buffalo,Micah Southward, 0.70 , 0.50 
+16759,New Orleans,Phil Turner, 2.56 , 1.02 
+16763,Seattle,Jordan Powell, 0.70 , 0.50 
+16774,Cleveland,Robbie Bloom, 4.65 , 1.86 
+16777,Chicago,A.Q. Hernandez, 0.70 , 0.50 
+16781,Houston,Mike Bradley, 0.70 , 0.50 
+16786,Houston,LaAdrian Mitchell, 0.70 , 0.50 
+16787,Arizona,Poona Edwards, 0.70 , 0.50 
+16789,Buffalo,Evan Roethlisberger, 0.70 , 0.50 
+16829,NY Jets,Luis Bourjos, 0.70 , 0.50 
+16896,Houston,Malcolm Thompson, 0.70 , 0.50 
+16972,Las Vegas,Jefry Cobbs, 8.22 , 3.29 
+17032,Indianapolis,Kareem Allen, 0.70 , 0.50 
+17072,Dallas,Mike Williams, 0.70 , 0.50 
+17107,Miami,Harrison McQuaide, 0.70 , 0.50 
+17135,,Kapri Stephenson,,
+17142,Tennessee,Blake Arcia, 0.70 , 0.50 
+17216,New Orleans,Dario Armstead, 0.70 , 0.50 
+17226,Denver,Yuniesky Price, 0.70 , 0.50 
+17331,Houston,Marcus Detwiler, 0.70 , 0.50 
+17641,Indianapolis,Jed Frey, 0.70 , 0.50 
+17680,Houston,Isaiah Tonyan, 0.70 , 0.50 
+17779,Dallas,Josh Kingham, 0.70 , 0.50 
+17945,Minnesota,Ola Johnson, 0.70 , 0.50 
+18081,New Orleans,J.D. Pullard, 4.68 , 1.87 
+18214,Seattle,Jake Neasman, 0.70 , 0.50 
+18241,New Orleans,Josh Bassitt, 15.59 , 6.24 
+18340,Houston,Cory Christian, 0.70 , 0.50 
+18496,San Francisco,Kyle Heisey, 0.70 , 0.50 
+18986,Dallas,Dillon Stewart, 7.36 , 2.94 
+19908,LA Chargers,Pedro Tavecchio, 15.59 , 6.24 
+19970,Baltimore,Kaleb Cavanaugh, 0.70 , 0.50 
+19971,Minnesota,Jarvis Mauro, 0.70 , 0.50 
+19972,Washington,Brad Crow, 0.70 , 0.50 
+19973,Baltimore,Jermey Cabral, 0.70 , 0.50 
+19974,Tennessee,Kevin Cole, 0.70 , 0.50 
+19975,Tampa Bay,Malcolm Williams, 0.70 , 0.50 
+19976,Las Vegas,Jerel Campos, 0.70 , 0.50 
+19977,Jacksonville,Francisco Escalona, 0.70 , 0.50 
+19980,Atlanta,Henry Gomes, 0.70 , 0.50 
+19983,Miami,Tavarres Washington, 0.70 , 0.50 
+19984,Green Bay,Ro'Derrick Billings, 1.28 , 0.51 
+19986,Baltimore,Brandon Savage, 0.70 , 0.50 
+19989,Las Vegas,Laurent Scruggs, 0.70 , 0.50 
+19990,Houston,Sheldon Yanda, 0.70 , 0.50 
+19991,Houston,Seantrel Garate, 0.70 , 0.50 
+19992,Green Bay,Bryn Bushrod, 0.70 , 0.50 
+19994,Philadelphia,Jacob Myers, 0.70 , 0.50 
+20008,Indianapolis,Trey Garcia, 0.70 , 0.50 
+20023,Dallas,Darius Laguda, 0.70 , 0.50 
+20026,Kansas City,Vince Ascanio, 0.70 , 0.50 
+20030,Indianapolis,PJ Davis, 0.70 , 0.50 
+20042,Indianapolis,Justin Hernandez, 0.70 , 0.50 
+20043,New England,Mike Vander Laan, 0.70 , 0.50 
+20044,LA Rams,Frank Okogie, 0.70 , 0.50 
+20045,Philadelphia,Mike Putnam, 0.70 , 0.50 
+20060,Buffalo,Jose Holt, 0.70 , 0.50 
+20062,Kansas City,Tyler Maragos, 0.70 , 0.50 
+20071,Minnesota,Jarrett Wimmers, 0.70 , 0.50 
+20074,Dallas,Vyncint Miller, 0.70 , 0.50 
+20092,Seattle,Corey Noteboom, 0.70 , 0.50 
+20094,New England,Jon Smith Jr., 0.70 , 0.50 
+20098,New Orleans,Aaron Pazos, 0.70 , 0.50 
+20119,Arizona,A.J. Kaaya, 0.70 , 0.50 
+20124,Seattle,Brad Gonzalez, 0.70 , 0.50 
+20134,Arizona,Tommy Santiago, 0.70 , 0.50 
+20144,Tennessee,Bryse Bogdanovic, 0.70 , 0.50 
+20153,Buffalo,Niles Seamster, 0.70 , 0.50 
+20163,LA Chargers,Harrison Rodriguez, 25.38 , 10.15 
+20165,Arizona,Avery Brown, 0.70 , 0.50 
+20167,Atlanta,Doug Murray, 0.70 , 0.50 
+20178,Green Bay,Darius Hernandez, 0.70 , 0.50 
+20179,NY Jets,Anthony Davison, 0.70 , 0.50 
+20185,Dallas,Darius Evans, 0.70 , 0.50 
+20194,,Tony Cothran, 0.70 , 0.50 
+20196,Baltimore,Riley Doss, 0.70 , 0.50 
+20212,Philadelphia,Chris McRae, 0.70 , 0.50 
+20227,Jacksonville,Austin Pena, 0.70 , 0.50 
+20233,NY Giants,Terrence Shittu, 0.70 , 0.50 
+20236,Baltimore,Bam Lamp, 0.70 , 0.50 
+20254,LA Rams,Courtney Mikell, 0.70 , 0.50 
+20264,Washington,Alex Charles, 0.70 , 0.50 
+20286,Atlanta,Blake Su'a-Filo, 0.70 , 0.50 
+20288,Arizona,Casey Gallon, 0.70 , 0.50 
+20294,Miami,Matt Hoskins, 0.70 , 0.50 
+20303,,Eddie Gibson, 0.70 , 0.50 
+20309,Miami,Alex Elliott, 0.70 , 0.50 
+20319,Minnesota,Channing Marson, 0.70 , 0.50 
+20324,LA Chargers,Kendrick Honeywell, 0.70 , 0.50 
+20334,Cincinnati,Sean Kirven, 0.70 , 0.50 
+20336,Kansas City,Shelvin Thompson, 0.70 , 0.50 
+20339,Indianapolis,C.J. Wang, 0.70 , 0.50 
+20341,Green Bay,Mike Saric, 0.70 , 0.50 
+20345,Cincinnati,Julio Hearn, 0.70 , 0.50 
+20353,Indianapolis,Joaquin Centeno, 14.18 , 5.67 
+20355,Kansas City,Corey Brown, 0.70 , 0.50 
+20369,Houston,Akrum Howard, 0.70 , 0.50 
+20383,Dallas,Dean Treadwell, 0.70 , 0.50 
+20385,Seattle,Mike Andrews, 0.70 , 0.50 
+20387,Philadelphia,Juan Bembry, 0.70 , 0.50 
+20480,Dallas,B.J. Diaz, 0.70 , 0.50 
+20523,NY Jets,Devin Shepherd, 0.70 , 0.50 
+20650,Atlanta,Reymin Bormann, 0.70 , 0.50 
+20731,Baltimore,Joe Anderson, 0.70 , 0.50 
+20735,Houston,Byron Dunbar, 0.70 , 0.50 
+20874,Las Vegas,Xavier Sendejo, 0.70 , 0.50 
+20936,,Solomon Peko,,
+21026,Dallas,David Santana, 0.70 , 0.50 
+21050,Indianapolis,Ross Kaczmarski, 0.70 , 0.50 
+21065,Denver,James Bower, 0.70 , 0.50 
+21072,Houston,Vincent Singleton, 0.70 , 0.50 
+21186,Seattle,Ian Thompson, 0.70 , 0.50 
+21216,Denver,Tyler Miller, 0.70 , 0.50 
+21483,Las Vegas,Omar Whalen, 0.70 , 0.50 
+21515,Baltimore,DeVante Littleton, 0.70 , 0.50 
+21520,Indianapolis,Yefry Ambriz, 0.70 , 0.50 
+21569,New England,Trey Cajuste, 0.70 , 0.50 
+21611,Denver,Adonis Killebrew, 0.70 , 0.50 
+21621,Houston,J'Marcus Lancaster, 0.70 , 0.50 
+21652,New Orleans,Blaine Hughes, 0.70 , 0.50 
+21681,NY Jets,Brian Ramirez, 0.70 , 0.50 
+21716,Dallas,Chris Morgan, 0.70 , 0.50 
+22456,Baltimore,Chris Bettis, 0.70 , 0.50 
+22701,New Orleans,Oswaldo Woods, 0.70 , 0.50 
+23508,Baltimore,Jabari Drummond, 0.70 , 0.50 
+24984,Pittsburgh,David Ross, 0.70 , 0.50 
+24985,NY Giants,Donald Dingus, 0.70 , 0.50 
+24989,Houston,Weston Steelhammer, 0.70 , 0.50 
+24990,New Orleans,Roko Souza, 0.70 , 0.50 
+31412,Arizona,Jack Ousley, 0.70 , 0.50 
+35310,Arizona,Patrick Johnson, 9.01 , 3.60 
+35326,Miami,Brent Garcia, 0.70 , 0.50 
+35514,LA Rams,Mike Xiong, 0.70 , 0.50 
+35843,Washington,Erik Schaefer, 2.04 , 0.81 
+36802,Indianapolis,Enrique Nunes, 0.70 , 0.50 
+40157,Denver,Jose Padilla, 13.72 , 5.49 
+40166,Detroit,Stephen Brouillet, 4.38 , 1.75 
+40170,NY Jets,David Digirolamo, 0.70 , 0.50 
+40239,LA Rams,Paul Craven, 0.70 , 0.50 
+40241,Philadelphia,Aaron Pool, 15.13 , 6.05 
+40250,New Orleans,Charles Brown, 1.97 , 0.79 
+40327,Cleveland,Bryan Ludi, 2.00 , 0.80 
+40505,LA Rams,Philip Avila, 15.13 , 6.05 
+40894,Detroit,Robert Richbow, 0.79 , 0.50 
+41718,Green Bay,David Buchheit, 2.00 , 0.80 
+41725,Tampa Bay,Ronald Price, 2.40 , 0.96 
+41875,Green Bay,Donald Vereeke, 2.76 , 1.10 
+42948,Denver,Rudolph Garcia, 0.70 , 0.50 
+45160,Denver,Charles Grady, 4.83 , 1.93 
+45170,New Orleans,Brett Mcphail, 5.01 , 2.00 
+45200,NY Jets,Haim Costa, 6.90 , 2.76 
+45236,NY Giants,Jorge Ramirez, 1.73 , 0.69 
+45264,Miami,David Genter, 7.82 , 3.13 
+45290,Denver,Wayne Sutton, 1.40 , 0.56 
+45315,Tampa Bay,Michael Delucia, 1.56 , 0.63 
+45335,Jacksonville,Jeremy Pruitt, 5.01 , 2.00 
+45348,LA Rams,Richard Lucia, 5.01 , 2.00 
+45362,Detroit,Michael Kern, 2.07 , 0.83 
+45367,Baltimore,Julio Jimenez, 6.48 , 2.59 
+45380,Tennessee,Dennis Boles, 5.99 , 2.40 
+45417,New England,Johnny Nguyen, 1.84 , 0.74 
+45449,Buffalo,Andrew Bascue, 6.48 , 2.59 
+45462,Denver,Andrew Perkins, 1.02 , 0.50 
+45476,NY Jets,Jessie Noel, 22.44 , 8.98 
+45484,Cleveland,Robert Smith, 4.21 , 1.69 
+45511,Denver,John Williams, 0.70 , 0.50 
+45540,NY Giants,Robert Monzel, 5.01 , 2.00 
+45562,New Orleans,Ronald Milton, 2.99 , 1.20 
+45567,Tennessee,James Henze, 5.01 , 2.00 
+45689,Denver,Glenn Sosa, 1.02 , 0.50 
+45773,Washington,William Stevens, 5.98 , 2.39 
+45989,Washington,Hector Covarrubias, 4.83 , 1.93 
+46248,Minnesota,George Boone, 2.59 , 1.04 
+46301,Philadelphia,Andrew Kangas, 5.98 , 2.39 
+46381,NY Giants,Mark Transue, 4.21 , 1.69 
+46388,Jacksonville,Donn Shuster, 5.50 , 2.20 
+46416,Buffalo,Brian Adams, 3.40 , 1.36 
+46482,Buffalo,Stephen Dinardo, 1.94 , 0.78 
+46626,Buffalo,Ron Cubbage, 6.90 , 2.76 
+46731,LA Rams,Hector Faulkner, 5.99 , 2.40 
+46829,Las Vegas,James Hixon, 18.87 , 7.55 
+46863,Jacksonville,James Rivera, 22.44 , 8.98 
+47103,LA Chargers,Javier Sanchez, 0.70 , 0.50 
+48005,Indianapolis,Erick Doyle, 0.70 , 0.50 
+48444,Seattle,Michael Vega, 1.65 , 0.66 
+48493,NY Giants,Carmelo Goto, 3.83 , 1.53 
+49406,Minnesota,Curtis Anderson, 0.83 , 0.50 
+50109,LA Rams,Sung Liu, 11.03 , 4.41 
+50110,Denver,Jason Naylor, 9.58 , 3.83 
+50114,Washington,Charles Seay, 9.92 , 3.97 
+50115,LA Rams,Edward Rivera, 2.90 , 1.16 
+50121,Detroit,James Stewart, 15.15 , 6.06 
+50122,LA Rams,Kerry Slomba, 13.18 , 5.27 
+50134,Washington,John Warnock, 9.56 , 3.82 
+50140,Denver,Philip Nagel, 8.01 , 3.20 
+50162,Washington,Stephen Tabbert, 1.42 , 0.57 
+50173,Las Vegas,Dennis Jones, 3.84 , 1.53 
+50176,Jacksonville,Keith Nelson, 4.41 , 1.76 
+50295,Washington,Lucio Escarcega, 8.42 , 3.37 
+50323,Miami,Jacob Wiseman, 10.36 , 4.14 
+50363,Jacksonville,Wayne Ricketts, 0.70 , 0.50 
+50373,Tennessee,William Johnson, 3.56 , 1.42 
+50378,LA Rams,Mario Sisneros, 8.01 , 3.20 
+50445,New Orleans,Mark Sharkey, 9.58 , 3.83 
+50462,Washington,William Do, 9.58 , 3.83 
+50465,Tennessee,Jesus Avalos, 3.84 , 1.53 
+50516,Detroit,Scott Bianchi, 7.06 , 2.82 
+50523,NY Giants,Mathew Madden, 8.52 , 3.41 
+50610,Minnesota,Eric Terrell, 9.36 , 3.74 
+50663,Chicago,Orlando Deberry, 14.21 , 5.68 
+50828,Washington,James Kiger, 17.50 , 7.00 
+51009,Washington,Jeffrey Leon, 9.95 , 3.98 
+51073,Dallas,Neil Hankins, 2.58 , 1.03 
+51110,Jacksonville,Scott Gatewood, 6.74 , 2.70 
+51216,Chicago,Gerald Lewis, 26.48 , 10.59 
+51286,Tampa Bay,Jeffrey Cullum, 2.95 , 1.18 
+51303,Kansas City,Jin Zhong, 4.34 , 1.74 
+51507,Seattle,Terrence Hoffman, 9.02 , 3.61 
+51531,Green Bay,Donald Galligan, 7.72 , 3.09 
+51693,Seattle,Jacob Kerns, 11.64 , 4.66 
+51695,Green Bay,Timothy Sulton, 9.37 , 3.75 
+51735,San Francisco,William May, 12.80 , 5.12 
+51774,Denver,Jose Sobrevilla, 2.76 , 1.10 
+51925,Jacksonville,Reyes Dzul, 8.01 , 3.20 
+51937,Seattle,Paul Huffman, 8.01 , 3.20 
+51956,Kansas City,David Chop, 34.80 , 13.92 
+53230,San Francisco,Samuel Bronson, 7.62 , 3.05 
+53244,Tampa Bay,Matthew Zimmer, 8.01 , 3.20 
+53274,Jacksonville,James Wilson, 2.95 , 1.18 
+53362,Denver,Rob Downing, 9.95 , 3.98 
+53409,Cleveland,Louis Dell, 10.36 , 4.14 
+54031,San Francisco,William Orso, 0.87 , 0.50 
+54490,Tennessee,Gregory Linley, 0.70 , 0.50 
+55198,NY Jets,David Mcneal, 15.07 , 6.03 
+55200,Denver,Gordon Wilburn, 12.95 , 5.18 
+55202,Washington,Sebastian Moore, 16.47 , 6.59 
+55212,Denver,George Kent, 11.95 , 4.78 
+55215,Philadelphia,Ronald Spencer, 10.65 , 4.26 
+55217,Washington,David Cunningham, 22.97 , 9.19 
+55219,Philadelphia,Gilberto Silva, 18.15 , 7.26 
+55239,Chicago,Calvin Preston, 12.93 , 5.17 
+55291,Jacksonville,Jeffery Amend, 10.98 , 4.39 
+55336,Las Vegas,Nelson Garcia, 19.24 , 7.70 
+55343,Washington,Robert Miller, 10.01 , 4.01 
+55351,Philadelphia,Emory Hightower, 21.88 , 8.75 
+55363,Kansas City,Richard Crawford, 10.01 , 4.01 
+55368,Green Bay,Leon Payne, 10.01 , 4.01 
+55370,Houston,Walter Arrasmith, 17.77 , 7.11 
+55373,Miami,Dean Hammonds, 37.29 , 14.92 
+55403,LA Rams,Tram Singh, 12.95 , 5.18 
+55409,Washington,William Greer, 15.07 , 6.03 
+55420,Jacksonville,Kirk Ridley, 12.95 , 5.18 
+55455,Tampa Bay,Max Smith, 3.71 , 1.48 
+55472,Denver,Keith Remy, 14.47 , 5.79 
+55494,Washington,Patrick Collins, 3.69 , 1.48 
+55499,Dallas,Edwin Chabolla, 10.06 , 4.02 
+55522,Seattle,Jeremiah West, 37.29 , 14.92 
+55531,New Orleans,Paul Munford, 22.97 , 9.19 
+55535,Cincinnati,David Taylor, 3.54 , 1.42 
+55536,Washington,Rodrigo Gonzalez, 9.84 , 3.94 
+55541,LA Rams,Scott Baldwin, 11.28 , 4.51 
+55560,Pittsburgh,Paul Gurule, 10.06 , 4.02 
+55561,Denver,Thomas Gesick, 3.71 , 1.48 
+55578,San Francisco,Marcos Maldonado, 11.95 , 4.78 
+55589,Denver,Carmine Rhodes, 7.40 , 2.96 
+55600,Pittsburgh,Robert Morris, 28.31 , 11.33 
+55603,Cincinnati,John Hendrickson, 7.60 , 3.04 
+55735,Kansas City,Alan Feehan, 7.16 , 2.86 
+55856,Tampa Bay,Brian Yokum, 10.01 , 4.01 
+55887,Philadelphia,Brad Wells, 11.00 , 4.40 
+55918,Miami,Robert Anderson, 13.79 , 5.52 
+56136,Miami,William Redman, 22.17 , 8.87 
+56186,Indianapolis,Mark Bishop, 13.79 , 5.52 
+56215,Kansas City,Adam Grier, 10.53 , 4.21 
+56376,Denver,Ramon Hubanks, 12.95 , 5.18 
+56481,Denver,Fred Garland, 8.43 , 3.37 
+56547,Dallas,Henry Green, 5.43 , 2.17 
+56588,Minnesota,Christopher Pratt, 12.95 , 5.18 
+56599,Miami,Russell Craw, 18.60 , 7.44 
+56619,Tennessee,Joshua Johnstone, 3.47 , 1.39 
+56804,Kansas City,Mohan Gupta, 11.98 , 4.79 
+56824,Denver,Anthony Helton, 17.77 , 7.11 
+56868,Philadelphia,Michael Cuevas, 10.01 , 4.01 
+56916,Washington,Pierre Smith, 12.95 , 5.18 
+56920,Dallas,Miguel Robertson, 17.77 , 7.11 
+56972,Cleveland,Robert Davis, 15.25 , 6.10 
+57296,Chicago,Allen Althoff, 11.98 , 4.79 
+57519,NY Giants,Robert Sterley, 1.46 , 0.59 
+57680,Seattle,Matthew Walker, 3.08 , 1.23 
+58164,NY Giants,Warner Garcia, 0.70 , 0.50 
+58226,Tennessee,Richard Yob, 3.08 , 1.23 
+58453,Minnesota,Joseph Peltz, 0.95 , 0.50 
+59374,Kansas City,Brad Canter, 1.08 , 0.50 
+59582,Arizona,Stephen Kern, 0.70 , 0.50 
+60112,Denver,Chad Bruce, 28.88 , 11.55 
+60115,Green Bay,Oscar Martinez, 25.39 , 10.16 
+60117,Green Bay,Robert Smith, 18.09 , 7.23 
+60124,Dallas,Kevin Escobar, 23.09 , 9.23 
+60125,Carolina,Paul Caruso, 18.37 , 7.35 
+60128,Washington,Randy Espino, 22.74 , 9.09 
+60130,Denver,Craig Parrish, 16.55 , 6.62 
+60134,Carolina,Andrzej Harris, 18.70 , 7.48 
+60135,Denver,Peter London, 39.78 , 15.91 
+60136,Las Vegas,Timothy Monahan, 15.47 , 6.19 
+60139,Kansas City,James Carter, 8.17 , 3.27 
+60144,Atlanta,Todd Bunch, 11.43 , 4.57 
+60145,Detroit,Huey Ashe, 22.74 , 9.09 
+60146,Las Vegas,James Blanck, 21.78 , 8.71 
+60186,Philadelphia,Matthew Lee, 8.88 , 3.55 
+60191,San Francisco,Joseph Bordewyk, 18.09 , 7.23 
+60199,Washington,Karl Ogles, 22.32 , 8.93 
+60245,Tampa Bay,William Chittum, 18.09 , 7.23 
+60285,Green Bay,Joseph Garibay, 30.26 , 12.11 
+60287,Miami,Jamie Ramirez, 19.77 , 7.91 
+60291,LA Rams,Daryl Lee, 26.60 , 10.64 
+60310,LA Chargers,Miguel Aguilera, 39.78 , 15.91 
+60329,Dallas,Eric Simon, 14.33 , 5.73 
+60346,Jacksonville,Antonio Campoverde, 12.79 , 5.11 
+60348,Green Bay,Steven Mcintosh, 5.76 , 2.30 
+60367,Carolina,Samuel Frazier, 18.70 , 7.48 
+60376,Miami,Kenny White, 17.83 , 7.13 
+60412,Washington,Randy Wright, 11.78 , 4.71 
+60420,Denver,Derek Dixon, 20.73 , 8.29 
+60448,LA Chargers,Jesus Gonzalez, 18.14 , 7.26 
+60449,Atlanta,Gregory Williams, 22.74 , 9.09 
+60466,Baltimore,Juan Vega, 19.71 , 7.88 
+60470,Dallas,Elliott Grossman, 14.33 , 5.73 
+60489,Miami,Damon Lucas, 21.95 , 8.78 
+60493,Denver,Jason Hinton, 15.47 , 6.19 
+60502,Dallas,Christopher Lee, 21.78 , 8.71 
+60516,Buffalo,Donald Kelly, 15.59 , 6.24 
+60519,Tennessee,Joseph Cale, 5.67 , 2.27 
+60565,New England,Jaime Mir, 10.11 , 4.04 
+60588,Atlanta,Karl Rosania, 22.32 , 8.93 
+60616,Miami,Joseph Kolodny, 15.30 , 6.12 
+60622,Cincinnati,Aaron Hancock, 2.45 , 0.98 
+60632,LA Rams,Ronald Dixon, 12.02 , 4.81 
+60658,Baltimore,Jeffrey Jesse, 21.95 , 8.78 
+60678,LA Rams,James Leclair, 8.16 , 3.26 
+60682,Dallas,Jeff Mcclellan, 5.99 , 2.39 
+60722,Chicago,Jason Gregory, 16.73 , 6.69 
+60730,Minnesota,Kenneth Hankins, 4.43 , 1.77 
+60733,LA Rams,James Voth, 4.10 , 1.64 
+60741,Kansas City,Benedict Deluna, 22.74 , 9.09 
+60790,Green Bay,Benjamin Hanbury, 19.20 , 7.68 
+60792,New England,Scott Worth, 3.87 , 1.55 
+60809,Atlanta,Michael Fulmer, 5.67 , 2.27 
+60812,New Orleans,Francis Barmore, 3.28 , 1.31 
+60834,Pittsburgh,Vaughn Johnson, 14.33 , 5.73 
+60870,New England,Juan Delgallo, 1.57 , 0.63 
+60872,Las Vegas,Nicholas Sarno, 26.91 , 10.76 
+60884,San Francisco,Lloyd Garrett, 1.85 , 0.74 
+60900,LA Rams,Dominick Horn, 0.83 , 0.50 
+60917,New England,Abel Moore, 19.20 , 7.68 
+60927,Washington,Darren Willard, 10.11 , 4.04 
+60942,Seattle,William Shuck, 1.30 , 0.52 
+60948,New England,Larry Arwood, 11.43 , 4.57 
+60957,New England,Tyler Hamon, 0.70 , 0.50 
+60991,Cincinnati,Richard Farris, 16.55 , 6.62 
+61031,Detroit,David Sparacino, 13.17 , 5.27 
+61042,Atlanta,David Hine, 5.99 , 2.39 
+61057,Carolina,Rui Lee, 2.72 , 1.09 
+61148,Green Bay,Douglas Ehrmann, 8.37 , 3.35 
+61158,New Orleans,Jeffrey George, 1.74 , 0.70 
+61201,LA Rams,William Poku, 12.02 , 4.81 
+61234,Cleveland,Rodney Fells, 14.37 , 5.75 
+61243,Tampa Bay,Peter Smith, 18.37 , 7.35 
+61260,Dallas,Thomas Jordan, 14.37 , 5.75 
+61271,Pittsburgh,Jose Gomezrodriguez, 26.60 , 10.64 
+61290,Pittsburgh,Anthony Rizzi, 15.54 , 6.22 
+61295,,Johnathan Drayton, 0.70 , 0.50 
+61377,Washington,Jorge Ledezma, 15.30 , 6.12 
+61428,Pittsburgh,Robert Berry, 21.95 , 8.78 
+61471,Buffalo,Jan Summers, 9.12 , 3.65 
+61512,Green Bay,Richard Campos, 10.11 , 4.04 
+61516,Cleveland,Ernest Morgan, 5.99 , 2.39 
+61553,NY Jets,James Pipkin, 2.75 , 1.10 
+61559,NY Jets,Daniel Mousseau, 16.23 , 6.49 
+61562,Miami,Steven Kapfhammer, 12.02 , 4.81 
+61578,NY Giants,Marvin Scott, 2.72 , 1.09 
+61579,Philadelphia,Randy Harrell, 16.19 , 6.47 
+61609,Green Bay,Manish Watson, 26.60 , 10.64 
+61627,Tampa Bay,Richard Surges, 6.28 , 2.51 
+61669,Carolina,Jason Holbrook, 3.82 , 1.53 
+61727,Las Vegas,John Duffy, 1.57 , 0.63 
+61730,Cincinnati,Terence Graf, 2.28 , 0.91 
+61738,Miami,Jose Sola, 14.33 , 5.73 
+61757,New Orleans,David Zumbrun, 4.08 , 1.63 
+61818,Carolina,Fernando Owens, 13.53 , 5.41 
+61859,Philadelphia,Jose Ramos, 3.60 , 1.44 
+61884,Tampa Bay,Glenn Lloyd, 8.88 , 3.55 
+61937,Atlanta,Vincent Gomez, 4.02 , 1.61 
+61944,,Eric Copeland, 0.70 , 0.50 
+61964,LA Rams,Ruben Gallardo, 4.97 , 1.99 
+61974,Denver,Joao Greco, 0.70 , 0.50 
+62031,Las Vegas,Paul Wade, 6.35 , 2.54 
+62053,,Jin Webb, 4.02 , 1.61 
+62107,Indianapolis,Glenn Brandt, 3.28 , 1.31 
+62230,LA Chargers,Scott Potash, 2.45 , 0.98 
+62233,Jacksonville,Juan Zuniga, 12.02 , 4.81 
+62243,Cleveland,John Bensman, 11.58 , 4.63 
+62249,Seattle,Gary Wheeler, 12.02 , 4.81 
+62290,Tennessee,Thomas Pursell, 0.70 , 0.50 
+62291,Cleveland,John Cuthbertson, 8.37 , 3.35 
+62310,Washington,Xiaoping Smith, 13.20 , 5.28 
+62326,Atlanta,Lee Kiser, 11.09 , 4.43 
+62344,Denver,Michael Naccarato, 15.54 , 6.22 
+62360,Indianapolis,Michael Nguyen, 1.38 , 0.55 
+62369,Cincinnati,David Eck, 12.02 , 4.81 
+62371,Indianapolis,Ricardo Rubiano, 5.76 , 2.30 
+62409,New England,Randal Marquardt, 3.71 , 1.48 
+62418,Denver,Edward Cooper, 4.02 , 1.61 
+62423,Cleveland,Brice Torres, 4.86 , 1.94 
+62437,Atlanta,Ernest Mccauley, 3.96 , 1.58 
+62452,,Frank Bauman, 1.24 , 0.50 
+62507,Carolina,Hung Min, 4.55 , 1.82 
+62513,Houston,Frank Thielen, 12.02 , 4.81 
+62522,San Francisco,Jon Saksena, 4.19 , 1.68 
+62523,Carolina,Antonio Frank, 3.28 , 1.31 
+62527,Washington,Glenn Setzer, 12.02 , 4.81 
+62534,Cleveland,Patrick Brown, 4.77 , 1.91 
+62536,Carolina,Roger Nettles, 4.35 , 1.74 
+62562,Tennessee,Steven Atchley, 4.02 , 1.61 
+62587,Atlanta,Glenn Gervais, 3.63 , 1.45 
+62588,LA Rams,Edward Mallory, 12.02 , 4.81 
+62595,NY Giants,Rudy Stokes, 2.70 , 1.08 
+62628,Kansas City,Lee Thornsberry, 14.88 , 5.95 
+62640,NY Jets,Michael Hamman, 8.43 , 3.37 
+62657,Denver,Richard Dehne, 1.85 , 0.74 
+62723,LA Rams,Matthew Blankenship, 2.44 , 0.98 
+62732,Atlanta,Feng Song, 3.82 , 1.53 
+62749,Cincinnati,Charles Aarons, 11.58 , 4.63 
+62754,Pittsburgh,Ji Penalosa, 4.29 , 1.72 
+62772,Cincinnati,Jonathan Osborne, 15.54 , 6.22 
+62780,New England,Thomas Vorisek, 0.70 , 0.50 
+62806,Cincinnati,Michael Bonam, 0.70 , 0.50 
+62831,New Orleans,James Hunt, 4.02 , 1.61 
+62855,Cincinnati,Donald Gurevich, 12.47 , 4.99 
+62866,San Francisco,Andrey Levkulich, 5.86 , 2.34 
+62882,New Orleans,Lorne Davis, 11.43 , 4.57 
+62930,Seattle,Steven Hughes, 3.36 , 1.35 
+62965,Pittsburgh,Hector Gonzalez, 3.28 , 1.31 
+62967,New England,Thomas Estep, 1.85 , 0.74 
+62976,Indianapolis,Mark Jones, 10.68 , 4.27 
+62996,Dallas,Joseph Patchen, 4.19 , 1.68 
+63004,,Joseph Valenzuela,,
+63026,Detroit,Wayne Jones, 9.20 , 3.68 
+63078,Cincinnati,Stephen Douglas, 2.71 , 1.08 
+63198,LA Rams,John Sands, 12.02 , 4.81 
+63211,LA Rams,Ramon Veloz, 3.28 , 1.31 
+63219,Jacksonville,Vernon Barney, 0.95 , 0.50 
+63223,LA Chargers,Mike Schlueter, 6.28 , 2.51 
+63261,Cincinnati,Pablo Jovel, 1.14 , 0.50 
+63262,Las Vegas,John Rockhill, 1.38 , 0.55 
+63266,Tampa Bay,Jason Green, 5.34 , 2.14 
+63267,Baltimore,James Kohn, 7.19 , 2.87 
+63293,Tampa Bay,Robert Wilkinson, 4.08 , 1.63 
+63333,New England,Daniel Rojas, 12.02 , 4.81 
+63419,Green Bay,Francisco Orozco, 4.33 , 1.73 
+63424,Indianapolis,Donald Loving, 11.58 , 4.63 
+63484,Indianapolis,Raymond Teague, 4.43 , 1.77 
+63495,Detroit,Xin Nevin, 3.28 , 1.31 
+63499,Dallas,Mikhail Coley, 1.99 , 0.79 
+63526,Green Bay,Patrick Green, 5.76 , 2.30 
+63537,Pittsburgh,Narinder Beckmann, 5.76 , 2.30 
+63544,Houston,Huy Henriques, 12.02 , 4.81 
+63575,Tennessee,Todd Bengel, 4.10 , 1.64 
+63607,Cincinnati,Leonid Nieto, 0.70 , 0.50 
+63609,Indianapolis,David Tibbits, 20.96 , 8.39 
+63619,Washington,Jeffery Mcbrearty, 4.43 , 1.77 
+63775,Carolina,Michael Jones, 0.70 , 0.50 
+63821,Cincinnati,Michael Rebecca, 4.10 , 1.64 
+63879,Denver,Michael Archer, 8.16 , 3.26 
+63986,NY Jets,Michael Floyd, 1.57 , 0.63 
+64005,Pittsburgh,Willy Jimenez, 4.65 , 1.86 
+64094,Indianapolis,Joshua Morice, 11.58 , 4.63 
+64108,Atlanta,William Demarco, 3.36 , 1.35 
+64127,Indianapolis,Timothy Ward, 12.64 , 5.05 
+64195,Chicago,Alejandro Suarez, 14.37 , 5.75 
+64235,Minnesota,Sameer Vandersteen, 8.40 , 3.36 
+64389,Carolina,Eric Stephens, 12.02 , 4.81 
+64461,Seattle,Donald Bailey, 3.63 , 1.45 
+64470,Jacksonville,Anthony Daniels, 8.40 , 3.36 
+64546,Tennessee,James Kenyon, 2.44 , 0.98 
+64581,Pittsburgh,Melvin Adams, 4.02 , 1.61 
+64676,NY Giants,Roger Wnek, 9.20 , 3.68 
+64731,LA Rams,Jason Bumbarger, 11.09 , 4.43 
+64737,Jacksonville,Larry Danner, 12.02 , 4.81 
+64811,Detroit,Glenn Tucker, 3.87 , 1.55 
+64821,New Orleans,Kenneth Wheat, 5.34 , 2.14 
+64826,Tennessee,Bo Ang, 3.18 , 1.27 
+64830,Dallas,Cecilio Fuentes, 27.45 , 10.98 
+64883,Denver,Tyler Giese, 8.16 , 3.26 
+65042,Seattle,Steven Stec, 10.11 , 4.04 
+65069,Philadelphia,Leonard Vaughn, 21.35 , 8.54 
+65074,New Orleans,Arthur Medrano, 21.81 , 8.72 
+65075,Miami,Juan Mora, 8.15 , 3.26 
+65077,Green Bay,Walter Nwachukwu, 14.92 , 5.97 
+65078,LA Chargers,Alan Laurent, 24.17 , 9.67 
+65080,Cincinnati,John Alfred, 26.93 , 10.77 
+65081,LA Chargers,Ramon Diaz, 21.10 , 8.44 
+65082,Pittsburgh,James Knoll, 15.40 , 6.16 
+65084,Miami,Ernest Mccoy, 18.98 , 7.59 
+65089,Denver,Andrew Rahi, 33.69 , 13.48 
+65127,Kansas City,Jeffrey Theriot, 24.18 , 9.67 
+65149,New England,Gregory Sellers, 7.80 , 3.12 
+65157,Jacksonville,Barry Madruga, 15.79 , 6.31 
+65176,Cleveland,Stephen Eilers, 4.63 , 1.85 
+65179,Green Bay,Phillip Wilcox, 33.69 , 13.48 
+65180,Atlanta,Franklin Gaines, 8.38 , 3.35 
+65197,Tennessee,Wayne Reimer, 29.16 , 11.66 
+65199,Indianapolis,Gregory Taphorn, 17.23 , 6.89 
+65208,Pittsburgh,Krzysztof Leatherman, 18.94 , 7.58 
+65219,Cleveland,Dennis Matsui, 16.77 , 6.71 
+65234,Denver,Raymond Stelly, 15.79 , 6.31 
+65249,Green Bay,Myron Everett, 30.62 , 12.25 
+65258,NY Jets,Samuel Kim, 9.77 , 3.91 
+65266,Carolina,Raul Hallett, 17.85 , 7.14 
+65271,Las Vegas,Sean Duell, 24.87 , 9.95 
+65296,New Orleans,Reginald Mabry, 4.85 , 1.94 
+65298,Detroit,Frank Moore, 10.64 , 4.26 
+65300,Kansas City,Jan Miller, 31.03 , 12.41 
+65308,Minnesota,Anthony Yurczyk, 5.80 , 2.32 
+65339,Kansas City,David Stowell, 18.13 , 7.25 
+65351,LA Chargers,Alexander Williams, 6.72 , 2.69 
+65365,Cleveland,Alen Riley, 30.63 , 12.25 
+65367,Minnesota,Neil Henry, 16.72 , 6.69 
+65368,Cleveland,Bao Sultana, 19.31 , 7.72 
+65373,Arizona,Ryan Pottinger, 1.68 , 0.67 
+65374,NY Jets,Wayne Crafton, 3.92 , 1.57 
+65388,NY Jets,Derrick Hawkins, 6.72 , 2.69 
+65398,Detroit,Bradley Crook, 14.69 , 5.88 
+65403,Indianapolis,Cezary Moulton, 4.35 , 1.74 
+65408,Minnesota,Jeffrey Kersting, 13.34 , 5.33 
+65410,LA Rams,Anthony Larry, 20.80 , 8.32 
+65418,Denver,Russell Garban, 16.72 , 6.69 
+65430,New Orleans,Kyu Snyder, 4.89 , 1.96 
+65441,Jacksonville,Lawrence Carnes, 23.47 , 9.39 
+65456,NY Jets,Javier Barber, 19.31 , 7.72 
+65458,San Francisco,Juan Bishop, 1.71 , 0.68 
+65460,Minnesota,Kyle Schneider, 17.85 , 7.14 
+65465,Denver,Daniel Astudillo, 16.77 , 6.71 
+65468,Detroit,Young Pascual, 19.31 , 7.72 
+65500,Cleveland,Robert Morales, 5.43 , 2.17 
+65503,New England,Juan Colchado, 16.77 , 6.71 
+65506,San Francisco,Ronald Gubler, 10.03 , 4.01 
+65507,New Orleans,Kevin Hansford, 5.16 , 2.07 
+65526,Houston,Edgar Hyde, 6.72 , 2.69 
+65537,Tampa Bay,John Stone, 4.69 , 1.88 
+65545,,Mark Keller, 4.35 , 1.74 
+65547,Las Vegas,Rodolfo Chavez, 13.51 , 5.40 
+65551,New England,Robert Briggs, 16.73 , 6.69 
+65569,Seattle,Daryl Dillon, 5.16 , 2.07 
+65581,Denver,Edwin Carter, 31.03 , 12.41 
+65593,Jacksonville,Billy Smith, 14.02 , 5.61 
+65644,Cincinnati,Dilip Tran, 5.67 , 2.27 
+65656,NY Jets,Richard Ludwig, 4.63 , 1.85 
+65660,New Orleans,Alvin Eckes, 6.72 , 2.69 
+65662,Kansas City,David Poper, 9.70 , 3.88 
+65690,San Francisco,Ramon Wells, 9.84 , 3.93 
+65706,Carolina,Russell Barnes, 20.80 , 8.32 
+65710,Pittsburgh,Wilfred Price, 12.93 , 5.17 
+65728,Kansas City,King Angeles, 7.26 , 2.91 
+65741,Tampa Bay,George Benton, 9.52 , 3.81 
+65743,Kansas City,Daniel Elswick, 25.41 , 10.16 
+65784,New England,Mark Shoell, 0.77 , 0.50 
+65796,Indianapolis,David Helgeson, 14.02 , 5.61 
+65798,NY Giants,William Blue, 2.66 , 1.06 
+65814,Carolina,Aaron Stokes, 25.61 , 10.24 
+65834,Miami,Billy Ryder, 4.89 , 1.96 
+65851,Houston,Alexander Dyer, 4.89 , 1.96 
+65858,Cleveland,Mei Felipe, 18.13 , 7.25 
+65877,Atlanta,Todd Brumlow, 18.88 , 7.55 
+65884,Atlanta,Victor Romani, 13.51 , 5.40 
+65905,Cleveland,Abel Chapa, 3.49 , 1.39 
+65915,Indianapolis,Enrique Rodriguez, 10.36 , 4.14 
+65956,NY Jets,Steven Mckibben, 6.99 , 2.79 
+65966,LA Chargers,Ellis Jackson, 5.16 , 2.07 
+65980,San Francisco,Donald Mason, 9.52 , 3.81 
+65981,Indianapolis,Carl White, 4.63 , 1.85 
+66000,Dallas,Sean Wilson, 4.35 , 1.74 
+66003,Cleveland,William Mass, 13.51 , 5.40 
+66005,Atlanta,Martin Sears, 15.40 , 6.16 
+66015,Chicago,Gregory Rosiek, 6.72 , 2.69 
+66047,New Orleans,Andres Smith, 4.33 , 1.73 
+66052,Baltimore,Benny Murray, 16.73 , 6.69 
+66055,NY Jets,Chong Tracey, 4.85 , 1.94 
+66111,Jacksonville,Benjamin Ray, 3.49 , 1.39 
+66129,San Francisco,Charles Williams, 16.77 , 6.71 
+66131,Denver,Roger Palecek, 5.80 , 2.32 
+66149,Indianapolis,Jaime Hernandez, 14.02 , 5.61 
+66152,Tampa Bay,Stephen Pearson, 6.72 , 2.69 
+66177,Washington,Hyun Shin, 14.02 , 5.61 
+66181,Minnesota,David Valasco, 4.83 , 1.93 
+66234,LA Rams,Reginald Campbell, 11.80 , 4.72 
+66257,New England,Esteban Diaz, 0.70 , 0.50 
+66314,Atlanta,Alton Toles, 4.85 , 1.94 
+66337,Green Bay,Carl Frost, 7.80 , 3.12 
+66359,Pittsburgh,John Osborn, 11.80 , 4.72 
+66361,Washington,Victor Perrin, 4.45 , 1.78 
+66376,Philadelphia,Myron Collins, 16.77 , 6.71 
+66383,New England,Roosevelt Penn, 18.93 , 7.57 
+66389,Indianapolis,Timothy Stimac, 13.34 , 5.33 
+66390,LA Rams,Richard Sheridan, 4.49 , 1.79 
+66409,Indianapolis,Stephen Gibson, 10.73 , 4.29 
+66412,Kansas City,Mark Urich, 6.72 , 2.69 
+66427,Jacksonville,Brian Lin, 2.66 , 1.06 
+66429,Miami,David Young, 4.35 , 1.74 
+66442,San Francisco,Edgardo Valenti, 6.84 , 2.74 
+66458,Chicago,Walter Bullard, 3.92 , 1.57 
+66480,Cleveland,William Alexander, 3.94 , 1.58 
+66498,Minnesota,Steven Delucchi, 4.89 , 1.96 
+66525,Atlanta,Oscar Reyes, 5.16 , 2.07 
+66526,NY Jets,Richard Kalisch, 24.46 , 9.78 
+66538,Tennessee,William Neil, 14.02 , 5.61 
+66561,Las Vegas,Malik Boyd, 5.16 , 2.07 
+66607,Detroit,Darryl Gregory, 4.76 , 1.90 
+66628,NY Jets,Sergio Gonzalez, 13.51 , 5.40 
+66649,,Troy Smalley, 5.80 , 2.32 
+66674,Pittsburgh,Robert Cook, 14.74 , 5.90 
+66710,Cincinnati,Michael Nease, 1.60 , 0.64 
+66715,Indianapolis,Joe Griffin, 13.34 , 5.33 
+66721,Buffalo,Joseph Jones, 7.26 , 2.91 
+66752,Green Bay,Terrence Cothern, 4.33 , 1.73 
+66755,Pittsburgh,Garrick Wells, 9.84 , 3.93 
+66760,NY Jets,Juan Pacheco, 5.80 , 2.32 
+66795,Las Vegas,Brian Kelly, 5.05 , 2.02 
+66827,LA Rams,Timothy Bruder, 5.71 , 2.29 
+66874,Detroit,Thomas Bullock, 13.51 , 5.40 
+66885,LA Rams,Jose Frost, 5.67 , 2.27 
+66936,Carolina,Michael Barrera, 14.02 , 5.61 
+66938,LA Rams,Vadim Camirand, 14.74 , 5.90 
+66945,New Orleans,Gregory Sprouse, 13.51 , 5.40 
+66954,NY Jets,Matthew Beil, 9.80 , 3.92 
+66960,Las Vegas,John Elder, 7.32 , 2.93 
+66974,Washington,Joel Evans, 7.32 , 2.93 
+67003,Seattle,Patrick Parker, 6.72 , 2.69 
+67020,New Orleans,Ivan Molina, 9.52 , 3.81 
+67032,Denver,Salomon Gonzalez, 12.46 , 4.98 
+67039,Cleveland,Philippe Conner, 5.71 , 2.29 
+67052,Atlanta,Bryan Thompson, 18.13 , 7.25 
+67079,Tampa Bay,Kenneth Anderson, 6.99 , 2.79 
+67090,Cincinnati,Herbert Pergerson, 16.73 , 6.69 
+67105,New England,Luis Gracia, 15.40 , 6.16 
+67141,Baltimore,Jesus Casillas, 12.93 , 5.17 
+67215,Miami,Raul Macey, 15.40 , 6.16 
+67223,Cincinnati,Taylor Selby, 16.73 , 6.69 
+67241,Minnesota,William Riley, 4.52 , 1.81 
+67261,New England,Michael Frizzell, 9.70 , 3.88 
+67271,,Charles Shields, 4.33 , 1.73 
+67276,Green Bay,Paul Tompkins, 5.63 , 2.25 
+67322,NY Jets,Gregorio Castro, 4.69 , 1.88 
+67373,Atlanta,Travis Mock, 15.40 , 6.16 
+67482,Carolina,Michael Williams, 2.85 , 1.14 
+67555,Tampa Bay,Oliver Harris, 4.69 , 1.88 
+67563,Carolina,John Lentz, 0.82 , 0.50 
+67587,Indianapolis,Thomas Ciardi, 5.67 , 2.27 
+67599,Cincinnati,James Smith, 9.52 , 3.81 
+67604,Washington,Ronnie Ritter, 13.51 , 5.40 
+67619,Denver,Edward Staton, 5.67 , 2.27 
+67646,Miami,James Garnette, 14.74 , 5.90 
+67662,Las Vegas,Kevin Cordova, 16.73 , 6.69 
+67671,Tennessee,Jamie Murray, 7.26 , 2.91 
+67678,Tampa Bay,Clarence Napier, 4.23 , 1.69 
+67716,Houston,Thomas Rothschild, 13.51 , 5.40 
+67746,Philadelphia,Manuel Gonzalez, 5.67 , 2.27 
+67776,Atlanta,Marco Everett, 14.02 , 5.61 
+67784,Jacksonville,Anderson Martin, 4.69 , 1.88 
+67797,Atlanta,Sergio Resendiz, 4.49 , 1.79 
+67847,New England,John Damiano, 13.34 , 5.33 
+67873,Dallas,Steven Sarratt, 16.77 , 6.71 
+67882,Tampa Bay,Alfred Swaray, 9.52 , 3.81 
+67906,LA Rams,Jeffrey Rigoni, 13.34 , 5.33 
+67920,New England,Alejandro Castellanos, 13.51 , 5.40 
+67924,Las Vegas,Mark Tran, 14.02 , 5.61 
+67932,,Earl Lewis, 5.16 , 2.07 
+67964,New England,Alfredo Hashimoto, 18.13 , 7.25 
+68005,Arizona,Qing Pradhan, 4.69 , 1.88 
+68090,LA Chargers,Raymond Sanchez, 4.83 , 1.93 
+68114,Seattle,Marty Ferguson, 16.77 , 6.71 
+68209,Atlanta,James Ward, 4.89 , 1.96 
+68224,Green Bay,Leif Allen, 13.51 , 5.40 
+68260,Washington,Jose Garcia, 5.56 , 2.22 
+68311,Jacksonville,Ronald Black, 11.80 , 4.72 
+68352,Jacksonville,Thomas Henderson, 5.16 , 2.07 
+68377,Baltimore,Luther Due, 4.89 , 1.96 
+68434,Las Vegas,Sylvester White, 14.02 , 5.61 
+68463,Detroit,Byung Yuen, 16.77 , 6.71 
+68473,Cleveland,John Mori, 13.51 , 5.40 
+68479,Denver,William Esteves, 14.02 , 5.61 
+68485,New England,Irvin Guzman, 9.70 , 3.88 
+68504,Pittsburgh,James Klasky, 17.71 , 7.08 
+68574,Baltimore,Michael Boyd, 4.52 , 1.81 
+68620,Denver,Andres Herrada, 4.85 , 1.94 
+68636,San Francisco,Jose Delgado, 7.26 , 2.91 
+68662,LA Rams,Oscar Torrez, 4.52 , 1.81 
+69192,Tampa Bay,David George, 4.62 , 1.85 
+69978,Minnesota,Christian Sinnock, 39.40 , 15.76 
+69984,Jacksonville,Hue Khan, 17.77 , 7.11 
+69988,Dallas,Michael Dewitt, 35.00 , 14.00 
+69989,LA Rams,Richard Davidson, 20.72 , 8.29 
+69992,LA Chargers,Richard Maguire, 23.77 , 9.51 
+69993,Atlanta,Rafael Rosario, 18.04 , 7.22 
+69994,Seattle,Brandon Schroeder, 38.50 , 15.40 
+69998,New England,Rodney Labell, 35.00 , 14.00 
+70000,New Orleans,Christopher Demoss, 4.24 , 1.70 
+70004,Carolina,Brian Johnson, 13.29 , 5.32 
+70006,Las Vegas,Adel Fraire, 4.48 , 1.79 
+70022,Carolina,Jon Mendenhall, 24.49 , 9.80 
+70030,Washington,Jerome Morrison, 34.01 , 13.60 
+70038,Buffalo,Alvin Annan, 26.28 , 10.51 
+70040,Seattle,Ronald Geda, 15.44 , 6.18 
+70045,NY Giants,Erik Arredondo, 20.72 , 8.29 
+70053,Miami,Bruce Utesch, 16.02 , 6.41 
+70061,Las Vegas,Brian Ouimette, 4.97 , 1.99 
+70074,Minnesota,Tracey Blake, 4.51 , 1.80 
+70079,Buffalo,Max Perez, 15.24 , 6.10 
+70082,San Francisco,Wilfredo Aguirre, 19.12 , 7.65 
+70086,Green Bay,James Whitfield, 2.10 , 0.84 
+70088,Denver,Adam Johnston, 2.21 , 0.89 
+70102,Cincinnati,Lance Nguyen, 16.02 , 6.41 
+70109,Chicago,Jose Melero, 15.44 , 6.18 
+70113,Minnesota,Herman Knott, 27.64 , 11.05 
+70117,Dallas,Antonio Arellano, 18.04 , 7.22 
+70123,Tennessee,Brian Holder, 20.72 , 8.29 
+70125,Miami,Thomas Maddock, 5.36 , 2.14 
+70127,Dallas,David Vargas, 0.70 , 0.50 
+70128,Las Vegas,John Mitchell, 12.26 , 4.90 
+70137,LA Chargers,William Gustafson, 11.24 , 4.50 
+70138,,Monty Turner,,
+70147,LA Chargers,Michael Price, 20.72 , 8.29 
+70150,San Francisco,Franklin Mitchell, 13.48 , 5.39 
+70169,Philadelphia,Hugh Cohen, 16.02 , 6.41 
+70173,Green Bay,Peter Mager, 16.02 , 6.41 
+70174,Kansas City,Wei Bao, 14.78 , 5.91 
+70183,Minnesota,Mark Killough, 19.16 , 7.66 
+70196,Dallas,Timothy Miller, 2.63 , 1.05 
+70198,Kansas City,Joseph Little, 25.60 , 10.24 
+70204,Carolina,Kenneth Eggleston, 17.22 , 6.89 
+70215,Green Bay,Roy Cali, 16.02 , 6.41 
+70221,Seattle,Brett Link, 17.60 , 7.04 
+70222,Carolina,Bradley Mcpherson, 22.07 , 8.83 
+70223,Pittsburgh,Michael Ruby, 20.72 , 8.29 
+70228,Carolina,Charles Tice, 11.84 , 4.74 
+70234,Cleveland,Christopher Rogers, 25.60 , 10.24 
+70248,LA Rams,Brett Campbell, 5.90 , 2.36 
+70256,Buffalo,Daniel Schlabach, 6.35 , 2.54 
+70265,Miami,Richard Horton, 3.41 , 1.37 
+70267,Carolina,Alton Bradfield, 27.06 , 10.82 
+70268,Las Vegas,Wayne Brooks, 11.84 , 4.74 
+70271,Tennessee,Lawrence Nguyen, 5.90 , 2.36 
+70279,Seattle,Daniel Mendoza, 26.28 , 10.51 
+70284,Atlanta,Adrian Goerner, 19.12 , 7.65 
+70306,Dallas,Michael Cox, 12.79 , 5.12 
+70314,LA Chargers,Edwin Garcia, 18.04 , 7.22 
+70323,Minnesota,William Hawkins, 1.39 , 0.56 
+70324,Dallas,Jorge Mendez, 24.40 , 9.76 
+70331,Seattle,Luis Cruz, 19.16 , 7.66 
+70335,Carolina,Nelson Mcgarity, 15.24 , 6.10 
+70342,Tennessee,Yao Richardson, 4.48 , 1.79 
+70356,NY Jets,Willie Washington, 13.48 , 5.39 
+70357,Houston,Michael Salvatore, 5.78 , 2.31 
+70366,Indianapolis,Ray Quintana, 7.12 , 2.85 
+70372,Detroit,Randall Hansen, 33.98 , 13.59 
+70379,Detroit,Juan Goldberg, 5.90 , 2.36 
+70385,Houston,Michael Rogers, 3.69 , 1.48 
+70387,Green Bay,Kevin Der, 11.46 , 4.58 
+70401,Carolina,Miguel Pedraza, 4.97 , 1.99 
+70404,Green Bay,Thomas Hamilton, 5.59 , 2.24 
+70407,Miami,Joe Mejia, 13.48 , 5.39 
+70408,New England,Lawrence Dornellas, 3.61 , 1.44 
+70410,Atlanta,Tim Maloney, 5.54 , 2.22 
+70424,Buffalo,Terence Seth, 5.54 , 2.22 
+70430,Pittsburgh,Louis Chittenden, 13.48 , 5.39 
+70470,San Francisco,Joseph Rasmussen, 16.02 , 6.41 
+70530,Green Bay,Keith Mozingo, 3.41 , 1.37 
+70543,Atlanta,Ricardo Moreno, 3.26 , 1.30 
+70546,Miami,Arthur Mejia, 19.16 , 7.66 
+70553,Pittsburgh,Guillermo Alfaro, 5.16 , 2.07 
+70562,New Orleans,Douglas Decker, 17.60 , 7.04 
+70571,San Francisco,Luke Richman, 5.90 , 2.36 
+70577,Kansas City,Michael Walker, 15.44 , 6.18 
+70585,NY Jets,Roger Swimmer, 19.12 , 7.65 
+70621,Cincinnati,Luis Rocha, 19.16 , 7.66 
+70637,Tampa Bay,Anthony Stovall, 17.05 , 6.82 
+70657,Las Vegas,Jerome Spivey, 7.98 , 3.19 
+70659,Houston,Robert Garcia, 19.16 , 7.66 
+70662,Jacksonville,Jaime Perez, 19.26 , 7.70 
+70689,Green Bay,George Shumaker, 19.16 , 7.66 
+70720,Carolina,Patrick Whitaker, 19.16 , 7.66 
+70724,Chicago,William Ruhl, 22.07 , 8.83 
+70822,Pittsburgh,Frederic Green, 19.16 , 7.66 
+70942,Baltimore,Andres Garcia, 16.02 , 6.41 
+70959,Houston,Luis Resurreccion, 7.67 , 3.07 
+70964,Jacksonville,Harold Ribordy, 7.81 , 3.13 
+70988,Minnesota,Barry Taylor, 19.12 , 7.65 
+71003,Buffalo,Hugo Hernandez, 19.12 , 7.65 
+71032,LA Rams,Thomas Odom, 18.74 , 7.49 
+71043,Pittsburgh,Raleigh Reile, 2.49 , 1.00 
+71061,Tampa Bay,Myron Mahan, 19.12 , 7.65 
+71066,Jacksonville,Norberto Zavala, 17.60 , 7.04 
+71119,Las Vegas,Stephen Nelson, 11.08 , 4.43 
+71151,Atlanta,Rigoberto Juarez, 16.02 , 6.41 
+71200,Carolina,George Lovejoy, 18.27 , 7.31 
+71201,Miami,Ketan Cheng, 8.68 , 3.47 
+71214,Denver,Pedro Robles, 5.90 , 2.36 
+71215,LA Chargers,Benjamin Silva, 5.90 , 2.36 
+71234,Miami,Lawrence Sanders, 17.05 , 6.82 
+71240,NY Jets,Matthew Campbell, 5.54 , 2.22 
+71248,Carolina,Kenneth Beguhl, 19.16 , 7.66 
+71251,Denver,Wilson Rovegno, 6.48 , 2.59 
+71257,Tampa Bay,Rick Shoemaker, 1.83 , 0.73 
+71270,LA Chargers,Jason Odrain, 16.85 , 6.74 
+71280,Tennessee,Fernando Barrera, 19.12 , 7.65 
+71292,Cincinnati,Manuel Bonilla, 6.06 , 2.43 
+71327,Atlanta,Herman Vanderhorst, 3.69 , 1.48 
+71333,Baltimore,Dale Murphy, 15.75 , 6.30 
+71342,Green Bay,Tony Hershberger, 17.60 , 7.04 
+71396,Philadelphia,Mark Kurzweil, 3.61 , 1.44 
+71400,Dallas,Jason Smothers, 19.12 , 7.65 
+71428,Cleveland,Ken Miller, 5.90 , 2.36 
+71439,San Francisco,Jon Gordon, 11.20 , 4.48 
+71450,NY Giants,Michael Abston, 4.00 , 1.60 
+71506,Cleveland,David Peterson, 11.08 , 4.43 
+71521,Buffalo,Barry Downs, 3.67 , 1.47 
+71526,Chicago,Nick Evans, 7.10 , 2.84 
+71540,Arizona,Timothy Gurganus, 13.48 , 5.39 
+71559,Washington,William Blanchard, 4.48 , 1.79 
+71573,Tennessee,Brian Power, 11.24 , 4.50 
+71620,New England,Noe Morales, 2.49 , 1.00 
+71624,Green Bay,Jie Chen, 5.16 , 2.07 
+71638,Atlanta,David Juarez, 7.98 , 3.19 
+71639,Washington,Saul Vasquez, 7.67 , 3.07 
+71640,NY Jets,Mike Burpee, 6.48 , 2.59 
+71677,Baltimore,Gregory Lucas, 11.17 , 4.47 
+71691,New Orleans,Daniel Castro, 5.72 , 2.29 
+71732,Detroit,Josh Benson, 16.02 , 6.41 
+71764,Tampa Bay,Daniel Lopez, 5.54 , 2.22 
+71813,Atlanta,Paul Mchenry, 16.02 , 6.41 
+71818,Las Vegas,Alan Rutherford, 8.24 , 3.30 
+72532,NY Giants,Matthew Bradshaw, 19.12 , 7.65 
+73300,Dallas,Steven Othon, 20.72 , 8.29 
+73386,New Orleans,William Miller, 5.36 , 2.14 
+73467,Chicago,Rafael Caceres, 19.12 , 7.65 

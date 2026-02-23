@@ -271,7 +271,7 @@ func ImportNFLDraftPicks() {
 
 func ImportMinimumFAValues() {
 	db := dbprovider.GetInstance().GetDB()
-	playerPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2025_Free_Agency_Expected_Values.csv"
+	playerPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_Free_Agency_Expected_Values.csv"
 
 	nflCSV := util.ReadCSV(playerPath)
 
@@ -284,8 +284,8 @@ func ImportMinimumFAValues() {
 
 		playerID := row[0]
 		id := util.ConvertStringToInt(playerID)
-		valueStr := strings.TrimSpace(row[7])
-		aavStr := strings.TrimSpace(row[8])
+		valueStr := strings.TrimSpace(row[3])
+		aavStr := strings.TrimSpace(row[4])
 		value := util.ConvertStringToFloat(valueStr)
 		aav := util.ConvertStringToFloat(aavStr)
 
@@ -557,7 +557,7 @@ func ImportUDFAs() {
 func ImportCFBGames(isSpringGames bool) {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_cfb_games_preseason.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_cfb_games_conf_tourneys.csv"
 
 	gamesCSV := util.ReadCSV(path)
 	ts := GetTimestamp()
@@ -595,7 +595,7 @@ func ImportCFBGames(isSpringGames bool) {
 		awayTeamID := at.ID
 		homeTeamCoach := ht.Coach
 		awayTeamCoach := at.Coach
-		timeSlot := row[16]
+		timeSlot := SelectTimeslotForGameByConferenceID(uint(ht.ConferenceID))
 		// Need to implement Stadium ID
 		stadium := row[17]
 		city := row[18]

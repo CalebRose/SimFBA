@@ -1,0 +1,33 @@
+GameID,Season,Week,Home Team,Away Team,Conference Game,Division Game,Neutral Site,Conference Champ,Bowl Game,Playoff,National Champ,HomeTeamBye,AwayTeamBye,Listed Coach,Other Coach,TimeSlot,Stadium,City,State,Domed Stadium,GameTitle,Info,NextGameID,HoA
+7111,2026,15,FSU,CAL,1,0,0,0,0,0,0,1,1,Kirby,believer,,Bobby Bowden Field at Doak S. Campbell Stadium,Tallahassee,Florida,0,2026 ACC Semifinals,,7113,H
+7112,2026,15,MIAF,UNC,1,0,0,0,0,0,0,1,1,Dearden,Tryggr,,Hard Rock Stadium,Coral Gables,Florida,0,2026 ACC Semifinals,,7113,A
+7113,2026,16,,,1,0,1,1,0,0,0,0,0,#N/A,#N/A,,Bank of America Stadium,Charlotte,NC,0,2026 ACC Championship,,0,
+7114,2026,15,BAYL,UHOU,1,0,0,0,0,0,0,1,1,Vivid,mahrowkeen,,McLane Stadium,Waco,Texas,0,2026 Big 12 Semifinals,,7116,H
+7115,2026,15,UTAH,TTU,1,0,0,0,0,0,0,1,1,SageBow,rcarlson77,,Rice-Eccles Stadium,Salt Lake City,Utah,0,2026 Big 12 Semifinals,,7116,A
+7116,2026,16,,,1,0,1,1,0,0,0,0,0,#N/A,#N/A,,AT&T Stadium,Arlington,TX,1,2026 Big 12 Championship,,0,
+7117,2026,15,PNST,IND,1,0,0,0,0,0,0,1,1,Rocketcan,Piercewise1,,Beaver Stadium,University Park,Pennsylvania,0,2026 Big Ten Semifinals,,7119,H
+7118,2026,15,ILLI,UCLA,1,0,0,0,0,0,0,1,1,nemolee.exe,jmjacobs,,Memorial Stadium,Urbana Champaign,Illinois,0,2026 Big Ten Semifinals,,7119,A
+7119,2026,16,,,1,0,1,1,0,0,0,0,0,#N/A,#N/A,,Lucas Oil Stadium,Indianapolis,IN,0,2026 Big Ten Championship,,0,
+7120,2026,15,TENN,UGA,1,0,0,0,0,0,0,1,1,tsweezy,Sarge,,Neyland Stadium,Knoxville,Tennessee,0,2026 SEC Semifinals,,7122,H
+7121,2026,15,FLA,BAMA,1,0,0,0,0,0,0,1,1,Weeze,thatfunk,,Steve Spurrier-Florida Field at Ben Hill Griffin Stadium,Gainesville,Florida,0,2026 SEC Semifinals,,7122,A
+7122,2026,16,,,1,0,1,1,0,0,0,0,0,#N/A,#N/A,,Mercedes-Benz Stadium,Atlanta,GA,1,2026 SEC Championship,,0,
+7123,2026,15,TLNE,ECU,1,0,0,0,0,0,0,1,1,kgreene829,ObliviousLAX,,Barry B. Benson Field at Yulman Stadium,New Orleans,Louisiana,0,2026 American Semifinals,,7125,H
+7124,2026,15,TULS,NAVY,1,0,0,0,0,0,0,1,1,acewulf,Syndakyt,,Skelly Field at H. A. Chapman Stadium,Tulsa,Oklahoma,0,2026 American Semifinals,,7125,A
+7125,2026,16,,,1,0,1,1,0,0,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,#N/A,2026 American Championship,,0,
+7126,2026,15,BGSU,EMU,1,0,0,0,0,0,0,1,1,PoopyRhinoPickle,fjames92,,Doyt L. Perry Stadium,Bowling Green,Ohio,0,2026 MAC Semifinals,,7128,H
+7127,2026,15,BALL,WMU,1,0,0,0,0,0,0,1,1,npklemm,Jieret,,Scheumann Stadium,Muncie,Indiana,0,2026 MAC Semifinals,,7128,A
+7128,2026,16,,,1,0,1,1,0,0,0,0,0,#N/A,#N/A,,Ford Field,Detroit,MI,1,2026 MAC Championship,,0,
+7129,2026,16,FIU,WKU,1,0,0,1,0,0,0,1,1,Zyrok,AI,,Riccardo Silva Stadium,Miami,Florida,0,2026 C-USA Championship,,0,
+7130,2026,15,UTST,SDSU,1,0,1,1,0,0,0,1,1,Ewade,Jumbo,,Allegiant Stadium,Las Vegas,NV,0,2026 Pac-12 Championship,,0,
+7131,2026,16,SJSU,UNLV,1,0,0,1,0,0,0,1,1,Chandler1,AI,,CEFCU Stadium,San Jose,California,0,2026 Mountain West Championship,,0,
+7132,2026,15,JMU,APST,1,0,0,0,0,0,0,1,1,askfortea,Mightydog135,,Bridgeforth Stadium,Harrisonburg,Virginia,0,2026 Sunbelt Semifinals,,7134,H
+7133,2026,15,ULL,LT,1,0,0,0,0,0,0,1,1,Bilain,Swipet,,Cajun Field,Lafayette,Louisiana,0,2026 Sunbelt Semifinals,,7134,A
+7134,2026,16,,,1,0,0,1,0,0,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,#N/A,2026 Sunbelt Championship,,0,
+7135,2026,16,BCU,SOU,0,0,0,1,0,0,0,1,1,AI,AI,,Mississippi Veterans Memorial Stadium,Jackson,MS,0,2026 SWAC Championship,,0,
+7136,2026,16,BRY,ME,0,0,0,1,0,0,0,1,1,AI,AI,,Beirne Stadium,Smithfield,RI,0,2026 CAA Championship,,0,
+7137,2026,16,MONT,IDST,0,0,0,1,0,0,0,1,1,AI,alexfall862,,Washington-Grizzly Stadium,Missoula,MT,0,2026 Big Sky Championship,,0,
+7138,2026,16,ETAM,HCU,0,0,0,1,0,0,0,1,1,AI,AI,,Ernest Hawkins Field at Memorial Stadium,Commerce,TX,0,2026 Southland Championship,,0,
+7139,2026,16,DAV,MRST,0,0,0,1,0,0,0,1,1,AI,AI,,Richardson Stadium,Davidson,NC,0,2026 Pioneer League Championship,,0,
+7140,2026,16,ILST,INST,0,0,0,1,0,0,0,1,1,AI,AI,,Hancock Stadium,Normal,IL,0,2026 MVFC Championship,,0,
+7141,2026,16,RMU,DUQ,0,0,0,1,0,0,0,1,1,AI,AI,,Joe Walton Stadium,Moon Township,PA,0,2026 NEC Championship,,0,
+7142,2026,16,COLG,LEH,0,0,0,1,0,0,0,1,1,AI,AI,,Andy Kerr Stadium,Hamilton,NY,0,2026 Pariot League Championship,,0,
