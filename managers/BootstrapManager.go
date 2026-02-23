@@ -521,7 +521,7 @@ func GetDraftBootstrap(proID string) BootstrapDataDraft {
 
 		go func() {
 			defer wg.Done()
-			draftPicks = GetAllCurrentSeasonDraftPicks()
+			draftPicks = GetAllRelevantNFLDraftPicks()
 		}()
 
 		log.Println("Initiated all Pro data queries.")
