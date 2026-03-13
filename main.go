@@ -114,6 +114,8 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/admin/recruiting/class/size", controller.GetRecruitingClassSizeForTeams).Methods("GET")
 	apiRouter.HandleFunc("/admin/ai/fill/boards", controller.FillAIBoards).Methods("GET")
 	apiRouter.HandleFunc("/admin/ai/sync/boards", controller.SyncAIBoards).Methods("GET")
+	// This endpoint should be used right before the redshirt deadline.
+	apiRouter.HandleFunc("/admin/ai/apply/redshirts/{seasonID}", controller.AllocateAIRedshirts).Methods("GET")
 	// apiRouter.HandleFunc("/admin/fix/affinities", controller.RecalibrateCrootProfiles).Methods("GET")
 	apiRouter.HandleFunc("/admin/fix/recruit/points", controller.RecalibrateRecruitPoints).Methods("GET")
 	apiRouter.HandleFunc("/admin/run/the/games/", controller.RunTheGames).Methods("GET")

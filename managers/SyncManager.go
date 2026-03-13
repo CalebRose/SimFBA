@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
@@ -1188,6 +1189,34 @@ func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs
 		Af1:         affinityOneApplicable,
 		Af2:         affinityTwoApplicable,
 		AffinityMod: affinityMod,
+	}
+}
+
+func AllocateAIRedshirts(seasonId string) {
+	allAICollegeTeams := GetAllAvailableCollegeTeams()
+	seasonStatsMap := GetCFBPlayerSeasonStatMapBySeason(seasonId, "2")
+
+	for _, team := range allAICollegeTeams {
+		log.Printf("\nAllocating redshirts for %s\n", team.TeamAbbr)
+		redshirtTargets := GetRedshirtEligiblePlayersByTeamId(strconv.Itoa(int(team.ID)))
+
+		redshirtCount := 0
+		redshirts := make([]string, 20)
+		for _, target := range redshirtTargets {
+			if redshirtCount >= 20 {
+				break
+			}
+
+			playerSeasonStats := seasonStatsMap[uint(target.PlayerID)]
+
+			// Redshirt top 20 players either without any snaps or with a long-term injury
+			if playerSeasonStats.GamesPlayed == 0 || (target.InjuryType != "" && target.WeeksOfRecovery >= 10) {
+				redshirts[redshirtCount] = fmt.Sprintf("%s %s %s %s, GamesPlayed: %d, Injury Weeks: %d\n", team.TeamAbbr, target.Position, target.FirstName, target.LastName, playerSeasonStats.GamesPlayed, target.WeeksOfRecovery)
+				SetRedshirtStatusForPlayer(strconv.Itoa(target.TeamID))
+				redshirtCount++
+			}
+		}
+		log.Printf("Redshirts for %s:\n%s\n", team.TeamAbbr, strings.Join(redshirts, ""))
 	}
 }
 
