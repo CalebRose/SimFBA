@@ -135,6 +135,13 @@ func SyncAIBoards(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(w, "Team Ranks successfully generated.")
 }
 
+func AllocateAIRedshirts(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	seasonID := vars["seasonID"]
+	managers.AllocateAIRedshirts(seasonID)
+	http.ResponseWriter(w).Write([]byte("Redshirts allocated to AI teams."))
+}
+
 func RunTheGames(w http.ResponseWriter, r *http.Request) {
 	managers.RunTheGames()
 	fmt.Println(w, "Games for current week are set to run.")

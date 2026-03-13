@@ -110,6 +110,21 @@ func GetAllCollegePlayersByTeamIdWithoutRedshirts(TeamID string) []structs.Colle
 	return CollegePlayers
 }
 
+func GetRedshirtEligiblePlayersByTeamId(TeamID string) []structs.CollegePlayer {
+	db := dbprovider.GetInstance().GetDB()
+
+	var CollegePlayers []structs.CollegePlayer
+
+	db.Order("overall desc").
+		Where("team_id = ?", TeamID).
+		Where("is_redshirting = ?", false).
+		Where("is_redshirt = ?", false).
+		Where("has_graduated = ?", false).
+		Find(&CollegePlayers)
+
+	return CollegePlayers
+}
+
 func GetCollegePlayerByCollegePlayerId(CollegePlayerId string) structs.CollegePlayer {
 	db := dbprovider.GetInstance().GetDB()
 
