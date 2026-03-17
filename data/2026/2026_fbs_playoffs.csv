@@ -1,0 +1,46 @@
+GameID,Season,Week,Home Team,Away Team,Conference Game,Division Game,Neutral Site,Conference Champ,Bowl Game,Playoff,National Champ,Home Bye,Away Bye,Listed Coach,Other Coach,TimeSlot,Stadium,City,State,Domed Stadium,GameTitle,Info,NextGameID,HoA
+7440,2026,17,JST,USM,0,0,1,0,1,0,0,1,1,AI,AI,Thursday Night,Brooks Stadium,Conway,SC,0,Myrtle Beach Bowl,,0,
+7441,2026,17,UNLV,WKU,0,0,1,0,1,0,0,0,0,AI,AI,Thursday Night,Cramton Bowl,Montgomery,AL,0,Camellia Bowl,,0,
+7442,2026,17,NMSU,RICE,0,0,1,0,1,0,0,1,1,Rabbit,bardloff,Friday Night,Independence Stadium,Shreveport,LA,0,Independence Bowl,,0,
+7443,2026,17,UTSA,TLDO,0,0,1,0,1,0,0,1,1,AI,ArmTheSharks,Friday Night,Fenway Park,Boston,MA,0,Fenway Bowl,,0,
+7444,2026,17,EMU,LU,0,0,1,0,1,0,0,1,1,fjames92,TCM12,Saturday Morning,FAU Stadium,Boca Raton,FL,0,Boca Raton Bowl,,0,
+7445,2026,17,TLNE,UHOU,0,0,0,0,1,1,0,0,0,kgreene829,mahrowkeen,Saturday Morning,Barry B. Benson Field at Yulman Stadium,New Orleans,Louisiana,0,2026 FBS Playoffs Round 1,,7466,A
+7446,2026,17,DUKE,WASH,0,0,1,0,1,0,0,1,1,Viselli,CoachCartier,Saturday Afternoon,Toyota Stadium,Frisco,TX,0,Frisco Bowl,,0,
+7447,2026,17,IAST,MASS,0,0,1,0,1,0,0,1,1,AI,AI,Saturday Afternoon,TIAA Bank Field,Jacksonville,FL,0,Gator Bowl,,0,
+7448,2026,17,FSU,BGSU,0,0,0,0,1,1,0,0,0,Kirby,PoopyRhinoPickle,Saturday Evening,Bobby Bowden Field at Doak S. Campbell Stadium,Tallahassee,Florida,0,2026 FBS Playoffs Round 1,,7461,A
+7449,2026,17,ILLI,CAL,0,0,1,0,1,0,0,0,0,nemolee.exe,believer,Saturday Evening,Pitbull Stadium,Miami,FL,0,The PitBowl,,0,
+7450,2026,17,MIAF,UTST,0,0,0,0,1,1,0,0,0,Dearden,Ewade,Saturday Evening,Hard Rock Stadium,Coral Gables,Florida,0,2026 FBS Playoffs Round 1,,7464,A
+7451,2026,17,MTSU,USAF,0,0,1,0,1,0,0,1,1,Squidward05,AI,Saturday Night,Aloha Stadium,Honolulu,HI,0,Hawai'i Bowl,,0,
+7452,2026,17,TTU,UTAH,0,0,0,0,1,1,0,0,0,rcarlson77,SageBow,Saturday Night,Jones AT&T Stadium,Lubbock,Texas,0,2026 FBS Playoffs Round 1,,7459,A
+7453,2026,18,USF,GT,0,0,1,0,1,0,0,1,1,iToxickiddy,ATonOfLaw,Thursday Night,Navy-Marine Corps Memorial Stadium,Annapolis,MD,0,Military Bowl,,0,
+7454,2026,18,BALL,ND,0,0,1,0,1,0,0,1,1,npklemm,LordLittlebutt,Thursday Night,Camp Randall Stadium,Madison,WI,0,Duluth Trading Co. Northern Lights Bowl,,0,
+7455,2026,18,TAMU,ECU,0,0,1,0,1,0,0,1,1,sleuthofbears,ObliviousLAX,Friday Night,Sun Bowl,El Paso,TX,0,Sun Bowl,,0,
+7456,2026,18,FLA,WVU,0,0,1,0,1,0,0,1,1,Weeze,smackemz3,Friday Night,SoFi Stadium,Inglewood,CA,1,Huy Fong Foods Sriracha Bowl,,0,
+7457,2026,18,MIST,APST,0,0,1,0,1,0,0,1,1,jedibob5,Mightydog135,Saturday Morning,Raymond James Stadium,Tampa,FL,0,Gasparilla Bowl,,0,
+7458,2026,18,LOU,CSU,0,0,1,0,1,0,0,1,1,Sandmanlost,Bellwood,Saturday Morning,Yankee Stadium,The Bronx,NY,0,New Era Pinstripe Bowl,,0,
+7459,2026,18,TENN,,0,0,1,0,1,1,0,1,0,tsweezy,#N/A,Saturday Morning,AT&T Stadium,Arlington,TX,1,Cotton Bowl,,7480,H
+7460,2026,18,NIU,CONN,0,0,1,0,1,0,0,1,1,Ape,AI,Saturday Afternoon,Protective Stadium,Birmingham,AL,0,Birmingham Bowl,,0,
+7461,2026,18,TULS,,0,0,1,0,1,1,0,1,0,acewulf,#N/A,Saturday Afternoon,Hard Rock Stadium,Miami Gardens,FL,0,Orange Bowl,,7482,A
+7462,2026,18,COLO,TEX,0,0,1,0,1,0,0,1,1,Bingo415,Dean,Saturday Evening,NRG Stadium,Houston,TX,0,Texas Bowl,,0,
+7463,2026,18,,,0,0,1,0,1,0,0,0,0,#N/A,#N/A,,Svalbard Stadium,Longyearbyen,NO,0,Far North Bowl,,0,
+7464,2026,18,PNST,,0,0,1,0,1,1,0,1,0,Rocketcan,#N/A,Saturday Evening,Rose Bowl,Pasadena,CA,0,Rose Bowl,,7482,H
+7465,2026,18,ULL,NEB,0,0,1,0,1,0,0,1,1,Bilain,AI,Saturday Night,Albertsons Stadium,Boise,ID,0,Famous Idaho Potato Bowl,,0,
+7466,2026,18,BAYL,,0,0,1,0,1,1,0,1,0,Vivid,#N/A,Saturday Night,Caesars Superdome,New Orleans,LA,1,Sugar Bowl,,7480,A
+7467,2026,19,UVA,MINN,0,0,1,0,1,0,0,1,1,Wahoo,Minnow,Thursday Night,Camping World Stadium,Orlando,FL,0,Cheez-It Bowl,,0,
+7468,2026,19,UGA,USC,0,0,1,0,1,0,0,1,1,Sarge,Dr_Novella,Thursday Night,Nissan Stadium,Nashville,TN,0,Music City Bowl,,0,
+7469,2026,19,WMU,JMU,0,0,1,0,1,0,0,1,1,Jieret,askfortea,Friday Night,Thomas Robinson Stadium,Nassau,BS,0,Bahamas Bowl,,0,
+7470,2026,19,IND,BYU,0,0,1,0,1,0,0,1,1,Piercewise1,Spoof,Friday Night,Bank of America Stadium,Charlotte,NC,0,Duke's Mayo Bowl,,0,
+7471,2026,19,OHIO,UAB,0,0,1,0,1,0,0,1,1,Traith Kreios,AI,Saturday Morning,Arizona Stadium,Tucson,AZ,0,Snoop Dogg Arizona Bowl,,0,
+7472,2026,19,UNM,MICH,0,0,1,0,1,0,0,1,1,DarthJarJar,subsequent,Saturday Morning,Raymond James Stadium,Tampa,FL,0,ReliaQuest Bowl,,0,
+7473,2026,19,CLEM,UCLA,0,0,1,0,1,0,0,1,1,AI,jmjacobs,Saturday Afternoon,Chase Field,Phoenix,AZ,1,Rate Bowl,,0,
+7474,2026,19,,,0,0,1,0,1,0,0,0,0,#N/A,#N/A,,Ford Field,Detroit,MI,1,Meijer's/Hostess Twinkie Ice Cream Bowl,,0,
+7475,2026,19,BAMA,STAN,0,0,1,0,1,0,0,1,1,thatfunk,Ricky Campbell,Saturday Afternoon,Alamodome,San Antonio,TX,1,Alamo Bowl,,0,
+7476,2026,19,UNC,PURD,0,0,1,0,1,0,0,1,1,Tryggr,MasonAsher,Saturday Afternoon,Exploria Stadium,Orlando,FL,0,The Cure Bowl,,0,
+7477,2026,19,FIU,ULM,0,0,1,0,1,0,0,1,1,Zyrok,AI,Saturday Afternoon,Caesars Superdome,New Orleans,LA,0,New Orleans Bowl,,0,
+7478,2026,19,SDSU,SJSU,0,0,1,0,1,0,0,1,1,Jumbo,Chandler1,Saturday Evening,Milan Puskar Stadium,Morgantown,WV,0,"Big Timber Brewing Almost Heaven, West Virginia Bowl",,0,
+7479,2026,19,NAVY,KANS,0,0,1,0,1,0,0,1,1,Syndakyt,bundy,Saturday Evening,Amon G. Carter Stadium,Forth Worth,TX,0,Armed Forces Bowl,,0,
+7480,2026,19,,,0,0,1,0,1,1,0,0,0,#N/A,#N/A,Saturday Evening,State Farm Stadium,Glendale,AZ,1,Fiesta Bowl,,7484,H
+7481,2026,19,MISS,WAST,0,0,1,0,1,0,0,1,1,SlapYourBasil,chadbird,Saturday Night,Allegiant Stadium,Paradise,NV,1,Las Vegas Bowl,,0,
+7482,2026,19,,,0,0,1,0,1,1,0,0,0,#N/A,#N/A,Saturday Night,Mercedes-Benz Stadium,Atlanta,GA,1,Peach Bowl,,7484,A
+7483,2026,20,WYOM,SOCA,0,0,1,0,1,0,0,1,1,AI,AI,Saturday Morning,The Kibbie Dome,Moscow,ID,1,The Toilet Bowl,,0,
+7484,2026,20,,,0,0,1,0,1,1,1,0,0,#N/A,#N/A,Saturday Afternoon,NRG Stadium,Houston,TX,1,2026 College Football Playoff National Championship Game,,0,

@@ -557,7 +557,7 @@ func ImportUDFAs() {
 func ImportCFBGames(isSpringGames bool) {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_cfb_games_conf_tourneys.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_fbs_playoffs.csv"
 
 	gamesCSV := util.ReadCSV(path)
 	ts := GetTimestamp()
@@ -583,7 +583,7 @@ func ImportCFBGames(isSpringGames bool) {
 		if existingGame.ID > 0 {
 			continue
 		}
-		season := util.ConvertStringToInt(row[1])
+		season := ts.Season
 		seasonID := season - 2020
 		week := util.ConvertStringToInt(row[2])
 		weekID := util.GetWeekID(uint(seasonID), uint(week))
@@ -595,7 +595,10 @@ func ImportCFBGames(isSpringGames bool) {
 		awayTeamID := at.ID
 		homeTeamCoach := ht.Coach
 		awayTeamCoach := at.Coach
-		timeSlot := SelectTimeslotForGameByConferenceID(uint(ht.ConferenceID))
+		timeSlot := row[16]
+		if week < 17 {
+			timeSlot = SelectTimeslotForGameByConferenceID(uint(ht.ConferenceID))
+		}
 		// Need to implement Stadium ID
 		stadium := row[17]
 		city := row[18]

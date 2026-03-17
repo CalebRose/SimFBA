@@ -1,0 +1,24 @@
+GameID,Season,Week,Home Team,Away Team,Conference Game,Division Game,Neutral Site,Conference Champ,Bowl Game,Playoff,National Champ,HomeTeamBye,AwayTeamBye,Listed Coach,Other Coach,TimeSlot,Stadium,City,State,Domed Stadium,GameTitle,Info,NextGameID,HoA
+7417,2025,16,COLU,WOF,0,0,0,0,0,1,0,1,1,AI,AI,,Lawrence A. Wien Stadium,New York,NY,0,FCS Playoffs First Round,,7425,A
+7418,2025,16,COR,IDHO,0,0,0,0,0,1,0,1,1,AI,TuscanSota,,Schoellkopf Field,Ithaca,NY,0,FCS Playoffs First Round,,7426,A
+7419,2025,16,ME,CIT,0,0,0,0,0,1,0,0,1,AI,AI,,Harold Alfond Sports Stadium,Orono,ME,0,FCS Playoffs First Round,,7427,A
+7420,2025,16,ETAM,IDST,0,0,0,0,0,1,0,0,1,AI,alexfall862,,Ernest Hawkins Field at Memorial Stadium,Commerce,TX,0,FCS Playoffs First Round,,7428,A
+7421,2025,16,HAMP,FAMU,0,0,0,0,0,1,0,0,1,AI,AI,,Armstrong Stadium,Hampton,VA,0,FCS Playoffs First Round,,7429,A
+7422,2025,16,SIU,ETSU,0,0,0,0,0,1,0,1,1,AI,AI,,Saluki Stadium,Carbondale,IL,0,FCS Playoffs First Round,,7430,A
+7423,2025,16,COLG,PRIN,0,0,0,0,0,1,0,0,1,AI,AI,,Andy Kerr Stadium,Hamilton,NY,0,FCS Playoffs First Round,,7431,A
+7424,2025,16,MER,AAMU,0,0,0,0,0,1,0,0,1,AI,AI,,Five Star Stadium,Macon,GA,0,FCS Playoffs First Round,,7432,A
+7425,2025,17,SOU,,0,0,0,0,0,1,0,1,0,AI,#N/A,,A.W. Mumford Stadium,Baton Rouge,LA,0,FCS Playoffs Second Round,,7433,H
+7426,2025,17,BCU,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Daytona Stadium,Daytona Beach,FL,0,FCS Playoffs Second Round,,7434,H
+7427,2025,17,HCU,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Husky Stadium,Houston,TX,0,FCS Playoffs Second Round,,7435,H
+7428,2025,17,INST,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Memorial Stadium,Terre Haute,IN,0,FCS Playoffs Second Round,,7436,H
+7429,2025,17,EIU,,0,0,0,0,0,1,0,1,0,AI,#N/A,,O'Brien Field,Charleston,IL,0,FCS Playoffs Second Round,,7436,A
+7430,2025,17,MONT,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Washington-Grizzly Stadium,Missoula,MT,0,FCS Playoffs Second Round,,7435,A
+7431,2025,17,ILST,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Hancock Stadium,Normal,IL,0,FCS Playoffs Second Round,,7434,A
+7432,2025,17,YALE,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Yale Bowl,New Haven,CT,0,FCS Playoffs Second Round,,7433,A
+7433,2025,18,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,#N/A,FCS Playoffs Quarterfinals,,7437,H
+7434,2025,18,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,#N/A,FCS Playoffs Quarterfinals,,7438,H
+7435,2025,18,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,#N/A,FCS Playoffs Quarterfinals,,7438,A
+7436,2025,18,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,#N/A,FCS Playoffs Quarterfinals,,7437,A
+7437,2025,19,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,#N/A,FCS Playoffs Semifinals,,7439,H
+7438,2025,19,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,#N/A,FCS Playoffs Semifinals,,7439,A
+7439,2025,20,,,0,0,1,0,0,1,1,0,0,#N/A,#N/A,,FirstBank Stadium,Nashville,TN,0,FCS National Championship Game,,0,

@@ -207,7 +207,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/admin/import/nfl/draft", controller.Import2023DraftedPlayers).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/cfb/standings", controller.ImportCFBStandings).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/cfb/coaches", controller.GenerateCoachesForAITeams).Methods("GET")
-	// apiRouter.HandleFunc("/admin/import/cfb/regular/games", controller.ImportCFBRegularSeasonGames).Methods("GET")
+	apiRouter.HandleFunc("/admin/import/cfb/regular/games", controller.ImportCFBRegularSeasonGames).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/cfb/spring/games", controller.ImportCFBSpringGames).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/cfb/rivals", controller.ImportCFBRivals).Methods("GET")
 	// apiRouter.HandleFunc("/admin/import/cfb/teams", controller.ImportCFBTeams).Methods("GET")
