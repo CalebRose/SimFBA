@@ -746,7 +746,7 @@ func LowerFreeAgencyMinimums(db *gorm.DB) {
 func SyncExtensionOffers() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
-	seasonID := strconv.Itoa(ts.NFLSeasonID)
+	// seasonID := strconv.Itoa(ts.NFLSeasonID)
 
 	nflTeams := GetAllNFLTeams()
 
@@ -758,19 +758,19 @@ func SyncExtensionOffers() {
 			min := player.MinimumValue
 			contract := player.Contract
 			if contract.ContractLength == 1 && len(player.Extensions) > 0 {
-				for idx, e := range player.Extensions {
+				for _, e := range player.Extensions {
 					if e.IsRejected || !e.IsActive {
 						continue
 					}
 					minimumValueMultiplier := 1.0
-					validation := validateFreeAgencyPref(player, team, seasonID, e.ContractLength, idx)
-					// If the offer is valid and meets the player's free agency bias, reduce the minimum value required by 15%
-					if validation && player.FreeAgency != "Average" {
-						minimumValueMultiplier = 0.85
-						// If the offer does not meet the player's free agency bias, increase the minimum value required by 15%
-					} else if !validation && player.FreeAgency != "Average" {
-						minimumValueMultiplier = 1.15
-					}
+					// validation := validateFreeAgencyPref(player, team, seasonID, e.ContractLength, idx)
+					// // If the offer is valid and meets the player's free agency bias, reduce the minimum value required by 15%
+					// if validation && player.FreeAgency != "Average" {
+					// 	minimumValueMultiplier = 0.85
+					// 	// If the offer does not meet the player's free agency bias, increase the minimum value required by 15%
+					// } else if !validation && player.FreeAgency != "Average" {
+					// 	minimumValueMultiplier = 1.15
+					// }
 					minValPercentage := ((e.ContractValue / (min * minimumValueMultiplier)) * 100)
 					aavPercentage := ((e.AAV / (player.AAV * minimumValueMultiplier)) * 100)
 					percentage := minValPercentage
