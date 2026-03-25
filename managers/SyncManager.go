@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
@@ -1189,6 +1190,74 @@ func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs
 		Af2:         affinityTwoApplicable,
 		AffinityMod: affinityMod,
 	}
+}
+
+func AllocateAIRedshirts(seasonId string) {
+	allAICollegeTeams := GetAllAvailableCollegeTeams()
+	seasonStatsMap := GetCFBPlayerSeasonStatMapBySeason(seasonId, "2")
+
+	for _, team := range allAICollegeTeams {
+		log.Printf("\nAllocating redshirts for %s\n", team.TeamAbbr)
+		redshirtTargets := GetAllCollegePlayersByTeamId(strconv.Itoa(int(team.ID)))
+		positionCountMap := getPositionCounts(redshirtTargets)
+
+		redshirtCount := 0
+		redshirts := make([]string, 20)
+		for _, target := range redshirtTargets {
+			if redshirtCount >= 20 {
+				break
+			}
+
+			playerSeasonStats := seasonStatsMap[uint(target.PlayerID)]
+
+			/* 
+			 * Redshirt top 20 players that have never been redshirted and either have no snaps or a long-term injury this season.
+			 * Also skips players if redshirting would put the team below that position minimum.
+			 * GetAllCollegePlayersByTeamId returns players sorted by OVR by default.
+			 */
+			if (playerSeasonStats.GamesPlayed == 0 || 
+					(target.InjuryType != "" && target.WeeksOfRecovery >= 10)) &&
+					!target.IsRedshirt && !target.IsRedshirting && 
+					isAboveMinPositionCount(target.Position, positionCountMap) {
+
+				redshirts[redshirtCount] = fmt.Sprintf("%s %s %s %s, GamesPlayed: %d, Injury Weeks: %d\n", team.TeamAbbr, target.Position, target.FirstName, target.LastName, playerSeasonStats.GamesPlayed, target.WeeksOfRecovery)
+				SetRedshirtStatusForPlayer(strconv.Itoa(target.TeamID))
+				positionCountMap[target.Position] -= 1
+				redshirtCount++
+			}
+		}
+		log.Printf("Redshirts for %s:\n%s\n", team.TeamAbbr, strings.Join(redshirts, ""))
+	}
+}
+
+func getPositionCounts(players []structs.CollegePlayer) map[string]int {
+	counts := make(map[string]int)
+	for _, player := range players {
+		counts[player.Position]++
+	}
+	return counts
+}
+
+func isAboveMinPositionCount(position string, positionCountMap map[string]int) bool {
+	minPositionThreshold := 0;
+	
+	switch position {
+	case "ATH":
+		minPositionThreshold = 0
+	case "P", "K":
+		minPositionThreshold = 1
+	case "QB", "RB", "FB", "TE", "FS", "SS", "C":
+		minPositionThreshold = 3
+	case "OT", "OG", "DE", "DT", "OLB", "ILB":
+		minPositionThreshold = 4
+	case "WR", "CB":
+		minPositionThreshold = 5
+	default:
+		panic(fmt.Sprintf("Invalid position %s found in redshirt logic", position))
+	}
+
+	positionCount := positionCountMap[position]
+	return positionCount > minPositionThreshold
 }
 
 func getCoachMap() map[uint]structs.CollegeCoach {
