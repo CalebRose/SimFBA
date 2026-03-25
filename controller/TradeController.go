@@ -77,8 +77,6 @@ func CreateNFLTradeProposal(w http.ResponseWriter, r *http.Request) {
 
 	managers.CreateTradeProposal(tradeProposalDTO)
 
-	// recruitingProfile := managers.CreateRecruitingProfileForRecruit(tradeProposalDTO)
-	fmt.Fprintf(w, "New Trade Proposal Created")
 }
 
 // Accept Trade Offer
@@ -90,8 +88,6 @@ func AcceptTradeOffer(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.AcceptTradeProposal(proposalID)
-
-	json.NewEncoder(w).Encode("Proposal " + proposalID + " has been accepted.")
 }
 
 // Reject Trade Offer
@@ -103,8 +99,6 @@ func RejectTradeOffer(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.RejectTradeProposal(proposalID)
-
-	json.NewEncoder(w).Encode("Proposal " + proposalID + " has been accepted.")
 }
 
 // Cancels Trade Offer
@@ -116,8 +110,6 @@ func CancelTradeOffer(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.CancelTradeProposal(proposalID)
-
-	json.NewEncoder(w).Encode("Proposal " + proposalID + " has been accepted.")
 }
 
 // SyncAcceptedTrade -- Admin approve a trade
@@ -129,8 +121,6 @@ func SyncAcceptedTrade(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.SyncAcceptedTrade(proposalID)
-
-	json.NewEncoder(w).Encode("Proposal " + proposalID + " has been accepted.")
 }
 
 // SyncTradeFromDraftPage -- Admin approve a trade
@@ -142,7 +132,6 @@ func SyncTradeFromDraftPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	managers.SyncTradeFromDraftPage(tradeProposalDTO)
-	fmt.Println("Trade Processed!")
 }
 
 // SyncAcceptedTrade -- Admin approve a trade
@@ -154,13 +143,9 @@ func VetoAcceptedTrade(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.VetoTrade(proposalID)
-
-	json.NewEncoder(w).Encode("Proposal " + proposalID + " has been accepted.")
 }
 
 // CleanUpRejectedTrades -- Remove all rejected trades from the DB
 func CleanUpRejectedTrades(w http.ResponseWriter, r *http.Request) {
 	managers.RemoveRejectedTrades()
-
-	json.NewEncoder(w).Encode("Removed all rejected trades from the interface.")
 }

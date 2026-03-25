@@ -1,0 +1,14 @@
+GameID,Season,Week,Home Team,Away Team,Neutral Site,PreSeason,Conference Champ,Playoff,National Champ,Listed Coach,Other Coach,TimeSlot,Stadium,City,State,GameTitle,Info,NextGameID,HoA
+1320,2026,19,PIT,KC,0,0,0,1,0,npklemm,smackemz3,Sunday Noon,Lucas Oil Stadium,Indianapolis,IN,AFC Wildcard,,1326,A
+1321,2026,19,MIA,LAC,0,0,0,1,0,alexfall861,Paradoxic,Sunday Noon,Empower Field at Mile High,Denver,CO,AFC Wildcard,,1327,H
+1322,2026,19,TEN,NYJ,0,0,0,1,0,Piercewise1,Weeze,Sunday Afternoon,FirstEnergy Stadium,Cleveland,OH,AFC Wildcard,,1327,A
+1323,2026,19,GB,DAL,0,0,0,1,0,JC,Rocketcan,Sunday Noon,Lambeau Field,Green Bay,WI,NFC Wildcard,,1328,A
+1324,2026,19,WAS,CHI,0,0,0,1,0,mahrowkeen,Sarge,Sunday Noon,Mercedes-Benz Stadium,Atlanta,GA,NFC Wildcard,,1329,H
+1325,2026,19,CAR,DET,0,0,0,1,0,Vivid,acewulf,Sunday Afternoon,SoFi Stadium,Inglewood,CA,NFC Wildcard,,1329,A
+1326,2026,20,DEN,,0,0,0,1,0,TheLiberator,#N/A,Sunday Noon,Hard Rock Stadium,Miami Gardens,FL,AFC Division Round,,1330,H
+1327,2026,20,,,0,0,0,1,0,#N/A,#N/A,Sunday Afternoon,#N/A,#N/A,#N/A,AFC Division Round,,1330,A
+1328,2026,20,LAR,,0,0,0,1,0,Ewade,#N/A,Sunday Noon,FedExField,Landover,MD,NFC Division Round,,1331,H
+1329,2026,20,,,0,0,0,1,0,#N/A,#N/A,Sunday Afternoon,#N/A,#N/A,#N/A,NFC Division Round,,1331,A
+1330,2026,21,,,0,0,0,1,0,#N/A,#N/A,Sunday Noon,#N/A,#N/A,#N/A,2026 AFC Championship,,1332,H
+1331,2026,21,,,0,0,0,1,0,#N/A,#N/A,Sunday Afternoon,#N/A,#N/A,#N/A,2026 NFC Championship,,1332,A
+1332,2026,22,,,1,0,0,1,1,#N/A,#N/A,Sunday Night,#N/A,#N/A,#N/A,2026 SimNFL Super Bowl,,0,

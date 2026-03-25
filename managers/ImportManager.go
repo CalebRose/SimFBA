@@ -669,7 +669,7 @@ func ImportCFBGames(isSpringGames bool) {
 func ImportNFLGames() {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_nfl_regularseason_games.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_nfl_postseason_games.csv"
 
 	gamesCSV := util.ReadCSV(path)
 
@@ -726,6 +726,12 @@ func ImportNFLGames() {
 		isPreseasonGame := util.ConvertStringToBool(row[6])
 		// isConferenceChampionship := util.ConvertStringToBool(row[7])
 		isPlayoffGame := util.ConvertStringToBool(row[8])
+		if week > 18 {
+			isConferenceGame = false
+			isDivisionGame = false
+			isPlayoffGame = true
+			isPreseasonGame = false
+		}
 		isNationalChampionship := util.ConvertStringToBool(row[9])
 		gameTitle := row[17]
 		nextGame := util.ConvertStringToInt(row[18])
