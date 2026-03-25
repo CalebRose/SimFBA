@@ -143,7 +143,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/nfl/contracts/get/value", controller.CalculateContracts).Methods("GET")
 
 	// Draft Controls
-	apiRouter.HandleFunc("/nfl/draft/draftees/export/{season}", controller.ExportDrafteesToCSV).Methods("GET")
+	apiRouter.HandleFunc("/nfl/draft/draftees/export", controller.ExportDrafteesToCSV).Methods("GET")
 	apiRouter.HandleFunc("/nfl/draft/export/picks", controller.ExportDraftedPicks).Methods("POST")
 	apiRouter.HandleFunc("/nfl/draft/page/{teamID}", controller.GetDraftPageData).Methods("GET")
 	apiRouter.HandleFunc("/nfl/draft/time/change", controller.ToggleDraftTime).Methods("GET")
