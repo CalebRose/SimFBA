@@ -20,4 +20,5 @@ func (r *TeamRequest) RejectTeamRequest() {
 type TeamRequestsResponse struct {
 	CollegeRequests []TeamRequest
 	ProRequests     []NFLRequest
+	AcceptedTrades  []NFLTradeProposal
 }

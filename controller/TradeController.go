@@ -76,7 +76,6 @@ func CreateNFLTradeProposal(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.CreateTradeProposal(tradeProposalDTO)
-
 }
 
 // Accept Trade Offer

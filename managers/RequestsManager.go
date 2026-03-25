@@ -20,6 +20,7 @@ func GetAllFBARequests() structs.TeamRequestsResponse {
 	var (
 		collegeRequests []structs.TeamRequest
 		proRequests     []structs.NFLRequest
+		acceptedTrades  []structs.NFLTradeProposal
 	)
 
 	go func() {
@@ -32,10 +33,16 @@ func GetAllFBARequests() structs.TeamRequestsResponse {
 		proRequests = repository.FindAllNFLTeamRequests()
 	}()
 
+	go func() {
+		defer wg.Done()
+		acceptedTrades = repository.FindAllAcceptedTradeProposals()
+	}()
+
 	wg.Wait()
 	return structs.TeamRequestsResponse{
 		CollegeRequests: collegeRequests,
 		ProRequests:     proRequests,
+		AcceptedTrades:  acceptedTrades,
 	}
 }
 

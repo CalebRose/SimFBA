@@ -35,3 +35,10 @@ func FindAllTradeProposalsRecords(clauses TradeClauses) []structs.NFLTradePropos
 
 	return proposal
 }
+
+func FindAllAcceptedTradeProposals() []structs.NFLTradeProposal {
+	db := dbprovider.GetInstance().GetDB()
+	var proposals []structs.NFLTradeProposal
+	db.Preload("NFLTeamTradeOptions").Where("is_trade_accepted = ? AND is_synced = ?", true, false).Find(&proposals)
+	return proposals
+}

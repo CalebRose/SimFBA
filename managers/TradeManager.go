@@ -123,11 +123,7 @@ func UpdateTradePreferences(pref structs.NFLTradePreferencesDTO) {
 }
 
 func GetAcceptedTradeProposals() []structs.NFLTradeProposalDTO {
-	db := dbprovider.GetInstance().GetDB()
-
-	proposals := []structs.NFLTradeProposal{}
-
-	db.Preload("NFLTeamTradeOptions").Where("is_trade_accepted = ? AND is_synced = ?", true, false).Find(&proposals)
+	proposals := repository.FindAllAcceptedTradeProposals()
 
 	acceptedProposals := []structs.NFLTradeProposalDTO{}
 
