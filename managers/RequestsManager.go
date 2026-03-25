@@ -15,7 +15,7 @@ import (
 
 func GetAllFBARequests() structs.TeamRequestsResponse {
 	var wg sync.WaitGroup
-	wg.Add(2)
+	wg.Add(3)
 
 	var (
 		collegeRequests []structs.TeamRequest
