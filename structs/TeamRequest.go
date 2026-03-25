@@ -21,4 +21,5 @@ type TeamRequestsResponse struct {
 	CollegeRequests []TeamRequest
 	ProRequests     []NFLRequest
 	AcceptedTrades  []NFLTradeProposal
+	DraftPicks      []NFLDraftPick
 }

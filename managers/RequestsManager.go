@@ -15,12 +15,13 @@ import (
 
 func GetAllFBARequests() structs.TeamRequestsResponse {
 	var wg sync.WaitGroup
-	wg.Add(3)
+	wg.Add(4)
 
 	var (
 		collegeRequests []structs.TeamRequest
 		proRequests     []structs.NFLRequest
 		acceptedTrades  []structs.NFLTradeProposal
+		draftPicks      []structs.NFLDraftPick
 	)
 
 	go func() {
@@ -38,11 +39,17 @@ func GetAllFBARequests() structs.TeamRequestsResponse {
 		acceptedTrades = repository.FindAllAcceptedTradeProposals()
 	}()
 
+	go func() {
+		defer wg.Done()
+		draftPicks = GetAllRelevantNFLDraftPicks()
+	}()
+
 	wg.Wait()
 	return structs.TeamRequestsResponse{
 		CollegeRequests: collegeRequests,
 		ProRequests:     proRequests,
 		AcceptedTrades:  acceptedTrades,
+		DraftPicks:      draftPicks,
 	}
 }
 
