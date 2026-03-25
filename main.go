@@ -167,6 +167,8 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/nfl/waiverwire/create/offer", controller.CreateWaiverWireOffer).Methods("POST")
 	apiRouter.HandleFunc("/nfl/waiverwire/cancel/offer", controller.CancelWaiverWireOffer).Methods("POST")
 	apiRouter.HandleFunc("/nfl/freeagency/waiver/order/set", controller.SetWaiverOrderForNFLTeams).Methods("GET")
+	apiRouter.HandleFunc("/nfl/freeagency/waiver/order/set", controller.SetWaiverOrderForNFLTeams).Methods("GET")
+	apiRouter.HandleFunc("/nfl/export/freeagents", controller.ExportNFLFreeAgentsToCSV).Methods("GET")
 
 	// Game Controls
 	apiRouter.HandleFunc("/games/update/time/", controller.UpdateTimeslot).Methods("POST", "OPTIONS")

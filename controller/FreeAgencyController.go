@@ -97,3 +97,8 @@ func SyncExtensions(w http.ResponseWriter, r *http.Request) {
 	managers.SyncExtensionOffers()
 	json.NewEncoder(w).Encode(true)
 }
+
+func ExportNFLFreeAgentsToCSV(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/csv")
+	managers.ExportNFLFreeAgentsToCSV(w)
+}
