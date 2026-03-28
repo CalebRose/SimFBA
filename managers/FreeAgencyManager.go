@@ -43,7 +43,7 @@ func GetExtensionMap() map[uint]structs.NFLExtensionOffer {
 
 	contracts := []structs.NFLExtensionOffer{}
 
-	db.Where("is_active = ?", true).Find(&contracts)
+	db.Where("is_active = ? OR is_accepted = ?", true, true).Find(&contracts)
 
 	return MakeExtensionMap(contracts)
 }
