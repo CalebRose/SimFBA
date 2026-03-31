@@ -79,3 +79,8 @@ func (t *NFLTeam) AssignWaiverOrder(val uint) {
 func (bt *NFLTeam) ToggleTag() {
 	bt.UsedTagThisSeason = true
 }
+
+func (bt *NFLTeam) ResetSeasonalData() {
+	bt.UsedTagThisSeason = false
+	bt.PenaltyMarks = 0
+}
