@@ -507,6 +507,11 @@ func SyncFreeAgencyOffers() {
 	db := dbprovider.GetInstance().GetDB()
 
 	ts := GetTimestamp()
+	// Disable FA during the postseason
+	if ts.NFLWeek > 18 {
+		return
+	}
+
 	ts.ToggleFALock()
 	repository.SaveTimestamp(ts, db)
 	FreeAgents := GetAllFreeAgents()
