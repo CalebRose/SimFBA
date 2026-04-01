@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"sort"
 	"strconv"
+	"strings"
 	"sync"
 
 	"github.com/CalebRose/SimFBA/constants"
@@ -1880,4 +1881,182 @@ func getMajorNeedsMap() map[string]bool {
 	}
 
 	return majorNeedsMap
+}
+
+// End of season run
+// At end of season, sync through promises to confirm if promises were made
+func SyncPromises() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
+	teamProfileMap := GetTeamProfileMap()
+	activePromises := GetAllCollegePromises()
+	collegePlayerMap := GetCollegePlayerMap()
+	historicCollegePlayers := GetAllHistoricCollegePlayers()
+	historicPlayerMap := MakeHistoricCollegePlayerMap(historicCollegePlayers)
+	standingsMap := GetCollegeStandingsMap(seasonID)
+	seasonStatsMap := GetCollegePlayerSeasonStatsMap(seasonID, "2")
+	gameplanMap := GetCollegeGameplanMap()
+
+	for _, promise := range activePromises {
+		if !promise.IsActive || !promise.PromiseMade {
+			continue
+		}
+		isHistoric := false
+		benchMarkStr := ""
+		result := ""
+		player := collegePlayerMap[promise.CollegePlayerID]
+		if player.ID == 0 {
+			player = historicPlayerMap[promise.CollegePlayerID]
+			if player.ID == 0 {
+				continue
+			}
+			isHistoric = true
+		}
+		// If player is already going to portal, carry on!
+		if player.TransferStatus == 2 {
+			// Remove promise since there was likely a preceding promise
+			repository.DeleteCollegePromise(promise, db)
+			continue
+		}
+		teamID := strconv.Itoa(int(promise.TeamID))
+		team := teamProfileMap[teamID]
+
+		seasonStats := seasonStatsMap[promise.CollegePlayerID]
+		if promise.PromiseType == "Wins" {
+			benchMarkStr = strconv.Itoa(int(promise.Benchmark))
+			standings := standingsMap[promise.TeamID]
+			result = strconv.Itoa(int(standings.TotalWins))
+			if standings.TotalWins >= promise.Benchmark {
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "Snaps" {
+			benchMarkStr = strconv.Itoa(int(promise.Benchmark))
+			snapsPerGame := float64(seasonStats.Snaps) / float64(seasonStats.GamesPlayed)
+			result = util.ConvertFloatTostring(snapsPerGame)
+			if snapsPerGame >= float64(promise.Benchmark) {
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "Home State Game" || promise.PromiseType == "Different State" {
+			// Loop through games
+			benchMarkStr = promise.BenchmarkStr
+			result = "Did not play game in requested state."
+			games := GetCollegeGamesByTeamIdAndSeasonId(teamID, seasonID, false)
+			for _, game := range games {
+				stateKey := util.GetStateKey(promise.BenchmarkStr)
+				if game.State == stateKey || game.State == promise.BenchmarkStr {
+					result = ""
+					promise.FulfillPromise()
+					break
+				}
+			}
+		} else if promise.PromiseType == "No Redshirt" {
+			result = "Was Redshirted"
+			if !player.IsRedshirting {
+				result = ""
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "National Championship" {
+			result = "Did not win the Natty."
+			standings := standingsMap[promise.TeamID]
+			if standings.PostSeasonStatus == "National Champion" {
+				result = ""
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "Conference Championship" {
+			result = "Did not win Conference Championship"
+			standings := standingsMap[promise.TeamID]
+			if standings.IsConferenceChampion {
+				result = ""
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "Specific Coach" {
+			// Fulfill for now, will need to adjust value
+			promise.FulfillPromise()
+		} else if promise.PromiseType == "Playoffs" {
+			standings := standingsMap[promise.TeamID]
+			postSeasonStatus := standings.PostSeasonStatus
+			// postSeasonStatus has substring "Round of" or postSeasonStatus == "Sweet 16" or "Elite 8" or "Final 4" or contains "National Champion", fullfill
+			if strings.Contains(postSeasonStatus, "Playoffs") || postSeasonStatus == "Semifinals" || postSeasonStatus == "Quarterfinals" || strings.Contains(postSeasonStatus, "National Champion") {
+				result = ""
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "Good Gameplan Fit" {
+			gameplan := gameplanMap[promise.TeamID]
+			goodGameplanFit := IsGoodSchemeFit(gameplan.OffensiveScheme, gameplan.DefensiveScheme, player.Archetype, player.Position)
+			if goodGameplanFit {
+				result = ""
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "Not Bad Gameplan Fit" {
+			gameplan := gameplanMap[promise.TeamID]
+			badSchemeFit := IsBadSchemeFit(gameplan.OffensiveScheme, gameplan.DefensiveScheme, player.Archetype, player.Position)
+			if !badSchemeFit {
+				result = ""
+				promise.FulfillPromise()
+			}
+		}
+		weightValue := getPromiseWeightValue(!promise.IsFullfilled, promise.PromiseWeight)
+		team.AdjustPortalReputation(weightValue)
+		repository.SaveRecruitingTeamProfile(*team, db)
+		if !promise.IsFullfilled && !isHistoric {
+			message := "Breaking News! " + player.TeamAbbr + " " + player.FirstName + " " + player.LastName + " will be re-entering the portal after a promise was broken! Promise: " + promise.PromiseType + " | Expected: " + benchMarkStr + " | Result: " + result
+			player.WillTransfer()
+			repository.SaveCollegePlayerRecord(player, db)
+			CreateNewsLog("CFB", message, "Portal", int(team.TeamID), ts)
+		}
+		repository.DeleteCollegePromise(promise, db)
+	}
+}
+
+func getPromiseWeightValue(isPenalty bool, weight string) int {
+	switch weight {
+	case "Why even try?":
+		if isPenalty {
+			return -1
+		}
+		return 1
+	case "Low":
+		if isPenalty {
+			return -5
+		}
+		return 3
+	case "Extremely Low":
+		if isPenalty {
+			return -1
+		}
+		return 1
+	case "Very Low":
+		if isPenalty {
+			return -3
+		}
+		return 2
+	case "Medium":
+		if isPenalty {
+			return -10
+		}
+		return 8
+	case "High":
+		if isPenalty {
+			return -20
+		}
+		return 15
+	case "Very High":
+		if isPenalty {
+			return -30
+		}
+		return 20
+	case "Extremely High":
+		if isPenalty {
+			return -35
+		}
+		return 25
+	case "If you make this promise then you better win it!":
+		if isPenalty {
+			return -50
+		}
+		return 35
+	}
+
+	return 0
 }

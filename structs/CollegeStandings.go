@@ -1,21 +1,26 @@
 package structs
 
-import "github.com/jinzhu/gorm"
+import (
+	"strings"
+
+	"github.com/jinzhu/gorm"
+)
 
 type CollegeStandings struct {
 	gorm.Model
-	TeamID           int
-	TeamName         string
-	SeasonID         int
-	Season           int
-	LeagueID         uint
-	LeagueName       string
-	ConferenceID     int
-	ConferenceName   string
-	DivisionID       int
-	PostSeasonStatus string
-	IsFBS            bool
-	Rank             uint
+	TeamID               int
+	TeamName             string
+	SeasonID             int
+	Season               int
+	LeagueID             uint
+	LeagueName           string
+	ConferenceID         int
+	ConferenceName       string
+	DivisionID           int
+	PostSeasonStatus     string
+	IsFBS                bool
+	Rank                 uint
+	IsConferenceChampion bool
 	BaseStandings
 }
 
@@ -28,7 +33,7 @@ func (ns *CollegeStandings) CalculatePercentages() {
 		ns.TotalWinPercentage = 0
 	}
 	if totalConfGames > 0 {
-		ns.ConfWinPercentage = float32(ns.TotalWins) / float32(totalConfGames)
+		ns.ConfWinPercentage = float32(ns.ConferenceWins) / float32(totalConfGames)
 	} else {
 		ns.ConfWinPercentage = 0
 	}
@@ -37,6 +42,18 @@ func (ns *CollegeStandings) CalculatePercentages() {
 func (cs *CollegeStandings) UpdateCollegeStandings(game CollegeGame) {
 	isAway := cs.TeamID == game.AwayTeamID
 	winner := (!isAway && game.HomeTeamWin) || (isAway && game.AwayTeamWin)
+	if winner && strings.Contains(game.GameTitle, "Championship") && game.IsConferenceChampionship {
+		cs.IsConferenceChampion = true
+	} else if winner && strings.Contains(game.GameTitle, "Championship") && game.IsNationalChampionship {
+		cs.PostSeasonStatus = "National Champion"
+	} else if winner && strings.Contains(game.GameTitle, "Round 1") && game.IsPlayoffGame {
+		cs.PostSeasonStatus = "Playoffs"
+	} else if winner && strings.Contains(game.GameTitle, "Bowl") && game.IsPlayoffGame && game.Week == 18 {
+		cs.PostSeasonStatus = "Quarterfinals"
+	} else if winner && strings.Contains(game.GameTitle, "Bowl") && game.IsPlayoffGame && game.Week == 19 {
+		cs.PostSeasonStatus = "Semifinals"
+	}
+
 	if winner {
 		cs.TotalWins += 1
 		if isAway {

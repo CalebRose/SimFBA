@@ -76,7 +76,7 @@ func (t *Timestamp) MoveUpWeekNFL() {
 		t.NFLWeekID -= 4
 		t.NFLPreseason = false
 	}
-	if t.NFLWeek > 21 {
+	if t.NFLWeek > 22 {
 		t.NFLSeasonOver = true
 	}
 }
@@ -216,7 +216,6 @@ func (t *Timestamp) TogglePollRan() {
 }
 
 func (t *Timestamp) EndTheCollegeSeason() {
-	t.IsOffSeason = true
 	t.TransferPortalPhase = 1
 	t.CollegeSeasonOver = true
 }

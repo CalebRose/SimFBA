@@ -88,6 +88,13 @@ func (r *RecruitingTeamProfile) ResetScholarshipCount() {
 
 func (r *RecruitingTeamProfile) AdjustPortalReputation(points int) {
 	r.PortalReputation = r.PortalReputation + points
+	if r.PortalReputation < 0 {
+		r.PortalReputation = 1
+	}
+	if r.PortalReputation > 120 {
+		r.PortalReputation = 120
+	}
+
 }
 
 func (r *RecruitingTeamProfile) AllocateSpentPoints(points float64) {

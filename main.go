@@ -117,10 +117,10 @@ func handleRequests() http.Handler {
 	// This endpoint should be used right before the redshirt deadline.
 	apiRouter.HandleFunc("/admin/ai/apply/redshirts/{seasonID}", controller.AllocateAIRedshirts).Methods("GET")
 	// apiRouter.HandleFunc("/admin/fix/affinities", controller.RecalibrateCrootProfiles).Methods("GET")
-	apiRouter.HandleFunc("/admin/fix/recruit/points", controller.RecalibrateRecruitPoints).Methods("GET")
+	// apiRouter.HandleFunc("/admin/fix/recruit/points", controller.RecalibrateRecruitPoints).Methods("GET")
 	apiRouter.HandleFunc("/admin/run/the/games/", controller.RunTheGames).Methods("GET")
 	// apiRouter.HandleFunc("/admin/overall/progressions/next/season", controller.ProgressToNextSeason).Methods("GET")
-	apiRouter.HandleFunc("/admin/overall/progressions/nfl", controller.ProgressNFL).Methods("GET")
+	// apiRouter.HandleFunc("/admin/overall/progressions/nfl", controller.ProgressNFL).Methods("GET")
 	apiRouter.HandleFunc("/admin/trades/accept/sync/{proposalID}", controller.SyncAcceptedTrade).Methods("GET")
 	apiRouter.HandleFunc("/admin/trades/veto/sync/{proposalID}", controller.VetoAcceptedTrade).Methods("GET")
 	apiRouter.HandleFunc("/admin/trades/cleanup", controller.CleanUpRejectedTrades).Methods("GET")
@@ -487,6 +487,8 @@ func handleCron() *cron.Cron {
 		c.AddFunc("0 17 * * 1", controller.ShowNFLMonNitViaCron)   // Mon Nit
 		// Sync Week
 		c.AddFunc("0 18 * * 1", controller.SyncToNextWeekViaCron)
+		c.AddFunc("0 2 * * 2", controller.RunCFBProgressionsViaCron)
+		c.AddFunc("0 3 * * 2", controller.RunNFLProgressionsViaCron)
 	}
 
 	c.Start()

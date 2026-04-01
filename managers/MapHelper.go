@@ -413,3 +413,13 @@ func MakeRecruitTeamProfileMapByTeamID(profiles []structs.RecruitingTeamProfile)
 
 	return profileMap
 }
+
+func MakeHistoricCollegePlayerMap(players []structs.HistoricCollegePlayer) map[uint]structs.CollegePlayer {
+	profileMap := make(map[uint]structs.CollegePlayer)
+
+	for _, rp := range players {
+		profileMap[rp.ID] = structs.CollegePlayer(rp)
+	}
+
+	return profileMap
+}
