@@ -6,6 +6,7 @@ import (
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/managers"
 	"github.com/CalebRose/SimFBA/repository"
+	"github.com/CalebRose/SimFBA/structs"
 )
 
 func CronTest() {
@@ -46,6 +47,9 @@ func SyncRecruitingViaCron() {
 	ts := managers.GetTimestamp()
 	if ts.RunCron && !ts.IsOffSeason && !ts.CollegeSeasonOver && !ts.CFBSpringGames && ts.CollegeWeek > 0 && ts.CollegeWeek < 21 {
 		managers.SyncRecruiting(ts)
+		if ts.CollegeWeek == 20 {
+			managers.GenerateWalkOns()
+		}
 	}
 	if ts.RunCron && ts.IsOffSeason && ts.TransferPortalPhase == 2 {
 		managers.EnterTheTransferPortal()
@@ -65,6 +69,39 @@ func SyncFreeAgencyViaCron() {
 	}
 }
 
+func RunCFBProgressionsViaCron() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := managers.GetTimestamp()
+	if ts.CollegeWeek < 21 {
+		return
+	}
+	if ts.CollegeSeasonOver && !ts.ProgressedCollegePlayers {
+		// Reset progression flags on all teams and players before running
+		db.Model(&structs.CollegeTeam{}).Where("id > ?", 0).Updates(map[string]interface{}{"players_progressed": false, "recruits_added": false})
+		db.Model(&structs.CollegePlayer{}).Where("id > ?", 0).Update("has_progressed", false)
+
+		managers.CFBProgressionMain()
+		ts.ToggleCollegeProgression()
+		repository.SaveTimestamp(ts, db)
+	}
+}
+
+func RunNFLProgressionsViaCron() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := managers.GetTimestamp()
+	if ts.NFLWeek < 23 {
+		return
+	}
+
+	if ts.NFLSeasonOver && !ts.ProgressedProfessionalPlayers {
+		// Reset progression flags on all teams and players before running
+		db.Model(&structs.NFLPlayer{}).Where("id > ?", 0).Update("has_progressed", false)
+		managers.NFLProgressionMain()
+		ts.ToggleProfessionalProgression()
+		repository.SaveTimestamp(ts, db)
+	}
+}
+
 func SyncToNextWeekViaCron() {
 	ts := managers.GetTimestamp()
 	if !ts.RunGames {
@@ -75,20 +112,22 @@ func SyncToNextWeekViaCron() {
 			ts = managers.MoveUpWeek()
 		}
 		managers.AssignTeamGrades()
-		if ts.NFLSeasonOver && ts.CollegeSeasonOver && !ts.IsNFLOffSeason && !ts.IsOffSeason {
-			if !ts.ProgressedCollegePlayers && !ts.ProgressedProfessionalPlayers {
-				// Progress College
 
-				ts.ToggleCollegeProgression()
-				// Progress NFL
+		// Once National Championship is over and we move up a week.
+		if ts.CollegeSeasonOver && ts.CollegeWeek == 21 {
+			// Sync Promises
+			managers.SyncPromises()
+			ts.TransferPortalPhase = 1
+			ts.TransferPortalRound = 1
+			db := dbprovider.GetInstance().GetDB()
+			repository.SaveTimestamp(ts, db)
+		}
 
-				ts.ToggleProfessionalProgression()
-
-				db := dbprovider.GetInstance().GetDB()
-				ts.MoveUpSeason()
-				repository.SaveTimestamp(ts, db)
-				managers.GenerateOffseasonData()
-			}
+		if ts.NFLSeasonOver && ts.CollegeSeasonOver && !ts.IsNFLOffSeason && !ts.IsOffSeason && ts.ProgressedCollegePlayers && ts.ProgressedProfessionalPlayers {
+			db := dbprovider.GetInstance().GetDB()
+			ts.MoveUpSeason()
+			repository.SaveTimestamp(ts, db)
+			managers.GenerateOffseasonData()
 		}
 	}
 }
