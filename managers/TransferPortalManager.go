@@ -1996,7 +1996,7 @@ func SyncPromises() {
 				promise.FulfillPromise()
 			}
 		}
-		weightValue := getPromiseWeightValue(!promise.IsFullfilled, promise.PromiseWeight)
+		weightValue := getPromiseWeightValue(!promise.IsFullfilled, promise.PromiseWeight, team.PortalReputation)
 		team.AdjustPortalReputation(weightValue)
 		repository.SaveRecruitingTeamProfile(*team, db)
 		if !promise.IsFullfilled && !isHistoric {
@@ -2009,7 +2009,7 @@ func SyncPromises() {
 	}
 }
 
-func getPromiseWeightValue(isPenalty bool, weight string) int {
+func getPromiseWeightValue(isPenalty bool, weight string, reputation int) int {
 	switch weight {
 	case "Why even try?":
 		if isPenalty {
@@ -2035,25 +2035,40 @@ func getPromiseWeightValue(isPenalty bool, weight string) int {
 		if isPenalty {
 			return -10
 		}
+		if reputation > 100 {
+			return 3
+		}
 		return 8
 	case "High":
 		if isPenalty {
 			return -20
+		}
+		if reputation > 100 {
+			return 5
 		}
 		return 15
 	case "Very High":
 		if isPenalty {
 			return -30
 		}
+		if reputation > 100 {
+			return 5
+		}
 		return 20
 	case "Extremely High":
 		if isPenalty {
 			return -35
 		}
+		if reputation > 100 {
+			return 5
+		}
 		return 25
 	case "If you make this promise then you better win it!":
 		if isPenalty {
 			return -50
+		}
+		if reputation > 100 {
+			return 10
 		}
 		return 35
 	}
