@@ -467,23 +467,23 @@ func handleCron() *cron.Cron {
 		// Run RES
 		c.AddFunc("0 7 * * 4", controller.RunRESViaCron)
 		// Sync Recruiting
-		c.AddFunc("0 17 * * 3", controller.SyncRecruitingViaCron)
+		c.AddFunc("0 16 * * 3", controller.SyncRecruitingViaCron)
 		// Sync Free Agency
 		c.AddFunc("0 16 * * *", controller.SyncFreeAgencyViaCron)
 		// Sync Extension Offers
 		// Run the Games
 		c.AddFunc("0 4 * * 4", controller.RunTheGamesViaCron)
 		// Reveal Timeslot Results
-		c.AddFunc("0 21 * * 4", controller.ShowCFBThursdayViaCron) // Thurs Night
-		c.AddFunc("0 20 * * 4", controller.ShowNFLThursdayViaCron) // Thurs NFL
-		c.AddFunc("0 21 * * 5", controller.ShowCFBFridayViaCron)   // Fri Night
-		c.AddFunc("0 15 * * 6", controller.ShowCFBSatMornViaCron)  // Sat. Morning
-		c.AddFunc("0 17 * * 6", controller.ShowCFBSatAftViaCron)   // Sat. Afternoon
-		c.AddFunc("0 19 * * 6", controller.ShowCFBSatEveViaCron)   // Sat. Evening
-		c.AddFunc("0 21 * * 6", controller.ShowCFBSatNitViaCron)   // Sat. Night
-		c.AddFunc("0 15 * * 0", controller.ShowNFLSunNoonViaCron)  // Sun Noon
-		c.AddFunc("0 17 * * 0", controller.ShowNFLSunAftViaCron)   // Sun Aft
-		c.AddFunc("0 19 * * 0", controller.ShowNFLSunNitViaCron)   // Sun Nit
+		c.AddFunc("0 22 * * 4", controller.ShowCFBThursdayViaCron) // Thurs Night
+		c.AddFunc("0 21 * * 4", controller.ShowNFLThursdayViaCron) // Thurs NFL
+		c.AddFunc("0 22 * * 5", controller.ShowCFBFridayViaCron)   // Fri Night
+		c.AddFunc("0 16 * * 6", controller.ShowCFBSatMornViaCron)  // Sat. Morning
+		c.AddFunc("0 18 * * 6", controller.ShowCFBSatAftViaCron)   // Sat. Afternoon
+		c.AddFunc("0 20 * * 6", controller.ShowCFBSatEveViaCron)   // Sat. Evening
+		c.AddFunc("0 22 * * 6", controller.ShowCFBSatNitViaCron)   // Sat. Night
+		c.AddFunc("0 16 * * 0", controller.ShowNFLSunNoonViaCron)  // Sun Noon
+		c.AddFunc("0 18 * * 0", controller.ShowNFLSunAftViaCron)   // Sun Aft
+		c.AddFunc("0 20 * * 0", controller.ShowNFLSunNitViaCron)   // Sun Nit
 		c.AddFunc("0 17 * * 1", controller.ShowNFLMonNitViaCron)   // Mon Nit
 		// Sync Week
 		c.AddFunc("0 18 * * 1", controller.SyncToNextWeekViaCron)
