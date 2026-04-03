@@ -164,6 +164,10 @@ func ConvertStringToFloat(num string) float64 {
 	return floatNum
 }
 
+func ConvertFloatTostring(num float64) string {
+	return strconv.FormatFloat(num, 'f', -1, 64)
+}
+
 // Reads specific CSV values as Boolean. If the value is "0" or "FALSE" or "False", it will be read as false. Anything else is considered True.
 func ConvertStringToBool(str string) bool {
 	if str == "NULL" || str == "0" || str == "FALSE" || str == "False" {
@@ -262,4 +266,66 @@ func IsCrootCloseToHome(crootState string, crootCity string, teamState string, a
 		}
 	}
 	return false
+}
+
+func GetStateKey(key string) string {
+	if len(key) == 2 {
+		return key
+	}
+	stateMap := map[string]string{
+		"Alaska":               "AK",
+		"California":           "CA",
+		"Hawai'i":              "HI",
+		"Hawaii":               "HI",
+		"Idaho":                "ID",
+		"Nevada":               "NV",
+		"Oregon":               "OR",
+		"Utah":                 "UT",
+		"Washington":           "WA",
+		"Arizona":              "AZ",
+		"Arkansas":             "AR",
+		"New Mexico":           "NM",
+		"Oklahoma":             "OK",
+		"Texas":                "TX",
+		"Colorado":             "CO",
+		"Kansas":               "KS",
+		"Montana":              "MT",
+		"Nebraska":             "NE",
+		"North Dakota":         "ND",
+		"South Dakota":         "SD",
+		"Wyoming":              "WY",
+		"Illinois":             "IL",
+		"Indiana":              "IN",
+		"Iowa":                 "IA",
+		"Kentucky":             "KY",
+		"Michigan":             "MI",
+		"Minnesota":            "MN",
+		"Missouri":             "MO",
+		"Ohio":                 "OH",
+		"Wisconsin":            "WI",
+		"Alabama":              "AL",
+		"Florida":              "FL",
+		"Georgia":              "GA",
+		"Louisiana":            "LA",
+		"Mississippi":          "MS",
+		"North Carolina":       "NC",
+		"South Carolina":       "SC",
+		"Tennessee":            "TN",
+		"Delaware":             "DE",
+		"Maryland":             "MD",
+		"New Jersey":           "NJ",
+		"New York":             "NY",
+		"Pennsylvania":         "PA",
+		"Virginia":             "VA",
+		"West Virginia":        "WV",
+		"District of Columbia": "DC",
+		"DC":                   "DC",
+		"Connecticut":          "CT",
+		"Maine":                "ME",
+		"Massachusetts":        "MA",
+		"New Hampshire":        "NH",
+		"Rhode Island":         "RI",
+		"Vermont":              "VT",
+	}
+	return stateMap[key]
 }

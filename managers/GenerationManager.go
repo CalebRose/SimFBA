@@ -477,7 +477,7 @@ func GenerateWalkOns() {
 
 		// Recruit Generation
 		for _, pos := range positionList {
-			if count >= walkonLimit {
+			if count >= walkonLimit || (count > 10 && team.TotalCommitments > 12) {
 				break
 			}
 
@@ -516,10 +516,9 @@ func GenerateWalkOns() {
 			recruitProfileBatchList = append(recruitProfileBatchList, recruitPlayerRecord)
 			newID++
 			team.IncreaseCommitCount()
-			repository.SaveRecruitingTeamProfile(team, db)
-
 		}
 		count = 0
+		repository.SaveRecruitingTeamProfile(team, db)
 		fmt.Println("Finished walkon generation for " + team.TeamAbbreviation)
 	}
 	repository.CreateFaceRecordsBatch(db, faces, 500)
