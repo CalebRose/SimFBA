@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
-	"net/http"
 	"sort"
 	"strconv"
 	"sync"
@@ -28,7 +27,7 @@ var specificCoach = "Prefers to play for a specific coach"
 var legacy = "Legacy"
 var richHistory = "Prefers to play for a team with a rich history"
 
-func ProcessTransferIntention(w http.ResponseWriter) {
+func ProcessTransferIntention() {
 	db := dbprovider.GetInstance().GetDB()
 	// w.Header().Set("Content-Disposition", "attachment;filename=transferStats.csv")
 	// w.Header().Set("Transfer-Encoding", "chunked")
@@ -269,7 +268,7 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 		schemeMod = getSchemeMod(teamProfile, p, mediumDrop, mediumGain)
 
 		fcsMod := 1.0
-		if p.TeamID > 134 && p.TeamID != 138 && p.TeamID != 206 {
+		if p.TeamID > 134 && !teamProfile.IsFBS {
 			if p.Year > 2 && p.Overall > 39 {
 				fcsMod += (0.1 * float64(p.Year))
 			}
