@@ -75,6 +75,9 @@ func SyncFreeAgencyViaCron() {
 func RunCFBProgressionsViaCron() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := managers.GetTimestamp()
+	if !ts.RunCron {
+		return
+	}
 	if ts.CollegeWeek < 21 {
 		return
 	}
@@ -92,6 +95,9 @@ func RunCFBProgressionsViaCron() {
 func RunNFLProgressionsViaCron() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := managers.GetTimestamp()
+	if !ts.RunCron {
+		return
+	}
 	if ts.NFLWeek < 23 {
 		return
 	}
