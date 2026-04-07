@@ -1923,18 +1923,18 @@ func SyncPromises() {
 
 		seasonStats := seasonStatsMap[promise.CollegePlayerID]
 		if promise.PromiseType == "Wins" {
-			benchMarkStr = strconv.Itoa(int(promise.Benchmark))
 			standings := standingsMap[promise.TeamID]
 			result = strconv.Itoa(int(standings.TotalWins))
 			if standings.TotalWins >= promise.Benchmark {
 				promise.FulfillPromise()
 			}
-		} else if promise.PromiseType == "Snaps" {
-			benchMarkStr = strconv.Itoa(int(promise.Benchmark))
-			snapsPerGame := float64(seasonStats.Snaps) / float64(seasonStats.GamesPlayed)
-			result = util.ConvertFloatTostring(snapsPerGame)
-			if snapsPerGame >= float64(promise.Benchmark) {
-				promise.FulfillPromise()
+		} else if promise.PromiseType == "Snaps" || promise.PromiseType == "Snap Count" {
+			if seasonStats.Snaps > 0 {
+				snapsPerGame := float64(seasonStats.Snaps) / float64(seasonStats.GamesPlayed)
+				result = util.ConvertFloatTostring(snapsPerGame)
+				if snapsPerGame >= float64(promise.Benchmark) {
+					promise.FulfillPromise()
+				}
 			}
 		} else if promise.PromiseType == "Home State Game" || promise.PromiseType == "Different State" {
 			// Loop through games
@@ -1943,7 +1943,8 @@ func SyncPromises() {
 			games := GetCollegeGamesByTeamIdAndSeasonId(teamID, seasonID, false)
 			for _, game := range games {
 				stateKey := util.GetStateKey(promise.BenchmarkStr)
-				if game.State == stateKey || game.State == promise.BenchmarkStr {
+				gameStateKey := util.GetStateKey(game.State)
+				if gameStateKey == stateKey || game.State == promise.BenchmarkStr {
 					result = ""
 					promise.FulfillPromise()
 					break
@@ -1976,7 +1977,15 @@ func SyncPromises() {
 			standings := standingsMap[promise.TeamID]
 			postSeasonStatus := standings.PostSeasonStatus
 			// postSeasonStatus has substring "Round of" or postSeasonStatus == "Sweet 16" or "Elite 8" or "Final 4" or contains "National Champion", fullfill
-			if strings.Contains(postSeasonStatus, "Playoffs") || postSeasonStatus == "Semifinals" || postSeasonStatus == "Quarterfinals" || strings.Contains(postSeasonStatus, "National Champion") {
+			if strings.Contains(postSeasonStatus, "Playoff") || postSeasonStatus == "Semifinals" || postSeasonStatus == "Quarterfinals" || strings.Contains(postSeasonStatus, "National") {
+				result = ""
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "Bowl Game" {
+			standings := standingsMap[promise.TeamID]
+			postSeasonStatus := standings.PostSeasonStatus
+			// postSeasonStatus has substring "Round of" or postSeasonStatus == "Sweet 16" or "Elite 8" or "Final 4" or contains "National Champion", fullfill
+			if strings.Contains(postSeasonStatus, "Bowl") || strings.Contains(postSeasonStatus, "Playoff") || postSeasonStatus == "Semifinals" || postSeasonStatus == "Quarterfinals" || strings.Contains(postSeasonStatus, "National") {
 				result = ""
 				promise.FulfillPromise()
 			}

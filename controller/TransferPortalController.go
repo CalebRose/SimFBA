@@ -153,6 +153,12 @@ func SyncTransferPortal(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode("AI Boards for Transfer Portal Complete.")
 }
 
+func SyncPromises(w http.ResponseWriter, r *http.Request) {
+	managers.SyncPromises()
+
+	json.NewEncoder(w).Encode("AI Boards for Transfer Portal Complete.")
+}
+
 func FillUpTransferBoardsAI(w http.ResponseWriter, r *http.Request) {
 	managers.AICoachFillBoardsPhase()
 

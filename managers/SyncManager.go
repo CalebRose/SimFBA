@@ -1210,15 +1210,15 @@ func AllocateAIRedshirts(seasonId string) {
 
 			playerSeasonStats := seasonStatsMap[uint(target.PlayerID)]
 
-			/* 
+			/*
 			 * Redshirt top 20 players that have never been redshirted and either have no snaps or a long-term injury this season.
 			 * Also skips players if redshirting would put the team below that position minimum.
 			 * GetAllCollegePlayersByTeamId returns players sorted by OVR by default.
 			 */
-			if (playerSeasonStats.GamesPlayed == 0 || 
-					(target.InjuryType != "" && target.WeeksOfRecovery >= 10)) &&
-					!target.IsRedshirt && !target.IsRedshirting && 
-					isAboveMinPositionCount(target.Position, positionCountMap) {
+			if (playerSeasonStats.GamesPlayed == 0 ||
+				(target.InjuryType != "" && target.WeeksOfRecovery >= 10)) &&
+				!target.IsRedshirt && !target.IsRedshirting &&
+				isAboveMinPositionCount(target.Position, positionCountMap) {
 
 				redshirts[redshirtCount] = fmt.Sprintf("%s %s %s %s, GamesPlayed: %d, Injury Weeks: %d\n", team.TeamAbbr, target.Position, target.FirstName, target.LastName, playerSeasonStats.GamesPlayed, target.WeeksOfRecovery)
 				SetRedshirtStatusForPlayer(strconv.Itoa(target.TeamID))
@@ -1239,8 +1239,8 @@ func getPositionCounts(players []structs.CollegePlayer) map[string]int {
 }
 
 func isAboveMinPositionCount(position string, positionCountMap map[string]int) bool {
-	minPositionThreshold := 0;
-	
+	minPositionThreshold := 0
+
 	switch position {
 	case "ATH":
 		minPositionThreshold = 0
@@ -1291,7 +1291,9 @@ func GetFitsByScheme(scheme string, isBadFit bool) []string {
 		"Old School":                 {GoodFits: []string{"Run Stopper DE", "Run Stopper OLB", "Run Stopper ILB", "Field General ILB"}, BadFits: []string{"Nose Tackle DT", "Coverage OLB", "Coverage ILB"}},
 		"2-Gap":                      {GoodFits: []string{"Run Stopper DE", "Nose Tackle DT", "Run Stopper OLB", "Pass Rush OLB", "Run Stopper ILB"}, BadFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Speed OLB", "Speed ILB"}},
 		"4-man Front Spread Stopper": {GoodFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Coverage OLB", "Coverage ILB"}, BadFits: []string{"Run Stopper DE", "Nose Tackle DT", "Run Stoppper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS"}},
+		"4-Man Front Spread Stopper": {GoodFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Coverage OLB", "Coverage ILB"}, BadFits: []string{"Run Stopper DE", "Nose Tackle DT", "Run Stoppper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS"}},
 		"3-man Front Spread Stopper": {GoodFits: []string{"Nose Tackle DT", "Pash Rush OLB", "Coverage ILB"}, BadFits: []string{"Nose Tackle DT", "Run Stopper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS", "Speed OLB", "Speed ILB", "Field General ILB"}},
+		"3-Man Front Spread Stopper": {GoodFits: []string{"Nose Tackle DT", "Pash Rush OLB", "Coverage ILB"}, BadFits: []string{"Nose Tackle DT", "Run Stopper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS", "Speed OLB", "Speed ILB", "Field General ILB"}},
 		"Speed":                      {GoodFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Coverage OLB", "Speed OLB", "Speed ILB"}, BadFits: []string{"Run Stopper DE", "Nose Tackle DT", "Pass Rush OLB", "Field General ILB"}},
 		"Multiple":                   {GoodFits: []string{"Run Stopper DE", "Speed OLB", "Speed ILB", "Field General ILB", "Run Stopper FS", "Run Stopper SS"}, BadFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Coverage OLB", "Coverage ILB"}},
 	}

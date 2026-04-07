@@ -400,6 +400,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/portal/transfer/pre/promises", controller.ProcessPrePortalPromises).Methods("GET")
 	apiRouter.HandleFunc("/portal/transfer/enter/portal", controller.EnterTheTransferPortal).Methods("GET")
 	apiRouter.HandleFunc("/portal/transfer/sync", controller.SyncTransferPortal).Methods("GET")
+	apiRouter.HandleFunc("/portal/promise/sync", controller.SyncPromises).Methods("GET")
 	apiRouter.HandleFunc("/portal/ai/generate/profiles", controller.FillUpTransferBoardsAI).Methods("GET")
 	apiRouter.HandleFunc("/portal/ai/allocate/profiles", controller.AllocateAndPromisePlayersAI).Methods("GET")
 	apiRouter.HandleFunc("/portal/page/data/{teamID}", controller.GetTransferPortalPageData).Methods("GET")

@@ -22,7 +22,8 @@ func PostSeasonStatusCleanUp() {
 		return collegeGames[i].SeasonID < collegeGames[j].SeasonID
 	})
 
-	seasonIDs := []uint{1, 2, 3, 4, 5, 6}
+	// seasonIDs := []uint{1, 2, 3, 4, 5, 6}
+	seasonIDs := []uint{6}
 
 	for _, seasonID := range seasonIDs {
 		seasonIDStr := strconv.Itoa(int(seasonID))
