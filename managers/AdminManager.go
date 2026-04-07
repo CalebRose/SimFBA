@@ -584,10 +584,6 @@ func CreateCollegeSeason() {
 }
 
 func GenerateOffseasonData() {
-	// Fulfill Promises
-
-	// Run First Phase of Portal
-
 	// Create Standings Records for Leagues
 	GenerateNewSeasonStandings()
 

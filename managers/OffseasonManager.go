@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 )
@@ -337,4 +338,27 @@ func UpdateTeamProfileAffinities() {
 		teamProfile.UpdateTeamProfileAffinities(affinities)
 		repository.SaveRecruitingTeamProfile(teamProfile, db)
 	}
+}
+
+func RecruitingAndTransferPortalCleanUp() {
+	db := dbprovider.GetInstance().GetDB()
+	db.Model(&models.NFLWarRoom{}).Where("id > ?", 0).Update("spent_points", 0)
+
+	// Clear Transfer Portal Profiles Table
+	db.Delete(&structs.TransferPortalProfile{}, "id > ?", 0)
+
+	// Clear Recruiting Profiles Table
+	db.Delete(&structs.RecruitPlayerProfile{}, "id > ?", 0)
+
+	// Clear Transfer Profiles Table
+	db.Delete(&structs.TransferPortalProfile{}, "id > ?", 0)
+
+	// Clear NFL Scouting Boards
+	db.Delete(&models.ScoutingProfile{}, "id > ?", 0)
+}
+
+func FreeAgencyCleanUp() {
+	db := dbprovider.GetInstance().GetDB()
+	db.Delete(&structs.FreeAgencyOffer{}, "id > ?", 0)
+	db.Delete(&structs.NFLExtensionOffer{}, "id > ?", 0)
 }

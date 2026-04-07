@@ -88,6 +88,7 @@ func RunCFBProgressionsViaCron() {
 
 		managers.CFBProgressionMain()
 		ts.ToggleCollegeProgression()
+		managers.RecruitingAndTransferPortalCleanUp()
 		repository.SaveTimestamp(ts, db)
 	}
 }
@@ -107,6 +108,7 @@ func RunNFLProgressionsViaCron() {
 		db.Model(&structs.NFLPlayer{}).Where("id > ?", 0).Update("has_progressed", false)
 		managers.NFLProgressionMain()
 		ts.ToggleProfessionalProgression()
+		managers.FreeAgencyCleanUp()
 		repository.SaveTimestamp(ts, db)
 	}
 }

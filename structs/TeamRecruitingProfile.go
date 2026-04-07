@@ -195,6 +195,9 @@ func (r *RecruitingTeamProfile) SeasonReset() {
 	r.ResetStarCount()
 	r.ResetScholarshipCount()
 	r.SetRecruitingClassSize(25)
+	if !r.IsFBS {
+		r.SetRecruitingClassSize(20)
+	}
 	r.Rank247Score = 0
 	r.RecruitingClassRank = 0
 	r.ESPNScore = 0
