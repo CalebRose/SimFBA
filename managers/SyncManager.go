@@ -1,6 +1,7 @@
 package managers
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"math"
@@ -11,6 +12,7 @@ import (
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
@@ -57,6 +59,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 	}
 
 	var recruitProfiles []structs.RecruitPlayerProfile
+	var signingLabels []string
 
 	// Get every recruit
 	recruits := GetAllUnsignedRecruits()
@@ -215,6 +218,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 						teamAbbreviation := recruitTeamProfile.TeamAbbreviation
 						recruitTeamProfile.AddStarPlayer(recruit.Stars)
 						recruit.AssignCollege(teamAbbreviation)
+						signingLabels = append(signingLabels, fmt.Sprintf("%d★ %s %s %s (%s, %s → %s)", recruit.Stars, recruit.Position, recruit.FirstName, recruit.LastName, recruit.City, recruit.State, teamAbbreviation))
 
 						newsLog := structs.NewsLog{
 							TeamID:      winningTeamID,
@@ -282,7 +286,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 		timestamp.ToggleLockRecruiting()
 		repository.SaveTimestamp(timestamp, db)
 	}
-
+	go CreateRecruitingSyncForumThread(timestamp.Season, timestamp.CollegeWeek, signingLabels)
 }
 
 func SyncRecruitingEfficiency(timestamp structs.Timestamp) {
@@ -924,7 +928,22 @@ func updateTeamRankings(teamRecruitingProfiles []structs.RecruitingTeamProfile, 
 			} else if rp.WeeksMissed >= 4 {
 				notificationMessage += " Because you have missed more than 4 weeks, you will lose your team. Please reach out to Tuscan on how you can keep your team."
 			}
-			CreateNotification("CFB", notificationMessage, "Recruiting Sync", rp.ID)
+			if rp.IsUserTeam && rp.Recruiter != "" && rp.Recruiter != "AI" {
+				ctx := context.Background()
+				uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{rp.Recruiter})
+				if len(uids) > 0 {
+					eventKey := fbsvc.BuildSourceEventKey("recruiting_sync_missed", "cfb", strconv.Itoa(int(rp.TeamID)), strconv.Itoa(rp.WeeksMissed+1))
+					_ = fbsvc.NotifyRecruitingSyncMissed(ctx, fbsvc.RecruitingSyncMissedNotificationInput{
+						TeamID:         uint(rp.TeamID),
+						TeamName:       rp.Team,
+						TeamAbbr:       rp.TeamAbbreviation,
+						WeeksMissed:    rp.WeeksMissed + 1,
+						Message:        notificationMessage,
+						RecipientUIDs:  uids,
+						SourceEventKey: eventKey,
+					})
+				}
+			}
 		}
 		rp.ResetSpentPoints()
 

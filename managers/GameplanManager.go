@@ -1,6 +1,7 @@
 package managers
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"sort"
@@ -8,6 +9,7 @@ import (
 	"sync"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"gorm.io/gorm"
@@ -3308,9 +3310,25 @@ func FixBrokenGameplans() {
 			repository.SaveRecruitingTeamProfile(rtp, db)
 			team.MarkTeamForPenalty()
 			repository.SaveCFBTeam(team, db)
-			// Notify team
-			message := rtp.TeamAbbreviation + " has lost a scholarship due to having an injured player (" + playerLabel + ") on their depthchart. This is penalty number " + strconv.Itoa(int(team.PenaltyMarks)) + "."
-			CreateNotification("CFB", message, "Invalid Depth Chart", t)
+			// Notify team coach via Firebase
+			if team.Coach != "" && team.Coach != "AI" {
+				message := rtp.TeamAbbreviation + " has lost a scholarship due to having an injured player (" + playerLabel + ") on their depthchart. This is penalty number " + strconv.Itoa(int(team.PenaltyMarks)) + "."
+				ctx := context.Background()
+				uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{team.Coach})
+				if len(uids) > 0 {
+					eventKey := fbsvc.BuildSourceEventKey("gameplan_penalty", "cfb", strconv.Itoa(int(t)))
+					_ = fbsvc.NotifyGameplanIssue(ctx, fbsvc.GameplanNotificationInput{
+						League:         "cfb",
+						Domain:         fbsvc.DomainCFB,
+						TeamID:         t,
+						TeamName:       team.TeamName,
+						TeamAbbr:       rtp.TeamAbbreviation,
+						Message:        message,
+						RecipientUIDs:  uids,
+						SourceEventKey: eventKey,
+					})
+				}
+			}
 			// Autosort Depth Chart
 			ReAlignCollegeDepthChart(db, id, gp)
 		}
@@ -3339,12 +3357,27 @@ func FixBrokenGameplans() {
 
 		if isBroken {
 			n.MarkTeamForPenalty()
-
-			// Notify team
-			message := n.TeamName + " has been marked for having an injured player (" + playerLabel + ") on their depthchart. This is penalty number " + strconv.Itoa(int(n.PenaltyMarks)) + "."
-			CreateNotification("NFL", message, "Invalid Depth Chart", n.ID)
-
 			repository.SaveNFLTeam(n, db)
+
+			// Notify team owner via Firebase
+			if n.NFLOwnerName != "" && n.NFLOwnerName != "AI" {
+				message := n.TeamName + " has been marked for having an injured player (" + playerLabel + ") on their depthchart. This is penalty number " + strconv.Itoa(int(n.PenaltyMarks)) + "."
+				ctx := context.Background()
+				uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{n.NFLOwnerName})
+				if len(uids) > 0 {
+					eventKey := fbsvc.BuildSourceEventKey("gameplan_penalty", "nfl", strconv.Itoa(int(n.ID)))
+					_ = fbsvc.NotifyGameplanIssue(ctx, fbsvc.GameplanNotificationInput{
+						League:         "nfl",
+						Domain:         fbsvc.DomainNFL,
+						TeamID:         n.ID,
+						TeamName:       n.TeamName,
+						TeamAbbr:       n.TeamAbbr,
+						Message:        message,
+						RecipientUIDs:  uids,
+						SourceEventKey: eventKey,
+					})
+				}
+			}
 
 			// Autosort Depth Chart
 			ReAlignNFLDepthChart(db, id, gp, players)
