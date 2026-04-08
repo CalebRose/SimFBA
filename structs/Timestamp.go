@@ -248,6 +248,7 @@ func (t *Timestamp) ToggleGeneratedCroots() {
 
 func (t *Timestamp) ToggleCollegeProgression() {
 	t.ProgressedCollegePlayers = true
+	t.TransferPortalPhase = 1
 }
 
 func (t *Timestamp) ToggleProfessionalProgression() {
