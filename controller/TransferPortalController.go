@@ -11,7 +11,7 @@ import (
 )
 
 func ProcessTransferIntention(w http.ResponseWriter, r *http.Request) {
-	managers.ProcessTransferIntention(w)
+	managers.ProcessTransferIntention()
 }
 
 func ProcessPrePortalPromises(w http.ResponseWriter, r *http.Request) {
@@ -149,6 +149,12 @@ func GetScoutingDataByTransfer(w http.ResponseWriter, r *http.Request) {
 
 func SyncTransferPortal(w http.ResponseWriter, r *http.Request) {
 	managers.SyncTransferPortal()
+
+	json.NewEncoder(w).Encode("AI Boards for Transfer Portal Complete.")
+}
+
+func SyncPromises(w http.ResponseWriter, r *http.Request) {
+	managers.SyncPromises()
 
 	json.NewEncoder(w).Encode("AI Boards for Transfer Portal Complete.")
 }

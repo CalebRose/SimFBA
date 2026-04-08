@@ -51,6 +51,9 @@ func SyncRecruitingViaCron() {
 			managers.GenerateWalkOns()
 		}
 	}
+	if ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 1 {
+		managers.ProcessTransferIntention()
+	}
 	if ts.RunCron && ts.IsOffSeason && ts.TransferPortalPhase == 2 {
 		managers.EnterTheTransferPortal()
 	} else if ts.RunCron && ts.IsOffSeason && ts.TransferPortalPhase == 3 {
@@ -72,6 +75,9 @@ func SyncFreeAgencyViaCron() {
 func RunCFBProgressionsViaCron() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := managers.GetTimestamp()
+	if !ts.RunCron {
+		return
+	}
 	if ts.CollegeWeek < 21 {
 		return
 	}
@@ -82,6 +88,7 @@ func RunCFBProgressionsViaCron() {
 
 		managers.CFBProgressionMain()
 		ts.ToggleCollegeProgression()
+		managers.RecruitingAndTransferPortalCleanUp()
 		repository.SaveTimestamp(ts, db)
 	}
 }
@@ -89,6 +96,9 @@ func RunCFBProgressionsViaCron() {
 func RunNFLProgressionsViaCron() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := managers.GetTimestamp()
+	if !ts.RunCron {
+		return
+	}
 	if ts.NFLWeek < 23 {
 		return
 	}
@@ -98,6 +108,7 @@ func RunNFLProgressionsViaCron() {
 		db.Model(&structs.NFLPlayer{}).Where("id > ?", 0).Update("has_progressed", false)
 		managers.NFLProgressionMain()
 		ts.ToggleProfessionalProgression()
+		managers.FreeAgencyCleanUp()
 		repository.SaveTimestamp(ts, db)
 	}
 }

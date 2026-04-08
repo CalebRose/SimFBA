@@ -423,3 +423,23 @@ func MakeHistoricCollegePlayerMap(players []structs.HistoricCollegePlayer) map[u
 
 	return profileMap
 }
+
+func MakeCollegeTeamMap(teams []structs.CollegeTeam) map[uint]structs.CollegeTeam {
+	profileMap := make(map[uint]structs.CollegeTeam)
+
+	for _, rp := range teams {
+		profileMap[rp.ID] = rp
+	}
+
+	return profileMap
+}
+
+func MakeNFLTeamMap(teams []structs.NFLTeam) map[uint]structs.NFLTeam {
+	profileMap := make(map[uint]structs.NFLTeam)
+
+	for _, rp := range teams {
+		profileMap[rp.ID] = rp
+	}
+
+	return profileMap
+}

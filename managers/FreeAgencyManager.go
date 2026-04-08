@@ -1,6 +1,7 @@
 package managers
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"log"
@@ -10,6 +11,7 @@ import (
 	"strings"
 	"sync"
 
+	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/repository"
@@ -409,9 +411,32 @@ func CreateFAOffer(offer structs.FreeAgencyOfferDTO) structs.FreeAgencyOffer {
 	}
 
 	if player.IsPracticeSquad && player.TeamID != int(offer.TeamID) {
-		// Notify team
-		notificationMessage := offer.Team + " have placed an offer on " + player.Position + " " + player.FirstName + " " + player.LastName + " to pick up from the practice squad."
-		CreateNotification("NFL", notificationMessage, "Practice Squad Offer", uint(player.TeamID))
+		nflTeam := GetNFLTeamByTeamID(strconv.Itoa(player.TeamID))
+		ctx := context.Background()
+		var usernames []string
+		if nflTeam.NFLOwnerName != "" && nflTeam.NFLOwnerName != "AI" {
+			usernames = append(usernames, nflTeam.NFLOwnerName)
+		}
+		if nflTeam.NFLGMName != "" && nflTeam.NFLGMName != "AI" {
+			usernames = append(usernames, nflTeam.NFLGMName)
+		}
+		if len(usernames) > 0 {
+			uids := fbsvc.ResolveUIDsByUsernames(ctx, usernames)
+			if len(uids) > 0 {
+				eventKey := fbsvc.BuildSourceEventKey("practice_squad_offer", "nfl", strconv.Itoa(int(player.ID)), strconv.Itoa(int(offer.TeamID)))
+				_ = fbsvc.NotifyPracticeSquadOffer(ctx, fbsvc.PracticeSquadOfferNotificationInput{
+					OwnerTeamID:    uint(player.TeamID),
+					OwnerTeamName:  nflTeam.TeamName,
+					OwnerTeamAbbr:  nflTeam.TeamAbbr,
+					OfferingTeam:   offer.Team,
+					PlayerID:       uint(player.PlayerID),
+					PlayerName:     player.FirstName + " " + player.LastName,
+					Position:       player.Position,
+					RecipientUIDs:  uids,
+					SourceEventKey: eventKey,
+				})
+			}
+		}
 		message := offer.Team + " have placed an offer on " + player.TeamAbbr + " " + player.Position + " " + player.FirstName + " " + player.LastName + " to pick up from the practice squad."
 		CreateNewsLog("NFL", message, "Free Agency", player.TeamID, ts)
 	}

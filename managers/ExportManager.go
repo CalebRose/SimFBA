@@ -1001,7 +1001,7 @@ func ExportNFLFreeAgentsToCSV(w http.ResponseWriter) {
 		csvModel := structs.MapNFLPlayerToCSVModel(player)
 		idStr := strconv.Itoa(int(player.PlayerID))
 		playerRow := []string{
-			csvModel.Team, idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
+			csvModel.PreviousTeam, idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
 			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(player.Age), strconv.Itoa(player.Stars),
 			player.State, strconv.Itoa(player.Height),
 			strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,

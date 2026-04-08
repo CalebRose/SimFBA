@@ -54,6 +54,7 @@ type CollegePlayerCSV struct {
 	ArchetypeTwo       string
 	Year               string
 	Team               string
+	PreviousTeam       string
 	Age                int
 	Stars              int
 	HighSchool         string
@@ -880,6 +881,7 @@ func MapNFLPlayerToCSVModel(player NFLPlayer) CollegePlayerCSV {
 		Archetype:          player.Archetype,
 		PositionTwo:        player.PositionTwo,
 		ArchetypeTwo:       player.ArchetypeTwo,
+		PreviousTeam:       player.PreviousTeam,
 		Team:               player.TeamAbbr,
 		Year:               Year,
 		Age:                player.Age,

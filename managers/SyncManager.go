@@ -1,6 +1,7 @@
 package managers
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"math"
@@ -11,6 +12,7 @@ import (
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
@@ -57,6 +59,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 	}
 
 	var recruitProfiles []structs.RecruitPlayerProfile
+	var signingLabels []string
 
 	// Get every recruit
 	recruits := GetAllUnsignedRecruits()
@@ -215,6 +218,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 						teamAbbreviation := recruitTeamProfile.TeamAbbreviation
 						recruitTeamProfile.AddStarPlayer(recruit.Stars)
 						recruit.AssignCollege(teamAbbreviation)
+						signingLabels = append(signingLabels, fmt.Sprintf("%d★ %s %s %s (%s, %s → %s)", recruit.Stars, recruit.Position, recruit.FirstName, recruit.LastName, recruit.City, recruit.State, teamAbbreviation))
 
 						newsLog := structs.NewsLog{
 							TeamID:      winningTeamID,
@@ -282,7 +286,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 		timestamp.ToggleLockRecruiting()
 		repository.SaveTimestamp(timestamp, db)
 	}
-
+	go CreateRecruitingSyncForumThread(timestamp.Season, timestamp.CollegeWeek, signingLabels)
 }
 
 func SyncRecruitingEfficiency(timestamp structs.Timestamp) {
@@ -924,7 +928,22 @@ func updateTeamRankings(teamRecruitingProfiles []structs.RecruitingTeamProfile, 
 			} else if rp.WeeksMissed >= 4 {
 				notificationMessage += " Because you have missed more than 4 weeks, you will lose your team. Please reach out to Tuscan on how you can keep your team."
 			}
-			CreateNotification("CFB", notificationMessage, "Recruiting Sync", rp.ID)
+			if rp.IsUserTeam && rp.Recruiter != "" && rp.Recruiter != "AI" {
+				ctx := context.Background()
+				uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{rp.Recruiter})
+				if len(uids) > 0 {
+					eventKey := fbsvc.BuildSourceEventKey("recruiting_sync_missed", "cfb", strconv.Itoa(int(rp.TeamID)), strconv.Itoa(rp.WeeksMissed+1))
+					_ = fbsvc.NotifyRecruitingSyncMissed(ctx, fbsvc.RecruitingSyncMissedNotificationInput{
+						TeamID:         uint(rp.TeamID),
+						TeamName:       rp.Team,
+						TeamAbbr:       rp.TeamAbbreviation,
+						WeeksMissed:    rp.WeeksMissed + 1,
+						Message:        notificationMessage,
+						RecipientUIDs:  uids,
+						SourceEventKey: eventKey,
+					})
+				}
+			}
 		}
 		rp.ResetSpentPoints()
 
@@ -1210,15 +1229,15 @@ func AllocateAIRedshirts(seasonId string) {
 
 			playerSeasonStats := seasonStatsMap[uint(target.PlayerID)]
 
-			/* 
+			/*
 			 * Redshirt top 20 players that have never been redshirted and either have no snaps or a long-term injury this season.
 			 * Also skips players if redshirting would put the team below that position minimum.
 			 * GetAllCollegePlayersByTeamId returns players sorted by OVR by default.
 			 */
-			if (playerSeasonStats.GamesPlayed == 0 || 
-					(target.InjuryType != "" && target.WeeksOfRecovery >= 10)) &&
-					!target.IsRedshirt && !target.IsRedshirting && 
-					isAboveMinPositionCount(target.Position, positionCountMap) {
+			if (playerSeasonStats.GamesPlayed == 0 ||
+				(target.InjuryType != "" && target.WeeksOfRecovery >= 10)) &&
+				!target.IsRedshirt && !target.IsRedshirting &&
+				isAboveMinPositionCount(target.Position, positionCountMap) {
 
 				redshirts[redshirtCount] = fmt.Sprintf("%s %s %s %s, GamesPlayed: %d, Injury Weeks: %d\n", team.TeamAbbr, target.Position, target.FirstName, target.LastName, playerSeasonStats.GamesPlayed, target.WeeksOfRecovery)
 				SetRedshirtStatusForPlayer(strconv.Itoa(target.TeamID))
@@ -1239,8 +1258,8 @@ func getPositionCounts(players []structs.CollegePlayer) map[string]int {
 }
 
 func isAboveMinPositionCount(position string, positionCountMap map[string]int) bool {
-	minPositionThreshold := 0;
-	
+	minPositionThreshold := 0
+
 	switch position {
 	case "ATH":
 		minPositionThreshold = 0
@@ -1291,7 +1310,9 @@ func GetFitsByScheme(scheme string, isBadFit bool) []string {
 		"Old School":                 {GoodFits: []string{"Run Stopper DE", "Run Stopper OLB", "Run Stopper ILB", "Field General ILB"}, BadFits: []string{"Nose Tackle DT", "Coverage OLB", "Coverage ILB"}},
 		"2-Gap":                      {GoodFits: []string{"Run Stopper DE", "Nose Tackle DT", "Run Stopper OLB", "Pass Rush OLB", "Run Stopper ILB"}, BadFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Speed OLB", "Speed ILB"}},
 		"4-man Front Spread Stopper": {GoodFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Coverage OLB", "Coverage ILB"}, BadFits: []string{"Run Stopper DE", "Nose Tackle DT", "Run Stoppper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS"}},
+		"4-Man Front Spread Stopper": {GoodFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Coverage OLB", "Coverage ILB"}, BadFits: []string{"Run Stopper DE", "Nose Tackle DT", "Run Stoppper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS"}},
 		"3-man Front Spread Stopper": {GoodFits: []string{"Nose Tackle DT", "Pash Rush OLB", "Coverage ILB"}, BadFits: []string{"Nose Tackle DT", "Run Stopper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS", "Speed OLB", "Speed ILB", "Field General ILB"}},
+		"3-Man Front Spread Stopper": {GoodFits: []string{"Nose Tackle DT", "Pash Rush OLB", "Coverage ILB"}, BadFits: []string{"Nose Tackle DT", "Run Stopper OLB", "Run Stopper ILB", "Run Stopper FS", "Run Stopper SS", "Speed OLB", "Speed ILB", "Field General ILB"}},
 		"Speed":                      {GoodFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Coverage OLB", "Speed OLB", "Speed ILB"}, BadFits: []string{"Run Stopper DE", "Nose Tackle DT", "Pass Rush OLB", "Field General ILB"}},
 		"Multiple":                   {GoodFits: []string{"Run Stopper DE", "Speed OLB", "Speed ILB", "Field General ILB", "Run Stopper FS", "Run Stopper SS"}, BadFits: []string{"Speed Rusher DE", "Pass Rusher DT", "Coverage OLB", "Coverage ILB"}},
 	}

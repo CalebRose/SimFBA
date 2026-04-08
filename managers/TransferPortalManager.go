@@ -1,11 +1,11 @@
 package managers
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"log"
 	"math/rand"
-	"net/http"
 	"sort"
 	"strconv"
 	"strings"
@@ -13,6 +13,7 @@ import (
 
 	"github.com/CalebRose/SimFBA/constants"
 	"github.com/CalebRose/SimFBA/dbprovider"
+	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
@@ -29,7 +30,7 @@ var specificCoach = "Prefers to play for a specific coach"
 var legacy = "Legacy"
 var richHistory = "Prefers to play for a team with a rich history"
 
-func ProcessTransferIntention(w http.ResponseWriter) {
+func ProcessTransferIntention() {
 	db := dbprovider.GetInstance().GetDB()
 	// w.Header().Set("Content-Disposition", "attachment;filename=transferStats.csv")
 	// w.Header().Set("Transfer-Encoding", "chunked")
@@ -270,7 +271,7 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 		schemeMod = getSchemeMod(teamProfile, p, mediumDrop, mediumGain)
 
 		fcsMod := 1.0
-		if p.TeamID > 134 && p.TeamID != 138 && p.TeamID != 206 {
+		if p.TeamID > 134 && !teamProfile.IsFBS {
 			if p.Year > 2 && p.Overall > 39 {
 				fcsMod += (0.1 * float64(p.Year))
 			}
@@ -327,8 +328,24 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 			message := "Breaking News! " + strconv.Itoa(p.Stars) + " star " + p.Position + " " + p.FirstName + " " + p.LastName + " has announced their intention to transfer from " + p.TeamAbbr + "!"
 			CreateNewsLog("CFB", message, "Transfer Portal", int(p.TeamID), ts)
 		}
-		notificationMessage := strconv.Itoa(p.Stars) + " star " + p.Position + " " + p.FirstName + " " + p.LastName + " has a " + p.TransferLikeliness + " likeliness of entering the transfer portal. Please navigate to the Roster page to submit a promise."
-		CreateNotification("CFB", notificationMessage, "Transfer Intention", uint(p.TeamID))
+		if teamProfile != nil && teamProfile.IsUserTeam && teamProfile.Recruiter != "" && teamProfile.Recruiter != "AI" {
+			ctx := context.Background()
+			uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{teamProfile.Recruiter})
+			if len(uids) > 0 {
+				eventKey := fbsvc.BuildSourceEventKey("transfer_intention", "cfb", strconv.Itoa(int(p.ID)))
+				_ = fbsvc.NotifyTransferIntention(ctx, fbsvc.TransferIntentionNotificationInput{
+					TeamID:             uint(p.TeamID),
+					TeamAbbr:           p.TeamAbbr,
+					PlayerID:           uint(p.PlayerID),
+					PlayerName:         p.FirstName + " " + p.LastName,
+					Position:           p.Position,
+					Stars:              p.Stars,
+					TransferLikeliness: p.TransferLikeliness,
+					RecipientUIDs:      uids,
+					SourceEventKey:     eventKey,
+				})
+			}
+		}
 		// fmt.Println(strconv.Itoa(p.Year)+" YEAR "+p.TeamAbbr+" "+p.Position+" "+p.FirstName+" "+p.LastName+" HAS ANNOUNCED THEIR INTENTION TO TRANSFER | Weight: ", int(transferWeight))
 		// // db.Save(&p)
 		// csvModel := structs.MapPlayerToCSVModel(p)
@@ -355,6 +372,21 @@ func ProcessTransferIntention(w http.ResponseWriter) {
 	CreateNewsLog("CFB", transferPortalMessage, "Transfer Portal", 0, ts)
 	ts.EnactPromisePhase()
 	repository.SaveTimestamp(ts, db)
+	go CreateTransferIntentionsForumThread(TransferIntentionsSummary{
+		Season:                 ts.Season,
+		TransferCount:          transferCount,
+		FreshmanCount:          freshmanCount,
+		RedshirtFreshmanCount:  redshirtFreshmanCount,
+		SophomoreCount:         sophomoreCount,
+		RedshirtSophomoreCount: redshirtSophomoreCount,
+		JuniorCount:            juniorCount,
+		RedshirtJuniorCount:    redshirtJuniorCount,
+		SeniorCount:            seniorCount,
+		RedshirtSeniorCount:    redshirtSeniorCount,
+		LowCount:               lowCount,
+		MediumCount:            mediumCount,
+		HighCount:              highCount,
+	})
 	fmt.Println("Total number of players entering the transfer portal: ", transferCount)
 	fmt.Println("Total number of freshmen entering the transfer portal: ", freshmanCount)
 	fmt.Println("Total number of redshirt freshmen entering the transfer portal: ", redshirtFreshmanCount)
@@ -563,6 +595,7 @@ func EnterTheTransferPortal() {
 	ts := GetTimestamp()
 	// Get All Teams
 	teams := GetAllCollegeTeams()
+	var portalEntrants []string
 
 	for _, t := range teams {
 		teamID := strconv.Itoa(int(t.ID))
@@ -577,6 +610,7 @@ func EnterTheTransferPortal() {
 
 			promise := GetCollegePromiseByCollegePlayerID(playerID, teamID)
 			if promise.ID == 0 {
+				portalEntrants = append(portalEntrants, fmt.Sprintf("%d★ %s %s %s (%s)", p.Stars, p.Position, p.FirstName, p.LastName, p.TeamAbbr))
 				p.WillTransfer()
 				repository.SaveCollegePlayerRecord(p, db)
 				continue
@@ -598,10 +632,11 @@ func EnterTheTransferPortal() {
 				// If the dice roll is within the 40%. They leave.
 				// Okay this makes sense.
 
+				portalEntrants = append(portalEntrants, fmt.Sprintf("%d★ %s %s %s (%s)", p.Stars, p.Position, p.FirstName, p.LastName, p.TeamAbbr))
 				p.WillTransfer()
 
 				// Create News Log
-				message := "Breaking News! " + p.TeamAbbr + " " + strconv.Itoa(p.Stars) + " Star " + p.Position + " " + p.FirstName + " " + p.LastName + " has officially entered the transfer portal!"
+				message := "Breaking News! " + p.PreviousTeam + " " + strconv.Itoa(p.Stars) + " Star " + p.Position + " " + p.FirstName + " " + p.LastName + " has officially entered the transfer portal!"
 				CreateNewsLog("CFB", message, "Transfer Portal", int(p.PreviousTeamID), ts)
 
 				repository.SaveCFBPlayer(p, db)
@@ -622,6 +657,7 @@ func EnterTheTransferPortal() {
 
 	ts.EnactPortalPhase()
 	repository.SaveTimestamp(ts, db)
+	go CreateTransferPortalOpenForumThread(ts.Season, portalEntrants)
 }
 
 func AddTransferPlayerToBoard(transferPortalProfileDto structs.TransferPortalProfile) structs.TransferPortalProfile {
@@ -1034,6 +1070,7 @@ func SyncTransferPortal() {
 	rosterMap := GetFullTeamRosterWithCrootsMap()
 	collegePromises := GetAllCollegePromises()
 	collegePromiseMap := MakeCollegePromiseMap(collegePromises)
+	var signingLabels []string
 
 	if !ts.IsRecruitingLocked {
 		ts.ToggleLockRecruiting()
@@ -1146,6 +1183,7 @@ func SyncTransferPortal() {
 							repository.SaveCollegePromiseRecord(promise, db)
 						}
 						portalPlayer.SignWithNewTeam(teamProfile.TeamID, teamProfile.TeamAbbreviation)
+						signingLabels = append(signingLabels, fmt.Sprintf("%d★ %s %s %s (%s → %s)", portalPlayer.Stars, portalPlayer.Position, portalPlayer.FirstName, portalPlayer.LastName, portalPlayer.PreviousTeam, portalPlayer.TeamAbbr))
 						message := portalPlayer.FirstName + " " + portalPlayer.LastName + ", " + strconv.Itoa(portalPlayer.Stars) + " star " + portalPlayer.Position + " from " + portalPlayer.PreviousTeam + " has signed with " + portalPlayer.TeamAbbr + " with " + strconv.Itoa(int(odds)) + " percent odds."
 						CreateNewsLog("CFB", message, "Transfer Portal", int(winningTeamID), ts)
 						fmt.Println("Created new log!")
@@ -1198,8 +1236,10 @@ func SyncTransferPortal() {
 		}
 	}
 
+	currentRound := ts.TransferPortalRound
 	ts.IncrementTransferPortalRound()
 	repository.SaveTimestamp(ts, db)
+	go CreateTransferPortalSyncForumThread(ts.Season, int(currentRound), signingLabels)
 }
 
 func GetPromisesByTeamID(teamID string) []structs.CollegePromise {
@@ -1924,18 +1964,18 @@ func SyncPromises() {
 
 		seasonStats := seasonStatsMap[promise.CollegePlayerID]
 		if promise.PromiseType == "Wins" {
-			benchMarkStr = strconv.Itoa(int(promise.Benchmark))
 			standings := standingsMap[promise.TeamID]
 			result = strconv.Itoa(int(standings.TotalWins))
 			if standings.TotalWins >= promise.Benchmark {
 				promise.FulfillPromise()
 			}
-		} else if promise.PromiseType == "Snaps" {
-			benchMarkStr = strconv.Itoa(int(promise.Benchmark))
-			snapsPerGame := float64(seasonStats.Snaps) / float64(seasonStats.GamesPlayed)
-			result = util.ConvertFloatTostring(snapsPerGame)
-			if snapsPerGame >= float64(promise.Benchmark) {
-				promise.FulfillPromise()
+		} else if promise.PromiseType == "Snaps" || promise.PromiseType == "Snap Count" {
+			if seasonStats.Snaps > 0 {
+				snapsPerGame := float64(seasonStats.Snaps) / float64(seasonStats.GamesPlayed)
+				result = util.ConvertFloatTostring(snapsPerGame)
+				if snapsPerGame >= float64(promise.Benchmark) {
+					promise.FulfillPromise()
+				}
 			}
 		} else if promise.PromiseType == "Home State Game" || promise.PromiseType == "Different State" {
 			// Loop through games
@@ -1944,7 +1984,8 @@ func SyncPromises() {
 			games := GetCollegeGamesByTeamIdAndSeasonId(teamID, seasonID, false)
 			for _, game := range games {
 				stateKey := util.GetStateKey(promise.BenchmarkStr)
-				if game.State == stateKey || game.State == promise.BenchmarkStr {
+				gameStateKey := util.GetStateKey(game.State)
+				if gameStateKey == stateKey || game.State == promise.BenchmarkStr {
 					result = ""
 					promise.FulfillPromise()
 					break
@@ -1977,7 +2018,15 @@ func SyncPromises() {
 			standings := standingsMap[promise.TeamID]
 			postSeasonStatus := standings.PostSeasonStatus
 			// postSeasonStatus has substring "Round of" or postSeasonStatus == "Sweet 16" or "Elite 8" or "Final 4" or contains "National Champion", fullfill
-			if strings.Contains(postSeasonStatus, "Playoffs") || postSeasonStatus == "Semifinals" || postSeasonStatus == "Quarterfinals" || strings.Contains(postSeasonStatus, "National Champion") {
+			if strings.Contains(postSeasonStatus, "Playoff") || postSeasonStatus == "Semifinals" || postSeasonStatus == "Quarterfinals" || strings.Contains(postSeasonStatus, "National") {
+				result = ""
+				promise.FulfillPromise()
+			}
+		} else if promise.PromiseType == "Bowl Game" {
+			standings := standingsMap[promise.TeamID]
+			postSeasonStatus := standings.PostSeasonStatus
+			// postSeasonStatus has substring "Round of" or postSeasonStatus == "Sweet 16" or "Elite 8" or "Final 4" or contains "National Champion", fullfill
+			if strings.Contains(postSeasonStatus, "Bowl") || strings.Contains(postSeasonStatus, "Playoff") || postSeasonStatus == "Semifinals" || postSeasonStatus == "Quarterfinals" || strings.Contains(postSeasonStatus, "National") {
 				result = ""
 				promise.FulfillPromise()
 			}

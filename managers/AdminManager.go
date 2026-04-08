@@ -1,11 +1,13 @@
 package managers
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"strconv"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
@@ -82,6 +84,9 @@ func SyncTimeslot(timeslot string) {
 	}
 
 	if isCFB {
+		sentANotification := make(map[uint]bool)
+		collegeTeams := GetAllCollegeTeams()
+		collegeTeamMap := MakeCollegeTeamMap(collegeTeams)
 		// Get Games
 		gameIDs := []string{}
 		games := GetCollegeGamesByTimeslotAndWeekId(strconv.Itoa(ts.CollegeWeekID), timeslot, ts.CFBSpringGames)
@@ -139,6 +144,31 @@ func SyncTimeslot(timeslot string) {
 					continue
 				}
 				if h.WasInjured {
+					team := collegeTeamMap[h.TeamID]
+					if !sentANotification[h.TeamID] && team.Coach != "AI" && team.Coach != "" {
+						// Send a notification!
+						ctx := context.Background()
+						uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{team.Coach})
+						if len(uids) > 0 {
+							playerRecord := GetCollegePlayerByCollegePlayerId(strconv.Itoa(h.CollegePlayerID))
+							eventKey := fbsvc.BuildSourceEventKey("injury", "cfb", gameID, strconv.Itoa(h.CollegePlayerID))
+							_ = fbsvc.NotifyTeamInjury(ctx, fbsvc.TeamInjuryNotificationInput{
+								League:          "cfb",
+								Domain:          fbsvc.DomainCFB,
+								TeamID:          h.TeamID,
+								TeamName:        team.TeamName,
+								PlayerID:        uint(h.CollegePlayerID),
+								PlayerName:      playerRecord.FirstName + " " + playerRecord.LastName,
+								Position:        playerRecord.Position,
+								InjuryType:      h.InjuryType,
+								WeeksOfRecovery: h.WeeksOfRecovery,
+								GameID:          gameID,
+								RecipientUIDs:   uids,
+								SourceEventKey:  eventKey,
+							})
+						}
+						sentANotification[h.TeamID] = true
+					}
 					playerRecord := GetCollegePlayerByCollegePlayerId(strconv.Itoa(h.CollegePlayerID))
 					playerRecord.SetIsInjured(h.WasInjured, h.InjuryType, h.WeeksOfRecovery)
 					repository.SaveCFBPlayer(playerRecord, db)
@@ -165,6 +195,31 @@ func SyncTimeslot(timeslot string) {
 					continue
 				}
 				if a.WasInjured {
+					team := collegeTeamMap[a.TeamID]
+					if !sentANotification[a.TeamID] && team.Coach != "AI" && team.Coach != "" {
+						// Send a notification!
+						ctx := context.Background()
+						uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{team.Coach})
+						if len(uids) > 0 {
+							playerRecord := GetCollegePlayerByCollegePlayerId(strconv.Itoa(a.CollegePlayerID))
+							eventKey := fbsvc.BuildSourceEventKey("injury", "cfb", gameID, strconv.Itoa(a.CollegePlayerID))
+							_ = fbsvc.NotifyTeamInjury(ctx, fbsvc.TeamInjuryNotificationInput{
+								League:          "cfb",
+								Domain:          fbsvc.DomainCFB,
+								TeamID:          a.TeamID,
+								TeamName:        team.TeamName,
+								PlayerID:        uint(a.CollegePlayerID),
+								PlayerName:      playerRecord.FirstName + " " + playerRecord.LastName,
+								Position:        playerRecord.Position,
+								InjuryType:      a.InjuryType,
+								WeeksOfRecovery: a.WeeksOfRecovery,
+								GameID:          gameID,
+								RecipientUIDs:   uids,
+								SourceEventKey:  eventKey,
+							})
+						}
+						sentANotification[a.TeamID] = true
+					}
 					playerRecord := GetCollegePlayerByCollegePlayerId(strconv.Itoa(a.CollegePlayerID))
 					playerRecord.SetIsInjured(a.WasInjured, a.InjuryType, a.WeeksOfRecovery)
 					repository.SaveCFBPlayer(playerRecord, db)
@@ -200,6 +255,9 @@ func SyncTimeslot(timeslot string) {
 				seasonSnaps.AddToSeason(snap.BasePlayerGameSnaps)
 				repository.SaveCFBSeasonSnaps(seasonSnaps, db)
 			}
+
+			// Create postgame discussion thread in Firestore (non-blocking)
+			go CreatePostGameDiscussionThreadForCFBGame(game, homeTeamStats, awayTeamStats)
 
 			// Update Standings
 			homeTeamStandings := GetCFBStandingsByTeamIDAndSeasonID(strconv.Itoa(homeTeamID), strconv.Itoa(ts.CollegeSeasonID))
@@ -335,6 +393,9 @@ func SyncTimeslot(timeslot string) {
 		db.Model(&structs.CollegeTeamStats{}).Where("game_id in (?)", gameIDs).Update("reveal_results", true)
 	} else {
 		// Get Games
+		nflTeams := GetAllNFLTeams()
+		nflTeamMap := MakeNFLTeamMap(nflTeams)
+		sentANotification := make(map[uint]bool)
 		games := GetNFLGamesByTimeslotAndWeekId(strconv.Itoa(ts.NFLWeekID), timeslot, ts.NFLPreseason)
 
 		// seasonStatsMap := make(map[int]structs.NFLTeamSeasonStats)
@@ -371,6 +432,36 @@ func SyncTimeslot(timeslot string) {
 					continue
 				}
 				if h.WasInjured {
+					team := nflTeamMap[h.TeamID]
+					if !sentANotification[h.TeamID] && team.NFLOwnerName != "AI" && team.NFLOwnerName != "" {
+						// Send a notification!
+						ctx := context.Background()
+						var usernames []string
+						usernames = append(usernames, team.NFLOwnerName)
+						if team.NFLGMName != "" && team.NFLGMName != "AI" {
+							usernames = append(usernames, team.NFLGMName)
+						}
+						uids := fbsvc.ResolveUIDsByUsernames(ctx, usernames)
+						if len(uids) > 0 {
+							playerRecord := GetNFLPlayerRecord(strconv.Itoa(h.NFLPlayerID))
+							eventKey := fbsvc.BuildSourceEventKey("injury", "nfl", gameID, strconv.Itoa(h.NFLPlayerID))
+							_ = fbsvc.NotifyTeamInjury(ctx, fbsvc.TeamInjuryNotificationInput{
+								League:          "nfl",
+								Domain:          fbsvc.DomainNFL,
+								TeamID:          h.TeamID,
+								TeamName:        team.TeamName,
+								PlayerID:        uint(h.NFLPlayerID),
+								PlayerName:      playerRecord.FirstName + " " + playerRecord.LastName,
+								Position:        playerRecord.Position,
+								InjuryType:      h.InjuryType,
+								WeeksOfRecovery: h.WeeksOfRecovery,
+								GameID:          gameID,
+								RecipientUIDs:   uids,
+								SourceEventKey:  eventKey,
+							})
+						}
+						sentANotification[h.TeamID] = true
+					}
 					playerRecord := GetNFLPlayerRecord(strconv.Itoa(h.NFLPlayerID))
 					playerRecord.SetIsInjured(h.WasInjured, h.InjuryType, h.WeeksOfRecovery)
 					repository.SaveNFLPlayer(playerRecord, db)
@@ -397,6 +488,37 @@ func SyncTimeslot(timeslot string) {
 					continue
 				}
 				if a.WasInjured {
+					team := nflTeamMap[a.TeamID]
+					if !sentANotification[a.TeamID] && team.NFLOwnerName != "AI" && team.NFLOwnerName != "" {
+						// Send a notification!
+						// String "It looks like a player on your team got injured this week! Check your team page for more details."
+						ctx := context.Background()
+						var usernames []string
+						usernames = append(usernames, team.NFLOwnerName)
+						if team.NFLGMName != "" && team.NFLGMName != "AI" {
+							usernames = append(usernames, team.NFLGMName)
+						}
+						uids := fbsvc.ResolveUIDsByUsernames(ctx, usernames)
+						if len(uids) > 0 {
+							playerRecord := GetNFLPlayerRecord(strconv.Itoa(a.NFLPlayerID))
+							eventKey := fbsvc.BuildSourceEventKey("injury", "nfl", gameID, strconv.Itoa(a.NFLPlayerID))
+							_ = fbsvc.NotifyTeamInjury(ctx, fbsvc.TeamInjuryNotificationInput{
+								League:          "nfl",
+								Domain:          fbsvc.DomainNFL,
+								TeamID:          a.TeamID,
+								TeamName:        team.TeamName,
+								PlayerID:        uint(a.NFLPlayerID),
+								PlayerName:      playerRecord.FirstName + " " + playerRecord.LastName,
+								Position:        playerRecord.Position,
+								InjuryType:      a.InjuryType,
+								WeeksOfRecovery: a.WeeksOfRecovery,
+								GameID:          gameID,
+								RecipientUIDs:   uids,
+								SourceEventKey:  eventKey,
+							})
+						}
+						sentANotification[a.TeamID] = true
+					}
 					playerRecord := GetNFLPlayerRecord(strconv.Itoa(a.NFLPlayerID))
 					playerRecord.SetIsInjured(a.WasInjured, a.InjuryType, a.WeeksOfRecovery)
 					repository.SaveNFLPlayer(playerRecord, db)
@@ -434,6 +556,9 @@ func SyncTimeslot(timeslot string) {
 				seasonSnaps.AddToSeason(snap.BasePlayerGameSnaps)
 				repository.SaveNFLSeasonSnaps(seasonSnaps, db)
 			}
+
+			// Create postgame discussion thread in Firestore (non-blocking)
+			go CreatePostGameDiscussionThreadForNFLGame(game, homeTeamStats, awayTeamStats)
 
 			// Update Standings
 			homeTeamStandings := GetNFLStandingsByTeamIDAndSeasonID(strconv.Itoa(homeTeamID), strconv.Itoa(ts.NFLSeasonID))
@@ -584,10 +709,6 @@ func CreateCollegeSeason() {
 }
 
 func GenerateOffseasonData() {
-	// Fulfill Promises
-
-	// Run First Phase of Portal
-
 	// Create Standings Records for Leagues
 	GenerateNewSeasonStandings()
 
