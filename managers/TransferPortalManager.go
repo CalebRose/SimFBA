@@ -1602,6 +1602,12 @@ func getTransferFloor(likeliness string) int {
 
 // getPromiseFloor -- Get the modifier towards the floor value above
 func getPromiseFloor(weight string) int {
+	if weight == "Why even try?" {
+		return 1
+	}
+	if weight == "Extremely Low" {
+		return 5
+	}
 	if weight == "Very Low" {
 		return 10
 	}
@@ -1613,6 +1619,15 @@ func getPromiseFloor(weight string) int {
 	}
 	if weight == "High" {
 		return 60
+	}
+	if weight == "Very High" {
+		return 65
+	}
+	if weight == "Extremely High" {
+		return 75
+	}
+	if weight == "If you make this promise then you better win it!" {
+		return 100
 	}
 	return util.GenerateIntFromRange(70, 80)
 }
