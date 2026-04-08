@@ -441,7 +441,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/easter/egg/collude/", controller.CollusionButton).Methods("POST")
 
 	// Firebase test endpoints
-	// apiRouter.HandleFunc("/firebase/test/notification/", controller.TestNotificationToTuscan).Methods("GET")
+	apiRouter.HandleFunc("/firebase/test/notification/", controller.TestNotificationToTuscan).Methods("GET")
 	// apiRouter.HandleFunc("/firebase/test/forum/", controller.TestForumPost).Methods("GET")
 
 	// Websocket
