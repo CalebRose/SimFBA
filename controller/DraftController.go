@@ -85,7 +85,6 @@ func GetDraftPageData(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddPlayerToScoutBoard(w http.ResponseWriter, r *http.Request) {
-
 	var scoutProfileDto models.ScoutingProfileDTO
 	err := json.NewDecoder(r.Body).Decode(&scoutProfileDto)
 	if err != nil {
@@ -123,7 +122,6 @@ func RevealScoutingAttribute(w http.ResponseWriter, r *http.Request) {
 
 	saveComplete := managers.RevealScoutingAttribute(revealAttributeDTO)
 
-	fmt.Fprintf(w, "New Scout Profile Created")
 	json.NewEncoder(w).Encode(saveComplete)
 }
 
