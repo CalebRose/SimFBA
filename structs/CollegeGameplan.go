@@ -1,14 +1,8 @@
 package structs
 
-import "github.com/jinzhu/gorm"
+import "gorm.io/gorm"
 
 type CollegeGameplan struct {
-	gorm.Model
-	TeamID int
-	BaseGameplan
-}
-
-type CollegeGameplanTEST struct {
 	gorm.Model
 	TeamID int
 	BaseGameplan

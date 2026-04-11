@@ -2047,6 +2047,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs1(in *jlexer.Lexer, ou
 			out.IsFBS = bool(in.Bool())
 		case "Rank":
 			out.Rank = uint(in.Uint())
+		case "IsConferenceChampion":
+			out.IsConferenceChampion = bool(in.Bool())
 		case "TotalWins":
 			out.TotalWins = int(in.Int())
 		case "TotalLosses":
@@ -2172,6 +2174,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs1(out *jwriter.Writer,
 		const prefix string = ",\"Rank\":"
 		out.RawString(prefix)
 		out.Uint(uint(in.Rank))
+	}
+	{
+		const prefix string = ",\"IsConferenceChampion\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsConferenceChampion))
 	}
 	{
 		const prefix string = ",\"TotalWins\":"
@@ -10265,16 +10272,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in *jlexer.Lexer, o
 				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
 			}
 		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.DeletedAt).UnmarshalJSON(data))
 			}
 		default:
 			in.SkipRecursive()
@@ -10329,11 +10328,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out *jwriter.Writer
 	{
 		const prefix string = ",\"DeletedAt\":"
 		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
+		out.Raw((in.DeletedAt).MarshalJSON())
 	}
 	out.RawByte('}')
 }
@@ -10383,16 +10378,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs30(in *jlexer.Lexer, o
 				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
 			}
 		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.DeletedAt).UnmarshalJSON(data))
 			}
 		default:
 			in.SkipRecursive()
@@ -10466,11 +10453,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs30(out *jwriter.Writer
 	{
 		const prefix string = ",\"DeletedAt\":"
 		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
+		out.Raw((in.DeletedAt).MarshalJSON())
 	}
 	out.RawByte('}')
 }
@@ -10778,16 +10761,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in *jlexer.Lexer, o
 				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
 			}
 		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.DeletedAt).UnmarshalJSON(data))
 			}
 		default:
 			in.SkipRecursive()
@@ -11506,11 +11481,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out *jwriter.Writer
 	{
 		const prefix string = ",\"DeletedAt\":"
 		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
+		out.Raw((in.DeletedAt).MarshalJSON())
 	}
 	out.RawByte('}')
 }

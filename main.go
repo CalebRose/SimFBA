@@ -190,7 +190,6 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/gameplan/college/depthchart/{teamID}/", controller.GetTeamDepthchartByTeamID).Methods("GET")
 	apiRouter.HandleFunc("/gameplan/college/depthchart/user/check/", controller.CheckAllUserDepthChartsForInjuredPlayers).Methods("GET")
 	apiRouter.HandleFunc("/gameplan/college/depthchart/ai/update/", controller.UpdateCollegeAIDepthCharts).Methods("GET")
-	apiRouter.HandleFunc("/gameplan/college/depthchart/test-ai/update/", controller.UpdateCollegeAIDepthChartsTEST).Methods("GET")
 	apiRouter.HandleFunc("/gameplan/college/depthchart/positions/{depthChartID}/", controller.GetDepthChartPositionsByDepthChartID).Methods("GET")
 	apiRouter.HandleFunc("/gameplan/college/updatedepthchart", controller.UpdateDepthChart).Methods("PUT")
 	apiRouter.HandleFunc("/gameplan/nfl/team/{teamID}/", controller.GetNFLGameplanByTeamID).Methods("GET")
@@ -371,9 +370,15 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/teams/nfl/sim/{gameID}/", controller.GetNFLHomeAndAwayTeamData).Methods("GET")
 
 	// TEST Controls
-	apiRouter.HandleFunc("/simfba/team/test/{teamID}/{off}/{def}", controller.UpdateIndividualGameplanTEST).Methods("GET")
-	apiRouter.HandleFunc("/simfba/mass/test/{off}/{def}", controller.MassUpdateGameplansTEST).Methods("GET")
-	apiRouter.HandleFunc("/teams/college/test/sim/{gameID}/", controller.GetHomeAndAwayTeamTestData).Methods("GET")
+	apiRouter.HandleFunc("/gameplan/college/depthchart/test-ai/update/", controller.UpdateCollegeAIDepthChartsTEST).Methods("GET")
+	apiRouter.HandleFunc("/simfba/team/test/{teamID}/{off}/{def}", controller.UpdateCFBIndividualGameplanTEST).Methods("GET")
+	apiRouter.HandleFunc("/simfba/mass/test/{off}/{def}", controller.MassCFBUpdateGameplansTEST).Methods("GET")
+	apiRouter.HandleFunc("/gameplan/nfl/depthchart/test-ai/update/", controller.UpdateNFLAIDepthChartsTEST).Methods("GET")
+	apiRouter.HandleFunc("/simnfl/team/test/{teamID}/{off}/{def}", controller.UpdateNFLIndividualGameplanTEST).Methods("GET")
+	apiRouter.HandleFunc("/simnfl/mass/test/{off}/{def}", controller.MassNFLUpdateGameplansTEST).Methods("GET")
+	apiRouter.HandleFunc("/teams/college/test/sim/{gameID}/", controller.GetCFBHomeAndAwayTeamTestData).Methods("GET")
+	apiRouter.HandleFunc("/teams/nfl/test/sim/{gameID}/", controller.GetNFLHomeAndAwayTeamTestData).Methods("GET")
+	// apiRouter.HandleFunc("/teams/nfl/test/setup/", controller.SetUpNFLTestDataStructs).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/test/cfb/progression/", controller.TestCFBProgressionAlgorithm).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/test/nfl/progression/", controller.TestNFLProgressionAlgorithm).Methods("GET")
 

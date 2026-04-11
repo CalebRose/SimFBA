@@ -152,12 +152,6 @@ func UpdateCollegeAIDepthCharts(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode("Updated all CFB Depth Charts")
 }
 
-func UpdateCollegeAIDepthChartsTEST(w http.ResponseWriter, r *http.Request) {
-	// managers.SetAIGameplan()
-	managers.UpdateCollegeAIDepthChartsTEST()
-	json.NewEncoder(w).Encode("Updated all CFB Depth Charts")
-}
-
 // UpdateCollegeAIDepthCharts
 func UpdateNFLAIDepthCharts(w http.ResponseWriter, r *http.Request) {
 	managers.UpdateNFLAIDepthCharts()
@@ -175,38 +169,6 @@ func MassUpdateGameplans(w http.ResponseWriter, r *http.Request) {
 		panic("User did not provide a teamID")
 	}
 	managers.MassUpdateGameplanSchemes(off, def)
-	json.NewEncoder(w).Encode("Updated all CFB Depth Charts For Testing")
-}
-
-func MassUpdateGameplansTEST(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	off := vars["off"]
-	if len(off) == 0 {
-		panic("User did not provide a teamID")
-	}
-	def := vars["def"]
-	if len(def) == 0 {
-		panic("User did not provide a teamID")
-	}
-	managers.MassUpdateGameplanSchemesTEST(off, def)
-	json.NewEncoder(w).Encode("Updated all CFB Depth Charts For Testing")
-}
-
-func UpdateIndividualGameplanTEST(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	teamID := vars["teamID"]
-	if len(teamID) == 0 {
-		panic("User did not provide a teamID")
-	}
-	off := vars["off"]
-	if len(off) == 0 {
-		panic("User did not provide a teamID")
-	}
-	def := vars["def"]
-	if len(def) == 0 {
-		panic("User did not provide a teamID")
-	}
-	managers.UpdateIndividualGameplanSchemeTEST(teamID, off, def)
 	json.NewEncoder(w).Encode("Updated all CFB Depth Charts For Testing")
 }
 

@@ -270,21 +270,6 @@ func CreateCollegeGameplansRecordsBatch(db *gorm.DB, gps []structs.CollegeGamepl
 	return nil
 }
 
-func CreateCollegeGameplansTESTRecordsBatch(db *gorm.DB, gps []structs.CollegeGameplanTEST, batchSize int) error {
-	total := len(gps)
-	for i := 0; i < total; i += batchSize {
-		end := i + batchSize
-		if end > total {
-			end = total
-		}
-
-		if err := db.CreateInBatches(gps[i:end], batchSize).Error; err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
 func CreateCollegeDCRecordsBatch(db *gorm.DB, gps []structs.CollegeTeamDepthChart, batchSize int) error {
 	total := len(gps)
 	for i := 0; i < total; i += batchSize {

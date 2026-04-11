@@ -9,7 +9,6 @@ import (
 	"time"
 
 	config "github.com/CalebRose/SimFBA/secrets"
-	"github.com/CalebRose/SimFBA/structs"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"golang.org/x/crypto/ssh"
 	"gorm.io/driver/mysql"
@@ -103,11 +102,14 @@ func (p *Provider) InitDatabase() bool {
 	// db.AutoMigrate(&structs.CollegeTeamDepthChartTEST{})
 	// db.AutoMigrate(&structs.CollegeDepthChartPositionTEST{})
 	// db.AutoMigrate(&structs.CollegeGameplanTEST{})
+	// db.AutoMigrate(&structs.NFLDepthChartTEST{})
+	// db.AutoMigrate(&structs.NFLDepthChartPositionTEST{})
+	// db.AutoMigrate(&structs.NFLGameplanTEST{})
 	//
 	// Recruit
 	// db.AutoMigrate(&structs.Recruit{})
 	// db.AutoMigrate(&structs.RecruitPlayerProfile{})
-	db.AutoMigrate(&structs.RecruitingTeamProfile{})
+	// db.AutoMigrate(&structs.RecruitingTeamProfile{})
 	// db.AutoMigrate(&structs.RecruitPointAllocation{})
 	// db.AutoMigrate(&structs.RecruitRegion{})
 	// db.AutoMigrate(&structs.RecruitState{})
