@@ -344,7 +344,7 @@ func ExportDrafteesToCSV(w http.ResponseWriter) {
 			player.StrengthGrade, player.TackleGrade, player.PassBlockGrade, player.RunBlockGrade,
 			player.PassRushGrade, player.RunDefenseGrade, player.ThrowPowerGrade, player.ThrowAccuracyGrade,
 			player.KickPowerGrade, player.KickAccuracyGrade, player.PuntPowerGrade, player.PuntAccuracyGrade,
-			player.StaminaGrade, player.InjuryGrade, player.PotentialGrade,
+			player.StaminaGrade, player.InjuryGrade, "?",
 		}
 
 		err = writer.Write(playerRow)
