@@ -151,6 +151,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/nfl/draft/reveal/attribute", controller.RevealScoutingAttribute).Methods("POST")
 	apiRouter.HandleFunc("/nfl/draft/remove/{id}", controller.RemovePlayerFromScoutBoard).Methods("GET")
 	apiRouter.HandleFunc("/nfl/draft/scout/{id}", controller.GetScoutingDataByDraftee).Methods("GET")
+	apiRouter.HandleFunc("/nfl/draft/fix/draftee/potentials", controller.FixNFLDrafteePotentialGrades).Methods("GET")
 	// apiRouter.HandleFunc("/nfl/draft/boom/bust", controller.BoomOrBust).Methods("GET")
 
 	// Face Controls
@@ -448,6 +449,9 @@ func handleRequests() http.Handler {
 	// Firebase test endpoints
 	apiRouter.HandleFunc("/firebase/test/notification/", controller.TestNotificationToTuscan).Methods("GET")
 	// apiRouter.HandleFunc("/firebase/test/forum/", controller.TestForumPost).Methods("GET")
+
+	// ImageKit upload authentication
+	apiRouter.HandleFunc("/imagekit/auth/", controller.GetImageKitAuth).Methods("GET")
 
 	// Websocket
 	myRouter.HandleFunc("/ws", ws.WebSocketHandler)

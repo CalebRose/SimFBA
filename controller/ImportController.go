@@ -131,3 +131,7 @@ func FixRecruitPoints(w http.ResponseWriter, r *http.Request) {
 func FixOffensiveFormationNames(w http.ResponseWriter, r *http.Request) {
 	managers.FixOffensiveFormationNames()
 }
+
+func FixNFLDrafteePotentialGrades(w http.ResponseWriter, r *http.Request) {
+	managers.FixNFLDrafteePotentialGrades()
+}

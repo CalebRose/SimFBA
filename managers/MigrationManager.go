@@ -665,3 +665,23 @@ func FixPointAmount() {
 		}
 	}
 }
+
+func FixNFLDrafteePotentialGrades() {
+	db := dbprovider.GetInstance().GetDB()
+
+	draftees := GetAllNFLDraftees()
+
+	for _, d := range draftees {
+		newProgression := util.GenerateIntFromRange(d.Progression-5, d.Progression+5)
+		if newProgression < 0 {
+			newProgression = 1
+		} else if newProgression > 100 {
+			newProgression = 100
+		}
+		newPotentialGrade := util.GetWeightedPotentialGrade(newProgression)
+		d.PotentialGrade = newPotentialGrade
+		d.Progression = newProgression
+
+		repository.SaveNFLDrafteeRecord(d, db)
+	}
+}
