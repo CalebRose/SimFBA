@@ -1074,7 +1074,16 @@ func PlaceNFLPlayerOnInjuryReserve(playerId string) {
 	player := GetOnlyNFLPlayerRecord(playerId)
 	player.ToggleInjuryReserve()
 
-	db.Save(&player)
+	repository.SaveNFLPlayer(player, db)
+}
+
+func PlaceCFBPlayerOnInjuryReserve(playerId string) {
+	db := dbprovider.GetInstance().GetDB()
+
+	player := GetCollegePlayerByCollegePlayerId(playerId)
+	player.ToggleInjuryReserve()
+
+	repository.SaveCFBPlayer(player, db)
 }
 
 func GetNFLRosterForSimulation(TeamID string) []structs.NFLPlayer {

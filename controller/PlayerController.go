@@ -191,6 +191,19 @@ func PlaceNFLPlayerOnInjuryReserve(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode("Player " + playerID + " placed on trade block.")
 }
 
+// PlaceCFBPlayerOnInjuryReserve - Place a college player on injury reserve
+func PlaceCFBPlayerOnInjuryReserve(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	playerID := vars["PlayerID"]
+	if len(playerID) == 0 {
+		panic("User did not provide playerID")
+	}
+
+	managers.PlaceCFBPlayerOnInjuryReserve(playerID)
+
+	json.NewEncoder(w).Encode("Player " + playerID + " placed on injury reserve.")
+}
+
 // CreateExtensionOffer - Extend Offer to NFL player to extend contract with existing team
 func CreateExtensionOffer(w http.ResponseWriter, r *http.Request) {
 	var freeAgencyOfferDTO structs.FreeAgencyOfferDTO

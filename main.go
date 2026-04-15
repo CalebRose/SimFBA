@@ -272,6 +272,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/nflplayers/cut/player/{PlayerID}/", controller.CutNFLPlayerFromRoster).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/place/player/squad/{PlayerID}/", controller.PlaceNFLPlayerOnPracticeSquad).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/injury/reserve/player/{PlayerID}/", controller.PlaceNFLPlayerOnInjuryReserve).Methods("GET")
+	apiRouter.HandleFunc("/collegeplayers/injury/reserve/player/{PlayerID}/", controller.PlaceCFBPlayerOnInjuryReserve).Methods("GET")
 	apiRouter.HandleFunc("/collegeplayers/teams/export/", controller.ExportAllCFBRostersToCSV).Methods("GET") // DO NOT USE
 
 	// Poll Controls

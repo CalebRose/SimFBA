@@ -551,7 +551,7 @@ func GetPortalBootstrap(collegeID string) BootstrapDataPortal {
 		wg.Add(4)
 		go func() {
 			defer wg.Done()
-			transferPortalProfiles = GetTransferPortalProfilesByTeamID(collegeID)
+			transferPortalProfiles = GetAllTransferPortalProfiles()
 		}()
 
 		go func() {
