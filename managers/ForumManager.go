@@ -273,7 +273,7 @@ func toCFBPlayerStatRows(stats []structs.CollegePlayerStats, playerMap map[uint]
 		if !ok {
 			continue
 		}
-		label := fmt.Sprintf("%d %s %s %s", p.ID, p.Position, p.FirstName, p.LastName)
+		label := fmt.Sprintf("[%d] %s %s %s %s", p.ID, p.TeamAbbr, p.Position, p.FirstName, p.LastName)
 		rows = append(rows, playerStatRow{Label: label, BasePlayerStats: s.BasePlayerStats})
 	}
 	return rows
@@ -287,7 +287,7 @@ func toNFLPlayerStatRows(stats []structs.NFLPlayerStats, playerMap map[uint]stru
 		if !ok {
 			continue
 		}
-		label := fmt.Sprintf("%d %s %s %s", p.ID, p.Position, p.FirstName, p.LastName)
+		label := fmt.Sprintf("[%d] %s %s %s %s", p.ID, p.TeamAbbr, p.Position, p.FirstName, p.LastName)
 		rows = append(rows, playerStatRow{Label: label, BasePlayerStats: s.BasePlayerStats})
 	}
 	return rows
