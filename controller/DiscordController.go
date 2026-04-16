@@ -326,3 +326,27 @@ func AssignDiscordIDtoNFLTeam(w http.ResponseWriter, r *http.Request) {
 
 	managers.AssignDiscordIDToNFLTeam(teamID, discordID)
 }
+
+func RevealCFBGameResults(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	gameID := vars["gameID"]
+	if len(gameID) == 0 {
+		panic("User did not provide gameID")
+	}
+
+	managers.RevealCFBGameOnInterface(gameID)
+
+	json.NewEncoder(w).Encode("Done!")
+}
+
+func RevealNFLGameResults(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	gameID := vars["gameID"]
+	if len(gameID) == 0 {
+		panic("User did not provide gameID")
+	}
+
+	managers.RevealNFLGameOnInterface(gameID)
+
+	json.NewEncoder(w).Encode("Done!")
+}

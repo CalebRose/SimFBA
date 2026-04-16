@@ -413,7 +413,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/portal/page/data/{teamID}", controller.GetTransferPortalPageData).Methods("GET")
 	apiRouter.HandleFunc("/portal/profile/create", controller.AddTransferPlayerToBoard).Methods("POST")
 	apiRouter.HandleFunc("/portal/profile/remove/{profileID}", controller.RemovePlayerFromTransferPortalBoard).Methods("GET")
-	apiRouter.HandleFunc("/portal/saveboard", controller.SaveTransferBoard).Methods("POST")
+	apiRouter.HandleFunc("/portal/saveboard", controller.SaveTransferBoardV2).Methods("POST")
 	apiRouter.HandleFunc("/portal/promise/create", controller.CreatePromise).Methods("POST")
 	apiRouter.HandleFunc("/portal/promise/cancel/{promiseID}", controller.CancelPromise).Methods("GET")
 	apiRouter.HandleFunc("/portal/promise/player/{playerID}/{teamID}", controller.GetPromiseByPlayerID).Methods("GET")
@@ -443,7 +443,8 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/ds/cfb/fbs/stream/{timeslot}/", controller.GetFBSGameStreams).Methods("GET")
 	apiRouter.HandleFunc("/ds/cfb/fcs/stream/{timeslot}/", controller.GetFCSGameStreams).Methods("GET")
 	apiRouter.HandleFunc("/ds/nfl/league/stream/{timeslot}/", controller.GetNFLGameStreams).Methods("GET")
-
+	apiRouter.HandleFunc("/ds/cfb/reveal/results/{gameID}/", controller.RevealCFBGameResults).Methods("GET")
+	apiRouter.HandleFunc("/ds/nfl/reveal/results/{gameID}/", controller.RevealNFLGameResults).Methods("GET")
 	// Easter Controls
 	apiRouter.HandleFunc("/easter/egg/collude/", controller.CollusionButton).Methods("POST")
 

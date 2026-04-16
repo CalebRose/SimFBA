@@ -54,7 +54,7 @@ func SyncRecruitingViaCron() {
 	if ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 1 {
 		managers.ProcessTransferIntention()
 	}
-	if ts.RunCron && ts.IsOffSeason && ts.TransferPortalPhase == 2 {
+	if ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 2 {
 		managers.EnterTheTransferPortal()
 	} else if ts.RunCron && ts.IsOffSeason && ts.TransferPortalPhase == 3 {
 		managers.SyncTransferPortal()

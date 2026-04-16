@@ -41,12 +41,18 @@ type NFLGame struct {
 	IsConferenceChampionship bool
 	IsSuperBowl              bool
 	GameComplete             bool
+	IsRevealed               bool
 	IsPreseasonGame          bool
 	GameTitle                string // For rivalry match-ups, bowl games, championships, and more
 	NextGameID               uint
 	NextGameHOA              string
 	HomePreviousBye          bool
 	AwayPreviousBye          bool
+}
+
+// RevealResultsOnInterface will reveal game results for interface viewing, but it will not sync data to the season stats quite yet.
+func (m *NFLGame) RevealResultsOnInterface() {
+	m.IsRevealed = true
 }
 
 func (ng *NFLGame) UpdateScore(HomeScore int, AwayScore int) {

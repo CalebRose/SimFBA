@@ -43,6 +43,7 @@ type CollegeGame struct {
 	IsPlayoffGame            bool
 	IsNationalChampionship   bool
 	IsRivalryGame            bool
+	IsRevealed               bool
 	GameComplete             bool
 	IsSpringGame             bool
 	GameTitle                string // For rivalry match-ups, bowl games, championships, and more
@@ -51,6 +52,10 @@ type CollegeGame struct {
 	HomePreviousBye          bool
 	AwayPreviousBye          bool
 	ConferenceID             uint
+}
+
+func (m *CollegeGame) RevealResultsOnInterface() {
+	m.IsRevealed = true
 }
 
 func (cg *CollegeGame) UpdateScore(HomeScore int, AwayScore int) {

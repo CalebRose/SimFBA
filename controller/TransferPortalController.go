@@ -131,6 +131,18 @@ func SaveTransferBoard(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// managers.AllocatePointsToTransferPlayer(transferPortalProfile)
+}
+
+func SaveTransferBoardV2(w http.ResponseWriter, r *http.Request) {
+
+	var transferPortalProfile structs.UpdateTransferPortalBoardV2
+	err := json.NewDecoder(r.Body).Decode(&transferPortalProfile)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
 	managers.AllocatePointsToTransferPlayer(transferPortalProfile)
 }
 

@@ -256,9 +256,6 @@ func SyncTimeslot(timeslot string) {
 				repository.SaveCFBSeasonSnaps(seasonSnaps, db)
 			}
 
-			// Create postgame discussion thread in Firestore (non-blocking)
-			go CreatePostGameDiscussionThreadForCFBGame(game, homeTeamStats, awayTeamStats)
-
 			// Update Standings
 			homeTeamStandings := GetCFBStandingsByTeamIDAndSeasonID(strconv.Itoa(homeTeamID), strconv.Itoa(ts.CollegeSeasonID))
 			awayTeamStandings := GetCFBStandingsByTeamIDAndSeasonID(strconv.Itoa(awayTeamID), strconv.Itoa(ts.CollegeSeasonID))
@@ -556,9 +553,6 @@ func SyncTimeslot(timeslot string) {
 				seasonSnaps.AddToSeason(snap.BasePlayerGameSnaps)
 				repository.SaveNFLSeasonSnaps(seasonSnaps, db)
 			}
-
-			// Create postgame discussion thread in Firestore (non-blocking)
-			go CreatePostGameDiscussionThreadForNFLGame(game, homeTeamStats, awayTeamStats)
 
 			// Update Standings
 			homeTeamStandings := GetNFLStandingsByTeamIDAndSeasonID(strconv.Itoa(homeTeamID), strconv.Itoa(ts.NFLSeasonID))

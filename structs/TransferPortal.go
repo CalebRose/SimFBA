@@ -301,3 +301,10 @@ type UpdateTransferPortalBoard struct {
 	Players []TransferPortalProfileResponse
 	TeamID  int
 }
+
+// UpdateTransferPortalBoard - Data Transfer Object from UI to API
+type UpdateTransferPortalBoardV2 struct {
+	Profile SimTeamBoardResponse
+	Players []TransferPortalProfile
+	TeamID  int
+}

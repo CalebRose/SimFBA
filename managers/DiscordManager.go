@@ -621,3 +621,76 @@ func AssignDiscordIDToNFLTeam(tID, dID string) {
 
 	repository.SaveNFLTeamRecord(team, db)
 }
+
+func RevealCFBGameOnInterface(gameID string) {
+	db := dbprovider.GetInstance().GetDB()
+
+	// Fetch game record and player map concurrently
+	gameChan := make(chan structs.CollegeGame, 1)
+	playerMapChan := make(chan map[uint]structs.CollegePlayer, 1)
+
+	go func() { gameChan <- GetCollegeGameByGameID(gameID) }()
+	go func() { playerMapChan <- GetCollegePlayerMap() }()
+
+	game := <-gameChan
+	homeTeamID := strconv.Itoa(int(game.HomeTeamID))
+	awayTeamID := strconv.Itoa(int(game.AwayTeamID))
+
+	// Fetch home and away team stats concurrently, while player map finishes
+	homeStatsChan := make(chan structs.CollegeTeamStats, 1)
+	awayStatsChan := make(chan structs.CollegeTeamStats, 1)
+	homePlayerStatsChan := make(chan []structs.CollegePlayerStats, 1)
+	awayPlayerStatsChan := make(chan []structs.CollegePlayerStats, 1)
+
+	go func() { homeStatsChan <- repository.FindCollegeTeamStatsRecordByGame(gameID, homeTeamID) }()
+	go func() { awayStatsChan <- repository.FindCollegeTeamStatsRecordByGame(gameID, awayTeamID) }()
+	go func() { homePlayerStatsChan <- GetAllCollegePlayerStatsByGame(gameID, homeTeamID) }()
+	go func() { awayPlayerStatsChan <- GetAllCollegePlayerStatsByGame(gameID, awayTeamID) }()
+
+	collegePlayersMap := <-playerMapChan
+	homeTeamStats := <-homeStatsChan
+	awayTeamStats := <-awayStatsChan
+	homePlayerStats := <-homePlayerStatsChan
+	awayPlayerStats := <-awayPlayerStatsChan
+
+	go CreatePostGameDiscussionThreadForCFBGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, collegePlayersMap)
+
+	game.RevealResultsOnInterface()
+	repository.SaveCFBGameRecord(game, db)
+}
+
+func RevealNFLGameOnInterface(gameID string) {
+	db := dbprovider.GetInstance().GetDB()
+
+	// Fetch game record and player map concurrently
+	gameChan := make(chan structs.NFLGame, 1)
+	proPlayerMapChan := make(chan map[uint]structs.NFLPlayer, 1)
+
+	go func() { gameChan <- GetNFLGameByGameID(gameID) }()
+	go func() { proPlayerMapChan <- GetAllNFLPlayersMap() }()
+
+	game := <-gameChan
+	homeTeamID := strconv.Itoa(int(game.HomeTeamID))
+	awayTeamID := strconv.Itoa(int(game.AwayTeamID))
+
+	// Fetch home and away team stats concurrently, while player map finishes
+	homeStatsChan := make(chan structs.NFLTeamStats, 1)
+	awayStatsChan := make(chan structs.NFLTeamStats, 1)
+	homePlayerStatsChan := make(chan []structs.NFLPlayerStats, 1)
+	awayPlayerStatsChan := make(chan []structs.NFLPlayerStats, 1)
+
+	go func() { homeStatsChan <- repository.FindProTeamStatsRecordByGame(gameID, homeTeamID) }()
+	go func() { awayStatsChan <- repository.FindProTeamStatsRecordByGame(gameID, awayTeamID) }()
+	go func() { homePlayerStatsChan <- GetAllNFLPlayerStatsByGame(gameID, homeTeamID) }()
+	go func() { awayPlayerStatsChan <- GetAllNFLPlayerStatsByGame(gameID, awayTeamID) }()
+	proPlayersMap := <-proPlayerMapChan
+	homeTeamStats := <-homeStatsChan
+	awayTeamStats := <-awayStatsChan
+	homePlayerStats := <-homePlayerStatsChan
+	awayPlayerStats := <-awayPlayerStatsChan
+
+	go CreatePostGameDiscussionThreadForNFLGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, proPlayersMap)
+
+	game.RevealResultsOnInterface()
+	repository.SaveNFLGameRecord(game, db)
+}

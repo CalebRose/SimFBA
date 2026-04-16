@@ -705,7 +705,7 @@ func RemovePlayerFromTransferPortalBoard(id string) {
 	}
 }
 
-func AllocatePointsToTransferPlayer(updateTransferPortalBoardDto structs.UpdateTransferPortalBoard) {
+func AllocatePointsToTransferPlayer(updateTransferPortalBoardDto structs.UpdateTransferPortalBoardV2) {
 	db := dbprovider.GetInstance().GetDB()
 
 	var teamId = strconv.Itoa(updateTransferPortalBoardDto.TeamID)
@@ -1755,6 +1755,10 @@ func getMultiplier(pr structs.CollegePromise) float64 {
 	}
 	weight := pr.PromiseWeight
 	switch weight {
+	case "Why even try?":
+		return 0.5
+	case "Extremely Low":
+		return 1.01
 	case "Very Low":
 		return 1.05
 	case "Low":
@@ -1763,13 +1767,19 @@ func getMultiplier(pr structs.CollegePromise) float64 {
 		return 1.3
 	case "High":
 		return 1.5
+	case "Very High":
+		return 1.75
+	case "Extremely High":
+		return 2.0
+	case "If you make this promise then you better win it!":
+		return 2.25
 	}
 	// Very High
 	return 1.75
 }
 
-func GetPlayerFromTransferPortalList(id int, profiles []structs.TransferPortalProfileResponse) structs.TransferPortalProfileResponse {
-	var profile structs.TransferPortalProfileResponse
+func GetPlayerFromTransferPortalList(id int, profiles []structs.TransferPortalProfile) structs.TransferPortalProfile {
+	var profile structs.TransferPortalProfile
 
 	for i := 0; i < len(profiles); i++ {
 		if profiles[i].CollegePlayerID == uint(id) {
