@@ -370,6 +370,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs4(in *jlexer.Lexer, ou
 			out.IsNationalChampionship = bool(in.Bool())
 		case "IsRivalryGame":
 			out.IsRivalryGame = bool(in.Bool())
+		case "IsRevealed":
+			out.IsRevealed = bool(in.Bool())
 		case "GameComplete":
 			out.GameComplete = bool(in.Bool())
 		case "IsSpringGame":
@@ -616,6 +618,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs4(out *jwriter.Writer,
 		const prefix string = ",\"IsRivalryGame\":"
 		out.RawString(prefix)
 		out.Bool(bool(in.IsRivalryGame))
+	}
+	{
+		const prefix string = ",\"IsRevealed\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsRevealed))
 	}
 	{
 		const prefix string = ",\"GameComplete\":"
@@ -22614,6 +22621,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs47(in *jlexer.Lexer, o
 			out.IsSuperBowl = bool(in.Bool())
 		case "GameComplete":
 			out.GameComplete = bool(in.Bool())
+		case "IsRevealed":
+			out.IsRevealed = bool(in.Bool())
 		case "IsPreseasonGame":
 			out.IsPreseasonGame = bool(in.Bool())
 		case "GameTitle":
@@ -22846,6 +22855,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs47(out *jwriter.Writer
 		const prefix string = ",\"GameComplete\":"
 		out.RawString(prefix)
 		out.Bool(bool(in.GameComplete))
+	}
+	{
+		const prefix string = ",\"IsRevealed\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsRevealed))
 	}
 	{
 		const prefix string = ",\"IsPreseasonGame\":"
