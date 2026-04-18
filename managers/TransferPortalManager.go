@@ -688,10 +688,13 @@ func AddTransferPlayerToBoard(transferPortalProfileDto structs.TransferPortalPro
 	return newProfileForRecruit
 }
 
-func RemovePlayerFromTransferPortalBoard(id string) {
+func RemovePlayerFromTransferPortalBoard(transferPortalProfile structs.TransferPortalProfile) {
 	db := dbprovider.GetInstance().GetDB()
 
-	profile := GetOnlyTransferPortalProfileByID(id)
+	profile := repository.FindTransferPortalProfileRecord(repository.TransferPortalQuery{
+		CollegePlayerID: strconv.Itoa(int(transferPortalProfile.CollegePlayerID)),
+		ProfileID:       strconv.Itoa(int(transferPortalProfile.ProfileID)),
+	})
 
 	profile.Deactivate()
 	pid := profile.PromiseID.Int64

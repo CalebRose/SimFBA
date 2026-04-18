@@ -114,11 +114,14 @@ func AddTransferPlayerToBoard(w http.ResponseWriter, r *http.Request) {
 }
 
 func RemovePlayerFromTransferPortalBoard(w http.ResponseWriter, r *http.Request) {
+	var transferPortalProfile structs.TransferPortalProfile
+	err := json.NewDecoder(r.Body).Decode(&transferPortalProfile)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
 
-	vars := mux.Vars(r)
-	id := vars["profileID"]
-
-	managers.RemovePlayerFromTransferPortalBoard(id)
+	managers.RemovePlayerFromTransferPortalBoard(transferPortalProfile)
 	json.NewEncoder(w).Encode(true)
 }
 
