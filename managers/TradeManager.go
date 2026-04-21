@@ -495,8 +495,12 @@ func syncAcceptedOptions(db *gorm.DB, options []structs.NFLTradeOption, senderID
 				contract.TradePlayer(senderID, sendingTeam.TeamAbbr, sendersPercentage)
 			}
 
-			db.Save(&playerRecord)
-			db.Save(&contract)
+			if playerRecord.ID > 0 {
+				repository.SaveNFLPlayer(playerRecord, db)
+			}
+			if contract.ID > 0 {
+				repository.SaveNFLContract(contract, db)
+			}
 
 		} else if option.NFLDraftPickID > 0 {
 			draftPick := GetDraftPickByDraftPickID(strconv.Itoa(int(option.NFLDraftPickID)))
