@@ -449,7 +449,7 @@ func SyncTradeFromDraftPage(proposal structs.NFLTradeProposal) bool {
 func syncAcceptedOptions(db *gorm.DB, options []structs.NFLTradeOption, senderID uint, senderTeam string, recepientID uint, recepientTeam string) {
 	sendingTeam := GetNFLTeamByTeamID(strconv.Itoa(int(senderID)))
 	receivingTeam := GetNFLTeamByTeamID(strconv.Itoa(int(recepientID)))
-	SendersCapsheet := GetCapsheetByTeamID(strconv.Itoa(int(senderID)))
+	sendersCapsheet := GetCapsheetByTeamID(strconv.Itoa(int(senderID)))
 	recepientCapsheet := GetCapsheetByTeamID(strconv.Itoa(int(recepientID)))
 	salaryMinimum := 0.5
 	for _, option := range options {
@@ -471,8 +471,8 @@ func syncAcceptedOptions(db *gorm.DB, options []structs.NFLTradeOption, senderID
 					sendingTeamPay -= salaryMinimum
 					receivingTeamPay += salaryMinimum
 				}
-				SendersCapsheet.SubtractFromCapsheetViaTrade(contract)
-				SendersCapsheet.NegotiateSalaryDifference(contract.Y1BaseSalary, sendingTeamPay)
+				sendersCapsheet.SubtractFromCapsheetViaTrade(contract)
+				sendersCapsheet.NegotiateSalaryDifference(contract.Y1BaseSalary, sendingTeamPay)
 				recepientCapsheet.AddContractViaTrade(contract, receivingTeamPay)
 				playerRecord.TradePlayer(recepientID, receivingTeam.TeamAbbr)
 				contract.TradePlayer(recepientID, receivingTeam.TeamAbbr, receiversPercentage)
@@ -490,7 +490,7 @@ func syncAcceptedOptions(db *gorm.DB, options []structs.NFLTradeOption, senderID
 				}
 				recepientCapsheet.SubtractFromCapsheetViaTrade(contract)
 				recepientCapsheet.NegotiateSalaryDifference(contract.Y1BaseSalary, receivingTeamPay)
-				SendersCapsheet.AddContractViaTrade(contract, sendingTeamPay)
+				sendersCapsheet.AddContractViaTrade(contract, sendingTeamPay)
 				playerRecord.TradePlayer(senderID, sendingTeam.TeamAbbr)
 				contract.TradePlayer(senderID, sendingTeam.TeamAbbr, sendersPercentage)
 			}
@@ -505,14 +505,18 @@ func syncAcceptedOptions(db *gorm.DB, options []structs.NFLTradeOption, senderID
 			} else {
 				draftPick.TradePick(senderID, senderTeam)
 			}
+			if draftPick.ID > 0 {
+				db.Save(&draftPick)
+			}
 
-			db.Save(&draftPick)
 		}
 
-		db.Delete(&option)
+		if option.ID > 0 {
+			db.Where("id = ?", option.ID).Delete(&option)
+		}
 	}
-	db.Save(&SendersCapsheet)
-	db.Save(&recepientCapsheet)
+	repository.SaveNFLCapsheet(sendersCapsheet, db)
+	repository.SaveNFLCapsheet(recepientCapsheet, db)
 }
 
 func VetoTrade(proposalID string) {
