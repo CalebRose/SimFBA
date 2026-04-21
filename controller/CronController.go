@@ -2,6 +2,7 @@ package controller
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/managers"
@@ -62,6 +63,11 @@ func SyncRecruitingViaCron() {
 }
 
 func SyncFreeAgencyViaCron() {
+	// if Date is before 4/28/26, return
+	if time.Now().Before(time.Date(2026, 4, 28, 0, 0, 0, 0, time.UTC)) {
+		return
+	}
+
 	ts := managers.GetTimestamp()
 	if ts.RunCron {
 		managers.SyncFreeAgencyOffers()

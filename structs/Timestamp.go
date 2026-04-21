@@ -230,6 +230,7 @@ func (t *Timestamp) EnactPromisePhase() {
 
 func (t *Timestamp) EnactPortalPhase() {
 	t.TransferPortalPhase = 3
+	t.TransferPortalRound = 1
 }
 
 func (t *Timestamp) IncrementTransferPortalRound() {
