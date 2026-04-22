@@ -235,7 +235,7 @@ func (t *Timestamp) EnactPortalPhase() {
 
 func (t *Timestamp) IncrementTransferPortalRound() {
 	t.IsRecruitingLocked = false
-	if t.TransferPortalRound < 10 {
+	if t.TransferPortalRound <= 10 {
 		t.TransferPortalRound += 1
 	} else {
 		t.TransferPortalPhase = 0

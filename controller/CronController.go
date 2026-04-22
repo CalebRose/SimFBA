@@ -20,7 +20,7 @@ func FillAIBoardsViaCron() {
 		managers.FillAIRecruitingBoards()
 	}
 
-	if ts.RunCron && (ts.IsOffSeason || ts.CollegeSeasonOver) && ts.TransferPortalPhase == 3 {
+	if ts.RunCron && (ts.IsOffSeason || ts.CollegeSeasonOver) && ts.TransferPortalPhase == 3 && ts.TransferPortalRound <= 10 {
 		managers.AICoachFillBoardsPhase()
 	}
 }
@@ -32,7 +32,7 @@ func SyncAIBoardsViaCron() {
 		managers.AllocatePointsToAIBoards()
 	}
 
-	if ts.RunCron && (ts.IsOffSeason || ts.CollegeSeasonOver) && ts.TransferPortalPhase == 3 {
+	if ts.RunCron && (ts.IsOffSeason || ts.CollegeSeasonOver) && ts.TransferPortalPhase == 3 && ts.TransferPortalRound <= 10 {
 		managers.AICoachAllocateAndPromisePhase()
 	}
 }
@@ -57,7 +57,7 @@ func SyncRecruitingViaCron() {
 	}
 	if ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 2 {
 		managers.EnterTheTransferPortal()
-	} else if ts.RunCron && (ts.CollegeSeasonOver || ts.IsOffSeason) && ts.TransferPortalPhase == 3 {
+	} else if ts.RunCron && (ts.CollegeSeasonOver || ts.IsOffSeason) && ts.TransferPortalPhase == 3 && ts.TransferPortalRound <= 10 {
 		managers.SyncTransferPortal()
 	}
 }
