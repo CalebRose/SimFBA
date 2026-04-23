@@ -99,8 +99,10 @@ func (p *TransferPortalProfile) AllocatePoints(points int) {
 	p.CurrentWeeksPoints = points
 }
 
-func (p *TransferPortalProfile) AddPointsToTotal(multiplier float64) {
-	sum := (float64(p.CurrentWeeksPoints) * multiplier)
+func (p *TransferPortalProfile) AddPointsToTotal(multiplier float64, portalReputation int) {
+	points := float64(p.CurrentWeeksPoints) * multiplier
+	repModifier := (float64(portalReputation) / 100)
+	sum := points * repModifier
 	p.TotalPoints += sum
 	if p.CurrentWeeksPoints == 0 {
 		p.SpendingCount = 0
