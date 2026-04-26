@@ -12,7 +12,8 @@
     "AAMU",
     "ALST",
     "UTC",
-    "UNA"
+    "UNA",
+    "UWF"
   ],
   "AK": ["WASH", "WAST", "EWU"],
   "AR": [
@@ -55,7 +56,10 @@
     "ZONA",
     "USD",
     "UCD",
-    "SSU"
+    "SSU",
+    "HAWI",
+    "UOG",
+    "SAMO"
   ],
   "CO": ["COLO", "CSU", "USAF", "WYOM", "UNM", "BYU", "UTAH", "UNCO"],
   "CT": [
@@ -95,7 +99,8 @@
     "BCU",
     "UCF",
     "MER",
-    "STET"
+    "STET",
+    "UWF"
   ],
   "FL(S)": ["MIAF", "FAU", "FIU", "USF", "UCF", "FLA", "BCU", "STET"],
   "GA": [
@@ -120,7 +125,9 @@
     "CIT",
     "UWG"
   ],
-  "HI": ["HAWI"],
+  "AS": ["HAWI", "UOG", "SAMO"],
+  "GM": ["HAWI", "UOG", "SAMO"],
+  "HI": ["HAWI", "UOG", "SAMO"],
   "ID": [
     "BOIS",
     "WAST",
@@ -269,7 +276,8 @@
     "NDSU",
     "SDAK",
     "SDST",
-    "STMN"
+    "STMN",
+    "MARQ"
   ],
   "MS": [
     "MISS",
@@ -604,7 +612,7 @@
     "VMI",
     "JMU"
   ],
-  "WI": ["WISC", "MINN", "NW", "IOWA", "IAST", "WMU", "UNI", "STMN"],
+  "WI": ["WISC", "MARQ", "MINN", "NW", "IOWA", "IAST", "WMU", "UNI", "STMN"],
   "WY": [
     "WYOM",
     "CSU",

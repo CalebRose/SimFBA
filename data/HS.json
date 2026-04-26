@@ -1201,6 +1201,100 @@
       "HighSchool": "Rivercrest"
     }
   ],
+  "AS": [
+    {
+      "City": "Leone",
+      "HighSchool": "Leone HS"
+    },
+    {
+      "City": "Vailoatai",
+      "HighSchool": "Leone HS"
+    },
+    {
+      "City": "Taputimu",
+      "HighSchool": "Leone HS"
+    },
+    {
+      "City": "Malaleola",
+      "HighSchool": "Leone HS"
+    },
+    {
+      "City": "Maoputasi",
+      "HighSchool": "Samoana HS"
+    },
+    {
+      "City": "Pago Pago",
+      "HighSchool": "Samoana HS"
+    },
+    {
+      "City": "Fagatogo",
+      "HighSchool": "Samoana HS"
+    },
+    {
+      "City": "Ituau",
+      "HighSchool": "Faasao Marist HS"
+    },
+    {
+      "City": "Leone",
+      "HighSchool": "Faasao Marist HS"
+    },
+    {
+      "City": "Taputimu",
+      "HighSchool": "Faasao Marist HS"
+    },
+    {
+      "City": "Aitulagi",
+      "HighSchool": "Faasao Marist HS"
+    },
+    {
+      "City": "Tafuna",
+      "HighSchool": "Tafuna HS"
+    },
+    {
+      "City": "Vaitogi",
+      "HighSchool": "Tafuna HS"
+    },
+    {
+      "City": "Fituga",
+      "HighSchool": "Tafuna HS"
+    },
+    {
+      "City": "Malaeimi",
+      "HighSchool": "Tafuna HS"
+    },
+    {
+      "City": "Nu'uuli",
+      "HighSchool": "Tafuna HS"
+    },
+    {
+      "City": "Fagaitua",
+      "HighSchool": "Fagaitua HS"
+    },
+    {
+      "City": "Amaua",
+      "HighSchool": "Fagaitua HS"
+    },
+    {
+      "City": "Utusia",
+      "HighSchool": "Fagaitua HS"
+    },
+    {
+      "City": "Pagai",
+      "HighSchool": "Fagaitua HS"
+    },
+    {
+      "City": "Alofau",
+      "HighSchool": "Fagaitua HS"
+    },
+    {
+      "City": "Masausi",
+      "HighSchool": "Fagaitua HS"
+    },
+    {
+      "City": "Sa'ilele",
+      "HighSchool": "Fagaitua HS"
+    }
+  ],
   "AZ": [
     {
       "City": "Anthem",
@@ -4875,6 +4969,56 @@
     {
       "City": "Zebulon",
       "HighSchool": "Pike County"
+    }
+  ],
+  "GM": [
+    {
+      "City": "Mangilao",
+      "HighSchool": "George Washington HS"
+    },
+    {
+      "City": "Tamuning",
+      "HighSchool": "John F. Kennedy HS"
+    },
+    {
+      "City": "Dededo",
+      "HighSchool": "Okkodo HS"
+    },
+    {
+      "City": "Yigo",
+      "HighSchool": "Simon Sanchez HS"
+    },
+    {
+      "City": "Santa Rita",
+      "HighSchool": "Southern HS"
+    },
+    {
+      "City": "Barrigada",
+      "HighSchool": "Tiyan HS"
+    },
+    {
+      "City": "Agana Heights",
+      "HighSchool": "Guam HS"
+    },
+    {
+      "City": "Talofofo",
+      "HighSchool": "Notre Dame HS"
+    },
+    {
+      "City": "Ordot",
+      "HighSchool": "St. Thomas Aquinas Catholic HS"
+    },
+    {
+      "City": "Chalan-Pago",
+      "HighSchool": "Father Duenas Memorial"
+    },
+    {
+      "City": "Tamuning",
+      "HighSchool": "St. John's School HS"
+    },
+    {
+      "City": "Mangilao",
+      "HighSchool": "Japanese School of Guam"
     }
   ],
   "HI": [
