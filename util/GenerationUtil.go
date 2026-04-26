@@ -807,7 +807,7 @@ func GetStarRating() int {
 }
 
 func PickState() string {
-	diceRoll := GenerateIntFromRange(1, 4748)
+	diceRoll := GenerateIntFromRange(1, 4751)
 	if diceRoll < 672 {
 		return "FL"
 	}
@@ -958,7 +958,13 @@ func PickState() string {
 	if diceRoll < 4746 {
 		return "NH"
 	}
-	return "VT"
+	if diceRoll < 4748 {
+		return "VT"
+	}
+	if diceRoll < 4749 {
+		return "GM"
+	}
+	return "AS"
 }
 
 // getStateAbbreviation returns the two-letter state abbreviation for a given state name.
