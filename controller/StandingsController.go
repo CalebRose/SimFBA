@@ -70,3 +70,8 @@ func CreateCollegeStandings(w http.ResponseWriter, r *http.Request) {
 	managers.GenerateNewSeasonStandings()
 	json.NewEncoder(w).Encode("Standings Generated")
 }
+
+func GenerateCollegeRankingsHandler(w http.ResponseWriter, r *http.Request) {
+	managers.BaseGetCollegeRankings()
+	json.NewEncoder(w).Encode("College Rankings Generated")
+}

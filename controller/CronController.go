@@ -2,6 +2,7 @@ package controller
 
 import (
 	"fmt"
+	"strconv"
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
@@ -129,6 +130,11 @@ func SyncToNextWeekViaCron() {
 			ts = managers.MoveUpWeek()
 		}
 		managers.AssignTeamGrades()
+
+		if ts.CollegeWeek >= 2 && !ts.CFBSpringGames && ts.CollegeWeek < 21 {
+			seasonID := strconv.Itoa(ts.CollegeSeasonID)
+			managers.GenerateCollegeRankings(seasonID)
+		}
 
 		// Once National Championship is over and we move up a week.
 		if ts.CollegeSeasonOver && ts.CollegeWeek == 21 {

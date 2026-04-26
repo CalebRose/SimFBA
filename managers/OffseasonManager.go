@@ -4,7 +4,6 @@ import (
 	"math"
 	"sort"
 	"strconv"
-	"strings"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/models"
@@ -111,7 +110,8 @@ func UpdateTeamProfileAffinities() {
 
 	}
 
-	seasonID := ts.CollegeSeasonID
+	// Record by previous season since this will run in the season migration
+	seasonID := ts.CollegeSeasonID - 1
 	baseProgramDevSeasonID := seasonID - 4
 
 	// Map all historical standings by team
@@ -246,9 +246,16 @@ func UpdateTeamProfileAffinities() {
 		}
 
 		newCoachRating := uint8(coachPct * 10)
-		if team.Coach == "" || team.Coach == "AI" {
+		if team.Coach == "" || team.Coach == "AI" || len(collegeGamesByCoach) == 0 {
 			// Set default to 5
 			newCoachRating = 5
+		}
+
+		seasonMomentum := uint8(seasonMomentumPct * 10)
+		if seasonMomentum < 1 {
+			seasonMomentum = 1
+		} else if seasonMomentum > 10 {
+			seasonMomentum = 10
 		}
 
 		affinitiesMap[uint(team.ID)] = structs.TeamProfileAffinities{
@@ -261,65 +268,202 @@ func UpdateTeamProfileAffinities() {
 			CampusLife:           uint8(campusLife),
 			ConferencePrestige:   uint8(confPrestige),
 			CoachRating:          newCoachRating,
-			SeasonMomentum:       uint8(seasonMomentumPct * 10),
+			SeasonMomentum:       seasonMomentum,
 			MediaSpotlight:       uint8(mediaSpotlight),
 		}
 	}
 
-	// Conference Prestige
-	// Dynamically build seasonIDs up to the current season to avoid
-	// processing unplayed seasons, which would incorrectly apply -1 to
-	// every conference due to empty standings data.
-	conferenceSeasonIDs := make([]uint, 0, seasonID)
-	for i := uint(1); i <= uint(seasonID); i++ {
-		conferenceSeasonIDs = append(conferenceSeasonIDs, i)
+	// -------------------------------------------------------------------------
+	// Conference Prestige: recency-weighted 4-year average playoff metrics
+	// combined with current-year bowl game rates. All metrics are computed as
+	// per-team averages so that larger conferences are not advantaged over
+	// smaller ones.
+	//
+	// Score components (all rates in [0, 1]):
+	//   Playoff appearance rate (4-yr weighted)   × 3  → up to +3
+	//   Playoff advancement rate (4-yr weighted)  × 2  → up to +2
+	//     (advancement = won at least one playoff game, i.e. CFP Semis or better)
+	//   Current-year bowl appearance rate          × 2  → up to +2
+	//   Current-year bowl win rate (of bowl teams) × 2  → up to +2
+	// Base score = 1; total max = 10.
+	// Recency weights: current season = 4, one year ago = 3, two = 2, three = 1.
+	// Weights are normalised by the sum of weights actually used, so conferences
+	// that have existed for fewer than 4 seasons are not penalised unfairly.
+	// -------------------------------------------------------------------------
+
+	// Build the set of teams that won at least one postseason game this season.
+	bowlWinsSet := make(map[uint]bool)
+	for _, game := range collegeGames {
+		if !game.GameComplete {
+			continue
+		}
+		if game.SeasonID != int(seasonID) {
+			continue
+		}
+		if !game.IsBowlGame && !game.IsPlayoffGame && !game.IsNationalChampionship {
+			continue
+		}
+		if game.HomeTeamWin {
+			bowlWinsSet[uint(game.HomeTeamID)] = true
+		} else {
+			bowlWinsSet[uint(game.AwayTeamID)] = true
+		}
 	}
-	// Prefill Prestige Map to 5
-	conferencePrestigeMap := make(map[uint]int)
+
+	// Organise all loaded standings by (conferenceID, seasonID) for O(1) lookup.
+	type confSeasonKey struct {
+		confID   uint
+		seasonID uint
+	}
+	confSeasonStandingsMap := make(map[confSeasonKey][]structs.CollegeStandings)
+	for _, standing := range collegeStandings {
+		key := confSeasonKey{
+			confID:   uint(standing.ConferenceID),
+			seasonID: uint(standing.SeasonID),
+		}
+		confSeasonStandingsMap[key] = append(confSeasonStandingsMap[key], standing)
+	}
+
+	// Collect unique conference IDs from active teams.
+	confIDSet := make(map[uint]bool)
 	for _, team := range collegeTeams {
-		conferencePrestigeMap[uint(team.ConferenceID)] = 5
+		confIDSet[uint(team.ConferenceID)] = true
 	}
 
-	for _, seasonID := range conferenceSeasonIDs {
-		conferencePrestigeModMap := make(map[uint]uint)
-		stadingsBySeason := repository.FindAllCollegeStandingsRecords(repository.StandingsQuery{SeasonID: strconv.Itoa(int(seasonID))})
+	const playoffWindow = 4
 
-		for _, standing := range stadingsBySeason {
-			maxConferenceValue := 0
-			postSeason := standing.PostSeasonStatus
-			if strings.Contains(postSeason, "Playoffs") {
-				maxConferenceValue = 1
-			} else if strings.Contains(postSeason, "CFP Semifinals") {
-				maxConferenceValue = 2
-			} else if strings.Contains(postSeason, "National Runner-Up") {
-				maxConferenceValue = 3
-			} else if strings.Contains(postSeason, "National Champion") {
-				maxConferenceValue = 4
+	conferencePrestigeMap := make(map[uint]int)
+	confRawScores := make(map[uint]float64)
+	for confID := range confIDSet {
+		weightedPlayoffAppRate := 0.0
+		weightedPlayoffWinRate := 0.0
+		usedWeight := 0.0
+
+		for offset := 0; offset < playoffWindow; offset++ {
+			targetSeason := int(seasonID) - offset
+			if targetSeason < 1 {
+				continue
 			}
-			// Make it the max of the current max value
-			conferencePrestigeModMap[uint(standing.ConferenceID)] = uint(math.Max(float64(conferencePrestigeModMap[uint(standing.ConferenceID)]), float64(maxConferenceValue)))
+			// Newest season (offset=0) gets weight 4; oldest (offset=3) gets weight 1.
+			weight := float64(playoffWindow - offset)
+
+			key := confSeasonKey{confID: confID, seasonID: uint(targetSeason)}
+			seasonStandings := confSeasonStandingsMap[key]
+			if len(seasonStandings) == 0 {
+				continue
+			}
+			total := float64(len(seasonStandings))
+
+			playoffAppearances := 0
+			playoffWins := 0
+			for _, s := range seasonStandings {
+				ps := s.PostSeasonStatus
+				if ps == "Playoffs" || ps == "CFP Semifinals" ||
+					ps == "National Runner-Up" || ps == "National Champion" {
+					playoffAppearances++
+				}
+				// Advancement = won at least one playoff game.
+				if ps == "CFP Semifinals" || ps == "National Runner-Up" || ps == "National Champion" {
+					playoffWins++
+				}
+			}
+
+			weightedPlayoffAppRate += weight * float64(playoffAppearances) / total
+			weightedPlayoffWinRate += weight * float64(playoffWins) / total
+			usedWeight += weight
 		}
 
-		conferenceIds := []uint{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27}
-		for _, id := range conferenceIds {
-			currentSeasonPrestigeMod := conferencePrestigeModMap[id]
-			conferenceMod := 0
-			switch currentSeasonPrestigeMod {
-			case 0:
-				conferenceMod -= 1
-			case 1:
-				conferenceMod += 0
-			case 2:
-				conferenceMod += 1
-			case 3:
-				conferenceMod += 2
-			case 4:
-				conferenceMod += 3
+		if usedWeight > 0 {
+			weightedPlayoffAppRate /= usedWeight
+			weightedPlayoffWinRate /= usedWeight
+		}
+
+		// Current-year bowl metrics.
+		currentKey := confSeasonKey{confID: confID, seasonID: uint(seasonID)}
+		currentStandings := confSeasonStandingsMap[currentKey]
+		currentTotal := float64(len(currentStandings))
+
+		bowlAppearances := 0
+		bowlWins := 0
+		for _, s := range currentStandings {
+			ps := s.PostSeasonStatus
+			if ps != "" && ps != "None" {
+				bowlAppearances++
 			}
-			newPrestige := conferencePrestigeMap[id] + conferenceMod
-			conferencePrestigeMap[id] = newPrestige
+			if bowlWinsSet[uint(s.TeamID)] {
+				bowlWins++
+			}
+		}
+
+		// Bowl appearance rate = fraction of conference teams that made any bowl.
+		// Bowl win rate = fraction of bowl participants that won their game.
+		bowlAppearanceRate := 0.0
+		bowlWinRate := 0.0
+		if currentTotal > 0 {
+			bowlAppearanceRate = float64(bowlAppearances) / currentTotal
+		}
+		if bowlAppearances > 0 {
+			bowlWinRate = float64(bowlWins) / float64(bowlAppearances)
+		}
+
+		rawScore := 1.0 +
+			weightedPlayoffAppRate*3.0 +
+			weightedPlayoffWinRate*2.0 +
+			bowlAppearanceRate*2.0 +
+			bowlWinRate*2.0
+
+		confRawScores[confID] = rawScore
+	}
+
+	// -------------------------------------------------------------------------
+	// Rank-distribute prestige so the full 1–10 scale is always used.
+	// Independents (conf IDs 13 and 22) are fixed at 5 (the median).
+	// FBS conferences occupy the top of the ranking; FCS conferences occupy
+	// the bottom. Within each tier, conferences are sorted by raw score
+	// descending. The combined ordered list is then linearly interpolated
+	// so that rank 1 → prestige 10 and rank 25 → prestige 1.
+	// -------------------------------------------------------------------------
+	independentConfIDs := map[uint]bool{13: true, 22: true}
+	fcsConfIDs := map[uint]bool{
+		14: true, 15: true, 16: true, 17: true, 18: true, 19: true,
+		20: true, 21: true, 23: true, 24: true, 25: true, 26: true, 27: true,
+	}
+
+	fbsConfs := make([]uint, 0)
+	fcsConfs := make([]uint, 0)
+	for confID := range confIDSet {
+		if independentConfIDs[confID] {
+			continue
+		}
+		if fcsConfIDs[confID] {
+			fcsConfs = append(fcsConfs, confID)
+		} else {
+			fbsConfs = append(fbsConfs, confID)
 		}
 	}
+	sort.Slice(fbsConfs, func(i, j int) bool {
+		return confRawScores[fbsConfs[i]] > confRawScores[fbsConfs[j]]
+	})
+	sort.Slice(fcsConfs, func(i, j int) bool {
+		return confRawScores[fcsConfs[i]] > confRawScores[fcsConfs[j]]
+	})
+
+	// FBS conferences occupy the top prestige slots; FCS follow.
+	nonIndepConfs := append(fbsConfs, fcsConfs...)
+
+	n := len(nonIndepConfs)
+	for rank, confID := range nonIndepConfs {
+		prestige := 10
+		if n > 1 {
+			// Linear interpolation: rank 0 → 10, rank n-1 → 1
+			prestige = int(math.Round(10.0 - float64(rank)*9.0/float64(n-1)))
+		}
+		conferencePrestigeMap[confID] = prestige
+	}
+
+	// Independents always sit at the median.
+	conferencePrestigeMap[13] = 5
+	conferencePrestigeMap[22] = 5
 
 	for _, team := range collegeTeams {
 		teamProfile := teamProfileMap[team.ID]

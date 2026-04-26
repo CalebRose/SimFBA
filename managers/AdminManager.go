@@ -709,6 +709,9 @@ func GenerateOffseasonData() {
 	// Reset Recruiting Profiles
 	ResetTeamRecruitingProfiles()
 
+	// Update Profile Affinities
+	UpdateTeamProfileAffinities()
+
 	// Generate Next Croot Class
 	GenerateCroots()
 }

@@ -330,6 +330,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/standings/nfl/season/{seasonID}/", controller.GetAllNFLStandings).Methods("GET")
 	apiRouter.HandleFunc("/standings/nfl/{divisionID}/{seasonID}/", controller.GetNFLStandingsByDivisionIDAndSeasonID).Methods("GET")
 	apiRouter.HandleFunc("/standings/cfb/history/team/{teamID}/", controller.GetHistoricalRecordsByTeamID).Methods("GET")
+	// apiRouter.HandleFunc("/standings/generate/cfb/rankings/", controller.GenerateCollegeRankingsHandler).Methods("GET")
 
 	// Stats Controls
 	apiRouter.HandleFunc("/stats/cfb/player/{playerID}/season/{seasonID}/", controller.GetCFBSeasonStatsRecord).Methods("GET")

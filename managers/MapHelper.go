@@ -434,6 +434,14 @@ func MakeCollegeTeamMap(teams []structs.CollegeTeam) map[uint]structs.CollegeTea
 	return profileMap
 }
 
+func MakeCollegeTeamSeasonStatsMap(stats []structs.CollegeTeamSeasonStats) map[uint]structs.CollegeTeamSeasonStats {
+	statsMap := make(map[uint]structs.CollegeTeamSeasonStats)
+	for _, s := range stats {
+		statsMap[s.TeamID] = s
+	}
+	return statsMap
+}
+
 func MakeNFLTeamMap(teams []structs.NFLTeam) map[uint]structs.NFLTeam {
 	profileMap := make(map[uint]structs.NFLTeam)
 

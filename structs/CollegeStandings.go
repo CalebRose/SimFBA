@@ -8,19 +8,29 @@ import (
 
 type CollegeStandings struct {
 	gorm.Model
-	TeamID               int
-	TeamName             string
-	SeasonID             int
-	Season               int
-	LeagueID             uint
-	LeagueName           string
-	ConferenceID         int
-	ConferenceName       string
-	DivisionID           int
-	PostSeasonStatus     string
-	IsFBS                bool
-	Rank                 uint
-	IsConferenceChampion bool
+	TeamID                int
+	TeamName              string
+	SeasonID              int
+	Season                int
+	LeagueID              uint
+	LeagueName            string
+	ConferenceID          int
+	ConferenceName        string
+	DivisionID            int
+	PostSeasonStatus      string
+	IsFBS                 bool
+	Rank                  uint
+	IsConferenceChampion  bool
+	ToucanRank            uint16
+	PreseasonRank         uint16
+	RegularSeasonRank     uint16
+	SOS                   float32
+	SOR                   float32
+	RPI                   float32
+	ConferenceStrengthAdj float32
+	Tier1Wins             uint16
+	Tier2Wins             uint16
+	BadLosses             uint16
 	BaseStandings
 }
 
