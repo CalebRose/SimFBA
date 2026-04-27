@@ -506,3 +506,265 @@ func FreeAgencyCleanUp() {
 	db.Delete(&structs.FreeAgencyOffer{}, "id > ?", 0)
 	db.Delete(&structs.NFLExtensionOffer{}, "id > ?", 0)
 }
+
+func UpdateSimNFLDraftOrder() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+
+	seasonID := ts.NFLSeasonID
+	prevSeasonID := seasonID - 1
+
+	// Get all NFL Standings for the previous season
+	prevSeasonStandings := repository.FindAllNFLStandingsRecords(repository.StandingsQuery{SeasonID: strconv.Itoa(prevSeasonID)})
+	prevSeasonStandingsMap := MakeNFLStandingsMap(prevSeasonStandings)
+	prevSeasonGames := GetNFLGamesBySeasonID(strconv.Itoa(prevSeasonID))
+	draftPicks := GetAllCurrentSeasonDraftPicks()
+	picksByRound := MakeDraftPicksByRound(draftPicks)
+	nflTeams := GetAllNFLTeams()
+	nflTeamMap := MakeNFLTeamMap(nflTeams)
+
+	// draftOrder is the ranked list of teamIDs, worst-to-best.
+	// This ordering applies to every round: the same team that picks first in
+	// round 1 also picks first in rounds 2-7.
+	draftOrder := GetDraftOrder(prevSeasonStandingsMap, prevSeasonGames, nflTeamMap)
+
+	// Build a position lookup so we can sort picks within each round by their
+	// original team's draft position.
+	orderPos := make(map[uint]int, len(draftOrder))
+	for i, teamID := range draftOrder {
+		orderPos[teamID] = i
+	}
+
+	overallPick := 0
+
+	// Process all 7 rounds.
+	for round := uint(1); round <= 7; round++ {
+		bucket, ok := picksByRound[round]
+		if !ok {
+			continue
+		}
+		regularPicks := bucket[0]
+		compPicks := bucket[1]
+
+		// Sort regular picks by the original team's position in the draft order.
+		sort.Slice(regularPicks, func(i, j int) bool {
+			return orderPos[regularPicks[i].OriginalTeamID] < orderPos[regularPicks[j].OriginalTeamID]
+		})
+
+		// Compensatory picks follow the same ordering within their group,
+		// appended after all regular picks in the round.
+		sort.Slice(compPicks, func(i, j int) bool {
+			return orderPos[compPicks[i].OriginalTeamID] < orderPos[compPicks[j].OriginalTeamID]
+		})
+
+		// Assign pick numbers: regular picks first, comp picks last.
+		pickInRound := 0
+		for _, pick := range append(regularPicks, compPicks...) {
+			overallPick++
+			pickInRound++
+			pick.DraftNumber = uint(pickInRound)
+			repository.SaveNFLDraftPickRecord(pick, db)
+		}
+	}
+
+}
+
+func GetDraftOrder(standingsMap map[uint]structs.NFLStandings, games []structs.NFLGame, nflTeamMap map[uint]structs.NFLTeam) []uint {
+	// -------------------------------------------------------------------------
+	// Step 1: Build regular-season win/loss records and collect opponent lists
+	// for strength-of-schedule calculation. Preseason and playoff games are
+	// excluded; we only use completed regular-season games (week ≤ 18).
+	// -------------------------------------------------------------------------
+	type teamStats struct {
+		wins, losses, ties       int
+		pointsFor, pointsAgainst int
+		opponents                []uint
+	}
+	stats := make(map[uint]*teamStats, len(nflTeamMap))
+	for id := range nflTeamMap {
+		stats[id] = &teamStats{}
+	}
+	for _, g := range games {
+		if g.IsPreseasonGame || g.IsPlayoffGame || !g.GameComplete {
+			continue
+		}
+		if g.HomeTeamID == 0 || g.AwayTeamID == 0 {
+			continue
+		}
+		hID, aID := uint(g.HomeTeamID), uint(g.AwayTeamID)
+		if _, ok := stats[hID]; !ok {
+			stats[hID] = &teamStats{}
+		}
+		if _, ok := stats[aID]; !ok {
+			stats[aID] = &teamStats{}
+		}
+		stats[hID].opponents = append(stats[hID].opponents, aID)
+		stats[aID].opponents = append(stats[aID].opponents, hID)
+		stats[hID].pointsFor += g.HomeTeamScore
+		stats[hID].pointsAgainst += g.AwayTeamScore
+		stats[aID].pointsFor += g.AwayTeamScore
+		stats[aID].pointsAgainst += g.HomeTeamScore
+		if g.HomeTeamScore == g.AwayTeamScore {
+			stats[hID].ties++
+			stats[aID].ties++
+		} else if g.HomeTeamWin {
+			stats[hID].wins++
+			stats[aID].losses++
+		} else {
+			stats[aID].wins++
+			stats[hID].losses++
+		}
+	}
+
+	// -------------------------------------------------------------------------
+	// Step 2: Compute each team's win percentage and strength of schedule.
+	//
+	// Win pct  = (wins + 0.5·ties) / (wins + losses + ties)
+	// SOS      = average win pct of all regular-season opponents
+	// -------------------------------------------------------------------------
+	teamWinPct := make(map[uint]float64, len(stats))
+	teamPtDiff := make(map[uint]int, len(stats))
+	for id, s := range stats {
+		total := s.wins + s.losses + s.ties
+		if total > 0 {
+			teamWinPct[id] = (float64(s.wins) + 0.5*float64(s.ties)) / float64(total)
+		}
+		teamPtDiff[id] = s.pointsFor - s.pointsAgainst
+	}
+	teamSOS := make(map[uint]float64, len(stats))
+	for id, s := range stats {
+		if len(s.opponents) == 0 {
+			continue
+		}
+		sosSum := 0.0
+		for _, oppID := range s.opponents {
+			sosSum += teamWinPct[oppID]
+		}
+		teamSOS[id] = sosSum / float64(len(s.opponents))
+	}
+
+	// -------------------------------------------------------------------------
+	// Step 3: Determine each team's playoff exit round from completed
+	// postseason games.
+	//
+	// Playoff round constants:
+	//   1 = Wild Card    (week 19)
+	//   2 = Divisional   (week 20)
+	//   3 = Conf. Champ. (week 21, IsConferenceChampionship)
+	//   4 = Super Bowl   (IsSuperBowl)
+	//
+	// Draft order groups (0 = picks first, 5 = picks last):
+	//   0 = missed playoffs          — non-playoff teams
+	//   1 = Wild Card loser
+	//   2 = Divisional loser
+	//   3 = Conference Championship loser
+	//   4 = Super Bowl loser
+	//   5 = Super Bowl winner        — picks last
+	// -------------------------------------------------------------------------
+	playoffRoundOf := func(g structs.NFLGame) int {
+		if g.IsSuperBowl || g.Week == 22 {
+			return 4
+		}
+		if g.IsConferenceChampionship || g.Week == 21 {
+			return 3
+		}
+		if g.Week == 20 {
+			return 2
+		}
+		return 1 // Wild Card (week 19)
+	}
+
+	lastRound := make(map[uint]int)
+	lastWon := make(map[uint]bool)
+	for _, g := range games {
+		if !g.IsPlayoffGame || !g.GameComplete {
+			continue
+		}
+		if g.HomeTeamID == 0 || g.AwayTeamID == 0 {
+			continue
+		}
+		round := playoffRoundOf(g)
+		hID, aID := uint(g.HomeTeamID), uint(g.AwayTeamID)
+		if round > lastRound[hID] {
+			lastRound[hID] = round
+			lastWon[hID] = g.HomeTeamWin
+		}
+		if round > lastRound[aID] {
+			lastRound[aID] = round
+			lastWon[aID] = g.AwayTeamWin
+		}
+	}
+
+	playoffGroup := make(map[uint]int, len(nflTeamMap))
+	for id := range nflTeamMap {
+		r := lastRound[id]
+		if r == 0 {
+			// Did not participate in any completed playoff game → non-playoff team.
+			continue
+		}
+		if r == 4 && lastWon[id] {
+			playoffGroup[id] = 5 // Super Bowl winner
+		} else if !lastWon[id] {
+			playoffGroup[id] = r // 1=WC, 2=DIV, 3=CCG, 4=SB loser
+		}
+		// If lastWon == true and r < 4, the team advanced but a higher-round game
+		// should have already updated their entry; this case is left at 0 only if
+		// game data is incomplete.
+	}
+
+	// -------------------------------------------------------------------------
+	// Step 4: Bucket all teams into their draft group and sort each bucket.
+	//
+	// Within every group (except the single Super Bowl loser/winner slots),
+	// teams are ordered worst-first using:
+	//   1. Regular-season win percentage (ascending)
+	//   2. Strength of schedule (ascending — easier schedule = earlier pick)
+	//   3. Point differential (ascending)
+	//   4. TeamID (ascending — deterministic tiebreaker)
+	// -------------------------------------------------------------------------
+	type draftEntry struct {
+		teamID uint
+		winPct float64
+		sos    float64
+		ptDiff int
+	}
+	var groups [6][]draftEntry
+	for id := range nflTeamMap {
+		g := playoffGroup[id]
+		groups[g] = append(groups[g], draftEntry{
+			teamID: id,
+			winPct: teamWinPct[id],
+			sos:    teamSOS[id],
+			ptDiff: teamPtDiff[id],
+		})
+	}
+
+	worstFirst := func(a, b draftEntry) bool {
+		if a.winPct != b.winPct {
+			return a.winPct < b.winPct
+		}
+		if a.sos != b.sos {
+			return a.sos < b.sos
+		}
+		if a.ptDiff != b.ptDiff {
+			return a.ptDiff < b.ptDiff
+		}
+		return a.teamID < b.teamID
+	}
+	for i := range groups {
+		sort.Slice(groups[i], func(a, b int) bool {
+			return worstFirst(groups[i][a], groups[i][b])
+		})
+	}
+
+	// -------------------------------------------------------------------------
+	// Step 5: Flatten groups into the final ordered draft list.
+	// -------------------------------------------------------------------------
+	result := make([]uint, 0, len(nflTeamMap))
+	for _, grp := range groups {
+		for _, e := range grp {
+			result = append(result, e.teamID)
+		}
+	}
+	return result
+}

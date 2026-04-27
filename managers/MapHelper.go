@@ -451,3 +451,38 @@ func MakeNFLTeamMap(teams []structs.NFLTeam) map[uint]structs.NFLTeam {
 
 	return profileMap
 }
+
+// MakeNFLStandingsMap maps each NFL standing record by its TeamID.
+func MakeNFLStandingsMap(standings []structs.NFLStandings) map[uint]structs.NFLStandings {
+	standingsMap := make(map[uint]structs.NFLStandings)
+	for _, s := range standings {
+		standingsMap[s.TeamID] = s
+	}
+	return standingsMap
+}
+
+// MakeDraftPicksByRound buckets all draft picks by round.
+// Within each round, regular picks and compensatory picks are separated so that
+// compensatory picks can be appended after all regular picks in the final order.
+func MakeDraftPicksByRound(picks []structs.NFLDraftPick) map[uint][2][]structs.NFLDraftPick {
+	// map[round] → [0] regular picks, [1] compensatory picks
+	roundMap := make(map[uint][2][]structs.NFLDraftPick)
+	for _, p := range picks {
+		bucket := roundMap[p.DraftRound]
+		if p.IsCompensation {
+			bucket[1] = append(bucket[1], p)
+		} else {
+			bucket[0] = append(bucket[0], p)
+		}
+		roundMap[p.DraftRound] = bucket
+	}
+	return roundMap
+}
+
+func MakeDraftPickMapByID(picks []structs.NFLDraftPick) map[uint]structs.NFLDraftPick {
+	pickMap := make(map[uint]structs.NFLDraftPick)
+	for _, p := range picks {
+		pickMap[p.ID] = p
+	}
+	return pickMap
+}

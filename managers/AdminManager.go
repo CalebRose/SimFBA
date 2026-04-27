@@ -706,6 +706,9 @@ func GenerateOffseasonData() {
 	// Create Standings Records for Leagues
 	GenerateNewSeasonStandings()
 
+	// Update Draft Order
+	UpdateSimNFLDraftOrder()
+
 	// Reset Recruiting Profiles
 	ResetTeamRecruitingProfiles()
 
