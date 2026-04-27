@@ -9,6 +9,7 @@ type NFLDraftPick struct {
 	DrafteeID              uint
 	DraftRound             uint
 	DraftNumber            uint
+	OverallPickNumber      uint
 	TeamID                 uint
 	Team                   string
 	OriginalTeamID         uint

@@ -563,6 +563,7 @@ func UpdateSimNFLDraftOrder() {
 			overallPick++
 			pickInRound++
 			pick.DraftNumber = uint(pickInRound)
+			pick.OverallPickNumber = uint(overallPick)
 			repository.SaveNFLDraftPickRecord(pick, db)
 		}
 	}
