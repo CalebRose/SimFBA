@@ -1,11 +1,14 @@
 package managers
 
 import (
+	"context"
+	"log"
 	"math"
 	"sort"
 	"strconv"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
+	firebase "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
@@ -83,6 +86,13 @@ func PostSeasonStatusCleanUp() {
 
 func UpdateTeamProfileAffinities() {
 	db := dbprovider.GetInstance().GetDB()
+	ctx := context.Background()
+	users, _ := firebase.GetAllUsers(ctx)
+	userMap := make(map[string]firebase.UserRecord)
+	for _, user := range users {
+		userMap[user.Username] = user
+	}
+
 	ts := GetTimestamp()
 	teamRecruitingProfiles := GetAllTeamRecruitingProfiles()
 	teamProfileMap := MakeRecruitTeamProfileMapByTeamID(teamRecruitingProfiles)
@@ -139,9 +149,21 @@ func UpdateTeamProfileAffinities() {
 		campusLife := 5
 		confPrestige := 5
 		mediaSpotlight := 5
+		coach := team.Coach
 		teamStandings := collegeStandingsMap[uint(team.ID)]
 		collegeGamesByTeam := collegeGamesByTeamIDMap[uint(team.ID)]
-		collegeGamesByCoach := collegeGamesByCoachMap[team.Coach]
+		collegeGamesByCoach := collegeGamesByCoachMap[coach]
+		user := userMap[coach]
+
+		// Media Spotlight
+		if user.Username != "" && user.Username != "AI" && user.SimCFBMediaPoints > 0 {
+			mediaSpotlight = user.SimCFBMediaPoints
+			if mediaSpotlight < 1 {
+				mediaSpotlight = 1
+			} else if mediaSpotlight > 10 {
+				mediaSpotlight = 10
+			}
+		}
 
 		// Iterate and track home wins and losses
 		for _, game := range collegeGamesByTeam {
@@ -768,4 +790,11 @@ func GetDraftOrder(standingsMap map[uint]structs.NFLStandings, games []structs.N
 		}
 	}
 	return result
+}
+
+func ResetSimCFBMediaPostCount() {
+	ctx := context.Background()
+	if err := firebase.ResetMediaPointsForCFBUsers(ctx); err != nil {
+		log.Printf("ResetSimCFBMediaPostCount: error resetting media points: %v", err)
+	}
 }

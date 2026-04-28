@@ -715,6 +715,8 @@ func GenerateOffseasonData() {
 	// Update Profile Affinities
 	UpdateTeamProfileAffinities()
 
+	ResetSimCFBMediaPostCount()
+
 	// Generate Next Croot Class
 	GenerateCroots()
 }

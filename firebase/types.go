@@ -3,6 +3,22 @@ package firebase
 import "time"
 
 // ─────────────────────────────────────────────
+// User record
+// ─────────────────────────────────────────────
+
+// UserRecord mirrors the shape of a document in the Firestore "users" collection.
+// UID is populated from the document ID, not from a Firestore field.
+type UserRecord struct {
+	UID               string `firestore:"-"`
+	Username          string `firestore:"username"`
+	DisplayName       string `firestore:"displayName"`
+	Email             string `firestore:"email"`
+	TeamID            int    `firestore:"teamId"`
+	NFLTeamID         int    `firestore:"NFLTeamID"`
+	SimCFBMediaPoints int    `firestore:"SimCFBMediaPoints"`
+}
+
+// ─────────────────────────────────────────────
 // Shared sub-types
 // ─────────────────────────────────────────────
 

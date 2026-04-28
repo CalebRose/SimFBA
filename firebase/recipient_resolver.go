@@ -50,3 +50,66 @@ func resolveUID(ctx context.Context, client *firestore.Client, username string) 
 	}
 	return doc.Ref.ID, nil
 }
+
+// GetAllUsers returns every document in the Firestore "users" collection as a
+// slice of UserRecord.  Each record's UID field is set from the document ID.
+// Errors on individual documents are logged and skipped.
+func GetAllUsers(ctx context.Context) ([]UserRecord, error) {
+	client := GetFirestoreClient()
+
+	iter := client.Collection("users").Documents(ctx)
+	defer iter.Stop()
+
+	var users []UserRecord
+	for {
+		docSnap, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+
+		var rec UserRecord
+		if err := docSnap.DataTo(&rec); err != nil {
+			log.Printf("firebase: could not decode user document %s: %v", docSnap.Ref.ID, err)
+			continue
+		}
+		rec.UID = docSnap.Ref.ID
+		users = append(users, rec)
+	}
+
+	return users, nil
+}
+
+// ResetMediaPointsForCFBUsers queries all Firestore "users" documents where
+// teamId > 0 (i.e. the user has a college football team) and sets the
+// SimCFBMediaPoints field to 0.  Errors on individual documents are logged
+// and skipped so that a single bad record cannot abort the whole sweep.
+func ResetMediaPointsForCFBUsers(ctx context.Context) error {
+	client := GetFirestoreClient()
+
+	iter := client.Collection("users").
+		Where("teamId", ">", 0).
+		Documents(ctx)
+	defer iter.Stop()
+
+	for {
+		docSnap, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return err
+		}
+
+		_, err = docSnap.Ref.Update(ctx, []firestore.Update{
+			{Path: "SimCFBMediaPoints", Value: 0},
+		})
+		if err != nil {
+			log.Printf("firebase: failed to reset SimCFBMediaPoints for user %s: %v", docSnap.Ref.ID, err)
+		}
+	}
+
+	return nil
+}

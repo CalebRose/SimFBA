@@ -25,3 +25,7 @@ func FixNFLDrafteePotentialGrades(w http.ResponseWriter, r *http.Request) {
 func FixPlayerPreferences(w http.ResponseWriter, r *http.Request) {
 	managers.FixPreferencesForAllRecruitsAndCollegePlayers()
 }
+
+func FixRecruitProfileMods(w http.ResponseWriter, r *http.Request) {
+	managers.FixExistingModifiersForRecruits()
+}

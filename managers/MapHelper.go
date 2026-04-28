@@ -486,3 +486,12 @@ func MakeDraftPickMapByID(picks []structs.NFLDraftPick) map[uint]structs.NFLDraf
 	}
 	return pickMap
 }
+
+func MakeCollegeRecruitMapByID(recruits []structs.Recruit) map[uint]structs.Recruit {
+	recruitMap := make(map[uint]structs.Recruit)
+
+	for _, r := range recruits {
+		recruitMap[r.ID] = r
+	}
+	return recruitMap
+}

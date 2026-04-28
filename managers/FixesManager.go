@@ -95,3 +95,24 @@ func FixPreferencesForAllRecruitsAndCollegePlayers() {
 		repository.SaveCollegePlayerRecord(player, db)
 	}
 }
+
+func FixExistingModifiersForRecruits() {
+	db := dbprovider.GetInstance().GetDB()
+	stateMatcher := util.GetStateMatcher()
+	regionMatcher := util.GetStateRegionMatcher()
+	recruits := GetAllRecruitRecords()
+	recruitMap := MakeCollegeRecruitMapByID(recruits)
+	recruitProfiles := repository.FindRecruitPlayerProfileRecords("", "", false, false, false)
+	teamProfiles := GetAllTeamRecruitingProfiles()
+	teamProfileMap := MakeRecruitTeamProfileMapByTeamID(teamProfiles)
+
+	for _, profile := range recruitProfiles {
+		recruit := recruitMap[uint(profile.RecruitID)]
+		teamProfile := teamProfileMap[uint(profile.ProfileID)]
+
+		modifier := CalculateModifierTowardsRecruit(recruit, teamProfile, stateMatcher, regionMatcher)
+
+		profile.PreferenceModifier = modifier
+		repository.SaveRecruitProfile(profile, db)
+	}
+}
