@@ -650,6 +650,23 @@ func createRecruit(position string, stars int, firstName, lastName string, blob 
 
 	primeAge := util.GetPrimeAge(position, archetype)
 
+	// Preferences
+	program := util.GenerateNormalizedIntFromRange(1, 9)
+	profDevelopment := util.GenerateNormalizedIntFromRange(1, 9)
+	traditions := util.GenerateNormalizedIntFromRange(1, 9)
+	facilities := util.GenerateNormalizedIntFromRange(1, 9)
+	atmosphere := util.GenerateNormalizedIntFromRange(1, 9)
+	academics := util.GenerateNormalizedIntFromRange(1, 9)
+	conferencePrestige := util.GenerateNormalizedIntFromRange(1, 9)
+	coachPref := util.GenerateNormalizedIntFromRange(1, 9)
+	seasonMomentumPref := util.GenerateNormalizedIntFromRange(1, 9)
+	campusLife := util.GenerateNormalizedIntFromRange(1, 9)
+	religionPref := util.GenerateNormalizedIntFromRange(1, 9)
+	serviceAcademyPref := util.GenerateNormalizedIntFromRange(1, 9)
+	smallTownPref := util.GenerateNormalizedIntFromRange(1, 9)
+	bigCityPref := util.GenerateNormalizedIntFromRange(1, 9)
+	mediaSpotlightPref := util.GenerateNormalizedIntFromRange(1, 9)
+
 	basePlayer := structs.BasePlayer{
 		FirstName:      firstName,
 		LastName:       lastName,
@@ -690,6 +707,23 @@ func createRecruit(position string, stars int, firstName, lastName string, blob 
 		WorkEthic:      workEthic,
 		AcademicBias:   academicBias,
 		PrimeAge:       uint(primeAge),
+		PlayerPreferences: structs.PlayerPreferences{
+			ProgramPref:        uint8(program),
+			ProfDevPref:        uint8(profDevelopment),
+			TraditionsPref:     uint8(traditions),
+			FacilitiesPref:     uint8(facilities),
+			AtmospherePref:     uint8(atmosphere),
+			AcademicsPref:      uint8(academics),
+			ConferencePref:     uint8(conferencePrestige),
+			CoachPref:          uint8(coachPref),
+			SeasonMomentumPref: uint8(seasonMomentumPref),
+			CampusLifePref:     uint8(campusLife),
+			ReligionPref:       uint8(religionPref),
+			ServiceAcademyPref: uint8(serviceAcademyPref),
+			SmallTownPref:      uint8(smallTownPref),
+			BigCityPref:        uint8(bigCityPref),
+			MediaSpotlightPref: uint8(mediaSpotlightPref),
+		},
 	}
 
 	basePlayer.GetOverall()

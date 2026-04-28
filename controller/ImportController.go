@@ -119,19 +119,3 @@ func ImportAdditionalDCPositions(w http.ResponseWriter, r *http.Request) {
 	// managers.MigrateRetiredAndNFLPlayersToHistoricCFBTable()
 	managers.ImportNewDepthChartPositionRecords()
 }
-
-func FixCollegeStandings(w http.ResponseWriter, r *http.Request) {
-	managers.ResetCollegeStandings()
-}
-
-func FixRecruitPoints(w http.ResponseWriter, r *http.Request) {
-	managers.FixRecruitingProfiles()
-}
-
-func FixOffensiveFormationNames(w http.ResponseWriter, r *http.Request) {
-	managers.FixOffensiveFormationNames()
-}
-
-func FixNFLDrafteePotentialGrades(w http.ResponseWriter, r *http.Request) {
-	managers.FixNFLDrafteePotentialGrades()
-}

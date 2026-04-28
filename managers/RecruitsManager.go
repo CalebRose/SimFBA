@@ -10,6 +10,7 @@ import (
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
+	"github.com/CalebRose/SimFBA/util"
 	"gorm.io/gorm"
 )
 
@@ -195,12 +196,18 @@ func CreateRecruitingProfileForRecruit(recruitPointsDto structs.CreateRecruitPro
 	recruitEntry := GetRecruitProfileByPlayerId(strconv.Itoa(recruitPointsDto.RecruitID),
 		strconv.Itoa(recruitPointsDto.ProfileID))
 
+	teamRecruitingProfile := GetOnlyRecruitingProfileByTeamID(strconv.Itoa(int(recruitPointsDto.ProfileID)))
+
 	if recruitEntry.RecruitID != 0 && recruitEntry.ProfileID != 0 {
 		// Replace Recruit
 		recruitEntry.ToggleRemoveFromBoard()
 		repository.SaveRecruitProfile(recruitEntry, db)
 		return recruitEntry
 	}
+	stateMatcher := util.GetStateMatcher()
+	regionMatcher := util.GetStateRegionMatcher()
+
+	modifier := CalculateModifierTowardsRecruit(recruitPointsDto.PlayerRecruit, teamRecruitingProfile, stateMatcher, regionMatcher)
 
 	createRecruitEntry := structs.RecruitPlayerProfile{
 		SeasonID:            recruitPointsDto.SeasonID,
@@ -216,6 +223,7 @@ func CreateRecruitingProfileForRecruit(recruitPointsDto structs.CreateRecruitPro
 		TeamAbbreviation:    recruitPointsDto.Team,
 		RemovedFromBoard:    false,
 		IsSigned:            false,
+		PreferenceModifier:  modifier,
 	}
 
 	// Create
@@ -317,10 +325,57 @@ func CreateCollegeRecruit(createRecruitDTO structs.CreateRecruitDTO) {
 	db.Save(&collegeRecruit)
 }
 
-func UpdateRecruit(r structs.Recruit) {
-	db := dbprovider.GetInstance().GetDB()
-	err := db.Save(&r).Error
-	if err != nil {
-		log.Fatal(err)
+func CalculateModifierTowardsRecruit(player structs.Recruit, team structs.RecruitingTeamProfile, stateMatcher map[string][]string, regionMatcher map[string]map[string]string) float32 {
+	prefs := player.PlayerPreferences
+	closeToHome := util.IsCrootCloseToHome(player.State, player.City, team.State, team.TeamAbbreviation, stateMatcher, regionMatcher)
+	programMod := calculateMultiplier(uint(team.ProgramPrestige), uint(prefs.ProgramPref), false, false)
+	professionalDevMod := calculateMultiplier(uint(team.ProfessionalPrestige), uint(prefs.ProfDevPref), false, false)
+	traditionsMod := calculateMultiplier(uint(team.Traditions), uint(prefs.TraditionsPref), false, false)
+	facilitiesMod := calculateMultiplier(uint(team.Facilities), uint(prefs.FacilitiesPref), false, false)
+	atmosphereMod := calculateMultiplier(uint(team.Atmosphere), uint(prefs.AtmospherePref), false, false)
+	academicsMod := calculateMultiplier(uint(team.Academics), uint(prefs.AcademicsPref), false, false)
+	conferenceMod := calculateMultiplier(uint(team.ConferencePrestige), uint(prefs.ConferencePref), false, false)
+	coachMod := calculateMultiplier(uint(team.CoachRating), uint(prefs.CoachPref), false, false)
+	seasonMod := calculateMultiplier(uint(team.SeasonMomentum), uint(prefs.SeasonMomentumPref), false, false)
+	collegeLifeMod := calculateMultiplier(uint(team.CampusLife), uint(prefs.CampusLifePref), false, false)
+	mediaSpotlightMod := calculateMultiplier(uint(team.MediaSpotlight), uint(prefs.MediaSpotlightPref), false, false)
+	religionMod := calculateMultiplier(1, uint(prefs.ReligionPref), true, team.ReligionAffinity)
+	serviceMod := calculateMultiplier(1, uint(prefs.ServiceAcademyPref), true, team.ServiceAffinity)
+	smallTownMod := calculateMultiplier(1, uint(prefs.SmallTownPref), true, team.SmallTownAffinity)
+	bigCityMod := calculateMultiplier(1, uint(prefs.BigCityPref), true, team.BigCityAffinity)
+
+	dynamicModSum := programMod + professionalDevMod + traditionsMod + atmosphereMod + conferenceMod + coachMod + seasonMod + mediaSpotlightMod
+	staticMod := facilitiesMod + academicsMod + religionMod + serviceMod + smallTownMod + bigCityMod + collegeLifeMod
+
+	closeToHomeMod := float32(0.0)
+	if closeToHome {
+		closeToHomeMod = 0.2
 	}
+	// Weighted average of dynamic and static modifiers, with dynamic modifiers having a higher weight
+	// since they are more likely to change over time and thus be more influential in a
+	// recruit's decision making process
+	largeMod := (dynamicModSum*1.7 + staticMod*0.3) / 15
+	return largeMod + closeToHomeMod
+}
+
+func calculateBaseModifier(attr int, isBool, booleanAttr bool) float32 {
+	attrVal := attr
+	if isBool {
+		if booleanAttr {
+			attrVal = 10
+		} else {
+			attrVal = 5
+		}
+	}
+	return 1 + float32(attrVal-5)/5
+}
+
+func calculateAdjustmentFactor(teamAttr, playerPref int) float32 {
+	return 1 + float32((teamAttr-playerPref)/10)
+}
+
+func calculateMultiplier(teamAttr uint, playerPref uint, isBool, booleanAttr bool) float32 {
+	baseMod := calculateBaseModifier(int(teamAttr), isBool, booleanAttr)
+	adjFactor := calculateAdjustmentFactor(int(teamAttr), int(playerPref))
+	return baseMod * adjFactor
 }

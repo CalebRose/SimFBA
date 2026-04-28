@@ -1,5 +1,23 @@
 package structs
 
+type PlayerPreferences struct {
+	ProgramPref        uint8
+	ProfDevPref        uint8
+	TraditionsPref     uint8
+	FacilitiesPref     uint8
+	AtmospherePref     uint8
+	AcademicsPref      uint8
+	ConferencePref     uint8
+	CoachPref          uint8
+	SeasonMomentumPref uint8
+	CampusLifePref     uint8
+	ReligionPref       uint8
+	ServiceAcademyPref uint8
+	SmallTownPref      uint8
+	BigCityPref        uint8
+	MediaSpotlightPref uint8
+}
+
 type BasePlayer struct {
 	FirstName       string
 	LastName        string
@@ -55,6 +73,7 @@ type BasePlayer struct {
 	RelativeID      uint
 	RelativeType    uint
 	Notes           string
+	PlayerPreferences
 }
 
 func (cp *BasePlayer) GetOverall() {
@@ -253,4 +272,8 @@ func (bp *BasePlayer) RevertAge() {
 	if bp.Age < 18 {
 		bp.Age = 18
 	}
+}
+
+func (r *BasePlayer) AssignPreferences(pref PlayerPreferences) {
+	r.PlayerPreferences = pref
 }

@@ -170,8 +170,8 @@ func UpdateTeamProfileAffinities() {
 
 		// Iterate by historic standings for program development & seasonMomentum
 		for _, standing := range teamStandings {
-			// Season momentum
-			if standing.SeasonID == ts.CollegeSeasonID {
+			// Season momentum (because this runs in the offseason, calculate with the last season's games)
+			if standing.SeasonID == ts.CollegeSeasonID-1 {
 				seasonMomentumWins = standing.TotalWins
 				seasonMomentumLosses = standing.TotalLosses
 			}

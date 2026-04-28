@@ -112,22 +112,13 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 
 			var curr float64 = 0
 
-			var res float64 = (recruitProfiles)[i].RecruitingEfficiencyScore
-
-			if (recruitProfiles)[i].AffinityOneEligible {
-				res += affinityBonus
-				rpa.ApplyAffinityOne()
-			}
-			if (recruitProfiles)[i].AffinityTwoEligible {
-				res += affinityBonus
-				rpa.ApplyAffinityTwo()
-			}
+			var modifier float32 = (recruitProfiles)[i].PreferenceModifier
 
 			teamProfile := teamMap[strconv.Itoa(int(recruitProfiles[i].ProfileID))]
 
-			curr = float64((recruitProfiles)[i].CurrentWeeksPoints) * res
+			curr = float64((recruitProfiles)[i].CurrentWeeksPoints) * float64(modifier)
 			if !teamProfile.IsFBS {
-				starMod := float64(recruit.Stars) * 0.04
+				starMod := float64(recruit.Stars) * 0.02
 				curr = curr * (1 - starMod)
 			}
 
@@ -667,6 +658,8 @@ func FillAIRecruitingBoards() {
 			if !addPlayer {
 				continue
 			}
+			modifier := CalculateModifierTowardsRecruit(croot, team, stateMatcher, regionMatcher)
+
 			playerProfile := structs.RecruitPlayerProfile{
 				RecruitID:                 int(croot.ID),
 				ProfileID:                 int(team.ID),
@@ -676,6 +669,7 @@ func FillAIRecruitingBoards() {
 				SpendingCount:             0,
 				Scholarship:               false,
 				ScholarshipRevoked:        false,
+				PreferenceModifier:        modifier,
 				TeamAbbreviation:          team.TeamAbbreviation,
 				AffinityOneEligible:       oddsObject.Af1,
 				AffinityTwoEligible:       oddsObject.Af2,

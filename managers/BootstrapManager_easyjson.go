@@ -872,6 +872,36 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in *jlexer.Lexer, ou
 			out.RelativeType = uint(in.Uint())
 		case "Notes":
 			out.Notes = string(in.String())
+		case "ProgramPref":
+			out.ProgramPref = uint8(in.Uint8())
+		case "ProfDevPref":
+			out.ProfDevPref = uint8(in.Uint8())
+		case "TraditionsPref":
+			out.TraditionsPref = uint8(in.Uint8())
+		case "FacilitiesPref":
+			out.FacilitiesPref = uint8(in.Uint8())
+		case "AtmospherePref":
+			out.AtmospherePref = uint8(in.Uint8())
+		case "AcademicsPref":
+			out.AcademicsPref = uint8(in.Uint8())
+		case "ConferencePref":
+			out.ConferencePref = uint8(in.Uint8())
+		case "CoachPref":
+			out.CoachPref = uint8(in.Uint8())
+		case "SeasonMomentumPref":
+			out.SeasonMomentumPref = uint8(in.Uint8())
+		case "CampusLifePref":
+			out.CampusLifePref = uint8(in.Uint8())
+		case "ReligionPref":
+			out.ReligionPref = uint8(in.Uint8())
+		case "ServiceAcademyPref":
+			out.ServiceAcademyPref = uint8(in.Uint8())
+		case "SmallTownPref":
+			out.SmallTownPref = uint8(in.Uint8())
+		case "BigCityPref":
+			out.BigCityPref = uint8(in.Uint8())
+		case "MediaSpotlightPref":
+			out.MediaSpotlightPref = uint8(in.Uint8())
 		case "ID":
 			out.ID = uint(in.Uint())
 		case "CreatedAt":
@@ -1273,6 +1303,81 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out *jwriter.Writer,
 		const prefix string = ",\"Notes\":"
 		out.RawString(prefix)
 		out.String(string(in.Notes))
+	}
+	{
+		const prefix string = ",\"ProgramPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProgramPref))
+	}
+	{
+		const prefix string = ",\"ProfDevPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProfDevPref))
+	}
+	{
+		const prefix string = ",\"TraditionsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.TraditionsPref))
+	}
+	{
+		const prefix string = ",\"FacilitiesPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FacilitiesPref))
+	}
+	{
+		const prefix string = ",\"AtmospherePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AtmospherePref))
+	}
+	{
+		const prefix string = ",\"AcademicsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AcademicsPref))
+	}
+	{
+		const prefix string = ",\"ConferencePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ConferencePref))
+	}
+	{
+		const prefix string = ",\"CoachPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CoachPref))
+	}
+	{
+		const prefix string = ",\"SeasonMomentumPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SeasonMomentumPref))
+	}
+	{
+		const prefix string = ",\"CampusLifePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CampusLifePref))
+	}
+	{
+		const prefix string = ",\"ReligionPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ReligionPref))
+	}
+	{
+		const prefix string = ",\"ServiceAcademyPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ServiceAcademyPref))
+	}
+	{
+		const prefix string = ",\"SmallTownPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SmallTownPref))
+	}
+	{
+		const prefix string = ",\"BigCityPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.BigCityPref))
+	}
+	{
+		const prefix string = ",\"MediaSpotlightPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.MediaSpotlightPref))
 	}
 	{
 		const prefix string = ",\"ID\":"
@@ -2056,6 +2161,26 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs1(in *jlexer.Lexer, ou
 			out.Rank = uint(in.Uint())
 		case "IsConferenceChampion":
 			out.IsConferenceChampion = bool(in.Bool())
+		case "ToucanRank":
+			out.ToucanRank = uint16(in.Uint16())
+		case "PreseasonRank":
+			out.PreseasonRank = uint16(in.Uint16())
+		case "RegularSeasonRank":
+			out.RegularSeasonRank = uint16(in.Uint16())
+		case "SOS":
+			out.SOS = float32(in.Float32())
+		case "SOR":
+			out.SOR = float32(in.Float32())
+		case "RPI":
+			out.RPI = float32(in.Float32())
+		case "ConferenceStrengthAdj":
+			out.ConferenceStrengthAdj = float32(in.Float32())
+		case "Tier1Wins":
+			out.Tier1Wins = uint16(in.Uint16())
+		case "Tier2Wins":
+			out.Tier2Wins = uint16(in.Uint16())
+		case "BadLosses":
+			out.BadLosses = uint16(in.Uint16())
 		case "TotalWins":
 			out.TotalWins = int(in.Int())
 		case "TotalLosses":
@@ -2186,6 +2311,56 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs1(out *jwriter.Writer,
 		const prefix string = ",\"IsConferenceChampion\":"
 		out.RawString(prefix)
 		out.Bool(bool(in.IsConferenceChampion))
+	}
+	{
+		const prefix string = ",\"ToucanRank\":"
+		out.RawString(prefix)
+		out.Uint16(uint16(in.ToucanRank))
+	}
+	{
+		const prefix string = ",\"PreseasonRank\":"
+		out.RawString(prefix)
+		out.Uint16(uint16(in.PreseasonRank))
+	}
+	{
+		const prefix string = ",\"RegularSeasonRank\":"
+		out.RawString(prefix)
+		out.Uint16(uint16(in.RegularSeasonRank))
+	}
+	{
+		const prefix string = ",\"SOS\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.SOS))
+	}
+	{
+		const prefix string = ",\"SOR\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.SOR))
+	}
+	{
+		const prefix string = ",\"RPI\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.RPI))
+	}
+	{
+		const prefix string = ",\"ConferenceStrengthAdj\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.ConferenceStrengthAdj))
+	}
+	{
+		const prefix string = ",\"Tier1Wins\":"
+		out.RawString(prefix)
+		out.Uint16(uint16(in.Tier1Wins))
+	}
+	{
+		const prefix string = ",\"Tier2Wins\":"
+		out.RawString(prefix)
+		out.Uint16(uint16(in.Tier2Wins))
+	}
+	{
+		const prefix string = ",\"BadLosses\":"
+		out.RawString(prefix)
+		out.Uint16(uint16(in.BadLosses))
 	}
 	{
 		const prefix string = ",\"TotalWins\":"
@@ -5474,6 +5649,36 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in *jlexer.Lexer, o
 			out.RelativeType = uint(in.Uint())
 		case "Notes":
 			out.Notes = string(in.String())
+		case "ProgramPref":
+			out.ProgramPref = uint8(in.Uint8())
+		case "ProfDevPref":
+			out.ProfDevPref = uint8(in.Uint8())
+		case "TraditionsPref":
+			out.TraditionsPref = uint8(in.Uint8())
+		case "FacilitiesPref":
+			out.FacilitiesPref = uint8(in.Uint8())
+		case "AtmospherePref":
+			out.AtmospherePref = uint8(in.Uint8())
+		case "AcademicsPref":
+			out.AcademicsPref = uint8(in.Uint8())
+		case "ConferencePref":
+			out.ConferencePref = uint8(in.Uint8())
+		case "CoachPref":
+			out.CoachPref = uint8(in.Uint8())
+		case "SeasonMomentumPref":
+			out.SeasonMomentumPref = uint8(in.Uint8())
+		case "CampusLifePref":
+			out.CampusLifePref = uint8(in.Uint8())
+		case "ReligionPref":
+			out.ReligionPref = uint8(in.Uint8())
+		case "ServiceAcademyPref":
+			out.ServiceAcademyPref = uint8(in.Uint8())
+		case "SmallTownPref":
+			out.SmallTownPref = uint8(in.Uint8())
+		case "BigCityPref":
+			out.BigCityPref = uint8(in.Uint8())
+		case "MediaSpotlightPref":
+			out.MediaSpotlightPref = uint8(in.Uint8())
 		case "ID":
 			out.ID = uint(in.Uint())
 		case "CreatedAt":
@@ -6003,6 +6208,81 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out *jwriter.Writer
 		const prefix string = ",\"Notes\":"
 		out.RawString(prefix)
 		out.String(string(in.Notes))
+	}
+	{
+		const prefix string = ",\"ProgramPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProgramPref))
+	}
+	{
+		const prefix string = ",\"ProfDevPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProfDevPref))
+	}
+	{
+		const prefix string = ",\"TraditionsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.TraditionsPref))
+	}
+	{
+		const prefix string = ",\"FacilitiesPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FacilitiesPref))
+	}
+	{
+		const prefix string = ",\"AtmospherePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AtmospherePref))
+	}
+	{
+		const prefix string = ",\"AcademicsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AcademicsPref))
+	}
+	{
+		const prefix string = ",\"ConferencePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ConferencePref))
+	}
+	{
+		const prefix string = ",\"CoachPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CoachPref))
+	}
+	{
+		const prefix string = ",\"SeasonMomentumPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SeasonMomentumPref))
+	}
+	{
+		const prefix string = ",\"CampusLifePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CampusLifePref))
+	}
+	{
+		const prefix string = ",\"ReligionPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ReligionPref))
+	}
+	{
+		const prefix string = ",\"ServiceAcademyPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ServiceAcademyPref))
+	}
+	{
+		const prefix string = ",\"SmallTownPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SmallTownPref))
+	}
+	{
+		const prefix string = ",\"BigCityPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.BigCityPref))
+	}
+	{
+		const prefix string = ",\"MediaSpotlightPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.MediaSpotlightPref))
 	}
 	{
 		const prefix string = ",\"ID\":"
@@ -9121,6 +9401,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in *jlexer.Lexer, o
 			out.DraftRound = uint(in.Uint())
 		case "DraftNumber":
 			out.DraftNumber = uint(in.Uint())
+		case "OverallPickNumber":
+			out.OverallPickNumber = uint(in.Uint())
 		case "TeamID":
 			out.TeamID = uint(in.Uint())
 		case "Team":
@@ -9207,6 +9489,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out *jwriter.Writer
 		const prefix string = ",\"DraftNumber\":"
 		out.RawString(prefix)
 		out.Uint(uint(in.DraftNumber))
+	}
+	{
+		const prefix string = ",\"OverallPickNumber\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.OverallPickNumber))
 	}
 	{
 		const prefix string = ",\"TeamID\":"
@@ -14301,6 +14588,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs31(in *jlexer.Lexer, o
 			out.SpendingCount = int(in.Int())
 		case "RecruitingEfficiencyScore":
 			out.RecruitingEfficiencyScore = float64(in.Float64())
+		case "PreferenceModifier":
+			out.PreferenceModifier = float32(in.Float32())
 		case "Scholarship":
 			out.Scholarship = bool(in.Bool())
 		case "ScholarshipRevoked":
@@ -14400,6 +14689,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs31(out *jwriter.Writer
 		const prefix string = ",\"RecruitingEfficiencyScore\":"
 		out.RawString(prefix)
 		out.Float64(float64(in.RecruitingEfficiencyScore))
+	}
+	{
+		const prefix string = ",\"PreferenceModifier\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.PreferenceModifier))
 	}
 	{
 		const prefix string = ",\"Scholarship\":"
@@ -14673,6 +14967,36 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in *jlexer.Lexer, o
 			out.RelativeType = uint(in.Uint())
 		case "Notes":
 			out.Notes = string(in.String())
+		case "ProgramPref":
+			out.ProgramPref = uint8(in.Uint8())
+		case "ProfDevPref":
+			out.ProfDevPref = uint8(in.Uint8())
+		case "TraditionsPref":
+			out.TraditionsPref = uint8(in.Uint8())
+		case "FacilitiesPref":
+			out.FacilitiesPref = uint8(in.Uint8())
+		case "AtmospherePref":
+			out.AtmospherePref = uint8(in.Uint8())
+		case "AcademicsPref":
+			out.AcademicsPref = uint8(in.Uint8())
+		case "ConferencePref":
+			out.ConferencePref = uint8(in.Uint8())
+		case "CoachPref":
+			out.CoachPref = uint8(in.Uint8())
+		case "SeasonMomentumPref":
+			out.SeasonMomentumPref = uint8(in.Uint8())
+		case "CampusLifePref":
+			out.CampusLifePref = uint8(in.Uint8())
+		case "ReligionPref":
+			out.ReligionPref = uint8(in.Uint8())
+		case "ServiceAcademyPref":
+			out.ServiceAcademyPref = uint8(in.Uint8())
+		case "SmallTownPref":
+			out.SmallTownPref = uint8(in.Uint8())
+		case "BigCityPref":
+			out.BigCityPref = uint8(in.Uint8())
+		case "MediaSpotlightPref":
+			out.MediaSpotlightPref = uint8(in.Uint8())
 		case "ID":
 			out.ID = uint(in.Uint())
 		case "CreatedAt":
@@ -15084,6 +15408,81 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out *jwriter.Writer
 		const prefix string = ",\"Notes\":"
 		out.RawString(prefix)
 		out.String(string(in.Notes))
+	}
+	{
+		const prefix string = ",\"ProgramPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProgramPref))
+	}
+	{
+		const prefix string = ",\"ProfDevPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProfDevPref))
+	}
+	{
+		const prefix string = ",\"TraditionsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.TraditionsPref))
+	}
+	{
+		const prefix string = ",\"FacilitiesPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FacilitiesPref))
+	}
+	{
+		const prefix string = ",\"AtmospherePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AtmospherePref))
+	}
+	{
+		const prefix string = ",\"AcademicsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AcademicsPref))
+	}
+	{
+		const prefix string = ",\"ConferencePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ConferencePref))
+	}
+	{
+		const prefix string = ",\"CoachPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CoachPref))
+	}
+	{
+		const prefix string = ",\"SeasonMomentumPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SeasonMomentumPref))
+	}
+	{
+		const prefix string = ",\"CampusLifePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CampusLifePref))
+	}
+	{
+		const prefix string = ",\"ReligionPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ReligionPref))
+	}
+	{
+		const prefix string = ",\"ServiceAcademyPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ServiceAcademyPref))
+	}
+	{
+		const prefix string = ",\"SmallTownPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SmallTownPref))
+	}
+	{
+		const prefix string = ",\"BigCityPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.BigCityPref))
+	}
+	{
+		const prefix string = ",\"MediaSpotlightPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.MediaSpotlightPref))
 	}
 	{
 		const prefix string = ",\"ID\":"
@@ -17033,6 +17432,36 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in *jlexer.Lexer, o
 			out.RelativeType = uint(in.Uint())
 		case "Notes":
 			out.Notes = string(in.String())
+		case "ProgramPref":
+			out.ProgramPref = uint8(in.Uint8())
+		case "ProfDevPref":
+			out.ProfDevPref = uint8(in.Uint8())
+		case "TraditionsPref":
+			out.TraditionsPref = uint8(in.Uint8())
+		case "FacilitiesPref":
+			out.FacilitiesPref = uint8(in.Uint8())
+		case "AtmospherePref":
+			out.AtmospherePref = uint8(in.Uint8())
+		case "AcademicsPref":
+			out.AcademicsPref = uint8(in.Uint8())
+		case "ConferencePref":
+			out.ConferencePref = uint8(in.Uint8())
+		case "CoachPref":
+			out.CoachPref = uint8(in.Uint8())
+		case "SeasonMomentumPref":
+			out.SeasonMomentumPref = uint8(in.Uint8())
+		case "CampusLifePref":
+			out.CampusLifePref = uint8(in.Uint8())
+		case "ReligionPref":
+			out.ReligionPref = uint8(in.Uint8())
+		case "ServiceAcademyPref":
+			out.ServiceAcademyPref = uint8(in.Uint8())
+		case "SmallTownPref":
+			out.SmallTownPref = uint8(in.Uint8())
+		case "BigCityPref":
+			out.BigCityPref = uint8(in.Uint8())
+		case "MediaSpotlightPref":
+			out.MediaSpotlightPref = uint8(in.Uint8())
 		case "ID":
 			out.ID = uint(in.Uint())
 		case "CreatedAt":
@@ -17564,6 +17993,81 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out *jwriter.Writer
 		out.String(string(in.Notes))
 	}
 	{
+		const prefix string = ",\"ProgramPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProgramPref))
+	}
+	{
+		const prefix string = ",\"ProfDevPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProfDevPref))
+	}
+	{
+		const prefix string = ",\"TraditionsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.TraditionsPref))
+	}
+	{
+		const prefix string = ",\"FacilitiesPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FacilitiesPref))
+	}
+	{
+		const prefix string = ",\"AtmospherePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AtmospherePref))
+	}
+	{
+		const prefix string = ",\"AcademicsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AcademicsPref))
+	}
+	{
+		const prefix string = ",\"ConferencePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ConferencePref))
+	}
+	{
+		const prefix string = ",\"CoachPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CoachPref))
+	}
+	{
+		const prefix string = ",\"SeasonMomentumPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SeasonMomentumPref))
+	}
+	{
+		const prefix string = ",\"CampusLifePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CampusLifePref))
+	}
+	{
+		const prefix string = ",\"ReligionPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ReligionPref))
+	}
+	{
+		const prefix string = ",\"ServiceAcademyPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ServiceAcademyPref))
+	}
+	{
+		const prefix string = ",\"SmallTownPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SmallTownPref))
+	}
+	{
+		const prefix string = ",\"BigCityPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.BigCityPref))
+	}
+	{
+		const prefix string = ",\"MediaSpotlightPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.MediaSpotlightPref))
+	}
+	{
 		const prefix string = ",\"ID\":"
 		out.RawString(prefix)
 		out.Uint(uint(in.ID))
@@ -17771,6 +18275,36 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs38(in *jlexer.Lexer, o
 			out.RelativeType = uint(in.Uint())
 		case "Notes":
 			out.Notes = string(in.String())
+		case "ProgramPref":
+			out.ProgramPref = uint8(in.Uint8())
+		case "ProfDevPref":
+			out.ProfDevPref = uint8(in.Uint8())
+		case "TraditionsPref":
+			out.TraditionsPref = uint8(in.Uint8())
+		case "FacilitiesPref":
+			out.FacilitiesPref = uint8(in.Uint8())
+		case "AtmospherePref":
+			out.AtmospherePref = uint8(in.Uint8())
+		case "AcademicsPref":
+			out.AcademicsPref = uint8(in.Uint8())
+		case "ConferencePref":
+			out.ConferencePref = uint8(in.Uint8())
+		case "CoachPref":
+			out.CoachPref = uint8(in.Uint8())
+		case "SeasonMomentumPref":
+			out.SeasonMomentumPref = uint8(in.Uint8())
+		case "CampusLifePref":
+			out.CampusLifePref = uint8(in.Uint8())
+		case "ReligionPref":
+			out.ReligionPref = uint8(in.Uint8())
+		case "ServiceAcademyPref":
+			out.ServiceAcademyPref = uint8(in.Uint8())
+		case "SmallTownPref":
+			out.SmallTownPref = uint8(in.Uint8())
+		case "BigCityPref":
+			out.BigCityPref = uint8(in.Uint8())
+		case "MediaSpotlightPref":
+			out.MediaSpotlightPref = uint8(in.Uint8())
 		case "ID":
 			out.ID = uint(in.Uint())
 		case "CreatedAt":
@@ -18172,6 +18706,81 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out *jwriter.Writer
 		const prefix string = ",\"Notes\":"
 		out.RawString(prefix)
 		out.String(string(in.Notes))
+	}
+	{
+		const prefix string = ",\"ProgramPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProgramPref))
+	}
+	{
+		const prefix string = ",\"ProfDevPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProfDevPref))
+	}
+	{
+		const prefix string = ",\"TraditionsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.TraditionsPref))
+	}
+	{
+		const prefix string = ",\"FacilitiesPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FacilitiesPref))
+	}
+	{
+		const prefix string = ",\"AtmospherePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AtmospherePref))
+	}
+	{
+		const prefix string = ",\"AcademicsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AcademicsPref))
+	}
+	{
+		const prefix string = ",\"ConferencePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ConferencePref))
+	}
+	{
+		const prefix string = ",\"CoachPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CoachPref))
+	}
+	{
+		const prefix string = ",\"SeasonMomentumPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SeasonMomentumPref))
+	}
+	{
+		const prefix string = ",\"CampusLifePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CampusLifePref))
+	}
+	{
+		const prefix string = ",\"ReligionPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ReligionPref))
+	}
+	{
+		const prefix string = ",\"ServiceAcademyPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ServiceAcademyPref))
+	}
+	{
+		const prefix string = ",\"SmallTownPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SmallTownPref))
+	}
+	{
+		const prefix string = ",\"BigCityPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.BigCityPref))
+	}
+	{
+		const prefix string = ",\"MediaSpotlightPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.MediaSpotlightPref))
 	}
 	{
 		const prefix string = ",\"ID\":"
@@ -24309,6 +24918,36 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAModels(in *jlexer.Lexer, out 
 			out.RelativeType = uint(in.Uint())
 		case "Notes":
 			out.Notes = string(in.String())
+		case "ProgramPref":
+			out.ProgramPref = uint8(in.Uint8())
+		case "ProfDevPref":
+			out.ProfDevPref = uint8(in.Uint8())
+		case "TraditionsPref":
+			out.TraditionsPref = uint8(in.Uint8())
+		case "FacilitiesPref":
+			out.FacilitiesPref = uint8(in.Uint8())
+		case "AtmospherePref":
+			out.AtmospherePref = uint8(in.Uint8())
+		case "AcademicsPref":
+			out.AcademicsPref = uint8(in.Uint8())
+		case "ConferencePref":
+			out.ConferencePref = uint8(in.Uint8())
+		case "CoachPref":
+			out.CoachPref = uint8(in.Uint8())
+		case "SeasonMomentumPref":
+			out.SeasonMomentumPref = uint8(in.Uint8())
+		case "CampusLifePref":
+			out.CampusLifePref = uint8(in.Uint8())
+		case "ReligionPref":
+			out.ReligionPref = uint8(in.Uint8())
+		case "ServiceAcademyPref":
+			out.ServiceAcademyPref = uint8(in.Uint8())
+		case "SmallTownPref":
+			out.SmallTownPref = uint8(in.Uint8())
+		case "BigCityPref":
+			out.BigCityPref = uint8(in.Uint8())
+		case "MediaSpotlightPref":
+			out.MediaSpotlightPref = uint8(in.Uint8())
 		case "ID":
 			out.ID = uint(in.Uint())
 		case "CreatedAt":
@@ -24794,6 +25433,81 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out *jwriter.Writer, i
 		const prefix string = ",\"Notes\":"
 		out.RawString(prefix)
 		out.String(string(in.Notes))
+	}
+	{
+		const prefix string = ",\"ProgramPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProgramPref))
+	}
+	{
+		const prefix string = ",\"ProfDevPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProfDevPref))
+	}
+	{
+		const prefix string = ",\"TraditionsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.TraditionsPref))
+	}
+	{
+		const prefix string = ",\"FacilitiesPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FacilitiesPref))
+	}
+	{
+		const prefix string = ",\"AtmospherePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AtmospherePref))
+	}
+	{
+		const prefix string = ",\"AcademicsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AcademicsPref))
+	}
+	{
+		const prefix string = ",\"ConferencePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ConferencePref))
+	}
+	{
+		const prefix string = ",\"CoachPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CoachPref))
+	}
+	{
+		const prefix string = ",\"SeasonMomentumPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SeasonMomentumPref))
+	}
+	{
+		const prefix string = ",\"CampusLifePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CampusLifePref))
+	}
+	{
+		const prefix string = ",\"ReligionPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ReligionPref))
+	}
+	{
+		const prefix string = ",\"ServiceAcademyPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ServiceAcademyPref))
+	}
+	{
+		const prefix string = ",\"SmallTownPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SmallTownPref))
+	}
+	{
+		const prefix string = ",\"BigCityPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.BigCityPref))
+	}
+	{
+		const prefix string = ",\"MediaSpotlightPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.MediaSpotlightPref))
 	}
 	{
 		const prefix string = ",\"ID\":"

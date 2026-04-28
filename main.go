@@ -151,13 +151,26 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/nfl/draft/reveal/attribute", controller.RevealScoutingAttribute).Methods("POST")
 	apiRouter.HandleFunc("/nfl/draft/remove/{id}", controller.RemovePlayerFromScoutBoard).Methods("GET")
 	apiRouter.HandleFunc("/nfl/draft/scout/{id}", controller.GetScoutingDataByDraftee).Methods("GET")
-	apiRouter.HandleFunc("/nfl/draft/fix/draftee/potentials", controller.FixNFLDrafteePotentialGrades).Methods("GET")
 	// apiRouter.HandleFunc("/nfl/draft/boom/bust", controller.BoomOrBust).Methods("GET")
 
 	// Face Controls
 	// apiRouter.HandleFunc("/faces/migrate", controller.MigrateFaceData).Methods("GET")
 	// apiRouter.HandleFunc("/spending/count/fix", controller.FixSpendingCount).Methods("GET")
 	apiRouter.HandleFunc("/faces", controller.GetAllFaces).Methods("GET")
+
+	// Fix Controls -- endpoitns that fixed issues
+	// apiRouter.HandleFunc("/nfl/draft/fix/draftee/potentials", controller.FixNFLDrafteePotentialGrades).Methods("GET")
+	// apiRouter.HandleFunc("/games/byeweek/fix/", controller.FixByeWeekLogic).Methods("GET")
+	// apiRouter.HandleFunc("/import/simfba/fix/contracts", controller.FixBrokenExtensions).Methods("GET")
+	// apiRouter.HandleFunc("/fix/simcfb/nfl/dts", controller.FixCollegeDTOVRs).Methods("GET")
+	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
+	// apiRouter.HandleFunc("/fix/simcfb/standings/", controller.FixCollegeStandings).Methods("GET")
+	// apiRouter.HandleFunc("/fix/simfba/secondary/positions/", controller.FixSecondaryPositions).Methods("GET")
+	// apiRouter.HandleFunc("/fix/spending/count", controller.FixSpendingCount).Methods("GET")
+	// apiRouter.HandleFunc("/fix/scheme/penalties", controller.CheckForSchemePenalties).Methods("GET")
+	// apiRouter.HandleFunc("/fix/recruit/points", controller.FixRecruitPoints).Methods("GET")
+	// apiRouter.HandleFunc("/fix/formation/names", controller.FixOffensiveFormationNames).Methods("GET")
+	// apiRouter.HandleFunc("/fix/player/preferences", controller.FixPlayerPreferences).Methods("GET")
 
 	// Free Agency Controls
 	// apiRouter.HandleFunc("/nfl/extensions/sync", controller.SyncExtensions).Methods("GET")
@@ -173,7 +186,6 @@ func handleRequests() http.Handler {
 
 	// Game Controls
 	apiRouter.HandleFunc("/games/update/time/", controller.UpdateTimeslot).Methods("POST", "OPTIONS")
-	// apiRouter.HandleFunc("/games/byeweek/fix/", controller.FixByeWeekLogic).Methods("GET")
 	apiRouter.HandleFunc("/games/college/week/{weekID}/", controller.GetCollegeGamesByTimeslotWeekId).Methods("GET")
 	apiRouter.HandleFunc("/games/college/timeslot/{timeSlot}/{weekID}", controller.GetCollegeGamesByTimeslotWeekId).Methods("GET")
 	apiRouter.HandleFunc("/games/college/team/{teamID}/{seasonID}", controller.GetCollegeGamesByTeamIDAndSeasonID).Methods("GET")
@@ -226,19 +238,10 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/import/simnfl/updated/values", controller.ImportSimNFLMinimumValues).Methods("GET")
 	// apiRouter.HandleFunc("/import/simfba/draft/picks", controller.ImportNFLDraftPicks).Methods("GET")
 	// apiRouter.HandleFunc("/import/simfba/updated/picks", controller.UpdateDraftPicksForDraft).Methods("GET")
-	// apiRouter.HandleFunc("/import/simfba/fix/contracts", controller.FixBrokenExtensions).Methods("GET")
 	// apiRouter.HandleFunc("/import/simfba/import/attributes", controller.ImplementPrimeAge).Methods("GET")
 	// apiRouter.HandleFunc("/import/simcfb/college/standings", controller.CreateCollegeStandings).Methods("GET")
 	// apiRouter.HandleFunc("/import/simcfb/2021/stats", controller.Import2021CFBStats).Methods("GET")
 	// apiRouter.HandleFunc("/import/additional/dc/positions", controller.ImportAdditionalDCPositions).Methods("GET")
-	// apiRouter.HandleFunc("/fix/simcfb/nfl/dts", controller.FixCollegeDTOVRs).Methods("GET")
-	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
-	// apiRouter.HandleFunc("/fix/simcfb/standings/", controller.FixCollegeStandings).Methods("GET")
-	// apiRouter.HandleFunc("/fix/simfba/secondary/positions/", controller.FixSecondaryPositions).Methods("GET")
-	// apiRouter.HandleFunc("/fix/spending/count", controller.FixSpendingCount).Methods("GET")
-	// apiRouter.HandleFunc("/fix/scheme/penalties", controller.CheckForSchemePenalties).Methods("GET")
-	// apiRouter.HandleFunc("/fix/recruit/points", controller.FixRecruitPoints).Methods("GET")
-	// apiRouter.HandleFunc("/fix/formation/names", controller.FixOffensiveFormationNames).Methods("GET")
 	// apiRouter.HandleFunc("/assign/team/grades", controller.ImportTeamGrades).Methods("GET")
 	// apiRouter.HandleFunc("/run/predraft/events", controller.RunPreDraftEvents).Methods("GET")
 

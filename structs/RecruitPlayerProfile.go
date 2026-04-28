@@ -15,6 +15,7 @@ type RecruitPlayerProfile struct {
 	PreviousWeekPoints        float64
 	SpendingCount             int
 	RecruitingEfficiencyScore float64
+	PreferenceModifier        float32
 	Scholarship               bool
 	ScholarshipRevoked        bool
 	AffinityOneEligible       bool
