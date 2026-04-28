@@ -171,7 +171,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/recruit/points", controller.FixRecruitPoints).Methods("GET")
 	// apiRouter.HandleFunc("/fix/formation/names", controller.FixOffensiveFormationNames).Methods("GET")
 	// apiRouter.HandleFunc("/fix/player/preferences", controller.FixPlayerPreferences).Methods("GET")
-	// apiRouter.HandleFunc("/fix/profile/mods", controller.FixRecruitProfileMods).Methods("GET")
+	apiRouter.HandleFunc("/fix/profile/mods", controller.FixRecruitProfileMods).Methods("GET")
 
 	// Free Agency Controls
 	// apiRouter.HandleFunc("/nfl/extensions/sync", controller.SyncExtensions).Methods("GET")

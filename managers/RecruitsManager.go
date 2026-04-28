@@ -344,8 +344,8 @@ func CalculateModifierTowardsRecruit(player structs.Recruit, team structs.Recrui
 	smallTownMod := calculateMultiplier(1, uint(prefs.SmallTownPref), true, team.SmallTownAffinity)
 	bigCityMod := calculateMultiplier(1, uint(prefs.BigCityPref), true, team.BigCityAffinity)
 
-	dynamicModSum := programMod + professionalDevMod + traditionsMod + atmosphereMod + conferenceMod + coachMod + seasonMod + mediaSpotlightMod
-	staticMod := facilitiesMod + academicsMod + religionMod + serviceMod + smallTownMod + bigCityMod + collegeLifeMod
+	dynamicModSum := (programMod + professionalDevMod + traditionsMod + atmosphereMod + conferenceMod + coachMod + seasonMod + mediaSpotlightMod) * 1.7
+	staticMod := (facilitiesMod + academicsMod + religionMod + serviceMod + smallTownMod + bigCityMod + collegeLifeMod) * 0.3
 
 	closeToHomeMod := float32(0.0)
 	if closeToHome {
@@ -354,7 +354,7 @@ func CalculateModifierTowardsRecruit(player structs.Recruit, team structs.Recrui
 	// Weighted average of dynamic and static modifiers, with dynamic modifiers having a higher weight
 	// since they are more likely to change over time and thus be more influential in a
 	// recruit's decision making process
-	largeMod := (dynamicModSum*1.7 + staticMod*0.3) / 15
+	largeMod := (dynamicModSum + staticMod) / 15
 	return largeMod + closeToHomeMod
 }
 
@@ -371,11 +371,19 @@ func calculateBaseModifier(attr int, isBool, booleanAttr bool) float32 {
 }
 
 func calculateAdjustmentFactor(teamAttr, playerPref int) float32 {
-	return 1 + float32((teamAttr-playerPref)/10)
+	return 1 + float32(teamAttr-playerPref)/10
 }
 
 func calculateMultiplier(teamAttr uint, playerPref uint, isBool, booleanAttr bool) float32 {
 	baseMod := calculateBaseModifier(int(teamAttr), isBool, booleanAttr)
-	adjFactor := calculateAdjustmentFactor(int(teamAttr), int(playerPref))
+	effectiveAttr := int(teamAttr)
+	if isBool {
+		if booleanAttr {
+			effectiveAttr = 10
+		} else {
+			effectiveAttr = 5
+		}
+	}
+	adjFactor := calculateAdjustmentFactor(effectiveAttr, int(playerPref))
 	return baseMod * adjFactor
 }
