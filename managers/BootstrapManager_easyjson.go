@@ -21269,6 +21269,36 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs42(in *jlexer.Lexer, o
 				}
 				in.Delim(']')
 			}
+		case "ProgramPref":
+			out.ProgramPref = uint8(in.Uint8())
+		case "ProfDevPref":
+			out.ProfDevPref = uint8(in.Uint8())
+		case "TraditionsPref":
+			out.TraditionsPref = uint8(in.Uint8())
+		case "FacilitiesPref":
+			out.FacilitiesPref = uint8(in.Uint8())
+		case "AtmospherePref":
+			out.AtmospherePref = uint8(in.Uint8())
+		case "AcademicsPref":
+			out.AcademicsPref = uint8(in.Uint8())
+		case "ConferencePref":
+			out.ConferencePref = uint8(in.Uint8())
+		case "CoachPref":
+			out.CoachPref = uint8(in.Uint8())
+		case "SeasonMomentumPref":
+			out.SeasonMomentumPref = uint8(in.Uint8())
+		case "CampusLifePref":
+			out.CampusLifePref = uint8(in.Uint8())
+		case "ReligionPref":
+			out.ReligionPref = uint8(in.Uint8())
+		case "ServiceAcademyPref":
+			out.ServiceAcademyPref = uint8(in.Uint8())
+		case "SmallTownPref":
+			out.SmallTownPref = uint8(in.Uint8())
+		case "BigCityPref":
+			out.BigCityPref = uint8(in.Uint8())
+		case "MediaSpotlightPref":
+			out.MediaSpotlightPref = uint8(in.Uint8())
 		default:
 			in.SkipRecursive()
 		}
@@ -21438,6 +21468,81 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs42(out *jwriter.Writer
 			}
 			out.RawByte(']')
 		}
+	}
+	{
+		const prefix string = ",\"ProgramPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProgramPref))
+	}
+	{
+		const prefix string = ",\"ProfDevPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProfDevPref))
+	}
+	{
+		const prefix string = ",\"TraditionsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.TraditionsPref))
+	}
+	{
+		const prefix string = ",\"FacilitiesPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FacilitiesPref))
+	}
+	{
+		const prefix string = ",\"AtmospherePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AtmospherePref))
+	}
+	{
+		const prefix string = ",\"AcademicsPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.AcademicsPref))
+	}
+	{
+		const prefix string = ",\"ConferencePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ConferencePref))
+	}
+	{
+		const prefix string = ",\"CoachPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CoachPref))
+	}
+	{
+		const prefix string = ",\"SeasonMomentumPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SeasonMomentumPref))
+	}
+	{
+		const prefix string = ",\"CampusLifePref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.CampusLifePref))
+	}
+	{
+		const prefix string = ",\"ReligionPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ReligionPref))
+	}
+	{
+		const prefix string = ",\"ServiceAcademyPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ServiceAcademyPref))
+	}
+	{
+		const prefix string = ",\"SmallTownPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.SmallTownPref))
+	}
+	{
+		const prefix string = ",\"BigCityPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.BigCityPref))
+	}
+	{
+		const prefix string = ",\"MediaSpotlightPref\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.MediaSpotlightPref))
 	}
 	out.RawByte('}')
 }
