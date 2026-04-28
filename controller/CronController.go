@@ -122,7 +122,7 @@ func RunNFLProgressionsViaCron() {
 
 func SyncToNextWeekViaCron() {
 	ts := managers.GetTimestamp()
-	if !ts.RunGames {
+	if !ts.RunGames && ts.NFLWeek < 23 {
 		return
 	}
 	if ts.RunCron {
