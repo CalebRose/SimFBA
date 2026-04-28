@@ -949,6 +949,7 @@ type Croot struct {
 	OverallGrade     string
 	TotalRank        float64
 	LeadingTeams     []LeadingTeams
+	PlayerPreferences
 }
 
 type LeadingTeams struct {
@@ -996,6 +997,7 @@ func (c *Croot) Map(r Recruit) {
 	c.RecruitModifier = r.RecruitingModifier
 	c.IsCustomCroot = r.IsCustomCroot
 	c.CustomCrootFor = r.CustomCrootFor
+	c.PlayerPreferences = r.PlayerPreferences
 
 	mod := r.TopRankModifier
 	if mod == 0 {
