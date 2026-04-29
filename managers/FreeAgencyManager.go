@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/dbprovider"
+	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
@@ -551,7 +551,7 @@ func SyncFreeAgencyOffers() {
 	for _, FA := range FreeAgents {
 		// If the Free Agent is not available in off-season free agency anymore
 		// Commenting out until friday
-		if ts.IsNFLOffSeason && ts.IsDraftTime {
+		if !ts.PreDraftPhase && ts.IsDraftTime {
 			continue
 		}
 
@@ -767,9 +767,12 @@ func LowerFreeAgencyMinimums(db *gorm.DB) {
 		if fa.Age < 24 || fa.MinimumValue < 1 {
 			continue
 		}
-
+		previousMin := fa.MinimumValue
 		fa.DecreaseMinimumValue()
-		repository.SaveNFLPlayer(fa, db)
+		// If the minimum value was decreased, save the player record
+		if previousMin != fa.MinimumValue {
+			repository.SaveNFLPlayer(fa, db)
+		}
 	}
 }
 

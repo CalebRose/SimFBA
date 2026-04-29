@@ -5,42 +5,44 @@ import "github.com/jinzhu/gorm"
 type NFLPlayer struct {
 	gorm.Model
 	BasePlayer
-	PlayerID          int
-	TeamID            int
-	CollegeID         uint
-	College           string
-	TeamAbbr          string
-	Experience        uint
-	HighSchool        string
-	Hometown          string
-	State             string
-	IsActive          bool
-	IsPracticeSquad   bool
-	IsFreeAgent       bool
-	IsWaived          bool
-	IsOnTradeBlock    bool
-	IsAcceptingOffers bool
-	IsNegotiating     bool
-	NegotiationRound  uint
-	SigningRound      uint
-	MinimumValue      float64
-	AAV               float64
-	DraftedTeamID     uint
-	DraftedTeam       string
-	DraftedRound      uint
-	DraftPickID       uint
-	DraftedPick       uint
-	ShowLetterGrade   bool
-	HasProgressed     bool
-	Rejections        int
-	ProBowls          uint8
-	TagType           uint8                // 0 == Basic, 1 == Franchise, 2 == Transition, 3 == Playtime
-	Stats             []NFLPlayerStats     `gorm:"foreignKey:NFLPlayerID"`
-	SeasonStats       NFLPlayerSeasonStats `gorm:"foreignKey:NFLPlayerID"`
-	Contract          NFLContract          `gorm:"foreignKey:NFLPlayerID"`
-	Offers            []FreeAgencyOffer    `gorm:"foreignKey:NFLPlayerID"`
-	WaiverOffers      []NFLWaiverOffer     `gorm:"foreignKey:NFLPlayerID"`
-	Extensions        []NFLExtensionOffer  `gorm:"foreignKey:NFLPlayerID"`
+	PlayerID             int
+	TeamID               int
+	CollegeID            uint
+	College              string
+	TeamAbbr             string
+	Experience           uint
+	HighSchool           string
+	Hometown             string
+	State                string
+	IsActive             bool
+	IsPracticeSquad      bool
+	IsFreeAgent          bool
+	IsWaived             bool
+	IsOnTradeBlock       bool
+	IsAcceptingOffers    bool
+	IsNegotiating        bool
+	NegotiationRound     uint
+	SigningRound         uint
+	MinimumValue         float64
+	OriginalMinimumValue float64
+	AAV                  float64
+	OriginalAAV          float64
+	DraftedTeamID        uint
+	DraftedTeam          string
+	DraftedRound         uint
+	DraftPickID          uint
+	DraftedPick          uint
+	ShowLetterGrade      bool
+	HasProgressed        bool
+	Rejections           int
+	ProBowls             uint8
+	TagType              uint8                // 0 == Basic, 1 == Franchise, 2 == Transition, 3 == Playtime
+	Stats                []NFLPlayerStats     `gorm:"foreignKey:NFLPlayerID"`
+	SeasonStats          NFLPlayerSeasonStats `gorm:"foreignKey:NFLPlayerID"`
+	Contract             NFLContract          `gorm:"foreignKey:NFLPlayerID"`
+	Offers               []FreeAgencyOffer    `gorm:"foreignKey:NFLPlayerID"`
+	WaiverOffers         []NFLWaiverOffer     `gorm:"foreignKey:NFLPlayerID"`
+	Extensions           []NFLExtensionOffer  `gorm:"foreignKey:NFLPlayerID"`
 }
 
 // Sorting Funcs
@@ -182,13 +184,21 @@ func (f *NFLPlayer) DecreaseMinimumValue() {
 		return
 	}
 
-	f.MinimumValue = float64(f.MinimumValue) * 0.9
+	// Decrease by 1% each time, but never go below 70% of the original minimum value or 70% overall
+	f.MinimumValue = float64(f.MinimumValue) * 0.99
 	if f.MinimumValue < 0.7 {
 		f.MinimumValue = 0.7
 	}
-	f.AAV = float64(f.AAV) * 0.9
-	if f.AAV < 0.5 {
-		f.AAV = 0.5
+	// If the minimum value is less than 70% of the original minimum value, set it to 70% of the original minimum value
+	if f.MinimumValue < f.OriginalMinimumValue*0.7 {
+		f.MinimumValue = f.OriginalMinimumValue * 0.7
+	}
+	f.AAV = float64(f.AAV) * 0.99
+	if f.AAV < f.OriginalAAV*0.7 {
+		f.AAV = f.OriginalAAV * 0.7
+	}
+	if f.AAV < 0.7 {
+		f.AAV = 0.7
 	}
 }
 

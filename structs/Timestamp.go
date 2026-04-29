@@ -35,6 +35,7 @@ type Timestamp struct {
 	AIDepthchartsSync             bool
 	AIRecruitingBoardsSynced      bool
 	IsFreeAgencyLocked            bool
+	PreDraftPhase                 bool
 	IsDraftTime                   bool
 	RunGames                      bool
 	Y1Capspace                    float64
@@ -117,6 +118,7 @@ func (t *Timestamp) MoveUpSeason() {
 	t.ProgressedCollegePlayers = false
 	t.ProgressedProfessionalPlayers = false
 	t.FreeAgencyRound = 1
+	t.PreDraftPhase = true
 	t.IsNFLOffSeason = true
 	t.IsOffSeason = true
 	t.CrootsGenerated = false
@@ -169,27 +171,28 @@ func (t *Timestamp) SyncToNextWeek() {
 }
 
 func (t *Timestamp) ToggleTimeSlot(ts string) {
-	if ts == "Thursday Night" {
+	switch ts {
+	case "Thursday Night":
 		t.ThursdayGames = true
-	} else if ts == "Thursday Night Football" {
+	case "Thursday Night Football":
 		t.NFLThursday = true
-	} else if ts == "Friday Night" {
+	case "Friday Night":
 		t.FridayGames = true
-	} else if ts == "Saturday Morning" {
+	case "Saturday Morning":
 		t.SaturdayMorning = true
-	} else if ts == "Saturday Afternoon" {
+	case "Saturday Afternoon":
 		t.SaturdayNoon = true
-	} else if ts == "Saturday Evening" {
+	case "Saturday Evening":
 		t.SaturdayEvening = true
-	} else if ts == "Saturday Night" {
+	case "Saturday Night":
 		t.SaturdayNight = true
-	} else if ts == "Sunday Noon" {
+	case "Sunday Noon":
 		t.NFLSundayNoon = true
-	} else if ts == "Sunday Afternoon" {
+	case "Sunday Afternoon":
 		t.NFLSundayAfternoon = true
-	} else if ts == "Sunday Night Football" {
+	case "Sunday Night Football":
 		t.NFLSundayEvening = true
-	} else if ts == "Monday Night Football" {
+	case "Monday Night Football":
 		t.NFLMondayEvening = true
 	}
 }
@@ -208,6 +211,9 @@ func (t *Timestamp) ToggleAIDepthCharts() {
 
 func (t *Timestamp) ToggleDraftTime() {
 	t.IsDraftTime = !t.IsDraftTime
+	if !t.IsDraftTime {
+		t.PreDraftPhase = false
+	}
 	// t.IsNBAOffseason = false
 }
 
