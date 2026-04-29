@@ -1085,6 +1085,9 @@ func SyncTransferPortal() {
 		if portalPlayer.TransferStatus != 2 || portalPlayer.TeamID > 0 {
 			continue
 		}
+		if portalPlayer.ID < 82716 {
+			continue
+		}
 
 		portalProfiles := transferPortalProfileMap[portalPlayer.ID]
 		if len(portalProfiles) == 0 && ts.TransferPortalRound < constants.FinalPortalRound {
@@ -1120,6 +1123,9 @@ func SyncTransferPortal() {
 			promise := collegePromiseMap[uint(portalProfiles[i].PromiseID.Int64)]
 			teamProfile := teamProfileMap[strconv.Itoa(int(portalProfiles[i].ProfileID))]
 			multiplier := getMultiplier(promise)
+			if portalProfiles[i].ID == 297478 {
+				continue
+			}
 			portalProfiles[i].AddPointsToTotal(multiplier, teamProfile.PortalReputation)
 		}
 
