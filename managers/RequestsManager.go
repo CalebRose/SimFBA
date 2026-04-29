@@ -115,10 +115,10 @@ func CreateNFLTeamRequest(request structs.NFLRequest) {
 func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 	db := dbprovider.GetInstance().GetDB()
 
-	timestamp := GetTimestamp()
+	ts := GetTimestamp()
 
 	teamId := strconv.Itoa(request.TeamID)
-	seasonID := strconv.Itoa(timestamp.CollegeSeasonID)
+	seasonID := strconv.Itoa(ts.CollegeSeasonID)
 
 	// Approve Request
 	request.ApproveTeamRequest()
@@ -134,6 +134,8 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 
 	coach := GetCollegeCoachByCoachName(request.Username)
 
+	newCoach := coach.ID == 0
+
 	coach.SetTeam(uint(request.TeamID))
 
 	team.AssignUserToTeam(coach.CoachName)
@@ -141,42 +143,42 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 	seasonalGames := GetCollegeGamesByTeamIdAndSeasonId(teamId, seasonID, false)
 
 	for _, game := range seasonalGames {
-		if game.Week >= timestamp.CollegeWeek {
+		if game.Week >= ts.CollegeWeek {
 			game.UpdateCoach(request.TeamID, coach.CoachName)
 			db.Save(&game)
 		}
-
 	}
 
-	standings := GetCFBStandingsByTeamIDAndSeasonID(teamId, seasonID)
-	standings.SetCoach(coach.CoachName)
-	db.Save(&standings)
+	if ts.CollegeWeekID < 15 {
+		standings := GetCFBStandingsByTeamIDAndSeasonID(teamId, seasonID)
+		standings.SetCoach(coach.CoachName)
+		repository.SaveCFBStandingsRecord(standings, db)
+	}
 
 	recruitingProfile := GetOnlyRecruitingProfileByTeamID(teamId)
 	recruitingProfile.AssignRecruiter(coach.CoachName)
 	if recruitingProfile.IsAI {
 		recruitingProfile.DeactivateAI()
 	}
-	db.Save(&recruitingProfile)
+	repository.SaveRecruitingTeamProfile(recruitingProfile, db)
 
-	err := db.Save(&team).Error
-	if err != nil {
-		log.Fatalln("Could not assign user to team for some reason?")
-	}
+	repository.SaveCollegeTeamRecord(team, db)
 
 	db.Save(&coach)
-
 	newsLog := structs.NewsLog{
 		TeamID:      0,
-		WeekID:      timestamp.CollegeWeekID,
-		SeasonID:    timestamp.CollegeSeasonID,
-		Week:        timestamp.CollegeWeek,
+		WeekID:      ts.CollegeWeekID,
+		SeasonID:    ts.CollegeSeasonID,
+		Week:        ts.CollegeWeek,
 		MessageType: "CoachJob",
 		League:      "CFB",
-		Message:     "Breaking News! The " + team.TeamName + " " + team.Mascot + " have hired " + coach.CoachName + " as their new coach for the " + strconv.Itoa(timestamp.Season) + " season!",
+		Message:     "Breaking News! The " + team.TeamName + " " + team.Mascot + " have hired " + coach.CoachName + " as their new coach for the " + strconv.Itoa(ts.Season) + " season!",
 	}
-
 	db.Create(&newsLog)
+
+	if newCoach {
+		go CreateCFBCoachWelcomeThread(coach.CoachName, team.TeamName, team.Mascot, team.ID)
+	}
 
 	return request
 }

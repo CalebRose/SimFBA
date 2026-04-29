@@ -20,6 +20,47 @@ import (
 // forum is set up in Firestore.
 const PostGameForumID = "postgame-discussions"
 
+// CoachIntroductionsForumID is the Firestore document ID of the forum category
+// used for new-coach introduction threads.
+const CoachIntroductionsForumID = "welcome"
+
+// CreateCFBCoachWelcomeThread creates a system-generated introduction thread in
+// Firestore whenever a brand-new coach is approved for a CFB team.
+// The thread is idempotent: approving the same coach/team pair twice does nothing.
+func CreateCFBCoachWelcomeThread(coachName string, teamName string, mascot string, teamID uint) {
+	ctx := context.Background()
+
+	eventKey := fmt.Sprintf("cfb_coach_welcome:team%d:coach:%s", teamID, coachName)
+
+	title := fmt.Sprintf("Welcome to SimCFB: %s joins the %s %s!", coachName, teamName, mascot)
+
+	bodyText := fmt.Sprintf(
+		"Everyone please welcome @%s! They are starting their career within SimCFB with the %s %s!",
+		coachName, teamName, mascot,
+	)
+
+	input := fbsvc.CreateForumThreadInput{
+		ForumID:           "welcome-intro-help",
+		ForumPath:         []string{CoachIntroductionsForumID, "intro-help"},
+		Title:             title,
+		AuthorUID:         "system",
+		AuthorUsername:    "SimSN",
+		AuthorDisplayName: "SimSN System",
+		CreatedByType:     fbsvc.CreatedBySystem,
+		ThreadType:        fbsvc.ThreadTypeStandard,
+		FirstPostBodyText: bodyText,
+		ExternalEventKey:  eventKey,
+	}
+
+	thread, err := fbsvc.CreateThread(ctx, input)
+	if err != nil {
+		log.Printf("ForumManager: failed to create CFB coach welcome thread for %s: %v", coachName, err)
+		return
+	}
+
+	log.Printf("ForumManager: created CFB coach welcome thread %s for %s (%s)", thread.ID, coachName, title)
+}
+
 // CreatePostGameDiscussionThreadForCFBGame creates a system-generated postgame
 // discussion thread in Firestore for a completed college football game.
 // homeTeamStats and awayTeamStats are the per-game box-score records already

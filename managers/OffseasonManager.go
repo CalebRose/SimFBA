@@ -484,8 +484,8 @@ func UpdateTeamProfileAffinities() {
 	}
 
 	// Independents always sit at the median.
-	conferencePrestigeMap[13] = 5
-	conferencePrestigeMap[22] = 5
+	conferencePrestigeMap[13] = 8
+	conferencePrestigeMap[22] = 3
 
 	for _, team := range collegeTeams {
 		teamProfile := teamProfileMap[team.ID]
