@@ -1,0 +1,572 @@
+PlayerID,First Name,Last Name,School,Position,Archetype,Position 2,Archetype2,OVR,Height,Weight,Event,40Yard,Bench,3Cone,Shuttle,Vert,Broad,Wonderlic,ThrowDist,ThrowAcc,InsideRun,OutsideRun,Catching,RouteRun,PassBlock,RunBlock,PassRush,RunStop,ManCov,ZoneCov,LBCov,Kickoff,FG,PuntDist,CoffinPunt,Speed,Agility,Strength,ThrowPower,ThrowAcc,Catch,Carry,RouteRun,RunBlock,PassBlock,Tackle,RunDef,PassRush,ManCov,ZoneCov,KickPow,KickAcc,PuntPow,PuntAcc,IQ
+20041,Paul,McCullers-Sanders,TLNE,QB,Pocket,,,B-,75,226,AAC Pro Day,5.08,23,7.29,4.54,31,111,0,6.82,7.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,C,B,B+,A+,B-,C+,C-,F,D,B,F,C+,A+,A,B-,C-,D+,D+,A-
+74277,Kyung,Hui,NAVY,QB,Pocket,,,C,76,221,AAC Pro Day,4.5,30,7.29,4.13,33,124,0,9.06,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,C-,C+,A,A+,A,C,F,D,D+,C+,C,B,A+,B,B,C+,B,C,B
+20901,Rich,Alcantara,TULS,RB,Power,,,A+,72,233,AAC Pro Day,4.39,43,7.14,4.08,39,129,0,0,0,9,7.06,4.12,1.54,0,0,0,0,0,0,0,0,0,0,0,A+,C,A+,C+,A,C,A+,F,F,A+,A+,B,A,B,A-,D-,D-,D+,C,B
+21254,Miguel,Cecil,TULS,RB,Receiving,,,B+,68,204,AAC Pro Day,4.32,35,6.68,3.82,38,133,0,0,0,7.47,8.94,6.88,5.85,0,0,0,0,0,0,0,0,0,0,0,B,A+,A,C+,B,B,C,A+,D,A,C,D-,A,B-,C-,D+,D+,F,F,B-
+22179,Santiago,Rankin,ARMY,RB,Speed,,,C+,70,209,AAC Pro Day,4.32,31,6.78,4.17,35,122,0,0,0,6,6.44,4.25,1.08,0,0,0,0,0,0,0,0,0,0,0,A,C,D+,B,B-,D,B,C,D+,B-,D-,D-,B,B,D+,D,D,D,D-,A
+20821,Da'Norris,Valdes,RICE,WR,Red Zone Threat,,,B-,75,219,AAC Pro Day,4.51,34,6.9,4.01,36,131,0,0,0,0,0,6.75,6.92,0,0,0,0,0,0,0,0,0,0,0,C+,B,A+,D+,C+,C,B-,C,B,D-,C+,C+,D+,A-,B+,D-,D+,F,D+,A+
+74012,Jeffrey,Bouthillier,TLNE,WR,Possession,,,A-,74,191,AAC Pro Day,4.38,34,6.74,3.83,39,135,0,0,0,0,0,8.88,7.85,0,0,0,0,0,0,0,0,0,0,0,B,A+,A+,A+,A+,A+,A,A,B-,D,D+,C-,B+,C,B,F,D+,C,C-,B
+74376,William,Henry,TLNE,WR,Speed,,,B+,72,196,AAC Pro Day,4.31,32,6.68,3.8,38,132,0,0,0,0,0,7.75,10,0,0,0,0,0,0,0,0,0,0,0,A+,A,B,B,C,B+,B+,B+,B-,F,B+,B,C+,A,C-,C+,B-,F,C,B+
+74393,Joseph,Johnson,MEMP,WR,Possession,,,B-,73,191,AAC Pro Day,4.46,36,6.9,4.17,40,126,0,0,0,0,0,7.75,7.69,0,0,0,0,0,0,0,0,0,0,0,B-,B+,B,B,A+,B,B-,B,C,D+,B+,C,B-,C,B,D-,F,F,C,B+
+74848,Gregory,Green,UNT,WR,Possession,,,C,73,191,AAC Pro Day,4.43,36,6.72,3.92,40,135,0,0,0,0,0,9.88,10,0,0,0,0,0,0,0,0,0,0,0,C,C,C-,D+,B,B,D+,D+,C,D-,D+,C+,D,C,B+,F,D-,C-,F,B
+20349,Jordan,Wilds,TULS,TE,Vertical Threat,,,B+,76,226,AAC Pro Day,4.43,41,6.76,4.15,38,131,0,0,0,0,0,5.88,5.54,0,5.41,0,0,0,0,0,0,0,0,0,A+,A+,B+,C+,B,A+,A+,A-,A,B,C,C,A+,A,A+,D-,F,C+,D,B+
+20306,Daron,Sampson,TLNE,OT,Pass Blocking,,,A+,76,290,AAC Pro Day,5.53,47,7.14,4.15,37,124,0,0,0,0,0,0,0,7.06,6,0,0,0,0,0,0,0,0,0,B+,A+,A,A+,A+,A-,A,B+,B+,A,A-,B,A+,C+,B,D+,D-,C-,C,A
+74046,Joe,Wirth,NAVY,OT,Pass Blocking,,,B,76,292,AAC Pro Day,5.26,43,7.11,4.32,35,124,0,0,0,0,0,0,0,6.24,4.71,0,0,0,0,0,0,0,0,0,C,B,A-,B,B+,B,C,C,C,B-,A,C+,A+,A+,B,B,D+,D-,C+,B
+74861,Charles,Clark,UAB,OT,Run Blocking,,,C+,77,307,AAC Pro Day,5.46,45,7.35,4.56,32,120,0,0,0,0,0,0,0,6.47,8.24,0,0,0,0,0,0,0,0,0,A+,C,B-,B,A,B,C-,C-,A,C-,B-,D-,C,C-,C,C+,D+,C-,F,C+
+75057,Michael,Mcbride,FAU,OT,Pass Blocking,,,B-,75,282,AAC Pro Day,5.9,43,7.55,4.4,34,118,0,0,0,0,0,0,0,6.47,5.88,0,0,0,0,0,0,0,0,0,C,B+,B,B,C-,C-,A,C-,C,B,C+,D,D,C,C,F,F,D+,D+,B
+74541,William,Huntsman,UTSA,C,Run Blocking,,,C,74,290,AAC Pro Day,5.46,45,7.26,4.45,33,120,0,0,0,0,0,0,0,5.18,7.88,0,0,0,0,0,0,0,0,0,C+,C,C+,D+,C+,B+,C-,F,B,D+,A-,D-,C,B,B-,D-,C+,D-,D-,C+
+20926,Antoine,Guzman,ECU,DE,Balanced,,,B,77,276,AAC Pro Day,4.68,36,6.64,4.07,34,126,0,0,0,0,0,0,0,0,0,6.75,7.18,0,0,0,0,0,0,0,A-,C+,B,B-,B,B+,A-,F,F,F,B,A,C+,C-,B,C+,D-,D+,D-,B+
+21607,Lyndon,Hicks,TULS,DE,Balanced,,,C+,76,267,AAC Pro Day,4.78,36,6.7,4.17,34,123,0,0,0,0,0,0,0,0,0,6.38,6.24,0,0,0,0,0,0,0,A,B+,B-,C,A,A+,A-,C-,D+,D+,B,A-,A-,C,C,F,D-,C,C-,A+
+23639,Steven,Cimber,TLNE,DE,Speed Rusher,,,B,77,243,AAC Pro Day,4.66,38,6.68,4.05,37,126,0,0,0,0,0,0,0,0,0,8.12,4.59,0,0,0,0,0,0,0,B,B,C,C+,B,D-,C-,D,B-,D+,C+,C,A-,F,C+,F,F,C-,D-,B
+74323,Michael,Harris,NAVY,DE,Balanced,,,B-,77,271,AAC Pro Day,4.56,35,6.74,4.08,36,124,0,0,0,0,0,0,0,0,0,7.12,4.35,0,0,0,0,0,0,0,A,A+,A,C+,B-,B,A,D+,C,D-,A,B-,B+,B+,C,D,D+,C,C-,A
+21422,Chris,Basham,TULS,DT,Pass Rusher,,,B-,73,275,AAC Pro Day,4.9,41,6.95,3.98,36,127,0,0,0,0,0,0,0,0,0,6.12,6.47,0,0,0,0,0,0,0,B,A-,B+,A-,C,B+,D+,D+,F,D,B,B,A+,B-,B-,D+,D-,D+,C-,A-
+74033,Matthew,Wilks,ECU,DT,Pass Rusher,,,C+,74,285,AAC Pro Day,5.32,36,6.83,4.17,32,119,0,0,0,0,0,0,0,0,0,7.62,5.06,0,0,0,0,0,0,0,A+,B-,C-,A+,A,C+,A+,D-,C+,C,B-,B,A,A+,C-,B+,B,B-,C-,A-
+74662,Armando,Mateo,RICE,DT,Balanced,,,C+,72,291,AAC Pro Day,5.23,34,6.88,4.12,34,123,0,0,0,0,0,0,0,0,0,5,7.29,0,0,0,0,0,0,0,B+,C-,B,A,C-,A-,C-,F,C-,D+,B,C,B,B,A+,D+,C+,D+,F,C
+19981,Kevin,Robles,TLNE,ILB,Field General,,,A,74,236,AAC Pro Day,4.36,43,6.62,3.95,39,134,0,0,0,0,0,0,0,0,0,0,8.35,0,0,8.47,0,0,0,0,A+,A+,B+,A+,A,B,A,C-,F,D,A+,B,A+,B,A-,D+,C-,D,B-,A
+74534,Thang,Raval,USF,ILB,Field General,,,C+,73,229,AAC Pro Day,4.76,30,6.78,3.98,38,123,0,0,0,0,0,0,0,0,0,0,4.82,0,0,6.4,0,0,0,0,D,C+,C,B-,D+,C-,D,C,C,C+,B,B-,B,B-,B,F,D+,C,C-,A
+20704,Kyle,Witzmann,TULS,OLB,Pass Rush,,,B-,75,255,AAC Pro Day,4.64,32,6.66,3.98,34,124,0,0,0,0,0,0,0,0,0,10,6,0,0,0,0,0,0,0,B,B,C+,B,B,B+,A,F,F,D+,B,B+,A+,B-,C,D-,D-,D-,D-,B
+20079,Aaron,Mays,TULS,CB,Zone Coverage,,,A,71,183,AAC Pro Day,4.36,26,6.43,3.95,40,131,0,0,0,0,0,0,0,0,0,0,0,6.78,8.88,0,0,0,0,0,B+,B+,A,C+,B,D,A-,C,B+,D+,A,C+,B,B-,A+,F,D+,C+,C-,A+
+20080,Clint,Sinkfield,TLNE,CB,Zone Coverage,,,A,71,182,AAC Pro Day,4.42,32,6.72,3.81,39,131,0,0,0,0,0,0,0,0,0,0,0,7.56,8.88,0,0,0,0,0,B+,A-,B,C-,C+,C-,A+,D+,D-,C,B,D-,C,C,A,C,B,A-,C-,A-
+21125,Jakob,Sampson,TLNE,CB,Zone Coverage,FS,Zone Coverage,B-,71,183,AAC Pro Day,4.36,21,6.54,3.83,38,124,0,0,0,0,0,0,0,0,0,0,0,6,9.5,0,0,0,0,0,A,B,C+,C,C-,C-,A+,F,D-,D+,A+,C-,C,B+,A,B-,C,C-,D-,A
+75380,Jeffrey,Walker,UAB,CB,Ball Hawk,,,C+,71,176,AAC Pro Day,4.7,24,6.68,4.17,37,128,0,0,0,0,0,0,0,0,0,0,0,5,7.75,0,0,0,0,0,C-,B-,B,B,B,A,B,D+,D+,D+,A,A-,D,C,C,F,C,F,C-,C-
+74052,Ray,Clay,CHAR,FS,Ball Hawk,,,C+,72,200,AAC Pro Day,4.56,18,6.76,3.87,36,125,0,0,0,0,0,0,0,0,0,0,0,7.44,8.25,0,0,0,0,0,B+,A+,C,C-,A+,A+,A-,D-,D+,D+,C+,C,C-,B+,C,D,C-,C-,C-,B
+75631,David,Gaddis,UAB,FS,Man Coverage,,,B-,71,196,AAC Pro Day,4.38,26,6.81,3.97,39,127,0,0,0,0,0,0,0,0,0,0,0,6.78,7,0,0,0,0,0,A+,A,B,B+,A,C,C-,C-,D+,D,C,C,C-,A+,D+,D,D+,D-,D-,C
+21774,Dalton,Tilson,FAU,SS,Man Coverage,,,B,72,200,AAC Pro Day,4.33,26,6.9,4.07,35,128,0,0,0,0,0,0,0,0,0,0,0,6.89,5.62,0,0,0,0,0,B+,B-,C-,C+,C-,D-,C+,C+,D-,F,C,B+,B+,A+,C+,D,F,F,D+,B
+75450,Andrew,White,CHAR,SS,Ball Hawk,,,C,72,188,AAC Pro Day,4.85,22,7.14,4.4,30,117,0,0,0,0,0,0,0,0,0,0,0,5.67,6.25,0,0,0,0,0,C,C-,D-,D,D+,A+,C+,F,F,D-,C+,B+,F,C,C-,C-,F,C,D,C-
+74113,Travis,Croaker,TEMP,P,Power,,,C+,71,198,AAC Pro Day,5.86,20,7.77,4.93,29,116,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9.47,3.03,8.67,6.67,C+,C+,A+,A,A+,C-,B,D,C-,D+,B,C+,B,B,B,B+,A-,A,C,C-
+19987,Mikal,Cingrani,STAN,ILB,Coverage,,,C,74,233,ACC Pro Day,4.41,42,6.51,3.83,40,134,0,0,0,0,0,0,0,0,0,0,6.47,0,0,9.27,0,0,0,0,A,A+,B,B+,A,B-,A-,C-,F,D-,A+,B,A+,A+,A,F,F,D,D-,C+
+20040,Laurent,Gimenez,MIAF,OG,Pass Blocking,,,A,76,283,ACC Pro Day,5.67,47,7.22,4.43,36,127,0,0,0,0,0,0,0,9.06,5.29,0,0,0,0,0,0,0,0,0,B-,A+,B,A,A+,B,A,F,B-,A,F,B,A,A+,A,F,F,A-,C+,A
+20052,Caleb,Murphy,UVA,FS,Zone Coverage,SS,Zone Coverage,A,72,196,ACC Pro Day,4.37,31,6.57,3.99,39,132,0,0,0,0,0,0,0,0,0,0,0,6.56,8.62,0,0,0,0,0,A,A+,A,C-,A,C-,B-,C,D+,C-,C+,A,B-,B-,A+,F,B+,F,D+,A+
+20187,Cooper,Williams,UVA,QB,Field General,,,B,74,205,ACC Pro Day,4.72,28,7,4.26,35,124,0,7.06,9.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C,B,A+,A,A+,A,C,C+,C-,C+,C+,D,D-,A,A+,D-,C-,C+,D,A+
+20192,Tavon,Bennett,MIAF,RB,Balanced,,,A,70,222,ACC Pro Day,4.35,36,6.81,4.07,39,130,0,0,0,8,8.22,6,2,0,0,0,0,0,0,0,0,0,0,0,A,A,A+,A+,A+,B-,A+,D-,C,B-,A-,C-,B+,A+,A+,C-,D-,D-,C+,A+
+20200,Darron,Axford,SMU,OG,Pass Blocking,,,A+,76,289,ACC Pro Day,5.11,45,7.22,4.17,35,126,0,0,0,0,0,0,0,7.53,5.88,0,0,0,0,0,0,0,0,0,A+,A+,A,A-,A+,A,A+,F,A,A+,F,D+,A,A+,A-,B-,D-,C,D+,A+
+20302,Kyle,Weber,STAN,DE,Balanced,,,B,76,269,ACC Pro Day,4.53,39,6.61,3.94,37,123,0,0,0,0,0,0,0,0,0,6.62,6.47,0,0,0,0,0,0,0,C+,A,B,B,A,B,B,B,B-,C,A+,B+,A,C,B,C-,F,C-,C-,A+
+20539,Jace,Smith,LOU,QB,Scrambler,,,C+,74,207,ACC Pro Day,4.35,29,6.7,4.19,35,128,0,6.59,5.88,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,A-,B,B,C,C,B,B-,D+,D-,D-,D+,D+,D+,C+,C-,D+,C-,D-,F,C+
+20552,Rashard,Akins,FSU,C,Balanced,,,A-,77,291,ACC Pro Day,5.78,43,7.32,4.56,36,124,0,0,0,0,0,0,0,6.47,6.82,0,0,0,0,0,0,0,0,0,F,B,A+,C,C,C-,C-,F,B+,B-,C+,C+,B,A-,D+,D+,C-,C,D-,B-
+20611,Hayes,Adams,SMU,DE,Speed Rusher,,,B-,76,241,ACC Pro Day,4.54,36,6.54,4.13,37,129,0,0,0,0,0,0,0,0,0,8.62,7.06,0,0,0,0,0,0,0,B+,B,A,C,B-,A+,A,D-,C,F,D,B,A-,C-,C-,C-,C,D,D,C+
+20725,Dusty,Trufant,PITT,OT,Pass Blocking,,,D+,77,292,ACC Pro Day,6.02,43,7.58,4.69,31,117,0,0,0,0,0,0,0,6.59,3.65,0,0,0,0,0,0,0,0,0,C,C-,B,B,B+,A,C,D+,C,B+,B,D-,B,B+,C+,C-,F,F,C,C+
+20728,Meyers,Ramirez,CLEM,QB,Scrambler,,,C,72,224,ACC Pro Day,4.38,34,7.05,4.05,36,127,0,5.18,6.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,A-,A,B+,C-,B+,C-,B,D-,D+,D+,B,D+,D,C-,B+,D+,F,C-,C-,B
+20730,Thon,Russell,GT,CB,Ball Hawk,,,C,71,184,ACC Pro Day,4.66,19,6.92,4.05,35,120,0,0,0,0,0,0,0,0,0,0,0,6.67,7,0,0,0,0,0,B,B,C,C,B+,B,B,D-,D-,C,B-,A,B,B-,B-,D-,F,D+,D-,A
+20888,Sean,Shields,LOU,DE,Run Stopper,,,C,75,277,ACC Pro Day,4.78,40,6.72,4.01,33,122,0,0,0,0,0,0,0,0,0,6.12,7.06,0,0,0,0,0,0,0,C+,C-,A,C-,D+,D,A,F,D-,D+,B-,B+,C-,B,B,F,F,C-,D+,B
+20956,Lavonte,Murray,CUSE,ILB,Field General,,,C,73,231,ACC Pro Day,4.59,31,6.81,4.01,36,122,0,0,0,0,0,0,0,0,0,0,6.82,0,0,6.2,0,0,0,0,B,C-,C-,A+,A-,B-,B,F,D+,F,B-,C-,D+,C-,C,D-,D-,C+,D-,A+
+21019,Welington,Larsen,UVA,RB,Speed,,,B,69,189,ACC Pro Day,4.43,32,7.08,4.05,34,128,0,0,0,7.82,7.61,6.25,2.62,0,0,0,0,0,0,0,0,0,0,0,A+,B+,B,B,C,C,B+,D-,C+,B,A+,D-,F,A,D-,F,F,D-,C-,B-
+21246,Kris,Mabin,FSU,RB,Balanced,,,A-,69,231,ACC Pro Day,4.54,36,6.76,4.02,35,124,0,0,0,6.82,7.28,7.88,1.85,0,0,0,0,0,0,0,0,0,0,0,B+,A-,A+,C,C,B,A+,D,F,B,A,F,D-,A-,C-,F,C+,B-,D-,A+
+21363,Michael,Summers,CUSE,OG,Pass Blocking,,,C+,75,298,ACC Pro Day,5.56,45,7.22,4.34,34,121,0,0,0,0,0,0,0,6.59,4.59,0,0,0,0,0,0,0,0,0,C,B+,C,D,C,B,A,C-,C+,B+,F,A-,B+,C-,D+,C,D,F,D+,A
+21592,Jake,Lamb,UNC,TE,Vertical Threat,,,D+,74,231,ACC Pro Day,4.43,42,7,4.08,38,130,0,0,0,0,0,7.25,5.38,0,5.53,0,0,0,0,0,0,0,0,0,A,A-,B+,A+,B,A+,B-,C,B,B,C-,C-,B+,D+,C-,B-,D-,F,F,A+
+21723,Alex,Grilli,GT,SS,Run Stopper,,,C,72,203,ACC Pro Day,4.61,36,6.85,4.22,37,126,0,0,0,0,0,0,0,0,0,0,0,6,4.88,0,0,0,0,0,A,B+,A+,C-,B,D+,B-,D-,F,F,B,A+,F,B-,D+,D-,F,C-,D+,B-
+21751,Logan,Jordan,STAN,SS,Zone Coverage,,,B,71,191,ACC Pro Day,4.53,27,6.68,3.86,37,133,0,0,0,0,0,0,0,0,0,0,0,6.44,7.88,0,0,0,0,0,B,A+,B+,A+,A+,C-,D+,F,D-,F,B,A+,C,C+,A,F,F,D-,D+,A
+74192,Paul,Newberry,NCST,C,Balanced,,,B,74,297,ACC Pro Day,5.29,45,7.22,4.2,34,124,0,0,0,0,0,0,0,6.35,7.06,0,0,0,0,0,0,0,0,0,B,A+,B,A,A+,B+,B-,D-,B,B,A,C+,A-,D+,B,C-,F,B+,D-,B-
+74247,Robert,Roppo,DUKE,OT,Balanced,,,B+,75,293,ACC Pro Day,5.29,48,7.08,4.3,36,124,0,0,0,0,0,0,0,5.88,7.29,0,0,0,0,0,0,0,0,0,A+,A+,A,B+,A+,A-,C+,D,B-,B,A+,C-,C,A-,B,B,C+,C+,C,A
+74296,Robert,Gandy,UNC,OLB,Coverage,,,C+,75,230,ACC Pro Day,4.68,40,7,4.07,37,127,0,0,0,0,0,0,0,0,0,0,5.65,0,0,8.33,0,0,0,0,C,B,A-,B-,B,A,A+,B,F,F,A,B,C+,A+,A,D+,C+,C-,D-,B
+74353,Richard,Jackson,PITT,DE,Balanced,,,D-,75,274,ACC Pro Day,4.57,36,6.59,4.2,34,124,0,0,0,0,0,0,0,0,0,7.62,5.65,0,0,0,0,0,0,0,B-,B-,C-,A+,A+,A-,A+,C-,D-,D+,A,C-,C+,A,C+,B-,D+,F,D+,B
+74482,Oscar,Amaya,BC,DT,Nose Tackle,,,F,73,309,ACC Pro Day,5.63,40,7.29,4.54,31,117,0,0,0,0,0,0,0,0,0,5,5.88,0,0,0,0,0,0,0,F,C-,A,B-,B,B+,C,F,C+,D-,D+,A-,C,A-,A,D-,C+,D,D+,C+
+74920,Daryl,Lightfoot,CUSE,CB,Zone Coverage,,,D-,70,189,ACC Pro Day,4.61,24,6.83,3.98,35,120,0,0,0,0,0,0,0,0,0,0,0,4.33,7.38,0,0,0,0,0,B+,B-,C,C+,A-,D-,D,F,D-,D,B,B-,D,C-,C,D-,F,D-,D+,C-
+75251,Raoul,Coleman,WAKE,QB,Scrambler,,,C,72,228,ACC Pro Day,4.38,28,7.03,4.12,33,122,0,5.41,5.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,B+,C+,B+,C-,C-,F,A,F,D+,F,B,D-,F,D,C-,F,F,D-,D,C-
+75398,Michael,Farris,WAKE,RB,Balanced,,,C,70,213,ACC Pro Day,4.47,29,6.97,4.13,36,122,0,0,0,5.06,6.22,3.5,1.38,0,0,0,0,0,0,0,0,0,0,0,B,B,C,C,C-,B-,C-,F,D-,B+,C-,F,C+,A,C-,D-,F,D+,D+,B+
+75484,Rudy,Martinez,GT,CB,Zone Coverage,,,C-,70,182,ACC Pro Day,4.88,20,6.74,3.95,35,124,0,0,0,0,0,0,0,0,0,0,0,3.67,6.88,0,0,0,0,0,D+,A,C-,C+,C+,D,B+,F,F,D+,A,A,A,C-,B+,F,C-,F,D-,C-
+75633,Alfredo,Diaz,WAKE,RB,Receiving,,,C+,70,197,ACC Pro Day,4.32,29,6.57,3.95,39,126,0,0,0,6.94,8.89,7.88,7.08,0,0,0,0,0,0,0,0,0,0,0,A-,A+,C-,C+,C,A,C+,A+,D-,B,A,F,A-,C+,C-,F,C,F,D-,A
+75682,Giovanni,Sarabia,VT,WR,Speed,,,B,71,190,ACC Pro Day,4.32,21,7,4.2,37,126,0,0,0,0,0,5.75,7.08,0,0,0,0,0,0,0,0,0,0,0,A,C,D+,C-,D,C,B+,C,C,F,C-,C-,C,B,C,F,F,D-,D,C+
+75714,Marty,Walker,NCST,WR,Route Runner,,,B-,69,166,ACC Pro Day,4.44,21,6.81,3.9,38,131,0,0,0,0,0,7,9.54,0,0,0,0,0,0,0,0,0,0,0,C,B-,C,C+,D+,D+,B+,A,D+,F,D-,C,C-,B,C-,C-,D-,C,D-,A-
+75764,Michael,Hall,SMU,OG,Run Blocking,,,B-,73,312,ACC Pro Day,5.71,45,7.51,4.69,33,116,0,0,0,0,0,0,0,5.65,7.29,0,0,0,0,0,0,0,0,0,B,B,B,D+,C,A-,B,F,B,C+,F,A,C,B+,B,F,D-,D-,D+,B+
+79080,James,Livingston,VT,RB,Receiving,,,A+,70,197,ACC Pro Day,4.3,36,6.41,3.73,44,139,0,0,0,10,10,9.88,8,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A+,A+,A+,A+,A,A+,C+,A-,A+,B,B-,B,B,A-,C-,C-,C-,A+
+20209,Armani,Franco,UCLA,RB,Power,,,A-,72,241,Big Ten Pro Day,4.51,36,7.14,4.34,37,122,0,0,0,8.41,7.33,4.62,1.38,0,0,0,0,0,0,0,0,0,0,0,B,B-,A+,A+,B-,C+,A+,C+,D+,A,C-,C,B,B-,A+,F,D,C,C,A+
+20313,Matt,Van Roten,PNST,RB,Receiving,,,A+,69,199,Big Ten Pro Day,4.33,39,6.33,3.76,42,133,0,0,0,9.53,9.94,9.12,5.38,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A+,C-,B,A+,A+,A+,C-,A,A,D+,A-,A-,C+,C-,C,D+,D,A+
+20582,Yannick,Last Name,MICH,RB,Receiving,,,B+,70,195,Big Ten Pro Day,4.32,27,6.41,3.82,39,132,0,0,0,7.41,8.5,7.5,6.15,0,0,0,0,0,0,0,0,0,0,0,B+,A+,B,B-,B,A+,B-,A+,C-,A+,B,D+,C-,A+,B,F,C+,F,D-,A+
+21078,Tanner,Tolliver,WISC,RB,Balanced,,,B-,71,216,Big Ten Pro Day,4.31,36,6.72,4.13,39,127,0,0,0,8.18,7.89,5.88,2.92,0,0,0,0,0,0,0,0,0,0,0,B,B,A,C-,B+,A,A+,C-,C-,A+,B,F,B,B+,B-,F,D,C+,D+,A+
+21661,Josh,Jackson,MICH,RB,Speed,,,B-,71,204,Big Ten Pro Day,4.38,32,7.26,4.22,35,126,0,0,0,7.41,7.94,6.38,0.31,0,0,0,0,0,0,0,0,0,0,0,A+,B,A,B,D+,C,A+,D-,D-,B,A+,C-,C-,C,B-,C-,D-,B-,D-,A+
+24988,Franklin,Riggins,WASH,RB,Power,,,A+,66,195,Big Ten Pro Day,4.3,41,6.52,4.02,39,133,0,0,0,9,9.39,5.88,1.85,0,0,0,0,0,0,0,0,0,0,0,B,A+,A+,C,A+,A,A+,B+,B-,A+,C-,D+,B-,A+,B,D-,B-,B-,C-,A+
+75762,Louis,Mcgowan,MIST,RB,Speed,,,B+,71,195,Big Ten Pro Day,4.36,34,7.51,4.34,35,120,0,0,0,6.35,6,4.12,1.08,0,0,0,0,0,0,0,0,0,0,0,A,C-,A,C-,B,B-,C,D-,B,D+,C+,D-,B-,C+,A,D-,D-,C,D+,A+
+19978,Patrick,Hernandez,NEB,WR,Possession,,,A+,73,188,Big Ten Pro Day,4.54,31,6.62,3.98,41,132,0,0,0,0,0,8.62,8.62,0,0,0,0,0,0,0,0,0,0,0,B,A,B+,A,B,A+,A+,A,B-,B,A+,A-,C,A+,B,C-,C-,C+,C-,A+
+20274,Tyler,Looney,IND,WR,Possession,,,A+,73,195,Big Ten Pro Day,4.46,36,6.64,3.92,41,130,0,0,0,0,0,9.62,8.31,0,0,0,0,0,0,0,0,0,0,0,B,A,A,B-,C+,A+,A,B-,B,C+,B+,C+,C-,A+,C+,F,C-,B-,D+,A+
+21060,Tyler,Huber,USC,WR,Route Runner,,,B,69,176,Big Ten Pro Day,4.57,27,6.74,3.9,39,131,0,0,0,0,0,5.62,9.54,0,0,0,0,0,0,0,0,0,0,0,C,A,C-,C-,D+,C,B-,C,C,D-,D-,C,D-,C+,B-,F,D,F,D-,B+
+74007,Brien,Walker,PNST,WR,Speed,,,A+,71,195,Big Ten Pro Day,4.33,36,6.52,3.93,40,132,0,0,0,0,0,8.62,9.85,0,0,0,0,0,0,0,0,0,0,0,A+,A+,B-,A+,A+,B-,A+,B-,C+,D-,C+,C+,C+,B,B+,D+,D,D-,D,A+
+74064,Roberto,Reyes,IND,WR,Possession,,,B+,73,195,Big Ten Pro Day,4.57,27,6.57,3.95,38,127,0,0,0,0,0,7.62,8,0,0,0,0,0,0,0,0,0,0,0,B,B-,B+,B,A,A-,A-,B,C-,F,C,C-,C-,C-,A+,D-,D-,C-,C+,C+
+74397,James,Tomer,OHST,WR,Speed,,,B-,73,186,Big Ten Pro Day,4.39,27,6.7,3.95,37,130,0,0,0,0,0,5.88,6.92,0,0,0,0,0,0,0,0,0,0,0,B+,C-,C,A,A-,C-,A+,C,C-,C-,B,D+,B,A,B,C-,C-,A-,D+,C
+75391,James,Oreilly,WISC,WR,Route Runner,,,B,70,173,Big Ten Pro Day,4.5,28,6.72,3.89,38,131,0,0,0,0,0,5.25,7.69,0,0,0,0,0,0,0,0,0,0,0,B,A,B,C,C-,C+,C,A,C-,C+,A,F,C-,D+,B,D+,F,C,D,C
+20048,Rayshawn,Zeller,MICH,TE,Blocking,,,B-,77,253,Big Ten Pro Day,4.74,46,6.64,3.98,38,130,0,0,0,0,0,6.75,4.62,0,6.94,0,0,0,0,0,0,0,0,0,B,A,A+,B+,B,C,A-,B,A+,A+,A,D+,A+,C+,B,D,D-,C-,C+,B-
+20277,Lance,Rogers,PNST,TE,Vertical Threat,,,B,77,229,Big Ten Pro Day,4.39,47,6.47,3.83,39,131,0,0,0,0,0,8.5,7.54,0,5.88,0,0,0,0,0,0,0,0,0,A+,A,A+,A,A-,A,A+,B,A-,A-,A+,B-,A,A+,B+,F,D-,D-,C,A
+19988,Darius,Mauer,PNST,OT,Run Blocking,OG,Run Blocking,A,77,288,Big Ten Pro Day,5.06,49,6.92,4.17,37,127,0,0,0,0,0,0,0,6.12,9.53,0,0,0,0,0,0,0,0,0,B+,A+,A+,A+,A,B-,B,D+,A+,A-,A+,B,A+,A-,A+,C-,D+,B,C-,A+
+74014,Shawn,Johnson,PNST,OT,Run Blocking,,,B+,77,295,Big Ten Pro Day,5.23,52,6.76,3.94,37,129,0,0,0,0,0,0,0,6.24,9.65,0,0,0,0,0,0,0,0,0,B+,A+,A+,A-,B,A+,B,C,A+,A-,A-,A-,A+,A,A-,A-,D-,F,B-,A
+74253,Mohammad,Rennie,USC,OT,Balanced,,,B-,77,299,Big Ten Pro Day,5.26,44,7.17,4.17,36,123,0,0,0,0,0,0,0,7.06,6.94,0,0,0,0,0,0,0,0,0,C+,B,A,A+,B,A-,A,D-,A,B+,A+,B,B,C,C+,C-,F,D+,C,A+
+74326,Blake,Fitkin,OREG,OT,Pass Blocking,,,A-,74,284,Big Ten Pro Day,5.56,41,6.78,4.28,35,126,0,0,0,0,0,0,0,8.24,5.41,0,0,0,0,0,0,0,0,0,A+,A,B-,B,C+,A+,C+,D-,B,B+,A+,C+,A,B,A+,C,C-,F,B-,A+
+75646,Richard,Stuby,RUTG,OG,Pass Blocking,,,B-,76,277,Big Ten Pro Day,5.94,45,7.11,4.45,33,122,0,0,0,0,0,0,0,6.94,6.47,0,0,0,0,0,0,0,0,0,A+,C+,B-,C,B-,C-,A-,F,C,B,F,B-,D+,C+,B,F,D-,D-,D-,B
+74008,Timothy,Doak,IND,C,Pass Blocking,,,B+,77,295,Big Ten Pro Day,5.39,44,6.76,4.22,36,126,0,0,0,0,0,0,0,9.41,6.24,0,0,0,0,0,0,0,0,0,B,A,A-,A,B,A+,A+,D+,B,A+,A-,C+,B,A+,A+,C,F,D+,D+,B
+20205,Tom,Coulombe,PNST,DE,Speed Rusher,,,B+,76,235,Big Ten Pro Day,4.64,36,6.54,4.02,38,130,0,0,0,0,0,0,0,0,0,7.5,6.82,0,0,0,0,0,0,0,A,A,A+,A+,A+,A,A-,D-,B,D-,A,B,A+,C+,B,C-,F,C+,C-,B
+20260,Bobby,Terrero,PNST,DE,Run Stopper,DT,Balanced,A,75,297,Big Ten Pro Day,4.5,42,6.56,3.98,35,124,0,0,0,0,0,0,0,0,0,7.62,9.29,0,0,0,0,0,0,0,A+,A,A+,B+,C+,A-,C,B-,D,D-,A+,A+,B,A+,B,D+,D+,C,C,A
+78995,Miles,Choudhry,MINN,DE,Speed Rusher,,,A+,77,243,Big Ten Pro Day,4.38,39,6.49,3.87,39,134,0,0,0,0,0,0,0,0,0,8.62,8.35,0,0,0,0,0,0,0,A+,A+,A-,A+,A+,A-,A,C+,F,C-,A+,A+,A,A+,A+,C-,B,C,D+,A+
+20049,Jonathan,Waguespack,MICH,DT,Nose Tackle,,,B-,74,301,Big Ten Pro Day,5.49,44,6.9,4.2,36,123,0,0,0,0,0,0,0,0,0,6.62,7.29,0,0,0,0,0,0,0,B,B,A-,B,B,A+,A+,B-,C-,D-,B,A+,C+,B+,B-,C,D-,F,C-,A
+21355,Shalom,Taylor,WISC,DT,Nose Tackle,,,B-,76,311,Big Ten Pro Day,5.6,47,6.85,4.24,35,120,0,0,0,0,0,0,0,0,0,5,8.24,0,0,0,0,0,0,0,D+,B-,A+,C-,A+,C,A-,C-,C+,D-,B+,A+,C-,B+,C,F,F,D+,D,B-
+74015,Santosh,Vo,MINN,DT,Pass Rusher,,,A,74,285,Big Ten Pro Day,5.23,38,6.95,4.15,34,124,0,0,0,0,0,0,0,0,0,7.5,3.76,0,0,0,0,0,0,0,A+,A+,A,A+,A-,A,A+,F,C-,D-,A+,C+,A+,C+,A+,D-,C-,D,C+,A+
+74058,Jeffrey,Dorsch,MIST,DT,Pass Rusher,,,B,74,281,Big Ten Pro Day,5.14,41,6.85,4.24,35,123,0,0,0,0,0,0,0,0,0,6,5.76,0,0,0,0,0,0,0,B+,A-,C+,B,A,A-,C-,C-,B,D+,A-,B,A+,B,A,C+,D-,C,D,A-
+74267,Willie,Dillard,ILLI,DT,Nose Tackle,,,C+,75,302,Big Ten Pro Day,5.39,44,7.05,4.36,34,125,0,0,0,0,0,0,0,0,0,5.12,6.82,0,0,0,0,0,0,0,C-,C-,A+,A,C,B,B,D+,F,D-,A,B+,C+,A-,C+,C,B-,C+,D+,B
+21319,Jason,Jenkins,PURD,ILB,Field General,,,A-,72,224,Big Ten Pro Day,4.42,34,6.76,3.98,39,127,0,0,0,0,0,0,0,0,0,0,6.47,0,0,7.4,0,0,0,0,B,A,B,B,B,C-,D+,F,F,F,B,B-,A-,B-,A,D-,F,D-,D,A
+74340,Larry,Muhammad,UMD,ILB,Coverage,,,B-,73,227,Big Ten Pro Day,4.61,42,6.9,3.98,37,127,0,0,0,0,0,0,0,0,0,0,5.06,0,0,7.87,0,0,0,0,C,B,C+,A,C+,A-,B,D+,C,F,A,B-,B,A,A-,D+,D+,C,C-,C
+74394,Calvin,Wagner,NW,ILB,Field General,,,C,72,229,Big Ten Pro Day,4.64,39,6.78,4.19,36,127,0,0,0,0,0,0,0,0,0,0,6.12,0,0,6.73,0,0,0,0,B-,C-,B-,C+,C,B-,A-,D-,D-,C-,B,C,B-,C-,B+,C-,C-,B-,C,B
+19985,Hisashi,Rudock,PNST,OLB,Coverage,ILB,Coverage,A,73,235,Big Ten Pro Day,4.32,39,6.7,4.05,38,132,0,0,0,0,0,0,0,0,0,0,7.06,0,0,9.6,0,0,0,0,A-,B-,B,A+,B,B,C+,C-,C-,F,A+,A+,B,A+,A,C-,F,C-,C,A+
+20176,Paul,Garcia,UCLA,OLB,Coverage,,,B,73,232,Big Ten Pro Day,4.54,39,6.81,4.1,39,129,0,0,0,0,0,0,0,0,0,0,8,0,0,7.93,0,0,0,0,B,A-,B,A+,C+,A+,A-,C-,D-,C-,A-,A+,C,B+,A+,D,D+,F,C-,B
+20018,Saquon,Gotay,PNST,CB,Man Coverage,,,B-,72,192,Big Ten Pro Day,4.54,22,6.95,4.2,35,129,0,0,0,0,0,0,0,0,0,0,0,6.22,7,0,0,0,0,0,A,B,A,B,C,C,A-,A+,D+,C-,B-,C-,B,A,B-,D-,B-,B,C,A+
+20037,Trae,Williams,WISC,CB,Man Coverage,,,A,70,188,Big Ten Pro Day,4.62,28,6.66,3.98,36,125,0,0,0,0,0,0,0,0,0,0,0,6.89,8.25,0,0,0,0,0,B+,B,A+,C+,A+,C-,A-,B+,D-,D-,C+,D,A+,A+,B+,C+,B,C+,C-,A+
+21381,Jordan,Ross,PURD,CB,Zone Coverage,,,B,70,185,Big Ten Pro Day,4.7,32,6.95,4.02,36,130,0,0,0,0,0,0,0,0,0,0,0,6.56,8.88,0,0,0,0,0,C+,C,A-,B,B+,C-,A+,F,D,F,A,B+,B+,C,B,D+,C-,D-,D+,B+
+74453,John,Thomas,MIST,CB,Zone Coverage,,,B-,70,180,Big Ten Pro Day,4.47,20,6.52,3.97,37,128,0,0,0,0,0,0,0,0,0,0,0,5.67,7.75,0,0,0,0,0,B,C,C-,B,C-,D,C+,D-,C-,D,B-,C-,D+,C,A,F,D+,F,D+,C+
+74643,Michael,Allen,NW,CB,Ball Hawk,,,C+,70,189,Big Ten Pro Day,4.42,28,6.64,3.88,38,126,0,0,0,0,0,0,0,0,0,0,0,7,8.12,0,0,0,0,0,C,A,D+,C,A-,B+,C-,C,D,F,A,A-,C,C+,B-,F,B-,C,F,C+
+76914,David,Bagley,IOWA,CB,Ball Hawk,,,C-,71,182,Big Ten Pro Day,4.53,18,6.74,4.22,38,123,0,0,0,0,0,0,0,0,0,0,0,6.22,6.38,0,0,0,0,0,C+,C-,B+,D+,A-,B,C-,C-,F,F,C-,B-,C-,C-,D-,C-,D+,D+,F,D
+20876,Jermaine,Huang,IND,FS,Zone Coverage,,,B-,72,190,Big Ten Pro Day,4.48,25,6.7,3.86,38,129,0,0,0,0,0,0,0,0,0,0,0,4.44,8.5,0,0,0,0,0,C,B-,C,D+,C-,C,B,D-,F,F,C,C+,F,D,A,F,C-,D-,F,B+
+20020,Kyle,Walker,MINN,SS,Man Coverage,,,B+,72,209,Big Ten Pro Day,4.32,19,6.83,3.98,36,123,0,0,0,0,0,0,0,0,0,0,0,8.89,6.88,0,0,0,0,0,B,A,D,C+,C,F,A,B,A-,F,B,B-,C-,A,B,D-,D,D+,D-,C
+20825,Sam,Jacobs,WISC,SS,Zone Coverage,,,B-,71,195,Big Ten Pro Day,4.61,31,7,4.02,35,123,0,0,0,0,0,0,0,0,0,0,0,4.78,8.75,0,0,0,0,0,B-,C,C,C+,C+,C-,C+,D,D,F,C,B+,F,C,A,C,D,C,F,A+
+75366,Monte,Bazante,OREG,SS,Man Coverage,,,C+,72,201,Big Ten Pro Day,4.43,21,7.14,4.1,37,123,0,0,0,0,0,0,0,0,0,0,0,7,5.38,0,0,0,0,0,A,B,B-,C+,C+,C,C,D+,D-,D+,C-,D,D+,B-,B,C-,D-,F,D+,C+
+75400,Wayne,Daniels,NMSU,OG,Pass Blocking,,,B,76,286,C-USA Pro Day,5.67,42,7.2,4.32,35,122,0,0,0,0,0,0,0,7.06,4.82,0,0,0,0,0,0,0,0,0,B+,C,C+,C,D,B+,C,D+,C-,A-,F,C,C,A+,C+,D-,D-,D+,F,B+
+20618,Maikel,Lopez,MTSU,DE,Balanced,,,B,75,263,C-USA Pro Day,4.66,41,6.92,3.99,37,126,0,0,0,0,0,0,0,0,0,7.5,8,0,0,0,0,0,0,0,B,B-,A,C+,B+,A,A+,F,D-,C-,B-,A+,A-,A+,C,F,D-,F,F,B
+20819,Channing,Plumlee,KNSW,C,Line Captain,,,B-,76,290,C-USA Pro Day,5.6,44,7.38,4.28,35,121,0,0,0,0,0,0,0,6.94,5.29,0,0,0,0,0,0,0,0,0,A-,C-,B+,A,C+,C,C-,F,B,C-,C+,C,C,A-,D+,D+,F,D+,D-,B
+75635,Trevor,Sparks,LU,RB,Balanced,,,B-,71,216,C-USA Pro Day,4.44,31,7,4.08,34,126,0,0,0,6.76,6.28,6.25,1.38,0,0,0,0,0,0,0,0,0,0,0,B,B-,A,C,A-,B,A-,D-,C-,A,B,D-,C,B,B,C,D+,D+,F,A-
+79173,Joseph,Gleichman,KNSW,OG,Run Blocking,,,B-,76,300,C-USA Pro Day,5.82,43,7.35,4.56,35,121,0,0,0,0,0,0,0,6.35,8.47,0,0,0,0,0,0,0,0,0,C-,A-,B+,D-,C-,C-,B,F,A+,C-,F,C,D-,A+,C-,F,F,D+,C-,B+
+74829,Richard,Yakubov,WKU,OT,Pass Blocking,,,C,75,312,C-USA Pro Day,5.6,39,7.55,4.36,32,115,0,0,0,0,0,0,0,6.24,4.12,0,0,0,0,0,0,0,0,0,F,C-,D+,C-,D-,D+,B-,D,C-,C,D-,D+,B-,A,C,B-,F,D+,D-,B-
+75104,Andrew,Massey,FIU,QB,Scrambler,,,C,73,209,C-USA Pro Day,4.43,32,6.92,4.05,36,126,0,5.53,6.62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,B+,B+,A-,C-,D,C,A-,F,D+,F,C-,F,B-,C-,B,C,F,C-,F,C
+75258,Paul,Askew,NMSU,OLB,Speed,,,C,73,231,C-USA Pro Day,4.39,38,6.92,4.04,37,124,0,0,0,0,0,0,0,0,0,0,6.59,0,0,7.73,0,0,0,0,B+,B,C+,C-,B+,B-,C,F,C-,D+,B-,A+,D,C+,B+,D-,F,F,F,C-
+75273,Ruben,Villanueva,WKU,CB,Man Coverage,,,C,72,181,C-USA Pro Day,4.47,19,6.72,4.01,37,127,0,0,0,0,0,0,0,0,0,0,0,6.89,6.5,0,0,0,0,0,B,B+,F,C,A,D,B-,C+,F,D+,B+,B,D+,B,C-,D-,D+,D,D,C-
+75684,Robert,Vohs,FIU,CB,Ball Hawk,,,C-,71,191,C-USA Pro Day,4.57,30,6.56,3.92,36,128,0,0,0,0,0,0,0,0,0,0,0,6,7.25,0,0,0,0,0,A-,C+,B,B-,B-,A,C,F,F,D+,C-,B+,F,C+,C-,C+,C,C,D+,C+
+75634,Anthony,Huddleston,FIU,P,Accuracy,,,C-,74,186,C-USA Pro Day,6.32,17,7.38,4.93,26,108,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4.93,2.65,5,8.64,B,B+,D,D-,C-,D+,C+,C-,C-,D-,C-,F,F,C,C,C,A-,C-,A,D+
+76661,Yevgeniy,Hufnagel,FIU,OT,Run Blocking,,,C-,76,299,C-USA Pro Day,5.63,43,7.41,4.71,30,113,0,0,0,0,0,0,0,3.41,5.88,0,0,0,0,0,0,0,0,0,C+,C+,C,C-,D+,C,C-,F,B-,D-,D-,D+,B-,C+,C-,C-,F,D-,D-,D-
+21477,D.J.,Tucker,JST,FS,Run Stopper,,,C-,71,207,C-USA Pro Day,4.41,36,6.92,4.05,40,131,0,0,0,0,0,0,0,0,0,0,0,6.11,6.62,0,0,0,0,0,A-,C+,A+,B,C+,D+,A-,F,C,F,B,A,B,C-,C,C-,F,D+,D,B
+74466,Michael,Martinezaguila,NMSU,CB,Zone Coverage,,,C-,71,183,C-USA Pro Day,4.66,29,7.08,3.99,37,124,0,0,0,0,0,0,0,0,0,0,0,4.22,6.12,0,0,0,0,0,C+,C,A,B,C,C-,B,D-,F,D+,B-,A-,B+,C-,B-,D-,D+,D-,D,A
+74061,Luther,Gervais,FIU,OT,Pass Blocking,,,C+,76,296,C-USA Pro Day,5.26,47,7.17,4.24,35,123,0,0,0,0,0,0,0,8.35,5.53,0,0,0,0,0,0,0,0,0,A+,A,A+,A,A+,B,C+,D-,B-,B+,C,C-,A,C+,A,D,A-,C-,D,B+
+79162,Robert,Delgado,JST,WR,Route Runner,,,C+,69,174,C-USA Pro Day,4.44,31,6.68,4.08,40,128,0,0,0,0,0,5.75,7.85,0,0,0,0,0,0,0,0,0,0,0,B,A+,B,A-,A+,C,B+,A+,C-,B-,A+,C+,C,C+,B+,D-,F,D,D-,A+
+75730,Thomas,Cwynar,WKU,DT,Balanced,,,C+,75,286,C-USA Pro Day,5.67,38,6.92,4.34,36,122,0,0,0,0,0,0,0,0,0,6,5.06,0,0,0,0,0,0,0,C+,C,B,C+,C+,C,B,D,D,F,B,C,C+,A,C-,B-,D-,D,D+,C+
+75301,Bruce,Lewis,MTSU,OG,Run Blocking,,,C+,76,287,C-USA Pro Day,5.78,43,7.92,5.05,32,116,0,0,0,0,0,0,0,5.53,5.65,0,0,0,0,0,0,0,0,0,F,C-,B,C,C-,C,A-,C-,B,C,F,D+,C,C+,C+,D-,D+,F,D-,C
+21270,Jamal,McBride,ND,RB,Receiving,WR,Route Runner,B+,70,205,Independents Pro Day,4.32,30,6.49,3.82,38,131,0,0,0,7.29,8.56,6.75,5.69,0,0,0,0,0,0,0,0,0,0,0,B+,B+,A,A+,B,A,B,A+,F,B+,C-,F,D-,A-,C-,F,D-,D+,F,A+
+74026,Kyle,Edens,ND,WR,Route Runner,,,C+,69,171,Independents Pro Day,4.35,27,6.72,3.98,43,134,0,0,0,0,0,7.5,10,0,0,0,0,0,0,0,0,0,0,0,A-,A+,B+,B,B,C,C+,B,C,C-,B,A-,C+,A,A+,C,D-,B-,C,B-
+74101,John,Johnson,CONN,WR,Route Runner,,,B-,69,176,Independents Pro Day,4.47,27,6.7,3.85,40,133,0,0,0,0,0,6.38,8.46,0,0,0,0,0,0,0,0,0,0,0,B,A,B,A,B,C+,A-,B,C,C,C+,D-,B,A+,B-,D-,C-,C-,C,A
+74017,Daniel,Habib,ND,TE,Receiving,,,C+,75,241,Independents Pro Day,4.56,42,6.81,4.13,40,133,0,0,0,0,0,8.25,7.38,0,4.94,0,0,0,0,0,0,0,0,0,A,B,A+,A+,A+,A+,A+,A,B,A,A-,A+,A,B,A+,F,F,C+,D+,B+
+74292,Philip,Hering,ND,OT,Run Blocking,,,B,73,294,Independents Pro Day,5.29,42,7.26,4.47,35,120,0,0,0,0,0,0,0,6,8.47,0,0,0,0,0,0,0,0,0,B+,B+,B,A+,B,A+,A+,C+,A,B-,C,C+,A+,B,B,C,D+,B-,D-,A
+74860,James,Richardson,ND,ILB,Coverage,,,C-,75,232,Independents Pro Day,4.72,31,7.08,4.19,35,125,0,0,0,0,0,0,0,0,0,0,5.29,0,0,7.53,0,0,0,0,C-,B,D+,C,B,A-,D+,F,D-,D,B,C-,C,A,B-,D+,D+,D+,F,C
+75820,Ralph,Moreno,CONN,CB,Ball Hawk,,,C,70,172,Independents Pro Day,4.59,24,6.97,4.08,36,122,0,0,0,0,0,0,0,0,0,0,0,6.22,5.88,0,0,0,0,0,C+,C-,D-,C,B+,A,A-,C-,C,F,C+,D+,C-,C+,C+,D+,D-,C-,F,C-
+74851,Anthony,Leider,CONN,FS,Ball Hawk,,,C-,72,194,Independents Pro Day,4.53,29,6.72,4.15,37,127,0,0,0,0,0,0,0,0,0,0,0,5.67,7.38,0,0,0,0,0,B+,B,C-,B-,A,B+,A-,D-,D-,F,C,C-,C,C+,C-,D-,C-,D+,D-,D+
+76042,Andre,Thomas,AKRN,DE,Balanced,,,D+,75,278,MAC Pro Day,4.74,31,7.2,4.07,33,119,0,0,0,0,0,0,0,0,0,5.62,5.65,0,0,0,0,0,0,0,C,B,D,C+,F,B,B-,F,B,F,B,C,C-,C+,B,C-,F,D,D-,C+
+74000,John,Nunez,BALL,OT,Balanced,,,A+,76,297,MAC Pro Day,5.46,44,6.92,4.3,35,120,0,0,0,0,0,0,0,4.94,6.24,0,0,0,0,0,0,0,0,0,A+,A+,A+,A+,A+,A,A+,D-,A,B,A+,B,A-,A+,A-,C,C,B,C+,A+
+20118,Chad,Coleman,BALL,OT,Balanced,,,A-,74,294,MAC Pro Day,5.67,44,6.81,4.36,36,123,0,0,0,0,0,0,0,5.53,7.06,0,0,0,0,0,0,0,0,0,A-,A+,B,B,B-,B+,A+,D-,B,C,A,C+,A-,C+,B-,D-,C+,B,C,B
+20368,Tommy,Murphy,BALL,CB,Man Coverage,,,B-,71,186,MAC Pro Day,4.43,18,6.68,4.05,37,126,0,0,0,0,0,0,0,0,0,0,0,7.89,6,0,0,0,0,0,C+,B-,C-,C+,C+,D,B+,B,F,B,A,C,B+,A-,C,D,D+,B,C,A-
+21575,Mason,Mihalik,,DE,Speed Rusher,,,D,76,242,MAC Pro Day,4.68,31,6.7,3.92,37,127,0,0,0,0,0,0,0,0,0,7.12,4.59,0,0,0,0,0,0,0,A-,A+,C-,C,C+,D+,A+,F,F,C-,C+,C,B-,C,C-,D-,F,F,C,B
+20077,Taylor,Brinkley,BGSU,RB,Speed,,,B-,69,197,MAC Pro Day,4.42,36,7.22,4.28,37,122,0,0,0,7.18,6.67,4.75,2,0,0,0,0,0,0,0,0,0,0,0,A+,C-,A,A-,B,B,B+,D+,D+,B,B,D-,B-,A+,A-,C-,C,C-,D,A+
+20100,Kenneth,De Jesus,BGSU,WR,Speed,,,B,71,192,MAC Pro Day,4.31,30,6.95,4.13,36,126,0,0,0,0,0,7.75,7.38,0,0,0,0,0,0,0,0,0,0,0,A,B,C+,A-,B,A-,A,C,C,C,C,C,A-,A-,A-,B+,C+,C-,C,A+
+20247,Khalid,Davis,BGSU,C,Pass Blocking,,,C,74,293,MAC Pro Day,5.67,48,6.9,4.1,36,124,0,0,0,0,0,0,0,7.29,5.29,0,0,0,0,0,0,0,0,0,C,A,A,B,A+,C,A+,C+,C,A-,B+,C+,A+,C+,A+,A-,C-,D+,C-,B-
+20127,Zach,Guzman,BGSU,OLB,Run Stopper,ILB,Run Stopper,C-,74,247,MAC Pro Day,4.81,43,7.08,3.99,37,125,0,0,0,0,0,0,0,0,0,0,9.53,0,0,6.73,0,0,0,0,B,C,A+,A+,C+,D+,A,D-,B,C+,A+,A+,C-,C,C,D-,C-,C+,D-,A+
+74358,Harry,Chivington,BUFF,FS,Ball Hawk,,,C,70,194,MAC Pro Day,4.4,25,6.74,3.85,39,128,0,0,0,0,0,0,0,0,0,0,0,6.33,7.62,0,0,0,0,0,A+,B,C+,A-,A-,B,C,F,C+,C+,B,A,B,C+,C+,B,D-,C-,C-,A
+75245,Clarence,Thomas,CMU,DT,Nose Tackle,,,F,74,300,MAC Pro Day,5.94,43,6.97,4.38,34,119,0,0,0,0,0,0,0,0,0,4.5,6.35,0,0,0,0,0,0,0,F,C+,B-,D+,C-,B,C+,F,F,C-,C,C+,D+,A-,D+,D-,D-,F,D,B
+74734,James,Dejesus,EMU,CB,Man Coverage,,,C,73,193,MAC Pro Day,4.53,22,6.95,3.99,36,121,0,0,0,0,0,0,0,0,0,0,0,5.78,5.75,0,0,0,0,0,B,C,D+,B-,D+,C-,B-,C-,F,D+,A,A-,C-,B,C,D,D-,D-,F,B
+74025,Stephen,Ryder,EMU,OT,Pass Blocking,,,D+,75,297,MAC Pro Day,5.6,39,7.69,4.61,34,116,0,0,0,0,0,0,0,6.35,4.71,0,0,0,0,0,0,0,0,0,A+,B,B+,C+,A+,A+,A+,D-,C-,B,A,C+,A,B+,A+,B,D,D-,D+,A+
+74741,Todd,Morris,KENT,ILB,Field General,,,D+,71,232,MAC Pro Day,4.81,32,6.83,4.04,36,124,0,0,0,0,0,0,0,0,0,0,6.59,0,0,7.27,0,0,0,0,C-,B,C,C-,B-,B+,C+,C,F,D+,B,C,B,C,A,F,F,F,F,A
+74299,Alberto,Barrales,MASS,QB,Balanced,,,D-,75,213,MAC Pro Day,4.81,34,7,4.12,34,127,0,7.41,7.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C,B,A,C+,C+,A-,C,F,D-,F,B,F,C-,B-,B-,D,B-,D-,C-,B-
+74833,Chester,Lee,MASS,WR,Red Zone Threat,,,D,75,224,MAC Pro Day,4.64,33,6.7,4.05,37,127,0,0,0,0,0,7.5,5.69,0,0,0,0,0,0,0,0,0,0,0,C-,B-,B,C-,B-,B,B-,B,B+,F,F,B-,B,B-,B,D+,D-,C,C-,C+
+74263,Jeffrey,Fair,MIAO,OT,Run Blocking,,,C,76,292,MAC Pro Day,5.82,43,6.81,4.1,35,123,0,0,0,0,0,0,0,6.35,7.88,0,0,0,0,0,0,0,0,0,A+,A+,A,B+,A-,B+,C,D-,A-,C-,C-,C+,B,A,A-,C+,C-,C-,C-,A-
+74290,Andrew,Tyler,OHIO,QB,Balanced,,,D+,75,212,MAC Pro Day,4.74,23,7.26,4.52,32,119,0,6.59,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C+,B,C+,A,B-,A-,C-,C-,C,C+,B-,C-,A+,B,A,C-,F,C-,C,B
+74157,Arthur,Embrey,OHIO,CB,Zone Coverage,,,B-,71,176,MAC Pro Day,4.4,31,6.48,3.8,40,134,0,0,0,0,0,0,0,0,0,0,0,6.67,8.25,0,0,0,0,0,B-,B,B+,B,C,C-,A-,D,D-,D+,B-,B,C,C-,A,D-,D-,F,C-,B+
+75252,Bruce,Piccone,TLDO,OG,Balanced,,,D,75,293,MAC Pro Day,5.26,43,7.66,4.64,33,118,0,0,0,0,0,0,0,5.76,6.12,0,0,0,0,0,0,0,0,0,B+,C-,B,B+,B-,B+,C,F,C,C+,F,A,C-,D-,C,F,F,F,D,C+
+75706,Ronald,Froemming,TLDO,CB,Ball Hawk,,,C-,70,180,MAC Pro Day,4.48,28,6.95,4.19,35,130,0,0,0,0,0,0,0,0,0,0,0,5,6.25,0,0,0,0,0,C,C,B+,B,C+,A-,C,C,D+,C,C-,B-,C,C+,C-,F,D-,F,D-,C
+20188,Eli,Madison,WMU,WR,Possession,,,C-,72,194,MAC Pro Day,4.42,33,6.59,4.04,39,132,0,0,0,0,0,7.25,8,0,0,0,0,0,0,0,0,0,0,0,C,B+,B,A-,B-,A+,A-,B-,C-,C+,B,B+,D,C+,A,C+,D,D,C,A+
+74346,Mark,Stevens,WMU,OG,Pass Blocking,,,B-,78,276,MAC Pro Day,5.42,48,6.81,4.1,35,127,0,0,0,0,0,0,0,7.53,5.29,0,0,0,0,0,0,0,0,0,A+,A-,A,A+,A-,A+,A+,D,C,A,F,A-,C-,A+,A,C+,C-,C-,D+,A
+20342,Brian,Barea,WMU,DE,Run Stopper,,,D+,76,292,MAC Pro Day,4.62,41,6.78,4.01,35,120,0,0,0,0,0,0,0,0,0,6.38,7.18,0,0,0,0,0,0,0,A,B,B,B,B,A+,A-,F,B,D,A+,A-,B,C+,C+,C-,C+,B,C+,A+
+21158,Michael,Gonzalez,WMU,CB,Zone Coverage,,,A,70,189,MAC Pro Day,4.37,28,6.72,4.07,37,126,0,0,0,0,0,0,0,0,0,0,0,6.89,8.38,0,0,0,0,0,B+,A,B,B,A+,B-,C,C-,C+,C+,B+,A,A-,B,B+,F,F,F,D+,B
+75396,Manuel,Hernandez,MIAO,OT,Run Blocking,,,D,77,291,MAC Pro Day,5.46,40,7.22,4.49,33,117,0,0,0,0,0,0,0,4.71,8.35,0,0,0,0,0,0,0,0,0,F,C-,B,B,C,A-,D+,F,B,D-,B-,D-,D+,D+,C-,F,D+,C+,D-,B+
+74203,Ernest,Brunache,SDSU,ILB,Field General,,,A,73,237,PAC-12 Pro Day,4.66,34,6.78,4.08,34,125,0,0,0,0,0,0,0,0,0,0,4.82,0,0,6,0,0,0,0,B-,A-,C+,B-,A-,C-,B,C-,D-,F,A+,B,A+,C,A-,D+,D+,C,C,A+
+74252,Raymond,Beadles,CSU,DE,Speed Rusher,,,A-,76,246,PAC-12 Pro Day,4.59,35,6.59,3.87,38,129,0,0,0,0,0,0,0,0,0,8.12,6.24,0,0,0,0,0,0,0,A+,A+,C,A+,A,C-,A,D+,D+,F,A,B,A,A+,C-,C+,C,C,D+,B
+20259,Jeremy,Allen,WAST,FB,Rushing,,,A+,71,220,PAC-12 Pro Day,4.34,42,6.7,3.89,42,133,0,0,0,8.18,8.28,5,0.46,0,6.82,0,0,0,0,0,0,0,0,0,A+,A+,A+,A-,A+,A-,A+,C-,B+,B+,A-,C-,B,A-,C,D+,D+,C-,C+,A+
+20350,Mike,Martis,SDSU,OG,Run Blocking,,,A+,74,294,PAC-12 Pro Day,5.49,47,7.17,4.26,35,124,0,0,0,0,0,0,0,5.65,7.18,0,0,0,0,0,0,0,0,0,C-,A+,B,A+,A+,B,A-,F,A,C,F,B,C,A+,C-,B-,C-,D,D,A+
+20221,Steven,Henry,UTST,OG,Run Blocking,,,B,76,293,PAC-12 Pro Day,5.32,43,6.9,4.17,35,124,0,0,0,0,0,0,0,6.71,8.59,0,0,0,0,0,0,0,0,0,A+,A,A+,A,B,B-,A+,B,A,C,F,D+,A-,A+,B+,C+,C,F,C-,A+
+20392,Andy,Jackson Jr.,SDSU,DE,Run Stopper,,,B,76,293,PAC-12 Pro Day,4.56,45,6.92,4.19,36,123,0,0,0,0,0,0,0,0,0,6.12,8.12,0,0,0,0,0,0,0,B+,B+,A-,C,C+,A+,A+,D-,D-,D-,A,A,B,A,B,C-,C-,C+,C+,B-
+20769,Ty,Liddi,SDSU,OG,Pass Blocking,,,B,75,291,PAC-12 Pro Day,5.49,44,7.55,4.66,32,119,0,0,0,0,0,0,0,8.82,6.35,0,0,0,0,0,0,0,0,0,C,B,B,B,C+,B-,A-,C-,C+,A-,F,D-,B,B,B,C-,C+,D-,D-,C
+22688,Brett,Riefenhauser,WAST,CB,Zone Coverage,,,B,70,188,PAC-12 Pro Day,4.42,30,6.9,3.98,36,126,0,0,0,0,0,0,0,0,0,0,0,5.33,7.75,0,0,0,0,0,C+,B-,C-,D+,C+,C-,A-,D+,D-,C-,B+,C+,C-,C,B,C+,C-,C-,F,A-
+74022,Thomas,Daly,UTST,WR,Possession,,,B,73,184,PAC-12 Pro Day,4.59,42,6.42,3.9,40,136,0,0,0,0,0,10,8.31,0,0,0,0,0,0,0,0,0,0,0,B,A,A+,A+,A+,A+,A+,B-,C,C-,B,C-,A,A-,A+,C,C+,C-,C,A+
+74021,Tony,Crowley,WAST,OLB,Pass Rush,,,B,75,243,PAC-12 Pro Day,4.5,41,6.56,3.87,37,126,0,0,0,0,0,0,0,0,0,8.75,6.71,0,0,0,0,0,0,0,B,A+,B-,A+,B,A,A+,C,B,B-,A+,A-,A+,C,A-,B-,C-,C-,C-,B+
+20509,Joel,Tobin,UTST,OG,Pass Blocking,,,B,75,285,PAC-12 Pro Day,5.2,43,7.62,4.36,34,120,0,0,0,0,0,0,0,8.71,5.18,0,0,0,0,0,0,0,0,0,A+,B+,A-,C+,C,B-,C+,D-,C-,A+,F,B,B,D,B,D-,F,F,D+,A
+21210,Drew,Anderson,UTST,CB,Man Coverage,,,B-,72,190,PAC-12 Pro Day,4.5,26,6.92,4.15,38,124,0,0,0,0,0,0,0,0,0,0,0,7.67,6.25,0,0,0,0,0,B,A-,C,A+,B+,C,A,C+,F,D+,A,D,C,B+,C-,D+,C+,C-,C-,B-
+21195,Adam,Ramos,UTST,WR,Possession,,,B-,75,189,PAC-12 Pro Day,4.54,27,7.03,4.1,36,129,0,0,0,0,0,7.75,5.85,0,0,0,0,0,0,0,0,0,0,0,C+,C-,C,B,B,A-,C+,B,C-,D-,C,C-,D+,B+,C+,D-,D+,D-,F,C-
+75236,Floyd,Copley,WAST,CB,Ball Hawk,,,B-,70,182,PAC-12 Pro Day,4.61,23,6.88,4.07,38,126,0,0,0,0,0,0,0,0,0,0,0,5.56,6.38,0,0,0,0,0,B-,C-,D-,B-,C-,A-,B,C+,F,D,A,A-,C-,B,C-,F,F,C-,D+,B-
+74130,Adan,Cora,WAST,DE,Balanced,,,B-,75,273,PAC-12 Pro Day,4.72,33,6.66,4.02,34,125,0,0,0,0,0,0,0,0,0,8.62,7.76,0,0,0,0,0,0,0,B,B,B,A-,B,A,B,F,D-,F,A+,B-,A,C-,A,A-,F,D+,C-,A
+75003,Andrew,Brooks,BOIS,RB,Receiving,,,B-,70,200,PAC-12 Pro Day,4.43,28,6.72,3.94,38,130,0,0,0,7.18,7.39,7.12,4.31,0,0,0,0,0,0,0,0,0,0,0,A-,A+,C-,C+,A,A+,B,A+,C-,A-,C,C-,D,C+,C,D+,C,D,D-,A
+20760,William,Claggett,UTST,RB,Balanced,,,B-,69,210,PAC-12 Pro Day,4.37,30,6.74,3.98,37,128,0,0,0,8,8.11,6.75,1.69,0,0,0,0,0,0,0,0,0,0,0,A,B,A,C+,B-,B,B+,F,D-,A-,A,D-,D-,B,C,D+,F,D-,D,A+
+74264,James,Derting,CSU,RB,Speed,,,B+,71,191,PAC-12 Pro Day,4.37,27,6.88,4.04,38,128,0,0,0,7.35,8.22,4.62,2.15,0,0,0,0,0,0,0,0,0,0,0,A,C,A,A-,B+,C,A-,D-,D+,B,B,F,A-,B,A+,D+,D+,C-,D+,B-
+74450,Harold,Brown,TXST,FS,Man Coverage,,,C,70,204,PAC-12 Pro Day,4.62,9,6.92,4.15,31,114,0,0,0,0,0,0,0,0,0,0,0,5.67,5.38,0,0,0,0,0,B+,C,D-,C,C,D,D+,B-,F,D+,B-,C-,D,B,C,F,C-,C-,D-,C-
+21415,Horacio,Henry,UTST,DE,Balanced,,,C,76,270,PAC-12 Pro Day,4.95,33,6.7,4.24,35,122,0,0,0,0,0,0,0,0,0,7,5.41,0,0,0,0,0,0,0,B,B,C,C+,B-,B,A,D,C-,D-,B,B,A-,C-,B,C-,B-,F,C-,A+
+76936,Ronald,Mancini,ORST,RB,Balanced,,,C,71,219,PAC-12 Pro Day,4.34,28,7.08,4.15,36,125,0,0,0,6.88,6.56,4.38,0,0,0,0,0,0,0,0,0,0,0,0,B+,C,A-,B,C-,C+,B-,D-,D+,C-,D+,C-,B,B-,B,C+,C,F,F,C
+20157,Jeff,Jones,SDSU,QB,Pocket,,,C,77,233,PAC-12 Pro Day,4.72,24,7.29,4.26,33,119,0,6.94,8.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,C+,C+,B,A,C-,B-,C-,B+,C,C+,D+,B,A+,A+,C,C-,C-,C-,C-
+20147,Alex,Long,SDSU,WR,Possession,,,C,74,192,PAC-12 Pro Day,4.51,28,6.59,3.97,39,132,0,0,0,0,0,8,8.31,0,0,0,0,0,0,0,0,0,0,0,B-,A,B,A+,A+,B,B-,B,C-,B,C+,A-,B+,A-,B,D-,C,F,D+,B
+20111,Eric,Hosmer,UTST,TE,Blocking,,,C,76,260,PAC-12 Pro Day,4.66,45,6.76,3.97,39,127,0,0,0,0,0,6.88,5.08,0,7.65,0,0,0,0,0,0,0,0,0,B+,A-,A,A+,C,B,A+,C,A+,A+,A-,A+,B,B,A-,B-,F,C-,D,A
+75288,Andrew,Richards,BOIS,RB,Balanced,,,C,70,213,PAC-12 Pro Day,4.37,28,6.92,4.12,34,127,0,0,0,6,7.56,4.75,0.92,0,0,0,0,0,0,0,0,0,0,0,B,C,C-,B-,A,C-,C+,D+,D-,B-,C,D-,B,D,C-,D-,C-,F,F,B
+75359,Jeffrey,Esparza,TXST,OLB,Coverage,,,C,73,231,PAC-12 Pro Day,4.53,36,6.85,3.98,39,128,0,0,0,0,0,0,0,0,0,0,7.18,0,0,8.2,0,0,0,0,C,A,B,B,D+,A+,B,D+,F,D+,A+,A+,C-,A,A,C-,D,D,D+,A
+75822,Daniel,Calvert,CSU,DT,Pass Rusher,,,C-,74,295,PAC-12 Pro Day,5.14,34,6.76,4.13,34,123,0,0,0,0,0,0,0,0,0,6.88,4,0,0,0,0,0,0,0,B+,A-,C-,D+,D-,A-,B-,D-,D,C-,C,D,C,A+,C-,F,D+,F,D+,B
+75875,Allan,Nyholm,SDSU,RB,Receiving,,,C-,70,198,PAC-12 Pro Day,4.78,17,7.05,3.99,34,119,0,0,0,4.88,6,3.25,4.46,0,0,0,0,0,0,0,0,0,0,0,C-,B+,D-,D-,B-,A,C+,A+,D,C,D,F,C-,C-,A-,D-,D-,D-,D-,C
+20381,Matt,Davidson,SDSU,CB,Ball Hawk,,,C-,70,178,PAC-12 Pro Day,4.47,29,6.57,4.01,37,127,0,0,0,0,0,0,0,0,0,0,0,6.56,8.25,0,0,0,0,0,B-,B,B+,A+,B-,A+,A+,D-,D-,C-,A,A,C,C+,B+,D-,C,D-,D+,A+
+75585,Ernest,Palacios,CSU,FS,Zone Coverage,,,C-,72,192,PAC-12 Pro Day,4.76,16,7.08,4.3,31,116,0,0,0,0,0,0,0,0,0,0,0,4.56,6.88,0,0,0,0,0,C+,C-,C-,C-,C-,D,C,D+,F,D,C,C+,D-,C,A-,F,C-,F,D,B-
+75975,Max,Kim,CSU,SS,Man Coverage,,,C-,71,200,PAC-12 Pro Day,4.4,22,7.38,4.17,36,122,0,0,0,0,0,0,0,0,0,0,0,6.22,5,0,0,0,0,0,B-,C,C-,D+,C-,C,D+,C+,D-,F,D-,C,C-,A-,C,C,F,F,D+,D+
+75379,Levi,Ahuja,ORST,SS,Man Coverage,,,C-,73,205,PAC-12 Pro Day,4.54,27,6.9,4.13,34,121,0,0,0,0,0,0,0,0,0,0,0,7.56,5.75,0,0,0,0,0,A,B,B,C,B,D+,A-,B-,D,C,B-,B+,D-,A+,C,F,F,F,D+,C
+74049,Jose,Johnson,BOIS,CB,Man Coverage,,,C-,70,190,PAC-12 Pro Day,4.47,25,6.56,3.88,37,131,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,B,A+,A,B,A,D,B-,C+,D+,D+,A+,A-,B,B+,C+,C-,D+,D-,D-,A-
+20621,Terry,Parry,WAST,OT,Run Blocking,,,C-,75,283,PAC-12 Pro Day,5.63,46,7.66,4.36,34,121,0,0,0,0,0,0,0,6.71,6.71,0,0,0,0,0,0,0,0,0,D+,C+,A-,B,C+,C+,A,F,B+,C,B-,C,C+,D+,B,B-,D-,D,D-,A
+75067,Jarred,Kenney,SDSU,DT,Balanced,,,C-,75,290,PAC-12 Pro Day,5.29,33,7,4.38,31,119,0,0,0,0,0,0,0,0,0,5.12,6.82,0,0,0,0,0,0,0,C,C-,C-,C-,A-,A-,F,D+,D,F,D+,B,B-,B-,D,C+,D-,F,D,C-
+74973,Robert,Lunceford,UTST,OG,Balanced,,,C-,75,293,PAC-12 Pro Day,5.9,37,7.41,4.56,32,119,0,0,0,0,0,0,0,5.18,6,0,0,0,0,0,0,0,0,0,B-,D+,B,C+,C+,D+,B,D-,C+,B-,F,A-,C,A+,C,F,F,C,D-,C
+21084,Dee,De La Rosa,UTST,QB,Pocket,,,C-,78,218,PAC-12 Pro Day,4.83,31,7.48,4.52,29,117,0,7.88,7.38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,C-,C,B,B-,A,D+,C-,F,C-,C,D+,B+,B-,C+,F,C+,C-,F,C-
+74412,Brandon,Genco,BOIS,CB,Zone Coverage,,,C-,70,192,PAC-12 Pro Day,4.61,24,6.66,3.95,36,126,0,0,0,0,0,0,0,0,0,0,0,4.67,8.12,0,0,0,0,0,C,C+,D,C,B,D+,C+,D+,F,C,C-,F,F,D,A-,C,F,D-,C-,A-
+21290,Devin,Spence,UTST,DE,Balanced,,,C+,74,281,PAC-12 Pro Day,4.64,35,6.74,3.9,34,121,0,0,0,0,0,0,0,0,0,7.12,7.29,0,0,0,0,0,0,0,A+,B,B+,C-,B,A+,C+,F,F,D-,A-,A,A,B,A-,D,D-,F,D+,A
+20228,JR,Stephens,UTST,QB,Pocket,,,C+,77,221,PAC-12 Pro Day,4.66,31,6.9,4.26,34,121,0,7.53,9.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,B,A-,A,A+,A+,C-,B,C+,D+,A-,D+,B,B,A+,C-,D+,C+,C,B
+74377,John,Williams,ARK,OLB,Speed,,,B-,73,223,SEC Pro Day,4.48,32,6.7,4.2,37,126,0,0,0,0,0,0,0,0,0,0,6,0,0,6.53,0,0,0,0,B+,B,B-,A+,B+,C,A+,C+,C-,D-,B-,B,C-,C,B,D-,F,C-,C+,C
+74354,Jeffrey,Wright,ARK,FS,Man Coverage,,,B-,72,195,SEC Pro Day,4.39,29,6.81,3.99,38,133,0,0,0,0,0,0,0,0,0,0,0,8.78,6.38,0,0,0,0,0,A+,B,B-,B,B,D,A,B+,C,D-,B+,A,D+,A+,C+,D-,C+,B,D-,A
+74667,Edward,Kelly,AUB,CB,Man Coverage,,,B-,70,186,SEC Pro Day,4.4,23,6.59,4.04,37,125,0,0,0,0,0,0,0,0,0,0,0,6.89,5.88,0,0,0,0,0,A+,A,A,A+,C,D+,A,C-,D-,F,A-,B-,F,B+,D-,F,F,D-,D+,A
+75800,Jesse,Peoples,BAMA,OG,Pass Blocking,,,B-,76,281,SEC Pro Day,5.49,36,7.2,4.38,33,122,0,0,0,0,0,0,0,6.24,5.65,0,0,0,0,0,0,0,0,0,A,B,B-,A-,B+,B-,B+,D-,C+,B+,F,C+,B+,A,B,F,F,D-,F,B
+22026,Jack,Wren,BAMA,CB,Ball Hawk,,,B-,70,191,SEC Pro Day,4.44,21,6.81,4.12,37,122,0,0,0,0,0,0,0,0,0,0,0,4.78,6.12,0,0,0,0,0,A,B,B,D,D+,B+,C+,F,B-,B,B,D+,C+,C-,B,D+,F,C-,D,C+
+20251,Brandon,Martin,FLA,DE,Speed Rusher,,,B-,76,237,SEC Pro Day,4.7,38,6.49,3.94,36,128,0,0,0,0,0,0,0,0,0,8.12,6.47,0,0,0,0,0,0,0,A+,A,B+,A-,B-,A+,A+,D,D+,F,C,B,A+,C+,A-,C,D+,C-,C-,A+
+75070,Elvis,Cooley,LSU,K,Accuracy,,,C+,71,185,SEC Pro Day,6.28,17,7.45,4.71,27,113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4.8,6.9,4,1.82,C-,C,B,A,C-,C-,B+,D-,D-,C-,C-,C-,F,B,A,C-,C+,B+,C,C-
+20266,Dante,Zagunis,LSU,DE,Run Stopper,,,C+,76,281,SEC Pro Day,4.51,42,7.05,4.07,35,121,0,0,0,0,0,0,0,0,0,5.88,8.47,0,0,0,0,0,0,0,A-,C+,B+,A-,B,C+,A-,B-,D-,C,A,A+,B,B,B+,B,B,C,C+,B
+74057,Adam,Caffee,MISS,OG,Pass Blocking,,,A-,76,295,SEC Pro Day,5.74,47,6.97,4.1,35,125,0,0,0,0,0,0,0,7.06,5.06,0,0,0,0,0,0,0,0,0,C,A,B,C+,A,A-,A-,C-,B-,A-,F,A-,A+,C,A+,C+,F,F,C+,A+
+74283,Rafael,Osorio,MIZZ,ILB,Run Stopper,,,C+,75,242,SEC Pro Day,4.7,38,6.66,3.99,36,129,0,0,0,0,0,0,0,0,0,0,7.76,0,0,6.93,0,0,0,0,C,C+,B+,B,C,C-,B+,C-,C,D-,A-,A+,C,C-,C,F,B-,D-,C,C+
+74134,Mitchell,Sidney,MSST,RB,Power,,,C+,72,222,SEC Pro Day,4.36,35,6.78,3.86,38,128,0,0,0,7.76,8.72,6,1.38,0,0,0,0,0,0,0,0,0,0,0,B,A+,A,B-,C,B+,A+,B,C,B+,B,F,A,A+,A+,C-,D+,C+,D+,A+
+21622,Ronald,Kemp,OKLA,OLB,Pass Rush,,,C,76,242,SEC Pro Day,4.66,28,6.95,4.15,34,123,0,0,0,0,0,0,0,0,0,8.38,5.29,0,0,0,0,0,0,0,B-,B,C,A-,D,D+,C,F,C,C-,A+,D-,A,B-,C-,D-,B-,D+,F,B+
+74223,Andrew,Carlson,SOCA,OG,Run Blocking,,,B,76,293,SEC Pro Day,5.23,47,7.08,4.24,36,123,0,0,0,0,0,0,0,6.71,8,0,0,0,0,0,0,0,0,0,A,A+,A,A+,A+,C,A-,D+,A,C-,F,C,A,A+,B-,D,B,D+,C-,A+
+75807,Mark,Lynes,SOCA,ILB,Field General,,,C+,73,224,SEC Pro Day,4.93,38,7.03,3.95,37,127,0,0,0,0,0,0,0,0,0,0,6.94,0,0,7.27,0,0,0,0,D,A-,C,D,C+,D,A,D-,D,F,C-,C-,B,C+,C,D+,F,D+,D+,A
+20218,Bryn,Griffin,TAMU,RB,Balanced,,,A-,69,219,SEC Pro Day,4.31,34,6.7,3.93,39,128,0,0,0,8.82,8.78,7.88,2.46,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A,B-,A-,A-,A+,C-,B,B+,B,C-,A,B,A+,D+,D,D+,C,A+
+74338,Gregory,Bellomy,TAMU,SS,Man Coverage,,,B,71,196,SEC Pro Day,4.34,29,6.57,4.13,36,125,0,0,0,0,0,0,0,0,0,0,0,8.33,8.25,0,0,0,0,0,A,B,B,B,C+,D+,B,B,D-,C-,C+,A+,C+,A+,B,C+,D-,D-,C+,B
+20329,Connor,Bradley,TAMU,DE,Balanced,,,B,77,271,SEC Pro Day,4.74,40,6.7,3.95,38,126,0,0,0,0,0,0,0,0,0,7.5,6,0,0,0,0,0,0,0,A,A+,B+,A,B,A+,B,C-,C,D+,A-,A-,A+,C,A+,C+,B,C,C,A+
+20942,Jorge,McCray,TAMU,OT,Run Blocking,,,B,75,300,SEC Pro Day,5.32,46,7.77,4.64,33,116,0,0,0,0,0,0,0,5.18,7.06,0,0,0,0,0,0,0,0,0,C+,C,C,C+,C+,A,A-,D+,B,D,B+,D-,A,C+,A+,C-,C-,D+,D+,C
+74020,Irvin,Castleberry,TEX,OLB,Run Stopper,,,A-,75,242,SEC Pro Day,4.74,44,6.57,3.87,39,131,0,0,0,0,0,0,0,0,0,0,8.71,0,0,7.8,0,0,0,0,B-,A+,A+,A+,A,A+,B,C-,C,D-,A+,A+,C+,A+,B,C-,C,C+,C-,A+
+74073,Johnny,Hansford,UGA,CB,Ball Hawk,,,A-,70,171,SEC Pro Day,4.61,26,6.64,3.93,40,128,0,0,0,0,0,0,0,0,0,0,0,6.11,8.38,0,0,0,0,0,B+,C+,B,B,A,A+,A,F,C+,D-,B-,B+,C+,C,A-,C,B,B,C+,A+
+74045,Dennis,Germany,UGA,FS,Zone Coverage,,,B+,71,196,SEC Pro Day,4.36,23,6.43,3.84,36,129,0,0,0,0,0,0,0,0,0,0,0,5.56,8,0,0,0,0,0,B+,B,C+,B,A+,D+,C,D,D+,B,B,C+,A,B,A+,B,D+,F,C-,A+
+74385,Matthew,Pritchard,UKEN,C,Line Captain,,,B-,77,290,SEC Pro Day,5.53,38,7.48,4.54,31,115,0,0,0,0,0,0,0,5.06,4.24,0,0,0,0,0,0,0,0,0,C+,B+,C+,B+,B,B+,B+,F,C,C,A+,C-,A-,C-,A+,D,C+,C-,C-,A+
+74214,John,King,VAND,OT,Pass Blocking,,,B-,76,283,SEC Pro Day,5.23,46,7.11,4.12,37,126,0,0,0,0,0,0,0,7.65,5.06,0,0,0,0,0,0,0,0,0,A+,B,A-,A+,A-,B+,C+,C-,C,B,B+,C+,A,B,C-,D+,C+,F,D-,A+
+74167,Michael,Li,VAND,ILB,Coverage,,,B-,73,227,SEC Pro Day,4.57,34,6.92,3.92,36,129,0,0,0,0,0,0,0,0,0,0,5.53,0,0,8.53,0,0,0,0,B,B+,C,B,B,A-,B,F,C-,D-,B,B-,A-,A-,B-,B+,F,C,C,C-
+20006,Joe,Williams,TENN,RB,Receiving,,,A+,71,198,SEC Pro Day,4.3,31,6.37,3.82,42,134,0,0,0,8.65,9.28,10,7.69,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A+,A-,C+,A+,A+,A+,C,A+,C,C-,A-,A,B,C-,C,C+,C-,A+
+20032,Myles,Hernandez,TENN,OT,Pass Blocking,,,A+,76,280,SEC Pro Day,5.6,47,6.78,4.01,37,127,0,0,0,0,0,0,0,9.41,7.06,0,0,0,0,0,0,0,0,0,A+,A+,A+,A-,A+,C,B,F,B-,A,C-,C+,B,A,A+,B+,D-,D,C,A+
+20142,Alex,Smith-Schuster,TENN,WR,Possession,,,A,72,190,SEC Pro Day,4.59,34,7.17,4.1,39,127,0,0,0,0,0,8.62,8.77,0,0,0,0,0,0,0,0,0,0,0,B,B,A,A+,A+,A-,A+,A-,C+,C+,C+,B-,C+,A-,C+,C+,C-,B,C-,A
+24991,Douglas,Dimmadome Jr.,TENN,DE,Balanced,,,A-,76,260,SEC Pro Day,4.46,39,6.49,4.02,38,130,0,0,0,0,0,0,0,0,0,9.62,8,0,0,0,0,0,0,0,A+,A,A+,C+,B-,A+,C+,C-,B,A-,A+,A+,A+,B-,A+,C+,D+,B-,C-,A+
+20759,Warwick,Hollins,ARST,CB,Ball Hawk,,,B,71,182,Sun Belt Pro Day,4.48,25,6.72,3.9,38,129,0,0,0,0,0,0,0,0,0,0,0,5,6,0,0,0,0,0,A,C,B-,B+,C+,B+,B-,D-,C+,F,C,D+,C-,C,B-,C-,C+,D-,D,A-
+76448,Douglas,Hester,ARST,K,Power,,,F,72,198,Sun Belt Pro Day,5.9,13,7.8,4.9,26,107,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6.93,5.16,3.17,3.18,C+,B-,D-,C+,C-,D+,D,D,F,D,C-,C+,C,C-,D-,B,F,C,C,F
+74173,Bradley,Gent,APST,ILB,Coverage,,,D,73,230,Sun Belt Pro Day,4.54,37,6.64,4.02,37,125,0,0,0,0,0,0,0,0,0,0,6.59,0,0,7.13,0,0,0,0,C,C,B+,B,C-,A,A-,D+,D,D+,A,B+,B-,B,A,D,B,D,D-,B
+75692,Anthony,Hampton,APST,TE,Vertical Threat,,,C-,77,232,Sun Belt Pro Day,4.47,38,6.97,4.15,36,128,0,0,0,0,0,7,6.46,0,5.29,0,0,0,0,0,0,0,0,0,A-,B,D+,B,C,C-,C-,C,C-,C-,A-,C-,C,A-,B-,D-,C+,C-,F,A
+75099,Steven,Brandon,APST,ILB,Field General,,,C,72,236,Sun Belt Pro Day,4.74,33,6.95,4.19,34,122,0,0,0,0,0,0,0,0,0,0,6.94,0,0,6.93,0,0,0,0,C,B,C-,C-,C+,B,C-,F,D-,D-,B-,C,D+,D+,B,F,F,D+,F,A
+74082,Yu,Buntrock,CCU,OT,Balanced,,,C+,75,294,Sun Belt Pro Day,5.42,41,7.05,4.28,35,120,0,0,0,0,0,0,0,6.24,6.94,0,0,0,0,0,0,0,0,0,C+,A,A,B,A-,B+,B,D+,B,C,A-,C-,A,B-,C+,C-,C+,C-,C,A-
+75093,Michael,Steadman,CCU,CB,Man Coverage,,,C-,72,193,Sun Belt Pro Day,4.48,23,6.88,4.1,34,121,0,0,0,0,0,0,0,0,0,0,0,7.78,4.88,0,0,0,0,0,A,B-,B-,D,B+,C-,C-,B,C-,C-,A,D-,D+,A,C-,C-,D-,C,C-,B-
+74300,Jerry,Brown,GASO,WR,Route Runner,,,C-,68,174,Sun Belt Pro Day,4.37,25,6.7,3.95,39,133,0,0,0,0,0,6.5,8.62,0,0,0,0,0,0,0,0,0,0,0,C+,A-,C,B,A-,B+,A+,A,C,D,A+,D,A-,B,A-,C,D-,C,C-,A+
+21756,Brandon,Douglas,GASO,OT,Pass Blocking,,,D-,75,300,Sun Belt Pro Day,5.36,48,7.32,4.52,35,122,0,0,0,0,0,0,0,7.76,6.12,0,0,0,0,0,0,0,0,0,A+,C+,A+,D+,B-,B,A+,D,C,A,C,C-,C-,C-,B-,D-,D,D-,F,B
+74771,Peter,Gadbois,GASO,ILB,Field General,,,C+,72,230,Sun Belt Pro Day,4.76,40,6.97,4.05,35,124,0,0,0,0,0,0,0,0,0,0,6.35,0,0,6.93,0,0,0,0,C-,C,B-,B,A+,C-,C-,C-,C,C-,B-,C,C,C,B,D,F,C+,D+,B+
+75451,Mark,Gamble,GASO,CB,Zone Coverage,,,C+,70,187,Sun Belt Pro Day,4.59,21,6.61,4.02,39,126,0,0,0,0,0,0,0,0,0,0,0,4.56,8.12,0,0,0,0,0,B+,A-,C-,D,C+,D,D+,C+,C+,D-,A-,A+,C+,C,A,C-,C-,D-,D+,A
+74063,Rafi,Lui,GAST,WR,Possession,,,D,73,188,Sun Belt Pro Day,4.62,31,6.88,4.07,35,129,0,0,0,0,0,7.25,6.62,0,0,0,0,0,0,0,0,0,0,0,C-,B,C,C,B,B+,C,B,C-,C+,A-,C-,C,C+,C-,C,C,D+,C+,A
+75084,Thomas,Omasta,GAST,WR,Possession,,,B-,74,188,Sun Belt Pro Day,4.7,31,6.72,4.02,37,128,0,0,0,0,0,9.12,5.38,0,0,0,0,0,0,0,0,0,0,0,B-,C-,C,D-,C,A,C,D+,C,F,C-,F,B,D-,B,D+,C-,B-,D-,D+
+20573,Brett,Federowicz,GAST,OT,Pass Blocking,,,C,76,290,Sun Belt Pro Day,5.2,40,7.35,4.47,32,119,0,0,0,0,0,0,0,6.12,4.59,0,0,0,0,0,0,0,0,0,C-,B,B,C-,B-,C,C,C-,D+,B,A,D,B,C+,C,D-,D-,D-,D-,A
+21489,Jeremy,Turner,JMU,CB,Zone Coverage,,,B-,71,185,Sun Belt Pro Day,4.44,27,6.61,3.84,39,130,0,0,0,0,0,0,0,0,0,0,0,6.11,9.62,0,0,0,0,0,B+,B,A+,C+,A,D+,C,F,D-,B-,C,C-,B-,B-,B+,F,F,F,D+,A-
+79158,Donald,Prevot,JMU,OT,Pass Blocking,,,B,77,279,Sun Belt Pro Day,5.49,45,6.97,4.32,37,124,0,0,0,0,0,0,0,6.59,5.65,0,0,0,0,0,0,0,0,0,C+,B,B+,C-,D+,C+,C-,F,C-,B+,A-,F,B,C-,B,C-,D+,F,F,C-
+79157,Calvin,Luo,JMU,DT,Nose Tackle,,,C-,74,316,Sun Belt Pro Day,5.53,44,7.08,4.1,34,126,0,0,0,0,0,0,0,0,0,6,7.53,0,0,0,0,0,0,0,C+,C,A-,C-,A,C,C,F,D,C-,C+,A,C,C,A-,C+,C,C-,F,A-
+20604,Elijah,Clay,ULL,RB,Speed,,,A-,70,205,Sun Belt Pro Day,4.34,32,6.68,4.15,36,127,0,0,0,7.88,8.5,4,2.31,0,0,0,0,0,0,0,0,0,0,0,A+,B+,A+,B,C-,C,A-,F,D-,B,B,D+,D-,C,C+,D+,F,D,F,A-
+74560,Ruben,Duron,ULL,OLB,Pass Rush,,,C+,76,228,Sun Belt Pro Day,4.62,38,6.88,4.1,36,126,0,0,0,0,0,0,0,0,0,7.62,5.29,0,0,0,0,0,0,0,B,A,C-,D+,B,C,C-,F,F,C-,C+,D,A,C,C+,F,C+,D-,D-,C
+74749,Miguel,Ibarra,ULL,DE,Balanced,,,C,76,273,Sun Belt Pro Day,4.81,34,6.68,4.05,35,123,0,0,0,0,0,0,0,0,0,7.12,6.71,0,0,0,0,0,0,0,C+,B,A,C,B,A+,B,F,D+,C+,A,B-,A-,C+,B,C+,C,D,D-,B-
+75090,John,Krueger,ULL,OT,Balanced,,,C+,77,291,Sun Belt Pro Day,5.74,42,7.8,4.4,29,117,0,0,0,0,0,0,0,5.76,5.06,0,0,0,0,0,0,0,0,0,F,C+,C+,C-,C+,C-,D+,D-,C,C+,D+,A,D,A,B,D+,D-,D-,F,B+
+74923,Gerald,Sibbitt,ULM,C,Pass Blocking,,,B+,75,294,Sun Belt Pro Day,5.78,47,7.2,4.38,35,121,0,0,0,0,0,0,0,8.35,5.06,0,0,0,0,0,0,0,0,0,D-,B+,B,A-,A-,B-,C-,F,C-,A,C+,C-,D+,A-,B-,D-,C-,F,F,B-
+75667,John,Lewis,ULM,WR,Route Runner,,,C+,69,168,Sun Belt Pro Day,4.41,31,6.54,4.07,42,133,0,0,0,0,0,6.38,6.92,0,0,0,0,0,0,0,0,0,0,0,B-,A,C-,B,C,C,B+,B,B-,D-,B,C-,D,B-,B-,D-,F,D+,D,C+
+75019,Ryan,Medved,LT,CB,Zone Coverage,,,C-,70,192,Sun Belt Pro Day,4.36,24,6.72,3.84,37,131,0,0,0,0,0,0,0,0,0,0,0,6.22,10,0,0,0,0,0,B,B,C-,C-,C-,C,B-,F,C-,D-,B,B+,C-,C,B+,F,C,F,D,B+
+75627,Paul,Krone,LT,WR,Possession,,,C-,73,190,Sun Belt Pro Day,4.59,20,6.7,3.94,35,124,0,0,0,0,0,6.38,6.15,0,0,0,0,0,0,0,0,0,0,0,C+,A,C,B,C,A-,B,C,C+,F,D+,C+,C,B-,D+,B,D-,F,C-,C+
+78908,Michael,Stonebreaker,MRSH,ILB,Field General,,,A,75,245,Sun Belt Pro Day,4.34,42,6.56,3.8,38,132,0,0,0,0,0,0,0,0,0,0,8.82,0,0,8.8,0,0,0,0,B+,A,B,B,C+,A+,C+,F,C-,D-,B,A-,A+,A-,A+,B-,D,B,C-,A+
+74523,Isaac,Rantala,MRSH,OG,Run Blocking,,,C-,76,304,Sun Belt Pro Day,5.23,45,7.26,4.4,34,118,0,0,0,0,0,0,0,6,8.47,0,0,0,0,0,0,0,0,0,C+,C,C,B,C+,C,B-,D,B+,D-,F,B-,A-,D-,B-,F,F,C-,F,C
+74056,Jose,Agudelo,ODU,OG,Run Blocking,,,B,75,307,Sun Belt Pro Day,5.53,43,6.88,4.26,34,123,0,0,0,0,0,0,0,4.94,7.29,0,0,0,0,0,0,0,0,0,A-,A,B-,A,A-,B+,A,C,A,C-,F,D+,A+,A,A,F,C-,C-,D-,C
+74344,Ryan,Gautreaux,ODU,WR,Possession,,,B+,74,189,Sun Belt Pro Day,4.5,37,7.35,4.19,37,130,0,0,0,0,0,5.25,6.15,0,0,0,0,0,0,0,0,0,0,0,B-,C,A,B,C+,A,B,B,C+,F,A,B-,C-,A+,C-,C+,C-,D-,D+,A
+75439,Jesus,Leu,ODU,ILB,Run Stopper,,,C+,74,239,Sun Belt Pro Day,4.66,44,7.11,4.15,37,127,0,0,0,0,0,0,0,0,0,0,8.71,0,0,7.07,0,0,0,0,B,C-,B+,B+,C+,B,B,D-,F,D-,B-,A,C-,C-,C-,F,D-,D-,D+,B-
+75636,Mauricio,Tello,USA,SS,Ball Hawk,,,B-,72,194,Sun Belt Pro Day,4.62,24,6.62,4.12,34,127,0,0,0,0,0,0,0,0,0,0,0,4.78,7.12,0,0,0,0,0,C,A-,C,B,D-,A,C-,F,D+,D-,C-,C,B,C,B-,F,F,C,F,B-
+75340,Michael,Bradburn,USA,FB,Balanced,,,D,71,243,Sun Belt Pro Day,4.66,28,7.11,4.32,33,126,0,0,0,6.06,4.83,4.75,0,0,3.53,0,0,0,0,0,0,0,0,0,B,B,B-,C,D-,B+,A-,C-,B-,C,A-,B,C+,C+,D+,F,D-,F,F,B
+74059,Timothy,Mariano,USM,QB,Pocket,,,B-,77,230,Sun Belt Pro Day,4.72,30,7.51,4.28,32,113,0,7.76,6.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C,C-,C+,A,A-,A+,C,C-,C-,C+,B,B-,C,A-,C-,D+,D-,D-,D+,C+
+74244,Victor,Ricks,USM,RB,Power,,,C,72,213,Sun Belt Pro Day,4.44,40,6.83,4.04,39,131,0,0,0,8.18,7.78,5.25,3.69,0,0,0,0,0,0,0,0,0,0,0,A+,B+,A+,C,A+,B,A+,C,F,A-,C,B,A-,B,A+,A,D,D-,C-,A+
+74382,Edgar,Colon,USM,RB,Receiving,,,B+,70,190,Sun Belt Pro Day,4.37,35,6.59,3.86,40,134,0,0,0,8.35,8.44,8.62,7.69,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A,A-,B+,A,B,A+,B,A,C+,D,A+,B,A-,C+,D,D,D,B
+74095,Rodger,Mann,USM,CB,Man Coverage,,,C+,71,189,Sun Belt Pro Day,4.83,25,7.08,4.1,35,122,0,0,0,0,0,0,0,0,0,0,0,7.78,5.75,0,0,0,0,0,B,B,A,C-,A+,C-,B,B+,C,D+,C-,C+,B,A+,C,F,D,F,D+,B
+75768,Samuel,Sheppard,TROY,CB,Zone Coverage,,,D+,71,185,Sun Belt Pro Day,4.5,27,6.68,4.12,35,126,0,0,0,0,0,0,0,0,0,0,0,6.33,8.12,0,0,0,0,0,B-,B+,A-,C,A,D+,B,C-,F,C,A-,B+,A-,C,A+,C-,F,F,D-,C
+74765,Frank,Bogan,TROY,QB,Scrambler,,,C+,73,221,Sun Belt Pro Day,4.32,25,7.2,4.26,32,120,0,5.76,4.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,A,B-,B,C,D,D-,B-,C-,C+,D-,B,C-,B+,C+,C,C,D+,C-,F,C-
+74279,Ramon,Sandoval,SIU,QB,Pocket,,,C+,75,227,FCS Pro Day,5.08,29,7.8,4.59,31,110,0,6.24,7.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,D+,C-,C+,A-,A-,A+,B-,D+,F,C-,C,D+,B,A-,A+,D-,D+,D+,C,C+
+20501,Kenneth,Clark,CARK,RB,Balanced,,,B-,70,214,FCS Pro Day,4.51,29,6.78,3.89,36,125,0,0,0,6.94,7.61,6.38,1.69,0,0,0,0,0,0,0,0,0,0,0,B+,A+,A+,B+,B,B,A,D-,D-,A,C+,D-,C-,C+,A-,C-,F,C,F,A-
+20750,Sam,Robinson,CCSU,RB,Receiving,,,B-,69,199,FCS Pro Day,4.32,34,6.85,3.95,38,128,0,0,0,6.94,7.67,7.75,4.77,0,0,0,0,0,0,0,0,0,0,0,A,B,B,C-,B,A+,B,A+,C-,D,C-,D-,C,B,C-,C-,F,F,C-,A
+75111,Thomas,Bowen,ETSU,RB,Balanced,,,B-,70,226,FCS Pro Day,4.34,33,6.78,3.98,36,122,0,0,0,6.88,7.44,5.62,2.31,0,0,0,0,0,0,0,0,0,0,0,A-,B-,C,C+,B,C+,A,F,C-,B,A-,F,C+,B,B,F,D+,C-,F,B+
+76080,Gerald,Shields,ALST,RB,Balanced,,,B-,69,213,FCS Pro Day,4.4,30,6.68,3.93,38,123,0,0,0,8.24,8.61,6,2.77,0,0,0,0,0,0,0,0,0,0,0,C+,B-,A,C,D-,C,B-,D+,F,B,D-,C+,B,D,F,F,D-,C-,D,A-
+79140,Daniel,Johns,ETSU,FB,Rushing,,,A+,70,238,FCS Pro Day,4.34,45,6.44,3.86,43,135,0,0,0,10,8.67,5.38,2.46,0,7.65,0,0,0,0,0,0,0,0,0,A+,A+,A+,A+,A+,A,A+,C,A+,A+,A+,C+,A,A+,A+,D+,D-,A-,C+,A+
+75678,Ronald,Cervantes,DART,WR,Speed,,,C+,72,194,FCS Pro Day,4.3,32,6.81,3.99,36,126,0,0,0,0,0,7.12,8.46,0,0,0,0,0,0,0,0,0,0,0,A+,C+,B-,C+,D+,B-,B+,C,D,D+,C,C-,B,A+,B,C+,F,B,F,C
+74124,Scott,Cool,SDAK,TE,Receiving,,,C,75,238,FCS Pro Day,4.74,39,6.52,3.98,41,133,0,0,0,0,0,7.25,6.31,0,5.29,0,0,0,0,0,0,0,0,0,C,A+,B,A-,A+,A+,C,B,A,B-,B-,A,B,C-,C+,D-,C,C-,D,B+
+75194,Vernon,Wilson,SSU,OT,Run Blocking,,,B,76,306,FCS Pro Day,5.86,43,7.11,4.34,33,118,0,0,0,0,0,0,0,4.35,8,0,0,0,0,0,0,0,0,0,A-,B-,C,C-,B+,C,B,F,B,C+,A-,C-,C-,C-,C-,C-,D-,D+,D,A
+75775,James,Bush,PENN,OT,Run Blocking,,,C+,76,303,FCS Pro Day,5.78,44,7.84,4.66,34,118,0,0,0,0,0,0,0,5.18,6.59,0,0,0,0,0,0,0,0,0,C-,C,C-,C-,C+,B,A-,F,B,D+,D-,C-,C+,C+,D+,F,C+,D,D+,C-
+21673,Josh,Thomas,SELA,OG,Pass Blocking,,,B-,76,285,FCS Pro Day,5.63,44,7.14,4.32,35,123,0,0,0,0,0,0,0,6.35,4.94,0,0,0,0,0,0,0,0,0,C-,A-,B+,B,A+,A,A,D+,D+,B+,F,B-,C+,C-,A,F,C,F,D,B
+74154,David,Vanderhoof,PRST,OG,Balanced,,,B,75,294,FCS Pro Day,5.56,39,7.08,4.26,35,122,0,0,0,0,0,0,0,7.53,5.18,0,0,0,0,0,0,0,0,0,B,B-,B+,B,C+,A,B-,D+,C+,B,F,B,B-,A+,B,C+,D-,D,D+,B
+74605,Gregg,Marks,BUCK,C,Line Captain,,,B,75,287,FCS Pro Day,5.53,43,7.29,4.3,32,121,0,0,0,0,0,0,0,5.88,6.35,0,0,0,0,0,0,0,0,0,C-,B,C,C+,C+,C+,B+,F,C-,B+,D+,C-,D-,B,D-,D,D-,D+,C-,B
+20515,Nemanja,Carter,UTM,DE,Balanced,,,B-,75,287,FCS Pro Day,4.74,35,6.72,4.3,35,123,0,0,0,0,0,0,0,0,0,6.25,5.53,0,0,0,0,0,0,0,A,B+,B+,B,D+,A-,C-,D-,C-,D-,B-,B,C+,C+,C,D-,F,C-,F,B
+75546,Robert,Watters,PV,DE,Balanced,,,C+,76,261,FCS Pro Day,4.88,36,6.83,3.99,36,126,0,0,0,0,0,0,0,0,0,7.12,4.94,0,0,0,0,0,0,0,B,C,C,A-,C+,B+,B,C-,F,D-,B-,C,B-,D+,B-,D-,D+,F,D-,A-
+74337,Ryan,Gans,ETSU,ILB,Speed,,,B-,74,231,FCS Pro Day,4.38,38,6.68,4.08,38,125,0,0,0,0,0,0,0,0,0,0,7.65,0,0,7.53,0,0,0,0,A+,A,C,A+,B-,C-,B+,B,D-,C+,B,C,B+,B,B+,D+,F,D-,D-,C-
+75443,Raymond,Mosley,MONT,OLB,Run Stopper,,,C+,74,257,FCS Pro Day,5.2,43,7.08,4.28,35,121,0,0,0,0,0,0,0,0,0,0,7.65,0,0,5.33,0,0,0,0,D+,C,A+,B,D+,B-,D-,C,F,B-,B,A+,D,B+,B,D-,F,D-,D-,A
+75314,Warren,Mcnamara,SUU,CB,Zone Coverage,,,C,70,182,FCS Pro Day,4.83,16,7.05,4.08,33,119,0,0,0,0,0,0,0,0,0,0,0,5,8,0,0,0,0,0,B,B,D,C-,C+,C,B+,C-,C,C,C,B-,D+,C-,B+,F,F,F,F,C
+75656,Garland,Thornton,DART,FS,Zone Coverage,,,C,71,193,FCS Pro Day,4.61,18,6.85,4.19,35,123,0,0,0,0,0,0,0,0,0,0,0,6.67,8.25,0,0,0,0,0,C-,B,D+,C-,C-,D,C,D-,F,F,C+,B,C+,B,B+,F,D,F,C-,A-
+74136,Brian,Rubeck,GEOT,SS,Run Stopper,,,C,72,205,FCS Pro Day,4.72,35,6.81,4.08,37,130,0,0,0,0,0,0,0,0,0,0,0,5.44,5.5,0,0,0,0,0,C,B,A-,A-,B,C-,C+,D+,C-,C-,A-,A+,C,C+,C,F,D-,C-,D-,C-
+20313,Matt,Van Roten,PNST,RB,Receiving,,,A+,69,199,NFL Combine,4.37,31,6.38,3.8,40,136,28,0,0,7.94,9.44,8.38,4,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A+,C-,B,A+,A+,A+,C-,A,A,D+,A-,A-,C+,C-,C,D+,D,A+
+20006,Joe,Williams,TENN,RB,Receiving,,,A+,71,198,NFL Combine,4.36,29,6.56,3.77,42,130,36,0,0,8.94,8.67,8.12,6.31,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A+,A-,C+,A+,A+,A+,C,A+,C,C-,A-,A,B,C-,C,C+,C-,A+
+20901,Rich,Alcantara,TULS,RB,Power,,,A+,72,233,NFL Combine,4.38,39,7.29,4.13,36,128,17,0,0,7.35,7.11,3.5,0.92,0,0,0,0,0,0,0,0,0,0,0,A+,C,A+,C+,A,C,A+,F,F,A+,A+,B,A,B,A-,D-,D-,D+,C,B
+79140,Daniel,Johns,ETSU,FB,Rushing,,,A+,70,238,NFL Combine,4.32,38,6.57,3.8,40,136,39,0,0,9.35,8.61,4.38,0.46,0,5.76,0,0,0,0,0,0,0,0,0,A+,A+,A+,A+,A+,A,A+,C,A+,A+,A+,C+,A,A+,A+,D+,D-,A-,C+,A+
+19978,Patrick,Hernandez,NEB,WR,Possession,,,A+,73,188,NFL Combine,4.39,26,6.68,4.02,39,133,28,0,0,0,0,7.62,7.69,0,0,0,0,0,0,0,0,0,0,0,B,A,B+,A,B,A+,A+,A,B-,B,A+,A-,C,A+,B,C-,C-,C+,C-,A+
+20259,Jeremy,Allen,WAST,FB,Rushing,,,A+,71,220,NFL Combine,4.37,40,6.88,4.12,39,133,26,0,0,8.35,7.06,3.75,2,0,5.76,0,0,0,0,0,0,0,0,0,A+,A+,A+,A-,A+,A-,A+,C-,B+,B+,A-,C-,B,A-,C,D+,D+,C-,C+,A+
+78995,Miles,Choudhry,MINN,DE,Speed Rusher,,,A+,77,243,NFL Combine,4.85,35,6.72,3.94,36,127,28,0,0,0,0,0,0,0,0,6.5,6.35,0,0,0,0,0,0,0,A+,A+,A-,A+,A+,A-,A,C+,F,C-,A+,A+,A,A+,A+,C-,B,C,D+,A+
+20225,Daniel,Ramos,UNC,RB,Receiving,,,A+,69,184,NFL Combine,4.39,32,6.78,4.13,37,131,18,0,0,6.76,7.61,4.62,4.46,0,0,0,0,0,0,0,0,0,0,0,A,A+,A+,A+,A-,A+,B+,A+,C-,B-,B,C-,B-,A,C,D-,F,C-,C-,A+
+20274,Tyler,Looney,IND,WR,Possession,,,A+,73,195,NFL Combine,4.56,34,7.14,4.19,36,130,19,0,0,0,0,6.75,6.77,0,0,0,0,0,0,0,0,0,0,0,B,A,A,B-,C+,A+,A,B-,B,C+,B+,C+,C-,A+,C+,F,C-,B-,D+,A+
+74380,Francisco,Santiago,UTAH,OG,Balanced,,,A+,75,282,NFL Combine,5.9,48,7.2,4.32,34,123,20,0,0,0,0,0,0,7.41,7.29,0,0,0,0,0,0,0,0,0,A+,A+,A+,A-,B-,A-,A+,C-,B,B,F,A+,B+,C-,C+,C,D-,D-,C-,A+
+24986,Tyler,Prochnow,BAYL,WR,Speed,,,A+,70,175,NFL Combine,4.31,40,6.74,3.89,43,134,27,0,0,0,0,9,10,0,0,0,0,0,0,0,0,0,0,0,A+,A,A+,A,A+,A,A+,A+,C-,C+,B,C,B,A+,C+,B-,D,A-,C-,A
+20203,Joe,Lopez,UTAH,RB,Power,,,A+,72,233,NFL Combine,4.33,38,6.78,3.95,34,124,26,0,0,7.59,7.22,5.12,2.31,0,0,0,0,0,0,0,0,0,0,0,B+,B,A+,B,A,C,A+,D+,C,A+,A+,B-,A-,C+,B,D+,C+,B,D+,A+
+24988,Franklin,Riggins,WASH,RB,Power,,,A+,66,195,NFL Combine,4.44,36,6.74,3.93,40,130,34,0,0,8,7.67,7.5,1.85,0,0,0,0,0,0,0,0,0,0,0,B,A+,A+,C,A+,A,A+,B+,B-,A+,C-,D+,B-,A+,B,D-,B-,B-,C-,A+
+20200,Darron,Axford,SMU,OG,Pass Blocking,,,A+,76,289,NFL Combine,5.67,41,7.14,4.19,34,121,29,0,0,0,0,0,0,6.82,6.12,0,0,0,0,0,0,0,0,0,A+,A+,A,A-,A+,A,A+,F,A,A+,F,D+,A,A+,A-,B-,D-,C,D+,A+
+20350,Mike,Martis,SDSU,OG,Run Blocking,,,A+,74,294,NFL Combine,5.9,45,7.2,4.4,33,123,24,0,0,0,0,0,0,5.18,7.76,0,0,0,0,0,0,0,0,0,C-,A+,B,A+,A+,B,A-,F,A,C,F,B,C,A+,C-,B-,C-,D,D,A+
+74000,John,Nunez,BALL,OT,Balanced,,,A+,76,297,NFL Combine,5.78,48,6.9,4.2,37,123,31,0,0,0,0,0,0,8.24,8.24,0,0,0,0,0,0,0,0,0,A+,A+,A+,A+,A+,A,A+,D-,A,B,A+,B,A-,A+,A-,C,C,B,C+,A+
+74007,Brien,Walker,PNST,WR,Speed,,,A+,71,195,NFL Combine,4.42,25,6.9,3.97,37,123,28,0,0,0,0,8.5,4.15,0,0,0,0,0,0,0,0,0,0,0,A+,A+,B-,A+,A+,B-,A+,B-,C+,D-,C+,C+,C+,B,B+,D+,D,D-,D,A+
+20305,Kris,Pouncey,UNM,DE,Balanced,,,A+,74,273,NFL Combine,4.48,36,6.74,4.01,38,127,37,0,0,0,0,0,0,0,0,9.88,6.82,0,0,0,0,0,0,0,A+,A+,A+,C,A+,A+,C,D-,D-,D,A+,A+,A+,B+,A+,C-,C,B,D-,A+
+20032,Myles,Hernandez,TENN,OT,Pass Blocking,,,A+,76,280,NFL Combine,5.46,44,7.35,4.26,36,123,33,0,0,0,0,0,0,7.29,6,0,0,0,0,0,0,0,0,0,A+,A+,A+,A-,A+,C,B,F,B-,A,C-,C+,B,A,A+,B+,D-,D,C,A+
+20306,Daron,Sampson,TLNE,OT,Pass Blocking,,,A+,76,290,NFL Combine,5.67,40,7,4.2,33,119,16,0,0,0,0,0,0,7.06,5.41,0,0,0,0,0,0,0,0,0,B+,A+,A,A+,A+,A-,A,B+,B+,A,A-,B,A+,C+,B,D+,D-,C-,C,A
+79080,James,Livingston,VT,RB,Receiving,,,A+,70,197,NFL Combine,4.36,41,6.42,3.84,42,137,37,0,0,8.88,8.67,8.75,6.92,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A+,A+,A+,A+,A,A+,C+,A-,A+,B,B-,B,B,A-,C-,C-,C-,A+
+20037,Trae,Williams,WISC,CB,Man Coverage,,,A,70,188,NFL Combine,4.61,29,6.62,3.94,38,128,24,0,0,0,0,0,0,0,0,0,0,8.89,6.38,0,0,0,0,0,B+,B,A+,C+,A+,C-,A-,B+,D-,D-,C+,D,A+,A+,B+,C+,B,C+,C-,A+
+20192,Tavon,Bennett,MIAF,RB,Balanced,,,A,70,222,NFL Combine,4.42,37,6.81,4.1,37,125,21,0,0,7.41,7.67,6.75,3.08,0,0,0,0,0,0,0,0,0,0,0,A,A,A+,A+,A+,B-,A+,D-,C,B-,A-,C-,B+,A+,A+,C-,D-,D-,C+,A+
+20040,Laurent,Gimenez,MIAF,OG,Pass Blocking,,,A,76,283,NFL Combine,5.36,44,7.41,4.45,34,122,24,0,0,0,0,0,0,8,6.82,0,0,0,0,0,0,0,0,0,B-,A+,B,A,A+,B,A,F,B-,A,F,B,A,A+,A,F,F,A-,C+,A
+78908,Michael,Stonebreaker,MRSH,ILB,Field General,,,A,75,245,NFL Combine,4.64,34,7.05,4.07,35,120,28,0,0,0,0,0,0,0,0,0,6.82,0,0,6.93,0,0,0,0,B+,A,B,B,C+,A+,C+,F,C-,D-,B,A-,A+,A-,A+,B-,D,B,C-,A+
+74015,Santosh,Vo,MINN,DT,Pass Rusher,,,A,74,285,NFL Combine,5.32,39,6.74,3.93,36,126,32,0,0,0,0,0,0,0,0,8.38,5.76,0,0,0,0,0,0,0,A+,A+,A,A+,A-,A,A+,F,C-,D-,A+,C+,A+,C+,A+,D-,C-,D,C+,A+
+21770,Dae-Ho,Whitehead,UHOU,RB,Receiving,,,A,69,201,NFL Combine,4.44,33,6.76,4.08,34,129,26,0,0,6.76,7.22,5.12,4,0,0,0,0,0,0,0,0,0,0,0,A-,A+,A,C,C-,A+,B,A+,F,A-,B-,F,D-,A-,D+,C-,D-,D-,C-,A+
+20142,Alex,Smith-Schuster,TENN,WR,Possession,,,A,72,190,NFL Combine,4.59,35,6.7,4.07,40,134,33,0,0,0,0,7.25,8.15,0,0,0,0,0,0,0,0,0,0,0,B,B,A,A+,A+,A-,A+,A-,C+,C+,C+,B-,C+,A-,C+,C+,C-,B,C-,A
+20052,Caleb,Murphy,UVA,FS,Zone Coverage,SS,Zone Coverage,A,72,196,NFL Combine,4.39,33,6.59,3.93,39,128,37,0,0,0,0,0,0,0,0,0,0,5.22,9.75,0,0,0,0,0,A,A+,A,C-,A,C-,B-,C,D+,C-,C+,A,B-,B-,A+,F,B+,F,D+,A+
+20343,Nikola,Swearinger,CAL,RB,Balanced,,,A,70,210,NFL Combine,4.34,35,6.74,4.13,36,125,20,0,0,7.65,6.39,5.38,1.08,0,0,0,0,0,0,0,0,0,0,0,A-,B,A-,A-,A,B,A,F,D-,A,B+,C,C+,A+,A-,C+,B-,C-,D+,A
+20140,Michael,March-Lillard,WVU,RB,Speed,,,A,70,194,NFL Combine,4.32,28,6.57,3.97,39,131,23,0,0,7.76,7.78,5.75,2,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A+,A,A+,B-,B-,D+,C,A+,A,C+,C,A,A+,C,C-,B,B-,A+
+74203,Ernest,Brunache,SDSU,ILB,Field General,,,A,73,237,NFL Combine,4.57,40,6.81,3.9,36,126,32,0,0,0,0,0,0,0,0,0,6,0,0,7.6,0,0,0,0,B-,A-,C+,B-,A-,C-,B,C-,D-,F,A+,B,A+,C,A-,D+,D+,C,C,A+
+20174,Jeff,Walker,UHOU,C,Run Blocking,,,A,77,293,NFL Combine,5.26,51,6.9,3.98,38,126,36,0,0,0,0,0,0,7.18,8.47,0,0,0,0,0,0,0,0,0,A+,A+,A,C,C,A+,A,C-,A+,B,A+,C-,A,A,B,C,D+,C-,C+,C+
+20260,Bobby,Terrero,PNST,DE,Run Stopper,DT,Balanced,A,75,297,NFL Combine,4.83,41,7.08,4.15,36,122,33,0,0,0,0,0,0,0,0,7.5,7.65,0,0,0,0,0,0,0,A+,A,A+,B+,C+,A-,C,B-,D,D-,A+,A+,B,A+,B,D+,D+,C,C,A
+21158,Michael,Gonzalez,WMU,CB,Zone Coverage,,,A,70,189,NFL Combine,4.54,24,6.7,4.02,36,127,16,0,0,0,0,0,0,0,0,0,0,5.11,7.88,0,0,0,0,0,B+,A,B,B,A+,B-,C,C-,C+,C+,B+,A,A-,B,B+,F,F,F,D+,B
+20104,Duke,Nido,,RB,Balanced,,,A,71,209,NFL Combine,4.44,37,6.97,4.15,37,127,17,0,0,6.53,6.78,6.88,1.08,0,0,0,0,0,0,0,0,0,0,0,A-,A,A+,C+,A,B+,A-,C,C-,A+,B,C+,C+,A+,B+,B-,C,B,C,B+
+19988,Darius,Mauer,PNST,OT,Run Blocking,OG,Run Blocking,A,77,288,NFL Combine,5.49,44,6.92,4.1,36,124,36,0,0,0,0,0,0,6.12,7.65,0,0,0,0,0,0,0,0,0,B+,A+,A+,A+,A,B-,B,D+,A+,A-,A+,B,A+,A-,A+,C-,D+,B,C-,A+
+20375,Dzanan,Reid,WVU,QB,Pocket,,,A,76,225,NFL Combine,4.74,31,7.41,4.71,31,112,9,7.53,6.38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C+,C,A,A+,B+,B,C-,B,F,D,A+,C,A,B,C+,C+,D-,D+,D,C+
+20079,Aaron,Mays,TULS,CB,Zone Coverage,,,A,71,183,NFL Combine,4.44,24,6.47,3.88,38,127,32,0,0,0,0,0,0,0,0,0,0,7.33,10,0,0,0,0,0,B+,B+,A,C+,B,D,A-,C,B+,D+,A,C+,B,B-,A+,F,D+,C+,C-,A+
+20080,Clint,Sinkfield,TLNE,CB,Zone Coverage,,,A,71,182,NFL Combine,4.48,26,6.72,3.95,37,130,23,0,0,0,0,0,0,0,0,0,0,5,7.62,0,0,0,0,0,B+,A-,B,C-,C+,C-,A+,D+,D-,C,B,D-,C,C,A,C,B,A-,C-,A-
+19985,Hisashi,Rudock,PNST,OLB,Coverage,ILB,Coverage,A,73,235,NFL Combine,4.59,38,6.78,4.17,39,129,38,0,0,0,0,0,0,0,0,0,6.59,0,0,9.53,0,0,0,0,A-,B-,B,A+,B,B,C+,C-,C-,F,A+,A+,B,A+,A,C-,F,C-,C,A+
+74855,Matthew,Alba,UCF,RB,Balanced,,,A,70,214,NFL Combine,4.44,30,6.88,4.1,36,128,24,0,0,7.88,7.5,6.12,2,0,0,0,0,0,0,0,0,0,0,0,B+,A+,A+,C+,A+,B-,A+,D-,F,A-,A,B-,B,C-,C-,D-,D+,F,C-,A+
+19981,Kevin,Robles,TLNE,ILB,Field General,,,A,74,236,NFL Combine,4.44,38,6.59,3.88,39,131,41,0,0,0,0,0,0,0,0,0,6.35,0,0,6.67,0,0,0,0,A+,A+,B+,A+,A,B,A,C-,F,D,A+,B,A+,B,A-,D+,C-,D,B-,A
+74020,Irvin,Castleberry,TEX,OLB,Run Stopper,,,A-,75,242,NFL Combine,4.62,44,6.72,4.15,38,128,24,0,0,0,0,0,0,0,0,0,7.41,0,0,6.33,0,0,0,0,B-,A+,A+,A+,A,A+,B,C-,C,D-,A+,A+,C+,A+,B,C-,C,C+,C-,A+
+74230,Dennis,Davis,COLO,WR,Route Runner,,,A-,69,171,NFL Combine,4.53,25,6.68,3.99,39,132,27,0,0,0,0,6.88,9.69,0,0,0,0,0,0,0,0,0,0,0,B-,B+,B,A-,A+,B,B-,A+,D+,D+,C,B-,C+,B,C+,C-,D-,F,C-,A
+74352,Steven,Gooley,VT,RB,Speed,,,A-,70,193,NFL Combine,4.42,31,6.83,4.22,36,130,28,0,0,7.18,6.78,4.12,0,0,0,0,0,0,0,0,0,0,0,0,A+,B+,A,A-,A,B,A-,D-,C-,A+,C,D,B,A+,A,F,C,F,C-,A+
+74362,Jose,Cabellos,TLDO,OG,Pass Blocking,,,A-,76,295,NFL Combine,5.26,42,7.17,4.61,34,120,12,0,0,0,0,0,0,6.12,4.94,0,0,0,0,0,0,0,0,0,A+,B+,A,A+,B+,A+,C+,D+,C+,B,F,B+,A+,A-,C,C,B,D-,C,B
+20237,Josh,Boscan,UHOU,CB,Ball Hawk,,,A-,71,174,NFL Combine,4.5,23,6.61,3.92,40,128,30,0,0,0,0,0,0,0,0,0,0,6.56,6.38,0,0,0,0,0,A,A,C-,A-,C,A-,A+,B-,D,F,B-,B,A-,B,B+,D+,C+,C,D+,B+
+21319,Jason,Jenkins,PURD,ILB,Field General,,,A-,72,224,NFL Combine,4.56,38,6.92,4.07,38,126,33,0,0,0,0,0,0,0,0,0,5.18,0,0,7.2,0,0,0,0,B,A,B,B,B,C-,D+,F,F,F,B,B-,A-,B-,A,D-,F,D-,D,A
+74073,Johnny,Hansford,UGA,CB,Ball Hawk,,,A-,70,171,NFL Combine,4.56,24,7.17,4.15,30,123,13,0,0,0,0,0,0,0,0,0,0,4,6.88,0,0,0,0,0,B+,C+,B,B,A,A+,A,F,C+,D-,B-,B+,C+,C,A-,C,B,B,C+,A+
+20552,Rashard,Akins,FSU,C,Balanced,,,A-,77,291,NFL Combine,5.82,45,7.58,4.36,34,123,13,0,0,0,0,0,0,6.24,6.82,0,0,0,0,0,0,0,0,0,F,B,A+,C,C,C-,C-,F,B+,B-,C+,C+,B,A-,D+,D+,C-,C,D-,B-
+74326,Blake,Fitkin,OREG,OT,Pass Blocking,,,A-,74,284,NFL Combine,5.36,39,7.22,4.34,34,122,18,0,0,0,0,0,0,6.94,4.59,0,0,0,0,0,0,0,0,0,A+,A,B-,B,C+,A+,C+,D-,B,B+,A+,C+,A,B,A+,C,C-,F,B-,A+
+20218,Bryn,Griffin,TAMU,RB,Balanced,,,A-,69,219,NFL Combine,4.42,36,6.76,3.93,36,131,20,0,0,7.12,7.11,7.38,1.38,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A,B-,A-,A-,A+,C-,B,B+,B,C-,A,B,A+,D+,D,D+,C,A+
+20209,Armani,Franco,UCLA,RB,Power,,,A-,72,241,NFL Combine,4.53,35,7.14,4.43,35,122,17,0,0,7.76,5.78,5.62,0.62,0,0,0,0,0,0,0,0,0,0,0,B,B-,A+,A+,B-,C+,A+,C+,D+,A,C-,C,B,B-,A+,F,D,C,C,A+
+74312,Marcus,Hammond,KSST,RB,Speed,,,A-,70,197,NFL Combine,4.31,35,7,4.05,35,125,23,0,0,7.71,7.61,4.62,2.31,0,0,0,0,0,0,0,0,0,0,0,A+,A-,A,A-,B+,B-,B+,C,F,A,B,D+,B,C+,C+,D-,C-,D-,C,A-
+74381,Brandon,Boonstra,TCU,CB,Man Coverage,,,A-,72,189,NFL Combine,4.48,21,6.95,4.07,35,124,22,0,0,0,0,0,0,0,0,0,0,7.67,7.5,0,0,0,0,0,A,B+,A+,A-,B-,C-,B-,C+,C+,B+,A,D+,D-,A,B,C+,D-,C,D-,A+
+24991,Douglas,Dimmadome Jr.,TENN,DE,Balanced,,,A-,76,260,NFL Combine,4.68,40,6.57,4.12,38,127,35,0,0,0,0,0,0,0,0,8.62,8.59,0,0,0,0,0,0,0,A+,A,A+,C+,B-,A+,C+,C-,B,A-,A+,A+,A+,B-,A+,C+,D+,B-,C-,A+
+20114,Ross,Patton,KANS,CB,Ball Hawk,,,A-,70,183,NFL Combine,4.51,28,6.78,4.13,37,127,20,0,0,0,0,0,0,0,0,0,0,7,8,0,0,0,0,0,B-,A-,C+,A-,A,A-,B,D+,B,D-,B+,C,A+,B,B,D-,C+,D+,D,B-
+20304,Jahlil,Jones,UNLV,OT,Run Blocking,,,A-,76,302,NFL Combine,5.71,43,7.29,4.22,34,122,30,0,0,0,0,0,0,4.82,8.24,0,0,0,0,0,0,0,0,0,A+,B+,A-,A-,B,C,B,D+,A-,C,C-,C-,A-,C+,B-,C-,C-,C-,D+,B+
+20118,Chad,Coleman,BALL,OT,Balanced,,,A-,74,294,NFL Combine,5.49,43,7.38,4.15,35,123,16,0,0,0,0,0,0,5.53,5.29,0,0,0,0,0,0,0,0,0,A-,A+,B,B,B-,B+,A+,D-,B,C,A,C+,A-,C+,B-,D-,C+,B,C,B
+74252,Raymond,Beadles,CSU,DE,Speed Rusher,,,A-,76,246,NFL Combine,4.95,23,6.68,4.17,35,118,21,0,0,0,0,0,0,0,0,6.5,4.12,0,0,0,0,0,0,0,A+,A+,C,A+,A,C-,A,D+,D+,F,A,B,A,A+,C-,C+,C,C,D+,B
+74183,Jorge,Sanchez,CINC,WR,Route Runner,,,A-,70,174,NFL Combine,4.62,29,6.64,4.07,40,131,30,0,0,0,0,5.88,8.15,0,0,0,0,0,0,0,0,0,0,0,A-,A+,B,B+,A,B,B,A,C-,B-,B,C,B,B+,A-,C+,C+,C-,D+,A
+20033,Andy,Texeira,TTU,OT,Balanced,,,A-,76,298,NFL Combine,5.53,47,7.26,4.2,35,124,28,0,0,0,0,0,0,7.88,8.47,0,0,0,0,0,0,0,0,0,A+,A+,A,A,B-,A+,A,D,B+,A+,B,A-,A,B+,B,D-,C-,D+,C+,A+
+74023,Kenneth,Ring,COLO,TE,Blocking,,,A-,76,262,NFL Combine,4.48,46,6.72,4.02,38,125,23,0,0,0,0,7.12,4.15,0,5.76,0,0,0,0,0,0,0,0,0,B,B,A,A+,A+,B,A,C+,B+,A-,A,A+,B,A-,A+,C+,F,F,D+,B+
+74012,Jeffrey,Bouthillier,TLNE,WR,Possession,,,A-,74,191,NFL Combine,4.51,36,6.72,4.07,40,134,32,0,0,0,0,8,8.77,0,0,0,0,0,0,0,0,0,0,0,B,A+,A+,A+,A+,A+,A,A,B-,D,D+,C-,B+,C,B,F,D+,C,C-,B
+78911,Terrel,Bernard,UHOU,OLB,Speed,,,A-,73,222,NFL Combine,4.44,37,6.88,4.12,39,127,19,0,0,0,0,0,0,0,0,0,6.82,0,0,7.27,0,0,0,0,A+,A-,A-,B-,A,C-,C+,B,B-,C-,A+,A+,B-,B,A,D+,C+,D-,D,A+
+20046,Raffy,Kahnle,BGSU,OLB,Coverage,,,A-,74,234,NFL Combine,4.68,34,7.05,4.26,37,127,22,0,0,0,0,0,0,0,0,0,6.59,0,0,7.4,0,0,0,0,B,B-,B,B,A+,C+,C+,F,C-,C,A+,A,C,B+,A+,D-,B,C+,C,A+
+20604,Elijah,Clay,ULL,RB,Speed,,,A-,70,205,NFL Combine,4.42,33,6.97,4.32,35,122,18,0,0,8.12,7.67,3.38,0,0,0,0,0,0,0,0,0,0,0,0,A+,B+,A+,B,C-,C,A-,F,D-,B,B,D+,D-,C,C+,D+,F,D,F,A-
+20050,Marquese,Ash,USAF,RB,Receiving,,,A-,69,202,NFL Combine,4.46,28,6.68,3.88,38,127,33,0,0,8.06,7.72,8.25,6.46,0,0,0,0,0,0,0,0,0,0,0,B,A+,A-,C+,B-,A+,B,A+,A-,C-,B,C+,B,C+,C,D-,B,D-,C,A+
+74057,Adam,Caffee,MISS,OG,Pass Blocking,,,A-,76,295,NFL Combine,6.19,39,7.29,4.4,35,120,21,0,0,0,0,0,0,7.65,4.71,0,0,0,0,0,0,0,0,0,C,A,B,C+,A,A-,A-,C-,B-,A-,F,A-,A+,C,A+,C+,F,F,C+,A+
+74234,Patrick,Gormley,UTAH,CB,Zone Coverage,,,A-,71,191,NFL Combine,4.51,24,6.49,3.86,38,129,31,0,0,0,0,0,0,0,0,0,0,6.33,9.88,0,0,0,0,0,C,A,A,A+,B+,C,A+,D+,C+,C+,A,A,B,B,A+,D-,B+,B,D+,A+
+21246,Kris,Mabin,FSU,RB,Balanced,,,A-,69,231,NFL Combine,4.34,34,6.85,3.92,36,128,30,0,0,7.24,8,5,0,0,0,0,0,0,0,0,0,0,0,0,B+,A-,A+,C,C,B,A+,D,F,B,A,F,D-,A-,C-,F,C+,B-,D-,A+
+21254,Miguel,Cecil,TULS,RB,Receiving,,,B+,68,204,NFL Combine,4.46,33,6.92,4.15,37,126,0,0,0,6.53,6.72,2.5,3.85,0,0,0,0,0,0,0,0,0,0,0,B,A+,A,C+,B,B,C,A+,D,A,C,D-,A,B-,C-,D+,D+,F,F,B-
+20205,Tom,Coulombe,PNST,DE,Speed Rusher,,,B+,76,235,NFL Combine,4.7,33,6.72,4.05,37,130,20,0,0,0,0,0,0,0,0,9,4.94,0,0,0,0,0,0,0,A,A,A+,A+,A+,A,A-,D-,B,D-,A,B,A+,C+,B,C-,F,C+,C-,B
+78909,Dan,Dinnadane,TCU,DE,Balanced,,,B+,77,260,NFL Combine,4.72,40,6.92,4.02,36,122,19,0,0,0,0,0,0,0,0,6,6.94,0,0,0,0,0,0,0,A+,A-,A,A+,A,A,A,F,D,B,A+,A,A,A-,C,B,B,B,D-,A+
+21369,Ben,Dean,NIU,RB,Power,,,B+,70,230,NFL Combine,4.51,31,7.38,4.4,33,118,18,0,0,7.29,5.89,4,1.54,0,0,0,0,0,0,0,0,0,0,0,B,C,A+,C-,C+,C,A+,D,F,A+,A,D,C+,C-,B,F,F,C-,D-,B+
+74247,Robert,Roppo,DUKE,OT,Balanced,,,B+,75,293,NFL Combine,5.74,41,7.2,4.22,34,121,28,0,0,0,0,0,0,6.12,5.76,0,0,0,0,0,0,0,0,0,A+,A+,A,B+,A+,A-,C+,D,B-,B,A+,C-,C,A-,B,B,C+,C+,C,A
+20426,Kenyan,Calixte,TTU,RB,Receiving,,,B+,69,204,NFL Combine,4.37,29,6.88,4.1,34,121,19,0,0,6.06,7.72,5.5,5.08,0,0,0,0,0,0,0,0,0,0,0,A-,A+,B,C-,B,B,C,A+,F,C+,B,D,B-,C+,D-,F,F,C-,D-,A
+21270,Jamal,McBride,ND,RB,Receiving,WR,Route Runner,B+,70,205,NFL Combine,4.37,29,6.81,3.94,38,129,32,0,0,6.24,8.11,6.62,5.69,0,0,0,0,0,0,0,0,0,0,0,B+,B+,A,A+,B,A,B,A+,F,B+,C-,F,D-,A-,C-,F,D-,D+,F,A+
+74204,Michael,Gaer,HAWI,CB,Zone Coverage,,,B+,70,185,NFL Combine,4.46,20,6.95,4.07,38,129,16,0,0,0,0,0,0,0,0,0,0,3.89,9.38,0,0,0,0,0,B+,A-,A,A-,A+,D,C,C-,C,D-,A-,D+,B,C+,B+,C,C+,D-,D-,A+
+20349,Jordan,Wilds,TULS,TE,Vertical Threat,,,B+,76,226,NFL Combine,4.43,36,6.49,4.07,40,129,27,0,0,0,0,7.62,6.62,0,7.18,0,0,0,0,0,0,0,0,0,A+,A+,B+,C+,B,A+,A+,A-,A,B,C,C,A+,A,A+,D-,F,C+,D,B+
+74008,Timothy,Doak,IND,C,Pass Blocking,,,B+,77,295,NFL Combine,5.46,48,6.83,4.07,36,122,34,0,0,0,0,0,0,8.47,5.53,0,0,0,0,0,0,0,0,0,B,A,A-,A,B,A+,A+,D+,B,A+,A-,C+,B,A+,A+,C,F,D+,D+,B
+75762,Louis,Mcgowan,MIST,RB,Speed,,,B+,71,195,NFL Combine,4.32,34,7.29,4.2,36,125,29,0,0,7.06,7.33,4.38,1.85,0,0,0,0,0,0,0,0,0,0,0,A,C-,A,C-,B,B-,C,D-,B,D+,C+,D-,B-,C+,A,D-,D-,C,D+,A+
+74035,Michael,Peterson,MASS,OLB,Speed,,,B+,73,221,NFL Combine,4.43,33,6.74,4.15,38,127,26,0,0,0,0,0,0,0,0,0,6.24,0,0,6.67,0,0,0,0,A-,B,B-,B-,C-,A,A+,C-,C-,C,A+,A,C,A-,A+,C-,C-,C-,C-,A
+74387,David,Hager,KANS,OG,Pass Blocking,,,B+,75,277,NFL Combine,5.94,39,7.29,4.43,33,122,13,0,0,0,0,0,0,6.94,5.41,0,0,0,0,0,0,0,0,0,B,B,C,A,B-,A+,A+,C,C,B+,F,D,B,A+,C-,D+,D-,F,D-,B
+20068,Yefry,Norman,COLO,RB,Balanced,,,B+,72,218,NFL Combine,4.39,30,6.85,4.13,38,128,16,0,0,8.65,7.67,7,2.46,0,0,0,0,0,0,0,0,0,0,0,B,B+,A+,C+,B,B,A+,D,C+,A-,B,F,B,A+,B,D+,C+,C,C-,A
+74264,James,Derting,CSU,RB,Speed,,,B+,71,191,NFL Combine,4.34,32,6.72,4.32,37,129,19,0,0,7.12,7.78,4,0.92,0,0,0,0,0,0,0,0,0,0,0,A,C,A,A-,B+,C,A-,D-,D+,B,B,F,A-,B,A+,D+,D+,C-,D+,B-
+74382,Edgar,Colon,USM,RB,Receiving,,,B+,70,190,NFL Combine,4.5,33,6.74,3.86,41,135,13,0,0,6.65,7.56,8.5,6,0,0,0,0,0,0,0,0,0,0,0,A+,A+,A,A-,B+,A,B,A+,B,A,C+,D,A+,B,A-,C+,D,D,D,B
+20112,Jose,Bandy,TENN,RB,Receiving,,,B+,70,203,NFL Combine,4.38,34,6.54,3.95,38,130,28,0,0,7.41,8.33,8.5,4.15,0,0,0,0,0,0,0,0,0,0,0,A+,A,B,A,A+,A+,A,A+,C,A+,B,C-,C,A+,B,D-,D-,F,D+,A+
+20020,Kyle,Walker,MINN,SS,Man Coverage,,,B+,72,209,NFL Combine,4.36,24,6.7,4.07,34,120,20,0,0,0,0,0,0,0,0,0,0,6.67,5.25,0,0,0,0,0,B,A,D,C+,C,F,A,B,A-,F,B,B-,C-,A,B,D-,D,D+,D-,C
+24987,Steel,Blue,KANS,TE,Receiving,,,B+,78,240,NFL Combine,4.31,48,6.62,3.95,42,132,37,0,0,0,0,8.75,8,0,8.12,0,0,0,0,0,0,0,0,0,A,A+,A+,B,A-,A,A,A+,A-,A-,B,A+,B,A+,A-,B-,C-,C+,C-,A
+74014,Shawn,Johnson,PNST,OT,Run Blocking,,,B+,77,295,NFL Combine,5.17,47,6.78,4.07,35,125,25,0,0,0,0,0,0,6.94,9.18,0,0,0,0,0,0,0,0,0,B+,A+,A+,A-,B,A+,B,C,A+,A-,A-,A-,A+,A,A-,A-,D-,F,B-,A
+75674,James,Dudley,UCF,RB,Balanced,,,B+,71,220,NFL Combine,4.46,27,6.66,4.22,37,122,21,0,0,7.47,7.44,5,1.23,0,0,0,0,0,0,0,0,0,0,0,A,B-,A-,C-,B+,A-,A+,D+,D-,C+,C-,C-,B-,A+,B,F,F,C,D+,A
+20359,Noel,Coward,UHOU,CB,Ball Hawk,FS,Ball Hawk,B+,71,187,NFL Combine,4.66,28,6.81,4.17,37,128,22,0,0,0,0,0,0,0,0,0,0,5.11,7.12,0,0,0,0,0,B,C+,A-,A-,B-,A,B,D,D-,C-,B,A+,D,C+,B+,C,D-,C+,C,B
+20361,Warren,Higashioka,UNLV,DE,Speed Rusher,,,B+,77,253,NFL Combine,4.85,35,7.03,4.02,34,120,19,0,0,0,0,0,0,0,0,6,5.41,0,0,0,0,0,0,0,A+,A+,B,A+,A+,A+,A+,D+,D+,D,B+,B+,A+,A,A+,C+,C+,C,C,A+
+20582,Yannick,Last Name,MICH,RB,Receiving,,,B+,70,195,NFL Combine,4.32,29,6.72,3.89,40,124,34,0,0,7.41,8,8,3.08,0,0,0,0,0,0,0,0,0,0,0,B+,A+,B,B-,B,A+,B-,A+,C-,A+,B,D+,C-,A+,B,F,C+,F,D-,A+
+74318,Jack,Wortham,,DE,Speed Rusher,,,B+,76,240,NFL Combine,4.54,32,6.81,3.94,37,126,12,0,0,0,0,0,0,0,0,6.38,3.76,0,0,0,0,0,0,0,A+,A+,B-,A,A,B-,C-,D-,C-,C-,A,D+,A+,A-,C+,F,D+,D+,D-,C+
+20367,Josh,Davis,UHOU,OG,Pass Blocking,,,B+,76,305,NFL Combine,5.98,45,6.97,4.1,36,123,27,0,0,0,0,0,0,9.65,5.06,0,0,0,0,0,0,0,0,0,B,A+,A+,B,B,B,A+,C-,C-,A+,F,C-,A+,A,A+,C-,D,C-,C-,A
+74376,William,Henry,TLNE,WR,Speed,,,B+,72,196,NFL Combine,4.43,27,7.03,4.22,36,123,9,0,0,0,0,7,7.54,0,0,0,0,0,0,0,0,0,0,0,A+,A,B,B,C,B+,B+,B+,B-,F,B+,B,C+,A,C-,C+,B-,F,C,B+
+74785,Fernando,Ramirez,EMU,FS,Zone Coverage,,,B+,71,197,NFL Combine,4.57,27,6.7,4.07,35,118,22,0,0,0,0,0,0,0,0,0,0,5.22,8.88,0,0,0,0,0,A,C,C,C-,C+,C-,C+,F,D-,D+,C,B+,F,B,A+,D-,D-,F,D-,A+
+20629,Colton,Rankin,FSU,DT,Pass Rusher,,,B+,74,288,NFL Combine,5.53,39,6.95,4.04,34,122,19,0,0,0,0,0,0,0,0,7,6.94,0,0,0,0,0,0,0,B,A-,C+,D+,C+,B+,B-,D-,C,C,A,B,A,B,B-,D+,C-,C-,D-,C+
+20014,Aaron,Smith,,DT,Balanced,,,B+,76,288,NFL Combine,5.6,37,7.2,4.38,34,123,9,0,0,0,0,0,0,0,0,7,5.65,0,0,0,0,0,0,0,B+,A-,B,A-,A,A+,C,D+,D,D+,B+,A-,C+,B,A,D-,D-,B,C,C+
+74064,Roberto,Reyes,IND,WR,Possession,,,B+,73,195,NFL Combine,4.48,30,6.88,4.1,34,125,19,0,0,0,0,6.88,6,0,0,0,0,0,0,0,0,0,0,0,B,B-,B+,B,A,A-,A-,B,C-,F,C,C-,C-,C-,A+,D-,D-,C-,C+,C+
+74344,Ryan,Gautreaux,ODU,WR,Possession,,,B+,74,189,NFL Combine,4.61,29,7.14,4.07,36,130,16,0,0,0,0,8.12,7.38,0,0,0,0,0,0,0,0,0,0,0,B-,C,A,B,C+,A,B,B,C+,F,A,B-,C-,A+,C-,C+,C-,D-,D+,A
+74045,Dennis,Germany,UGA,FS,Zone Coverage,,,B+,71,196,NFL Combine,4.46,27,6.81,4.01,34,126,36,0,0,0,0,0,0,0,0,0,0,6.89,8,0,0,0,0,0,B+,B,C+,B,A+,D+,C,D,D+,B,B,C+,A,B,A+,B,D+,F,C-,A+
+74923,Gerald,Sibbitt,ULM,C,Pass Blocking,,,B+,75,294,NFL Combine,6.06,45,7.69,4.66,33,119,12,0,0,0,0,0,0,7.53,4.24,0,0,0,0,0,0,0,0,0,D-,B+,B,A-,A-,B-,C-,F,C-,A,C+,C-,D+,A-,B-,D-,C-,F,F,B-
+20010,Alex,Dunn,FSU,OT,Balanced,OG,Balanced,B+,76,305,NFL Combine,5.78,45,6.83,4.34,36,126,28,0,0,0,0,0,0,6.47,7.88,0,0,0,0,0,0,0,0,0,A+,A+,A+,C+,B-,A,B,C+,A,A-,A-,C,B+,A+,B,B,C-,C+,C,A
+74053,Abraham,Roe,UNC,OG,Run Blocking,,,B+,77,307,NFL Combine,5.74,43,7.22,4.47,32,121,17,0,0,0,0,0,0,6,6.47,0,0,0,0,0,0,0,0,0,A,A+,B+,B+,A+,B,A-,B-,B+,C-,F,A-,A,B+,C,A-,D-,D-,C-,C+
+19993,Caleb,Allen,BYU,FS,Zone Coverage,,,B+,73,196,NFL Combine,4.43,28,6.62,3.82,40,130,31,0,0,0,0,0,0,0,0,0,0,6.11,10,0,0,0,0,0,A,B-,C+,A,C+,C,B,C+,D,D+,B,B,A+,B+,A+,B-,C+,D-,C+,A+
+20258,Lorenzo,Travis,TENN,CB,Zone Coverage,,,B+,71,188,NFL Combine,4.54,25,6.56,4.01,35,130,28,0,0,0,0,0,0,0,0,0,0,5,7.12,0,0,0,0,0,B-,A-,A+,C,C,D+,A-,D+,F,B,A+,D+,B-,B,A+,C+,C,D-,D-,B+
+74056,Jose,Agudelo,ODU,OG,Run Blocking,,,B,75,307,NFL Combine,5.94,44,7.2,4.45,32,120,11,0,0,0,0,0,0,5.29,6.59,0,0,0,0,0,0,0,0,0,A-,A,B-,A,A-,B+,A,C,A,C-,F,D+,A+,A,A,F,C-,C-,D-,C
+20257,Hector,Vargas,UNLV,CB,Man Coverage,,,B,71,193,NFL Combine,4.56,26,6.61,4.01,39,129,25,0,0,0,0,0,0,0,0,0,0,7.22,7.5,0,0,0,0,0,B-,A,A+,A,A-,C-,B,B,C-,F,A,A,A,B+,B-,F,D+,C-,D-,A
+20249,Caleb,Sierra,BGSU,TE,Receiving,,,B,74,239,NFL Combine,4.53,41,6.62,4.1,38,125,18,0,0,0,0,7,8.15,0,6.59,0,0,0,0,0,0,0,0,0,A,A,B,C+,A-,A+,A,A+,B+,B-,A+,B,C-,A+,A-,C+,A-,C+,D-,A
+21381,Jordan,Ross,PURD,CB,Zone Coverage,,,B,70,185,NFL Combine,4.78,26,6.95,4.2,34,124,28,0,0,0,0,0,0,0,0,0,0,4.67,7.88,0,0,0,0,0,C+,C,A-,B,B+,C-,A+,F,D,F,A,B+,B+,C,B,D+,C-,D-,D+,B+
+20241,Riley,Jennings,WVU,DT,Balanced,,,B,75,286,NFL Combine,5.26,43,6.61,3.92,36,124,25,0,0,0,0,0,0,0,0,5.75,5.88,0,0,0,0,0,0,0,C,A+,A-,C-,A+,A+,C,C-,D+,C-,A+,A,A,A+,C,C+,C,C,C,A+
+74345,Kenneth,Close,CMU,CB,Zone Coverage,,,B,70,188,NFL Combine,4.64,29,6.57,4.15,36,127,11,0,0,0,0,0,0,0,0,0,0,4.22,8.38,0,0,0,0,0,B,A,B+,D+,A+,C-,B-,D+,D-,C+,C,A,B,C,B,C-,D+,D,D+,C+
+74338,Gregory,Bellomy,TAMU,SS,Man Coverage,,,B,71,196,NFL Combine,4.38,21,6.9,4.17,36,123,31,0,0,0,0,0,0,0,0,0,0,8.11,6.88,0,0,0,0,0,A,B,B,B,C+,D+,B,B,D-,C-,C+,A+,C+,A+,B,C+,D-,D-,C+,B
+20221,Steven,Henry,UTST,OG,Run Blocking,,,B,76,293,NFL Combine,5.53,45,7.03,4.54,33,120,28,0,0,0,0,0,0,4.24,7.76,0,0,0,0,0,0,0,0,0,A+,A,A+,A,B,B-,A+,B,A,C,F,D+,A-,A+,B+,C+,C,F,C-,A+
+20277,Lance,Rogers,PNST,TE,Vertical Threat,,,B,77,229,NFL Combine,4.46,43,6.9,4.13,39,133,30,0,0,0,0,6.5,4.77,0,4.59,0,0,0,0,0,0,0,0,0,A+,A,A+,A,A-,A,A+,B,A-,A-,A+,B-,A,A+,B+,F,D-,D-,C,A
+21472,Tyson,Turner,,OT,Pass Blocking,,,B,75,297,NFL Combine,5.78,40,7.66,4.45,32,118,11,0,0,0,0,0,0,5.88,6.12,0,0,0,0,0,0,0,0,0,D+,C+,B+,D+,A-,B-,C,C-,C-,B+,A+,C+,B,A+,A-,F,C-,D-,D-,C
+74317,Michael,Sweeney,,CB,Man Coverage,,,B,72,200,NFL Combine,4.7,12,7.05,4.1,31,117,25,0,0,0,0,0,0,0,0,0,0,5,6.62,0,0,0,0,0,B,B-,C,C,B+,C-,A-,C+,D+,C,D-,C+,B,B,C+,C-,B,C-,D-,A-
+74292,Philip,Hering,ND,OT,Run Blocking,,,B,73,294,NFL Combine,5.74,39,7.11,4.47,33,120,27,0,0,0,0,0,0,6.12,7.29,0,0,0,0,0,0,0,0,0,B+,B+,B,A+,B,A+,A+,C+,A,B-,C,C+,A+,B,B,C,D+,B-,D-,A
+20293,Bruce,Ibaka,UNLV,FB,Blocking,,,B,73,241,NFL Combine,4.7,34,7.03,4.38,34,122,26,0,0,6.18,4.72,4.5,1.54,0,6.94,0,0,0,0,0,0,0,0,0,C+,B+,A-,A-,C-,B+,A-,D-,A,A+,C-,D+,A-,A+,B,D-,C-,C-,B,B-
+21608,Joshua,Smith,OHIO,WR,Red Zone Threat,,,B,73,227,NFL Combine,4.66,31,6.92,3.98,36,123,23,0,0,0,0,6.75,7.54,0,0,0,0,0,0,0,0,0,0,0,C-,B-,A-,C,B+,B+,A,A-,B,D-,C-,B-,B+,A+,C+,D-,C-,D+,C-,C+
+75682,Giovanni,Sarabia,VT,WR,Speed,,,B,71,190,NFL Combine,4.41,25,6.78,4.15,35,121,14,0,0,0,0,7.12,6.62,0,0,0,0,0,0,0,0,0,0,0,A,C,D+,C-,D,C,B+,C,C,F,C-,C-,C,B,C,F,F,D-,D,C+
+20302,Kyle,Weber,STAN,DE,Balanced,,,B,76,269,NFL Combine,4.66,40,6.95,4.24,35,124,32,0,0,0,0,0,0,0,0,7.62,5.76,0,0,0,0,0,0,0,C+,A,B,B,A,B,B,B,B-,C,A+,B+,A,C,B,C-,F,C-,C-,A+
+20187,Cooper,Williams,UVA,QB,Field General,,,B,74,205,NFL Combine,4.59,30,7.26,4.22,32,124,44,6,8.62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C,B,A+,A,A+,A,C,C+,C-,C+,C+,D,D-,A,A+,D-,C-,C+,D,A+
+20176,Paul,Garcia,UCLA,OLB,Coverage,,,B,73,232,NFL Combine,4.53,37,6.74,4.22,37,125,16,0,0,0,0,0,0,0,0,0,5.76,0,0,7.8,0,0,0,0,B,A-,B,A+,C+,A+,A-,C-,D-,C-,A-,A+,C,B+,A+,D,D+,F,C-,B
+20175,Richie,O'Malley,BGSU,CB,Man Coverage,,,B,71,192,NFL Combine,4.46,19,6.59,3.88,36,125,26,0,0,0,0,0,0,0,0,0,0,7.56,6.88,0,0,0,0,0,B-,A-,B-,C+,B+,C,A+,A,C-,C-,A-,F,A,B+,B-,D+,C-,F,C,A+
+20170,Jared,Enns,CLEM,DE,Balanced,OLB,Run Stopper,B,77,271,NFL Combine,4.81,36,6.7,3.95,35,125,26,0,0,0,0,0,0,0,0,5.62,6.59,0,0,3.4,0,0,0,0,B,B,A-,C+,C-,B,A+,F,D+,C,B,B,B+,A+,A+,D-,D-,D-,C-,A+
+21683,Channing,Jones,BAYL,OG,Pass Blocking,,,B,76,288,NFL Combine,5.42,42,7.11,4.49,32,121,17,0,0,0,0,0,0,7.53,5.76,0,0,0,0,0,0,0,0,0,C+,B+,A,B-,A-,B-,B,F,C,B,F,A-,C,A-,A+,C-,D-,F,D-,B
+21751,Logan,Jordan,STAN,SS,Zone Coverage,,,B,71,191,NFL Combine,4.68,28,6.66,4.15,38,130,28,0,0,0,0,0,0,0,0,0,0,6.56,9,0,0,0,0,0,B,A+,B+,A+,A+,C-,D+,F,D-,F,B,A+,C,C+,A,F,F,D-,D+,A
+20149,Quincy,Stanton,TENN,WR,Route Runner,,,B,70,181,NFL Combine,4.5,32,6.64,3.93,39,131,27,0,0,0,0,7.25,7.38,0,0,0,0,0,0,0,0,0,0,0,B,A,A-,C+,A,B+,A,A,C,C-,A-,B+,C,B,A+,B,D-,D-,D,B
+20329,Connor,Bradley,TAMU,DE,Balanced,,,B,77,271,NFL Combine,4.9,39,6.97,4.15,36,123,31,0,0,0,0,0,0,0,0,7.25,5.06,0,0,0,0,0,0,0,A,A+,B+,A,B,A+,B,C-,C,D+,A-,A-,A+,C,A+,C+,B,C,C,A+
+21774,Dalton,Tilson,FAU,SS,Man Coverage,,,B,72,200,NFL Combine,4.9,16,7.32,4.32,28,109,25,0,0,0,0,0,0,0,0,0,0,7.11,6.25,0,0,0,0,0,B+,B-,C-,C+,C-,D-,C+,C+,D-,F,C,B+,B+,A+,C+,D,F,F,D+,B
+74223,Andrew,Carlson,SOCA,OG,Run Blocking,,,B,76,293,NFL Combine,5.74,42,7.2,4.19,34,119,15,0,0,0,0,0,0,5.41,6.24,0,0,0,0,0,0,0,0,0,A,A+,A,A+,A+,C,A-,D+,A,C-,F,C,A,A+,B-,D,B,D+,C-,A+
+74192,Paul,Newberry,NCST,C,Balanced,,,B,74,297,NFL Combine,5.49,45,7.03,4.47,34,119,17,0,0,0,0,0,0,6.71,6.24,0,0,0,0,0,0,0,0,0,B,A+,B,A,A+,B+,B-,D-,B,B,A,C+,A-,D+,B,C-,F,B+,D-,B-
+74154,David,Vanderhoof,PRST,OG,Balanced,,,B,75,294,NFL Combine,5.74,37,7.35,4.36,33,121,18,0,0,0,0,0,0,6,4.82,0,0,0,0,0,0,0,0,0,B,B-,B+,B,C+,A,B-,D+,C+,B,F,B,B-,A+,B,C+,D-,D,D+,B
+74116,Jerome,Reid,MIAO,WR,Possession,,,B,73,196,NFL Combine,4.51,28,7.08,4.28,34,127,29,0,0,0,0,7.62,5.69,0,0,0,0,0,0,0,0,0,0,0,B,B-,B-,B-,C-,B,B,D+,C-,D-,A,C+,C-,B,B-,C+,F,C,C-,B-
+20113,Ty,Ivie,BGSU,DE,Run Stopper,,,B,74,285,NFL Combine,4.78,38,7.14,4.32,34,121,14,0,0,0,0,0,0,0,0,4.38,5.29,0,0,0,0,0,0,0,A+,A-,A+,A-,C+,A,A+,F,D,B,A+,A+,B,C+,A+,A-,B+,D+,C+,A+
+74104,George,Williams,UHOU,WR,Speed,,,B,71,192,NFL Combine,4.46,28,6.81,4.19,32,122,28,0,0,0,0,7.62,6.92,0,0,0,0,0,0,0,0,0,0,0,A+,B,B-,C,B,B,A,C-,B-,C+,C+,A,A-,A,A-,C-,C,C-,C-,C+
+74605,Gregg,Marks,BUCK,C,Line Captain,,,B,75,287,NFL Combine,6.11,41,7.8,4.47,31,118,28,0,0,0,0,0,0,5.65,5.18,0,0,0,0,0,0,0,0,0,C-,B,C,C+,C+,C+,B+,F,C-,B+,D+,C-,D-,B,D-,D,D-,D+,C-,B
+74103,Steven,Smith,,OT,Run Blocking,C,Run Blocking,B,75,292,NFL Combine,5.39,41,7.17,4.13,33,121,26,0,0,0,0,0,0,3.76,6.35,0,0,0,0,0,0,0,0,0,A+,B+,C,C+,C+,B+,B,F,B+,C-,C,C-,A-,B+,A,C-,C-,D-,C-,B+
+21060,Tyler,Huber,USC,WR,Route Runner,,,B,69,176,NFL Combine,4.54,22,6.7,4.19,38,129,15,0,0,0,0,7,6,0,0,0,0,0,0,0,0,0,0,0,C,A,C-,C-,D+,C,B-,C,C,D-,D-,C,D-,C+,B-,F,D,F,D-,B+
+74102,Kevin,Lusby,TCU,CB,Zone Coverage,,,B,70,191,NFL Combine,4.74,14,6.97,4.28,32,121,18,0,0,0,0,0,0,0,0,0,0,4.67,8,0,0,0,0,0,C,C+,B-,A+,B,C-,B+,C-,D+,B-,C,B+,C+,C,A,C-,F,D,C-,A
+74078,Manuel,Hernandez,,WR,Possession,,,B,73,189,NFL Combine,4.47,34,6.78,4.36,36,132,9,0,0,0,0,6.75,6.46,0,0,0,0,0,0,0,0,0,0,0,C-,B-,A,B,A,A+,B+,D+,D,F,B,B,A+,B,A+,D,D,C-,C-,A
+20942,Jorge,McCray,TAMU,OT,Run Blocking,,,B,75,300,NFL Combine,5.56,39,7.77,4.66,33,116,18,0,0,0,0,0,0,3.76,6.94,0,0,0,0,0,0,0,0,0,C+,C,C,C+,C+,A,A-,D+,B,D,B+,D-,A,C+,A+,C-,C-,D+,D+,C
+74058,Jeffrey,Dorsch,MIST,DT,Pass Rusher,,,B,74,281,NFL Combine,5.42,34,7.05,4.28,34,119,28,0,0,0,0,0,0,0,0,5.75,5.06,0,0,0,0,0,0,0,B+,A-,C+,B,A,A-,C-,C-,B,D+,A-,B,A+,B,A,C+,D-,C,D,A-
+20926,Antoine,Guzman,ECU,DE,Balanced,,,B,77,276,NFL Combine,4.81,40,7.14,4.07,34,126,9,0,0,0,0,0,0,0,0,5.38,6,0,0,0,0,0,0,0,A-,C+,B,B-,B,B+,A-,F,F,F,B,A,C+,C-,B,C+,D-,D+,D-,B+
+20100,Kenneth,De Jesus,BGSU,WR,Speed,,,B,71,192,NFL Combine,4.39,28,7.08,4.36,31,124,23,0,0,0,0,7.25,5.08,0,0,0,0,0,0,0,0,0,0,0,A,B,C+,A-,B,A-,A,C,C,C,C,C,A-,A-,A-,B+,C+,C-,C,A+
+20099,Alcides,Holden,UTAH,QB,Scrambler,,,B,74,236,NFL Combine,4.3,40,6.7,3.92,38,130,27,6.71,6.88,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,A,A+,A+,A-,B-,C-,A,C-,C-,C,A+,A-,D+,C+,A+,D-,D+,D,D,A+
+20392,Andy,Jackson Jr.,SDSU,DE,Run Stopper,,,B,76,293,NFL Combine,4.85,39,6.92,4.24,34,124,20,0,0,0,0,0,0,0,0,5.38,8.24,0,0,0,0,0,0,0,B+,B+,A-,C,C+,A+,A+,D-,D-,D-,A,A,B,A,B,C-,C-,C+,C+,B-
+75400,Wayne,Daniels,NMSU,OG,Pass Blocking,,,B,76,286,NFL Combine,6.02,39,7.62,4.36,30,117,9,0,0,0,0,0,0,6.24,4.24,0,0,0,0,0,0,0,0,0,B+,C,C+,C,D,B+,C,D+,C-,A-,F,C,C,A+,C+,D-,D-,D+,F,B+
+74046,Joe,Wirth,NAVY,OT,Pass Blocking,,,B,76,292,NFL Combine,5.94,43,7.41,4.24,34,120,15,0,0,0,0,0,0,5.76,5.41,0,0,0,0,0,0,0,0,0,C,B,A-,B,B+,B,C,C,C,B-,A,C+,A+,A+,B,B,D+,D-,C+,B
+79158,Donald,Prevot,JMU,OT,Pass Blocking,,,B,77,279,NFL Combine,6.11,42,7.32,4.4,34,119,24,0,0,0,0,0,0,5.76,6,0,0,0,0,0,0,0,0,0,C+,B,B+,C-,D+,C+,C-,F,C-,B+,A-,F,B,C-,B,C-,D+,F,F,C-
+74041,Victor,Hagerman,UHOU,DE,Balanced,DT,Balanced,B,75,271,NFL Combine,4.74,40,7.2,4.26,34,119,32,0,0,0,0,0,0,0,0,6,6.82,0,0,0,0,0,0,0,B-,B+,C+,C+,C+,A+,A+,D,D-,C,C+,A-,C+,C-,B,B,C+,D-,C+,A
+20769,Ty,Liddi,SDSU,OG,Pass Blocking,,,B,75,291,NFL Combine,5.56,38,8.04,4.77,33,120,17,0,0,0,0,0,0,8.12,4.12,0,0,0,0,0,0,0,0,0,C,B,B,B,C+,B-,A-,C-,C+,A-,F,D-,B,B,B,C-,C+,D-,D-,C
+20759,Warwick,Hollins,ARST,CB,Ball Hawk,,,B,71,182,NFL Combine,4.81,16,7.35,4.3,31,112,9,0,0,0,0,0,0,0,0,0,0,4.22,5.88,0,0,0,0,0,A,C,B-,B+,C+,B+,B-,D-,C+,F,C,D+,C-,C,B-,C-,C+,D-,D,A-
+22688,Brett,Riefenhauser,WAST,CB,Zone Coverage,,,B,70,188,NFL Combine,4.54,25,6.7,4.15,36,127,4,0,0,0,0,0,0,0,0,0,0,4.89,8.62,0,0,0,0,0,C+,B-,C-,D+,C+,C-,A-,D+,D-,C-,B+,C+,C-,C,B,C+,C-,C-,F,A-
+75194,Vernon,Wilson,SSU,OT,Run Blocking,,,B,76,306,NFL Combine,5.63,41,7.35,4.49,33,117,16,0,0,0,0,0,0,4.94,6.59,0,0,0,0,0,0,0,0,0,A-,B-,C,C-,B+,C,B,F,B,C+,A-,C-,C-,C-,C-,C-,D-,D+,D,A
+20618,Maikel,Lopez,MTSU,DE,Balanced,,,B,75,263,NFL Combine,4.64,38,7.11,4.07,33,119,26,0,0,0,0,0,0,0,0,6,5.53,0,0,0,0,0,0,0,B,B-,A,C+,B+,A,A+,F,D-,C-,B-,A+,A-,A+,C,F,D-,F,F,B
+74022,Thomas,Daly,UTST,WR,Possession,,,B,73,184,NFL Combine,4.46,33,6.56,3.89,42,132,34,0,0,0,0,9.62,7.23,0,0,0,0,0,0,0,0,0,0,0,B,A,A+,A+,A+,A+,A+,B-,C,C-,B,C-,A,A-,A+,C,C+,C-,C,A+
+74021,Tony,Crowley,WAST,OLB,Pass Rush,,,B,75,243,NFL Combine,4.46,34,6.54,4.02,35,127,24,0,0,0,0,0,0,0,0,9.5,6.94,0,0,0,0,0,0,0,B,A+,B-,A+,B,A,A+,C,B,B-,A+,A-,A+,C,A-,B-,C-,C-,C-,B+
+23639,Steven,Cimber,TLNE,DE,Speed Rusher,,,B,77,243,NFL Combine,4.54,36,6.76,4.17,35,124,20,0,0,0,0,0,0,0,0,7.38,5.65,0,0,0,0,0,0,0,B,B,C,C+,B,D-,C-,D,B-,D+,C+,C,A-,F,C+,F,F,C-,D-,B
+20557,Danny,Petit,STAN,CB,Man Coverage,,,B,71,192,NFL Combine,5,20,6.85,4.1,32,124,16,0,0,0,0,0,0,0,0,0,0,6.78,4.12,0,0,0,0,0,B,B-,A,B+,B,C+,C,B+,D+,D-,A,B,C-,A+,C-,B-,F,C-,D-,B-
+20009,Joey,Gosewisch,BAYL,DE,Balanced,,,B,77,288,NFL Combine,4.85,39,7.11,4.07,33,118,26,0,0,0,0,0,0,0,0,8.62,6.12,0,0,0,0,0,0,0,A,A,A-,B,A-,A,B,F,D+,C-,A-,B,A+,A-,B+,C-,B-,D-,D-,A
+20509,Joel,Tobin,UTST,OG,Pass Blocking,,,B,75,285,NFL Combine,5.98,41,7.29,4.85,34,116,27,0,0,0,0,0,0,7.41,5.65,0,0,0,0,0,0,0,0,0,A+,B+,A-,C+,C,B-,C+,D-,C-,A+,F,B,B,D,B,D-,F,F,D+,A
+75391,James,Oreilly,WISC,WR,Route Runner,,,B,70,173,NFL Combine,4.53,31,6.68,4.05,39,129,13,0,0,0,0,5.62,7.54,0,0,0,0,0,0,0,0,0,0,0,B,A,B,C,C-,C+,C,A,C-,C+,A,F,C-,D+,B,D+,F,C,D,C
+20819,Channing,Plumlee,KNSW,C,Line Captain,,,B-,76,290,NFL Combine,5.9,43,7.45,4.64,32,121,36,0,0,0,0,0,0,5.29,4.71,0,0,0,0,0,0,0,0,0,A-,C-,B+,A,C+,C,C-,F,B,C-,C+,C,C,A-,D+,D+,F,D+,D-,B
+20018,Saquon,Gotay,PNST,CB,Man Coverage,,,B-,72,192,NFL Combine,4.43,22,6.72,4.07,36,124,27,0,0,0,0,0,0,0,0,0,0,8.67,7.12,0,0,0,0,0,A,B,A,B,C,C,A-,A+,D+,C-,B-,C-,B,A,B-,D-,B-,B,C,A+
+20297,Justin,Gsellman,TENN,CB,Zone Coverage,,,B-,71,176,NFL Combine,4.43,28,6.54,4.12,40,130,24,0,0,0,0,0,0,0,0,0,0,5.67,8.88,0,0,0,0,0,B,B-,A+,B,B,C,C+,D+,C+,C-,A,A,B,B,A,B-,B,F,D-,A+
+20025,Mike,Johnson,WVU,OLB,Pass Rush,,,B-,76,244,NFL Combine,4.72,30,6.83,3.95,36,126,14,0,0,0,0,0,0,0,0,8.75,6.94,0,0,0,0,0,0,0,B-,B+,B,C+,A+,B+,C+,B-,D+,C-,A+,B-,A+,C,B+,C,F,C+,C+,B
+21279,Mike,Tuitt,STAN,C,Run Blocking,,,B-,77,297,NFL Combine,5.53,48,7.22,4.26,34,122,18,0,0,0,0,0,0,6,6.94,0,0,0,0,0,0,0,0,0,C+,A,B+,D,B-,B,B-,F,A+,C,B-,C,C,B,C,C-,C-,D+,D-,C
+20296,Josh,Chickillo,UNLV,WR,Red Zone Threat,,,B-,75,215,NFL Combine,4.39,37,6.88,3.97,37,128,21,0,0,0,0,6.25,8.31,0,0,0,0,0,0,0,0,0,0,0,B+,B+,A+,A+,A+,B+,A,B,A,C,B,A-,B,C+,C,D+,D-,B-,D,A+
+20041,Paul,McCullers-Sanders,TLNE,QB,Pocket,,,B-,75,226,NFL Combine,4.85,20,7.11,4.4,28,112,34,6.82,9.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,C,B,B+,A+,B-,C+,C-,F,D,B,F,C+,A+,A,B-,C-,D+,D+,A-
+20048,Rayshawn,Zeller,MICH,TE,Blocking,,,B-,77,253,NFL Combine,4.83,44,6.9,4.15,38,131,27,0,0,0,0,5.38,4.92,0,7.18,0,0,0,0,0,0,0,0,0,B,A,A+,B+,B,C,A-,B,A+,A+,A,D+,A+,C+,B,D,D-,C-,C+,B-
+74393,Joseph,Johnson,MEMP,WR,Possession,,,B-,73,191,NFL Combine,4.53,31,6.72,4.2,40,124,28,0,0,0,0,7.5,8.15,0,0,0,0,0,0,0,0,0,0,0,B-,B+,B,B,A+,B,B-,B,C,D+,B+,C,B-,C,B,D-,F,F,C,B+
+74397,James,Tomer,OHST,WR,Speed,,,B-,73,186,NFL Combine,4.62,23,7.73,4.34,28,116,0,0,0,0,0,6.88,6.15,0,0,0,0,0,0,0,0,0,0,0,B+,C-,C,A,A-,C-,A+,C,C-,C-,B,D+,B,A,B,C-,C-,A-,D+,C
+20049,Jonathan,Waguespack,MICH,DT,Nose Tackle,,,B-,74,301,NFL Combine,5.39,44,7,4.19,34,122,28,0,0,0,0,0,0,0,0,4.38,7.18,0,0,0,0,0,0,0,B,B,A-,B,B,A+,A+,B-,C-,D-,B,A+,C+,B+,B-,C,D-,F,C-,A
+75764,Michael,Hall,SMU,OG,Run Blocking,,,B-,73,312,NFL Combine,5.46,37,7.38,4.56,31,117,11,0,0,0,0,0,0,4.47,7.41,0,0,0,0,0,0,0,0,0,B,B,B,D+,C,A-,B,F,B,C+,F,A,C,B+,B,F,D-,D-,D+,B+
+21297,Trayce,Russell,PURD,ILB,Field General,,,B-,72,234,NFL Combine,4.74,34,6.85,4.32,32,121,38,0,0,0,0,0,0,0,0,0,6.24,0,0,5.53,0,0,0,0,C,D+,C-,D+,D,B+,C+,F,D+,D-,B-,C-,A,C-,C,C+,F,C+,F,A
+74432,Raymond,Turner,BUFF,OLB,Coverage,,,B-,74,237,NFL Combine,4.78,34,7.03,4.17,36,124,9,0,0,0,0,0,0,0,0,0,5.18,0,0,7.27,0,0,0,0,B-,C,A,C-,B,A,C+,F,C,F,B,B-,C-,A,B,D-,C-,D-,D-,C+
+75646,Richard,Stuby,RUTG,OG,Pass Blocking,,,B-,76,277,NFL Combine,5.32,37,7.51,4.71,30,116,11,0,0,0,0,0,0,4.24,4.12,0,0,0,0,0,0,0,0,0,A+,C+,B-,C,B-,C-,A-,F,C,B,F,B-,D+,C+,B,F,D-,D-,D-,B
+74377,John,Williams,ARK,OLB,Speed,,,B-,73,223,NFL Combine,4.42,31,7.08,4.15,36,125,19,0,0,0,0,0,0,0,0,0,6.94,0,0,7,0,0,0,0,B+,B,B-,A+,B+,C,A+,C+,C-,D-,B-,B,C-,C,B,D-,F,C-,C+,C
+21210,Drew,Anderson,UTST,CB,Man Coverage,,,B-,72,190,NFL Combine,4.81,25,6.64,3.99,35,127,28,0,0,0,0,0,0,0,0,0,0,6.89,6.88,0,0,0,0,0,B,A-,C,A+,B+,C,A,C+,F,D+,A,D,C,B+,C-,D+,C+,C-,C-,B-
+20515,Nemanja,Carter,UTM,DE,Balanced,,,B-,75,287,NFL Combine,4.85,32,6.9,4.34,33,122,13,0,0,0,0,0,0,0,0,4.88,4.47,0,0,0,0,0,0,0,A,B+,B+,B,D+,A-,C-,D-,C-,D-,B-,B,C+,C+,C,D-,F,C-,F,B
+74453,John,Thomas,MIST,CB,Zone Coverage,,,B-,70,180,NFL Combine,4.85,21,6.61,4.02,34,122,9,0,0,0,0,0,0,0,0,0,0,6.11,8.75,0,0,0,0,0,B,C,C-,B,C-,D,C+,D-,C-,D,B-,C-,D+,C,A,F,D+,F,D+,C+
+21195,Adam,Ramos,UTST,WR,Possession,,,B-,75,189,NFL Combine,4.5,24,6.97,4.04,38,125,20,0,0,0,0,6.25,7.85,0,0,0,0,0,0,0,0,0,0,0,C+,C-,C,B,B,A-,C+,B,C-,D-,C,C-,D+,B+,C+,D-,D+,D-,F,C-
+21318,Adalberto,Mazara,UHOU,FS,Ball Hawk,CB,Ball Hawk,B-,72,192,NFL Combine,4.5,23,6.62,3.92,36,126,14,0,0,0,0,0,0,0,0,0,0,5.11,7.62,0,0,0,0,0,C,B,A-,C,C,A+,B+,F,F,D-,C+,C-,B,B,B,D-,C-,F,C-,C+
+21336,Braxton,Ellis,SMU,OT,Pass Blocking,,,B-,75,283,NFL Combine,6.02,39,7.29,4.47,33,120,28,0,0,0,0,0,0,8,5.06,0,0,0,0,0,0,0,0,0,B+,B-,B-,C-,C-,A-,B,F,C,B,A,D+,B,C-,C,D-,C+,D,D+,A
+20067,Trae,March-Lillard,UNM,TE,Receiving,,,B-,74,246,NFL Combine,4.68,42,6.78,4.01,40,130,26,0,0,0,0,7.38,8.62,0,6.12,0,0,0,0,0,0,0,0,0,A,B+,A,B-,A+,B+,A-,A+,B,A,A,C+,C,B,B,C-,C+,D+,C-,B+
+75636,Mauricio,Tello,USA,SS,Ball Hawk,,,B-,72,194,NFL Combine,4.62,22,6.78,4.34,33,117,14,0,0,0,0,0,0,0,0,0,0,5.67,6,0,0,0,0,0,C,A-,C,B,D-,A,C-,F,D+,D-,C-,C,B,C,B-,F,F,C,F,B-
+20358,Cre'von,Lauer,,QB,Scrambler,,,B-,74,211,NFL Combine,4.34,35,6.76,4.08,38,125,30,4.59,6.12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,B+,B+,A-,C-,C+,C+,A+,D+,F,A,B,C-,B,A-,B,D+,B+,B,D+,B-
+20077,Taylor,Brinkley,BGSU,RB,Speed,,,B-,69,197,NFL Combine,4.31,26,6.81,4.3,35,128,33,0,0,7.65,6.67,5.12,1.08,0,0,0,0,0,0,0,0,0,0,0,A+,C-,A,A-,B,B,B+,D+,D+,B,B,D-,B-,A+,A-,C-,C,C-,D,A+
+21355,Shalom,Taylor,WISC,DT,Nose Tackle,,,B-,76,311,NFL Combine,5.86,39,7.03,4.45,33,119,27,0,0,0,0,0,0,0,0,5.38,6,0,0,0,0,0,0,0,D+,B-,A+,C-,A+,C,A-,C-,C+,D-,B+,A+,C-,B+,C,F,F,D+,D,B-
+20082,Tray,Carter,BAYL,OLB,Coverage,SS,Man Coverage,B-,74,240,NFL Combine,4.53,39,6.76,4.12,39,126,35,0,0,0,0,0,0,0,0,0,7.65,8.11,8.12,9.07,0,0,0,0,C+,A,A,A+,A-,C+,B,C-,B,F,A,A+,C,A+,A+,F,C+,C,D+,A+
+21125,Jakob,Sampson,TLNE,CB,Zone Coverage,FS,Zone Coverage,B-,71,183,NFL Combine,4.39,20,6.83,3.92,35,127,24,0,0,0,0,0,0,0,0,0,0,6.44,7.75,0,0,0,0,0,A,B,C+,C,C-,C-,A+,F,D-,D+,A+,C-,C,B+,A,B-,C,C-,D-,A
+20251,Brandon,Martin,FLA,DE,Speed Rusher,,,B-,76,237,NFL Combine,4.68,34,6.7,3.88,38,127,27,0,0,0,0,0,0,0,0,7.62,6.12,0,0,0,0,0,0,0,A+,A,B+,A-,B-,A+,A+,D,D+,F,C,B,A+,C+,A-,C,D+,C-,C-,A+
+74667,Edward,Kelly,AUB,CB,Man Coverage,,,B-,70,186,NFL Combine,4.46,16,6.85,4.01,33,121,19,0,0,0,0,0,0,0,0,0,0,7.44,4.88,0,0,0,0,0,A+,A,A,A+,C,D+,A,C-,D-,F,A-,B-,F,B+,D-,F,F,D-,D+,A
+74385,Matthew,Pritchard,UKEN,C,Line Captain,,,B-,77,290,NFL Combine,5.56,38,7.77,4.45,30,117,37,0,0,0,0,0,0,5.06,4.59,0,0,0,0,0,0,0,0,0,C+,B+,C+,B+,B,B+,B+,F,C,C,A+,C-,A-,C-,A+,D,C+,C-,C-,A+
+74354,Jeffrey,Wright,ARK,FS,Man Coverage,,,B-,72,195,NFL Combine,4.38,22,6.88,4.01,36,128,18,0,0,0,0,0,0,0,0,0,0,6.67,6.75,0,0,0,0,0,A+,B,B-,B,B,D,A,B+,C,D-,B+,A,D+,A+,C+,D-,C+,B,D-,A
+20091,Pedro,Farrow,PNST,WR,Possession,,,B-,75,196,NFL Combine,4.53,32,6.64,3.9,39,132,18,0,0,0,0,10,6.46,0,0,0,0,0,0,0,0,0,0,0,C,A+,A-,A-,B+,A+,A+,B-,C,C-,B-,C,A,A+,A-,C+,F,F,C+,A
+75307,Christopher,Perry,MIAF,WR,Route Runner,,,B-,69,165,NFL Combine,4.53,26,6.74,4.04,36,126,4,0,0,0,0,5.62,6.62,0,0,0,0,0,0,0,0,0,0,0,B-,B,C-,B,C+,C,C,B,C,F,C,C+,C-,C,B,F,C-,F,D+,C-
+20243,Demone,McKinney,TTU,DE,Balanced,,,B-,76,279,NFL Combine,4.61,38,6.78,3.93,36,125,22,0,0,0,0,0,0,0,0,7.75,5.53,0,0,0,0,0,0,0,A,A,A,B,A,B,A,C-,C,D+,A+,B,A+,A-,C,D,C,D-,C-,A+
+74346,Mark,Stevens,WMU,OG,Pass Blocking,,,B-,78,276,NFL Combine,5.94,46,6.95,4.3,34,123,32,0,0,0,0,0,0,8.12,5.29,0,0,0,0,0,0,0,0,0,A+,A-,A,A+,A-,A+,A+,D,C,A,F,A-,C-,A+,A,C+,C-,C-,D+,A
+21422,Chris,Basham,TULS,DT,Pass Rusher,,,B-,73,275,NFL Combine,5.23,38,6.88,4.12,34,126,19,0,0,0,0,0,0,0,0,5.25,4.71,0,0,0,0,0,0,0,B,A-,B+,A-,C,B+,D+,D+,F,D,B,B,A+,B-,B-,D+,D-,D+,C-,A-
+74340,Larry,Muhammad,UMD,ILB,Coverage,,,B-,73,227,NFL Combine,4.85,27,7.08,4.15,32,119,11,0,0,0,0,0,0,0,0,0,5.53,0,0,6.87,0,0,0,0,C,B,C+,A,C+,A-,B,D+,C,F,A,B-,B,A,A-,D+,D+,C,C-,C
+74059,Timothy,Mariano,USM,QB,Pocket,,,B-,77,230,NFL Combine,5.14,23,7.8,4.45,29,113,19,6.12,7.12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C,C-,C+,A,A-,A+,C,C-,C-,C+,B,B-,C,A-,C-,D+,D-,D-,D+,C+
+74337,Ryan,Gans,ETSU,ILB,Speed,,,B-,74,231,NFL Combine,4.54,28,6.64,4.07,34,128,25,0,0,0,0,0,0,0,0,0,5.29,0,0,7,0,0,0,0,A+,A,C,A+,B-,C-,B+,B,D-,C+,B,C,B+,B,B+,D+,F,D-,D-,C-
+20366,Tim,Devers,MIAF,OG,Pass Blocking,,,B-,76,293,NFL Combine,5.71,45,7.08,4.45,32,120,19,0,0,0,0,0,0,6.35,5.41,0,0,0,0,0,0,0,0,0,A+,B+,B+,C-,B+,C+,B,C-,C-,B,F,B-,C,B+,C+,C-,D-,C-,D-,B
+74323,Michael,Harris,NAVY,DE,Balanced,,,B-,77,271,NFL Combine,4.7,34,6.78,4.13,34,122,28,0,0,0,0,0,0,0,0,5.88,4.82,0,0,0,0,0,0,0,A,A+,A,C+,B-,B,A,D+,C,D-,A,B-,B+,B+,C,D,D+,C,C-,A
+20210,Charlie,Reyes,UVA,FB,Receiving,,,B-,71,220,NFL Combine,4.53,39,7.05,4.13,39,126,22,0,0,7.29,6.89,8.12,2.92,0,6.12,0,0,0,0,0,0,0,0,0,A,A+,A,A,A+,A+,A+,A+,A-,C+,A+,C+,B,B-,A,D-,D-,B-,C,A
+20611,Hayes,Adams,SMU,DE,Speed Rusher,,,B-,76,241,NFL Combine,4.53,37,6.83,4.22,36,125,13,0,0,0,0,0,0,0,0,6.62,4.94,0,0,0,0,0,0,0,B+,B,A,C,B-,A+,A,D-,C,F,D,B,A-,C-,C-,C-,C,D,D,C+
+21489,Jeremy,Turner,JMU,CB,Zone Coverage,,,B-,71,185,NFL Combine,4.76,24,7.26,4.34,37,125,25,0,0,0,0,0,0,0,0,0,0,5.44,5.5,0,0,0,0,0,B+,B,A+,C+,A,D+,C,F,D-,B-,C,C-,B-,B-,B+,F,F,F,D+,A-
+20993,Adam,Winkler,WYOM,FS,Run Stopper,,,B-,71,205,NFL Combine,4.7,36,6.68,3.95,39,128,28,0,0,0,0,0,0,0,0,0,0,4.67,5.25,0,0,0,0,0,A,B,A-,A-,A,C,B-,D+,C-,D-,A,B-,C,C,C,D-,C+,F,D-,B
+74101,John,Johnson,CONN,WR,Route Runner,,,B-,69,176,NFL Combine,4.57,29,6.62,3.92,40,129,22,0,0,0,0,6.25,6.77,0,0,0,0,0,0,0,0,0,0,0,B,A,B,A,B,C+,A-,B,C,C,C+,D-,B,A+,B-,D-,C-,C-,C,A
+20968,Humberto,Sandoval,PURD,OG,Balanced,,,B-,76,288,NFL Combine,5.94,39,7.62,4.69,32,116,7,0,0,0,0,0,0,4.94,4.35,0,0,0,0,0,0,0,0,0,B-,B,C-,B,B+,A,A-,D-,B,B,F,B,A-,D-,C-,D-,D+,D-,D,A
+20368,Tommy,Murphy,BALL,CB,Man Coverage,,,B-,71,186,NFL Combine,5.08,17,7,4.28,31,120,18,0,0,0,0,0,0,0,0,0,0,6.33,5.38,0,0,0,0,0,C+,B-,C-,C+,C+,D,B+,B,F,B,A,C,B+,A-,C,D,D+,B,C,A-
+75236,Floyd,Copley,WAST,CB,Ball Hawk,,,B-,70,182,NFL Combine,4.88,6,7.08,4.26,31,110,1,0,0,0,0,0,0,0,0,0,0,6.44,4.5,0,0,0,0,0,B-,C-,D-,B-,C-,A-,B,C+,F,D,A,A-,C-,B,C-,F,F,C-,D+,B-
+20370,Arrion,Lowry,UNLV,OG,Run Blocking,,,B-,77,293,NFL Combine,5.56,42,7.41,4.49,34,122,11,0,0,0,0,0,0,5.76,7.06,0,0,0,0,0,0,0,0,0,C+,B+,C+,C+,B-,A+,A+,B,A,C,F,B,A+,C,A-,D-,D-,D+,D+,A
+75631,David,Gaddis,UAB,FS,Man Coverage,,,B-,71,196,NFL Combine,4.56,25,6.61,3.95,36,124,23,0,0,0,0,0,0,0,0,0,0,6,5.25,0,0,0,0,0,A+,A,B,B+,A,C,C-,C-,D+,D,C,C,C-,A+,D+,D,D+,D-,D-,C
+20193,Nelson,Greenberg,TTU,OT,Balanced,,,B-,75,296,NFL Combine,5.94,45,7.2,4.17,33,120,24,0,0,0,0,0,0,6.24,6.24,0,0,0,0,0,0,0,0,0,C-,A+,C,A,B,B,C+,D,C,C,B,C-,B+,A+,C+,C+,C-,F,C,A-
+20876,Jermaine,Huang,IND,FS,Zone Coverage,,,B-,72,190,NFL Combine,4.59,21,6.81,3.97,34,125,24,0,0,0,0,0,0,0,0,0,0,5.22,7.38,0,0,0,0,0,C,B-,C,D+,C-,C,B,D-,F,F,C,C+,F,D,A,F,C-,D-,F,B+
+74253,Mohammad,Rennie,USC,OT,Balanced,,,B-,77,299,NFL Combine,5.94,42,7.17,4.22,34,124,19,0,0,0,0,0,0,6,5.76,0,0,0,0,0,0,0,0,0,C+,B,A,A+,B,A-,A,D-,A,B+,A+,B,B,C,C+,C-,F,D+,C,A+
+75166,Sean,Sneddon,PURD,CB,Zone Coverage,,,B-,71,178,NFL Combine,4.53,25,7,4.15,35,124,21,0,0,0,0,0,0,0,0,0,0,4.78,7.88,0,0,0,0,0,C,C-,D,C,C-,C,D-,D-,C,D-,B-,D+,D,C,A,C,F,F,D-,A-
+21673,Josh,Thomas,SELA,OG,Pass Blocking,,,B-,76,285,NFL Combine,5.42,42,7.51,4.4,33,120,25,0,0,0,0,0,0,6.59,4.47,0,0,0,0,0,0,0,0,0,C-,A-,B+,B,A+,A,A,D+,D+,B+,F,B-,C+,C-,A,F,C,F,D,B
+21715,Joseph,Reddick,TAMU,CB,Zone Coverage,,,B-,71,184,NFL Combine,4.46,28,6.57,3.94,42,130,34,0,0,0,0,0,0,0,0,0,0,7.44,10,0,0,0,0,0,A,A,A-,D+,A,C-,C,D,D-,D+,B+,D+,C+,C-,A-,D-,C-,C-,D+,A-
+20825,Sam,Jacobs,WISC,SS,Zone Coverage,,,B-,71,195,NFL Combine,4.83,24,7.41,4.66,30,116,18,0,0,0,0,0,0,0,0,0,0,3.67,8,0,0,0,0,0,B-,C,C,C+,C+,C-,C+,D,D,F,C,B+,F,C,A,C,D,C,F,A+
+79173,Joseph,Gleichman,KNSW,OG,Run Blocking,,,B-,76,300,NFL Combine,5.39,44,7.84,4.79,32,119,29,0,0,0,0,0,0,4.82,8,0,0,0,0,0,0,0,0,0,C-,A-,B+,D-,C-,C-,B,F,A+,C-,F,C,D-,A+,C-,F,F,D+,C-,B+
+20824,John,Baron,OHIO,CB,Man Coverage,,,B-,72,191,NFL Combine,4.64,14,7.03,4.12,33,121,9,0,0,0,0,0,0,0,0,0,0,7.22,4.25,0,0,0,0,0,B,C+,B-,B+,B,C-,B,B,C+,F,C,B+,B+,A,C-,F,C-,C-,C-,C+
+20821,Da'Norris,Valdes,RICE,WR,Red Zone Threat,,,B-,75,219,NFL Combine,4.72,39,7.03,4.3,37,124,25,0,0,0,0,6.5,6.62,0,0,0,0,0,0,0,0,0,0,0,C+,B,A+,D+,C+,C,B-,C,B,D-,C+,C+,D+,A-,B+,D-,D+,F,D+,A+
+75800,Jesse,Peoples,BAMA,OG,Pass Blocking,,,B-,76,281,NFL Combine,5.94,45,7.69,4.71,33,119,22,0,0,0,0,0,0,7.41,4.24,0,0,0,0,0,0,0,0,0,A,B,B-,A-,B+,B-,B+,D-,C+,B+,F,C+,B+,A,B,F,F,D-,F,B
+74130,Adan,Cora,WAST,DE,Balanced,,,B-,75,273,NFL Combine,4.81,34,7,4.24,34,120,26,0,0,0,0,0,0,0,0,6.12,7.06,0,0,0,0,0,0,0,B,B,B,A-,B,A,B,F,D-,F,A+,B-,A,C-,A,A-,F,D+,C-,A
+20814,Evan,Carter,BGSU,K,Power,,,B-,71,185,NFL Combine,6.06,12,7.92,4.77,24,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8.4,6.71,2.67,3.03,C-,B-,A,C+,B,B,C+,F,C-,C-,B,D+,C-,C-,A,A+,C,D,B,C+
+20141,Casey,Jackson,UVA,DE,Balanced,,,B-,76,285,NFL Combine,4.85,35,6.92,4.08,34,124,20,0,0,0,0,0,0,0,0,7.88,6.12,0,0,0,0,0,0,0,B,A-,B-,B-,A-,A,A+,D,C-,B-,A,A-,A-,C-,A-,D-,F,C,C-,A+
+74147,Eric,Gaherty,KANS,FS,Ball Hawk,,,B-,72,194,NFL Combine,4.66,20,6.76,4.15,38,125,8,0,0,0,0,0,0,0,0,0,0,5,6.88,0,0,0,0,0,B+,A+,C,A-,B+,A,A,C,C+,D+,B,A,A+,B-,B,D,D,F,C-,C
+74217,Michael,Ramirez,,OT,Pass Blocking,,,B-,75,300,NFL Combine,5.36,46,7.26,4.32,35,120,26,0,0,0,0,0,0,5.88,4.71,0,0,0,0,0,0,0,0,0,C,B,A-,A,A+,B-,B,C-,C,A-,A-,B,A,C,A,D+,C,B-,C,B-
+20120,Ramon,Perez,TAMU,WR,Possession,,,B-,73,190,NFL Combine,4.37,30,6.66,4.15,40,129,20,0,0,0,0,8,7.38,0,0,0,0,0,0,0,0,0,0,0,B+,B,B+,A-,C+,A+,A+,B,C+,C-,B-,B+,C-,C+,B,D+,A-,C-,D-,B+
+74157,Arthur,Embrey,OHIO,CB,Zone Coverage,,,B-,71,176,NFL Combine,4.74,24,6.51,3.86,37,128,13,0,0,0,0,0,0,0,0,0,0,4.89,8.25,0,0,0,0,0,B-,B,B+,B,C,C-,A-,D,D-,D+,B-,B,C,C-,A,D-,D-,F,C-,B+
+20704,Kyle,Witzmann,TULS,OLB,Pass Rush,,,B-,75,255,NFL Combine,4.59,30,6.81,4.22,35,126,11,0,0,0,0,0,0,0,0,9.12,5.88,0,0,0,0,0,0,0,B,B,C+,B,B,B+,A,F,F,D+,B,B+,A+,B-,C,D-,D-,D-,D-,B
+22026,Jack,Wren,BAMA,CB,Ball Hawk,,,B-,70,191,NFL Combine,4.72,26,6.72,4.07,35,126,0,0,0,0,0,0,0,0,0,0,0,6.56,5,0,0,0,0,0,A,B,B,D,D+,B+,C+,F,B-,B,B,D+,C+,C-,B,D+,F,C-,D,C+
+74214,John,King,VAND,OT,Pass Blocking,,,B-,76,283,NFL Combine,5.74,42,7.45,4.32,36,125,30,0,0,0,0,0,0,6.71,5.29,0,0,0,0,0,0,0,0,0,A+,B,A-,A+,A-,B+,C+,C-,C,B,B+,C+,A,B,C-,D+,C+,F,D-,A+
+75714,Marty,Walker,NCST,WR,Route Runner,,,B-,69,166,NFL Combine,4.68,22,6.78,4.05,38,127,12,0,0,0,0,5.25,6.31,0,0,0,0,0,0,0,0,0,0,0,C,B-,C,C+,D+,D+,B+,A,D+,F,D-,C,C-,B,C-,C-,D-,C,D-,A-
+75725,James,Heironimus,AKRN,DT,Nose Tackle,,,B-,75,309,NFL Combine,5.36,34,7.62,4.9,29,110,3,0,0,0,0,0,0,0,0,3.75,4.59,0,0,0,0,0,0,0,C+,D-,A-,B,B,C+,D-,F,F,F,C,B+,C,C-,D,D+,F,C-,C-,D+
+74167,Michael,Li,VAND,ILB,Coverage,,,B-,73,227,NFL Combine,4.59,30,6.85,4.02,36,124,12,0,0,0,0,0,0,0,0,0,6.59,0,0,7.27,0,0,0,0,B,B+,C,B,B,A-,B,F,C-,D-,B,B-,A-,A-,B-,B+,F,C,C,C-
+75057,Michael,Mcbride,FAU,OT,Pass Blocking,,,B-,75,282,NFL Combine,5.49,41,7.38,4.45,32,118,7,0,0,0,0,0,0,6.59,5.06,0,0,0,0,0,0,0,0,0,C,B+,B,B,C-,C-,A,C-,C,B,C+,D,D,C,C,F,F,D+,D+,B
+75084,Thomas,Omasta,GAST,WR,Possession,,,B-,74,188,NFL Combine,4.51,22,7,4.34,35,123,13,0,0,0,0,6.5,4.92,0,0,0,0,0,0,0,0,0,0,0,B-,C-,C,D-,C,A,C,D+,C,F,C-,F,B,D-,B,D+,C-,B-,D-,D+
+20130,Latavius,Hagadone,MINN,P,Balanced,,,C+,74,181,NFL Combine,5.78,17,7.69,4.64,31,110,8,0,0,0,0,0,0,0,0,0,0,0,0,0,5.87,2.77,6.33,7.88,A,A+,C-,B+,A,A+,A+,C-,F,C-,A,D-,C,C,A,A-,B,A-,B,C-
+20789,Lawrence,Woods,UVA,ILB,Coverage,,,C+,72,230,NFL Combine,4.93,34,6.72,3.99,35,120,6,0,0,0,0,0,0,0,0,0,6.12,0,0,7.2,0,0,0,0,B,B-,C,B+,B,A,A-,D+,C,F,A,D+,A,B,A-,F,D-,C,D-,D+
+74970,Brian,Berg,TCU,OT,Run Blocking,,,C+,75,301,NFL Combine,5.86,37,8.04,4.69,30,115,17,0,0,0,0,0,0,4.12,7.18,0,0,0,0,0,0,0,0,0,A-,C-,C+,C-,B,B+,C-,F,B-,C-,B,D,A+,D+,C-,F,F,D-,D,C+
+74113,Travis,Croaker,TEMP,P,Power,,,C+,71,198,NFL Combine,6.24,17,7.51,4.9,22,109,13,0,0,0,0,0,0,0,0,0,0,0,0,0,7.47,2.77,9,6.36,C+,C+,A+,A,A+,C-,B,D,C-,D+,B,C+,B,B,B,B+,A-,A,C,C-
+74267,Willie,Dillard,ILLI,DT,Nose Tackle,,,C+,75,302,NFL Combine,5.6,39,7.11,4.34,33,120,6,0,0,0,0,0,0,0,0,5.5,5.06,0,0,0,0,0,0,0,C-,C-,A+,A,C,B,B,D+,F,D-,A,B+,C+,A-,C+,C,B-,C+,D+,B
+74279,Ramon,Sandoval,SIU,QB,Pocket,,,C+,75,227,NFL Combine,5.06,28,7.29,4.28,30,117,28,7.06,8.62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,D+,C-,C+,A-,A-,A+,B-,D+,F,C-,C,D+,B,A-,A+,D-,D+,D+,C,C+
+74082,Yu,Buntrock,CCU,OT,Balanced,,,C+,75,294,NFL Combine,5.82,40,7.17,4.4,34,123,22,0,0,0,0,0,0,4.59,6.24,0,0,0,0,0,0,0,0,0,C+,A,A,B,A-,B+,B,D+,B,C,A-,C-,A,B-,C+,C-,C+,C-,C,A-
+75070,Elvis,Cooley,LSU,K,Accuracy,,,C+,71,185,NFL Combine,5.9,17,7.84,5.08,24,102,4,0,0,0,0,0,0,0,0,0,0,0,0,0,5.33,6.65,2.83,2.58,C-,C,B,A,C-,C-,B+,D-,D-,C-,C-,C-,F,B,A,C-,C+,B+,C,C-
+20572,Nate,Koyack,NIU,OG,Run Blocking,C,Run Blocking,C+,76,282,NFL Combine,6.06,44,7.45,4.79,32,118,11,0,0,0,0,0,0,5.76,8.35,0,0,0,0,0,0,0,0,0,B+,B-,C+,A-,A,C,B+,D-,A-,C,F,A-,B,C-,C+,F,C-,D+,F,C+
+74374,Derek,Arbogast,BAYL,QB,Balanced,,,C+,74,197,NFL Combine,4.78,29,7.11,4.4,36,126,28,7.53,8.62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C,B,B+,A-,B,B,C,B,F,C,A,C-,C+,A-,B-,C+,D-,D,C+,B-
+20328,Johnathan,Sowell,TENN,DT,Nose Tackle,,,C+,74,318,NFL Combine,5.2,43,7,4.1,34,124,27,0,0,0,0,0,0,0,0,6,6,0,0,0,0,0,0,0,B,B-,A+,A+,A,B,A-,C-,C-,F,B,A,A-,A+,A,F,F,B,C-,A+
+20056,Mario,Wittgren,PNST,FS,Zone Coverage,SS,Zone Coverage,C+,71,196,NFL Combine,4.42,20,6.95,3.95,37,126,32,0,0,0,0,0,0,0,0,0,0,5.22,10,0,0,0,0,0,A+,B,C+,C-,A+,C,C-,F,D-,D-,B-,B+,A,A-,A,D-,C+,B,D+,A
+74017,Daniel,Habib,ND,TE,Receiving,,,C+,75,241,NFL Combine,4.41,40,7,4.04,37,131,31,0,0,0,0,7,8,0,5.76,0,0,0,0,0,0,0,0,0,A,B,A+,A+,A+,A+,A+,A,B,A,A-,A+,A,B,A+,F,F,C+,D+,B+
+20228,JR,Stephens,UTST,QB,Pocket,,,C+,77,221,NFL Combine,4.83,29,7.38,4.36,31,118,24,7.06,9.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,B,A-,A,A+,A+,C-,B,C+,D+,A-,D+,B,B,A+,C-,D+,C+,C,B
+21276,Vyncint,Travis,NAVY,K,Balanced,,,C,70,187,NFL Combine,6.51,12,7.69,4.59,20,103,13,0,0,0,0,0,0,0,0,0,0,0,0,0,6.27,6,4.5,4.39,C+,B-,C,C+,C-,A+,B,F,D+,D-,D-,C+,D,C,B,C,B,B,A-,D+
+75656,Garland,Thornton,DART,FS,Zone Coverage,,,C,71,193,NFL Combine,4.66,23,6.95,4.01,32,120,18,0,0,0,0,0,0,0,0,0,0,6,8.5,0,0,0,0,0,C-,B,D+,C-,C-,D,C,D-,F,F,C+,B,C+,B,B+,F,D,F,C-,A-
+20219,Tom,Coke,UVA,CB,Man Coverage,,,C,71,194,NFL Combine,4.37,29,6.83,4.07,39,124,25,0,0,0,0,0,0,0,0,0,0,7.78,5.88,0,0,0,0,0,A+,B-,A-,C,A-,D,A+,A-,C+,F,A,D+,B,A+,C,F,D+,D-,D+,A-
+74277,Kyung,Hui,NAVY,QB,Pocket,,,C,76,221,NFL Combine,4.68,30,7.35,4.52,34,119,36,9.41,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,C-,C+,A,A+,A,C,F,D,D+,C+,C,B,A+,B,B,C+,B,C,B
+75622,Jason,Carver,MASS,K,Power,,,C,72,189,NFL Combine,6.19,11,7.96,4.79,28,102,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7.33,5.81,2.17,1.36,C-,A,B-,C,A+,B-,C+,F,F,C,C-,B-,F,D,C-,A-,C-,B-,B,F
+20157,Jeff,Jones,SDSU,QB,Pocket,,,C,77,233,NFL Combine,4.74,22,7.58,4.38,30,114,28,6.24,8.62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C-,C+,C+,B,A,C-,B-,C-,B+,C,C+,D+,B,A+,A+,C,C-,C-,C-,C-
+74224,Matthew,Fielding,MISS,K,Power,,,C,73,193,NFL Combine,5.78,14,8.3,5.02,27,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7.6,5.61,4.5,2.12,A,B-,B+,B-,A+,A,A+,B,C-,C-,B-,A,B,B,B,B+,C-,A+,A-,C-
+75002,Priya,Hwang,GAST,FS,Run Stopper,,,C,71,215,NFL Combine,4.78,24,7.08,4.3,36,124,19,0,0,0,0,0,0,0,0,0,0,5,5.88,0,0,0,0,0,B+,B,B+,C-,B,D-,B-,F,D+,D,B,B-,B+,C+,C,D-,C,F,F,C
+74186,Shawn,Champagne,KSST,K,Power,,,C,71,191,NFL Combine,6.06,20,7.73,4.96,25,102,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6.93,5.16,4.33,3.18,A-,C,A+,B,A+,A,B,D-,B,C-,C,B,F,B,C-,A,D+,A-,A,C
+74177,Lawrence,Williams,TCU,OLB,Pass Rush,,,C,75,231,NFL Combine,4.66,23,6.95,4.26,32,113,13,0,0,0,0,0,0,0,0,7.38,5.29,0,0,0,0,0,0,0,B,B,C-,B-,C-,B,A+,D-,C,D-,A+,A-,A-,B-,C-,C+,D+,C,C,B-
+74136,Brian,Rubeck,GEOT,SS,Run Stopper,,,C,72,205,NFL Combine,4.61,35,6.72,3.94,38,126,6,0,0,0,0,0,0,0,0,0,0,4.44,5.75,0,0,0,0,0,C,B,A-,A-,B,C-,C+,D+,C-,C-,A-,A+,C,C+,C,F,D-,C-,D-,C-
+20614,Josh,Borders,ILLI,K,Power,,,C,73,193,NFL Combine,5.78,10,8,4.9,27,103,9,0,0,0,0,0,0,0,0,0,0,0,0,0,6.93,6.39,3,2.73,A,B+,A,C+,B,B,D+,F,B,F,C+,B-,F,B,A-,A,D,C+,B+,C-
+20103,Chris,Gonzalez,UNLV,DT,Nose Tackle,,,C,75,313,NFL Combine,5.23,39,7.17,4.22,33,119,28,0,0,0,0,0,0,0,0,3.38,7.18,0,0,0,0,0,0,0,B,D+,A+,A-,B-,A+,A,C-,D,C+,B,B,B-,A,B,C+,C+,B,C,A
+20395,Marco,Leathersich,MIAF,QB,Pocket,,,C-,76,231,NFL Combine,5.17,31,7.38,4.28,31,113,26,7.53,7.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,C,C+,B,A,A+,C+,B-,D+,F,F,A-,C-,B+,B,B-,B,D+,B-,C-,B-
+74905,John,Johnson,VAL,DT,Balanced,,,C-,74,292,NFL Combine,5.63,38,7.38,4.45,33,116,9,0,0,0,0,0,0,0,0,4.38,4.47,0,0,0,0,0,0,0,C,B,C,A-,D+,A+,C-,F,D-,F,C,B-,B-,A-,A-,D+,C-,F,F,B
+74188,Anthony,Williams,UMD,DT,Pass Rusher,,,C-,76,281,NFL Combine,5.36,31,6.7,3.95,34,122,21,0,0,0,0,0,0,0,0,6.12,5.76,0,0,0,0,0,0,0,A+,A,C+,B+,A+,A-,B,F,D-,D-,A,B-,A,A,C+,C-,C,F,D+,A+
+74434,Roberto,Mercado,BUFF,DT,Nose Tackle,,,C-,75,317,NFL Combine,5.67,36,7.66,4.47,30,116,13,0,0,0,0,0,0,0,0,4.75,5.88,0,0,0,0,0,0,0,D+,D-,A-,A-,C,A-,B+,F,F,F,B+,B-,C-,A+,B+,F,F,D,D-,B
