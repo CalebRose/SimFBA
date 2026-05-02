@@ -210,7 +210,7 @@ func ReadCSV(path string) [][]string {
 }
 
 func GetParticipantIDS() map[string][]uint {
-	path := filepath.Join(os.Getenv("ROOT"), "data", "2026", "preDraftEventParticipants.json")
+	path := filepath.Join(os.Getenv("ROOT"), "data", "2027", "preDraftEventParticipants.json")
 	content := ReadJson(path)
 
 	var payload map[string][]uint
