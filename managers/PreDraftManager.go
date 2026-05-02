@@ -17,32 +17,48 @@ import (
 )
 
 func RunPreDraftEvents() {
+	// Satisfy compiler for unused db since we are dry running
 	_ = dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
 
 	draftees := GetAllNFLDraftees()
 
+	// Create a lookup map for bio data (Name, School, etc)
 	playerMap := make(map[uint]models.NFLDraftee)
 	for _, d := range draftees {
 		playerMap[uint(d.PlayerID)] = d
 	}
 
+	// Create a list of events (Pro Days and Combines)
 	eventList := GenerateTypicalListOfEvents()
+
+	// Add the participants to each list
 	eventList = AddParticipants(util.GetParticipantIDS(), eventList, draftees)
 
 	globalEventResults := []models.EventResults{}
 
+	// For each event, create a result for each player
 	for _, event := range eventList {
 		for _, player := range event.Participants {
+			// For some % of draftees, create results based on their advertised grades, not their real grades.
 			hidePerformance := ShouldHidePerformance()
+
 			playerEvents := GenerateEvent(player, event, ts)
+
+			// Run events on them
 			playerEvents = RunEvents(player, hidePerformance, playerEvents)
+
+			// Append the results to the global event list
 			globalEventResults = append(globalEventResults, playerEvents)
 		}
 	}
 
+	// --- EXPORT: Final Scouting Results ---
 	fmt.Println("--- DRY RUN: EXPORTING FULL SCOUTING RESULTS ---")
 	ExportResultsToCSV(globalEventResults, playerMap)
+
+	// SAFETY: Commented out to prevent writing to production database during dry run
+	// repository.CreatePreDraftEventResultsBatch(db, globalEventResults, 200)
 }
 
 func ExportResultsToCSV(results []models.EventResults, playerMap map[uint]models.NFLDraftee) {
@@ -107,6 +123,7 @@ func ExportResultsToCSV(results []models.EventResults, playerMap map[uint]models
 			fmt.Sprintf("%.2f", r.Fieldgoal),
 			fmt.Sprintf("%.2f", r.PuntDistance),
 			fmt.Sprintf("%.2f", r.CoffinPunt),
+			// Letter Grades
 			p.SpeedGrade, p.AgilityGrade, p.StrengthGrade, p.ThrowPowerGrade, p.ThrowAccuracyGrade,
 			p.CatchingGrade, p.CarryingGrade, p.RouteRunningGrade, p.RunBlockGrade, p.PassBlockGrade,
 			p.TackleGrade, p.RunDefenseGrade, p.PassRushGrade, p.ManCoverageGrade, p.ZoneCoverageGrade,
@@ -117,7 +134,9 @@ func ExportResultsToCSV(results []models.EventResults, playerMap map[uint]models
 }
 
 func ShouldHidePerformance() bool {
-	return rand.Intn(100) < 10
+	chance := 10
+	roll := rand.Intn(100)
+	return roll < chance
 }
 
 func GenerateEvent(draftee models.NFLDraftee, event models.PreDraftEvent, timestamp structs.Timestamp) models.EventResults {
@@ -485,7 +504,7 @@ func FindParticipant(x uint, list []models.NFLDraftee) (models.NFLDraftee, bool)
 }
 
 func GenerateTypicalListOfEvents() []models.PreDraftEvent {
-	names := []string{"AAC Pro Day", "ACC Pro Day", "Big Ten Pro Day", "Big XII Pro Day", "C-USA Pro Day", "Independents Pro Day", "MAC Pro Day", "MWC Pro Day", "PAC-12 Pro Day", "SEC Pro Day", "Sun Belt Pro Day", "FCS Pro Day", "NFL Combine"}
+	names := []string{"AAC Pro Day", "ACC Pro Day", "Big Ten Pro Day", "Big 12 Pro Day", "C-USA Pro Day", "Independents Pro Day", "MAC Pro Day", "Mountain West Pro Day", "SEC Pro Day", "Sun Belt Pro Day", "FCS Pro Day", "NFL Combine"}
 	var tempList []models.PreDraftEvent
 	for _, name := range names {
 		tempList = append(tempList, models.PreDraftEvent{Name: name, IsCombine: name == "NFL Combine"})
