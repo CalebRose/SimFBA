@@ -358,6 +358,12 @@ func AddRecruitToBoard(RecruitDTO structs.CreateRecruitProfileDto) structs.Recru
 		return recruitProfile
 	}
 
+	teamRecruitingProfile := GetOnlyRecruitingProfileByTeamID(strconv.Itoa(int(RecruitDTO.ProfileID)))
+	stateMatcher := util.GetStateMatcher()
+	regionMatcher := util.GetStateRegionMatcher()
+
+	modifier := CalculateModifierTowardsRecruit(RecruitDTO.PlayerRecruit, teamRecruitingProfile, stateMatcher, regionMatcher)
+
 	recruitingProfile := structs.RecruitPlayerProfile{
 		SeasonID:                  RecruitDTO.SeasonID,
 		RecruitID:                 RecruitDTO.RecruitID,
@@ -374,10 +380,11 @@ func AddRecruitToBoard(RecruitDTO structs.CreateRecruitProfileDto) structs.Recru
 		RemovedFromBoard:          false,
 		IsSigned:                  false,
 		Recruiter:                 RecruitDTO.Recruiter,
+		PreferenceModifier:        modifier,
 	}
 
 	// Save
-	db.Create(&recruitingProfile)
+	repository.CreateRecruitProfileRecord(recruitingProfile, db)
 
 	return recruitingProfile
 }

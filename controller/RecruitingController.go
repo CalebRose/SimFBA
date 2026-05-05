@@ -100,7 +100,7 @@ func CreateRecruitPlayerProfile(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-
+	// Ping
 	recruitingProfile := managers.AddRecruitToBoard(recruitPointsDto)
 
 	json.NewEncoder(w).Encode(recruitingProfile)

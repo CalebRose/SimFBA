@@ -116,8 +116,6 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/admin/ai/sync/boards", controller.SyncAIBoards).Methods("GET")
 	// This endpoint should be used right before the redshirt deadline.
 	apiRouter.HandleFunc("/admin/ai/apply/redshirts/{seasonID}", controller.AllocateAIRedshirts).Methods("GET")
-	// apiRouter.HandleFunc("/admin/fix/affinities", controller.RecalibrateCrootProfiles).Methods("GET")
-	// apiRouter.HandleFunc("/admin/fix/recruit/points", controller.RecalibrateRecruitPoints).Methods("GET")
 	apiRouter.HandleFunc("/admin/run/the/games/", controller.RunTheGames).Methods("GET")
 	// apiRouter.HandleFunc("/admin/overall/progressions/next/season", controller.ProgressToNextSeason).Methods("GET")
 	// apiRouter.HandleFunc("/admin/overall/progressions/nfl", controller.ProgressNFL).Methods("GET")
@@ -171,6 +169,8 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/recruit/points", controller.FixRecruitPoints).Methods("GET")
 	// apiRouter.HandleFunc("/fix/formation/names", controller.FixOffensiveFormationNames).Methods("GET")
 	// apiRouter.HandleFunc("/fix/player/preferences", controller.FixPlayerPreferences).Methods("GET")
+	// apiRouter.HandleFunc("/admin/fix/affinities", controller.RecalibrateCrootProfiles).Methods("GET")
+	// apiRouter.HandleFunc("/admin/fix/recruit/points", controller.RecalibrateRecruitPoints).Methods("GET")
 	apiRouter.HandleFunc("/fix/profile/mods", controller.FixRecruitProfileMods).Methods("GET")
 
 	// Free Agency Controls
