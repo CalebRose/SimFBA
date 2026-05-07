@@ -159,6 +159,30 @@ func ProcessUDFAs(isDryRun bool) {
 	}
 }
 
+// SendToFreeAgency officially moves an unsigned UDFA into the Free Agency pool
+// and sets their minimum contract demands.
+func SendToFreeAgency(draftee models.NFLDraftee) {
+	db := dbprovider.GetInstance().GetDB()
+
+	// 1. Fetch the actual NFLPlayer record associated with this Draftee
+	var proPlayer structs.NFLPlayer
+	db.Where("player_id = ?", draftee.PlayerID).Find(&proPlayer)
+
+	// If we somehow can't find the pro player record, abort to prevent a crash
+	if proPlayer.ID == 0 {
+		return
+	}
+
+	// 2. Set the minimum contract demands on the PRO player record
+	proPlayer.MinimumValue = 0.5
+	proPlayer.AAV = 0.5
+	proPlayer.IsFreeAgent = true
+	proPlayer.IsAcceptingOffers = true
+
+	// 3. Save the updated PRO player to the database
+	db.Save(&proPlayer)
+}
+
 func SignUDFA(draftee models.NFLDraftee, bid structs.NFLUDFAProfile) {
 	db := dbprovider.GetInstance().GetDB()
 
