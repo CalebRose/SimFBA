@@ -15,9 +15,7 @@ import (
 
 // GetTimeStamp
 func GetCurrentTimestamp(w http.ResponseWriter, r *http.Request) {
-
 	timestamp := managers.GetTimestamp()
-
 	json.NewEncoder(w).Encode(timestamp)
 }
 
@@ -29,23 +27,18 @@ func SyncTimestamp(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-
 	newTimestamp := managers.UpdateTimestamp(updateTimestampDto)
-
 	json.NewEncoder(w).Encode(newTimestamp)
 }
 
 func SyncRecruiting(w http.ResponseWriter, r *http.Request) {
 	ts := managers.GetTimestamp()
-
 	managers.SyncRecruiting(ts)
-
 	json.NewEncoder(w).Encode("Sync Complete")
 }
 
 func SyncWeek(w http.ResponseWriter, r *http.Request) {
 	newTimestamp := managers.MoveUpWeek()
-
 	json.NewEncoder(w).Encode(newTimestamp)
 }
 
@@ -55,17 +48,30 @@ func SyncTimeslot(w http.ResponseWriter, r *http.Request) {
 	if len(timeslot) == 0 {
 		log.Panicln("Missing timeslot!")
 	}
-
 	managers.SyncTimeslot(timeslot)
-
 	json.NewEncoder(w).Encode("Timeslot updated")
 }
 
 func SyncFreeAgencyRound(w http.ResponseWriter, r *http.Request) {
 	managers.SyncFreeAgencyOffers()
 	managers.MoveUpInOffseasonFreeAgency()
-	// managers.AttemptToDecreaseMinimumValues()
 	json.NewEncoder(w).Encode("Moved to next free agency round")
+}
+
+// NEW FUNCTION: ProcessUDFAs
+// Triggered by the Admin Button
+func ProcessUDFAs(w http.ResponseWriter, r *http.Request) {
+	query := r.URL.Query()
+	dryRunParam := query.Get("dryRun")
+	isDryRun := dryRunParam == "true"
+
+	managers.ProcessUDFAs(isDryRun)
+
+	message := "UDFA Processing Complete."
+	if isDryRun {
+		message = "UDFA Dry Run Complete. Check server logs for results."
+	}
+	json.NewEncoder(w).Encode(message)
 }
 
 func SyncMissingRES(w http.ResponseWriter, r *http.Request) {
@@ -76,38 +82,14 @@ func GetWeeksInSeason(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	seasonID := vars["seasonID"]
 	weekID := vars["weekID"]
-
 	weeks := managers.GetWeeksInASeason(seasonID, weekID)
-
 	json.NewEncoder(w).Encode(weeks)
 }
 
-// CreateCollegeRecruit?
-
-// CreateNFLPlayer -- Create NFL Player from template, and then synthetically progress them based on the year of input
-
-// UpdateTeamRecruitingProfile
-
-// ApproveCoachForTeam
-
-// RemoveCoachFromTeam
-
-// UpdateTeam
-
-// RunProgressionsForCollege
-func RunProgressionsForCollege(w http.ResponseWriter, r *http.Request) {
-
-}
-
-// GenerateWalkons
 func GenerateWalkOns(w http.ResponseWriter, r *http.Request) {
 	managers.GenerateWalkOns()
 	fmt.Println(w, "Walk ons successfully generated.")
 }
-
-// RunProgressionsForNFL
-
-// RunProgressionsForJuco?
 
 func SyncTeamRecruitingRanks(w http.ResponseWriter, r *http.Request) {
 	managers.SyncTeamRankings()
