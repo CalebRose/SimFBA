@@ -180,7 +180,7 @@ func SendToFreeAgency(draftee models.NFLDraftee) {
 	proPlayer.IsAcceptingOffers = true
 
 	// 3. Save the updated PRO player to the database
-	db.Save(&proPlayer)
+	// db.Save(&proPlayer) - COMMENTED OUT FOR LOCAL TEST
 }
 
 func SignUDFA(draftee models.NFLDraftee, bid structs.NFLUDFAProfile) {
