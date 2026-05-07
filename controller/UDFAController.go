@@ -9,21 +9,19 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// GetUDFABoardByTeamID - Returns the bidding board for a specific team
+// GetUDFABoardByTeamID returns the user's specific UDFA bidding board
 func GetUDFABoardByTeamID(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	teamID := vars["teamID"]
-
 	if len(teamID) == 0 {
-		http.Error(w, "No Team ID provided", http.StatusBadRequest)
-		return
+		panic("User did not provide TeamID")
 	}
 
 	board := managers.GetUDFABoardByTeamID(teamID)
 	json.NewEncoder(w).Encode(board)
 }
 
-// AddPlayerToUDFABoard - Adds a player to the team's bidding list
+// AddPlayerToUDFABoard adds a single player to the user's board
 func AddPlayerToUDFABoard(w http.ResponseWriter, r *http.Request) {
 	var profile structs.NFLUDFAProfile
 	err := json.NewDecoder(r.Body).Decode(&profile)
@@ -32,11 +30,14 @@ func AddPlayerToUDFABoard(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	updatedProfile := managers.AddPlayerToUDFABoard(profile)
-	json.NewEncoder(w).Encode(updatedProfile)
+	// Call the manager to execute the DB logic
+	managers.AddPlayerToUDFABoard(profile)
+
+	// Return success to the frontend
+	json.NewEncoder(w).Encode(true)
 }
 
-// SaveUDFABoard - Saves the point allocations (1-20)
+// SaveUDFABoard updates the points assigned to all players on the board
 func SaveUDFABoard(w http.ResponseWriter, r *http.Request) {
 	var board structs.NFLUDFABoard
 	err := json.NewDecoder(r.Body).Decode(&board)
@@ -45,20 +46,41 @@ func SaveUDFABoard(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = managers.SaveUDFABoard(board)
-	if err != nil {
-		http.Error(w, "Could not save UDFA board: "+err.Error(), http.StatusInternalServerError)
-		return
-	}
+	// Call the manager to execute the DB logic
+	managers.SaveUDFABoard(board)
 
+	// Return success to the frontend
 	json.NewEncoder(w).Encode(true)
 }
 
-// RemovePlayerFromUDFABoard - Deletes a bid
+// RemovePlayerFromUDFABoard deletes a player from the user's board
 func RemovePlayerFromUDFABoard(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	profileID := vars["profileID"]
+	if len(profileID) == 0 {
+		panic("User did not provide profileID")
+	}
 
+	// Call the manager to execute the DB logic
 	managers.RemovePlayerFromUDFABoard(profileID)
+
+	// Return success to the frontend
 	json.NewEncoder(w).Encode(true)
+}
+
+// ProcessUDFAs triggers the batch signing process (Used by Admin)
+func ProcessUDFAs(w http.ResponseWriter, r *http.Request) {
+	dryRunParam := r.URL.Query().Get("dryRun")
+	isDryRun := dryRunParam == "true"
+
+	// Trigger the batch signing logic
+	managers.ProcessUDFAs(isDryRun)
+
+	// Return a clean success message to display in the Admin Panel
+	msg := "LIVE UDFA Signings Executed Successfully!"
+	if isDryRun {
+		msg = "Dry Run Complete. Check backend server console for simulation results."
+	}
+
+	json.NewEncoder(w).Encode(msg)
 }

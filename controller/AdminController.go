@@ -58,22 +58,6 @@ func SyncFreeAgencyRound(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode("Moved to next free agency round")
 }
 
-// NEW FUNCTION: ProcessUDFAs
-// Triggered by the Admin Button
-func ProcessUDFAs(w http.ResponseWriter, r *http.Request) {
-	query := r.URL.Query()
-	dryRunParam := query.Get("dryRun")
-	isDryRun := dryRunParam == "true"
-
-	managers.ProcessUDFAs(isDryRun)
-
-	message := "UDFA Processing Complete."
-	if isDryRun {
-		message = "UDFA Dry Run Complete. Check server logs for results."
-	}
-	json.NewEncoder(w).Encode(message)
-}
-
 func SyncMissingRES(w http.ResponseWriter, r *http.Request) {
 	managers.SyncAllMissingEfficiencies()
 }
