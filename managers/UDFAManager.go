@@ -140,7 +140,7 @@ func ProcessUDFAs(isDryRun bool) {
 	// NEW: Generate the Forum Post if it was a live run and players were signed!
 	if !isDryRun && len(teamSignings) > 0 {
 		// Get the current NFL Season ID from the Timestamp
-		ts := GetTimestamp()
+		// ts := GetTimestamp()
 
 		var forumSignings []string
 
