@@ -1057,6 +1057,10 @@ func AICoachAllocateAndPromisePhase() {
 			}
 		}
 		teamProfile.AIAllocateSpentPoints(points)
+		if teamProfile.ID > 500 {
+			// We shouldn't be making dummy records for this
+			continue
+		}
 		repository.SaveRecruitingTeamProfile(teamProfile, db)
 	}
 }
@@ -1083,9 +1087,6 @@ func SyncTransferPortal() {
 	for _, portalPlayer := range transferPortalPlayers {
 		// Skip over players that have already transferred
 		if portalPlayer.TransferStatus != 2 || portalPlayer.TeamID > 0 {
-			continue
-		}
-		if portalPlayer.ID < 82716 {
 			continue
 		}
 

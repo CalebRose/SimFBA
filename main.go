@@ -171,7 +171,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/player/preferences", controller.FixPlayerPreferences).Methods("GET")
 	// apiRouter.HandleFunc("/admin/fix/affinities", controller.RecalibrateCrootProfiles).Methods("GET")
 	// apiRouter.HandleFunc("/admin/fix/recruit/points", controller.RecalibrateRecruitPoints).Methods("GET")
-	apiRouter.HandleFunc("/fix/profile/mods", controller.FixRecruitProfileMods).Methods("GET")
+	// apiRouter.HandleFunc("/fix/profile/mods", controller.FixRecruitProfileMods).Methods("GET")
 
 	// Free Agency Controls
 	// apiRouter.HandleFunc("/nfl/extensions/sync", controller.SyncExtensions).Methods("GET")
@@ -385,6 +385,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/simnfl/mass/test/{off}/{def}", controller.MassNFLUpdateGameplansTEST).Methods("GET")
 	apiRouter.HandleFunc("/teams/college/test/sim/{gameID}/", controller.GetCFBHomeAndAwayTeamTestData).Methods("GET")
 	apiRouter.HandleFunc("/teams/nfl/test/sim/{gameID}/", controller.GetNFLHomeAndAwayTeamTestData).Methods("GET")
+	apiRouter.HandleFunc("/test/scheduler/cfb", controller.TestCFBScheduler).Methods("GET")
 	// apiRouter.HandleFunc("/teams/nfl/test/setup/", controller.SetUpNFLTestDataStructs).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/test/cfb/progression/", controller.TestCFBProgressionAlgorithm).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/test/nfl/progression/", controller.TestNFLProgressionAlgorithm).Methods("GET")

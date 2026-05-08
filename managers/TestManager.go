@@ -926,7 +926,7 @@ func MigrateCFBGameplansAndDepthChartsForRemainingFCSTeams() {
 	var testDCList []structs.CollegeTeamDepthChartTEST
 	var dcPList []structs.CollegeDepthChartPosition
 	var testDCPList []structs.CollegeDepthChartPositionTEST
-	for i := 195; i < 265; i++ {
+	for i := 266; i < 271; i++ {
 		gp := structs.CollegeGameplan{
 			TeamID: i,
 			Model: gorm.Model{

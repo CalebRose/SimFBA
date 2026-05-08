@@ -434,6 +434,20 @@ func MakeCollegeTeamMap(teams []structs.CollegeTeam) map[uint]structs.CollegeTea
 	return profileMap
 }
 
+func MakeCollegeTeamsByConference(teams []structs.CollegeTeam) map[int][]structs.CollegeTeam {
+	conferenceMap := make(map[int][]structs.CollegeTeam)
+
+	for _, team := range teams {
+		if len(conferenceMap[team.ConferenceID]) > 0 {
+			conferenceMap[team.ConferenceID] = append(conferenceMap[team.ConferenceID], team)
+		} else {
+			conferenceMap[team.ConferenceID] = []structs.CollegeTeam{team}
+		}
+	}
+
+	return conferenceMap
+}
+
 func MakeCollegeTeamSeasonStatsMap(stats []structs.CollegeTeamSeasonStats) map[uint]structs.CollegeTeamSeasonStats {
 	statsMap := make(map[uint]structs.CollegeTeamSeasonStats)
 	for _, s := range stats {
@@ -494,4 +508,28 @@ func MakeCollegeRecruitMapByID(recruits []structs.Recruit) map[uint]structs.Recr
 		recruitMap[r.ID] = r
 	}
 	return recruitMap
+}
+
+func MakeStadiumMapByTeamID(stadia []structs.Stadium, isCollege bool) map[uint]structs.Stadium {
+	stadiumMap := make(map[uint]structs.Stadium)
+
+	for _, s := range stadia {
+		if isCollege && s.LeagueID == 3 {
+			continue
+		}
+		if !isCollege && s.LeagueID != 3 {
+			continue
+		}
+		stadiumMap[s.TeamID] = s
+	}
+	return stadiumMap
+}
+
+func MakeStadiumMapByID(stadia []structs.Stadium) map[uint]structs.Stadium {
+	stadiumMap := make(map[uint]structs.Stadium)
+
+	for _, s := range stadia {
+		stadiumMap[s.ID] = s
+	}
+	return stadiumMap
 }

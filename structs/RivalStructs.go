@@ -11,4 +11,10 @@ type CollegeRival struct {
 	HasTrophy       bool
 	TeamOnePriority uint
 	TeamTwoPriority uint
+	IsAnnualRivalry bool
+	ConferenceID    uint
+	PreferredWeek   uint8
+	Timeslot        string
+	IsNeutralSite   bool
+	StadiumID       uint
 }

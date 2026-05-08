@@ -77,6 +77,7 @@ type BootstrapDataScheduling struct {
 	PollSubmission         structs.CollegePollSubmission
 	HistoricCollegePlayers []structs.HistoricCollegePlayer
 	RetiredPlayers         []structs.NFLRetiredPlayer
+	Stadiums               []structs.Stadium
 }
 
 type BootstrapDataDraft struct {
@@ -449,6 +450,7 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 		pollSubmission         structs.CollegePollSubmission
 		historicCollegePlayers []structs.HistoricCollegePlayer
 		retiredPlayers         []structs.NFLRetiredPlayer
+		stadiums               []structs.Stadium
 	)
 	if len(collegeID) > 0 && collegeID != "0" {
 		wg.Add(3)
@@ -465,12 +467,18 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 			historicCollegePlayers = GetAllHistoricCollegePlayers()
 		}()
 	}
-	wg.Add(1)
+	wg.Add(2)
 	go func() {
 		defer wg.Done()
 		log.Println("Fetching Retired Players...")
 		retiredPlayers = GetAllRetiredPlayers()
 		log.Println("Fetched Retired Players, count:", len(retiredPlayers))
+	}()
+	go func() {
+		defer wg.Done()
+		log.Println("Fetching Stadiums...")
+		stadiums = GetAllStadiums()
+		log.Println("Fetched Stadiums, count:", len(stadiums))
 	}()
 	wg.Wait()
 
@@ -479,6 +487,7 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 		OfficialPolls:          officialPolls,
 		HistoricCollegePlayers: historicCollegePlayers,
 		RetiredPlayers:         retiredPlayers,
+		Stadiums:               stadiums,
 	}
 }
 

@@ -1,0 +1,1115 @@
+SeasonID,WeekID,Week,HomeTeamID,HomeTeam,AwayTeamID,AwayTeam,IsConference,IsDivisional,IsRivalry,IsNeutral,StadiumID,Stadium,City,State,TimeSlot
+7,2701,1,25,Colorado State,24,Colorado,false,false,true,false,25,Sonny Lubick Field at Canvas Stadium,Fort Collins,Colorado,Friday Night
+7,2701,1,130,Wyoming,119,Utah State,false,false,true,false,130,Jonah Field at War Memorial Stadium,Laramie,Wyoming,Friday Night
+7,2701,1,44,Kansas,64,Missouri,false,false,true,false,44,David Booth Kansas Memorial Stadium,Lawrence,Kansas,Saturday Afternoon
+7,2701,1,185,Prairie View A&M,192,Texas Southern,true,true,true,false,185,Blackshear Field,Prairie View,TX,Saturday Afternoon
+7,2701,1,195,Charleston Southern,176,The Citadel,false,false,true,false,220,Buccaneer Field,Bules Creek,NC,Saturday Afternoon
+7,2701,1,75,Notre Dame,65,Navy,false,false,true,false,75,Notre Dame Stadium,South Bend,Indiana,Saturday Evening
+7,2701,1,143,North Dakota State,144,South Dakota State,false,false,true,false,143,Fargodome,Fargo,ND,Saturday Evening
+7,2701,1,110,UCF,43,Iowa State,true,false,false,false,110,Bounce House,Orlando,Florida,Saturday Morning
+7,2701,1,106,Troy,132,Jacksonville State,false,false,true,false,106,Veterans Memorial Stadium at Larry Blakeney Field,Troy,Alabama,Thursday Night
+7,2701,1,190,Florida A&M,194,Jackson State,true,true,true,false,190,Bragg Memorial Stadium,Tallahassee,FL,Thursday Night
+7,2701,1,206,Delaware,221,Delaware State,false,false,true,false,231,Delaware Stadium,Newark,DE,Thursday Night
+7,2701,1,214,Richmond,182,VMI,false,false,true,false,239,E. Claiborne Robins Stadium,Richmond,VA,Thursday Night
+7,2702,2,70,New Mexico State,134,Kennesaw State,true,false,false,false,70,Aggie Memorial Stadium,Las Cruces,New Mexico,Saturday Afternoon
+7,2702,2,21,Cincinnati,110,UCF,true,false,true,false,21,Nippert Stadium,Cincinnati,Ohio,Saturday Evening
+7,2702,2,33,Fresno State,90,San Jose State,false,false,true,false,33,Bulldog Stadium at Jim Sweeney Field,Fresno,California,Saturday Evening
+7,2702,2,42,Iowa,43,Iowa State,false,false,true,false,42,Kinnick Stadium,Iowa City,Iowa,Saturday Evening
+7,2702,2,60,Michigan State,75,Notre Dame,false,false,true,false,60,Spartan Stadium,East Lansing,Michigan,Saturday Morning
+7,2702,2,24,Colorado,12,Baylor,true,false,false,false,24,Folsom Field,Boulder,Colorado,Saturday Night
+7,2702,2,56,Memphis,95,Southern Miss,false,false,true,false,56,Liberty Bowl Memorial Stadium,Memphis,Tennessee,Thursday Night
+7,2702,2,85,Pittsburgh,91,SMU,true,false,false,false,85,Heinz Field,Pittsburgh,Pennsylvania,Thursday Night
+7,2703,3,72,North Texas,94,South Florida,true,false,false,false,72,Apogee Stadium,Denton,Texas,Saturday Afternoon
+7,2703,3,116,UTEP,70,New Mexico State,false,false,true,false,116,Sun Bowl Stadium,El Paso,Texas,Saturday Afternoon
+7,2703,3,182,VMI,218,William & Mary,false,false,true,false,182,Foster Stadium,Lexington,VA,Saturday Afternoon
+7,2703,3,194,Jackson State,200,Tennessee State,false,false,true,false,194,Mississippi Veterans Memorial Stadium,Jackson,MS,Saturday Afternoon
+7,2703,3,238,Drake,140,Northern Iowa,false,false,true,false,263,Drake Stadium,Des Moines,IA,Saturday Afternoon
+7,2703,3,86,Purdue,59,Michigan,true,false,false,false,86,Ross-Ade Stadium,West Lafayette,Indiana,Saturday Evening
+7,2703,3,91,SMU,98,TCU,false,false,true,false,91,Gerald J. Ford Stadium,University Park,Texas,Saturday Evening
+7,2703,3,120,Vanderbilt,34,Georgia,true,false,false,false,120,Vanderbilt Stadium,Nashville,Tennessee,Saturday Evening
+7,2703,3,137,Illinois State,196,Eastern Illinois,false,false,true,false,137,Hancock Stadium,Normal,IL,Saturday Evening
+7,2703,3,257,Central Arkansas,249,McNeese,false,false,true,false,282,Estes Stadium,Conway,AR,Saturday Evening
+7,2703,3,9,Army,1,Air Force,false,false,true,false,9,Blaik Field at Michie Stadium,West Point,New York,Saturday Morning
+7,2703,3,110,UCF,39,Houston,true,false,false,false,110,Bounce House,Orlando,Florida,Saturday Morning
+7,2703,3,126,West Virginia,45,Kansas State,true,false,false,false,126,Mountaineer Field at Milan Puskar Stadium,Morgantown,West Virginia,Saturday Morning
+7,2703,3,148,Colgate,168,Cornell,false,false,true,false,148,Andy Kerr Stadium,Hamilton,NY,Saturday Morning
+7,2703,3,24,Colorado,67,Nebraska,false,false,true,false,24,Folsom Field,Boulder,Colorado,Saturday Night
+7,2703,3,25,Colorado State,130,Wyoming,false,false,true,false,25,Sonny Lubick Field at Canvas Stadium,Fort Collins,Colorado,Saturday Night
+7,2703,3,64,Missouri,100,Tennessee,true,false,false,false,64,Faurot Field at Memorial Stadium,Columbia,Missouri,Saturday Night
+7,2703,3,14,Boston College,75,Notre Dame,false,false,true,false,14,Alumni Stadium,Chestnut Hill,Massachusetts,Thursday Night
+7,2703,3,48,Liberty,61,Middle Tennessee,true,false,false,false,48,Arthur L. Williams Stadium,Lynchburg,Virginia,Thursday Night
+7,2703,3,166,Brown,213,Rhode Island,false,false,true,false,166,Brown Stadium,Providence,RI,Thursday Night
+7,2703,3,173,Yale,151,Lehigh,false,false,true,false,173,Yale Bowl,New Haven,CT,Thursday Night
+7,2703,3,208,Hampton,222,Howard,false,false,true,false,233,Armstrong Stadium,Hampton,VA,Thursday Night
+7,2703,3,212,North Carolina A&T,225,North Carolina Central,false,false,true,false,237,Truist Stadium,Greensboro,NC,Thursday Night
+7,2704,4,8,Arkansas State,50,Louisiana Monroe,true,true,true,false,8,Centennial Bank Stadium,Jonesboro,Arkansas,Friday Night
+7,2704,4,49,Louisiana,36,Georgia State,true,false,false,false,49,Cajun Field,Lafayette,Louisiana,Friday Night
+7,2704,4,82,Oregon,55,Maryland,true,false,false,false,82,Autzen Stadium,Eugene,Oregon,Friday Night
+7,2704,4,98,TCU,21,Cincinnati,true,false,false,false,98,Amon G. Carter Stadium,Fort Worth,Texas,Friday Night
+7,2704,4,143,North Dakota State,69,New Mexico,true,false,false,false,143,Fargodome,Fargo,ND,Friday Night
+7,2704,4,163,Portland State,160,Montana State,true,false,false,false,163,Hillsboro Stadium,Portland,OR,Friday Night
+7,2704,4,14,Boston College,85,Pittsburgh,true,false,true,false,14,Alumni Stadium,Chestnut Hill,Massachusetts,Saturday Afternoon
+7,2704,4,26,Duke,52,Louisville,true,false,false,false,26,Brooks Field at Wallace Wade Stadium,Durham,North Carolina,Saturday Afternoon
+7,2704,4,33,Fresno State,89,San Diego State,true,false,true,false,33,Bulldog Stadium at Jim Sweeney Field,Fresno,California,Saturday Afternoon
+7,2704,4,43,Iowa State,39,Houston,true,false,false,false,43,Jack Trice Stadium,Ames,Iowa,Saturday Afternoon
+7,2704,4,45,Kansas State,17,BYU,true,false,false,false,45,Bill Snyder Family Football Stadium,Manhattan,Kansas,Saturday Afternoon
+7,2704,4,57,Miami (FL),96,Stanford,true,false,false,false,57,Hard Rock Stadium,Coral Gables,Florida,Saturday Afternoon
+7,2704,4,75,Notre Dame,115,USC,false,false,true,false,75,Notre Dame Stadium,South Bend,Indiana,Saturday Afternoon
+7,2704,4,76,Ohio,15,Bowling Green,true,false,false,false,76,Peden Stadium,Athens,Ohio,Saturday Afternoon
+7,2704,4,80,Old Dominion,92,South Alabama,true,false,false,false,80,Foreman Field at S. B. Ballard Stadium,Norfolk,Virginia,Saturday Afternoon
+7,2704,4,94,South Florida,9,Army,true,false,false,false,94,Raymond James Stadium,Tampa,Florida,Saturday Afternoon
+7,2704,4,129,Wisconsin,86,Purdue,true,false,false,false,129,Camp Randall Stadium,Madison,Wisconsin,Saturday Afternoon
+7,2704,4,183,Grambling,185,Prairie View A&M,true,true,true,false,183,Eddie G. Robinson Memorial Stadium,Grambling,LA,Saturday Afternoon
+7,2704,4,6,Arizona State,79,Oklahoma State,true,false,false,false,6,"Sun Devil Stadium, Frank Kush Field",Tempe,Arizona,Saturday Evening
+7,2704,4,10,Auburn,100,Tennessee,true,false,true,false,10,Pat Dye Field at Jordan-Hare Stadium,Auburn,Alabama,Saturday Evening
+7,2704,4,18,California,22,Clemson,true,false,false,false,18,California Memorial Stadium,Berkeley,California,Saturday Evening
+7,2704,4,30,Florida,34,Georgia,true,false,true,true,203,TIAA Bank Field,Jacksonville,FL,Saturday Morning
+7,2704,4,97,Syracuse,123,Wake Forest,true,false,false,false,97,Carrier Dome,Syracuse,New York,Saturday Morning
+7,2704,4,191,Alabama State,187,Southern,true,false,false,false,191,New ASU Stadium,Montgomery,AL,Saturday Morning
+7,2704,4,5,Arizona,44,Kansas,true,false,false,false,5,Arizona Stadium,Tucson,Arizona,Saturday Night
+7,2704,4,24,Colorado,104,Texas Tech,true,false,false,false,24,Folsom Field,Boulder,Colorado,Saturday Night
+7,2704,4,38,Hawaii,90,San Jose State,true,false,true,false,38,Aloha Stadium,Honolulu,Hawai'i,Saturday Night
+7,2704,4,64,Missouri,93,South Carolina,true,false,true,false,64,Faurot Field at Memorial Stadium,Columbia,Missouri,Saturday Night
+7,2704,4,101,Texas,63,Mississippi State,true,false,false,false,101,Darrell K Royal-Texas Memorial Stadium,Austin,Texas,Saturday Night
+7,2704,4,249,McNeese,251,Northwestern State,true,false,true,false,274,Cowboy Stadium,Lake Charles,LA,Saturday Night
+7,2704,4,2,Akron,16,Buffalo,true,false,false,false,2,InfoCision Stadium-Summa Field,Akron,Ohio,Thursday Night
+7,2704,4,41,Indiana,67,Nebraska,true,false,false,false,41,Memorial Stadium,Bloomington,Indiana,Thursday Night
+7,2704,4,58,Miami (OH),11,Ball State,true,false,false,false,58,Fred C. Yager Stadium,Oxford,Ohio,Thursday Night
+7,2704,4,61,Middle Tennessee,138,Missouri State,true,false,false,false,61,Johnny Red Floyd Stadium,Murfreesboro,Tennessee,Thursday Night
+7,2704,4,81,Ole Miss,53,LSU,true,false,true,false,81,Vaught-Hemingway Stadium at Hollingsworth Field,Oxford,Mississippi,Thursday Night
+7,2704,4,110,UCF,12,Baylor,true,false,false,false,110,Bounce House,Orlando,Florida,Thursday Night
+7,2704,4,113,UMass,46,Kent State,true,false,false,false,113,Warren McGuirk Alumni Stadium,Amherst,Massachusetts,Thursday Night
+7,2704,4,126,West Virginia,118,Utah,true,false,false,false,126,Mountaineer Field at Milan Puskar Stadium,Morgantown,West Virginia,Thursday Night
+7,2704,4,134,Kennesaw State,133,Sam Houston State,true,false,false,false,134,Fifth Third Bank Stadium,Kennesaw,Georgia,Thursday Night
+7,2704,4,174,Furman,201,Tennessee Tech,true,false,false,false,174,Paladin Stadium,Greenville,SC,Thursday Night
+7,2704,4,222,Howard,223,Morgan State,true,false,true,false,247,William H. Greene Stadium,Washington,DC,Thursday Night
+7,2705,5,73,Northern Illinois,116,UTEP,true,false,false,false,73,Brigham Field at Huskie Stadium,DeKalb,Illinois,Friday Night
+7,2705,5,133,Sam Houston State,61,Middle Tennessee,true,false,false,false,133,Bowers Stadium,Huntsville,Texas,Friday Night
+7,2705,5,141,Southern Illinois,144,South Dakota State,true,false,false,false,141,Saluki Stadium,Carbondale,IL,Friday Night
+7,2705,5,189,Arkansas-Pine Bluff,191,Alabama State,true,false,false,false,189,Simmons Bank Field,Pine Bluff,AR,Friday Night
+7,2705,5,192,Texas Southern,193,Mississippi Valley State,true,false,false,false,192,PNC Stadium,Houston,TX,Friday Night
+7,2705,5,260,Southern Utah,165,Weber State,true,false,true,false,285,Eccles Coliseum,Cedar City,UT,Friday Night
+7,2705,5,17,BYU,104,Texas Tech,true,false,false,false,17,LaVell Edwards Stadium,Provo,Utah,Saturday Afternoon
+7,2705,5,39,Houston,118,Utah,true,false,false,false,39,John O'Quinn Field at TDECU Stadium,Houston,Texas,Saturday Afternoon
+7,2705,5,65,Navy,27,East Carolina,true,false,false,false,65,Navy-Marine Corps Memorial Stadium,Annapolis,Maryland,Saturday Afternoon
+7,2705,5,82,Oregon,42,Iowa,true,false,false,false,82,Autzen Stadium,Eugene,Oregon,Saturday Afternoon
+7,2705,5,86,Purdue,111,UCLA,true,false,false,false,86,Ross-Ade Stadium,West Lafayette,Indiana,Saturday Afternoon
+7,2705,5,94,South Florida,31,Florida Atlantic,true,false,false,false,94,Raymond James Stadium,Tampa,Florida,Saturday Afternoon
+7,2705,5,100,Tennessee,53,LSU,true,false,false,false,100,Neyland Stadium,Knoxville,Tennessee,Saturday Afternoon
+7,2705,5,103,Texas State,119,Utah State,true,false,false,false,103,Jim Wacker Field at Bobcat Stadium,San Marcos,Texas,Saturday Afternoon
+7,2705,5,113,UMass,28,Eastern Michigan,true,false,false,false,113,Warren McGuirk Alumni Stadium,Amherst,Massachusetts,Saturday Afternoon
+7,2705,5,134,Kennesaw State,29,FIU,true,false,false,false,134,Fifth Third Bank Stadium,Kennesaw,Georgia,Saturday Afternoon
+7,2705,5,139,Murray State,145,South Dakota,true,false,false,false,139,Roy Stewart Stadium,Murray,KY,Saturday Afternoon
+7,2705,5,151,Lehigh,153,Georgetown,true,false,false,false,151,Goodman Stadium,Bethlehem,PA,Saturday Afternoon
+7,2705,5,182,VMI,180,Western Carolina,true,false,false,false,182,Foster Stadium,Lexington,VA,Saturday Afternoon
+7,2705,5,216,Towson,210,Monmouth,true,false,false,false,241,Johnny Unitas Stadiumn,Towson,MD,Saturday Afternoon
+7,2705,5,220,Sacred Heart,203,Albany,true,false,false,false,245,Campus Field,Fairfield,CT,Saturday Afternoon
+7,2705,5,5,Arizona,98,TCU,true,false,false,false,5,Arizona Stadium,Tucson,Arizona,Saturday Evening
+7,2705,5,10,Auburn,34,Georgia,true,false,true,false,10,Pat Dye Field at Jordan-Hare Stadium,Auburn,Alabama,Saturday Evening
+7,2705,5,12,Baylor,6,Arizona State,true,false,false,false,12,McLane Stadium,Waco,Texas,Saturday Evening
+7,2705,5,22,Clemson,96,Stanford,true,false,false,false,22,Frank Howard Field at Clemson Memorial Stadium,Clemson,South Carolina,Saturday Evening
+7,2705,5,37,Georgia Tech,123,Wake Forest,true,false,false,false,37,Bobby Dodd Stadium at Historic Grant Field,Atlanta,Georgia,Saturday Evening
+7,2705,5,52,Louisville,121,Virginia,true,false,false,false,52,Cardinal Stadium,Louisville,Kentucky,Saturday Evening
+7,2705,5,68,Nevada,69,New Mexico,true,false,false,false,68,Mackay Stadium,Reno,Nevada,Saturday Evening
+7,2705,5,79,Oklahoma State,21,Cincinnati,true,false,false,false,79,Boone Pickens Stadium,Stillwater,Oklahoma,Saturday Evening
+7,2705,5,85,Pittsburgh,122,Virginia Tech,true,false,false,false,85,Heinz Field,Pittsburgh,Pennsylvania,Saturday Evening
+7,2705,5,252,SE Louisiana,261,Stephen F. Austin,true,false,false,false,277,Strawberry Stadium,Hammond,LA,Saturday Evening
+7,2705,5,35,Georgia Southern,106,Troy,true,false,false,false,35,Allen E. Paulson Stadium,Statesboro,Georgia,Saturday Morning
+7,2705,5,41,Indiana,60,Michigan State,true,false,true,false,41,Memorial Stadium,Bloomington,Indiana,Saturday Morning
+7,2705,5,57,Miami (FL),91,SMU,true,false,false,false,57,Hard Rock Stadium,Coral Gables,Florida,Saturday Morning
+7,2705,5,80,Old Dominion,54,Marshall,true,true,false,false,80,Foreman Field at S. B. Ballard Stadium,Norfolk,Virginia,Saturday Morning
+7,2705,5,93,South Carolina,101,Texas,true,false,false,false,93,Williams-Brice Stadium,Columbia,South Carolina,Saturday Morning
+7,2705,5,152,Fordham,149,Holy Cross,true,false,true,false,152,Jack Coffey Field,Bronx,NY,Saturday Morning
+7,2705,5,178,Chattanooga,176,The Citadel,true,false,false,false,178,Finley Stadium,Chattanooga,TN,Saturday Morning
+7,2705,5,181,Mercer,201,Tennessee Tech,true,false,false,false,181,Five Star Stadium,Macon,GA,Saturday Morning
+7,2705,5,190,Florida A&M,186,Alcorn State,true,false,false,false,190,Bragg Memorial Stadium,Tallahassee,FL,Saturday Morning
+7,2705,5,259,North Alabama,258,Eastern Kentucky,true,false,false,false,284,Braly Municipal Stadium,Florence,AL,Saturday Morning
+7,2705,5,8,Arkansas State,36,Georgia State,true,false,false,false,8,Centennial Bank Stadium,Jonesboro,Arkansas,Saturday Night
+7,2705,5,43,Iowa State,45,Kansas State,true,false,true,false,43,Jack Trice Stadium,Ames,Iowa,Saturday Night
+7,2705,5,74,Northwestern,115,USC,true,false,false,false,74,Ryan Field,Evanston,Illinois,Saturday Night
+7,2705,5,124,Washington,88,Rutgers,true,false,false,false,124,Alaska Airlines Field at Husky Stadium,Seattle,Washington,Saturday Night
+7,2705,5,125,Washington State,89,San Diego State,true,false,false,false,125,Martin Stadium,Pullman,Washington,Saturday Night
+7,2705,5,183,Grambling,194,Jackson State,true,false,false,false,183,Eddie G. Robinson Memorial Stadium,Grambling,LA,Saturday Night
+7,2705,5,20,Charlotte,108,Tulsa,true,false,false,false,20,McColl-Richardson Field at Jerry Richardson Stadium,Charlotte,North Carolina,Thursday Night
+7,2705,5,30,Florida,47,Kentucky,true,false,true,false,30,Steve Spurrier-Florida Field at Ben Hill Griffin Stadium,Gainesville,Florida,Thursday Night
+7,2705,5,75,Notre Dame,59,Michigan,false,false,true,false,75,Notre Dame Stadium,South Bend,Indiana,Thursday Night
+7,2705,5,77,Ohio State,129,Wisconsin,true,false,false,false,77,Ohio Stadium,Columbus,Ohio,Thursday Night
+7,2705,5,84,Penn State,40,Illinois,true,false,false,false,84,Beaver Stadium,University Park,Pennsylvania,Thursday Night
+7,2705,5,95,Southern Miss,23,Coastal Carolina,true,false,false,false,95,Carlisle-Faulkner Field at M.M. Roberts Stadium,Hattiesburg,Mississippi,Thursday Night
+7,2705,5,120,Vanderbilt,78,Oklahoma,true,false,false,false,120,Vanderbilt Stadium,Nashville,Tennessee,Thursday Night
+7,2705,5,162,Northern Colorado,163,Portland State,true,false,false,false,162,Nottingham Field,Greeley,CO,Thursday Night
+7,2705,5,188,Alabama A&M,187,Southern,true,false,false,false,188,Louis Crews Stadium,Huntsville,AL,Thursday Night
+7,2705,5,209,Maine,212,North Carolina A&T,true,false,false,false,234,Harold Alfond Sports Stadium,Orono,ME,Thursday Night
+7,2705,5,227,Central Connecticut,234,Wagner,true,false,false,false,252,Arute Field,New Britain,CT,Thursday Night
+7,2705,5,239,Marist,245,Valparaiso,true,false,false,false,264,Leonidoff Field,Poughkeepsie,NY,Thursday Night
+7,2705,5,263,Utah Tech,156,Eastern Washington,true,false,false,false,288,Greater Zion STadium,St. George,UT,Thursday Night
+7,2705,5,266,New Haven,265,Chicago State,true,false,false,false,291,Ralph F. DellaCamera Stadium,New Haven,CT,Thursday Night
+7,2706,6,17,BYU,98,TCU,true,false,false,false,17,LaVell Edwards Stadium,Provo,Utah,Friday Night
+7,2706,6,38,Hawaii,116,UTEP,true,false,false,false,38,Aloha Stadium,Honolulu,Hawai'i,Friday Night
+7,2706,6,49,Louisiana,131,James Madison,true,false,false,false,49,Cajun Field,Lafayette,Louisiana,Friday Night
+7,2706,6,72,North Texas,20,Charlotte,true,false,false,false,72,Apogee Stadium,Denton,Texas,Friday Night
+7,2706,6,73,Northern Illinois,114,UNLV,true,false,false,false,73,Brigham Field at Huskie Stadium,DeKalb,Illinois,Friday Night
+7,2706,6,104,Texas Tech,5,Arizona,true,false,false,false,104,Jones AT&T Stadium,Lubbock,Texas,Friday Night
+7,2706,6,247,Incarnate Word,253,East Texas A&M,true,false,false,false,272,Gayle and Tom Benson Stadium,San Antonio,TX,Friday Night
+7,2706,6,254,UT Rio Grande Valley,252,SE Louisiana,true,false,false,false,279,Robert and Janet Vackar Stadium,Edinburg,TX,Friday Night
+7,2706,6,26,Duke,122,Virginia Tech,true,false,false,false,26,Brooks Field at Wallace Wade Stadium,Durham,North Carolina,Saturday Afternoon
+7,2706,6,34,Georgia,93,South Carolina,true,false,true,false,34,Sanford Stadium,Athens,Georgia,Saturday Afternoon
+7,2706,6,42,Iowa,124,Washington,true,false,false,false,42,Kinnick Stadium,Iowa City,Iowa,Saturday Afternoon
+7,2706,6,45,Kansas State,21,Cincinnati,true,false,false,false,45,Bill Snyder Family Football Stadium,Manhattan,Kansas,Saturday Afternoon
+7,2706,6,52,Louisville,66,NC State,true,false,false,false,52,Cardinal Stadium,Louisville,Kentucky,Saturday Afternoon
+7,2706,6,71,North Carolina,97,Syracuse,true,false,false,false,71,Kenan Memorial Stadium,Chapel Hill,North Carolina,Saturday Afternoon
+7,2706,6,84,Penn State,86,Purdue,true,false,false,false,84,Beaver Stadium,University Park,Pennsylvania,Saturday Afternoon
+7,2706,6,91,SMU,96,Stanford,true,false,true,false,91,Gerald J. Ford Stadium,University Park,Texas,Saturday Afternoon
+7,2706,6,95,Southern Miss,4,Appalachian State,true,false,false,false,95,Carlisle-Faulkner Field at M.M. Roberts Stadium,Hattiesburg,Mississippi,Saturday Afternoon
+7,2706,6,101,Texas,120,Vanderbilt,true,false,false,false,101,Darrell K Royal-Texas Memorial Stadium,Austin,Texas,Saturday Afternoon
+7,2706,6,102,Texas A&M,3,Alabama,true,false,false,false,102,Kyle Field,College Station,Texas,Saturday Afternoon
+7,2706,6,115,USC,62,Minnesota,true,false,false,false,115,Los Angeles Memorial Coliseum,Los Angeles,California,Saturday Afternoon
+7,2706,6,134,Kennesaw State,138,Missouri State,true,false,false,false,134,Fifth Third Bank Stadium,Kennesaw,Georgia,Saturday Afternoon
+7,2706,6,135,Youngstown State,139,Murray State,true,false,false,false,135,Stambaugh Stadium,Youngstown,OH,Saturday Afternoon
+7,2706,6,136,Indiana State,141,Southern Illinois,true,false,false,false,136,Memorial Stadium,Terre Haute,IN,Saturday Afternoon
+7,2706,6,179,East Tennessee State,180,Western Carolina,true,false,false,false,179,William B. Greene Jr. Stadium,Johnson City,TN,Saturday Afternoon
+7,2706,6,211,New Hampshire,213,Rhode Island,true,false,false,false,236,Wildcat Stadium,Durham,NH,Saturday Afternoon
+7,2706,6,234,Wagner,233,Stonehill,true,false,false,false,259,Wagner College Stadium,Staten Island,NY,Saturday Afternoon
+7,2706,6,240,Morehead State,235,Butler,true,false,false,false,265,Jayne Stadium,Morehead,KY,Saturday Afternoon
+7,2706,6,265,Chicago State,228,Duquesne,true,false,false,false,290,SeatGeek Stadium,Chicago,IL,Saturday Afternoon
+7,2706,6,30,Florida,64,Missouri,true,false,false,false,30,Steve Spurrier-Florida Field at Ben Hill Griffin Stadium,Gainesville,Florida,Saturday Evening
+7,2706,6,37,Georgia Tech,32,Florida State,true,false,false,false,37,Bobby Dodd Stadium at Historic Grant Field,Atlanta,Georgia,Saturday Evening
+7,2706,6,39,Houston,6,Arizona State,true,false,false,false,39,John O'Quinn Field at TDECU Stadium,Houston,Texas,Saturday Evening
+7,2706,6,59,Michigan,41,Indiana,true,false,false,false,59,Michigan Stadium,Ann Arbor,Michigan,Saturday Evening
+7,2706,6,79,Oklahoma State,43,Iowa State,true,false,false,false,79,Boone Pickens Stadium,Stillwater,Oklahoma,Saturday Evening
+7,2706,6,83,Oregon State,119,Utah State,true,false,false,false,83,Reser Stadium,Corvallis,Oregon,Saturday Evening
+7,2706,6,118,Utah,12,Baylor,true,false,false,false,118,Rice-Eccles Stadium,Salt Lake City,Utah,Saturday Evening
+7,2706,6,125,Washington State,25,Colorado State,true,false,false,false,125,Martin Stadium,Pullman,Washington,Saturday Evening
+7,2706,6,142,North Dakota,140,Northern Iowa,true,false,false,false,142,Alerus Center,Grand Forks,ND,Saturday Evening
+7,2706,6,155,Cal Poly,156,Eastern Washington,true,false,false,false,155,Alex G. Spanos Stadium,San Luis Obispo,CA,Saturday Evening
+7,2706,6,163,Portland State,154,UC Davis,true,false,false,false,163,Hillsboro Stadium,Portland,OR,Saturday Evening
+7,2706,6,164,Sacramento State,113,UMass,true,false,false,false,164,Hornet Stadium,Sacramento,CA,Saturday Evening
+7,2706,6,251,Northwestern State,248,Lamar,true,false,false,false,276,Harry Turpin Stadium,Natchitotches,LA,Saturday Evening
+7,2706,6,14,Boston College,18,California,true,false,false,false,14,Alumni Stadium,Chestnut Hill,Massachusetts,Saturday Morning
+7,2706,6,47,Kentucky,100,Tennessee,true,false,true,false,47,Kroger Field at C.M. Newton Grounds,Lexington,Kentucky,Saturday Morning
+7,2706,6,63,Mississippi State,78,Oklahoma,true,false,false,false,63,Davis Wade Stadium at Scott Field,Starkville,Mississippi,Saturday Morning
+7,2706,6,65,Navy,117,UTSA,true,false,false,false,65,Navy-Marine Corps Memorial Stadium,Annapolis,Maryland,Saturday Morning
+7,2706,6,77,Ohio State,111,UCLA,true,false,false,false,77,Ohio Stadium,Columbus,Ohio,Saturday Morning
+7,2706,6,80,Old Dominion,36,Georgia State,true,true,false,false,80,Foreman Field at S. B. Ballard Stadium,Norfolk,Virginia,Saturday Morning
+7,2706,6,167,Columbia,171,Harvard,true,false,false,false,167,Lawrence A. Wien Stadium,New York,NY,Saturday Morning
+7,2706,6,193,Mississippi Valley State,189,Arkansas-Pine Bluff,true,false,false,false,193,Rice-Totten Stadium,Itta Bena,MS,Saturday Morning
+7,2706,6,208,Hampton,203,Albany,true,false,false,false,233,Armstrong Stadium,Hampton,VA,Saturday Morning
+7,2706,6,230,Mercyhurst,231,Robert Morris,true,false,false,false,255,Saxon Stadium,Erie,PA,Saturday Morning
+7,2706,6,1,Air Force,143,North Dakota State,true,false,false,false,1,Falcon Stadium,Colorado Springs,Colorado,Saturday Night
+7,2706,6,7,Arkansas,81,Ole Miss,true,false,false,false,7,"Donald W. Reynolds Razorback Stadium, Frank Broyles Field",Fayetteville,Arkansas,Saturday Night
+7,2706,6,24,Colorado,126,West Virginia,true,false,false,false,24,Folsom Field,Boulder,Colorado,Saturday Night
+7,2706,6,82,Oregon,67,Nebraska,true,false,false,false,82,Autzen Stadium,Eugene,Oregon,Saturday Night
+7,2706,6,108,Tulsa,87,Rice,true,false,false,false,108,Skelly Field at H. A. Chapman Stadium,Tulsa,Oklahoma,Saturday Night
+7,2706,6,130,Wyoming,69,New Mexico,true,false,false,false,130,Jonah Field at War Memorial Stadium,Laramie,Wyoming,Saturday Night
+7,2706,6,199,Southeast Missouri State,200,Tennessee State,true,false,false,false,224,Houck Stadium,Cape Girardeau,MO,Saturday Night
+7,2706,6,16,Buffalo,19,Central Michigan,true,false,false,false,16,UB Stadium,Buffalo,New York,Thursday Night
+7,2706,6,23,Coastal Carolina,106,Troy,true,false,false,false,23,Brooks Stadium,Conway,South Carolina,Thursday Night
+7,2706,6,27,East Carolina,109,UAB,true,false,false,false,27,Bagwell Field at Dowdy-Ficklen Stadium,Greenville,North Carolina,Thursday Night
+7,2706,6,28,Eastern Michigan,11,Ball State,true,false,false,false,28,Rynearson Stadium,Ypsilanti,Michigan,Thursday Night
+7,2706,6,46,Kent State,76,Ohio,true,false,false,false,46,Dix Stadium,Kent,Ohio,Thursday Night
+7,2706,6,48,Liberty,127,Western Kentucky,true,false,false,false,48,Arthur L. Williams Stadium,Lynchburg,Virginia,Thursday Night
+7,2706,6,54,Marshall,51,Louisiana Tech,true,false,false,false,54,Joan C. Edwards Stadium,Huntington,West Virginia,Thursday Night
+7,2706,6,55,Maryland,74,Northwestern,true,false,false,false,55,Capital One Field at Maryland Stadium,College Park,Maryland,Thursday Night
+7,2706,6,56,Memphis,107,Tulane,true,false,false,false,56,Liberty Bowl Memorial Stadium,Memphis,Tennessee,Thursday Night
+7,2706,6,99,Temple,94,South Florida,true,false,false,false,99,Lincoln Financial Field,Philadelphia,Pennsylvania,Thursday Night
+7,2706,6,123,Wake Forest,85,Pittsburgh,true,false,false,false,123,BB&T Field,Winston-Salem,North Carolina,Thursday Night
+7,2706,6,132,Jacksonville State,70,New Mexico State,true,false,false,false,132,Burgess-Snow Field at JSU Stadium,Jacksonville,Alabama,Thursday Night
+7,2706,6,157,Idaho,165,Weber State,true,false,false,false,157,Kibbie Dome,Moscow,ID,Thursday Night
+7,2706,6,174,Furman,177,Wofford,true,false,true,false,174,Paladin Stadium,Greenville,SC,Thursday Night
+7,2706,6,175,Samford,182,VMI,true,false,false,false,175,Seibert Stadium,Homewood,AL,Thursday Night
+7,2706,6,186,Alcorn State,184,Bethune-Cookman,true,false,false,false,186,Spinks-Casem Stadium,Lorman,MS,Thursday Night
+7,2706,6,188,Alabama A&M,185,Prairie View A&M,true,false,false,false,188,Louis Crews Stadium,Huntsville,AL,Thursday Night
+7,2706,6,194,Jackson State,191,Alabama State,true,true,false,false,194,Mississippi Veterans Memorial Stadium,Jackson,MS,Thursday Night
+7,2706,6,201,Tennessee Tech,176,The Citadel,true,false,false,false,226,Tucker Stadium,Cookeville,TN,Thursday Night
+7,2706,6,206,Delaware,133,Sam Houston State,true,false,false,false,231,Delaware Stadium,Newark,DE,Thursday Night
+7,2706,6,207,Elon,205,Campbell,true,false,false,false,232,Rhodes Stadium,Elon,NC,Thursday Night
+7,2706,6,212,North Carolina A&T,216,Towson,true,false,false,false,237,Truist Stadium,Greensboro,NC,Thursday Night
+7,2706,6,215,Stony Brook,204,Bryant,true,false,false,false,240,Kenneth P. LaValle Stadium,Stony Brook,NY,Thursday Night
+7,2706,6,217,Villanova,149,Holy Cross,true,false,false,false,242,Villanova Stadium,Philadelphia,PA,Thursday Night
+7,2706,6,218,William & Mary,153,Georgetown,true,false,false,false,243,Water J. Zable Stadium,Williamsburg,VA,Thursday Night
+7,2706,6,241,Presbyterian,244,Stetson,true,false,false,false,266,Bailey Memorial Stadium,Clinton,SC,Thursday Night
+7,2706,6,245,Valparaiso,242,San Diego,true,false,false,false,270,Brown Field,Valparaiso,IN,Thursday Night
+7,2706,6,259,North Alabama,264,West Georgia,true,false,false,false,284,Braly Municipal Stadium,Florence,AL,Thursday Night
+7,2706,6,269,West Florida,262,Tarleton State,true,false,false,false,294,Darrell Gooden Stadium,Pensacola,FL,Thursday Night
+7,2707,7,74,Northwestern,82,Oregon,true,false,false,false,74,Ryan Field,Evanston,Illinois,Friday Night
+7,2707,7,96,Stanford,26,Duke,true,false,false,false,96,Stanford Stadium,Stanford,California,Friday Night
+7,2707,7,114,UNLV,143,North Dakota State,true,false,false,false,114,Allegient Stadium,Las Vegas,Nevada,Friday Night
+7,2707,7,117,UTSA,107,Tulane,true,false,false,false,117,Alamodome,San Antonio,Texas,Friday Night
+7,2707,7,137,Illinois State,141,Southern Illinois,true,false,false,false,137,Hancock Stadium,Normal,IL,Friday Night
+7,2707,7,154,UC Davis,161,Northern Arizona,true,false,false,false,154,UC Davis Health Stadium,Davis,CA,Friday Night
+7,2707,7,155,Cal Poly,160,Montana State,true,false,false,false,155,Alex G. Spanos Stadium,San Luis Obispo,CA,Friday Night
+7,2707,7,156,Eastern Washington,158,Idaho State,true,false,false,false,156,Roos Field,Cheney,WA,Friday Night
+7,2707,7,185,Prairie View A&M,184,Bethune-Cookman,true,false,false,false,185,Blackshear Field,Prairie View,TX,Friday Night
+7,2707,7,189,Arkansas-Pine Bluff,190,Florida A&M,true,false,false,false,189,Simmons Bank Field,Pine Bluff,AR,Friday Night
+7,2707,7,238,Drake,241,Presbyterian,true,false,false,false,263,Drake Stadium,Des Moines,IA,Friday Night
+7,2707,7,251,Northwestern State,252,SE Louisiana,true,false,true,false,276,Harry Turpin Stadium,Natchitotches,LA,Friday Night
+7,2707,7,11,Ball State,105,Toledo,true,false,false,false,11,Scheumann Stadium,Muncie,Indiana,Saturday Afternoon
+7,2707,7,13,Boise State,125,Washington State,true,false,false,false,13,Albertsons Stadium,Boise,Idaho,Saturday Afternoon
+7,2707,7,39,Houston,24,Colorado,true,false,false,false,39,John O'Quinn Field at TDECU Stadium,Houston,Texas,Saturday Afternoon
+7,2707,7,69,New Mexico,90,San Jose State,true,false,false,false,69,Dreamstyle Stadium,Albuquerque,New Mexico,Saturday Afternoon
+7,2707,7,98,TCU,104,Texas Tech,true,false,true,false,98,Amon G. Carter Stadium,Fort Worth,Texas,Saturday Afternoon
+7,2707,7,100,Tennessee,7,Arkansas,true,false,false,false,100,Neyland Stadium,Knoxville,Tennessee,Saturday Afternoon
+7,2707,7,101,Texas,78,Oklahoma,true,false,true,true,0,,,,Saturday Afternoon
+7,2707,7,109,UAB,72,North Texas,true,false,false,false,109,Legion Field Stadium,Birmingham,Alabama,Saturday Afternoon
+7,2707,7,119,Utah State,25,Colorado State,true,false,false,false,119,Merlin Olsen Field at Maverik Stadium,Logan,Utah,Saturday Afternoon
+7,2707,7,122,Virginia Tech,32,Florida State,true,false,false,false,122,Worsham Field at Lane Stadium,Blacksburg,Virginia,Saturday Afternoon
+7,2707,7,126,West Virginia,110,UCF,true,false,false,false,126,Mountaineer Field at Milan Puskar Stadium,Morgantown,West Virginia,Saturday Afternoon
+7,2707,7,150,Lafayette,218,William & Mary,true,false,false,false,150,Fisher Stadium,Easton,PA,Saturday Afternoon
+7,2707,7,172,Princeton,167,Columbia,true,false,false,false,172,Princeton Stadium,Princeton,NJ,Saturday Afternoon
+7,2707,7,173,Yale,168,Cornell,true,false,false,false,173,Yale Bowl,New Haven,CT,Saturday Afternoon
+7,2707,7,186,Alcorn State,188,Alabama A&M,true,false,false,false,186,Spinks-Casem Stadium,Lorman,MS,Saturday Afternoon
+7,2707,7,194,Jackson State,192,Texas Southern,true,false,false,false,194,Mississippi Veterans Memorial Stadium,Jackson,MS,Saturday Afternoon
+7,2707,7,246,Houston Christian,254,UT Rio Grande Valley,true,false,false,false,271,Husky Stadium,Houston,TX,Saturday Afternoon
+7,2707,7,269,West Florida,256,Austin Peay,true,false,false,false,294,Darrell Gooden Stadium,Pensacola,FL,Saturday Afternoon
+7,2707,7,10,Auburn,102,Texas A&M,true,false,false,false,10,Pat Dye Field at Jordan-Hare Stadium,Auburn,Alabama,Saturday Evening
+7,2707,7,37,Georgia Tech,121,Virginia,true,false,false,false,37,Bobby Dodd Stadium at Historic Grant Field,Atlanta,Georgia,Saturday Evening
+7,2707,7,41,Indiana,88,Rutgers,true,false,false,false,41,Memorial Stadium,Bloomington,Indiana,Saturday Evening
+7,2707,7,49,Louisiana,51,Louisiana Tech,true,true,true,false,49,Cajun Field,Lafayette,Louisiana,Saturday Evening
+7,2707,7,66,NC State,57,Miami (FL),true,false,false,false,66,Wayne Day Family Field at Carter-Finley Stadium,Raleigh,North Carolina,Saturday Evening
+7,2707,7,85,Pittsburgh,18,California,true,false,false,false,85,Heinz Field,Pittsburgh,Pennsylvania,Saturday Evening
+7,2707,7,86,Purdue,115,USC,true,false,false,false,86,Ross-Ade Stadium,West Lafayette,Indiana,Saturday Evening
+7,2707,7,159,Montana,163,Portland State,true,false,false,false,159,Washington-Grizzly Stadium,Missoula,MT,Saturday Evening
+7,2707,7,242,San Diego,237,Dayton,true,false,false,false,267,Torero Stadium,San Diego,CA,Saturday Evening
+7,2707,7,247,Incarnate Word,250,Nicholls,true,false,false,false,272,Gayle and Tom Benson Stadium,San Antonio,TX,Saturday Evening
+7,2707,7,260,Southern Utah,157,Idaho,true,false,false,false,285,Eccles Coliseum,Cedar City,UT,Saturday Evening
+7,2707,7,263,Utah Tech,165,Weber State,true,false,false,false,288,Greater Zion STadium,St. George,UT,Saturday Evening
+7,2707,7,22,Clemson,91,SMU,true,false,false,false,22,Frank Howard Field at Clemson Memorial Stadium,Clemson,South Carolina,Saturday Morning
+7,2707,7,23,Coastal Carolina,80,Old Dominion,true,true,false,false,23,Brooks Stadium,Conway,South Carolina,Saturday Morning
+7,2707,7,28,Eastern Michigan,2,Akron,true,false,false,false,28,Rynearson Stadium,Ypsilanti,Michigan,Saturday Morning
+7,2707,7,29,FIU,48,Liberty,true,false,false,false,29,Riccardo Silva Stadium,Miami,Florida,Saturday Morning
+7,2707,7,34,Georgia,64,Missouri,true,false,false,false,34,Sanford Stadium,Athens,Georgia,Saturday Morning
+7,2707,7,35,Georgia Southern,8,Arkansas State,true,false,false,false,35,Allen E. Paulson Stadium,Statesboro,Georgia,Saturday Morning
+7,2707,7,60,Michigan State,77,Ohio State,true,false,false,false,60,Spartan Stadium,East Lansing,Michigan,Saturday Morning
+7,2707,7,61,Middle Tennessee,70,New Mexico State,true,false,false,false,61,Johnny Red Floyd Stadium,Murfreesboro,Tennessee,Saturday Morning
+7,2707,7,63,Mississippi State,30,Florida,true,false,false,false,63,Davis Wade Stadium at Scott Field,Starkville,Mississippi,Saturday Morning
+7,2707,7,76,Ohio,164,Sacramento State,true,false,false,false,76,Peden Stadium,Athens,Ohio,Saturday Morning
+7,2707,7,106,Troy,95,Southern Miss,true,true,false,false,106,Veterans Memorial Stadium at Larry Blakeney Field,Troy,Alabama,Saturday Morning
+7,2707,7,123,Wake Forest,52,Louisville,true,false,false,false,123,BB&T Field,Winston-Salem,North Carolina,Saturday Morning
+7,2707,7,152,Fordham,217,Villanova,true,false,false,false,152,Jack Coffey Field,Bronx,NY,Saturday Morning
+7,2707,7,171,Harvard,170,Pennsylvania,true,false,true,false,171,Harvard Stadium,Cambridge,MA,Saturday Morning
+7,2707,7,176,The Citadel,175,Samford,true,false,false,false,176,Johnson Hagood Stadium,Charleston,SC,Saturday Morning
+7,2707,7,178,Chattanooga,177,Wofford,true,false,false,false,178,Finley Stadium,Chattanooga,TN,Saturday Morning
+7,2707,7,193,Mississippi Valley State,191,Alabama State,true,true,false,false,193,Rice-Totten Stadium,Itta Bena,MS,Saturday Morning
+7,2707,7,207,Elon,208,Hampton,true,false,false,false,232,Rhodes Stadium,Elon,NC,Saturday Morning
+7,2707,7,230,Mercyhurst,234,Wagner,true,false,false,false,255,Saxon Stadium,Erie,PA,Saturday Morning
+7,2707,7,245,Valparaiso,244,Stetson,true,false,false,false,270,Brown Field,Valparaiso,IN,Saturday Morning
+7,2707,7,1,Air Force,130,Wyoming,true,false,false,false,1,Falcon Stadium,Colorado Springs,Colorado,Saturday Night
+7,2707,7,5,Arizona,17,BYU,true,false,false,false,5,Arizona Stadium,Tucson,Arizona,Saturday Night
+7,2707,7,42,Iowa,62,Minnesota,true,false,true,false,42,Kinnick Stadium,Iowa City,Iowa,Saturday Night
+7,2707,7,67,Nebraska,40,Illinois,true,false,false,false,67,"Memorial Stadium, Tom Osborne Field",Lincoln,Nebraska,Saturday Night
+7,2707,7,68,Nevada,116,UTEP,true,false,false,false,68,Mackay Stadium,Reno,Nevada,Saturday Night
+7,2707,7,79,Oklahoma State,44,Kansas,true,false,false,false,79,Boone Pickens Stadium,Stillwater,Oklahoma,Saturday Night
+7,2707,7,87,Rice,9,Army,true,false,false,false,87,Rice Stadium,Houston,Texas,Saturday Night
+7,2707,7,103,Texas State,83,Oregon State,true,false,false,false,103,Jim Wacker Field at Bobcat Stadium,San Marcos,Texas,Saturday Night
+7,2707,7,124,Washington,111,UCLA,true,false,false,false,124,Alaska Airlines Field at Husky Stadium,Seattle,Washington,Saturday Night
+7,2707,7,140,Northern Iowa,144,South Dakota State,true,false,false,false,140,UNI-Dome,Cedar Falls,IA,Saturday Night
+7,2707,7,146,Western Illinois,202,UT Martin,true,false,false,false,146,Hanson Field,Macomb,IL,Saturday Night
+7,2707,7,198,Lindenwood,196,Eastern Illinois,true,false,false,false,223,Hunter STadium,St. Charles,MO,Saturday Night
+7,2707,7,253,East Texas A&M,249,McNeese,true,false,false,false,278,Ernest Hawkins Field at Memorial Stadium,Commerce,TX,Saturday Night
+7,2707,7,4,Appalachian State,92,South Alabama,true,false,false,false,4,Kidd Brewer Stadium,Boone,North Carolina,Thursday Night
+7,2707,7,19,Central Michigan,15,Bowling Green,true,false,false,false,19,Kelly/Shorts Stadium,Mount Pleasant,Michigan,Thursday Night
+7,2707,7,20,Charlotte,31,Florida Atlantic,true,false,false,false,20,McColl-Richardson Field at Jerry Richardson Stadium,Charlotte,North Carolina,Thursday Night
+7,2707,7,47,Kentucky,3,Alabama,true,false,false,false,47,Kroger Field at C.M. Newton Grounds,Lexington,Kentucky,Thursday Night
+7,2707,7,71,North Carolina,14,Boston College,true,false,false,false,71,Kenan Memorial Stadium,Chapel Hill,North Carolina,Thursday Night
+7,2707,7,99,Temple,27,East Carolina,true,false,false,false,99,Lincoln Financial Field,Philadelphia,Pennsylvania,Thursday Night
+7,2707,7,127,Western Kentucky,134,Kennesaw State,true,false,false,false,127,L. T. Smith Stadium at Jimmy Feix Field,Bowling Green,Kentucky,Thursday Night
+7,2707,7,128,Western Michigan,58,Miami (OH),true,false,false,false,128,Waldo Stadium,Kalamazoo,Michigan,Thursday Night
+7,2707,7,131,James Madison,50,Louisiana Monroe,true,false,false,false,131,Bridgeforth Stadium,Harrisonburg,Virginia,Thursday Night
+7,2707,7,132,Jacksonville State,206,Delaware,true,false,false,false,132,Burgess-Snow Field at JSU Stadium,Jacksonville,Alabama,Thursday Night
+7,2707,7,139,Murray State,142,North Dakota,true,false,false,false,139,Roy Stewart Stadium,Murray,KY,Thursday Night
+7,2707,7,147,Bucknell,151,Lehigh,true,false,false,false,147,Christy Mathewson-Memorial Stadium,Lewisburg,PA,Thursday Night
+7,2707,7,169,Dartmouth,166,Brown,true,false,false,false,169,Memorial Field,Hanover,NH,Thursday Night
+7,2707,7,179,East Tennessee State,181,Mercer,true,false,false,false,179,William B. Greene Jr. Stadium,Johnson City,TN,Thursday Night
+7,2707,7,180,Western Carolina,201,Tennessee Tech,true,false,false,false,180,EJ Whitmire Stadium,Cullowhee,NC,Thursday Night
+7,2707,7,200,Tennessee State,195,Charleston Southern,true,false,false,false,225,Hale Stadium,Nashville,TN,Thursday Night
+7,2707,7,203,Albany,213,Rhode Island,true,false,false,false,228,Tom & Mary Casey Stadium,Albany,NY,Thursday Night
+7,2707,7,204,Bryant,216,Towson,true,false,false,false,229,Beirne Stadium,Smithfield,RI,Thursday Night
+7,2707,7,205,Campbell,211,New Hampshire,true,false,false,false,230,Barker-Lane Stadium,Buies Creek,NC,Thursday Night
+7,2707,7,209,Maine,220,Sacred Heart,true,false,false,false,234,Harold Alfond Sports Stadium,Orono,ME,Thursday Night
+7,2707,7,210,Monmouth,212,North Carolina A&T,true,false,false,false,235,Kessler Field,West Long Branch,NJ,Thursday Night
+7,2707,7,228,Duquesne,266,New Haven,true,false,false,false,253,Arthur J. Rooney Athletic Field,Pittsburgh,PA,Thursday Night
+7,2707,7,229,LIU,265,Chicago State,true,false,false,false,254,Bethpage Federal Credit Union Stadium,Brooklyn,NY,Thursday Night
+7,2707,7,235,Butler,236,Davidson,true,false,false,false,260,Bud and Jackie Sellick Bowl,Indianapolis,IN,Thursday Night
+7,2707,7,239,Marist,243,St. Thomas,true,false,false,false,264,Leonidoff Field,Poughkeepsie,NY,Thursday Night
+7,2707,7,259,North Alabama,255,Abilene Christian,true,false,false,false,284,Braly Municipal Stadium,Florence,AL,Thursday Night
+7,2708,8,53,LSU,101,Texas,true,false,false,false,53,Tiger Stadium,Baton Rouge,Louisiana,Friday Night
+7,2708,8,70,New Mexico State,127,Western Kentucky,true,false,false,false,70,Aggie Memorial Stadium,Las Cruces,New Mexico,Friday Night
+7,2708,8,73,Northern Illinois,68,Nevada,true,false,false,false,73,Brigham Field at Huskie Stadium,DeKalb,Illinois,Friday Night
+7,2708,8,79,Oklahoma State,110,UCF,true,false,false,false,79,Boone Pickens Stadium,Stillwater,Oklahoma,Friday Night
+7,2708,8,87,Rice,107,Tulane,true,false,false,false,87,Rice Stadium,Houston,Texas,Friday Night
+7,2708,8,102,Texas A&M,81,Ole Miss,true,false,false,false,102,Kyle Field,College Station,Texas,Friday Night
+7,2708,8,117,UTSA,72,North Texas,true,false,false,false,117,Alamodome,San Antonio,Texas,Friday Night
+7,2708,8,142,North Dakota,145,South Dakota,true,false,true,false,142,Alerus Center,Grand Forks,ND,Friday Night
+7,2708,8,144,South Dakota State,137,Illinois State,true,false,false,false,144,Dana J. Dykhouse Stadium,Brookings,SD,Friday Night
+7,2708,8,250,Nicholls,251,Northwestern State,true,false,true,false,275,Manning Field at John L. Guidry Stadium,Thibodaux,LA,Friday Night
+7,2708,8,260,Southern Utah,263,Utah Tech,true,false,true,false,285,Eccles Coliseum,Cedar City,UT,Friday Night
+7,2708,8,8,Arkansas State,106,Troy,true,true,false,false,8,Centennial Bank Stadium,Jonesboro,Arkansas,Saturday Afternoon
+7,2708,8,11,Ball State,76,Ohio,true,false,false,false,11,Scheumann Stadium,Muncie,Indiana,Saturday Afternoon
+7,2708,8,22,Clemson,37,Georgia Tech,true,false,true,false,22,Frank Howard Field at Clemson Memorial Stadium,Clemson,South Carolina,Saturday Afternoon
+7,2708,8,23,Coastal Carolina,54,Marshall,true,true,false,false,23,Brooks Stadium,Conway,South Carolina,Saturday Afternoon
+7,2708,8,24,Colorado,44,Kansas,true,false,false,false,24,Folsom Field,Boulder,Colorado,Saturday Afternoon
+7,2708,8,26,Duke,71,North Carolina,true,false,true,false,26,Brooks Field at Wallace Wade Stadium,Durham,North Carolina,Saturday Afternoon
+7,2708,8,27,East Carolina,56,Memphis,true,false,false,false,27,Bagwell Field at Dowdy-Ficklen Stadium,Greenville,North Carolina,Saturday Afternoon
+7,2708,8,31,Florida Atlantic,9,Army,true,false,false,false,31,FAU Stadium,Boca Raton,Florida,Saturday Afternoon
+7,2708,8,34,Georgia,47,Kentucky,true,false,false,false,34,Sanford Stadium,Athens,Georgia,Saturday Afternoon
+7,2708,8,36,Georgia State,131,James Madison,true,true,false,false,36,Georgia State Stadium,Atlanta,Georgia,Saturday Afternoon
+7,2708,8,60,Michigan State,55,Maryland,true,false,false,false,60,Spartan Stadium,East Lansing,Michigan,Saturday Afternoon
+7,2708,8,67,Nebraska,88,Rutgers,true,false,false,false,67,"Memorial Stadium, Tom Osborne Field",Lincoln,Nebraska,Saturday Afternoon
+7,2708,8,69,New Mexico,1,Air Force,true,false,false,false,69,Dreamstyle Stadium,Albuquerque,New Mexico,Saturday Afternoon
+7,2708,8,92,South Alabama,95,Southern Miss,true,true,false,false,92,Ladd-Peebles Stadium,Mobile,Alabama,Saturday Afternoon
+7,2708,8,93,South Carolina,7,Arkansas,true,false,false,false,93,Williams-Brice Stadium,Columbia,South Carolina,Saturday Afternoon
+7,2708,8,104,Texas Tech,39,Houston,true,false,true,false,104,Jones AT&T Stadium,Lubbock,Texas,Saturday Afternoon
+7,2708,8,105,Toledo,46,Kent State,true,false,false,false,105,Glass Bowl,Toledo,Ohio,Saturday Afternoon
+7,2708,8,118,Utah,5,Arizona,true,false,false,false,118,Rice-Eccles Stadium,Salt Lake City,Utah,Saturday Afternoon
+7,2708,8,121,Virginia,57,Miami (FL),true,false,false,false,121,David A. Harrison III Field at Scott Stadium,Charlottesville,Virginia,Saturday Afternoon
+7,2708,8,128,Western Michigan,28,Eastern Michigan,true,false,true,false,128,Waldo Stadium,Kalamazoo,Michigan,Saturday Afternoon
+7,2708,8,135,Youngstown State,136,Indiana State,true,false,false,false,135,Stambaugh Stadium,Youngstown,OH,Saturday Afternoon
+7,2708,8,149,Holy Cross,150,Lafayette,true,false,false,false,149,Fitton Field,Worcester,MA,Saturday Afternoon
+7,2708,8,152,Fordham,151,Lehigh,true,false,false,false,152,Jack Coffey Field,Bronx,NY,Saturday Afternoon
+7,2708,8,177,Wofford,175,Samford,true,false,false,false,177,Gibbs Stadium,Spartanburg,SC,Saturday Afternoon
+7,2708,8,200,Tennessee State,201,Tennessee Tech,false,false,true,false,225,Hale Stadium,Nashville,TN,Saturday Afternoon
+7,2708,8,218,William & Mary,148,Colgate,true,false,false,false,243,Water J. Zable Stadium,Williamsburg,VA,Saturday Afternoon
+7,2708,8,227,Central Connecticut,228,Duquesne,true,false,false,false,252,Arute Field,New Britain,CT,Saturday Afternoon
+7,2708,8,230,Mercyhurst,233,Stonehill,true,false,false,false,255,Saxon Stadium,Erie,PA,Saturday Afternoon
+7,2708,8,236,Davidson,242,San Diego,true,false,false,false,261,Richardson Stadium,Davidson,NC,Saturday Afternoon
+7,2708,8,246,Houston Christian,248,Lamar,true,false,false,false,271,Husky Stadium,Houston,TX,Saturday Afternoon
+7,2708,8,257,Central Arkansas,259,North Alabama,true,false,false,false,282,Estes Stadium,Conway,AR,Saturday Afternoon
+7,2708,8,261,Stephen F. Austin,249,McNeese,true,false,false,false,286,Homer Bryce Stadium,Nacogdoches,TX,Saturday Afternoon
+7,2708,8,13,Boise State,119,Utah State,true,false,false,false,13,Albertsons Stadium,Boise,Idaho,Saturday Evening
+7,2708,8,18,California,97,Syracuse,true,false,false,false,18,California Memorial Stadium,Berkeley,California,Saturday Evening
+7,2708,8,21,Cincinnati,126,West Virginia,true,false,true,false,21,Nippert Stadium,Cincinnati,Ohio,Saturday Evening
+7,2708,8,25,Colorado State,103,Texas State,true,false,false,false,25,Sonny Lubick Field at Canvas Stadium,Fort Collins,Colorado,Saturday Evening
+7,2708,8,33,Fresno State,125,Washington State,true,false,false,false,33,Bulldog Stadium at Jim Sweeney Field,Fresno,California,Saturday Evening
+7,2708,8,50,Louisiana Monroe,51,Louisiana Tech,true,true,true,false,50,Joe Aillet Stadium,Monroe,Louisiana,Saturday Evening
+7,2708,8,59,Michigan,129,Wisconsin,true,false,false,false,59,Michigan Stadium,Ann Arbor,Michigan,Saturday Evening
+7,2708,8,66,NC State,122,Virginia Tech,true,false,false,false,66,Wayne Day Family Field at Carter-Finley Stadium,Raleigh,North Carolina,Saturday Evening
+7,2708,8,78,Oklahoma,30,Florida,true,false,false,false,78,Gaylord Family - Oklahoma Memorial Stadium at Owen Field,Norman,Oklahoma,Saturday Evening
+7,2708,8,91,SMU,32,Florida State,true,false,false,false,91,Gerald J. Ford Stadium,University Park,Texas,Saturday Evening
+7,2708,8,100,Tennessee,3,Alabama,true,false,true,false,100,Neyland Stadium,Knoxville,Tennessee,Saturday Evening
+7,2708,8,111,UCLA,84,Penn State,true,false,false,false,111,Rose Bowl Stadium,Los Angeles,California,Saturday Evening
+7,2708,8,115,USC,77,Ohio State,true,false,false,false,115,Los Angeles Memorial Coliseum,Los Angeles,California,Saturday Evening
+7,2708,8,124,Washington,82,Oregon,true,false,true,false,124,Alaska Airlines Field at Husky Stadium,Seattle,Washington,Saturday Evening
+7,2708,8,143,North Dakota State,90,San Jose State,true,false,false,false,143,Fargodome,Fargo,ND,Saturday Evening
+7,2708,8,156,Eastern Washington,162,Northern Colorado,true,false,false,false,156,Roos Field,Cheney,WA,Saturday Evening
+7,2708,8,157,Idaho,159,Montana,true,false,true,false,157,Kibbie Dome,Moscow,ID,Saturday Evening
+7,2708,8,161,Northern Arizona,158,Idaho State,true,false,false,false,161,Walkup Skydome,Flagstaff,AZ,Saturday Evening
+7,2708,8,254,UT Rio Grande Valley,247,Incarnate Word,true,false,false,false,279,Robert and Janet Vackar Stadium,Edinburg,TX,Saturday Evening
+7,2708,8,19,Central Michigan,58,Miami (OH),true,false,false,false,19,Kelly/Shorts Stadium,Mount Pleasant,Michigan,Saturday Morning
+7,2708,8,186,Alcorn State,192,Texas Southern,true,true,false,false,186,Spinks-Casem Stadium,Lorman,MS,Saturday Morning
+7,2708,8,197,Gardner-Webb,199,Southeast Missouri State,true,false,false,false,222,Ernest W. Spangler Stadium,Boiling Springs,NC,Saturday Morning
+7,2708,8,204,Bryant,211,New Hampshire,true,false,false,false,229,Beirne Stadium,Smithfield,RI,Saturday Morning
+7,2708,8,214,Richmond,217,Villanova,true,false,false,false,239,E. Claiborne Robins Stadium,Richmond,VA,Saturday Morning
+7,2708,8,239,Marist,237,Dayton,true,false,false,false,264,Leonidoff Field,Poughkeepsie,NY,Saturday Morning
+7,2708,8,62,Minnesota,40,Illinois,true,false,false,false,62,TCF Bank Stadium,Minneapolis,Minnesota,Saturday Night
+7,2708,8,89,San Diego State,83,Oregon State,true,false,false,false,89,SDCCU Stadium,San Diego,California,Saturday Night
+7,2708,8,108,Tulsa,99,Temple,true,false,false,false,108,Skelly Field at H. A. Chapman Stadium,Tulsa,Oklahoma,Saturday Night
+7,2708,8,138,Missouri State,132,Jacksonville State,true,false,false,false,138,Robert W. Plaster Stadium,Springfield,MO,Saturday Night
+7,2708,8,140,Northern Iowa,141,Southern Illinois,true,false,false,false,140,UNI-Dome,Cedar Falls,IA,Saturday Night
+7,2708,8,160,Montana State,154,UC Davis,true,false,false,false,160,Bobcat Stadium,Bozeman,MT,Saturday Night
+7,2708,8,187,Southern,189,Arkansas-Pine Bluff,true,true,false,false,187,A.W. Mumford Stadium,Baton Rouge,LA,Saturday Night
+7,2708,8,238,Drake,235,Butler,true,false,false,false,263,Drake Stadium,Des Moines,IA,Saturday Night
+7,2708,8,16,Buffalo,164,Sacramento State,true,false,false,false,16,UB Stadium,Buffalo,New York,Thursday Night
+7,2708,8,29,FIU,133,Sam Houston State,true,false,false,false,29,Riccardo Silva Stadium,Miami,Florida,Thursday Night
+7,2708,8,35,Georgia Southern,80,Old Dominion,true,true,false,false,35,Allen E. Paulson Stadium,Statesboro,Georgia,Thursday Night
+7,2708,8,52,Louisville,85,Pittsburgh,true,false,true,false,52,Cardinal Stadium,Louisville,Kentucky,Thursday Night
+7,2708,8,114,UNLV,38,Hawaii,true,false,false,false,114,Allegient Stadium,Las Vegas,Nevada,Thursday Night
+7,2708,8,130,Wyoming,116,UTEP,true,false,false,false,130,Jonah Field at War Memorial Stadium,Laramie,Wyoming,Thursday Night
+7,2708,8,166,Brown,170,Pennsylvania,true,false,false,false,166,Brown Stadium,Providence,RI,Thursday Night
+7,2708,8,168,Cornell,167,Columbia,true,false,false,false,168,Schoellkopf Field,Ithaca,NY,Thursday Night
+7,2708,8,172,Princeton,169,Dartmouth,true,false,false,false,172,Princeton Stadium,Princeton,NJ,Thursday Night
+7,2708,8,176,The Citadel,181,Mercer,true,false,false,false,176,Johnson Hagood Stadium,Charleston,SC,Thursday Night
+7,2708,8,179,East Tennessee State,174,Furman,true,false,false,false,179,William B. Greene Jr. Stadium,Johnson City,TN,Thursday Night
+7,2708,8,182,VMI,178,Chattanooga,true,false,false,false,182,Foster Stadium,Lexington,VA,Thursday Night
+7,2708,8,184,Bethune-Cookman,183,Grambling,true,false,false,false,184,Daytona Stadium,Daytona Beach,FL,Thursday Night
+7,2708,8,193,Mississippi Valley State,190,Florida A&M,true,true,false,false,193,Rice-Totten Stadium,Itta Bena,MS,Thursday Night
+7,2708,8,194,Jackson State,188,Alabama A&M,true,true,false,false,194,Mississippi Veterans Memorial Stadium,Jackson,MS,Thursday Night
+7,2708,8,202,UT Martin,198,Lindenwood,true,false,false,false,227,Graham Stadium,Martin,TN,Thursday Night
+7,2708,8,205,Campbell,220,Sacred Heart,true,false,false,false,230,Barker-Lane Stadium,Buies Creek,NC,Thursday Night
+7,2708,8,206,Delaware,61,Middle Tennessee,true,false,false,false,231,Delaware Stadium,Newark,DE,Thursday Night
+7,2708,8,210,Monmouth,203,Albany,true,false,false,false,235,Kessler Field,West Long Branch,NJ,Thursday Night
+7,2708,8,212,North Carolina A&T,208,Hampton,true,false,false,false,237,Truist Stadium,Greensboro,NC,Thursday Night
+7,2708,8,215,Stony Brook,209,Maine,true,false,false,false,240,Kenneth P. LaValle Stadium,Stony Brook,NY,Thursday Night
+7,2708,8,231,Robert Morris,266,New Haven,true,false,false,false,256,Joe Walton Stadium,Moon Township,PA,Thursday Night
+7,2708,8,234,Wagner,229,LIU,true,false,false,false,259,Wagner College Stadium,Staten Island,NY,Thursday Night
+7,2708,8,244,Stetson,240,Morehead State,true,false,false,false,269,Spec Martin Memorial Stadium,DeLand,FL,Thursday Night
+7,2708,8,245,Valparaiso,243,St. Thomas,true,false,false,false,270,Brown Field,Valparaiso,IN,Thursday Night
+7,2708,8,256,Austin Peay,262,Tarleton State,true,false,false,false,281,Fortera Stadium,Clarksville,TN,Thursday Night
+7,2709,9,1,Air Force,68,Nevada,true,false,false,false,1,Falcon Stadium,Colorado Springs,Colorado,Friday Night
+7,2709,9,44,Kansas,98,TCU,true,false,false,false,44,David Booth Kansas Memorial Stadium,Lawrence,Kansas,Friday Night
+7,2709,9,53,LSU,120,Vanderbilt,true,false,false,false,53,Tiger Stadium,Baton Rouge,Louisiana,Friday Night
+7,2709,9,69,New Mexico,38,Hawaii,true,false,false,false,69,Dreamstyle Stadium,Albuquerque,New Mexico,Friday Night
+7,2709,9,82,Oregon,129,Wisconsin,true,false,false,false,82,Autzen Stadium,Eugene,Oregon,Friday Night
+7,2709,9,91,SMU,121,Virginia,true,false,false,false,91,Gerald J. Ford Stadium,University Park,Texas,Friday Night
+7,2709,9,114,UNLV,130,Wyoming,true,false,false,false,114,Allegient Stadium,Las Vegas,Nevada,Friday Night
+7,2709,9,117,UTSA,20,Charlotte,true,false,false,false,117,Alamodome,San Antonio,Texas,Friday Night
+7,2709,9,133,Sam Houston State,48,Liberty,true,false,false,false,133,Bowers Stadium,Huntsville,Texas,Friday Night
+7,2709,9,140,Northern Iowa,137,Illinois State,true,false,false,false,140,UNI-Dome,Cedar Falls,IA,Friday Night
+7,2709,9,146,Western Illinois,198,Lindenwood,true,false,false,false,146,Hanson Field,Macomb,IL,Friday Night
+7,2709,9,159,Montana,154,UC Davis,true,false,false,false,159,Washington-Grizzly Stadium,Missoula,MT,Friday Night
+7,2709,9,187,Southern,190,Florida A&M,true,false,false,false,187,A.W. Mumford Stadium,Baton Rouge,LA,Friday Night
+7,2709,9,243,St. Thomas,240,Morehead State,true,false,false,false,268,O'Shaughnessy Stadium,Saint Paul,MN,Friday Night
+7,2709,9,249,McNeese,246,Houston Christian,true,false,false,false,274,Cowboy Stadium,Lake Charles,LA,Friday Night
+7,2709,9,250,Nicholls,253,East Texas A&M,true,false,false,false,275,Manning Field at John L. Guidry Stadium,Thibodaux,LA,Friday Night
+7,2709,9,4,Appalachian State,80,Old Dominion,true,true,false,false,4,Kidd Brewer Stadium,Boone,North Carolina,Saturday Afternoon
+7,2709,9,8,Arkansas State,95,Southern Miss,true,true,false,false,8,Centennial Bank Stadium,Jonesboro,Arkansas,Saturday Afternoon
+7,2709,9,13,Boise State,103,Texas State,true,false,false,false,13,Albertsons Stadium,Boise,Idaho,Saturday Afternoon
+7,2709,9,19,Central Michigan,28,Eastern Michigan,true,false,true,false,19,Kelly/Shorts Stadium,Mount Pleasant,Michigan,Saturday Afternoon
+7,2709,9,32,Florida State,66,NC State,true,false,false,false,32,Bobby Bowden Field at Doak S. Campbell Stadium,Tallahassee,Florida,Saturday Afternoon
+7,2709,9,40,Illinois,86,Purdue,true,false,true,false,40,Memorial Stadium,Urbana Champaign,Illinois,Saturday Afternoon
+7,2709,9,41,Indiana,124,Washington,true,false,false,false,41,Memorial Stadium,Bloomington,Indiana,Saturday Afternoon
+7,2709,9,42,Iowa,84,Penn State,true,false,false,false,42,Kinnick Stadium,Iowa City,Iowa,Saturday Afternoon
+7,2709,9,47,Kentucky,63,Mississippi State,true,false,false,false,47,Kroger Field at C.M. Newton Grounds,Lexington,Kentucky,Saturday Afternoon
+7,2709,9,58,Miami (OH),105,Toledo,true,false,false,false,58,Fred C. Yager Stadium,Oxford,Ohio,Saturday Afternoon
+7,2709,9,92,South Alabama,51,Louisiana Tech,true,true,false,false,92,Ladd-Peebles Stadium,Mobile,Alabama,Saturday Afternoon
+7,2709,9,111,UCLA,74,Northwestern,true,false,false,false,111,Rose Bowl Stadium,Los Angeles,California,Saturday Afternoon
+7,2709,9,115,USC,55,Maryland,true,false,false,false,115,Los Angeles Memorial Coliseum,Los Angeles,California,Saturday Afternoon
+7,2709,9,116,UTEP,143,North Dakota State,true,false,false,false,116,Sun Bowl Stadium,El Paso,Texas,Saturday Afternoon
+7,2709,9,138,Missouri State,127,Western Kentucky,true,false,false,false,138,Robert W. Plaster Stadium,Springfield,MO,Saturday Afternoon
+7,2709,9,148,Colgate,149,Holy Cross,true,false,false,false,148,Andy Kerr Stadium,Hamilton,NY,Saturday Afternoon
+7,2709,9,169,Dartmouth,173,Yale,true,false,false,false,169,Memorial Field,Hanover,NH,Saturday Afternoon
+7,2709,9,182,VMI,179,East Tennessee State,true,false,false,false,182,Foster Stadium,Lexington,VA,Saturday Afternoon
+7,2709,9,184,Bethune-Cookman,194,Jackson State,true,true,false,false,184,Daytona Stadium,Daytona Beach,FL,Saturday Afternoon
+7,2709,9,186,Alcorn State,189,Arkansas-Pine Bluff,true,true,false,false,186,Spinks-Casem Stadium,Lorman,MS,Saturday Afternoon
+7,2709,9,201,Tennessee Tech,202,UT Martin,false,false,true,false,226,Tucker Stadium,Cookeville,TN,Saturday Afternoon
+7,2709,9,211,New Hampshire,210,Monmouth,true,false,false,false,236,Wildcat Stadium,Durham,NH,Saturday Afternoon
+7,2709,9,216,Towson,220,Sacred Heart,true,false,false,false,241,Johnny Unitas Stadiumn,Towson,MD,Saturday Afternoon
+7,2709,9,231,Robert Morris,227,Central Connecticut,true,false,false,false,256,Joe Walton Stadium,Moon Township,PA,Saturday Afternoon
+7,2709,9,256,Austin Peay,255,Abilene Christian,true,false,false,false,281,Fortera Stadium,Clarksville,TN,Saturday Afternoon
+7,2709,9,265,Chicago State,230,Mercyhurst,true,false,false,false,290,SeatGeek Stadium,Chicago,IL,Saturday Afternoon
+7,2709,9,10,Auburn,64,Missouri,true,false,false,false,10,Pat Dye Field at Jordan-Hare Stadium,Auburn,Alabama,Saturday Evening
+7,2709,9,25,Colorado State,89,San Diego State,true,false,false,false,25,Sonny Lubick Field at Canvas Stadium,Fort Collins,Colorado,Saturday Evening
+7,2709,9,33,Fresno State,83,Oregon State,true,false,false,false,33,Bulldog Stadium at Jim Sweeney Field,Fresno,California,Saturday Evening
+7,2709,9,34,Georgia,78,Oklahoma,true,false,false,false,34,Sanford Stadium,Athens,Georgia,Saturday Evening
+7,2709,9,50,Louisiana Monroe,54,Marshall,true,false,false,false,50,Joe Aillet Stadium,Monroe,Louisiana,Saturday Evening
+7,2709,9,110,UCF,104,Texas Tech,true,false,false,false,110,Bounce House,Orlando,Florida,Saturday Evening
+7,2709,9,123,Wake Forest,14,Boston College,true,false,false,false,123,BB&T Field,Winston-Salem,North Carolina,Saturday Evening
+7,2709,9,141,Southern Illinois,139,Murray State,true,false,false,false,141,Saluki Stadium,Carbondale,IL,Saturday Evening
+7,2709,9,161,Northern Arizona,165,Weber State,true,false,false,false,161,Walkup Skydome,Flagstaff,AZ,Saturday Evening
+7,2709,9,162,Northern Colorado,155,Cal Poly,true,false,false,false,162,Nottingham Field,Greeley,CO,Saturday Evening
+7,2709,9,164,Sacramento State,46,Kent State,true,false,false,false,164,Hornet Stadium,Sacramento,CA,Saturday Evening
+7,2709,9,247,Incarnate Word,261,Stephen F. Austin,true,false,false,false,272,Gayle and Tom Benson Stadium,San Antonio,TX,Saturday Evening
+7,2709,9,26,Duke,85,Pittsburgh,true,false,false,false,26,Brooks Field at Wallace Wade Stadium,Durham,North Carolina,Saturday Morning
+7,2709,9,29,FIU,132,Jacksonville State,true,false,false,false,29,Riccardo Silva Stadium,Miami,Florida,Saturday Morning
+7,2709,9,59,Michigan,60,Michigan State,true,false,true,false,59,Michigan Stadium,Ann Arbor,Michigan,Saturday Morning
+7,2709,9,71,North Carolina,22,Clemson,true,false,false,false,71,Kenan Memorial Stadium,Chapel Hill,North Carolina,Saturday Morning
+7,2709,9,88,Rutgers,77,Ohio State,true,false,false,false,88,High Point Solutions Stadium,Piscataway,New Jersey,Saturday Morning
+7,2709,9,93,South Carolina,102,Texas A&M,true,false,false,false,93,Williams-Brice Stadium,Columbia,South Carolina,Saturday Morning
+7,2709,9,97,Syracuse,37,Georgia Tech,true,false,false,false,97,Carrier Dome,Syracuse,New York,Saturday Morning
+7,2709,9,109,UAB,99,Temple,true,false,false,false,109,Legion Field Stadium,Birmingham,Alabama,Saturday Morning
+7,2709,9,136,Indiana State,144,South Dakota State,true,false,false,false,136,Memorial Stadium,Terre Haute,IN,Saturday Morning
+7,2709,9,166,Brown,172,Princeton,true,false,false,false,166,Brown Stadium,Providence,RI,Saturday Morning
+7,2709,9,170,Pennsylvania,167,Columbia,true,false,false,false,170,Franklin Field,Philadelphia,PA,Saturday Morning
+7,2709,9,188,Alabama A&M,193,Mississippi Valley State,true,true,false,false,188,Louis Crews Stadium,Huntsville,AL,Saturday Morning
+7,2709,9,191,Alabama State,192,Texas Southern,true,false,false,false,191,New ASU Stadium,Montgomery,AL,Saturday Morning
+7,2709,9,200,Tennessee State,196,Eastern Illinois,true,false,false,false,225,Hale Stadium,Nashville,TN,Saturday Morning
+7,2709,9,208,Hampton,205,Campbell,true,false,false,false,233,Armstrong Stadium,Hampton,VA,Saturday Morning
+7,2709,9,213,Rhode Island,215,Stony Brook,true,false,false,false,238,Meade Stadium,Kingston,RI,Saturday Morning
+7,2709,9,218,William & Mary,147,Bucknell,true,false,false,false,243,Water J. Zable Stadium,Williamsburg,VA,Saturday Morning
+7,2709,9,244,Stetson,237,Dayton,true,false,false,false,269,Spec Martin Memorial Stadium,DeLand,FL,Saturday Morning
+7,2709,9,264,West Georgia,257,Central Arkansas,true,false,false,false,289,University Stadium,Carrollton,GA,Saturday Morning
+7,2709,9,6,Arizona State,126,West Virginia,true,false,false,false,6,"Sun Devil Stadium, Frank Kush Field",Tempe,Arizona,Saturday Night
+7,2709,9,7,Arkansas,101,Texas,true,false,true,false,7,"Donald W. Reynolds Razorback Stadium, Frank Broyles Field",Fayetteville,Arkansas,Saturday Night
+7,2709,9,12,Baylor,43,Iowa State,true,false,false,false,12,McLane Stadium,Waco,Texas,Saturday Night
+7,2709,9,17,BYU,24,Colorado,true,false,false,false,17,LaVell Edwards Stadium,Provo,Utah,Saturday Night
+7,2709,9,62,Minnesota,67,Nebraska,true,false,true,false,62,TCF Bank Stadium,Minneapolis,Minnesota,Saturday Night
+7,2709,9,87,Rice,56,Memphis,true,false,false,false,87,Rice Stadium,Houston,Texas,Saturday Night
+7,2709,9,90,San Jose State,73,Northern Illinois,true,false,false,false,90,CEFCU Stadium,San Jose,California,Saturday Night
+7,2709,9,107,Tulane,27,East Carolina,true,false,false,false,107,Barry B. Benson Field at Yulman Stadium,New Orleans,Louisiana,Saturday Night
+7,2709,9,145,South Dakota,135,Youngstown State,true,false,false,false,145,DakotaDome,Vermillion,SD,Saturday Night
+7,2709,9,238,Drake,239,Marist,true,false,false,false,263,Drake Stadium,Des Moines,IA,Saturday Night
+7,2709,9,248,Lamar,252,SE Louisiana,true,false,false,false,273,Provost Umphrey Stadium,Beaumont,TX,Saturday Night
+7,2709,9,254,UT Rio Grande Valley,251,Northwestern State,true,false,false,false,279,Robert and Janet Vackar Stadium,Edinburg,TX,Saturday Night
+7,2709,9,3,Alabama,81,Ole Miss,true,false,false,false,3,Bryant-Denny Stadium,Tuscaloosa,Alabama,Thursday Night
+7,2709,9,11,Ball State,128,Western Michigan,true,false,false,false,11,Scheumann Stadium,Muncie,Indiana,Thursday Night
+7,2709,9,15,Bowling Green,2,Akron,true,false,false,false,15,Doyt L. Perry Stadium,Bowling Green,Ohio,Thursday Night
+7,2709,9,31,Florida Atlantic,65,Navy,true,false,false,false,31,FAU Stadium,Boca Raton,Florida,Thursday Night
+7,2709,9,57,Miami (FL),18,California,true,false,false,false,57,Hard Rock Stadium,Coral Gables,Florida,Thursday Night
+7,2709,9,94,South Florida,108,Tulsa,true,false,false,false,94,Raymond James Stadium,Tampa,Florida,Thursday Night
+7,2709,9,106,Troy,49,Louisiana,true,true,false,false,106,Veterans Memorial Stadium at Larry Blakeney Field,Troy,Alabama,Thursday Night
+7,2709,9,122,Virginia Tech,96,Stanford,true,false,false,false,122,Worsham Field at Lane Stadium,Blacksburg,Virginia,Thursday Night
+7,2709,9,131,James Madison,23,Coastal Carolina,true,true,false,false,131,Bridgeforth Stadium,Harrisonburg,Virginia,Thursday Night
+7,2709,9,150,Lafayette,152,Fordham,true,false,false,false,150,Fisher Stadium,Easton,PA,Thursday Night
+7,2709,9,156,Eastern Washington,160,Montana State,true,false,false,false,156,Roos Field,Cheney,WA,Thursday Night
+7,2709,9,175,Samford,174,Furman,true,false,false,false,175,Seibert Stadium,Homewood,AL,Thursday Night
+7,2709,9,177,Wofford,181,Mercer,true,false,false,false,177,Gibbs Stadium,Spartanburg,SC,Thursday Night
+7,2709,9,178,Chattanooga,180,Western Carolina,true,false,false,false,178,Finley Stadium,Chattanooga,TN,Thursday Night
+7,2709,9,197,Gardner-Webb,195,Charleston Southern,true,false,false,false,222,Ernest W. Spangler Stadium,Boiling Springs,NC,Thursday Night
+7,2709,9,204,Bryant,212,North Carolina A&T,true,false,false,false,229,Beirne Stadium,Smithfield,RI,Thursday Night
+7,2709,9,206,Delaware,70,New Mexico State,true,false,false,false,231,Delaware Stadium,Newark,DE,Thursday Night
+7,2709,9,209,Maine,207,Elon,true,false,false,false,234,Harold Alfond Sports Stadium,Orono,ME,Thursday Night
+7,2709,9,214,Richmond,153,Georgetown,true,false,false,false,239,E. Claiborne Robins Stadium,Richmond,VA,Thursday Night
+7,2709,9,224,Norfolk State,221,Delaware State,true,false,false,false,249,"William ""Dick"" Price Stadium",Norfolk,VA,Thursday Night
+7,2709,9,226,South Carolina State,225,North Carolina Central,true,false,false,false,251,Oliver C. Dawson Stadium,Orangeburg,SC,Thursday Night
+7,2709,9,233,Stonehill,229,LIU,true,false,false,false,258,W.B. Mason Stadium,Easton,MA,Thursday Night
+7,2709,9,236,Davidson,245,Valparaiso,true,false,false,false,261,Richardson Stadium,Davidson,NC,Thursday Night
+7,2709,9,242,San Diego,241,Presbyterian,true,false,false,false,267,Torero Stadium,San Diego,CA,Thursday Night
+7,2709,9,258,Eastern Kentucky,269,West Florida,true,false,false,false,283,Roy Kidd Stadium,Richmond,KY,Thursday Night
+7,2709,9,260,Southern Utah,158,Idaho State,true,false,false,false,285,Eccles Coliseum,Cedar City,UT,Thursday Night
+7,2709,9,266,New Haven,234,Wagner,true,false,false,false,291,Ralph F. DellaCamera Stadium,New Haven,CT,Thursday Night
+7,2710,10,12,Baylor,126,West Virginia,true,false,false,false,12,McLane Stadium,Waco,Texas,Friday Night
+7,2710,10,50,Louisiana Monroe,106,Troy,true,true,false,false,50,Joe Aillet Stadium,Monroe,Louisiana,Friday Night
+7,2710,10,51,Louisiana Tech,80,Old Dominion,true,false,false,false,51,JPS Field at Malone Stadium,Ruston,Louisiana,Friday Night
+7,2710,10,87,Rice,117,UTSA,true,false,false,false,87,Rice Stadium,Houston,Texas,Friday Night
+7,2710,10,116,UTEP,1,Air Force,true,false,false,false,116,Sun Bowl Stadium,El Paso,Texas,Friday Night
+7,2710,10,119,Utah State,33,Fresno State,true,false,false,false,119,Merlin Olsen Field at Maverik Stadium,Logan,Utah,Friday Night
+7,2710,10,133,Sam Houston State,127,Western Kentucky,true,false,false,false,133,Bowers Stadium,Huntsville,Texas,Friday Night
+7,2710,10,137,Illinois State,145,South Dakota,true,false,false,false,137,Hancock Stadium,Normal,IL,Friday Night
+7,2710,10,138,Missouri State,70,New Mexico State,true,false,false,false,138,Robert W. Plaster Stadium,Springfield,MO,Friday Night
+7,2710,10,140,Northern Iowa,136,Indiana State,true,false,false,false,140,UNI-Dome,Cedar Falls,IA,Friday Night
+7,2710,10,154,UC Davis,263,Utah Tech,true,false,false,false,154,UC Davis Health Stadium,Davis,CA,Friday Night
+7,2710,10,158,Idaho State,159,Montana,true,false,false,false,158,Holt Arena,Pocatello,ID,Friday Night
+7,2710,10,161,Northern Arizona,155,Cal Poly,true,false,false,false,161,Walkup Skydome,Flagstaff,AZ,Friday Night
+7,2710,10,162,Northern Colorado,165,Weber State,true,false,false,false,162,Nottingham Field,Greeley,CO,Friday Night
+7,2710,10,189,Arkansas-Pine Bluff,185,Prairie View A&M,true,true,false,false,189,Simmons Bank Field,Pine Bluff,AR,Friday Night
+7,2710,10,192,Texas Southern,183,Grambling,true,true,false,false,192,PNC Stadium,Houston,TX,Friday Night
+7,2710,10,253,East Texas A&M,246,Houston Christian,true,false,false,false,278,Ernest Hawkins Field at Memorial Stadium,Commerce,TX,Friday Night
+7,2710,10,255,Abilene Christian,257,Central Arkansas,true,false,false,false,280,Anthony Field at Wildcat Stadium,Abilene,TX,Friday Night
+7,2710,10,262,Tarleton State,264,West Georgia,true,false,false,false,287,Memorial Stadium,Stephenville,TX,Friday Night
+7,2710,10,3,Alabama,53,LSU,true,false,true,false,3,Bryant-Denny Stadium,Tuscaloosa,Alabama,Saturday Afternoon
+7,2710,10,24,Colorado,98,TCU,true,false,false,false,24,Folsom Field,Boulder,Colorado,Saturday Afternoon
+7,2710,10,31,Florida Atlantic,109,UAB,true,false,false,false,31,FAU Stadium,Boca Raton,Florida,Saturday Afternoon
+7,2710,10,44,Kansas,6,Arizona State,true,false,false,false,44,David Booth Kansas Memorial Stadium,Lawrence,Kansas,Saturday Afternoon
+7,2710,10,45,Kansas State,79,Oklahoma State,true,false,false,false,45,Bill Snyder Family Football Stadium,Manhattan,Kansas,Saturday Afternoon
+7,2710,10,46,Kent State,16,Buffalo,true,false,false,false,46,Dix Stadium,Kent,Ohio,Saturday Afternoon
+7,2710,10,48,Liberty,132,Jacksonville State,true,false,false,false,48,Arthur L. Williams Stadium,Lynchburg,Virginia,Saturday Afternoon
+7,2710,10,54,Marshall,35,Georgia Southern,true,true,false,false,54,Joan C. Edwards Stadium,Huntington,West Virginia,Saturday Afternoon
+7,2710,10,62,Minnesota,41,Indiana,true,false,false,false,62,TCF Bank Stadium,Minneapolis,Minnesota,Saturday Afternoon
+7,2710,10,71,North Carolina,32,Florida State,true,false,false,false,71,Kenan Memorial Stadium,Chapel Hill,North Carolina,Saturday Afternoon
+7,2710,10,74,Northwestern,84,Penn State,true,false,false,false,74,Ryan Field,Evanston,Illinois,Saturday Afternoon
+7,2710,10,95,Southern Miss,49,Louisiana,true,true,false,false,95,Carlisle-Faulkner Field at M.M. Roberts Stadium,Hattiesburg,Mississippi,Saturday Afternoon
+7,2710,10,111,UCLA,82,Oregon,true,false,false,false,111,Rose Bowl Stadium,Los Angeles,California,Saturday Afternoon
+7,2710,10,113,UMass,2,Akron,true,false,false,false,113,Warren McGuirk Alumni Stadium,Amherst,Massachusetts,Saturday Afternoon
+7,2710,10,129,Wisconsin,42,Iowa,true,false,true,false,129,Camp Randall Stadium,Madison,Wisconsin,Saturday Afternoon
+7,2710,10,141,Southern Illinois,142,North Dakota,true,false,false,false,141,Saluki Stadium,Carbondale,IL,Saturday Afternoon
+7,2710,10,170,Pennsylvania,168,Cornell,true,false,true,false,170,Franklin Field,Philadelphia,PA,Saturday Afternoon
+7,2710,10,174,Furman,176,The Citadel,true,false,true,false,174,Paladin Stadium,Greenville,SC,Saturday Afternoon
+7,2710,10,187,Southern,186,Alcorn State,true,true,false,false,187,A.W. Mumford Stadium,Baton Rouge,LA,Saturday Afternoon
+7,2710,10,198,Lindenwood,197,Gardner-Webb,true,false,false,false,223,Hunter STadium,St. Charles,MO,Saturday Afternoon
+7,2710,10,203,Albany,204,Bryant,true,false,false,false,228,Tom & Mary Casey Stadium,Albany,NY,Saturday Afternoon
+7,2710,10,207,Elon,215,Stony Brook,true,false,false,false,232,Rhodes Stadium,Elon,NC,Saturday Afternoon
+7,2710,10,211,New Hampshire,216,Towson,true,false,false,false,236,Wildcat Stadium,Durham,NH,Saturday Afternoon
+7,2710,10,213,Rhode Island,205,Campbell,true,false,false,false,238,Meade Stadium,Kingston,RI,Saturday Afternoon
+7,2710,10,244,Stetson,236,Davidson,true,false,false,false,269,Spec Martin Memorial Stadium,DeLand,FL,Saturday Afternoon
+7,2710,10,248,Lamar,247,Incarnate Word,true,false,false,false,273,Provost Umphrey Stadium,Beaumont,TX,Saturday Afternoon
+7,2710,10,250,Nicholls,249,McNeese,true,false,false,false,275,Manning Field at John L. Guidry Stadium,Thibodaux,LA,Saturday Afternoon
+7,2710,10,26,Duke,66,NC State,true,false,true,false,26,Brooks Field at Wallace Wade Stadium,Durham,North Carolina,Saturday Evening
+7,2710,10,55,Maryland,59,Michigan,true,false,false,false,55,Capital One Field at Maryland Stadium,College Park,Maryland,Saturday Evening
+7,2710,10,89,San Diego State,13,Boise State,true,false,false,false,89,SDCCU Stadium,San Diego,California,Saturday Evening
+7,2710,10,90,San Jose State,130,Wyoming,true,false,false,false,90,CEFCU Stadium,San Jose,California,Saturday Evening
+7,2710,10,102,Texas A&M,47,Kentucky,true,false,false,false,102,Kyle Field,College Station,Texas,Saturday Evening
+7,2710,10,125,Washington State,103,Texas State,true,false,false,false,125,Martin Stadium,Pullman,Washington,Saturday Evening
+7,2710,10,164,Sacramento State,128,Western Michigan,true,false,false,false,164,Hornet Stadium,Sacramento,CA,Saturday Evening
+7,2710,10,199,Southeast Missouri State,146,Western Illinois,true,false,false,false,224,Houck Stadium,Cape Girardeau,MO,Saturday Evening
+7,2710,10,242,San Diego,238,Drake,true,false,false,false,267,Torero Stadium,San Diego,CA,Saturday Evening
+7,2710,10,260,Southern Utah,156,Eastern Washington,true,false,false,false,285,Eccles Coliseum,Cedar City,UT,Saturday Evening
+7,2710,10,261,Stephen F. Austin,254,UT Rio Grande Valley,true,false,false,false,286,Homer Bryce Stadium,Nacogdoches,TX,Saturday Evening
+7,2710,10,14,Boston College,96,Stanford,true,false,false,false,14,Alumni Stadium,Chestnut Hill,Massachusetts,Saturday Morning
+7,2710,10,15,Bowling Green,58,Miami (OH),true,false,false,false,15,Doyt L. Perry Stadium,Bowling Green,Ohio,Saturday Morning
+7,2710,10,36,Georgia State,23,Coastal Carolina,true,true,false,false,36,Georgia State Stadium,Atlanta,Georgia,Saturday Morning
+7,2710,10,52,Louisville,37,Georgia Tech,true,false,false,false,52,Cardinal Stadium,Louisville,Kentucky,Saturday Morning
+7,2710,10,81,Ole Miss,64,Missouri,true,false,false,false,81,Vaught-Hemingway Stadium at Hollingsworth Field,Oxford,Mississippi,Saturday Morning
+7,2710,10,97,Syracuse,91,SMU,true,false,false,false,97,Carrier Dome,Syracuse,New York,Saturday Morning
+7,2710,10,100,Tennessee,63,Mississippi State,true,false,false,false,100,Neyland Stadium,Knoxville,Tennessee,Saturday Morning
+7,2710,10,120,Vanderbilt,30,Florida,true,false,false,false,120,Vanderbilt Stadium,Nashville,Tennessee,Saturday Morning
+7,2710,10,121,Virginia,18,California,true,false,false,false,121,David A. Harrison III Field at Scott Stadium,Charlottesville,Virginia,Saturday Morning
+7,2710,10,122,Virginia Tech,123,Wake Forest,true,false,false,false,122,Worsham Field at Lane Stadium,Blacksburg,Virginia,Saturday Morning
+7,2710,10,169,Dartmouth,171,Harvard,true,false,true,false,169,Memorial Field,Hanover,NH,Saturday Morning
+7,2710,10,172,Princeton,173,Yale,true,false,true,false,172,Princeton Stadium,Princeton,NJ,Saturday Morning
+7,2710,10,175,Samford,179,East Tennessee State,true,false,false,false,175,Seibert Stadium,Homewood,AL,Saturday Morning
+7,2710,10,200,Tennessee State,202,UT Martin,true,false,true,false,225,Hale Stadium,Nashville,TN,Saturday Morning
+7,2710,10,201,Tennessee Tech,178,Chattanooga,true,false,false,false,226,Tucker Stadium,Cookeville,TN,Saturday Morning
+7,2710,10,210,Monmouth,208,Hampton,true,false,false,false,235,Kessler Field,West Long Branch,NJ,Saturday Morning
+7,2710,10,214,Richmond,218,William & Mary,true,false,true,false,239,E. Claiborne Robins Stadium,Richmond,VA,Saturday Morning
+7,2710,10,226,South Carolina State,222,Howard,true,false,false,false,251,Oliver C. Dawson Stadium,Orangeburg,SC,Saturday Morning
+7,2710,10,235,Butler,243,St. Thomas,true,false,false,false,260,Bud and Jackie Sellick Bowl,Indianapolis,IN,Saturday Morning
+7,2710,10,8,Arkansas State,92,South Alabama,true,true,false,false,8,Centennial Bank Stadium,Jonesboro,Arkansas,Saturday Night
+7,2710,10,67,Nebraska,124,Washington,true,false,false,false,67,"Memorial Stadium, Tom Osborne Field",Lincoln,Nebraska,Saturday Night
+7,2710,10,73,Northern Illinois,143,North Dakota State,true,false,false,false,73,Brigham Field at Huskie Stadium,DeKalb,Illinois,Saturday Night
+7,2710,10,78,Oklahoma,7,Arkansas,true,false,false,false,78,Gaylord Family - Oklahoma Memorial Stadium at Owen Field,Norman,Oklahoma,Saturday Night
+7,2710,10,83,Oregon State,25,Colorado State,true,false,false,false,83,Reser Stadium,Corvallis,Oregon,Saturday Night
+7,2710,10,107,Tulane,99,Temple,true,false,false,false,107,Barry B. Benson Field at Yulman Stadium,New Orleans,Louisiana,Saturday Night
+7,2710,10,115,USC,40,Illinois,true,false,false,false,115,Los Angeles Memorial Coliseum,Los Angeles,California,Saturday Night
+7,2710,10,160,Montana State,157,Idaho,true,false,false,false,160,Bobcat Stadium,Bozeman,MT,Saturday Night
+7,2710,10,196,Eastern Illinois,195,Charleston Southern,true,false,false,false,221,O'Brien Field,Charleston,IL,Saturday Night
+7,2710,10,4,Appalachian State,131,James Madison,true,true,false,false,4,Kidd Brewer Stadium,Boone,North Carolina,Thursday Night
+7,2710,10,9,Army,20,Charlotte,true,false,false,false,9,Blaik Field at Michie Stadium,West Point,New York,Thursday Night
+7,2710,10,21,Cincinnati,43,Iowa State,true,false,false,false,21,Nippert Stadium,Cincinnati,Ohio,Thursday Night
+7,2710,10,22,Clemson,57,Miami (FL),true,false,false,false,22,Frank Howard Field at Clemson Memorial Stadium,Clemson,South Carolina,Thursday Night
+7,2710,10,28,Eastern Michigan,105,Toledo,true,false,false,false,28,Rynearson Stadium,Ypsilanti,Michigan,Thursday Night
+7,2710,10,38,Hawaii,68,Nevada,true,false,false,false,38,Aloha Stadium,Honolulu,Hawai'i,Thursday Night
+7,2710,10,56,Memphis,72,North Texas,true,false,false,false,56,Liberty Bowl Memorial Stadium,Memphis,Tennessee,Thursday Night
+7,2710,10,65,Navy,108,Tulsa,true,false,false,false,65,Navy-Marine Corps Memorial Stadium,Annapolis,Maryland,Thursday Night
+7,2710,10,88,Rutgers,60,Michigan State,true,false,false,false,88,High Point Solutions Stadium,Piscataway,New Jersey,Thursday Night
+7,2710,10,93,South Carolina,10,Auburn,true,false,false,false,93,Williams-Brice Stadium,Columbia,South Carolina,Thursday Night
+7,2710,10,110,UCF,118,Utah,true,false,false,false,110,Bounce House,Orlando,Florida,Thursday Night
+7,2710,10,135,Youngstown State,144,South Dakota State,true,false,false,false,135,Stambaugh Stadium,Youngstown,OH,Thursday Night
+7,2710,10,150,Lafayette,151,Lehigh,true,false,true,false,150,Fisher Stadium,Easton,PA,Thursday Night
+7,2710,10,153,Georgetown,147,Bucknell,true,false,false,false,153,Cooper Field,Washington,DC,Thursday Night
+7,2710,10,177,Wofford,182,VMI,true,false,false,false,177,Gibbs Stadium,Spartanburg,SC,Thursday Night
+7,2710,10,181,Mercer,180,Western Carolina,true,false,false,false,181,Five Star Stadium,Macon,GA,Thursday Night
+7,2710,10,184,Bethune-Cookman,193,Mississippi Valley State,true,true,false,false,184,Daytona Stadium,Daytona Beach,FL,Thursday Night
+7,2710,10,188,Alabama A&M,191,Alabama State,true,true,true,false,188,Louis Crews Stadium,Huntsville,AL,Thursday Night
+7,2710,10,206,Delaware,29,FIU,true,false,false,false,231,Delaware Stadium,Newark,DE,Thursday Night
+7,2710,10,217,Villanova,148,Colgate,true,false,false,false,242,Villanova Stadium,Philadelphia,PA,Thursday Night
+7,2710,10,220,Sacred Heart,212,North Carolina A&T,true,false,false,false,245,Campus Field,Fairfield,CT,Thursday Night
+7,2710,10,223,Morgan State,221,Delaware State,true,false,false,false,248,Hughes Stadium,Baltimore,MD,Thursday Night
+7,2710,10,225,North Carolina Central,224,Norfolk State,true,false,false,false,250,O'Kelly-Riddick Stadium,Durham,NC,Thursday Night
+7,2710,10,228,Duquesne,229,LIU,true,false,false,false,253,Arthur J. Rooney Athletic Field,Pittsburgh,PA,Thursday Night
+7,2710,10,233,Stonehill,227,Central Connecticut,true,false,false,false,258,W.B. Mason Stadium,Easton,MA,Thursday Night
+7,2710,10,234,Wagner,231,Robert Morris,true,false,false,false,259,Wagner College Stadium,Staten Island,NY,Thursday Night
+7,2710,10,237,Dayton,240,Morehead State,true,false,false,false,262,Welcome Stadium,Dayton,OH,Thursday Night
+7,2710,10,241,Presbyterian,239,Marist,true,false,false,false,266,Bailey Memorial Stadium,Clinton,SC,Thursday Night
+7,2710,10,256,Austin Peay,258,Eastern Kentucky,true,false,false,false,281,Fortera Stadium,Clarksville,TN,Thursday Night
+7,2710,10,266,New Haven,230,Mercyhurst,true,false,false,false,291,Ralph F. DellaCamera Stadium,New Haven,CT,Thursday Night
+7,2711,11,1,Air Force,90,San Jose State,true,false,false,false,1,Falcon Stadium,Colorado Springs,Colorado,Friday Night
+7,2711,11,12,Baylor,44,Kansas,true,false,false,false,12,McLane Stadium,Waco,Texas,Friday Night
+7,2711,11,25,Colorado State,33,Fresno State,true,false,false,false,25,Sonny Lubick Field at Canvas Stadium,Fort Collins,Colorado,Friday Night
+7,2711,11,51,Louisiana Tech,8,Arkansas State,true,true,false,false,51,JPS Field at Malone Stadium,Ruston,Louisiana,Friday Night
+7,2711,11,64,Missouri,7,Arkansas,true,false,true,false,64,Faurot Field at Memorial Stadium,Columbia,Missouri,Friday Night
+7,2711,11,70,New Mexico State,48,Liberty,true,false,false,false,70,Aggie Memorial Stadium,Las Cruces,New Mexico,Friday Night
+7,2711,11,107,Tulane,31,Florida Atlantic,true,false,false,false,107,Barry B. Benson Field at Yulman Stadium,New Orleans,Louisiana,Friday Night
+7,2711,11,116,UTEP,114,UNLV,true,false,false,false,116,Sun Bowl Stadium,El Paso,Texas,Friday Night
+7,2711,11,138,Missouri State,29,FIU,true,false,false,false,138,Robert W. Plaster Stadium,Springfield,MO,Friday Night
+7,2711,11,143,North Dakota State,38,Hawaii,true,false,false,false,143,Fargodome,Fargo,ND,Friday Night
+7,2711,11,154,UC Davis,157,Idaho,true,false,false,false,154,UC Davis Health Stadium,Davis,CA,Friday Night
+7,2711,11,160,Montana State,260,Southern Utah,true,false,false,false,160,Bobcat Stadium,Bozeman,MT,Friday Night
+7,2711,11,163,Portland State,161,Northern Arizona,true,false,false,false,163,Hillsboro Stadium,Portland,OR,Friday Night
+7,2711,11,165,Weber State,155,Cal Poly,true,false,false,false,165,Stewart Stadium,Ogden,UT,Friday Night
+7,2711,11,183,Grambling,189,Arkansas-Pine Bluff,true,true,false,false,183,Eddie G. Robinson Memorial Stadium,Grambling,LA,Friday Night
+7,2711,11,243,St. Thomas,237,Dayton,true,false,false,false,268,O'Shaughnessy Stadium,Saint Paul,MN,Friday Night
+7,2711,11,249,McNeese,247,Incarnate Word,true,false,false,false,274,Cowboy Stadium,Lake Charles,LA,Friday Night
+7,2711,11,257,Central Arkansas,258,Eastern Kentucky,true,false,false,false,282,Estes Stadium,Conway,AR,Friday Night
+7,2711,11,36,Georgia State,4,Appalachian State,true,true,false,false,36,Georgia State Stadium,Atlanta,Georgia,Saturday Afternoon
+7,2711,11,39,Houston,45,Kansas State,true,false,false,false,39,John O'Quinn Field at TDECU Stadium,Houston,Texas,Saturday Afternoon
+7,2711,11,42,Iowa,86,Purdue,true,false,false,false,42,Kinnick Stadium,Iowa City,Iowa,Saturday Afternoon
+7,2711,11,43,Iowa State,6,Arizona State,true,false,false,false,43,Jack Trice Stadium,Ames,Iowa,Saturday Afternoon
+7,2711,11,58,Miami (OH),28,Eastern Michigan,true,false,false,false,58,Fred C. Yager Stadium,Oxford,Ohio,Saturday Afternoon
+7,2711,11,61,Middle Tennessee,134,Kennesaw State,true,false,false,false,61,Johnny Red Floyd Stadium,Murfreesboro,Tennessee,Saturday Afternoon
+7,2711,11,72,North Texas,87,Rice,true,false,false,false,72,Apogee Stadium,Denton,Texas,Saturday Afternoon
+7,2711,11,73,Northern Illinois,69,New Mexico,true,false,false,false,73,Brigham Field at Huskie Stadium,DeKalb,Illinois,Saturday Afternoon
+7,2711,11,77,Ohio State,62,Minnesota,true,false,false,false,77,Ohio Stadium,Columbus,Ohio,Saturday Afternoon
+7,2711,11,99,Temple,56,Memphis,true,false,false,false,99,Lincoln Financial Field,Philadelphia,Pennsylvania,Saturday Afternoon
+7,2711,11,104,Texas Tech,118,Utah,true,false,false,false,104,Jones AT&T Stadium,Lubbock,Texas,Saturday Afternoon
+7,2711,11,111,UCLA,41,Indiana,true,false,false,false,111,Rose Bowl Stadium,Los Angeles,California,Saturday Afternoon
+7,2711,11,129,Wisconsin,115,USC,true,false,false,false,129,Camp Randall Stadium,Madison,Wisconsin,Saturday Afternoon
+7,2711,11,140,Northern Iowa,135,Youngstown State,true,false,false,false,140,UNI-Dome,Cedar Falls,IA,Saturday Afternoon
+7,2711,11,145,South Dakota,144,South Dakota State,true,false,true,false,145,DakotaDome,Vermillion,SD,Saturday Afternoon
+7,2711,11,190,Florida A&M,188,Alabama A&M,true,true,false,false,190,Bragg Memorial Stadium,Tallahassee,FL,Saturday Afternoon
+7,2711,11,192,Texas Southern,187,Southern,true,true,false,false,192,PNC Stadium,Houston,TX,Saturday Afternoon
+7,2711,11,203,Albany,209,Maine,true,false,false,false,228,Tom & Mary Casey Stadium,Albany,NY,Saturday Afternoon
+7,2711,11,205,Campbell,210,Monmouth,true,false,false,false,230,Barker-Lane Stadium,Buies Creek,NC,Saturday Afternoon
+7,2711,11,215,Stony Brook,211,New Hampshire,true,false,false,false,240,Kenneth P. LaValle Stadium,Stony Brook,NY,Saturday Afternoon
+7,2711,11,223,Morgan State,216,Towson,false,false,true,false,248,Hughes Stadium,Baltimore,MD,Saturday Afternoon
+7,2711,11,236,Davidson,238,Drake,true,false,false,false,261,Richardson Stadium,Davidson,NC,Saturday Afternoon
+7,2711,11,251,Northwestern State,246,Houston Christian,true,false,false,false,276,Harry Turpin Stadium,Natchitotches,LA,Saturday Afternoon
+7,2711,11,252,SE Louisiana,253,East Texas A&M,true,false,false,false,277,Strawberry Stadium,Hammond,LA,Saturday Afternoon
+7,2711,11,22,Clemson,14,Boston College,true,false,true,false,22,Frank Howard Field at Clemson Memorial Stadium,Clemson,South Carolina,Saturday Evening
+7,2711,11,37,Georgia Tech,122,Virginia Tech,true,false,true,false,37,Bobby Dodd Stadium at Historic Grant Field,Atlanta,Georgia,Saturday Evening
+7,2711,11,40,Illinois,60,Michigan State,true,false,false,false,40,Memorial Stadium,Urbana Champaign,Illinois,Saturday Evening
+7,2711,11,49,Louisiana,92,South Alabama,true,true,false,false,49,Cajun Field,Lafayette,Louisiana,Saturday Evening
+7,2711,11,53,LSU,102,Texas A&M,true,false,true,false,53,Tiger Stadium,Baton Rouge,Louisiana,Saturday Evening
+7,2711,11,67,Nebraska,74,Northwestern,true,false,false,false,67,"Memorial Stadium, Tom Osborne Field",Lincoln,Nebraska,Saturday Evening
+7,2711,11,78,Oklahoma,3,Alabama,true,false,false,false,78,Gaylord Family - Oklahoma Memorial Stadium at Owen Field,Norman,Oklahoma,Saturday Evening
+7,2711,11,82,Oregon,59,Michigan,true,false,false,false,82,Autzen Stadium,Eugene,Oregon,Saturday Evening
+7,2711,11,83,Oregon State,13,Boise State,true,false,false,false,83,Reser Stadium,Corvallis,Oregon,Saturday Evening
+7,2711,11,89,San Diego State,103,Texas State,true,false,false,false,89,SDCCU Stadium,San Diego,California,Saturday Evening
+7,2711,11,101,Texas,30,Florida,true,false,false,false,101,Darrell K Royal-Texas Memorial Stadium,Austin,Texas,Saturday Evening
+7,2711,11,120,Vanderbilt,47,Kentucky,true,false,false,false,120,Vanderbilt Stadium,Nashville,Tennessee,Saturday Evening
+7,2711,11,125,Washington State,119,Utah State,true,false,false,false,125,Martin Stadium,Pullman,Washington,Saturday Evening
+7,2711,11,158,Idaho State,263,Utah Tech,true,false,false,false,158,Holt Arena,Pocatello,ID,Saturday Evening
+7,2711,11,199,Southeast Missouri State,196,Eastern Illinois,true,false,false,false,224,Houck Stadium,Cape Girardeau,MO,Saturday Evening
+7,2711,11,248,Lamar,254,UT Rio Grande Valley,true,false,false,false,273,Provost Umphrey Stadium,Beaumont,TX,Saturday Evening
+7,2711,11,261,Stephen F. Austin,250,Nicholls,true,false,false,false,286,Homer Bryce Stadium,Nacogdoches,TX,Saturday Evening
+7,2711,11,262,Tarleton State,255,Abilene Christian,true,false,false,false,287,Memorial Stadium,Stephenville,TX,Saturday Evening
+7,2711,11,16,Buffalo,15,Bowling Green,true,false,false,false,16,UB Stadium,Buffalo,New York,Saturday Morning
+7,2711,11,27,East Carolina,117,UTSA,true,false,false,false,27,Bagwell Field at Dowdy-Ficklen Stadium,Greenville,North Carolina,Saturday Morning
+7,2711,11,32,Florida State,85,Pittsburgh,true,false,false,false,32,Bobby Bowden Field at Doak S. Campbell Stadium,Tallahassee,Florida,Saturday Morning
+7,2711,11,52,Louisville,71,North Carolina,true,false,false,false,52,Cardinal Stadium,Louisville,Kentucky,Saturday Morning
+7,2711,11,54,Marshall,131,James Madison,true,true,false,false,54,Joan C. Edwards Stadium,Huntington,West Virginia,Saturday Morning
+7,2711,11,66,NC State,123,Wake Forest,true,false,true,false,66,Wayne Day Family Field at Carter-Finley Stadium,Raleigh,North Carolina,Saturday Morning
+7,2711,11,97,Syracuse,57,Miami (FL),true,false,false,false,97,Carrier Dome,Syracuse,New York,Saturday Morning
+7,2711,11,109,UAB,94,South Florida,true,false,false,false,109,Legion Field Stadium,Birmingham,Alabama,Saturday Morning
+7,2711,11,148,Colgate,152,Fordham,true,false,false,false,148,Andy Kerr Stadium,Hamilton,NY,Saturday Morning
+7,2711,11,167,Columbia,169,Dartmouth,true,false,false,false,167,Lawrence A. Wien Stadium,New York,NY,Saturday Morning
+7,2711,11,182,VMI,181,Mercer,true,false,false,false,182,Foster Stadium,Lexington,VA,Saturday Morning
+7,2711,11,234,Wagner,265,Chicago State,true,false,false,false,259,Wagner College Stadium,Staten Island,NY,Saturday Morning
+7,2711,11,239,Marist,242,San Diego,true,false,false,false,264,Leonidoff Field,Poughkeepsie,NY,Saturday Morning
+7,2711,11,240,Morehead State,241,Presbyterian,true,false,false,false,265,Jayne Stadium,Morehead,KY,Saturday Morning
+7,2711,11,5,Arizona,110,UCF,true,false,false,false,5,Arizona Stadium,Tucson,Arizona,Saturday Night
+7,2711,11,17,BYU,21,Cincinnati,true,false,false,false,17,LaVell Edwards Stadium,Provo,Utah,Saturday Night
+7,2711,11,98,TCU,79,Oklahoma State,true,false,false,false,98,Amon G. Carter Stadium,Fort Worth,Texas,Saturday Night
+7,2711,11,124,Washington,55,Maryland,true,false,false,false,124,Alaska Airlines Field at Husky Stadium,Seattle,Washington,Saturday Night
+7,2711,11,137,Illinois State,139,Murray State,true,false,false,false,137,Hancock Stadium,Normal,IL,Saturday Night
+7,2711,11,142,North Dakota,136,Indiana State,true,false,false,false,142,Alerus Center,Grand Forks,ND,Saturday Night
+7,2711,11,159,Montana,162,Northern Colorado,true,false,false,false,159,Washington-Grizzly Stadium,Missoula,MT,Saturday Night
+7,2711,11,185,Prairie View A&M,186,Alcorn State,true,true,false,false,185,Blackshear Field,Prairie View,TX,Saturday Night
+7,2711,11,9,Army,108,Tulsa,true,false,false,false,9,Blaik Field at Michie Stadium,West Point,New York,Thursday Night
+7,2711,11,10,Auburn,81,Ole Miss,true,false,false,false,10,Pat Dye Field at Jordan-Hare Stadium,Auburn,Alabama,Thursday Night
+7,2711,11,11,Ball State,2,Akron,true,false,false,false,11,Scheumann Stadium,Muncie,Indiana,Thursday Night
+7,2711,11,19,Central Michigan,164,Sacramento State,true,false,false,false,19,Kelly/Shorts Stadium,Mount Pleasant,Michigan,Thursday Night
+7,2711,11,20,Charlotte,65,Navy,true,false,false,false,20,McColl-Richardson Field at Jerry Richardson Stadium,Charlotte,North Carolina,Thursday Night
+7,2711,11,35,Georgia Southern,23,Coastal Carolina,true,true,false,false,35,Allen E. Paulson Stadium,Statesboro,Georgia,Thursday Night
+7,2711,11,63,Mississippi State,93,South Carolina,true,false,false,false,63,Davis Wade Stadium at Scott Field,Starkville,Mississippi,Thursday Night
+7,2711,11,68,Nevada,130,Wyoming,true,false,false,false,68,Mackay Stadium,Reno,Nevada,Thursday Night
+7,2711,11,84,Penn State,88,Rutgers,true,false,false,false,84,Beaver Stadium,University Park,Pennsylvania,Thursday Night
+7,2711,11,95,Southern Miss,50,Louisiana Monroe,true,true,false,false,95,Carlisle-Faulkner Field at M.M. Roberts Stadium,Hattiesburg,Mississippi,Thursday Night
+7,2711,11,105,Toledo,113,UMass,true,false,false,false,105,Glass Bowl,Toledo,Ohio,Thursday Night
+7,2711,11,121,Virginia,26,Duke,true,false,false,false,121,David A. Harrison III Field at Scott Stadium,Charlottesville,Virginia,Thursday Night
+7,2711,11,127,Western Kentucky,206,Delaware,true,false,false,false,127,L. T. Smith Stadium at Jimmy Feix Field,Bowling Green,Kentucky,Thursday Night
+7,2711,11,128,Western Michigan,76,Ohio,true,false,false,false,128,Waldo Stadium,Kalamazoo,Michigan,Thursday Night
+7,2711,11,132,Jacksonville State,133,Sam Houston State,true,false,false,false,132,Burgess-Snow Field at JSU Stadium,Jacksonville,Alabama,Thursday Night
+7,2711,11,149,Holy Cross,151,Lehigh,true,false,false,false,149,Fitton Field,Worcester,MA,Thursday Night
+7,2711,11,150,Lafayette,153,Georgetown,true,false,false,false,150,Fisher Stadium,Easton,PA,Thursday Night
+7,2711,11,171,Harvard,168,Cornell,true,false,false,false,171,Harvard Stadium,Cambridge,MA,Thursday Night
+7,2711,11,173,Yale,166,Brown,true,false,false,false,173,Yale Bowl,New Haven,CT,Thursday Night
+7,2711,11,175,Samford,180,Western Carolina,true,false,false,false,175,Seibert Stadium,Homewood,AL,Thursday Night
+7,2711,11,176,The Citadel,179,East Tennessee State,true,false,false,false,176,Johnson Hagood Stadium,Charleston,SC,Thursday Night
+7,2711,11,178,Chattanooga,174,Furman,true,false,false,false,178,Finley Stadium,Chattanooga,TN,Thursday Night
+7,2711,11,191,Alabama State,184,Bethune-Cookman,true,true,false,false,191,New ASU Stadium,Montgomery,AL,Thursday Night
+7,2711,11,195,Charleston Southern,146,Western Illinois,true,false,false,false,220,Buccaneer Field,Bules Creek,NC,Thursday Night
+7,2711,11,201,Tennessee Tech,177,Wofford,true,false,false,false,226,Tucker Stadium,Cookeville,TN,Thursday Night
+7,2711,11,202,UT Martin,197,Gardner-Webb,true,false,false,false,227,Graham Stadium,Martin,TN,Thursday Night
+7,2711,11,208,Hampton,224,Norfolk State,false,false,true,false,233,Armstrong Stadium,Hampton,VA,Thursday Night
+7,2711,11,212,North Carolina A&T,226,South Carolina State,false,false,true,false,237,Truist Stadium,Greensboro,NC,Thursday Night
+7,2711,11,213,Rhode Island,207,Elon,true,false,false,false,238,Meade Stadium,Kingston,RI,Thursday Night
+7,2711,11,214,Richmond,147,Bucknell,true,false,false,false,239,E. Claiborne Robins Stadium,Richmond,VA,Thursday Night
+7,2711,11,228,Duquesne,230,Mercyhurst,true,false,false,false,253,Arthur J. Rooney Athletic Field,Pittsburgh,PA,Thursday Night
+7,2711,11,229,LIU,227,Central Connecticut,true,false,false,false,254,Bethpage Federal Credit Union Stadium,Brooklyn,NY,Thursday Night
+7,2711,11,231,Robert Morris,233,Stonehill,true,false,false,false,256,Joe Walton Stadium,Moon Township,PA,Thursday Night
+7,2711,11,245,Valparaiso,235,Butler,true,false,true,false,270,Brown Field,Valparaiso,IN,Thursday Night
+7,2711,11,264,West Georgia,269,West Florida,true,false,false,false,289,University Stadium,Carrollton,GA,Thursday Night
+7,2712,12,43,Iowa State,17,BYU,true,false,false,false,43,Jack Trice Stadium,Ames,Iowa,Friday Night
+7,2712,12,44,Kansas,39,Houston,true,false,false,false,44,David Booth Kansas Memorial Stadium,Lawrence,Kansas,Friday Night
+7,2712,12,116,UTEP,90,San Jose State,true,false,false,false,116,Sun Bowl Stadium,El Paso,Texas,Friday Night
+7,2712,12,117,UTSA,94,South Florida,true,false,false,false,117,Alamodome,San Antonio,Texas,Friday Night
+7,2712,12,125,Washington State,83,Oregon State,true,false,true,false,125,Martin Stadium,Pullman,Washington,Friday Night
+7,2712,12,129,Wisconsin,84,Penn State,true,false,false,false,129,Camp Randall Stadium,Madison,Wisconsin,Friday Night
+7,2712,12,155,Cal Poly,154,UC Davis,true,false,true,false,155,Alex G. Spanos Stadium,San Luis Obispo,CA,Friday Night
+7,2712,12,157,Idaho,263,Utah Tech,true,false,false,false,157,Kibbie Dome,Moscow,ID,Friday Night
+7,2712,12,183,Grambling,186,Alcorn State,true,true,false,false,183,Eddie G. Robinson Memorial Stadium,Grambling,LA,Friday Night
+7,2712,12,187,Southern,185,Prairie View A&M,true,true,false,false,187,A.W. Mumford Stadium,Baton Rouge,LA,Friday Night
+7,2712,12,246,Houston Christian,247,Incarnate Word,true,false,false,false,271,Husky Stadium,Houston,TX,Friday Night
+7,2712,12,262,Tarleton State,258,Eastern Kentucky,true,false,false,false,287,Memorial Stadium,Stephenville,TX,Friday Night
+7,2712,12,265,Chicago State,231,Robert Morris,true,false,false,false,290,SeatGeek Stadium,Chicago,IL,Friday Night
+7,2712,12,2,Akron,164,Sacramento State,true,false,false,false,2,InfoCision Stadium-Summa Field,Akron,Ohio,Saturday Afternoon
+7,2712,12,16,Buffalo,128,Western Michigan,true,false,false,false,16,UB Stadium,Buffalo,New York,Saturday Afternoon
+7,2712,12,23,Coastal Carolina,4,Appalachian State,true,true,false,false,23,Brooks Stadium,Conway,South Carolina,Saturday Afternoon
+7,2712,12,32,Florida State,57,Miami (FL),true,false,true,false,32,Bobby Bowden Field at Doak S. Campbell Stadium,Tallahassee,Florida,Saturday Afternoon
+7,2712,12,45,Kansas State,12,Baylor,true,false,false,false,45,Bill Snyder Family Football Stadium,Manhattan,Kansas,Saturday Afternoon
+7,2712,12,49,Louisiana,8,Arkansas State,true,true,false,false,49,Cajun Field,Lafayette,Louisiana,Saturday Afternoon
+7,2712,12,53,LSU,10,Auburn,true,false,true,false,53,Tiger Stadium,Baton Rouge,Louisiana,Saturday Afternoon
+7,2712,12,60,Michigan State,82,Oregon,true,false,false,false,60,Spartan Stadium,East Lansing,Michigan,Saturday Afternoon
+7,2712,12,62,Minnesota,111,UCLA,true,false,false,false,62,TCF Bank Stadium,Minneapolis,Minnesota,Saturday Afternoon
+7,2712,12,103,Texas State,33,Fresno State,true,false,false,false,103,Jim Wacker Field at Bobcat Stadium,San Marcos,Texas,Saturday Afternoon
+7,2712,12,104,Texas Tech,79,Oklahoma State,true,false,false,false,104,Jones AT&T Stadium,Lubbock,Texas,Saturday Afternoon
+7,2712,12,105,Toledo,19,Central Michigan,true,false,false,false,105,Glass Bowl,Toledo,Ohio,Saturday Afternoon
+7,2712,12,106,Troy,51,Louisiana Tech,true,true,false,false,106,Veterans Memorial Stadium at Larry Blakeney Field,Troy,Alabama,Saturday Afternoon
+7,2712,12,113,UMass,11,Ball State,true,false,false,false,113,Warren McGuirk Alumni Stadium,Amherst,Massachusetts,Saturday Afternoon
+7,2712,12,138,Missouri State,206,Delaware,true,false,false,false,138,Robert W. Plaster Stadium,Springfield,MO,Saturday Afternoon
+7,2712,12,144,South Dakota State,142,North Dakota,true,false,false,false,144,Dana J. Dykhouse Stadium,Brookings,SD,Saturday Afternoon
+7,2712,12,149,Holy Cross,147,Bucknell,true,false,false,false,149,Fitton Field,Worcester,MA,Saturday Afternoon
+7,2712,12,176,The Citadel,177,Wofford,true,false,true,false,176,Johnson Hagood Stadium,Charleston,SC,Saturday Afternoon
+7,2712,12,182,VMI,201,Tennessee Tech,true,false,false,false,182,Foster Stadium,Lexington,VA,Saturday Afternoon
+7,2712,12,190,Florida A&M,191,Alabama State,true,true,false,false,190,Bragg Memorial Stadium,Tallahassee,FL,Saturday Afternoon
+7,2712,12,196,Eastern Illinois,146,Western Illinois,true,false,true,false,221,O'Brien Field,Charleston,IL,Saturday Afternoon
+7,2712,12,216,Towson,207,Elon,true,false,false,false,241,Johnny Unitas Stadiumn,Towson,MD,Saturday Afternoon
+7,2712,12,225,North Carolina Central,223,Morgan State,true,false,false,false,250,O'Kelly-Riddick Stadium,Durham,NC,Saturday Afternoon
+7,2712,12,230,Mercyhurst,227,Central Connecticut,true,false,false,false,255,Saxon Stadium,Erie,PA,Saturday Afternoon
+7,2712,12,243,St. Thomas,236,Davidson,true,false,false,false,268,O'Shaughnessy Stadium,Saint Paul,MN,Saturday Afternoon
+7,2712,12,251,Northwestern State,261,Stephen F. Austin,true,false,true,false,276,Harry Turpin Stadium,Natchitotches,LA,Saturday Afternoon
+7,2712,12,253,East Texas A&M,248,Lamar,true,false,false,false,278,Ernest Hawkins Field at Memorial Stadium,Commerce,TX,Saturday Afternoon
+7,2712,12,256,Austin Peay,259,North Alabama,true,false,false,false,281,Fortera Stadium,Clarksville,TN,Saturday Afternoon
+7,2712,12,24,Colorado,118,Utah,true,false,true,false,24,Folsom Field,Boulder,Colorado,Saturday Evening
+7,2712,12,47,Kentucky,93,South Carolina,true,false,false,false,47,Kroger Field at C.M. Newton Grounds,Lexington,Kentucky,Saturday Evening
+7,2712,12,55,Maryland,41,Indiana,true,false,false,false,55,Capital One Field at Maryland Stadium,College Park,Maryland,Saturday Evening
+7,2712,12,66,NC State,22,Clemson,true,false,true,false,66,Wayne Day Family Field at Carter-Finley Stadium,Raleigh,North Carolina,Saturday Evening
+7,2712,12,69,New Mexico,114,UNLV,true,false,false,false,69,Dreamstyle Stadium,Albuquerque,New Mexico,Saturday Evening
+7,2712,12,96,Stanford,52,Louisville,true,false,false,false,96,Stanford Stadium,Stanford,California,Saturday Evening
+7,2712,12,108,Tulsa,109,UAB,true,false,false,false,108,Skelly Field at H. A. Chapman Stadium,Tulsa,Oklahoma,Saturday Evening
+7,2712,12,119,Utah State,89,San Diego State,true,false,false,false,119,Merlin Olsen Field at Maverik Stadium,Logan,Utah,Saturday Evening
+7,2712,12,130,Wyoming,73,Northern Illinois,true,false,false,false,130,Jonah Field at War Memorial Stadium,Laramie,Wyoming,Saturday Evening
+7,2712,12,161,Northern Arizona,260,Southern Utah,true,false,true,false,161,Walkup Skydome,Flagstaff,AZ,Saturday Evening
+7,2712,12,165,Weber State,163,Portland State,true,false,false,false,165,Stewart Stadium,Ogden,UT,Saturday Evening
+7,2712,12,238,Drake,244,Stetson,true,false,false,false,263,Drake Stadium,Des Moines,IA,Saturday Evening
+7,2712,12,252,SE Louisiana,250,Nicholls,true,false,true,false,277,Strawberry Stadium,Hammond,LA,Saturday Evening
+7,2712,12,255,Abilene Christian,264,West Georgia,true,false,false,false,280,Anthony Field at Wildcat Stadium,Abilene,TX,Saturday Evening
+7,2712,12,14,Boston College,37,Georgia Tech,true,false,false,false,14,Alumni Stadium,Chestnut Hill,Massachusetts,Saturday Morning
+7,2712,12,29,FIU,61,Middle Tennessee,true,false,false,false,29,Riccardo Silva Stadium,Miami,Florida,Saturday Morning
+7,2712,12,81,Ole Miss,101,Texas,true,false,false,false,81,Vaught-Hemingway Stadium at Hollingsworth Field,Oxford,Mississippi,Saturday Morning
+7,2712,12,85,Pittsburgh,97,Syracuse,true,false,true,false,85,Heinz Field,Pittsburgh,Pennsylvania,Saturday Morning
+7,2712,12,127,Western Kentucky,132,Jacksonville State,true,false,false,false,127,L. T. Smith Stadium at Jimmy Feix Field,Bowling Green,Kentucky,Saturday Morning
+7,2712,12,131,James Madison,35,Georgia Southern,true,true,false,false,131,Bridgeforth Stadium,Harrisonburg,Virginia,Saturday Morning
+7,2712,12,135,Youngstown State,137,Illinois State,true,false,false,false,135,Stambaugh Stadium,Youngstown,OH,Saturday Morning
+7,2712,12,139,Murray State,140,Northern Iowa,true,false,false,false,139,Roy Stewart Stadium,Murray,KY,Saturday Morning
+7,2712,12,170,Pennsylvania,173,Yale,true,false,false,false,170,Franklin Field,Philadelphia,PA,Saturday Morning
+7,2712,12,171,Harvard,172,Princeton,true,false,true,false,171,Harvard Stadium,Cambridge,MA,Saturday Morning
+7,2712,12,197,Gardner-Webb,200,Tennessee State,true,false,false,false,222,Ernest W. Spangler Stadium,Boiling Springs,NC,Saturday Morning
+7,2712,12,202,UT Martin,199,Southeast Missouri State,true,false,false,false,227,Graham Stadium,Martin,TN,Saturday Morning
+7,2712,12,203,Albany,215,Stony Brook,true,false,true,false,228,Tom & Mary Casey Stadium,Albany,NY,Saturday Morning
+7,2712,12,204,Bryant,205,Campbell,true,false,false,false,229,Beirne Stadium,Smithfield,RI,Saturday Morning
+7,2712,12,212,North Carolina A&T,211,New Hampshire,true,false,false,false,237,Truist Stadium,Greensboro,NC,Saturday Morning
+7,2712,12,213,Rhode Island,209,Maine,true,false,false,false,238,Meade Stadium,Kingston,RI,Saturday Morning
+7,2712,12,224,Norfolk State,226,South Carolina State,true,false,false,false,249,"William ""Dick"" Price Stadium",Norfolk,VA,Saturday Morning
+7,2712,12,233,Stonehill,228,Duquesne,true,false,false,false,258,W.B. Mason Stadium,Easton,MA,Saturday Morning
+7,2712,12,240,Morehead State,239,Marist,true,false,false,false,265,Jayne Stadium,Morehead,KY,Saturday Morning
+7,2712,12,266,New Haven,229,LIU,true,false,false,false,291,Ralph F. DellaCamera Stadium,New Haven,CT,Saturday Morning
+7,2712,12,6,Arizona State,21,Cincinnati,true,false,false,false,6,"Sun Devil Stadium, Frank Kush Field",Tempe,Arizona,Saturday Night
+7,2712,12,7,Arkansas,3,Alabama,true,false,false,false,7,"Donald W. Reynolds Razorback Stadium, Frank Broyles Field",Fayetteville,Arkansas,Saturday Night
+7,2712,12,13,Boise State,25,Colorado State,true,false,false,false,13,Albertsons Stadium,Boise,Idaho,Saturday Night
+7,2712,12,18,California,91,SMU,true,false,true,false,18,California Memorial Stadium,Berkeley,California,Saturday Night
+7,2712,12,40,Illinois,124,Washington,true,false,false,false,40,Memorial Stadium,Urbana Champaign,Illinois,Saturday Night
+7,2712,12,64,Missouri,78,Oklahoma,true,false,true,false,64,Faurot Field at Memorial Stadium,Columbia,Missouri,Saturday Night
+7,2712,12,72,North Texas,107,Tulane,true,false,false,false,72,Apogee Stadium,Denton,Texas,Saturday Night
+7,2712,12,156,Eastern Washington,159,Montana,true,false,true,false,156,Roos Field,Cheney,WA,Saturday Night
+7,2712,12,189,Arkansas-Pine Bluff,192,Texas Southern,true,true,false,false,189,Simmons Bank Field,Pine Bluff,AR,Saturday Night
+7,2712,12,15,Bowling Green,46,Kent State,true,false,true,false,15,Doyt L. Perry Stadium,Bowling Green,Ohio,Thursday Night
+7,2712,12,20,Charlotte,87,Rice,true,false,false,false,20,McColl-Richardson Field at Jerry Richardson Stadium,Charlotte,North Carolina,Thursday Night
+7,2712,12,30,Florida,100,Tennessee,true,false,true,false,30,Steve Spurrier-Florida Field at Ben Hill Griffin Stadium,Gainesville,Florida,Thursday Night
+7,2712,12,31,Florida Atlantic,27,East Carolina,true,false,false,false,31,FAU Stadium,Boca Raton,Florida,Thursday Night
+7,2712,12,34,Georgia,102,Texas A&M,true,false,false,false,34,Sanford Stadium,Athens,Georgia,Thursday Night
+7,2712,12,36,Georgia State,54,Marshall,true,true,false,false,36,Georgia State Stadium,Atlanta,Georgia,Thursday Night
+7,2712,12,38,Hawaii,1,Air Force,true,false,true,false,38,Aloha Stadium,Honolulu,Hawai'i,Thursday Night
+7,2712,12,56,Memphis,9,Army,true,false,false,false,56,Liberty Bowl Memorial Stadium,Memphis,Tennessee,Thursday Night
+7,2712,12,59,Michigan,115,USC,true,false,false,false,59,Michigan Stadium,Ann Arbor,Michigan,Thursday Night
+7,2712,12,63,Mississippi State,120,Vanderbilt,true,false,false,false,63,Davis Wade Stadium at Scott Field,Starkville,Mississippi,Thursday Night
+7,2712,12,76,Ohio,28,Eastern Michigan,true,false,false,false,76,Peden Stadium,Athens,Ohio,Thursday Night
+7,2712,12,77,Ohio State,74,Northwestern,true,false,false,false,77,Ohio Stadium,Columbus,Ohio,Thursday Night
+7,2712,12,88,Rutgers,42,Iowa,true,false,false,false,88,High Point Solutions Stadium,Piscataway,New Jersey,Thursday Night
+7,2712,12,92,South Alabama,50,Louisiana Monroe,true,true,false,false,92,Ladd-Peebles Stadium,Mobile,Alabama,Thursday Night
+7,2712,12,99,Temple,65,Navy,true,false,false,false,99,Lincoln Financial Field,Philadelphia,Pennsylvania,Thursday Night
+7,2712,12,121,Virginia,71,North Carolina,true,false,true,false,121,David A. Harrison III Field at Scott Stadium,Charlottesville,Virginia,Thursday Night
+7,2712,12,123,Wake Forest,26,Duke,true,false,true,false,123,BB&T Field,Winston-Salem,North Carolina,Thursday Night
+7,2712,12,126,West Virginia,5,Arizona,true,false,false,false,126,Mountaineer Field at Milan Puskar Stadium,Morgantown,West Virginia,Thursday Night
+7,2712,12,134,Kennesaw State,48,Liberty,true,false,false,false,134,Fifth Third Bank Stadium,Kennesaw,Georgia,Thursday Night
+7,2712,12,136,Indiana State,145,South Dakota,true,false,false,false,136,Memorial Stadium,Terre Haute,IN,Thursday Night
+7,2712,12,152,Fordham,214,Richmond,true,false,false,false,152,Jack Coffey Field,Bronx,NY,Thursday Night
+7,2712,12,153,Georgetown,148,Colgate,true,false,false,false,153,Cooper Field,Washington,DC,Thursday Night
+7,2712,12,162,Northern Colorado,158,Idaho State,true,false,false,false,162,Nottingham Field,Greeley,CO,Thursday Night
+7,2712,12,167,Columbia,166,Brown,true,false,false,false,167,Lawrence A. Wien Stadium,New York,NY,Thursday Night
+7,2712,12,168,Cornell,169,Dartmouth,true,false,true,false,168,Schoellkopf Field,Ithaca,NY,Thursday Night
+7,2712,12,178,Chattanooga,179,East Tennessee State,true,false,false,false,178,Finley Stadium,Chattanooga,TN,Thursday Night
+7,2712,12,180,Western Carolina,174,Furman,true,false,false,false,180,EJ Whitmire Stadium,Cullowhee,NC,Thursday Night
+7,2712,12,181,Mercer,175,Samford,true,false,false,false,181,Five Star Stadium,Macon,GA,Thursday Night
+7,2712,12,184,Bethune-Cookman,188,Alabama A&M,true,true,false,false,184,Daytona Stadium,Daytona Beach,FL,Thursday Night
+7,2712,12,195,Charleston Southern,198,Lindenwood,true,false,false,false,220,Buccaneer Field,Bules Creek,NC,Thursday Night
+7,2712,12,217,Villanova,218,William & Mary,true,false,false,false,242,Villanova Stadium,Philadelphia,PA,Thursday Night
+7,2712,12,220,Sacred Heart,208,Hampton,true,false,false,false,245,Campus Field,Fairfield,CT,Thursday Night
+7,2712,12,221,Delaware State,222,Howard,true,false,false,false,246,Alumni Stadium,Dover,DE,Thursday Night
+7,2712,12,235,Butler,242,San Diego,true,false,false,false,260,Bud and Jackie Sellick Bowl,Indianapolis,IN,Thursday Night
+7,2712,12,237,Dayton,241,Presbyterian,true,false,false,false,262,Welcome Stadium,Dayton,OH,Thursday Night
+7,2712,12,269,West Florida,257,Central Arkansas,true,false,false,false,294,Darrell Gooden Stadium,Pensacola,FL,Thursday Night
+7,2713,13,1,Air Force,73,Northern Illinois,true,false,false,false,1,Falcon Stadium,Colorado Springs,Colorado,Friday Night
+7,2713,13,5,Arizona,45,Kansas State,true,false,false,false,5,Arizona Stadium,Tucson,Arizona,Friday Night
+7,2713,13,7,Arkansas,47,Kentucky,true,false,false,false,7,"Donald W. Reynolds Razorback Stadium, Frank Broyles Field",Fayetteville,Arkansas,Friday Night
+7,2713,13,51,Louisiana Tech,95,Southern Miss,true,true,true,false,51,JPS Field at Malone Stadium,Ruston,Louisiana,Friday Night
+7,2713,13,70,New Mexico State,29,FIU,true,false,false,false,70,Aggie Memorial Stadium,Las Cruces,New Mexico,Friday Night
+7,2713,13,74,Northwestern,88,Rutgers,true,false,false,false,74,Ryan Field,Evanston,Illinois,Friday Night
+7,2713,13,98,TCU,43,Iowa State,true,false,false,false,98,Amon G. Carter Stadium,Fort Worth,Texas,Friday Night
+7,2713,13,142,North Dakota,135,Youngstown State,true,false,false,false,142,Alerus Center,Grand Forks,ND,Friday Night
+7,2713,13,144,South Dakota State,139,Murray State,true,false,false,false,144,Dana J. Dykhouse Stadium,Brookings,SD,Friday Night
+7,2713,13,146,Western Illinois,197,Gardner-Webb,true,false,false,false,146,Hanson Field,Macomb,IL,Friday Night
+7,2713,13,242,San Diego,243,St. Thomas,true,false,false,false,267,Torero Stadium,San Diego,CA,Friday Night
+7,2713,13,3,Alabama,63,Mississippi State,true,false,false,false,3,Bryant-Denny Stadium,Tuscaloosa,Alabama,Saturday Afternoon
+7,2713,13,14,Boston College,121,Virginia,true,false,false,false,14,Alumni Stadium,Chestnut Hill,Massachusetts,Saturday Afternoon
+7,2713,13,40,Illinois,59,Michigan,true,false,false,false,40,Memorial Stadium,Urbana Champaign,Illinois,Saturday Afternoon
+7,2713,13,44,Kansas,17,BYU,true,false,false,false,44,David Booth Kansas Memorial Stadium,Lawrence,Kansas,Saturday Afternoon
+7,2713,13,71,North Carolina,123,Wake Forest,true,false,true,false,71,Kenan Memorial Stadium,Chapel Hill,North Carolina,Saturday Afternoon
+7,2713,13,86,Purdue,62,Minnesota,true,false,false,false,86,Ross-Ade Stadium,West Lafayette,Indiana,Saturday Afternoon
+7,2713,13,91,SMU,66,NC State,true,false,false,false,91,Gerald J. Ford Stadium,University Park,Texas,Saturday Afternoon
+7,2713,13,104,Texas Tech,126,West Virginia,true,false,false,false,104,Jones AT&T Stadium,Lubbock,Texas,Saturday Afternoon
+7,2713,13,115,USC,111,UCLA,true,false,true,false,115,Los Angeles Memorial Coliseum,Los Angeles,California,Saturday Afternoon
+7,2713,13,124,Washington,60,Michigan State,true,false,false,false,124,Alaska Airlines Field at Husky Stadium,Seattle,Washington,Saturday Afternoon
+7,2713,13,136,Indiana State,137,Illinois State,true,false,false,false,136,Memorial Stadium,Terre Haute,IN,Saturday Afternoon
+7,2713,13,143,North Dakota State,68,Nevada,true,false,false,false,143,Fargodome,Fargo,ND,Saturday Afternoon
+7,2713,13,166,Brown,171,Harvard,true,false,false,false,166,Brown Stadium,Providence,RI,Saturday Afternoon
+7,2713,13,226,South Carolina State,221,Delaware State,true,false,false,false,251,Oliver C. Dawson Stadium,Orangeburg,SC,Saturday Afternoon
+7,2713,13,237,Dayton,238,Drake,true,false,true,false,262,Welcome Stadium,Dayton,OH,Saturday Afternoon
+7,2713,13,246,Houston Christian,261,Stephen F. Austin,true,false,false,false,271,Husky Stadium,Houston,TX,Saturday Afternoon
+7,2713,13,258,Eastern Kentucky,264,West Georgia,true,false,false,false,283,Roy Kidd Stadium,Richmond,KY,Saturday Afternoon
+7,2713,13,64,Missouri,102,Texas A&M,true,false,false,false,64,Faurot Field at Memorial Stadium,Columbia,Missouri,Saturday Evening
+7,2713,13,84,Penn State,77,Ohio State,true,false,true,false,84,Beaver Stadium,University Park,Pennsylvania,Saturday Evening
+7,2713,13,90,San Jose State,114,UNLV,true,false,false,false,90,CEFCU Stadium,San Jose,California,Saturday Evening
+7,2713,13,107,Tulane,109,UAB,true,false,false,false,107,Barry B. Benson Field at Yulman Stadium,New Orleans,Louisiana,Saturday Evening
+7,2713,13,108,Tulsa,56,Memphis,true,false,false,false,108,Skelly Field at H. A. Chapman Stadium,Tulsa,Oklahoma,Saturday Evening
+7,2713,13,122,Virginia Tech,22,Clemson,true,false,false,false,122,Worsham Field at Lane Stadium,Blacksburg,Virginia,Saturday Evening
+7,2713,13,145,South Dakota,141,Southern Illinois,true,false,false,false,145,DakotaDome,Vermillion,SD,Saturday Evening
+7,2713,13,155,Cal Poly,263,Utah Tech,true,false,false,false,155,Alex G. Spanos Stadium,San Luis Obispo,CA,Saturday Evening
+7,2713,13,159,Montana,160,Montana State,true,false,true,false,159,Washington-Grizzly Stadium,Missoula,MT,Saturday Evening
+7,2713,13,163,Portland State,156,Eastern Washington,true,false,true,false,163,Hillsboro Stadium,Portland,OR,Saturday Evening
+7,2713,13,196,Eastern Illinois,202,UT Martin,true,false,false,false,221,O'Brien Field,Charleston,IL,Saturday Evening
+7,2713,13,198,Lindenwood,200,Tennessee State,true,false,false,false,223,Hunter STadium,St. Charles,MO,Saturday Evening
+7,2713,13,248,Lamar,250,Nicholls,true,false,false,false,273,Provost Umphrey Stadium,Beaumont,TX,Saturday Evening
+7,2713,13,253,East Texas A&M,254,UT Rio Grande Valley,true,false,false,false,278,Ernest Hawkins Field at Memorial Stadium,Commerce,TX,Saturday Evening
+7,2713,13,262,Tarleton State,259,North Alabama,true,false,false,false,287,Memorial Stadium,Stephenville,TX,Saturday Evening
+7,2713,13,27,East Carolina,20,Charlotte,true,false,false,false,27,Bagwell Field at Dowdy-Ficklen Stadium,Greenville,North Carolina,Saturday Morning
+7,2713,13,65,Navy,72,North Texas,true,false,false,false,65,Navy-Marine Corps Memorial Stadium,Annapolis,Maryland,Saturday Morning
+7,2713,13,76,Ohio,16,Buffalo,true,false,false,false,76,Peden Stadium,Athens,Ohio,Saturday Morning
+7,2713,13,94,South Florida,87,Rice,true,false,false,false,94,Raymond James Stadium,Tampa,Florida,Saturday Morning
+7,2713,13,120,Vanderbilt,10,Auburn,true,false,false,false,120,Vanderbilt Stadium,Nashville,Tennessee,Saturday Morning
+7,2713,13,174,Furman,181,Mercer,true,false,false,false,174,Paladin Stadium,Greenville,SC,Saturday Morning
+7,2713,13,179,East Tennessee State,201,Tennessee Tech,true,false,false,false,179,William B. Greene Jr. Stadium,Johnson City,TN,Saturday Morning
+7,2713,13,193,Mississippi Valley State,194,Jackson State,true,true,true,false,193,Rice-Totten Stadium,Itta Bena,MS,Saturday Morning
+7,2713,13,195,Charleston Southern,199,Southeast Missouri State,true,false,false,false,220,Buccaneer Field,Bules Creek,NC,Saturday Morning
+7,2713,13,209,Maine,211,New Hampshire,true,false,true,false,234,Harold Alfond Sports Stadium,Orono,ME,Saturday Morning
+7,2713,13,229,LIU,230,Mercyhurst,true,false,false,false,254,Bethpage Federal Credit Union Stadium,Brooklyn,NY,Saturday Morning
+7,2713,13,233,Stonehill,266,New Haven,true,false,false,false,258,W.B. Mason Stadium,Easton,MA,Saturday Morning
+7,2713,13,235,Butler,244,Stetson,true,false,false,false,260,Bud and Jackie Sellick Bowl,Indianapolis,IN,Saturday Morning
+7,2713,13,241,Presbyterian,245,Valparaiso,true,false,false,false,266,Bailey Memorial Stadium,Clinton,SC,Saturday Morning
+7,2713,13,6,Arizona State,24,Colorado,true,false,false,false,6,"Sun Devil Stadium, Frank Kush Field",Tempe,Arizona,Saturday Night
+7,2713,13,18,California,52,Louisville,true,false,false,false,18,California Memorial Stadium,Berkeley,California,Saturday Night
+7,2713,13,38,Hawaii,130,Wyoming,true,false,true,false,38,Aloha Stadium,Honolulu,Hawai'i,Saturday Night
+7,2713,13,53,LSU,34,Georgia,true,false,false,false,53,Tiger Stadium,Baton Rouge,Louisiana,Saturday Night
+7,2713,13,67,Nebraska,129,Wisconsin,true,false,true,false,67,"Memorial Stadium, Tom Osborne Field",Lincoln,Nebraska,Saturday Night
+7,2713,13,96,Stanford,97,Syracuse,true,false,false,false,96,Stanford Stadium,Stanford,California,Saturday Night
+7,2713,13,118,Utah,79,Oklahoma State,true,false,false,false,118,Rice-Eccles Stadium,Salt Lake City,Utah,Saturday Night
+7,2713,13,133,Sam Houston State,138,Missouri State,true,false,false,false,133,Bowers Stadium,Huntsville,Texas,Saturday Night
+7,2713,13,157,Idaho,158,Idaho State,true,false,true,false,157,Kibbie Dome,Moscow,ID,Saturday Night
+7,2713,13,165,Weber State,154,UC Davis,true,false,false,false,165,Stewart Stadium,Ogden,UT,Saturday Night
+7,2713,13,183,Grambling,187,Southern,true,true,true,false,183,Eddie G. Robinson Memorial Stadium,Grambling,LA,Saturday Night
+7,2713,13,249,McNeese,252,SE Louisiana,true,false,false,false,274,Cowboy Stadium,Lake Charles,LA,Saturday Night
+7,2713,13,255,Abilene Christian,269,West Florida,true,false,false,false,280,Anthony Field at Wildcat Stadium,Abilene,TX,Saturday Night
+7,2713,13,2,Akron,19,Central Michigan,true,false,false,false,2,InfoCision Stadium-Summa Field,Akron,Ohio,Thursday Night
+7,2713,13,4,Appalachian State,54,Marshall,true,true,true,false,4,Kidd Brewer Stadium,Boone,North Carolina,Thursday Night
+7,2713,13,9,Army,117,UTSA,true,false,false,false,9,Blaik Field at Michie Stadium,West Point,New York,Thursday Night
+7,2713,13,15,Bowling Green,113,UMass,true,false,false,false,15,Doyt L. Perry Stadium,Bowling Green,Ohio,Thursday Night
+7,2713,13,21,Cincinnati,39,Houston,true,false,false,false,21,Nippert Stadium,Cincinnati,Ohio,Thursday Night
+7,2713,13,30,Florida,93,South Carolina,true,false,false,false,30,Steve Spurrier-Florida Field at Ben Hill Griffin Stadium,Gainesville,Florida,Thursday Night
+7,2713,13,32,Florida State,26,Duke,true,false,false,false,32,Bobby Bowden Field at Doak S. Campbell Stadium,Tallahassee,Florida,Thursday Night
+7,2713,13,36,Georgia State,35,Georgia Southern,true,true,true,false,36,Georgia State Stadium,Atlanta,Georgia,Thursday Night
+7,2713,13,46,Kent State,58,Miami (OH),true,false,false,false,46,Dix Stadium,Kent,Ohio,Thursday Night
+7,2713,13,48,Liberty,206,Delaware,true,false,false,false,48,Arthur L. Williams Stadium,Lynchburg,Virginia,Thursday Night
+7,2713,13,49,Louisiana,50,Louisiana Monroe,true,true,true,false,49,Cajun Field,Lafayette,Louisiana,Thursday Night
+7,2713,13,55,Maryland,42,Iowa,true,false,false,false,55,Capital One Field at Maryland Stadium,College Park,Maryland,Thursday Night
+7,2713,13,57,Miami (FL),37,Georgia Tech,true,false,false,false,57,Hard Rock Stadium,Coral Gables,Florida,Thursday Night
+7,2713,13,61,Middle Tennessee,127,Western Kentucky,true,false,true,false,61,Johnny Red Floyd Stadium,Murfreesboro,Tennessee,Thursday Night
+7,2713,13,81,Ole Miss,78,Oklahoma,true,false,false,false,81,Vaught-Hemingway Stadium at Hollingsworth Field,Oxford,Mississippi,Thursday Night
+7,2713,13,92,South Alabama,106,Troy,true,true,true,false,92,Ladd-Peebles Stadium,Mobile,Alabama,Thursday Night
+7,2713,13,99,Temple,31,Florida Atlantic,true,false,false,false,99,Lincoln Financial Field,Philadelphia,Pennsylvania,Thursday Night
+7,2713,13,128,Western Michigan,105,Toledo,true,false,false,false,128,Waldo Stadium,Kalamazoo,Michigan,Thursday Night
+7,2713,13,131,James Madison,80,Old Dominion,true,true,true,false,131,Bridgeforth Stadium,Harrisonburg,Virginia,Thursday Night
+7,2713,13,132,Jacksonville State,134,Kennesaw State,true,false,false,false,132,Burgess-Snow Field at JSU Stadium,Jacksonville,Alabama,Thursday Night
+7,2713,13,147,Bucknell,217,Villanova,true,false,false,false,147,Christy Mathewson-Memorial Stadium,Lewisburg,PA,Thursday Night
+7,2713,13,148,Colgate,150,Lafayette,true,false,false,false,148,Andy Kerr Stadium,Hamilton,NY,Thursday Night
+7,2713,13,151,Lehigh,214,Richmond,true,false,false,false,151,Goodman Stadium,Bethlehem,PA,Thursday Night
+7,2713,13,161,Northern Arizona,162,Northern Colorado,true,false,false,false,161,Walkup Skydome,Flagstaff,AZ,Thursday Night
+7,2713,13,164,Sacramento State,11,Ball State,true,false,true,false,164,Hornet Stadium,Sacramento,CA,Thursday Night
+7,2713,13,169,Dartmouth,170,Pennsylvania,true,false,false,false,169,Memorial Field,Hanover,NH,Thursday Night
+7,2713,13,172,Princeton,168,Cornell,true,false,false,false,172,Princeton Stadium,Princeton,NJ,Thursday Night
+7,2713,13,173,Yale,167,Columbia,true,false,false,false,173,Yale Bowl,New Haven,CT,Thursday Night
+7,2713,13,175,Samford,178,Chattanooga,true,false,false,false,175,Seibert Stadium,Homewood,AL,Thursday Night
+7,2713,13,176,The Citadel,182,VMI,true,false,true,false,176,Johnson Hagood Stadium,Charleston,SC,Thursday Night
+7,2713,13,180,Western Carolina,177,Wofford,true,false,false,false,180,EJ Whitmire Stadium,Cullowhee,NC,Thursday Night
+7,2713,13,184,Bethune-Cookman,190,Florida A&M,true,true,true,false,184,Daytona Stadium,Daytona Beach,FL,Thursday Night
+7,2713,13,207,Elon,220,Sacred Heart,true,false,false,false,232,Rhodes Stadium,Elon,NC,Thursday Night
+7,2713,13,208,Hampton,204,Bryant,true,false,false,false,233,Armstrong Stadium,Hampton,VA,Thursday Night
+7,2713,13,210,Monmouth,215,Stony Brook,true,false,false,false,235,Kessler Field,West Long Branch,NJ,Thursday Night
+7,2713,13,216,Towson,213,Rhode Island,true,false,false,false,241,Johnny Unitas Stadiumn,Towson,MD,Thursday Night
+7,2713,13,218,William & Mary,152,Fordham,true,false,false,false,243,Water J. Zable Stadium,Williamsburg,VA,Thursday Night
+7,2713,13,222,Howard,225,North Carolina Central,true,false,false,false,247,William H. Greene Stadium,Washington,DC,Thursday Night
+7,2713,13,224,Norfolk State,223,Morgan State,true,false,false,false,249,"William ""Dick"" Price Stadium",Norfolk,VA,Thursday Night
+7,2713,13,227,Central Connecticut,265,Chicago State,true,false,false,false,252,Arute Field,New Britain,CT,Thursday Night
+7,2713,13,231,Robert Morris,228,Duquesne,true,false,false,false,256,Joe Walton Stadium,Moon Township,PA,Thursday Night
+7,2713,13,236,Davidson,240,Morehead State,true,false,false,false,261,Richardson Stadium,Davidson,NC,Thursday Night
+7,2713,13,256,Austin Peay,257,Central Arkansas,true,false,false,false,281,Fortera Stadium,Clarksville,TN,Thursday Night
+7,2714,14,19,Central Michigan,128,Western Michigan,true,false,true,false,19,Kelly/Shorts Stadium,Mount Pleasant,Michigan,Friday Night
+7,2714,14,58,Miami (OH),76,Ohio,true,false,true,false,58,Fred C. Yager Stadium,Oxford,Ohio,Friday Night
+7,2714,14,105,Toledo,15,Bowling Green,true,false,true,false,105,Glass Bowl,Toledo,Ohio,Friday Night
+7,2714,14,145,South Dakota,140,Northern Iowa,true,false,false,false,145,DakotaDome,Vermillion,SD,Friday Night
+7,2714,14,158,Idaho State,163,Portland State,true,false,false,false,158,Holt Arena,Pocatello,ID,Friday Night
+7,2714,14,161,Northern Arizona,160,Montana State,true,false,false,false,161,Walkup Skydome,Flagstaff,AZ,Friday Night
+7,2714,14,199,Southeast Missouri State,198,Lindenwood,true,false,false,false,224,Houck Stadium,Cape Girardeau,MO,Friday Night
+7,2714,14,248,Lamar,261,Stephen F. Austin,true,false,false,false,273,Provost Umphrey Stadium,Beaumont,TX,Friday Night
+7,2714,14,267,Guam,268,American Samoa,true,false,true,false,292,National Football Stadium,Mangilao,GM,Friday Night
+7,2714,14,7,Arkansas,53,LSU,true,false,true,false,7,"Donald W. Reynolds Razorback Stadium, Frank Broyles Field",Fayetteville,Arkansas,Saturday Afternoon
+7,2714,14,12,Baylor,98,TCU,true,false,true,false,12,McLane Stadium,Waco,Texas,Saturday Afternoon
+7,2714,14,31,Florida Atlantic,29,FIU,false,false,true,false,31,FAU Stadium,Boca Raton,Florida,Saturday Afternoon
+7,2714,14,44,Kansas,45,Kansas State,true,false,true,false,44,David Booth Kansas Memorial Stadium,Lawrence,Kansas,Saturday Afternoon
+7,2714,14,63,Mississippi State,81,Ole Miss,true,false,true,false,63,Davis Wade Stadium at Scott Field,Starkville,Mississippi,Saturday Afternoon
+7,2714,14,67,Nebraska,42,Iowa,true,false,true,false,67,"Memorial Stadium, Tom Osborne Field",Lincoln,Nebraska,Saturday Afternoon
+7,2714,14,96,Stanford,75,Notre Dame,false,false,true,false,96,Stanford Stadium,Stanford,California,Saturday Afternoon
+7,2714,14,100,Tennessee,120,Vanderbilt,true,false,true,false,100,Neyland Stadium,Knoxville,Tennessee,Saturday Afternoon
+7,2714,14,129,Wisconsin,62,Minnesota,true,false,true,false,129,Camp Randall Stadium,Madison,Wisconsin,Saturday Afternoon
+7,2714,14,167,Columbia,152,Fordham,false,false,true,false,167,Lawrence A. Wien Stadium,New York,NY,Saturday Afternoon
+7,2714,14,168,Cornell,166,Brown,true,false,false,false,168,Schoellkopf Field,Ithaca,NY,Saturday Afternoon
+7,2714,14,170,Pennsylvania,172,Princeton,true,false,true,false,170,Franklin Field,Philadelphia,PA,Saturday Afternoon
+7,2714,14,174,Furman,182,VMI,true,false,false,false,174,Paladin Stadium,Greenville,SC,Saturday Afternoon
+7,2714,14,185,Prairie View A&M,194,Jackson State,true,false,false,false,185,Blackshear Field,Prairie View,TX,Saturday Afternoon
+7,2714,14,193,Mississippi Valley State,183,Grambling,true,false,false,false,193,Rice-Totten Stadium,Itta Bena,MS,Saturday Afternoon
+7,2714,14,205,Campbell,216,Towson,true,false,false,false,230,Barker-Lane Stadium,Buies Creek,NC,Saturday Afternoon
+7,2714,14,208,Hampton,209,Maine,true,false,false,false,233,Armstrong Stadium,Hampton,VA,Saturday Afternoon
+7,2714,14,210,Monmouth,207,Elon,true,false,false,false,235,Kessler Field,West Long Branch,NJ,Saturday Afternoon
+7,2714,14,220,Sacred Heart,215,Stony Brook,true,false,false,false,245,Campus Field,Fairfield,CT,Saturday Afternoon
+7,2714,14,223,Morgan State,226,South Carolina State,true,false,false,false,248,Hughes Stadium,Baltimore,MD,Saturday Afternoon
+7,2714,14,243,St. Thomas,238,Drake,true,false,false,false,268,O'Shaughnessy Stadium,Saint Paul,MN,Saturday Afternoon
+7,2714,14,250,Nicholls,246,Houston Christian,true,false,false,false,275,Manning Field at John L. Guidry Stadium,Thibodaux,LA,Saturday Afternoon
+7,2714,14,251,Northwestern State,253,East Texas A&M,true,false,false,false,276,Harry Turpin Stadium,Natchitotches,LA,Saturday Afternoon
+7,2714,14,3,Alabama,10,Auburn,true,false,true,false,3,Bryant-Denny Stadium,Tuscaloosa,Alabama,Saturday Evening
+7,2714,14,5,Arizona,6,Arizona State,true,false,true,false,5,Arizona Stadium,Tucson,Arizona,Saturday Evening
+7,2714,14,13,Boise State,33,Fresno State,true,false,true,false,13,Albertsons Stadium,Boise,Idaho,Saturday Evening
+7,2714,14,40,Illinois,74,Northwestern,true,false,true,false,40,Memorial Stadium,Urbana Champaign,Illinois,Saturday Evening
+7,2714,14,68,Nevada,114,UNLV,true,false,true,false,68,Mackay Stadium,Reno,Nevada,Saturday Evening
+7,2714,14,69,New Mexico,70,New Mexico State,false,false,true,false,69,Dreamstyle Stadium,Albuquerque,New Mexico,Saturday Evening
+7,2714,14,82,Oregon,83,Oregon State,false,false,true,false,82,Autzen Stadium,Eugene,Oregon,Saturday Evening
+7,2714,14,101,Texas,102,Texas A&M,true,false,true,false,101,Darrell K Royal-Texas Memorial Stadium,Austin,Texas,Saturday Evening
+7,2714,14,118,Utah,17,BYU,true,false,true,false,118,Rice-Eccles Stadium,Salt Lake City,Utah,Saturday Evening
+7,2714,14,121,Virginia,122,Virginia Tech,true,false,true,false,121,David A. Harrison III Field at Scott Stadium,Charlottesville,Virginia,Saturday Evening
+7,2714,14,126,West Virginia,85,Pittsburgh,false,false,true,false,126,Mountaineer Field at Milan Puskar Stadium,Morgantown,West Virginia,Saturday Evening
+7,2714,14,157,Idaho,162,Northern Colorado,true,false,false,false,157,Kibbie Dome,Moscow,ID,Saturday Evening
+7,2714,14,164,Sacramento State,154,UC Davis,false,false,true,false,164,Hornet Stadium,Sacramento,CA,Saturday Evening
+7,2714,14,196,Eastern Illinois,197,Gardner-Webb,true,false,false,false,221,O'Brien Field,Charleston,IL,Saturday Evening
+7,2714,14,254,UT Rio Grande Valley,249,McNeese,true,false,false,false,279,Robert and Janet Vackar Stadium,Edinburg,TX,Saturday Evening
+7,2714,14,257,Central Arkansas,262,Tarleton State,true,false,false,false,282,Estes Stadium,Conway,AR,Saturday Evening
+7,2714,14,265,Chicago State,233,Stonehill,true,false,false,false,290,SeatGeek Stadium,Chicago,IL,Saturday Evening
+7,2714,14,2,Akron,46,Kent State,true,false,true,false,2,InfoCision Stadium-Summa Field,Akron,Ohio,Saturday Morning
+7,2714,14,9,Army,65,Navy,true,false,true,false,9,Blaik Field at Michie Stadium,West Point,New York,Saturday Morning
+7,2714,14,11,Ball State,73,Northern Illinois,false,false,true,false,11,Scheumann Stadium,Muncie,Indiana,Saturday Morning
+7,2714,14,32,Florida State,30,Florida,false,false,true,false,32,Bobby Bowden Field at Doak S. Campbell Stadium,Tallahassee,Florida,Saturday Morning
+7,2714,14,34,Georgia,37,Georgia Tech,false,false,true,false,34,Sanford Stadium,Athens,Georgia,Saturday Morning
+7,2714,14,41,Indiana,86,Purdue,true,false,true,false,41,Memorial Stadium,Bloomington,Indiana,Saturday Morning
+7,2714,14,47,Kentucky,52,Louisville,false,false,true,false,47,Kroger Field at C.M. Newton Grounds,Lexington,Kentucky,Saturday Morning
+7,2714,14,59,Michigan,77,Ohio State,true,false,true,false,59,Michigan Stadium,Ann Arbor,Michigan,Saturday Morning
+7,2714,14,60,Michigan State,84,Penn State,true,false,true,false,60,Spartan Stadium,East Lansing,Michigan,Saturday Morning
+7,2714,14,71,North Carolina,66,NC State,true,false,true,false,71,Kenan Memorial Stadium,Chapel Hill,North Carolina,Saturday Morning
+7,2714,14,88,Rutgers,55,Maryland,true,false,false,false,88,High Point Solutions Stadium,Piscataway,New Jersey,Saturday Morning
+7,2714,14,93,South Carolina,22,Clemson,false,false,true,false,93,Williams-Brice Stadium,Columbia,South Carolina,Saturday Morning
+7,2714,14,139,Murray State,136,Indiana State,true,false,false,false,139,Roy Stewart Stadium,Murray,KY,Saturday Morning
+7,2714,14,180,Western Carolina,176,The Citadel,true,false,false,false,180,EJ Whitmire Stadium,Cullowhee,NC,Saturday Morning
+7,2714,14,213,Rhode Island,204,Bryant,true,false,false,false,238,Meade Stadium,Kingston,RI,Saturday Morning
+7,2714,14,228,Duquesne,234,Wagner,true,false,false,false,253,Arthur J. Rooney Athletic Field,Pittsburgh,PA,Saturday Morning
+7,2714,14,229,LIU,231,Robert Morris,true,false,false,false,254,Bethpage Federal Credit Union Stadium,Brooklyn,NY,Saturday Morning
+7,2714,14,18,California,96,Stanford,true,false,true,false,18,California Memorial Stadium,Berkeley,California,Saturday Night
+7,2714,14,124,Washington,125,Washington State,false,false,true,false,124,Alaska Airlines Field at Husky Stadium,Seattle,Washington,Saturday Night
+7,2714,14,137,Illinois State,142,North Dakota,true,false,false,false,137,Hancock Stadium,Normal,IL,Saturday Night
+7,2714,14,141,Southern Illinois,135,Youngstown State,true,false,false,false,141,Saluki Stadium,Carbondale,IL,Saturday Night
+7,2714,14,247,Incarnate Word,252,SE Louisiana,true,false,false,false,272,Gayle and Tom Benson Stadium,San Antonio,TX,Saturday Night
+7,2714,14,4,Appalachian State,35,Georgia Southern,true,true,true,false,4,Kidd Brewer Stadium,Boone,North Carolina,Thursday Night
+7,2714,14,14,Boston College,97,Syracuse,true,false,true,false,14,Alumni Stadium,Chestnut Hill,Massachusetts,Thursday Night
+7,2714,14,16,Buffalo,113,UMass,true,false,true,false,16,UB Stadium,Buffalo,New York,Thursday Night
+7,2714,14,56,Memphis,109,UAB,true,false,true,false,56,Liberty Bowl Memorial Stadium,Memphis,Tennessee,Thursday Night
+7,2714,14,94,South Florida,110,UCF,false,false,true,false,94,Raymond James Stadium,Tampa,Florida,Thursday Night
+7,2714,14,95,Southern Miss,107,Tulane,false,false,true,false,95,Carlisle-Faulkner Field at M.M. Roberts Stadium,Hattiesburg,Mississippi,Thursday Night
+7,2714,14,103,Texas State,117,UTSA,false,false,true,false,103,Jim Wacker Field at Bobcat Stadium,San Marcos,Texas,Thursday Night
+7,2714,14,147,Bucknell,150,Lafayette,true,false,false,false,147,Christy Mathewson-Memorial Stadium,Lewisburg,PA,Thursday Night
+7,2714,14,149,Holy Cross,214,Richmond,true,false,false,false,149,Fitton Field,Worcester,MA,Thursday Night
+7,2714,14,151,Lehigh,148,Colgate,true,false,false,false,151,Goodman Stadium,Bethlehem,PA,Thursday Night
+7,2714,14,153,Georgetown,217,Villanova,true,false,false,false,153,Cooper Field,Washington,DC,Thursday Night
+7,2714,14,155,Cal Poly,260,Southern Utah,true,false,false,false,155,Alex G. Spanos Stadium,San Luis Obispo,CA,Thursday Night
+7,2714,14,169,Dartmouth,211,New Hampshire,false,false,true,false,169,Memorial Field,Hanover,NH,Thursday Night
+7,2714,14,171,Harvard,173,Yale,true,false,true,false,171,Harvard Stadium,Cambridge,MA,Thursday Night
+7,2714,14,177,Wofford,179,East Tennessee State,true,false,false,false,177,Gibbs Stadium,Spartanburg,SC,Thursday Night
+7,2714,14,181,Mercer,178,Chattanooga,true,false,false,false,181,Five Star Stadium,Macon,GA,Thursday Night
+7,2714,14,195,Charleston Southern,202,UT Martin,true,false,false,false,220,Buccaneer Field,Bules Creek,NC,Thursday Night
+7,2714,14,200,Tennessee State,146,Western Illinois,true,false,false,false,225,Hale Stadium,Nashville,TN,Thursday Night
+7,2714,14,201,Tennessee Tech,175,Samford,true,false,false,false,226,Tucker Stadium,Cookeville,TN,Thursday Night
+7,2714,14,212,North Carolina A&T,203,Albany,true,false,false,false,237,Truist Stadium,Greensboro,NC,Thursday Night
+7,2714,14,221,Delaware State,225,North Carolina Central,true,false,false,false,246,Alumni Stadium,Dover,DE,Thursday Night
+7,2714,14,222,Howard,224,Norfolk State,true,false,false,false,247,William H. Greene Stadium,Washington,DC,Thursday Night
+7,2714,14,227,Central Connecticut,266,New Haven,true,false,false,false,252,Arute Field,New Britain,CT,Thursday Night
+7,2714,14,237,Dayton,236,Davidson,true,false,false,false,262,Welcome Stadium,Dayton,OH,Thursday Night
+7,2714,14,240,Morehead State,245,Valparaiso,true,false,false,false,265,Jayne Stadium,Morehead,KY,Thursday Night
+7,2714,14,241,Presbyterian,235,Butler,true,false,false,false,266,Bailey Memorial Stadium,Clinton,SC,Thursday Night
+7,2714,14,244,Stetson,239,Marist,true,false,false,false,269,Spec Martin Memorial Stadium,DeLand,FL,Thursday Night
+7,2714,14,258,Eastern Kentucky,255,Abilene Christian,true,false,false,false,283,Roy Kidd Stadium,Richmond,KY,Thursday Night
+7,2714,14,263,Utah Tech,159,Montana,true,false,false,false,288,Greater Zion STadium,St. George,UT,Thursday Night
+7,2714,14,264,West Georgia,256,Austin Peay,true,false,false,false,289,University Stadium,Carrollton,GA,Thursday Night
+7,2714,14,269,West Florida,259,North Alabama,true,false,false,false,294,Darrell Gooden Stadium,Pensacola,FL,Thursday Night

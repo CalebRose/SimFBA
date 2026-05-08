@@ -1,0 +1,326 @@
+id,rivalry_name,trophy_name,team_one_id,team_name,team_two_id,team_name,team_one_priority,team_two_priority,is_annual_rivalry,conference_id,preferred_week,is_neutral_site,stadium_id
+1,,"Commander in Chief's Trophy",1,"Air Force",65,Navy,5,5,0,0,0,0,0
+2,,,1,"Air Force",25,"Colorado State",4,4,0,0,0,0,0
+3,,,1,"Air Force",38,Hawaii,4,4,0,11,0,0,0
+4,,"Wagon Wheel",2,Akron,46,"Kent State",5,5,1,10,14,0,0
+5,"Steel Tire",,2,Akron,135,"Youngstown State",3,5,0,0,0,0,0
+6,"Third Saturday in October",,100,Tennessee,3,Alabama,5,5,1,7,8,0,0
+7,"Iron Bowl",,3,Alabama,10,Auburn,5,5,1,7,14,0,0
+8,"Houndstooth Hoedown",,3,Alabama,84,"Penn State",1,1,0,0,0,0,0
+9,,,3,Alabama,30,Florida,2,2,0,7,0,0,0
+10,,,3,Alabama,34,Georgia,3,3,0,7,0,0,0
+11,,,3,Alabama,22,Clemson,3,3,0,0,0,0,0
+12,,,3,Alabama,37,"Georgia Tech",1,2,0,0,0,0,0
+13,"Magic City Classic",,188,"Alabama A&M",191,"Alabama State",5,5,1,19,10,0,0
+14,"Empire Clash","The Golden Apple Trophy",203,Albany,215,"Stony Brook",4,4,1,21,12,0,0
+15,"Soul Bowl",,186,"Alcorn State",194,"Jackson State",4,4,0,19,0,0,0
+16,"Deeper Than Hate",,4,"Appalachian State",35,"Georgia Southern",5,5,1,12,14,0,0
+17,"Old Mountain Feud",,4,"Appalachian State",54,Marshall,5,5,1,12,13,0,0
+18,"Battle for the Old Mountain Jug",,4,"Appalachian State",180,"Western Carolina",4,5,0,0,0,0,0
+19,"Duel in the Desert","Territorial Cup",5,Arizona,6,"Arizona State",5,5,1,5,14,0,0
+20,,,5,Arizona,69,"New Mexico",1,2,0,0,0,0,0
+21,,,7,Arkansas,104,"Texas Tech",1,1,0,0,0,0,0
+22,"Battle Line Rivalry","Battle Line Trophy",64,Missouri,7,Arkansas,2,2,1,7,11,0,0
+23,,,7,Arkansas,101,Texas,5,4,1,7,9,0,0
+24,"Southwest Classic",,7,Arkansas,102,"Texas A&M",5,5,0,7,0,0,0
+25,"Paint Bucket Bowl",,8,"Arkansas State",56,Memphis,2,1,0,0,0,0,0
+26,,,8,"Arkansas State",50,"Louisiana Monroe",4,4,1,12,4,0,0
+27,,"Commander in Chief's Trophy",9,Army,65,Navy,5,5,1,8,14,0,0
+28,,"Commander in Chief's Trophy",9,Army,1,"Air Force",5,5,1,0,3,0,0
+29,,,9,Army,75,"Notre Dame",3,2,0,0,0,0,0
+30,,,10,Auburn,30,Florida,2,2,0,7,0,0,0
+31,,,10,Auburn,100,Tennessee,2,2,0,7,0,0,0
+32,,,10,Auburn,22,Clemson,2,2,0,0,0,0,0
+33,"Deep South's Oldest Rivalry",,10,Auburn,34,Georgia,5,5,1,7,5,0,0
+34,,,10,Auburn,107,Tulane,1,2,0,0,0,0,0
+35,,"Bronze Stalk Trophy",11,"Ball State",73,"Northern Illinois",5,5,1,0,14,0,0
+36,"Blue Key Victory Bell",,11,"Ball State",136,"Indiana State",3,5,0,0,0,0,0
+37,,,12,Baylor,39,Houston,2,3,0,5,0,0,0
+38,"The Revivalry",,12,Baylor,98,TCU,5,5,1,5,14,0,0
+39,"BuTT Bowl",,12,Baylor,104,"Texas Tech",4,4,0,5,0,0,0
+40,"Battle of the Brazos",,12,Baylor,102,"Texas A&M",4,2,0,0,0,0,0
+41,,,12,Baylor,101,Texas,4,2,0,0,0,0,0
+42,"Florida Classic",,184,Bethune-Cookman,190,"Florida A&M",5,5,1,19,13,0,0
+43,,,13,"Boise State",33,"Fresno State",4,4,1,6,14,0,0
+44,,,13,"Boise State",68,Nevada,5,4,0,0,0,0,0
+45,,,13,"Boise State",157,Idaho,3,5,0,0,0,0,0
+46,,"O'Rourke-McFadden Trophy",14,"Boston College",22,Clemson,4,4,0,3,0,0,0
+47,,,14,"Boston College",85,Pittsburgh,3,3,0,3,0,0,0
+48,,,14,"Boston College",97,Syracuse,4,4,1,3,14,0,0
+49,,,14,"Boston College",122,"Virginia Tech",4,4,0,3,0,0,0
+50,,,14,"Boston College",149,"Holy Cross",1,5,0,0,0,0,0
+51,"Holy War","Ireland Trophy",14,"Boston College",75,"Notre Dame",5,4,1,0,3,0,0
+52,,,14,"Boston College",113,UMass,1,3,0,0,0,0,0
+53,,"Anniversary Award",15,"Bowling Green",46,"Kent State",5,5,1,10,12,0,0
+54,,,15,"Bowling Green",105,Toledo,4,4,1,10,14,0,0
+55,,"Governor's Cup",166,Brown,213,"Rhode Island",3,5,1,0,3,0,0
+56,,"Hoosier Helmet Trophy",235,Butler,245,Valparaiso,4,4,0,25,0,0,0
+57,"The Old Wagon Wheel",,17,BYU,119,"Utah State",3,4,0,0,0,0,0
+58,"Bear Brawl",,18,California,111,UCLA,4,4,0,0,0,0,0
+59,"Battle for the Golden Horseshoe","The Golden Horseshoe",155,"Cal Poly",154,"UC Davis",4,4,1,16,12,0,0
+60,"The Big Game","Stanford Axe",18,California,96,Stanford,5,5,1,3,14,0,0
+61,"Red Beans and Rice Bowl","50 Pound Iron Pot",257,"Central Arkansas",249,McNeese,4,4,1,0,3,0,0
+62,,"Michigan MAC Trophy",19,"Central Michigan",28,"Eastern Michigan",5,5,1,10,9,0,0
+63,,"Michigan MAC Trophy",19,"Central Michigan",128,"Western Michigan",5,5,1,10,14,0,0
+64,,,21,Cincinnati,110,UCF,3,3,0,5,0,0,0
+65,,,21,Cincinnati,126,"West Virginia",3,2,0,5,0,0,0
+66,"The Keg of Nails",,21,Cincinnati,52,Louisville,3,3,0,0,0,0,0
+67,"Victory Bell",,21,Cincinnati,58,"Miami (OH)",2,3,0,0,0,0,0
+68,,,21,Cincinnati,56,Memphis,1,1,0,0,0,0,0
+69,,,22,Clemson,32,"Florida State",4,4,0,3,0,0,0
+70,,,22,Clemson,37,"Georgia Tech",4,5,1,3,8,0,0
+71,"Textile Bowl",,22,Clemson,66,"NC State",3,4,0,3,0,0,0
+72,,,23,"Coastal Carolina",48,Liberty,5,5,0,0,0,0,0
+73,,,148,Colgate,168,Cornell,5,5,1,0,3,0,0
+74,"Rumble in the Rockies",,24,Colorado,118,Utah,4,4,1,5,12,0,0
+75,,,24,Colorado,45,"Kansas State",3,4,0,5,0,0,0
+76,"Rocky Mountain Showdown",,25,"Colorado State",24,Colorado,3,5,1,0,1,0,0
+77,"Border War",,25,"Colorado State",130,Wyoming,5,5,1,0,3,0,0
+78,,"Liberty Cup",167,Columbia,152,Fordham,2,3,1,0,14,0,0
+79,,,168,Cornell,169,Dartmouth,3,3,0,17,0,0,0
+80,,"Trustees' Cup",168,Cornell,170,Pennsylvania,3,3,0,17,0,0,0
+81,,,169,Dartmouth,171,Harvard,4,2,0,17,0,0,0
+82,"Granite Bowl",,169,Dartmouth,211,"New Hampshire",3,3,1,0,14,0,0
+83,,,237,Dayton,238,Drake,3,5,0,25,0,0,0
+84,"Battle of the Blue",,206,Delaware,217,Villanova,4,4,0,0,0,0,0
+85,,,206,Delaware,151,Lehigh,2,4,0,0,0,0,0
+86,"Route 1 Rivalry",,206,Delaware,221,"Delaware State",4,5,1,0,1,0,0
+87,,,206,Delaware,218,"William & Mary",2,3,0,0,0,0,0
+88,,,238,Drake,140,"Northern Iowa",5,5,1,0,3,0,0
+89,"Tobacco Road","Victory Bell",26,Duke,71,"North Carolina",5,5,1,3,8,0,0
+90,"Tobacco Road",,26,Duke,66,"NC State",4,4,1,3,10,0,0
+91,"Tobacco Road",,26,Duke,123,"Wake Forest",3,4,0,3,0,0,0
+92,,,27,"East Carolina",54,Marshall,2,3,0,0,0,0,0
+93,"Battle of the Bluegrass",,258,"Eastern Kentucky",127,"Western Kentucky",5,5,0,0,0,0,0
+94,,"Old Hawg Rifle",258,"Eastern Kentucky",240,"Morehead State",3,3,0,0,0,0,0
+95,,"The Dam Cup",156,"Eastern Washington",163,"Portland State",4,4,1,16,13,0,0
+96,,"The Governor's Cup",156,"Eastern Washington",159,Montana,3,3,1,16,12,0,0
+97,"Shula Bowl",,31,"Florida Atlantic",29,FIU,5,5,1,0,14,0,0
+98,,"Okefenokee Oar",30,Florida,34,Georgia,4,4,1,7,4,1,203
+99,,,30,Florida,47,Kentucky,3,4,1,7,5,0,0
+100,,,30,Florida,53,LSU,2,2,0,7,0,0,0
+101,,,30,Florida,100,Tennessee,3,3,0,7,0,0,0
+102,,,30,Florida,57,"Miami (FL)",5,5,0,0,0,0,0
+103,,,32,"Florida State",30,Florida,5,5,1,0,14,0,0
+104,,"Florida Cup",32,"Florida State",57,"Miami (FL)",5,5,1,3,12,0,0
+105,,"Jefferson-Eppes Trophy",32,"Florida State",121,Virginia,3,4,0,3,0,0,0
+106,,"Ram-Crusader Cup",152,Fordham,149,"Holy Cross",5,5,1,15,5,0,0
+107,,,33,"Fresno State",38,Hawaii,2,2,0,0,0,0,0
+108,,,33,"Fresno State",89,"San Diego State",3,3,1,6,4,0,0
+109,,,33,"Fresno State",90,"San Jose State",4,4,1,0,2,0,0
+110,,,174,Furman,177,Wofford,5,5,0,18,0,0,0
+111,,,34,Georgia,93,"South Carolina",4,4,1,7,6,0,0
+112,,,34,Georgia,100,Tennessee,3,3,0,7,0,0,0
+113,,,34,Georgia,22,Clemson,4,4,0,0,0,0,0
+114,"Clean, Old-Fashioned Hate",,34,Georgia,37,"Georgia Tech",5,5,1,0,14,0,0
+115,"Modern Day Hate",,36,"Georgia State",35,"Georgia Southern",5,5,1,12,13,0,0
+116,,,37,"Georgia Tech",122,"Virginia Tech",3,3,0,3,0,0,0
+117,"Bayou Classic",,183,Grambling,187,Southern,4,2,1,19,13,0,0
+118,"State Fair Classic",,183,Grambling,185,"Prairie View A&M",4,4,1,19,4,0,0
+119,"Battle of the Bay",,208,Hampton,224,"Norfolk State",3,3,1,0,11,0,0
+120,"The Real HU",,208,Hampton,222,Howard,5,5,1,0,3,0,0
+121,,,171,Harvard,170,Pennsylvania,2,3,0,17,0,0,0
+122,,,171,Harvard,172,Princeton,2,3,0,17,0,0,0
+123,"The Game",,171,Harvard,173,Yale,5,5,1,17,14,0,0
+124,"Dick Tomey Legacy Game",,38,Hawaii,90,"San Jose State",4,4,1,11,4,0,0
+125,,,38,Hawaii,130,Wyoming,1,1,1,11,13,0,0
+126,,,39,Houston,104,"Texas Tech",2,2,0,5,0,0,0
+127,,,39,Houston,87,Rice,2,2,0,0,0,0,0
+128,,,39,Houston,91,SMU,2,2,0,0,0,0,0
+129,,,39,Houston,108,Tulsa,2,1,0,0,0,0,0
+130,,,222,Howard,223,"Morgan State",3,3,1,23,4,0,0
+131,"Battle of the Domes","The Potato State Trophy",157,Idaho,158,"Idaho State",5,5,1,16,13,0,0
+132,,"Little Brown Stein",157,Idaho,159,Montana,3,2,1,16,8,0,0
+133,,,40,Illinois,41,Indiana,2,2,0,4,0,0,0
+134,,"Land of Lincoln Trophy",40,Illinois,74,Northwestern,5,5,1,4,14,0,0
+135,,Illibuck,40,Illinois,77,"Ohio State",3,2,0,4,0,0,0
+136,,"Purdue Cannon",40,Illinois,86,Purdue,3,3,0,4,0,0,0
+137,"Arch Rivalry",,40,Illinois,64,Missouri,1,1,0,0,0,0,0
+138,"Mid-America Classic",,137,"Illinois State",196,"Eastern Illinois",3,3,1,0,3,0,0
+139,,"Old Brass Spittoon",41,Indiana,60,"Michigan State",2,2,1,4,5,0,0
+140,,"Old Oaken Bucket",41,Indiana,86,Purdue,5,5,1,4,14,0,0
+141,,"Floyd of Rosedale",42,Iowa,62,Minnesota,5,4,1,4,7,0,0
+142,,"Heartland Trophy",129,Wisconsin,42,Iowa,4,4,1,4,10,0,0
+143,,"Cy-Hawk Trophy",42,Iowa,43,"Iowa State",5,5,1,0,2,0,0
+144,Farmageddon,,43,"Iowa State",45,"Kansas State",5,4,0,5,0,0,0
+145,,"Telephone Trophy",43,"Iowa State",64,Missouri,1,1,0,0,0,0,0
+146,"Southern Heritage Classic",,194,"Jackson State",200,"Tennessee State",4,4,1,0,3,0,0
+147,"BoomBox Classic",,194,"Jackson State",187,Southern,3,3,0,19,0,0,0
+148,,,132,"Jacksonville State",175,Samford,3,3,0,0,0,0,0
+149,"Royal Rivalry","The Crown",131,"James Madison",80,"Old Dominion",5,5,1,12,13,0,0
+150,,,131,"James Madison",206,Delaware,4,4,0,0,0,0,0
+151,,,131,"James Madison",214,Richmond,3,3,0,0,0,0,0
+152,,,131,"James Madison",218,"William & Mary",3,3,0,0,0,0,0
+153,"Sunflower Showdown",,44,Kansas,45,"Kansas State",5,5,1,5,14,0,0
+154,"Border War",,44,Kansas,64,Missouri,5,5,1,0,1,0,0
+155,,"Beer Barrel",47,Kentucky,100,Tennessee,3,2,1,7,6,0,0
+156,"Governor's Cup",,47,Kentucky,52,Louisville,5,5,1,0,14,0,0
+157,"The Rivalry",,150,Lafayette,151,Lehigh,5,5,1,15,10,0,0
+158,"Battle of the Border",,248,Lamar,249,McNeese,4,4,1,26,0,0,0
+159,"Battle on the Bayou",,49,Louisiana,50,"Louisiana Monroe",5,5,1,12,13,0,0
+160,,"Sabine Shoe",49,Louisiana,248,Lamar,2,4,0,0,0,0,0
+161,,,49,Louisiana,51,"Louisiana Tech",5,5,1,12,7,0,0
+162,,"Cajun Crown",49,Louisiana,249,McNeese,2,4,0,0,0,0,0
+163,,"Cypress Mug",49,Louisiana,252,"SE Louisiana",1,3,0,0,0,0,0
+164,,,51,"Louisiana Tech",251,"Northwestern State",2,3,0,0,0,0,0
+165,,,50,"Louisiana Monroe",51,"Louisiana Tech",5,5,1,12,8,0,0
+166,,,50,"Louisiana Monroe",251,"Northwestern State",2,4,0,0,0,0,0
+167,,"Schnellenberger Trophy",52,Louisville,57,"Miami (FL)",3,2,0,3,0,0,0
+168,,,52,Louisville,56,Memphis,3,4,0,0,0,0,0
+169,"Battle for the Golden Boot","Golden Boot",7,Arkansas,53,LSU,4,4,1,7,14,0,0
+170,"First Saturday in November",,53,LSU,3,Alabama,4,4,0,7,0,0,0
+171,"Tiger Bowl",,53,LSU,10,Auburn,4,4,0,7,0,0,0
+172,"Magnolia Bowl","Magnolia Bowl Trophy",81,"Ole Miss",53,LSU,3,3,1,7,4,0,0
+173,"Battle for the Rag","Tiger Rag",53,LSU,107,Tulane,2,4,0,0,0,0,0
+175,,,53,LSU,102,"Texas A&M",4,4,1,7,11,0,0
+176,"Battle for Brice-Cowell Musket",,209,Maine,211,"New Hampshire",5,5,1,21,13,0,0
+177,,"Friends of Coal Bowl",54,Marshall,126,"West Virginia",3,1,0,0,0,0,0
+178,"Battle for the Bell",,54,Marshall,76,Ohio,4,4,0,0,0,0,0
+179,,,55,Maryland,84,"Penn State",3,3,0,4,0,0,0
+180,"Crab Bowl Classic","The Crab Bowl",55,Maryland,65,Navy,4,4,0,0,0,0,0
+181,,,55,Maryland,121,Virginia,2,2,0,0,0,0,0
+182,,,55,Maryland,126,"West Virginia",2,2,0,0,0,0,0
+183,,,249,McNeese,251,"Northwestern State",3,3,1,26,4,0,0
+184,"Battle for the Bones",,56,Memphis,109,UAB,4,4,1,8,14,0,0
+185,"Black and Blue Bowl",,56,Memphis,95,"Southern Miss",4,4,1,0,2,0,0
+186,,,57,"Miami (FL)",122,"Virginia Tech",3,4,0,3,0,0,0
+187,"Battle of the Bricks",,58,"Miami (OH)",76,Ohio,5,5,1,10,14,0,0
+188,,"Paul Bunyan Trophy",59,Michigan,60,"Michigan State",5,5,1,4,9,0,0
+189,"The Game",,59,Michigan,77,"Ohio State",5,5,1,4,14,0,0
+190,,"Little Brown Jug",59,Michigan,62,Minnesota,4,4,0,4,0,0,0
+191,,"George Jewett Trophy",59,Michigan,74,Northwestern,1,2,0,4,0,0,0
+192,,,75,"Notre Dame",59,Michigan,5,5,1,0,5,0,0
+193,,"Land Grant Trophy",60,"Michigan State",84,"Penn State",4,3,1,4,14,0,0
+194,,"Megaphone Trophy",60,"Michigan State",75,"Notre Dame",3,2,1,0,2,0,0
+195,"100 Miles of Hate",,61,"Middle Tennessee",127,"Western Kentucky",5,5,1,9,13,0,0
+196,,"Governor's Victory Bell",62,Minnesota,84,"Penn State",1,1,0,4,0,0,0
+197,,"Paul Bunyan's Axe",129,Wisconsin,62,Minnesota,5,5,1,4,14,0,0
+198,"Egg Bowl","Golden Egg",63,"Mississippi State",81,"Ole Miss",5,5,1,7,14,0,0
+199,,"Tiger-Sooner Peace Pipe",64,Missouri,78,Oklahoma,3,3,1,7,12,0,0
+200,"Battle for Columbia","Mayor's Cup",64,Missouri,93,"South Carolina",2,2,0,7,0,0,0
+201,"Brawl of the Wild","The Great Divide Trophy",159,Montana,160,"Montana State",5,5,1,16,13,0,0
+202,"The Battle for Greater Baltimore",,223,"Morgan State",216,Towson,4,4,1,0,11,0,0
+203,,,75,"Notre Dame",65,Navy,4,2,1,0,1,0,0
+204,"Tobacco Road",,66,"NC State",123,"Wake Forest",3,4,0,3,0,0,0
+205,,"Victory Barrel",66,"NC State",27,"East Carolina",2,3,0,0,0,0,0
+206,,"Heroes Trophy",67,Nebraska,42,Iowa,5,5,1,4,14,0,0
+207,,"Victory Bell",67,Nebraska,64,Missouri,3,3,0,0,0,0,0
+208,,,67,Nebraska,44,Kansas,3,3,0,0,0,0,0
+209,,,67,Nebraska,45,"Kansas State",2,2,0,0,0,0,0
+210,,"Bison Head Trophy",24,Colorado,67,Nebraska,4,4,1,0,3,0,0
+211,,,67,Nebraska,78,Oklahoma,5,4,0,0,0,0,0
+212,,"Freedom Trophy",67,Nebraska,129,Wisconsin,3,3,1,4,13,0,0
+213,,"$5 Bits of Broken Chair Trophy",62,Minnesota,67,Nebraska,3,3,1,4,9,0,0
+214,,,67,Nebraska,57,"Miami (FL)",1,1,0,0,0,0,0
+215,,"Fremont Cannon",68,Nevada,114,UNLV,5,5,1,11,14,0,0
+216,"Colonial Clash",,211,"New Hampshire",113,UMass,5,3,0,0,0,0,0
+217,"Rio Grade Rivalry",,69,"New Mexico",70,"New Mexico State",5,5,1,0,14,0,0
+218,"NSU Challenge",,250,Nicholls,251,"Northwestern State",5,5,1,26,8,0,0
+219,"River Bell Classic",,250,Nicholls,252,"SE Louisiana",4,4,0,26,0,0,0
+220,,,212,"North Carolina A&T",225,"North Carolina Central",5,5,1,0,3,0,0
+221,"Tobacco Road",,71,"North Carolina",66,"NC State",4,5,1,3,14,0,0
+222,"South's Oldest Rivalry",,71,"North Carolina",121,Virginia,4,4,0,3,0,0,0
+223,"Tobacco Road",,71,"North Carolina",123,"Wake Forest",3,4,0,3,0,0,0
+224,,,212,"North Carolina A&T",226,"South Carolina State",4,4,1,0,11,0,0
+225,,"Nickel Trophy",142,"North Dakota",143,"North Dakota State",5,5,0,0,0,0,0
+226,,"Sitting Bull Trophy",142,"North Dakota",145,"South Dakota",4,4,1,14,8,0,0
+227,,"Dakota Marker",143,"North Dakota State",144,"South Dakota State",4,4,1,0,1,0,0
+228,"Grand Canyon Rivalry","Hinton Burdick Grand Canyon Trophy",161,"Northern Arizona",260,"Southern Utah",4,4,1,16,12,0,0
+229,,Shillelagh,74,Northwestern,75,"Notre Dame",3,2,0,0,0,0,0
+230,"Battle for Chief Caddo",,251,"Northwestern State",261,"Stephen F. Austin",3,3,1,26,12,0,0
+231,,,251,"Northwestern State",252,"SE Louisiana",5,5,1,26,7,0,0
+232,,"Shillelagh Trophy",75,"Notre Dame",86,Purdue,2,2,0,0,0,0,0
+233,,"Jeweled Shillelagh",75,"Notre Dame",115,USC,5,5,1,0,4,0,0
+234,,,77,"Ohio State",84,"Penn State",3,3,0,4,0,0,0
+235,Bedlam,,78,Oklahoma,79,"Oklahoma State",4,5,0,0,0,0,0
+236,,,79,"Oklahoma State",108,Tulsa,2,3,0,0,0,0,0
+237,,,80,"Old Dominion",224,"Norfolk State",3,5,0,0,0,0,0
+238,"Battle for the Silver Mace","Norfolk Mace",80,"Old Dominion",218,"William & Mary",2,5,0,0,0,0,0
+239,"Mid-South Rivalry",,81,"Ole Miss",56,Memphis,1,2,0,0,0,0,0
+240,,,81,"Ole Miss",107,Tulane,1,1,0,0,0,0,0
+241,"Civil War","Platypus Trophy",82,Oregon,83,"Oregon State",5,3,1,0,14,0,0
+242,"Battle for the P",,170,Pennsylvania,172,Princeton,3,2,1,17,14,0,0
+243,,,84,"Penn State",85,Pittsburgh,3,4,0,0,0,0,0
+244,,,84,"Penn State",97,Syracuse,3,3,0,0,0,0,0
+245,,,84,"Penn State",126,"West Virginia",3,4,0,0,0,0,0
+246,,,85,Pittsburgh,97,Syracuse,4,4,0,3,0,0,0
+247,"City Game",,85,Pittsburgh,228,Duquesne,1,5,0,0,0,0,0
+248,,,85,Pittsburgh,75,"Notre Dame",3,3,0,0,0,0,0
+249,"Labor Day Classic",,185,"Prairie View A&M",192,"Texas Southern",4,4,1,19,1,0,0
+250,,,172,Princeton,173,Yale,3,3,0,17,0,0,0
+251,,,213,"Rhode Island",112,UConn,4,2,0,0,0,0,0
+252,,,87,Rice,101,Texas,3,1,0,0,0,0,0
+253,,"Capital Cup",214,Richmond,218,"William & Mary",4,4,1,15,10,0,0
+254,,,214,Richmond,182,VMI,2,3,1,0,1,0,0
+255,"Causeway Classic","Causeway Trophy",164,"Sacramento State",154,"UC Davis",5,5,1,0,14,0,0
+256,"Battle of the Piney Woods",,133,"Sam Houston State",261,"Stephen F. Austin",5,5,0,0,0,0,0
+257,,,133,"Sam Houston State",103,"Texas State",4,3,0,0,0,0,0
+258,"Boulevard Brawl",,91,SMU,96,Stanford,4,3,1,3,6,0,0
+259,"Boulevard Brawl",,18,California,91,SMU,4,3,1,3,12,0,0
+260,,,91,SMU,12,Baylor,3,2,0,0,0,0,0
+261,,"Gansz Trophy",91,SMU,65,Navy,2,2,0,0,0,0,0
+262,"Safeway Bowl",,91,SMU,72,"North Texas",1,2,0,0,0,0,0
+263,,,91,SMU,87,Rice,2,2,0,0,0,0,0
+264,"Iron Skillet",,91,SMU,98,TCU,5,5,1,0,3,0,0
+265,"Battle for the Belt",,92,"South Alabama",106,Troy,5,5,1,12,13,0,0
+266,,,93,"South Carolina",100,Tennessee,4,4,0,7,0,0,0
+267,"Palmetto Bowl",,93,"South Carolina",22,Clemson,5,5,1,0,14,0,0
+268,"Carolina Clash",,93,"South Carolina",71,"North Carolina",3,3,0,0,0,0,0
+269,"South Dakota Showdown",,145,"South Dakota",144,"South Dakota State",5,5,1,14,11,0,0
+270,"Rivalry in Dixie",,51,"Louisiana Tech",95,"Southern Miss",4,4,1,12,13,0,0
+271,"Battle for the Bell",,95,"Southern Miss",107,Tulane,4,3,1,0,14,0,0
+272,"Beehive Bowl",,260,"Southern Utah",165,"Weber State",5,5,1,16,5,0,0
+273,,,96,Stanford,115,USC,3,3,0,0,0,0,0
+274,,"Legends Trophy",96,Stanford,75,"Notre Dame",5,5,1,0,14,0,0
+275,"Bill Walsh Legacy Game",,96,Stanford,90,"San Jose State",2,3,0,0,0,0,0
+276,,"Ben Schwartzwalder Trophy",97,Syracuse,126,"West Virginia",3,3,0,0,0,0,0
+277,,,97,Syracuse,148,Colgate,1,5,0,0,0,0,0
+278,,,97,Syracuse,112,UConn,3,3,0,0,0,0,0
+279,"The West Texas Championship","The Saddle Trophy",98,TCU,104,"Texas Tech",4,4,0,5,0,0,0
+280,,,98,TCU,101,Texas,4,2,0,0,0,0,0
+281,,,100,Tennessee,120,Vanderbilt,3,5,1,7,14,0,0
+282,,,100,Tennessee,37,"Georgia Tech",3,3,0,0,0,0,0
+283,,"Sgt. York Trophy",200,"Tennessee State",201,"Tennessee Tech",5,5,1,0,8,0,0
+284,,"Sgt. York Trophy",200,"Tennessee State",202,"UT Martin",5,5,1,20,10,0,0
+285,,"Sgt. York Trophy",201,"Tennessee Tech",202,"UT Martin",5,5,1,0,9,0,0
+286,,,101,Texas,104,"Texas Tech",2,3,0,0,0,0,0
+287,"Heart of Texas",,101,Texas,102,"Texas A&M",5,5,1,7,14,0,0
+288,,,102,"Texas A&M",104,"Texas Tech",1,2,0,0,0,0,0
+289,"I-35 Rivalry",,103,"Texas State",117,UTSA,5,5,1,0,14,0,0
+290,"Battle for the Paddle",,103,"Texas State",250,Nicholls,2,3,0,0,0,0,0
+291,"Military Classic of the South",,176,"The Citadel",182,VMI,5,5,1,18,13,0,0
+292,,,174,Furman,176,"The Citadel",3,3,1,18,10,0,0
+293,,"Big Dog Trophy",176,"The Citadel",177,Wofford,3,3,0,18,0,0,0
+294,"Battle for the Ol' School Bell",,106,Troy,132,"Jacksonville State",4,4,1,0,1,0,0
+295,"Battle for the Palladium",,106,Troy,61,"Middle Tennessee",4,4,0,0,0,0,0
+296,,,112,UConn,113,UMass,3,3,0,0,0,0,0
+297,,"Victory Bell",115,USC,111,UCLA,4,5,1,4,13,0,0
+298,"War on I-4",,94,"South Florida",110,UCF,5,5,1,0,14,0,0
+299,"Holy War","Beehive Boot",118,Utah,17,BYU,5,5,1,5,14,0,0
+300,"Battle of the Brothers",,118,Utah,119,"Utah State",3,5,0,0,0,0,0
+301,,,130,Wyoming,119,"Utah State",4,4,1,0,1,0,0
+302,"Battle of I-10",,116,UTEP,70,"New Mexico State",5,5,1,0,3,0,0
+303,"Commonwealth Clash","Commonwealth Cup",121,Virginia,122,"Virginia Tech",5,5,1,3,14,0,0
+304,,,121,Virginia,55,Maryland,4,4,0,0,0,0,0
+305,,,122,"Virginia Tech",182,VMI,1,5,0,0,0,0,0
+306,,,182,VMI,218,"William & Mary",3,2,1,0,3,0,0
+307,"Apple Cup","Apple Cup",124,Washington,125,"Washington State",4,5,1,0,14,0,0
+308,"Border War",,124,Washington,82,Oregon,5,5,1,4,8,0,0
+309,"Battle of the Palouse",,125,"Washington State",157,Idaho,3,5,0,0,0,0,0
+310,,"Left Behind Trophy",125,"Washington State",83,"Oregon State",4,4,1,6,12,0,0
+311,"Backyard Brawl",,126,"West Virginia",85,Pittsburgh,5,5,1,0,14,0,0
+312,,"Black Diamond Trophy",126,"West Virginia",122,"Virginia Tech",3,3,0,0,0,0,0
+313,"Battle for the Red Belt",,127,"Western Kentucky",139,"Murray State",4,4,0,0,0,0,0
+314,,"Michigan MAC Trophy",128,"Western Michigan",28,"Eastern Michigan",5,5,1,10,8,0,0
+315,"Red River Shootout",,101,Texas,78,Oklahoma,5,5,1,7,7,1,0
+316,EASTMAC,,16,Buffalo,113,UMass,5,5,1,10,14,0,0
+317,"Battle for the SAC",,11,"Ball State",164,"Sacramento State",2,5,1,10,13,0,0
+318,,,82,Oregon,115,USC,2,2,0,4,0,0,0
+319,,,52,Louisville,85,Pittsburgh,4,4,1,3,8,0,0
+320,"Battle of the Ax",,260,"Southern Utah",263,"Utah Tech",5,5,1,16,8,0,0
+321,"Yank Townsend Trophy",,173,Yale,151,Lehigh,3,3,1,0,3,0,0
+322,"The Citadel-Charleston Southern",,195,"Charleston Southern",176,"The Citadel",2,2,1,0,1,0,0
+323,"East vs West Classic",,196,"Eastern Illinois",146,"Western Illinois",4,4,1,20,12,0,0
+324,"The Orange Blossom Classic",,190,"Florida A&M",194,"Jackson State",4,4,1,19,1,0,0
+325,"Mississippi Classic",,193,"Mississippi Valley State",194,"Jackson State",4,4,1,19,13,0,0
+326,"Battle of the Pacific",,267,Guam,268,"American Samoa",5,5,1,22,14,0,0

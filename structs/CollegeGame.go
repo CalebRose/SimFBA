@@ -149,6 +149,16 @@ type WeatherResponse struct {
 	WindCategory string
 }
 
+type CFBGameRequest struct {
+	GameRequest
+	IsSpringGame bool
+}
+
+type NFLGameRequest struct {
+	GameRequest
+	IsPreseason bool
+}
+
 type GameRequest struct {
 	gorm.Model
 	HomeTeamID       uint
@@ -163,6 +173,7 @@ type GameRequest struct {
 	SeasonID         uint
 	WeekID           uint
 	Week             uint
+	Timeslot         string
 }
 
 func (g *GameRequest) Accepted() {
