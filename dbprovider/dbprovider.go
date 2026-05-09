@@ -148,6 +148,8 @@ func (p *Provider) InitDatabase() bool {
 	// db.AutoMigrate(&structs.NFLStandings{})
 	// db.AutoMigrate(&structs.NFLRequest{})
 	// db.AutoMigrate(&structs.NFLWaiverOffer{})
+	// db.AutoMigrate(&structs.NFLUDFABoard{})
+	// db.AutoMigrate(&structs.NFLUDFAProfile{})
 
 	// All
 	// db.AutoMigrate(&structs.AdminRecruitModifier{})
