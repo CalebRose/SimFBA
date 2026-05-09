@@ -122,6 +122,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/admin/trades/accept/sync/{proposalID}", controller.SyncAcceptedTrade).Methods("GET")
 	apiRouter.HandleFunc("/admin/trades/veto/sync/{proposalID}", controller.VetoAcceptedTrade).Methods("GET")
 	apiRouter.HandleFunc("/admin/trades/cleanup", controller.CleanUpRejectedTrades).Methods("GET")
+	apiRouter.HandleFunc("/admin/process-udfas", controller.ProcessUDFAs).Methods("GET")
 
 	// Bootstrap
 	apiRouter.HandleFunc("/bootstrap/teams", controller.BootstrapTeamData).Methods("GET")
@@ -424,6 +425,13 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/portal/promise/player/{playerID}/{teamID}", controller.GetPromiseByPlayerID).Methods("GET")
 	apiRouter.HandleFunc("/portal/player/scout/{id}", controller.GetScoutingDataByTransfer).Methods("GET")
 	apiRouter.HandleFunc("/portal/export/players/", controller.ExportPortalPlayersToCSV).Methods("GET")
+
+	// UDFA Controls
+
+	apiRouter.HandleFunc("/nfl/udfa/board/{teamID}", controller.GetUDFABoardByTeamID).Methods("GET")
+	apiRouter.HandleFunc("/nfl/udfa/board/add", controller.AddPlayerToUDFABoard).Methods("POST")
+	apiRouter.HandleFunc("/nfl/udfa/board/save", controller.SaveUDFABoard).Methods("POST")
+	apiRouter.HandleFunc("/nfl/udfa/board/remove/{profileID}", controller.RemovePlayerFromUDFABoard).Methods("GET")
 
 	// Discord Controls
 	apiRouter.HandleFunc("/ds/cfb/team/{teamID}/", controller.GetTeamByTeamIDForDiscord).Methods("GET")

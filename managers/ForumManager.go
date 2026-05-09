@@ -1051,3 +1051,70 @@ func buildRecruitingSyncParagraphs(season, week int, signings []string) []string
 
 	return paragraphs
 }
+
+// ─────────────────────────────────────────────
+// NFL UDFA Sync Thread
+// ─────────────────────────────────────────────
+
+// CreateNFLUDFASyncForumThread creates a system-generated forum thread in
+// the "media-simnfl" subforum summarising the signings from the UDFA period.
+func CreateNFLUDFASyncForumThread(season int, signings []string) {
+	ctx := context.Background()
+
+	title := fmt.Sprintf("SimNFL: Season %d UDFA Signings", season)
+	eventKey := fmt.Sprintf("udfa_sync:nfl:season%d", season)
+
+	paragraphs := buildNFLUDFASyncParagraphs(season, signings)
+	bodyText := strings.Join(paragraphs, "\n\n")
+	richBody := buildRichPostBody(paragraphs)
+
+	input := fbsvc.CreateForumThreadInput{
+		ForumID:           "media-simnfl",
+		ForumPath:         []string{"media", "simnfl"},
+		Title:             title,
+		AuthorUID:         "system",
+		AuthorUsername:    "SimSN",
+		AuthorDisplayName: "SimSN System",
+		CreatedByType:     fbsvc.CreatedBySystem,
+		ThreadType:        fbsvc.ThreadTypeStandard,
+		FirstPostBodyText: bodyText,
+		FirstPostBody:     richBody,
+		ReferencedLeague:  "nfl",
+		ExternalEventKey:  eventKey,
+	}
+
+	thread, err := fbsvc.CreateThread(ctx, input)
+	if err != nil {
+		log.Printf("ForumManager: failed to create NFL UDFA sync thread for season %d: %v", season, err)
+		return
+	}
+
+	log.Printf("ForumManager: created NFL UDFA sync thread %s for season %d", thread.ID, season)
+}
+
+func buildNFLUDFASyncParagraphs(season int, signings []string) []string {
+	var paragraphs []string
+
+	if len(signings) == 0 {
+		paragraphs = append(paragraphs,
+			fmt.Sprintf(
+				"The Undrafted Free Agency period has concluded for Season %d. No players were signed.",
+				season,
+			),
+		)
+	} else {
+		paragraphs = append(paragraphs,
+			fmt.Sprintf(
+				"The Undrafted Free Agency period has concluded for Season %d! The following players have signed with new teams:",
+				season,
+			),
+		)
+		for _, label := range signings {
+			paragraphs = append(paragraphs, label)
+		}
+	}
+
+	paragraphs = append(paragraphs, "Discuss the latest UDFA additions and how they fit into their new rosters below!")
+
+	return paragraphs
+}
