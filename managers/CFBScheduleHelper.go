@@ -284,6 +284,7 @@ func generateGenericRoundRobinSchedule(
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
 	playCountMap map[SchedulerHistoryKey]int,
 	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 	lockedPairs map[SchedulerHistoryKey]uint, // key -> preferred week (0 = floating)
 	conferenceGamesPerTeam int,
@@ -300,9 +301,12 @@ func generateGenericRoundRobinSchedule(
 
 	// Track how many conference games each team has been assigned this season.
 	confGameCount := make(map[uint]int)
-	// Track home-game count per team within this scheduling session so ShouldBeHome
-	// can balance home/away assignments, especially for new programs with no history.
-	homeCountMap := make(map[uint]int)
+	// Seed homeCountMap from rivalry-pass home game counts so ShouldBeHome sees
+	// correct context from the very first conference game assignment.
+	homeCountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homeCountMap[id] = count
+	}
 
 	// Pre-seed confGameCount from conference games already placed before this
 	// function runs (e.g. annual rivalry games between conference teammates that
@@ -355,7 +359,7 @@ func generateGenericRoundRobinSchedule(
 			confGameCount[away.ID]++
 		}
 		homeCountMap[home.ID]++
-		g := CreateCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -397,7 +401,7 @@ func generateGenericRoundRobinSchedule(
 			confGameCount[away.ID]++
 		}
 		homeCountMap[home.ID]++
-		g := CreateCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -459,7 +463,7 @@ func generateGenericRoundRobinSchedule(
 			confGameCount[away.ID]++
 		}
 		homeCountMap[home.ID]++
-		g := CreateCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -589,7 +593,7 @@ func rebalanceConferenceHomeAway(
 			if newHome.ID == 0 || newAway.ID == 0 {
 				continue
 			}
-			games[i] = CreateCollegeGameRecord(newHome, newAway, uint(g.Week), uint(g.SeasonID), stadiumMap, stadiumMapByID, rivalryMap)
+			games[i] = MakeCollegeGameRecord(newHome, newAway, uint(g.Week), uint(g.SeasonID), stadiumMap, stadiumMapByID, rivalryMap)
 			// Update running counts immediately so later games in this pass
 			// see the corrected state rather than the pre-swap state.
 			homeCount[homeID]--
@@ -692,7 +696,7 @@ func ValidateAndRescueConference(
 			markOpponents(home.ID, away.ID, gamesPlayedAgainstOpponentsMap)
 			confGameCount[home.ID]++
 			confGameCount[away.ID]++
-			g := CreateCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+			g := MakeCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 			rescueGames = append(rescueGames, g)
 		}
 	}

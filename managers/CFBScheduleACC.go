@@ -2,6 +2,7 @@ package managers
 
 import (
 	"math/rand/v2"
+	"sort"
 
 	"github.com/CalebRose/SimFBA/structs"
 )
@@ -72,6 +73,9 @@ func GenerateACCSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	games := []structs.CollegeGame{}
@@ -105,7 +109,12 @@ func GenerateACCSchedule(
 		}
 	}
 
-	homecountMap := make(map[uint]int)
+	// Seed homecountMap from rivalry-pass home game counts so ShouldBeHome sees
+	// correct context from the very first conference game assignment.
+	homecountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homecountMap[id] = count
+	}
 
 	// recordGame commits a game for a week that has already been secured (either by
 	// assignWeek or by an explicit free-slot check). It updates all tracking maps.
@@ -118,7 +127,7 @@ func GenerateACCSchedule(
 		homecountMap[home.ID]++
 		confGameCount[home.ID]++
 		confGameCount[away.ID]++
-		g := CreateCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -182,7 +191,7 @@ func GenerateACCSchedule(
 				continue
 			}
 			var home, away structs.CollegeTeam
-			if ShouldBeHome(eightGameTeam, oppID, season, nil, homecountMap) {
+			if ShouldBeHome(eightGameTeam, oppID, season, lastHomeMap, homecountMap) {
 				home, away = eightObj, oppObj
 			} else {
 				home, away = oppObj, eightObj
@@ -216,7 +225,7 @@ func GenerateACCSchedule(
 			continue
 		}
 		var home, away structs.CollegeTeam
-		if ShouldBeHome(key.A, key.B, season, nil, homecountMap) {
+		if ShouldBeHome(key.A, key.B, season, lastHomeMap, homecountMap) {
 			home, away = a, b
 		} else {
 			home, away = b, a
@@ -224,40 +233,21 @@ func GenerateACCSchedule(
 		recordGame(home, away, 14)
 	}
 
-	// Phase 2: Tobacco Road intra-group games (Duke, UNC, NC State, Wake Forest).
-	// Uses assignWeek to find an open slot, then recordGame to commit — avoids the
-	// emit-after-assignWeek pattern where assignWeek's pre-marking caused silent drops.
-	for i := 0; i < len(accTobaccoRoadTeams); i++ {
-		for j := i + 1; j < len(accTobaccoRoadTeams); j++ {
-			a := teamMap[accTobaccoRoadTeams[i]]
-			b := teamMap[accTobaccoRoadTeams[j]]
-			if a.ID == 0 || b.ID == 0 {
-				continue
-			}
-			if alreadyScheduled(a.ID, b.ID, gamesPlayedAgainstOpponentsMap) {
-				continue
-			}
-			if confGameCount[a.ID] >= maxGameMap[a.ID] || confGameCount[b.ID] >= maxGameMap[b.ID] {
-				continue
-			}
-			var home, away structs.CollegeTeam
-			if ShouldBeHome(a.ID, b.ID, season, nil, homecountMap) {
-				home, away = a, b
-			} else {
-				home, away = b, a
-			}
-			w := assignWeek(home.ID, away.ID, 3, 13, gamesPlayedByWeekMap)
-			if w == 0 {
-				continue
-			}
-			recordGame(home, away, w)
-		}
-	}
-
 	// Phase 3: Remaining conference games via shuffled round-robin.
+	// Tobacco Road pairs (Duke, UNC, NC State, Wake Forest) are included in the
+	// general pool here rather than in a dedicated phase, so homecountMap has
+	// proper context when their home/away is decided and Duke's assignments are
+	// naturally balanced against non-Tobacco-Road games.
 	// getRoundRobinPairs returns a randomly shuffled list, preventing ID-ordering bias.
 	ids := sortedTeamIDs(collegeTeams)
 	pairs := getRoundRobinPairs(ids)
+	// Sort by historical play count ascending so least-played pairs get priority.
+	// Stable sort preserves the shuffle order from getRoundRobinPairs within ties.
+	sort.SliceStable(pairs, func(i, j int) bool {
+		ki := makeHistoryKey(pairs[i][0], pairs[i][1])
+		kj := makeHistoryKey(pairs[j][0], pairs[j][1])
+		return playCountMap[ki] < playCountMap[kj]
+	})
 
 	for _, pair := range pairs {
 		a, b := pair[0], pair[1]
@@ -273,7 +263,7 @@ func GenerateACCSchedule(
 			continue
 		}
 		var home, away structs.CollegeTeam
-		if ShouldBeHome(a, b, season, nil, homecountMap) {
+		if ShouldBeHome(a, b, season, lastHomeMap, homecountMap) {
 			home, away = tA, tB
 		} else {
 			home, away = tB, tA
@@ -311,7 +301,7 @@ func GenerateACCSchedule(
 				continue
 			}
 			var home, away structs.CollegeTeam
-			if ShouldBeHome(teamID, oppID, season, nil, homecountMap) {
+			if ShouldBeHome(teamID, oppID, season, lastHomeMap, homecountMap) {
 				home, away = tA, tB
 			} else {
 				home, away = tB, tA

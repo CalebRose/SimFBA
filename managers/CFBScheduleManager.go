@@ -18,7 +18,7 @@ func BaseGenerateCFBSchedule(testTheData bool) {
 	collegeTeamMap := MakeCollegeTeamMap(collegeTeams)
 	collegeTeamsByConference := MakeCollegeTeamsByConference(collegeTeams)
 	allHistoricGames := GetAllCollegeGames()
-	_, _, _ = BuildScheduleHistoryMaps(allHistoricGames) // reserved for future use by sub-generators
+	playCountMap, _, lastHomeMap := BuildScheduleHistoryMaps(allHistoricGames)
 
 	stadium := GetAllStadiums()
 	stadiumMap := MakeStadiumMapByTeamID(stadium, true)
@@ -29,6 +29,11 @@ func BaseGenerateCFBSchedule(testTheData bool) {
 
 	gamesPlayedAgainstOpponentsMap := make(map[uint]map[uint]bool) // teamID -> opponentID -> bool
 	gamesPlayedByWeekMap := make(map[uint]map[uint]bool)           // teamID -> week -> bool
+	// homeCountSeedMap tracks how many times each team was the home team in the
+	// OOC rivalry pass. This is forwarded to conference generators so they can
+	// seed their homecountMap with pre-existing home game counts and avoid
+	// accidentally over-scheduling home games for teams that are already "home-heavy".
+	homeCountSeedMap := make(map[uint]int)
 
 	collegeGamesUpload := []structs.CollegeGame{}
 
@@ -65,7 +70,7 @@ func BaseGenerateCFBSchedule(testTheData bool) {
 				preferredWeek = 4
 			}
 		}
-		rivalryGame := CreateCollegeGameRecord(homeTeam, awayTeam, uint(preferredWeek), uint(ts.CollegeSeasonID), stadiumMap, stadiumMapByID, rivalryMap)
+		rivalryGame := MakeCollegeGameRecord(homeTeam, awayTeam, uint(preferredWeek), uint(ts.CollegeSeasonID), stadiumMap, stadiumMapByID, rivalryMap)
 
 		collegeGamesUpload = append(collegeGamesUpload, rivalryGame)
 		// Update nested map data structures
@@ -86,11 +91,13 @@ func BaseGenerateCFBSchedule(testTheData bool) {
 		// Use the week NUMBER (not WeekID) so conference schedulers can see these slots as occupied.
 		gamesPlayedByWeekMap[homeTeam.ID][uint(rivalryGame.Week)] = true
 		gamesPlayedByWeekMap[awayTeam.ID][uint(rivalryGame.Week)] = true
+		// Track home team for seeding conference generators' homecountMap.
+		homeCountSeedMap[homeTeam.ID]++
 	}
 
 	// Generate Conference Schedules
 
-	conferenceGames := BaseGenerateCFBConferenceSchedule(collegeTeamMap, collegeTeamsByConference, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+	conferenceGames := BaseGenerateCFBConferenceSchedule(collegeTeamMap, collegeTeamsByConference, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	collegeGamesUpload = append(collegeGamesUpload, conferenceGames...)
 
 	// Sort by week ID for easier reading in CSV output
@@ -122,7 +129,7 @@ func BaseGenerateCFBSchedule(testTheData bool) {
 // processing one conference at a time (partition approach). After each conference's
 // primary generation, a validation pass checks that every team has the expected
 // number of conference games and attempts to schedule any missing matchups.
-func BaseGenerateCFBConferenceSchedule(collegeTeamMap map[uint]structs.CollegeTeam, collegeTeamsByConference map[int][]structs.CollegeTeam, stadiumMap map[uint]structs.Stadium, stadiumMapByID map[uint]structs.Stadium, rivalryMap map[uint][]structs.CollegeRival, gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool, gamesPlayedByWeekMap map[uint]map[uint]bool, ts structs.Timestamp) []structs.CollegeGame {
+func BaseGenerateCFBConferenceSchedule(collegeTeamMap map[uint]structs.CollegeTeam, collegeTeamsByConference map[int][]structs.CollegeTeam, stadiumMap map[uint]structs.Stadium, stadiumMapByID map[uint]structs.Stadium, rivalryMap map[uint][]structs.CollegeRival, gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool, gamesPlayedByWeekMap map[uint]map[uint]bool, playCountMap map[SchedulerHistoryKey]int, lastHomeMap map[uint]map[uint]bool, homeCountSeedMap map[uint]int, ts structs.Timestamp) []structs.CollegeGame {
 	allConferenceGames := []structs.CollegeGame{}
 	// IDs 22 and 13 are excluded because these are independent conferences
 	// 3=ACC, 4=Big Ten, 5=Big 12, 6=Pac-12, 7=SEC, 8=AAC, 9=C-USA, 10=MAC,
@@ -174,7 +181,7 @@ func BaseGenerateCFBConferenceSchedule(collegeTeamMap map[uint]structs.CollegeTe
 				oppClone := deepCopyBoolMap(gamesPlayedAgainstOpponentsMap)
 				weekClone := deepCopyBoolMap(gamesPlayedByWeekMap)
 
-				cGames := dispatchConferenceGenerator(conferenceID, seed, teams, stadiumMap, stadiumMapByID, rivalryMap, oppClone, weekClone, ts)
+				cGames := dispatchConferenceGenerator(conferenceID, seed, teams, stadiumMap, stadiumMapByID, rivalryMap, oppClone, weekClone, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 				if len(cGames) == 0 {
 					// Generator returned empty slice — signals a failed attempt (e.g. ACC 8-game
 					// asymmetry unresolvable, or Big Ten week-exhaustion). Decrement seed so the
@@ -224,7 +231,7 @@ func BaseGenerateCFBConferenceSchedule(collegeTeamMap map[uint]structs.CollegeTe
 			}
 		} else {
 			// --- Large conference: single pass ---
-			confGames := dispatchConferenceGenerator(conferenceID, 0, teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+			confGames := dispatchConferenceGenerator(conferenceID, 0, teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 			allConferenceGames = append(allConferenceGames, confGames...)
 
 			rescueGames, missing := ValidateAndRescueConference(
@@ -254,39 +261,40 @@ func BaseGenerateCFBConferenceSchedule(collegeTeamMap map[uint]structs.CollegeTe
 	// untouched.  Swapped pairs are rebuilt with the new home team's stadium
 	// and timeslot.
 	// Rerun a few more times to achieve better balance, as each pass may only fix some of the imbalances.
-	for i := 0; i < 25; i++ {
-		allConferenceGames = rebalanceConferenceHomeAway(allConferenceGames, collegeTeamMap, stadiumMap, stadiumMapByID, rivalryMap)
-	}
+	// Commenting out for now as it can cause issues with certain conferences (e.g. Big Ten) where the conference generator is already struggling to find any valid schedule, and the rebalance pass can break some of the delicate balance achieved by the conference generator's retry loop.
+	// for i := 0; i < 25; i++ {
+	// 	allConferenceGames = rebalanceConferenceHomeAway(allConferenceGames, collegeTeamMap, stadiumMap, stadiumMapByID, rivalryMap)
+	// }
 
 	return allConferenceGames
 }
 
 // dispatchConferenceGenerator routes a conference ID to its dedicated scheduler.
 // retrySeed is forwarded to small-conference generators to vary pair ordering on retry.
-func dispatchConferenceGenerator(conferenceID int, retrySeed uint, teams []structs.CollegeTeam, stadiumMap map[uint]structs.Stadium, stadiumMapByID map[uint]structs.Stadium, rivalryMap map[uint][]structs.CollegeRival, gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool, gamesPlayedByWeekMap map[uint]map[uint]bool, ts structs.Timestamp) []structs.CollegeGame {
+func dispatchConferenceGenerator(conferenceID int, retrySeed uint, teams []structs.CollegeTeam, stadiumMap map[uint]structs.Stadium, stadiumMapByID map[uint]structs.Stadium, rivalryMap map[uint][]structs.CollegeRival, gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool, gamesPlayedByWeekMap map[uint]map[uint]bool, playCountMap map[SchedulerHistoryKey]int, lastHomeMap map[uint]map[uint]bool, homeCountSeedMap map[uint]int, ts structs.Timestamp) []structs.CollegeGame {
 	switch conferenceID {
 	case 3:
-		return GenerateACCSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateACCSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	case 4:
-		return GenerateBigTenSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateBigTenSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	case 5:
-		return GenerateBigTwelveSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateBigTwelveSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	case 6:
-		return GeneratePacTwelveSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GeneratePacTwelveSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	case 7:
-		return GenerateSECSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateSECSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	case 8:
-		return GenerateAACSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateAACSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	case 9:
-		return GenerateCUSASchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateCUSASchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	// case 10:
-	// 	return GenerateMACSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+	// 	return GenerateMACSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	case 11:
-		return GenerateMWCSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateMWCSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	case 12:
-		return GenerateSunBeltSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateSunBeltSchedule(teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	default:
-		return GenerateSmallConferenceSchedule(conferenceID, retrySeed, teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateSmallConferenceSchedule(conferenceID, retrySeed, teams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	}
 }
 
@@ -320,7 +328,7 @@ func logConferenceGameCountIssues(conferenceID int, expected int, teams []struct
 }
 
 // Helper functions
-func CreateCollegeGameRecord(homeTeam structs.CollegeTeam, awayTeam structs.CollegeTeam, week uint, seasonID uint, stadiumMap map[uint]structs.Stadium, stadiumMapByID map[uint]structs.Stadium, rivalryMap map[uint][]structs.CollegeRival) structs.CollegeGame {
+func MakeCollegeGameRecord(homeTeam structs.CollegeTeam, awayTeam structs.CollegeTeam, week uint, seasonID uint, stadiumMap map[uint]structs.Stadium, stadiumMapByID map[uint]structs.Stadium, rivalryMap map[uint][]structs.CollegeRival) structs.CollegeGame {
 	homeStadium := stadiumMap[homeTeam.ID]
 	rivalry := rivalryMap[homeTeam.ID]
 	weekPlayed := week

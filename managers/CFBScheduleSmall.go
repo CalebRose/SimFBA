@@ -140,6 +140,9 @@ func GenerateSWACSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	games := []structs.CollegeGame{}
@@ -147,9 +150,11 @@ func GenerateSWACSchedule(
 	seasonID := uint(ts.CollegeSeasonID)
 
 	teamMap := buildTeamMapFromSlice(collegeTeams)
-	homecountMap := make(map[uint]int)
-
-	// SWAC locked intra-conference matchups
+	// Seed homecountMap from rivalry-pass home game counts.
+	homecountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homecountMap[id] = count
+	}
 	swacLocked := []struct {
 		key  SchedulerHistoryKey
 		week uint
@@ -189,7 +194,7 @@ func GenerateSWACSchedule(
 		markWeek(home.ID, away.ID, l.week, gamesPlayedByWeekMap)
 		markOpponents(home.ID, away.ID, gamesPlayedAgainstOpponentsMap)
 		homecountMap[home.ID]++
-		g := CreateCollegeGameRecord(home, away, l.week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, l.week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -203,7 +208,7 @@ func GenerateSWACSchedule(
 		markWeek(home.ID, away.ID, week, gamesPlayedByWeekMap)
 		markOpponents(home.ID, away.ID, gamesPlayedAgainstOpponentsMap)
 		homecountMap[home.ID]++
-		g := CreateCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -301,10 +306,13 @@ func GenerateSmallConferenceSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	if conferenceID == 19 {
-		return GenerateSWACSchedule(collegeTeams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, ts)
+		return GenerateSWACSchedule(collegeTeams, stadiumMap, stadiumMapByID, rivalryMap, gamesPlayedAgainstOpponentsMap, gamesPlayedByWeekMap, playCountMap, lastHomeMap, homeCountSeedMap, ts)
 	}
 
 	gamesPerTeam, ok := smallConfGameCount[conferenceID]
@@ -327,8 +335,9 @@ func GenerateSmallConferenceSchedule(
 		rivalryMap,
 		gamesPlayedAgainstOpponentsMap,
 		gamesPlayedByWeekMap,
-		nil, // playCountMap
-		nil, // lastHomeMap
+		playCountMap,
+		lastHomeMap,
+		homeCountSeedMap,
 		ts,
 		lockedSet,
 		gamesPerTeam,

@@ -51,6 +51,9 @@ func GenerateAACSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	games := []structs.CollegeGame{}
@@ -59,7 +62,11 @@ func GenerateAACSchedule(
 
 	teamMap := buildTeamMapFromSlice(collegeTeams)
 
-	homecountMap := make(map[uint]int)
+	// Seed homecountMap from rivalry-pass home game counts.
+	homecountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homecountMap[id] = count
+	}
 
 	emit := func(home, away structs.CollegeTeam, week uint) {
 		if home.ID == 0 || away.ID == 0 {
@@ -77,7 +84,7 @@ func GenerateAACSchedule(
 		markWeek(home.ID, away.ID, week, gamesPlayedByWeekMap)
 		markOpponents(home.ID, away.ID, gamesPlayedAgainstOpponentsMap)
 		homecountMap[home.ID]++
-		g := CreateCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -164,7 +171,7 @@ func GenerateAACSchedule(
 		homecountMap[home.ID]++
 		confGameCount[home.ID]++
 		confGameCount[away.ID]++
-		g := CreateCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 

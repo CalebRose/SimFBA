@@ -154,6 +154,25 @@ func NotifyTeamInjury(ctx context.Context, input TeamInjuryNotificationInput) er
 	})
 }
 
+// NotifyScheduleEvent notifies a coach or owner about a game-request lifecycle
+// event such as acceptance, rejection, or an admin veto.  Idempotent via SourceEventKey.
+func NotifyScheduleEvent(ctx context.Context, input ScheduleEventNotificationInput) error {
+	if len(input.RecipientUIDs) == 0 {
+		return nil
+	}
+	linkTo := BuildTeamRosterRoute(input.League, input.TeamID)
+
+	return writeNotificationsIfNew(ctx, input.RecipientUIDs, ForumNotification{
+		Type:           NotificationTypeSystem,
+		Domain:         input.Domain,
+		LinkTo:         linkTo,
+		Message:        input.Message,
+		ActorUsername:  "SimSN",
+		IsRead:         false,
+		SourceEventKey: input.SourceEventKey,
+	})
+}
+
 // NotifyRecruitSigned creates one notification document per recipient when a
 // recruit commits to a team.  Idempotent via SourceEventKey.
 func NotifyRecruitSigned(ctx context.Context, input RecruitSignedNotificationInput) error {

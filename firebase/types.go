@@ -202,6 +202,17 @@ type CreateForumThreadInput struct {
 	Metadata         map[string]interface{}
 }
 
+// ScheduleEventNotificationInput carries the context needed to notify a coach or
+// owner about a game-request lifecycle event (accepted, rejected, vetoed).
+type ScheduleEventNotificationInput struct {
+	League         string
+	Domain         string // e.g. DomainCFB, DomainNFL
+	TeamID         uint
+	Message        string // fully-formed message from the caller
+	RecipientUIDs  []string
+	SourceEventKey string
+}
+
 // PlayerInjuryNotificationInput carries the context needed to build injury notifications.
 type PlayerInjuryNotificationInput struct {
 	League         string

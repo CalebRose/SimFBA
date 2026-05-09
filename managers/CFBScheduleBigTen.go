@@ -1,6 +1,8 @@
 package managers
 
 import (
+	"sort"
+
 	"github.com/CalebRose/SimFBA/structs"
 )
 
@@ -71,6 +73,9 @@ func GenerateBigTenSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	games := []structs.CollegeGame{}
@@ -97,7 +102,12 @@ func GenerateBigTenSchedule(
 		}
 	}
 
-	homecountMap := make(map[uint]int)
+	// Seed homecountMap from rivalry-pass home game counts so ShouldBeHome sees
+	// correct context from the very first conference game assignment.
+	homecountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homecountMap[id] = count
+	}
 
 	// recordGame commits a game and updates all tracking maps.
 	recordGame := func(home, away structs.CollegeTeam, week uint) {
@@ -106,7 +116,7 @@ func GenerateBigTenSchedule(
 		homecountMap[home.ID]++
 		confGameCount[home.ID]++
 		confGameCount[away.ID]++
-		g := CreateCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -132,7 +142,7 @@ func GenerateBigTenSchedule(
 			continue
 		}
 		var home, away structs.CollegeTeam
-		if ShouldBeHome(r.key.A, r.key.B, season, nil, homecountMap) {
+		if ShouldBeHome(r.key.A, r.key.B, season, lastHomeMap, homecountMap) {
 			home, away = a, b
 		} else {
 			home, away = b, a
@@ -158,7 +168,7 @@ func GenerateBigTenSchedule(
 			continue
 		}
 		var home, away structs.CollegeTeam
-		if ShouldBeHome(r.key.A, r.key.B, season, nil, homecountMap) {
+		if ShouldBeHome(r.key.A, r.key.B, season, lastHomeMap, homecountMap) {
 			home, away = a, b
 		} else {
 			home, away = b, a
@@ -170,6 +180,13 @@ func GenerateBigTenSchedule(
 	// getRoundRobinPairs returns a randomly shuffled list, preventing ID-ordering bias.
 	ids := sortedTeamIDs(collegeTeams)
 	pairs := getRoundRobinPairs(ids)
+	// Sort by historical play count ascending so least-played pairs get priority.
+	// Stable sort preserves the shuffle order from getRoundRobinPairs within ties.
+	sort.SliceStable(pairs, func(i, j int) bool {
+		ki := makeHistoryKey(pairs[i][0], pairs[i][1])
+		kj := makeHistoryKey(pairs[j][0], pairs[j][1])
+		return playCountMap[ki] < playCountMap[kj]
+	})
 
 	for _, pair := range pairs {
 		a, b := pair[0], pair[1]
@@ -189,7 +206,7 @@ func GenerateBigTenSchedule(
 			continue
 		}
 		var home, away structs.CollegeTeam
-		if ShouldBeHome(a, b, season, nil, homecountMap) {
+		if ShouldBeHome(a, b, season, lastHomeMap, homecountMap) {
 			home, away = tA, tB
 		} else {
 			home, away = tB, tA
@@ -233,7 +250,7 @@ func GenerateBigTenSchedule(
 				continue
 			}
 			var home, away structs.CollegeTeam
-			if ShouldBeHome(teamID, oppID, season, nil, homecountMap) {
+			if ShouldBeHome(teamID, oppID, season, lastHomeMap, homecountMap) {
 				home, away = tA, tB
 			} else {
 				home, away = tB, tA

@@ -35,6 +35,9 @@ func GenerateMWCSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	lockedSet := make(map[SchedulerHistoryKey]uint)
@@ -49,8 +52,9 @@ func GenerateMWCSchedule(
 		rivalryMap,
 		gamesPlayedAgainstOpponentsMap,
 		gamesPlayedByWeekMap,
-		nil, // playCountMap — no history needed for simple rotation
-		nil, // lastHomeMap
+		playCountMap,
+		lastHomeMap,
+		homeCountSeedMap,
 		ts,
 		lockedSet,
 		8,     // games per team

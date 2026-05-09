@@ -38,6 +38,9 @@ func GeneratePacTwelveSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	games := []structs.CollegeGame{}
@@ -50,7 +53,11 @@ func GeneratePacTwelveSchedule(
 		lockedSet[l.key] = l.week
 	}
 
-	homecountMap := make(map[uint]int)
+	// Seed homecountMap from rivalry-pass home game counts.
+	homecountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homecountMap[id] = count
+	}
 
 	emit := func(home, away structs.CollegeTeam, week uint) {
 		if home.ID == 0 || away.ID == 0 {
@@ -68,7 +75,7 @@ func GeneratePacTwelveSchedule(
 		markWeek(home.ID, away.ID, week, gamesPlayedByWeekMap)
 		markOpponents(home.ID, away.ID, gamesPlayedAgainstOpponentsMap)
 		homecountMap[home.ID]++
-		g := CreateCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -120,7 +127,7 @@ func GeneratePacTwelveSchedule(
 			}
 			markOpponents(home.ID, away.ID, gamesPlayedAgainstOpponentsMap)
 			homecountMap[home.ID]++
-			g := CreateCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+			g := MakeCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 			games = append(games, g)
 		}
 	}

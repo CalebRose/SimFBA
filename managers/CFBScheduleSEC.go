@@ -2,6 +2,7 @@ package managers
 
 import (
 	"math/rand/v2"
+	"sort"
 
 	"github.com/CalebRose/SimFBA/structs"
 )
@@ -126,6 +127,9 @@ func GenerateSECSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	games := []structs.CollegeGame{}
@@ -135,7 +139,12 @@ func GenerateSECSchedule(
 
 	teamMap := buildTeamMapFromSlice(collegeTeams)
 
-	homecountMap := make(map[uint]int)
+	// Seed homecountMap from rivalry-pass home game counts so ShouldBeHome sees
+	// correct context from the very first conference game assignment.
+	homecountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homecountMap[id] = count
+	}
 
 	// Pre-seed confGameCount from any conference games already placed before this
 	// generator runs (e.g. annual rivalry games from the rivalry pass).
@@ -160,7 +169,7 @@ func GenerateSECSchedule(
 		homecountMap[home.ID]++
 		confGameCount[home.ID]++
 		confGameCount[away.ID]++
-		g := CreateCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 
@@ -205,7 +214,7 @@ func GenerateSECSchedule(
 			continue
 		}
 		var home, away structs.CollegeTeam
-		if ShouldBeHome(key.A, key.B, season, nil, homecountMap) {
+		if ShouldBeHome(key.A, key.B, season, lastHomeMap, homecountMap) {
 			home, away = a, b
 		} else {
 			home, away = b, a
@@ -269,6 +278,11 @@ func GenerateSECSchedule(
 	rand.Shuffle(len(flexPairSlice), func(i, j int) {
 		flexPairSlice[i], flexPairSlice[j] = flexPairSlice[j], flexPairSlice[i]
 	})
+	// Sort by historical play count ascending so least-played flex pairs get priority.
+	// Stable sort preserves the shuffle order within ties.
+	sort.SliceStable(flexPairSlice, func(i, j int) bool {
+		return playCountMap[flexPairSlice[i]] < playCountMap[flexPairSlice[j]]
+	})
 
 	for _, key := range flexPairSlice {
 		aID, bID := key.A, key.B
@@ -284,7 +298,7 @@ func GenerateSECSchedule(
 			continue
 		}
 		var home, away structs.CollegeTeam
-		if ShouldBeHome(aID, bID, season, nil, homecountMap) {
+		if ShouldBeHome(aID, bID, season, lastHomeMap, homecountMap) {
 			home, away = tA, tB
 		} else {
 			home, away = tB, tA
@@ -323,7 +337,7 @@ func GenerateSECSchedule(
 				continue
 			}
 			var home, away structs.CollegeTeam
-			if ShouldBeHome(teamID, oppID, season, nil, homecountMap) {
+			if ShouldBeHome(teamID, oppID, season, lastHomeMap, homecountMap) {
 				home, away = tA, tB
 			} else {
 				home, away = tB, tA

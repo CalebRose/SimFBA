@@ -324,6 +324,9 @@ func GenerateBigTwelveSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	games := []structs.CollegeGame{}
@@ -333,7 +336,11 @@ func GenerateBigTwelveSchedule(
 
 	teamMap := buildTeamMapFromSlice(collegeTeams)
 	confGameCount := make(map[uint]int)
-	homecountMap := make(map[uint]int)
+	// Seed homecountMap from rivalry-pass home game counts.
+	homecountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homecountMap[id] = count
+	}
 
 	// Build Big 12 team set and pre-seed confGameCount from any games already placed.
 	var allBig12IDs []uint
@@ -365,7 +372,7 @@ func GenerateBigTwelveSchedule(
 		homecountMap[home.ID]++
 		confGameCount[home.ID]++
 		confGameCount[away.ID]++
-		g := CreateCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+		g := MakeCollegeGameRecord(home, away, week, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 		games = append(games, g)
 	}
 

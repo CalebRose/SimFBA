@@ -11,6 +11,54 @@ import (
 	"github.com/CalebRose/SimFBA/util"
 )
 
+func SwapCFBGameHomeAndAwayTeams(gameID string) {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+
+	game := GetCollegeGameByGameID(gameID)
+	if game.IsNeutral || game.WeekID < ts.CollegeWeekID {
+		return
+	}
+
+	homeTeamID := game.HomeTeamID
+	homeTeam := game.HomeTeam
+	homeTeamCoach := game.HomeTeamCoach
+	awayTeamID := game.AwayTeamID
+	awayTeam := game.AwayTeam
+	awayTeamCoach := game.AwayTeamCoach
+
+	// Strings for Home Team & Away Team
+	awayTeamIDStr := strconv.Itoa(int(awayTeamID))
+
+	// Get Away Team Arena by Away Team ID
+	awayTeamData := GetTeamByTeamID(awayTeamIDStr)
+	stadiumID := awayTeamData.StadiumID
+	stadium := awayTeamData.Stadium
+	city := awayTeamData.City
+	state := awayTeamData.State
+
+	stadiumData := GetStadiumByStadiumID(strconv.Itoa(int(stadiumID)))
+	isDomed := stadiumData.IsDomed
+
+	// Update Game with new Home and Away Teams
+	game.HomeTeamID = awayTeamID
+	game.HomeTeam = awayTeam
+	game.HomeTeamCoach = awayTeamCoach
+	game.AwayTeamID = homeTeamID
+	game.AwayTeam = homeTeam
+	game.AwayTeamCoach = homeTeamCoach
+	game.StadiumID = stadiumID
+	game.Stadium = stadium
+	game.City = city
+	game.State = state
+	game.IsDomed = isDomed
+
+	repository.SaveCFBGameRecord(game, db)
+
+	// Generate Weather
+	GenerateWeatherForGames()
+}
+
 func GetCollegeGamesByWeekIdAndSeasonID(WeekID string, SeasonID string) []structs.CollegeGame {
 	db := dbprovider.GetInstance().GetDB()
 

@@ -197,6 +197,19 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/games/result/nfl/{gameID}", controller.GetNFLGameResultsByGameID).Methods("GET")
 	apiRouter.HandleFunc("/games/export/results/{seasonID}/{weekID}/{nflWeekID}/{timeslot}", controller.ExportCFBGameResults).Methods("GET")
 
+	// Game Request Controls - CFB
+	apiRouter.HandleFunc("/cfb/schedule/game/request/create", controller.CreateCFBGameRequest).Methods("POST")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/accept/{requestID}", controller.AcceptCFBGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/reject/{requestID}", controller.RejectCFBGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/process/{requestID}", controller.ProcessCFBGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/veto/{requestID}", controller.VetoCFBGameRequest).Methods("GET")
+	// Game Request Controls - NFL
+	apiRouter.HandleFunc("/nfl/schedule/game/request/create", controller.CreateNFLGameRequest).Methods("POST")
+	apiRouter.HandleFunc("/nfl/schedule/game/request/accept/{requestID}", controller.AcceptNFLGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/nfl/schedule/game/request/reject/{requestID}", controller.RejectNFLGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/nfl/schedule/game/request/process/{requestID}", controller.ProcessNFLGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/nfl/schedule/game/request/veto/{requestID}", controller.VetoNFLGameRequest).Methods("GET")
+
 	// Gameplan Controls
 	apiRouter.HandleFunc("/gameplan/college/team/{teamID}/", controller.GetTeamGameplanByTeamID).Methods("GET")
 	apiRouter.HandleFunc("/gameplan/college/ai/update/", controller.DetermineAIGameplan).Methods("GET")

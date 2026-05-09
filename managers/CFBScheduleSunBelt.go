@@ -24,6 +24,9 @@ func GenerateSunBeltSchedule(
 	rivalryMap map[uint][]structs.CollegeRival,
 	gamesPlayedAgainstOpponentsMap map[uint]map[uint]bool,
 	gamesPlayedByWeekMap map[uint]map[uint]bool,
+	playCountMap map[SchedulerHistoryKey]int,
+	lastHomeMap map[uint]map[uint]bool,
+	homeCountSeedMap map[uint]int,
 	ts structs.Timestamp,
 ) []structs.CollegeGame {
 	games := []structs.CollegeGame{}
@@ -32,7 +35,11 @@ func GenerateSunBeltSchedule(
 
 	teamMap := buildTeamMapFromSlice(collegeTeams)
 
-	homecountMap := make(map[uint]int)
+	// Seed homecountMap from rivalry-pass home game counts.
+	homecountMap := make(map[uint]int, len(homeCountSeedMap))
+	for id, count := range homeCountSeedMap {
+		homecountMap[id] = count
+	}
 
 	scheduleDiv := func(div []uint) {
 		for i := 0; i < len(div); i++ {
@@ -62,7 +69,7 @@ func GenerateSunBeltSchedule(
 				}
 				markOpponents(home.ID, away.ID, gamesPlayedAgainstOpponentsMap)
 				homecountMap[home.ID]++
-				g := CreateCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+				g := MakeCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 				games = append(games, g)
 			}
 		}
@@ -111,7 +118,7 @@ func GenerateSunBeltSchedule(
 			crossProcessed[key] = true
 			markOpponents(home.ID, away.ID, gamesPlayedAgainstOpponentsMap)
 			homecountMap[home.ID]++
-			g := CreateCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
+			g := MakeCollegeGameRecord(home, away, w, seasonID, stadiumMap, stadiumMapByID, rivalryMap)
 			games = append(games, g)
 		}
 	}
