@@ -78,6 +78,8 @@ type BootstrapDataScheduling struct {
 	HistoricCollegePlayers []structs.HistoricCollegePlayer
 	RetiredPlayers         []structs.NFLRetiredPlayer
 	Stadiums               []structs.Stadium
+	CFBGameRequests        []structs.CFBGameRequest
+	NFLGameRequests        []structs.NFLGameRequest
 }
 
 type BootstrapDataDraft struct {
@@ -443,7 +445,7 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 	}
 }
 
-func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDataScheduling {
+func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDataScheduling {
 	var wg sync.WaitGroup
 	var (
 		officialPolls          []structs.CollegePollOfficial
@@ -451,9 +453,11 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 		historicCollegePlayers []structs.HistoricCollegePlayer
 		retiredPlayers         []structs.NFLRetiredPlayer
 		stadiums               []structs.Stadium
+		cfbGameRequests        []structs.CFBGameRequest
+		nflGameRequests        []structs.NFLGameRequest
 	)
 	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(3)
+		wg.Add(4)
 		go func() {
 			defer wg.Done()
 			officialPolls = GetAllOfficialPolls()
@@ -466,8 +470,12 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 			defer wg.Done()
 			historicCollegePlayers = GetAllHistoricCollegePlayers()
 		}()
+		go func() {
+			defer wg.Done()
+			cfbGameRequests = repository.FindCFBGameRequestRecords(repository.SchedulerQuery{SeasonID: seasonID})
+		}()
 	}
-	wg.Add(2)
+	wg.Add(4)
 	go func() {
 		defer wg.Done()
 		log.Println("Fetching Retired Players...")
@@ -480,6 +488,12 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 		stadiums = GetAllStadiums()
 		log.Println("Fetched Stadiums, count:", len(stadiums))
 	}()
+	go func() {
+		defer wg.Done()
+		log.Println("Fetching NFL Game Requests...")
+		nflGameRequests = repository.FindNFLGameRequestRecords(repository.SchedulerQuery{SeasonID: seasonID})
+		log.Println("Fetched NFL Game Requests, count:", len(nflGameRequests))
+	}()
 	wg.Wait()
 
 	return BootstrapDataScheduling{
@@ -488,6 +502,8 @@ func GetCollegePollsBootstrap(username, collegeID, seasonID string) BootstrapDat
 		HistoricCollegePlayers: historicCollegePlayers,
 		RetiredPlayers:         retiredPlayers,
 		Stadiums:               stadiums,
+		CFBGameRequests:        cfbGameRequests,
+		NFLGameRequests:        nflGameRequests,
 	}
 }
 

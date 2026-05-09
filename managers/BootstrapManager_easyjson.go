@@ -19706,6 +19706,52 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers6(in *jlexer.Lexer, o
 				}
 				in.Delim(']')
 			}
+		case "CFBGameRequests":
+			if in.IsNull() {
+				in.Skip()
+				out.CFBGameRequests = nil
+			} else {
+				in.Delim('[')
+				if out.CFBGameRequests == nil {
+					if !in.IsDelim(']') {
+						out.CFBGameRequests = make([]structs.CFBGameRequest, 0, 0)
+					} else {
+						out.CFBGameRequests = []structs.CFBGameRequest{}
+					}
+				} else {
+					out.CFBGameRequests = (out.CFBGameRequests)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v168 structs.CFBGameRequest
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs43(in, &v168)
+					out.CFBGameRequests = append(out.CFBGameRequests, v168)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "NFLGameRequests":
+			if in.IsNull() {
+				in.Skip()
+				out.NFLGameRequests = nil
+			} else {
+				in.Delim('[')
+				if out.NFLGameRequests == nil {
+					if !in.IsDelim(']') {
+						out.NFLGameRequests = make([]structs.NFLGameRequest, 0, 0)
+					} else {
+						out.NFLGameRequests = []structs.NFLGameRequest{}
+					}
+				} else {
+					out.NFLGameRequests = (out.NFLGameRequests)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v169 structs.NFLGameRequest
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs44(in, &v169)
+					out.NFLGameRequests = append(out.NFLGameRequests, v169)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
 		default:
 			in.SkipRecursive()
 		}
@@ -19727,11 +19773,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers6(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v168, v169 := range in.OfficialPolls {
-				if v168 > 0 {
+			for v170, v171 := range in.OfficialPolls {
+				if v170 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out, v169)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out, v171)
 			}
 			out.RawByte(']')
 		}
@@ -19748,11 +19794,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers6(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v170, v171 := range in.HistoricCollegePlayers {
-				if v170 > 0 {
+			for v172, v173 := range in.HistoricCollegePlayers {
+				if v172 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out, v171)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out, v173)
 			}
 			out.RawByte(']')
 		}
@@ -19764,11 +19810,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers6(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v172, v173 := range in.RetiredPlayers {
-				if v172 > 0 {
+			for v174, v175 := range in.RetiredPlayers {
+				if v174 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out, v173)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out, v175)
 			}
 			out.RawByte(']')
 		}
@@ -19780,11 +19826,43 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers6(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v174, v175 := range in.Stadiums {
-				if v174 > 0 {
+			for v176, v177 := range in.Stadiums {
+				if v176 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs42(out, v175)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs42(out, v177)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"CFBGameRequests\":"
+		out.RawString(prefix)
+		if in.CFBGameRequests == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v178, v179 := range in.CFBGameRequests {
+				if v178 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs43(out, v179)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"NFLGameRequests\":"
+		out.RawString(prefix)
+		if in.NFLGameRequests == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v180, v181 := range in.NFLGameRequests {
+				if v180 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs44(out, v181)
 			}
 			out.RawByte(']')
 		}
@@ -19814,6 +19892,364 @@ func (v *BootstrapDataScheduling) UnmarshalJSON(data []byte) error {
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *BootstrapDataScheduling) UnmarshalEasyJSON(l *jlexer.Lexer) {
 	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers6(l, v)
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs44(in *jlexer.Lexer, out *structs.NFLGameRequest) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "IsPreseason":
+			out.IsPreseason = bool(in.Bool())
+		case "HomeTeamID":
+			out.HomeTeamID = uint(in.Uint())
+		case "AwayTeamID":
+			out.AwayTeamID = uint(in.Uint())
+		case "SendingTeamID":
+			out.SendingTeamID = uint(in.Uint())
+		case "RequestingTeamID":
+			out.RequestingTeamID = uint(in.Uint())
+		case "IsAccepted":
+			out.IsAccepted = bool(in.Bool())
+		case "IsApproved":
+			out.IsApproved = bool(in.Bool())
+		case "ArenaID":
+			out.ArenaID = uint(in.Uint())
+		case "Arena":
+			out.Arena = string(in.String())
+		case "IsNeutralSite":
+			out.IsNeutralSite = bool(in.Bool())
+		case "SeasonID":
+			out.SeasonID = uint(in.Uint())
+		case "WeekID":
+			out.WeekID = uint(in.Uint())
+		case "Week":
+			out.Week = uint(in.Uint())
+		case "Timeslot":
+			out.Timeslot = string(in.String())
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs44(out *jwriter.Writer, in structs.NFLGameRequest) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"IsPreseason\":"
+		out.RawString(prefix[1:])
+		out.Bool(bool(in.IsPreseason))
+	}
+	{
+		const prefix string = ",\"HomeTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.HomeTeamID))
+	}
+	{
+		const prefix string = ",\"AwayTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.AwayTeamID))
+	}
+	{
+		const prefix string = ",\"SendingTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.SendingTeamID))
+	}
+	{
+		const prefix string = ",\"RequestingTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.RequestingTeamID))
+	}
+	{
+		const prefix string = ",\"IsAccepted\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsAccepted))
+	}
+	{
+		const prefix string = ",\"IsApproved\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsApproved))
+	}
+	{
+		const prefix string = ",\"ArenaID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ArenaID))
+	}
+	{
+		const prefix string = ",\"Arena\":"
+		out.RawString(prefix)
+		out.String(string(in.Arena))
+	}
+	{
+		const prefix string = ",\"IsNeutralSite\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsNeutralSite))
+	}
+	{
+		const prefix string = ",\"SeasonID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.SeasonID))
+	}
+	{
+		const prefix string = ",\"WeekID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.WeekID))
+	}
+	{
+		const prefix string = ",\"Week\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.Week))
+	}
+	{
+		const prefix string = ",\"Timeslot\":"
+		out.RawString(prefix)
+		out.String(string(in.Timeslot))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs43(in *jlexer.Lexer, out *structs.CFBGameRequest) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "IsSpringGame":
+			out.IsSpringGame = bool(in.Bool())
+		case "HomeTeamID":
+			out.HomeTeamID = uint(in.Uint())
+		case "AwayTeamID":
+			out.AwayTeamID = uint(in.Uint())
+		case "SendingTeamID":
+			out.SendingTeamID = uint(in.Uint())
+		case "RequestingTeamID":
+			out.RequestingTeamID = uint(in.Uint())
+		case "IsAccepted":
+			out.IsAccepted = bool(in.Bool())
+		case "IsApproved":
+			out.IsApproved = bool(in.Bool())
+		case "ArenaID":
+			out.ArenaID = uint(in.Uint())
+		case "Arena":
+			out.Arena = string(in.String())
+		case "IsNeutralSite":
+			out.IsNeutralSite = bool(in.Bool())
+		case "SeasonID":
+			out.SeasonID = uint(in.Uint())
+		case "WeekID":
+			out.WeekID = uint(in.Uint())
+		case "Week":
+			out.Week = uint(in.Uint())
+		case "Timeslot":
+			out.Timeslot = string(in.String())
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs43(out *jwriter.Writer, in structs.CFBGameRequest) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"IsSpringGame\":"
+		out.RawString(prefix[1:])
+		out.Bool(bool(in.IsSpringGame))
+	}
+	{
+		const prefix string = ",\"HomeTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.HomeTeamID))
+	}
+	{
+		const prefix string = ",\"AwayTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.AwayTeamID))
+	}
+	{
+		const prefix string = ",\"SendingTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.SendingTeamID))
+	}
+	{
+		const prefix string = ",\"RequestingTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.RequestingTeamID))
+	}
+	{
+		const prefix string = ",\"IsAccepted\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsAccepted))
+	}
+	{
+		const prefix string = ",\"IsApproved\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsApproved))
+	}
+	{
+		const prefix string = ",\"ArenaID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ArenaID))
+	}
+	{
+		const prefix string = ",\"Arena\":"
+		out.RawString(prefix)
+		out.String(string(in.Arena))
+	}
+	{
+		const prefix string = ",\"IsNeutralSite\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsNeutralSite))
+	}
+	{
+		const prefix string = ",\"SeasonID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.SeasonID))
+	}
+	{
+		const prefix string = ",\"WeekID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.WeekID))
+	}
+	{
+		const prefix string = ",\"Week\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.Week))
+	}
+	{
+		const prefix string = ",\"Timeslot\":"
+		out.RawString(prefix)
+		out.String(string(in.Timeslot))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
 }
 func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs42(in *jlexer.Lexer, out *structs.Stadium) {
 	isTopLevel := in.IsStart()
@@ -21266,9 +21702,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers7(in *jlexer.Lexer, o
 					out.Recruits = (out.Recruits)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v176 structs.Croot
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs43(in, &v176)
-					out.Recruits = append(out.Recruits, v176)
+					var v182 structs.Croot
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs45(in, &v182)
+					out.Recruits = append(out.Recruits, v182)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -21289,9 +21725,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers7(in *jlexer.Lexer, o
 					out.RecruitProfiles = (out.RecruitProfiles)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v177 structs.RecruitPlayerProfile
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs31(in, &v177)
-					out.RecruitProfiles = append(out.RecruitProfiles, v177)
+					var v183 structs.RecruitPlayerProfile
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs31(in, &v183)
+					out.RecruitProfiles = append(out.RecruitProfiles, v183)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -21305,17 +21741,17 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers7(in *jlexer.Lexer, o
 				for !in.IsDelim('}') {
 					key := string(in.String())
 					in.WantColon()
-					var v178 *structs.RecruitingTeamProfile
+					var v184 *structs.RecruitingTeamProfile
 					if in.IsNull() {
 						in.Skip()
-						v178 = nil
+						v184 = nil
 					} else {
-						if v178 == nil {
-							v178 = new(structs.RecruitingTeamProfile)
+						if v184 == nil {
+							v184 = new(structs.RecruitingTeamProfile)
 						}
-						easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in, v178)
+						easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in, v184)
 					}
-					(out.TeamProfileMap)[key] = v178
+					(out.TeamProfileMap)[key] = v184
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -21341,11 +21777,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers7(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v179, v180 := range in.Recruits {
-				if v179 > 0 {
+			for v185, v186 := range in.Recruits {
+				if v185 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs43(out, v180)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs45(out, v186)
 			}
 			out.RawByte(']')
 		}
@@ -21357,11 +21793,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers7(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v181, v182 := range in.RecruitProfiles {
-				if v181 > 0 {
+			for v187, v188 := range in.RecruitProfiles {
+				if v187 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs31(out, v182)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs31(out, v188)
 			}
 			out.RawByte(']')
 		}
@@ -21373,19 +21809,19 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers7(out *jwriter.Writer
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v183First := true
-			for v183Name, v183Value := range in.TeamProfileMap {
-				if v183First {
-					v183First = false
+			v189First := true
+			for v189Name, v189Value := range in.TeamProfileMap {
+				if v189First {
+					v189First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.String(string(v183Name))
+				out.String(string(v189Name))
 				out.RawByte(':')
-				if v183Value == nil {
+				if v189Value == nil {
 					out.RawString("null")
 				} else {
-					easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out, *v183Value)
+					easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out, *v189Value)
 				}
 			}
 			out.RawByte('}')
@@ -21417,7 +21853,7 @@ func (v *BootstrapDataRecruiting) UnmarshalJSON(data []byte) error {
 func (v *BootstrapDataRecruiting) UnmarshalEasyJSON(l *jlexer.Lexer) {
 	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers7(l, v)
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs43(in *jlexer.Lexer, out *structs.Croot) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs45(in *jlexer.Lexer, out *structs.Croot) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -21508,9 +21944,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs43(in *jlexer.Lexer, o
 					out.LeadingTeams = (out.LeadingTeams)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v184 structs.LeadingTeams
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs44(in, &v184)
-					out.LeadingTeams = append(out.LeadingTeams, v184)
+					var v190 structs.LeadingTeams
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs46(in, &v190)
+					out.LeadingTeams = append(out.LeadingTeams, v190)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -21555,7 +21991,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs43(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs43(out *jwriter.Writer, in structs.Croot) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs45(out *jwriter.Writer, in structs.Croot) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -21706,11 +22142,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs43(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v185, v186 := range in.LeadingTeams {
-				if v185 > 0 {
+			for v191, v192 := range in.LeadingTeams {
+				if v191 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs44(out, v186)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs46(out, v192)
 			}
 			out.RawByte(']')
 		}
@@ -21792,7 +22228,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs43(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs44(in *jlexer.Lexer, out *structs.LeadingTeams) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs46(in *jlexer.Lexer, out *structs.LeadingTeams) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -21831,7 +22267,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs44(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs44(out *jwriter.Writer, in structs.LeadingTeams) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs46(out *jwriter.Writer, in structs.LeadingTeams) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -21890,17 +22326,17 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers8(in *jlexer.Lexer, o
 				for !in.IsDelim('}') {
 					key := string(in.String())
 					in.WantColon()
-					var v187 *structs.RecruitingTeamProfile
+					var v193 *structs.RecruitingTeamProfile
 					if in.IsNull() {
 						in.Skip()
-						v187 = nil
+						v193 = nil
 					} else {
-						if v187 == nil {
-							v187 = new(structs.RecruitingTeamProfile)
+						if v193 == nil {
+							v193 = new(structs.RecruitingTeamProfile)
 						}
-						easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in, v187)
+						easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in, v193)
 					}
-					(out.TeamProfileMap)[key] = v187
+					(out.TeamProfileMap)[key] = v193
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -21921,9 +22357,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers8(in *jlexer.Lexer, o
 					out.TransferPortalProfiles = (out.TransferPortalProfiles)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v188 structs.TransferPortalProfile
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs45(in, &v188)
-					out.TransferPortalProfiles = append(out.TransferPortalProfiles, v188)
+					var v194 structs.TransferPortalProfile
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs47(in, &v194)
+					out.TransferPortalProfiles = append(out.TransferPortalProfiles, v194)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -21944,9 +22380,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers8(in *jlexer.Lexer, o
 					out.CollegePromises = (out.CollegePromises)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v189 structs.CollegePromise
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in, &v189)
-					out.CollegePromises = append(out.CollegePromises, v189)
+					var v195 structs.CollegePromise
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in, &v195)
+					out.CollegePromises = append(out.CollegePromises, v195)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -21967,9 +22403,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers8(in *jlexer.Lexer, o
 					out.PortalPlayers = (out.PortalPlayers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v190 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v190)
-					out.PortalPlayers = append(out.PortalPlayers, v190)
+					var v196 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v196)
+					out.PortalPlayers = append(out.PortalPlayers, v196)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -21995,19 +22431,19 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers8(out *jwriter.Writer
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v191First := true
-			for v191Name, v191Value := range in.TeamProfileMap {
-				if v191First {
-					v191First = false
+			v197First := true
+			for v197Name, v197Value := range in.TeamProfileMap {
+				if v197First {
+					v197First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.String(string(v191Name))
+				out.String(string(v197Name))
 				out.RawByte(':')
-				if v191Value == nil {
+				if v197Value == nil {
 					out.RawString("null")
 				} else {
-					easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out, *v191Value)
+					easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out, *v197Value)
 				}
 			}
 			out.RawByte('}')
@@ -22020,11 +22456,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers8(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v192, v193 := range in.TransferPortalProfiles {
-				if v192 > 0 {
+			for v198, v199 := range in.TransferPortalProfiles {
+				if v198 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs45(out, v193)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs47(out, v199)
 			}
 			out.RawByte(']')
 		}
@@ -22036,11 +22472,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers8(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v194, v195 := range in.CollegePromises {
-				if v194 > 0 {
+			for v200, v201 := range in.CollegePromises {
+				if v200 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out, v195)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out, v201)
 			}
 			out.RawByte(']')
 		}
@@ -22052,11 +22488,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers8(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v196, v197 := range in.PortalPlayers {
-				if v196 > 0 {
+			for v202, v203 := range in.PortalPlayers {
+				if v202 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v197)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v203)
 			}
 			out.RawByte(']')
 		}
@@ -22087,7 +22523,7 @@ func (v *BootstrapDataPortal) UnmarshalJSON(data []byte) error {
 func (v *BootstrapDataPortal) UnmarshalEasyJSON(l *jlexer.Lexer) {
 	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers8(l, v)
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs45(in *jlexer.Lexer, out *structs.TransferPortalProfile) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs47(in *jlexer.Lexer, out *structs.TransferPortalProfile) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -22158,7 +22594,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs45(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs45(out *jwriter.Writer, in structs.TransferPortalProfile) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs47(out *jwriter.Writer, in structs.TransferPortalProfile) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -22338,9 +22774,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers9(in *jlexer.Lexer, o
 					out.CollegeNews = (out.CollegeNews)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v198 structs.NewsLog
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs46(in, &v198)
-					out.CollegeNews = append(out.CollegeNews, v198)
+					var v204 structs.NewsLog
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs48(in, &v204)
+					out.CollegeNews = append(out.CollegeNews, v204)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22361,9 +22797,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers9(in *jlexer.Lexer, o
 					out.ProNews = (out.ProNews)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v199 structs.NewsLog
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs46(in, &v199)
-					out.ProNews = append(out.ProNews, v199)
+					var v205 structs.NewsLog
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs48(in, &v205)
+					out.ProNews = append(out.ProNews, v205)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22389,11 +22825,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers9(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v200, v201 := range in.CollegeNews {
-				if v200 > 0 {
+			for v206, v207 := range in.CollegeNews {
+				if v206 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs46(out, v201)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs48(out, v207)
 			}
 			out.RawByte(']')
 		}
@@ -22405,11 +22841,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers9(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v202, v203 := range in.ProNews {
-				if v202 > 0 {
+			for v208, v209 := range in.ProNews {
+				if v208 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs46(out, v203)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs48(out, v209)
 			}
 			out.RawByte(']')
 		}
@@ -22440,7 +22876,7 @@ func (v *BootstrapDataNews) UnmarshalJSON(data []byte) error {
 func (v *BootstrapDataNews) UnmarshalEasyJSON(l *jlexer.Lexer) {
 	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers9(l, v)
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs46(in *jlexer.Lexer, out *structs.NewsLog) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs48(in *jlexer.Lexer, out *structs.NewsLog) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -22505,7 +22941,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs46(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs46(out *jwriter.Writer, in structs.NewsLog) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs48(out *jwriter.Writer, in structs.NewsLog) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -22600,30 +23036,30 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v204 []structs.CollegePlayer
+					var v210 []structs.CollegePlayer
 					if in.IsNull() {
 						in.Skip()
-						v204 = nil
+						v210 = nil
 					} else {
 						in.Delim('[')
-						if v204 == nil {
+						if v210 == nil {
 							if !in.IsDelim(']') {
-								v204 = make([]structs.CollegePlayer, 0, 0)
+								v210 = make([]structs.CollegePlayer, 0, 0)
 							} else {
-								v204 = []structs.CollegePlayer{}
+								v210 = []structs.CollegePlayer{}
 							}
 						} else {
-							v204 = (v204)[:0]
+							v210 = (v210)[:0]
 						}
 						for !in.IsDelim(']') {
-							var v205 structs.CollegePlayer
-							easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v205)
-							v204 = append(v204, v205)
+							var v211 structs.CollegePlayer
+							easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v211)
+							v210 = append(v210, v211)
 							in.WantComma()
 						}
 						in.Delim(']')
 					}
-					(out.CollegeRosterMap)[key] = v204
+					(out.CollegeRosterMap)[key] = v210
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -22644,9 +23080,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.CollegeStandings = (out.CollegeStandings)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v206 structs.CollegeStandings
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs1(in, &v206)
-					out.CollegeStandings = append(out.CollegeStandings, v206)
+					var v212 structs.CollegeStandings
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs1(in, &v212)
+					out.CollegeStandings = append(out.CollegeStandings, v212)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22667,9 +23103,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.AllCollegeGames = (out.AllCollegeGames)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v207 structs.CollegeGame
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs4(in, &v207)
-					out.AllCollegeGames = append(out.AllCollegeGames, v207)
+					var v213 structs.CollegeGame
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs4(in, &v213)
+					out.AllCollegeGames = append(out.AllCollegeGames, v213)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22690,9 +23126,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.OfficialPolls = (out.OfficialPolls)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v208 structs.CollegePollOfficial
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs40(in, &v208)
-					out.OfficialPolls = append(out.OfficialPolls, v208)
+					var v214 structs.CollegePollOfficial
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs40(in, &v214)
+					out.OfficialPolls = append(out.OfficialPolls, v214)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22713,9 +23149,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.TopCFBPassers = (out.TopCFBPassers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v209 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v209)
-					out.TopCFBPassers = append(out.TopCFBPassers, v209)
+					var v215 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v215)
+					out.TopCFBPassers = append(out.TopCFBPassers, v215)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22736,9 +23172,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.TopCFBRushers = (out.TopCFBRushers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v210 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v210)
-					out.TopCFBRushers = append(out.TopCFBRushers, v210)
+					var v216 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v216)
+					out.TopCFBRushers = append(out.TopCFBRushers, v216)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22759,9 +23195,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.TopCFBReceivers = (out.TopCFBReceivers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v211 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v211)
-					out.TopCFBReceivers = append(out.TopCFBReceivers, v211)
+					var v217 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v217)
+					out.TopCFBReceivers = append(out.TopCFBReceivers, v217)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22782,9 +23218,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.CollegeInjuryReport = (out.CollegeInjuryReport)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v212 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v212)
-					out.CollegeInjuryReport = append(out.CollegeInjuryReport, v212)
+					var v218 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v218)
+					out.CollegeInjuryReport = append(out.CollegeInjuryReport, v218)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22805,9 +23241,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.CollegeNotifications = (out.CollegeNotifications)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v213 structs.Notification
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs47(in, &v213)
-					out.CollegeNotifications = append(out.CollegeNotifications, v213)
+					var v219 structs.Notification
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs49(in, &v219)
+					out.CollegeNotifications = append(out.CollegeNotifications, v219)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22830,9 +23266,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.ProNotifications = (out.ProNotifications)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v214 structs.Notification
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs47(in, &v214)
-					out.ProNotifications = append(out.ProNotifications, v214)
+					var v220 structs.Notification
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs49(in, &v220)
+					out.ProNotifications = append(out.ProNotifications, v220)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22853,9 +23289,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.ProStandings = (out.ProStandings)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v215 structs.NFLStandings
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in, &v215)
-					out.ProStandings = append(out.ProStandings, v215)
+					var v221 structs.NFLStandings
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in, &v221)
+					out.ProStandings = append(out.ProStandings, v221)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22876,9 +23312,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.AllProGames = (out.AllProGames)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v216 structs.NFLGame
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs48(in, &v216)
-					out.AllProGames = append(out.AllProGames, v216)
+					var v222 structs.NFLGame
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs50(in, &v222)
+					out.AllProGames = append(out.AllProGames, v222)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22901,9 +23337,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.TopNFLPassers = (out.TopNFLPassers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v217 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v217)
-					out.TopNFLPassers = append(out.TopNFLPassers, v217)
+					var v223 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v223)
+					out.TopNFLPassers = append(out.TopNFLPassers, v223)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22924,9 +23360,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.TopNFLRushers = (out.TopNFLRushers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v218 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v218)
-					out.TopNFLRushers = append(out.TopNFLRushers, v218)
+					var v224 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v224)
+					out.TopNFLRushers = append(out.TopNFLRushers, v224)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22947,9 +23383,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.TopNFLReceivers = (out.TopNFLReceivers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v219 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v219)
-					out.TopNFLReceivers = append(out.TopNFLReceivers, v219)
+					var v225 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v225)
+					out.TopNFLReceivers = append(out.TopNFLReceivers, v225)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -22963,30 +23399,30 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v220 []structs.NFLPlayer
+					var v226 []structs.NFLPlayer
 					if in.IsNull() {
 						in.Skip()
-						v220 = nil
+						v226 = nil
 					} else {
 						in.Delim('[')
-						if v220 == nil {
+						if v226 == nil {
 							if !in.IsDelim(']') {
-								v220 = make([]structs.NFLPlayer, 0, 0)
+								v226 = make([]structs.NFLPlayer, 0, 0)
 							} else {
-								v220 = []structs.NFLPlayer{}
+								v226 = []structs.NFLPlayer{}
 							}
 						} else {
-							v220 = (v220)[:0]
+							v226 = (v226)[:0]
 						}
 						for !in.IsDelim(']') {
-							var v221 structs.NFLPlayer
-							easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v221)
-							v220 = append(v220, v221)
+							var v227 structs.NFLPlayer
+							easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v227)
+							v226 = append(v226, v227)
 							in.WantComma()
 						}
 						in.Delim(']')
 					}
-					(out.ProRosterMap)[key] = v220
+					(out.ProRosterMap)[key] = v226
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -23007,9 +23443,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.ProInjuryReport = (out.ProInjuryReport)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v222 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v222)
-					out.ProInjuryReport = append(out.ProInjuryReport, v222)
+					var v228 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v228)
+					out.ProInjuryReport = append(out.ProInjuryReport, v228)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -23030,9 +23466,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.PracticeSquadPlayers = (out.PracticeSquadPlayers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v223 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v223)
-					out.PracticeSquadPlayers = append(out.PracticeSquadPlayers, v223)
+					var v229 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v229)
+					out.PracticeSquadPlayers = append(out.PracticeSquadPlayers, v229)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -23046,9 +23482,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v224 structs.NFLCapsheet
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v224)
-					(out.CapsheetMap)[key] = v224
+					var v230 structs.NFLCapsheet
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v230)
+					(out.CapsheetMap)[key] = v230
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -23069,9 +23505,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(in *jlexer.Lexer, 
 					out.RetiredPlayers = (out.RetiredPlayers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v225 structs.NFLRetiredPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in, &v225)
-					out.RetiredPlayers = append(out.RetiredPlayers, v225)
+					var v231 structs.NFLRetiredPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in, &v231)
+					out.RetiredPlayers = append(out.RetiredPlayers, v231)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -23102,24 +23538,24 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v226First := true
-			for v226Name, v226Value := range in.CollegeRosterMap {
-				if v226First {
-					v226First = false
+			v232First := true
+			for v232Name, v232Value := range in.CollegeRosterMap {
+				if v232First {
+					v232First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v226Name))
+				out.UintStr(uint(v232Name))
 				out.RawByte(':')
-				if v226Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+				if v232Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 					out.RawString("null")
 				} else {
 					out.RawByte('[')
-					for v227, v228 := range v226Value {
-						if v227 > 0 {
+					for v233, v234 := range v232Value {
+						if v233 > 0 {
 							out.RawByte(',')
 						}
-						easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v228)
+						easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v234)
 					}
 					out.RawByte(']')
 				}
@@ -23134,11 +23570,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v229, v230 := range in.CollegeStandings {
-				if v229 > 0 {
+			for v235, v236 := range in.CollegeStandings {
+				if v235 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs1(out, v230)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs1(out, v236)
 			}
 			out.RawByte(']')
 		}
@@ -23150,11 +23586,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v231, v232 := range in.AllCollegeGames {
-				if v231 > 0 {
+			for v237, v238 := range in.AllCollegeGames {
+				if v237 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs4(out, v232)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs4(out, v238)
 			}
 			out.RawByte(']')
 		}
@@ -23166,11 +23602,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v233, v234 := range in.OfficialPolls {
-				if v233 > 0 {
+			for v239, v240 := range in.OfficialPolls {
+				if v239 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out, v234)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out, v240)
 			}
 			out.RawByte(']')
 		}
@@ -23182,11 +23618,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v235, v236 := range in.TopCFBPassers {
-				if v235 > 0 {
+			for v241, v242 := range in.TopCFBPassers {
+				if v241 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v236)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v242)
 			}
 			out.RawByte(']')
 		}
@@ -23198,11 +23634,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v237, v238 := range in.TopCFBRushers {
-				if v237 > 0 {
+			for v243, v244 := range in.TopCFBRushers {
+				if v243 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v238)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v244)
 			}
 			out.RawByte(']')
 		}
@@ -23214,11 +23650,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v239, v240 := range in.TopCFBReceivers {
-				if v239 > 0 {
+			for v245, v246 := range in.TopCFBReceivers {
+				if v245 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v240)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v246)
 			}
 			out.RawByte(']')
 		}
@@ -23230,11 +23666,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v241, v242 := range in.CollegeInjuryReport {
-				if v241 > 0 {
+			for v247, v248 := range in.CollegeInjuryReport {
+				if v247 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v242)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v248)
 			}
 			out.RawByte(']')
 		}
@@ -23246,11 +23682,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v243, v244 := range in.CollegeNotifications {
-				if v243 > 0 {
+			for v249, v250 := range in.CollegeNotifications {
+				if v249 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs47(out, v244)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs49(out, v250)
 			}
 			out.RawByte(']')
 		}
@@ -23267,11 +23703,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v245, v246 := range in.ProNotifications {
-				if v245 > 0 {
+			for v251, v252 := range in.ProNotifications {
+				if v251 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs47(out, v246)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs49(out, v252)
 			}
 			out.RawByte(']')
 		}
@@ -23283,11 +23719,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v247, v248 := range in.ProStandings {
-				if v247 > 0 {
+			for v253, v254 := range in.ProStandings {
+				if v253 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out, v248)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out, v254)
 			}
 			out.RawByte(']')
 		}
@@ -23299,11 +23735,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v249, v250 := range in.AllProGames {
-				if v249 > 0 {
+			for v255, v256 := range in.AllProGames {
+				if v255 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs48(out, v250)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs50(out, v256)
 			}
 			out.RawByte(']')
 		}
@@ -23320,11 +23756,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v251, v252 := range in.TopNFLPassers {
-				if v251 > 0 {
+			for v257, v258 := range in.TopNFLPassers {
+				if v257 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v252)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v258)
 			}
 			out.RawByte(']')
 		}
@@ -23336,11 +23772,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v253, v254 := range in.TopNFLRushers {
-				if v253 > 0 {
+			for v259, v260 := range in.TopNFLRushers {
+				if v259 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v254)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v260)
 			}
 			out.RawByte(']')
 		}
@@ -23352,11 +23788,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v255, v256 := range in.TopNFLReceivers {
-				if v255 > 0 {
+			for v261, v262 := range in.TopNFLReceivers {
+				if v261 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v256)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v262)
 			}
 			out.RawByte(']')
 		}
@@ -23368,24 +23804,24 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v257First := true
-			for v257Name, v257Value := range in.ProRosterMap {
-				if v257First {
-					v257First = false
+			v263First := true
+			for v263Name, v263Value := range in.ProRosterMap {
+				if v263First {
+					v263First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v257Name))
+				out.UintStr(uint(v263Name))
 				out.RawByte(':')
-				if v257Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+				if v263Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 					out.RawString("null")
 				} else {
 					out.RawByte('[')
-					for v258, v259 := range v257Value {
-						if v258 > 0 {
+					for v264, v265 := range v263Value {
+						if v264 > 0 {
 							out.RawByte(',')
 						}
-						easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v259)
+						easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v265)
 					}
 					out.RawByte(']')
 				}
@@ -23400,11 +23836,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v260, v261 := range in.ProInjuryReport {
-				if v260 > 0 {
+			for v266, v267 := range in.ProInjuryReport {
+				if v266 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v261)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v267)
 			}
 			out.RawByte(']')
 		}
@@ -23416,11 +23852,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v262, v263 := range in.PracticeSquadPlayers {
-				if v262 > 0 {
+			for v268, v269 := range in.PracticeSquadPlayers {
+				if v268 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v263)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v269)
 			}
 			out.RawByte(']')
 		}
@@ -23432,16 +23868,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v264First := true
-			for v264Name, v264Value := range in.CapsheetMap {
-				if v264First {
-					v264First = false
+			v270First := true
+			for v270Name, v270Value := range in.CapsheetMap {
+				if v270First {
+					v270First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v264Name))
+				out.UintStr(uint(v270Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v264Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v270Value)
 			}
 			out.RawByte('}')
 		}
@@ -23453,11 +23889,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers10(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v265, v266 := range in.RetiredPlayers {
-				if v265 > 0 {
+			for v271, v272 := range in.RetiredPlayers {
+				if v271 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out, v266)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out, v272)
 			}
 			out.RawByte(']')
 		}
@@ -23488,7 +23924,7 @@ func (v *BootstrapDataLanding) UnmarshalJSON(data []byte) error {
 func (v *BootstrapDataLanding) UnmarshalEasyJSON(l *jlexer.Lexer) {
 	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers10(l, v)
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs48(in *jlexer.Lexer, out *structs.NFLGame) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs50(in *jlexer.Lexer, out *structs.NFLGame) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -23627,7 +24063,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs48(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs48(out *jwriter.Writer, in structs.NFLGame) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs50(out *jwriter.Writer, in structs.NFLGame) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -23877,7 +24313,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs48(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs47(in *jlexer.Lexer, out *structs.Notification) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs49(in *jlexer.Lexer, out *structs.Notification) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -23932,7 +24368,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs47(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs47(out *jwriter.Writer, in structs.Notification) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs49(out *jwriter.Writer, in structs.Notification) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -24016,9 +24452,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers11(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v267 structs.CollegeGameplan
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in, &v267)
-					(out.CollegeGameplanMap)[key] = v267
+					var v273 structs.CollegeGameplan
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in, &v273)
+					(out.CollegeGameplanMap)[key] = v273
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -24034,9 +24470,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers11(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v268 structs.CollegeTeamDepthChart
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in, &v268)
-					(out.CollegeDepthChartMap)[key] = v268
+					var v274 structs.CollegeTeamDepthChart
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in, &v274)
+					(out.CollegeDepthChartMap)[key] = v274
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -24050,9 +24486,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers11(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v269 structs.NFLGameplan
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &v269)
-					(out.NFLGameplanMap)[key] = v269
+					var v275 structs.NFLGameplan
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &v275)
+					(out.NFLGameplanMap)[key] = v275
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -24068,9 +24504,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers11(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v270 structs.NFLDepthChart
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &v270)
-					(out.NFLDepthChartMap)[key] = v270
+					var v276 structs.NFLDepthChart
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &v276)
+					(out.NFLDepthChartMap)[key] = v276
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -24096,16 +24532,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers11(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v271First := true
-			for v271Name, v271Value := range in.CollegeGameplanMap {
-				if v271First {
-					v271First = false
+			v277First := true
+			for v277Name, v277Value := range in.CollegeGameplanMap {
+				if v277First {
+					v277First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v271Name))
+				out.UintStr(uint(v277Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out, v271Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out, v277Value)
 			}
 			out.RawByte('}')
 		}
@@ -24122,16 +24558,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers11(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v272First := true
-			for v272Name, v272Value := range in.CollegeDepthChartMap {
-				if v272First {
-					v272First = false
+			v278First := true
+			for v278Name, v278Value := range in.CollegeDepthChartMap {
+				if v278First {
+					v278First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v272Name))
+				out.UintStr(uint(v278Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out, v272Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out, v278Value)
 			}
 			out.RawByte('}')
 		}
@@ -24143,16 +24579,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers11(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v273First := true
-			for v273Name, v273Value := range in.NFLGameplanMap {
-				if v273First {
-					v273First = false
+			v279First := true
+			for v279Name, v279Value := range in.NFLGameplanMap {
+				if v279First {
+					v279First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v273Name))
+				out.UintStr(uint(v279Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v273Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v279Value)
 			}
 			out.RawByte('}')
 		}
@@ -24169,16 +24605,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers11(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v274First := true
-			for v274Name, v274Value := range in.NFLDepthChartMap {
-				if v274First {
-					v274First = false
+			v280First := true
+			for v280Name, v280Value := range in.NFLDepthChartMap {
+				if v280First {
+					v280First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v274Name))
+				out.UintStr(uint(v280Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out, v274Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out, v280Value)
 			}
 			out.RawByte('}')
 		}
@@ -24244,9 +24680,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers12(in *jlexer.Lexer, 
 					out.FreeAgents = (out.FreeAgents)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v275 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v275)
-					out.FreeAgents = append(out.FreeAgents, v275)
+					var v281 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v281)
+					out.FreeAgents = append(out.FreeAgents, v281)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -24267,9 +24703,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers12(in *jlexer.Lexer, 
 					out.WaiverPlayers = (out.WaiverPlayers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v276 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v276)
-					out.WaiverPlayers = append(out.WaiverPlayers, v276)
+					var v282 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v282)
+					out.WaiverPlayers = append(out.WaiverPlayers, v282)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -24290,9 +24726,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers12(in *jlexer.Lexer, 
 					out.FreeAgentOffers = (out.FreeAgentOffers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v277 structs.FreeAgencyOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs20(in, &v277)
-					out.FreeAgentOffers = append(out.FreeAgentOffers, v277)
+					var v283 structs.FreeAgencyOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs20(in, &v283)
+					out.FreeAgentOffers = append(out.FreeAgentOffers, v283)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -24313,9 +24749,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers12(in *jlexer.Lexer, 
 					out.WaiverOffers = (out.WaiverOffers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v278 structs.NFLWaiverOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in, &v278)
-					out.WaiverOffers = append(out.WaiverOffers, v278)
+					var v284 structs.NFLWaiverOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in, &v284)
+					out.WaiverOffers = append(out.WaiverOffers, v284)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -24341,11 +24777,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers12(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v279, v280 := range in.FreeAgents {
-				if v279 > 0 {
+			for v285, v286 := range in.FreeAgents {
+				if v285 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v280)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v286)
 			}
 			out.RawByte(']')
 		}
@@ -24357,11 +24793,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers12(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v281, v282 := range in.WaiverPlayers {
-				if v281 > 0 {
+			for v287, v288 := range in.WaiverPlayers {
+				if v287 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v282)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v288)
 			}
 			out.RawByte(']')
 		}
@@ -24373,11 +24809,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers12(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v283, v284 := range in.FreeAgentOffers {
-				if v283 > 0 {
+			for v289, v290 := range in.FreeAgentOffers {
+				if v289 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs20(out, v284)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs20(out, v290)
 			}
 			out.RawByte(']')
 		}
@@ -24389,11 +24825,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers12(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v285, v286 := range in.WaiverOffers {
-				if v285 > 0 {
+			for v291, v292 := range in.WaiverOffers {
+				if v291 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out, v286)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out, v292)
 			}
 			out.RawByte(']')
 		}
@@ -24459,9 +24895,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers13(in *jlexer.Lexer, 
 					out.NFLDraftees = (out.NFLDraftees)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v287 models.NFLDraftee
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels(in, &v287)
-					out.NFLDraftees = append(out.NFLDraftees, v287)
+					var v293 models.NFLDraftee
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels(in, &v293)
+					out.NFLDraftees = append(out.NFLDraftees, v293)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -24475,9 +24911,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers13(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v288 models.NFLWarRoom
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels1(in, &v288)
-					(out.NFLWarRoomMap)[key] = v288
+					var v294 models.NFLWarRoom
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels1(in, &v294)
+					(out.NFLWarRoomMap)[key] = v294
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -24491,30 +24927,30 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers13(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v289 []models.ScoutingProfile
+					var v295 []models.ScoutingProfile
 					if in.IsNull() {
 						in.Skip()
-						v289 = nil
+						v295 = nil
 					} else {
 						in.Delim('[')
-						if v289 == nil {
+						if v295 == nil {
 							if !in.IsDelim(']') {
-								v289 = make([]models.ScoutingProfile, 0, 0)
+								v295 = make([]models.ScoutingProfile, 0, 0)
 							} else {
-								v289 = []models.ScoutingProfile{}
+								v295 = []models.ScoutingProfile{}
 							}
 						} else {
-							v289 = (v289)[:0]
+							v295 = (v295)[:0]
 						}
 						for !in.IsDelim(']') {
-							var v290 models.ScoutingProfile
-							easyjson83226b63DecodeGithubComCalebRoseSimFBAModels2(in, &v290)
-							v289 = append(v289, v290)
+							var v296 models.ScoutingProfile
+							easyjson83226b63DecodeGithubComCalebRoseSimFBAModels2(in, &v296)
+							v295 = append(v295, v296)
 							in.WantComma()
 						}
 						in.Delim(']')
 					}
-					(out.DraftScoutingProfileMap)[key] = v289
+					(out.DraftScoutingProfileMap)[key] = v295
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -24528,9 +24964,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers13(in *jlexer.Lexer, 
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v291 structs.NFLGameplan
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &v291)
-					(out.NFLGameplanMap)[key] = v291
+					var v297 structs.NFLGameplan
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &v297)
+					(out.NFLGameplanMap)[key] = v297
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -24551,9 +24987,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers13(in *jlexer.Lexer, 
 					out.NFLDraftPicks = (out.NFLDraftPicks)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v292 structs.NFLDraftPick
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v292)
-					out.NFLDraftPicks = append(out.NFLDraftPicks, v292)
+					var v298 structs.NFLDraftPick
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v298)
+					out.NFLDraftPicks = append(out.NFLDraftPicks, v298)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -24579,11 +25015,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v293, v294 := range in.NFLDraftees {
-				if v293 > 0 {
+			for v299, v300 := range in.NFLDraftees {
+				if v299 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out, v294)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out, v300)
 			}
 			out.RawByte(']')
 		}
@@ -24595,16 +25031,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v295First := true
-			for v295Name, v295Value := range in.NFLWarRoomMap {
-				if v295First {
-					v295First = false
+			v301First := true
+			for v301Name, v301Value := range in.NFLWarRoomMap {
+				if v301First {
+					v301First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v295Name))
+				out.UintStr(uint(v301Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels1(out, v295Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels1(out, v301Value)
 			}
 			out.RawByte('}')
 		}
@@ -24616,24 +25052,24 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v296First := true
-			for v296Name, v296Value := range in.DraftScoutingProfileMap {
-				if v296First {
-					v296First = false
+			v302First := true
+			for v302Name, v302Value := range in.DraftScoutingProfileMap {
+				if v302First {
+					v302First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v296Name))
+				out.UintStr(uint(v302Name))
 				out.RawByte(':')
-				if v296Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+				if v302Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 					out.RawString("null")
 				} else {
 					out.RawByte('[')
-					for v297, v298 := range v296Value {
-						if v297 > 0 {
+					for v303, v304 := range v302Value {
+						if v303 > 0 {
 							out.RawByte(',')
 						}
-						easyjson83226b63EncodeGithubComCalebRoseSimFBAModels2(out, v298)
+						easyjson83226b63EncodeGithubComCalebRoseSimFBAModels2(out, v304)
 					}
 					out.RawByte(']')
 				}
@@ -24648,16 +25084,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v299First := true
-			for v299Name, v299Value := range in.NFLGameplanMap {
-				if v299First {
-					v299First = false
+			v305First := true
+			for v305Name, v305Value := range in.NFLGameplanMap {
+				if v305First {
+					v305First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v299Name))
+				out.UintStr(uint(v305Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v299Value)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v305Value)
 			}
 			out.RawByte('}')
 		}
@@ -24669,11 +25105,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers13(out *jwriter.Write
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v300, v301 := range in.NFLDraftPicks {
-				if v300 > 0 {
+			for v306, v307 := range in.NFLDraftPicks {
+				if v306 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v301)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v307)
 			}
 			out.RawByte(']')
 		}
@@ -24926,9 +25362,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAModels1(in *jlexer.Lexer, out
 					out.DraftPicks = (out.DraftPicks)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v302 structs.NFLDraftPick
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v302)
-					out.DraftPicks = append(out.DraftPicks, v302)
+					var v308 structs.NFLDraftPick
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v308)
+					out.DraftPicks = append(out.DraftPicks, v308)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -24949,9 +25385,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAModels1(in *jlexer.Lexer, out
 					out.ScoutProfiles = (out.ScoutProfiles)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v303 models.ScoutingProfile
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels2(in, &v303)
-					out.ScoutProfiles = append(out.ScoutProfiles, v303)
+					var v309 models.ScoutingProfile
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels2(in, &v309)
+					out.ScoutProfiles = append(out.ScoutProfiles, v309)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -25019,11 +25455,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAModels1(out *jwriter.Writer, 
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v304, v305 := range in.DraftPicks {
-				if v304 > 0 {
+			for v310, v311 := range in.DraftPicks {
+				if v310 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v305)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v311)
 			}
 			out.RawByte(']')
 		}
@@ -25035,11 +25471,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAModels1(out *jwriter.Writer, 
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v306, v307 := range in.ScoutProfiles {
-				if v306 > 0 {
+			for v312, v313 := range in.ScoutProfiles {
+				if v312 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels2(out, v307)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels2(out, v313)
 			}
 			out.RawByte(']')
 		}
