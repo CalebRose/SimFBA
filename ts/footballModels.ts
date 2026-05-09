@@ -8205,6 +8205,92 @@ export class UpdateTransferPortalBoard {
 
 
 
+export class NFLUDFAProfile {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    NFLUDFABoardID: number;
+    PlayerID: number;
+    PlayerName: string;
+    Position: string;
+    TeamID: number;
+    TeamAbbr: string;
+    Points: number;
+    IsSigned: boolean;
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.NFLUDFABoardID = source["NFLUDFABoardID"];
+        this.PlayerID = source["PlayerID"];
+        this.PlayerName = source["PlayerName"];
+        this.Position = source["Position"];
+        this.TeamID = source["TeamID"];
+        this.TeamAbbr = source["TeamAbbr"];
+        this.Points = source["Points"];
+        this.IsSigned = source["IsSigned"];
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
+export class NFLUDFABoard {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    TeamID: number;
+    TeamAbbr: string;
+    Profiles: NFLUDFAProfile[];
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.TeamID = source["TeamID"];
+        this.TeamAbbr = source["TeamAbbr"];
+        this.Profiles = this.convertValues(source["Profiles"], NFLUDFAProfile);
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
 
 export class FreeAgencyOfferDTO {
     ID: number;
