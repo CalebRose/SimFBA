@@ -2,7 +2,6 @@ package managers
 
 import (
 	"encoding/csv"
-	"io/ioutil"
 	"log"
 	"math/rand"
 	"os"
@@ -741,9 +740,9 @@ func GetFutureWeather() []structs.GameResponse {
 }
 
 func getRegionalWeather() map[string]structs.WeatherRegion {
-	path := util.ReadLocalPath("data\\WeatherData")
+	path := filepath.Join(os.Getenv("ROOT"), "data", "WeatherData")
 
-	files, err := ioutil.ReadDir(path)
+	files, err := os.ReadDir(path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -751,7 +750,7 @@ func getRegionalWeather() map[string]structs.WeatherRegion {
 	regions := make(map[string]structs.WeatherRegion)
 
 	for _, file := range files {
-		filePath := path + "\\" + file.Name()
+		filePath := filepath.Join(path, file.Name())
 		f, err := os.Open(filePath)
 		if err != nil {
 			log.Fatal("Unable to read input file "+filePath, err)
@@ -809,15 +808,14 @@ func getRegionalWeather() map[string]structs.WeatherRegion {
 }
 
 func getRainChart() map[float64]map[int]string {
-	// path := util.ReadLocalPath("data\\WeatherSetup\\Weather Data - Rain Chart.csv")
-	path := filepath.Join(os.Getenv("GOPATH"), "src", "github.com", "CalebRose", "SimFBA", "data", "WeatherSetup", "Weather Data - Rain Chart.csv")
+	path := filepath.Join(os.Getenv("ROOT"), "data", "WeatherSetup", "Weather Data - Rain Chart.csv")
 	rainChartCSV := util.ReadCSV(path)
 
 	return getChartMap(rainChartCSV)
 }
 
 func getMixChart() map[float64]map[int]string {
-	path := util.ReadLocalPath("data\\WeatherSetup\\Weather Data - Mix Chart.csv")
+	path := filepath.Join(os.Getenv("ROOT"), "data", "WeatherSetup", "Weather Data - Mix Chart.csv")
 
 	mixChartCSV := util.ReadCSV(path)
 
@@ -825,7 +823,7 @@ func getMixChart() map[float64]map[int]string {
 }
 
 func getSnowChart() map[float64]map[int]string {
-	path := util.ReadLocalPath("data\\WeatherSetup\\Weather Data - Snow Chart.csv")
+	path := filepath.Join(os.Getenv("ROOT"), "data", "WeatherSetup", "Weather Data - Snow Chart.csv")
 
 	snowChartCSV := util.ReadCSV(path)
 
@@ -858,9 +856,9 @@ func getChartMap(csvRecords [][]string) map[float64]map[int]string {
 }
 
 func getRegionsForSchools() map[string]string {
-	FBSPath := util.ReadLocalPath("data\\WeatherSetup\\Weather Data - FBS Assigns.csv")
-	FCSPath := util.ReadLocalPath("data\\WeatherSetup\\Weather Data - FCS Assigns.csv")
-	NFLPath := util.ReadLocalPath("data\\WeatherSetup\\Weather Data - NFL Assigns.csv")
+	FBSPath := filepath.Join(os.Getenv("ROOT"), "data", "WeatherSetup", "Weather Data - FBS Assigns.csv")
+	FCSPath := filepath.Join(os.Getenv("ROOT"), "data", "WeatherSetup", "Weather Data - FCS Assigns.csv")
+	NFLPath := filepath.Join(os.Getenv("ROOT"), "data", "WeatherSetup", "Weather Data - NFL Assigns.csv")
 
 	teamMap := make(map[string]string)
 
