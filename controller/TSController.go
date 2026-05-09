@@ -90,6 +90,7 @@ func CreateTSModelsFile(w http.ResponseWriter, r *http.Request) {
 		Add(structs.CollegeGame{}).
 		Add(structs.NFLCapsheet{}).
 		Add(structs.NFLContract{}).
+		Add(structs.NFLUDFABoard{}).
 		Add(structs.FreeAgencyOffer{}).
 		Add(structs.FreeAgencyOfferDTO{}).
 		Add(structs.NFLWaiverOffDTO{}).
