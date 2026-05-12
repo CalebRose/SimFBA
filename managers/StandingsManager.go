@@ -244,10 +244,14 @@ func GetAllNFLStandingsBySeasonID(seasonID string) []structs.NFLStandings {
 }
 
 func GetCollegeStandingsRecordByTeamID(id string, seasonID string) structs.CollegeStandings {
-	return repository.FindAllCollegeStandingsRecords(repository.StandingsQuery{
+	standings := repository.FindAllCollegeStandingsRecords(repository.StandingsQuery{
 		TeamID:   id,
 		SeasonID: seasonID,
-	})[0]
+	})
+	if len(standings) > 0 {
+		return standings[0]
+	}
+	return structs.CollegeStandings{}
 }
 
 func ResetCollegeStandingsRanks() {

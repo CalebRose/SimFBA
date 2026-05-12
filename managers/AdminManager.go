@@ -715,6 +715,13 @@ func GenerateOffseasonData() {
 	// Update Profile Affinities
 	UpdateTeamProfileAffinities()
 
+	// Generate CFB Conference Schedule
+	BaseGenerateCFBSchedule(false)
+
+	// Generate NFL Regular Season Schedule
+	GenerateSimNFLSchedule()
+
+	// Reset Media Post Count
 	ResetSimCFBMediaPostCount()
 
 	// Generate Next Croot Class

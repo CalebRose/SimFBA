@@ -728,13 +728,13 @@ func ImportNFLGames() {
 func ImportCFBTeams() {
 	db := dbprovider.GetInstance().GetDB()
 
-	teamPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2024\\teams.csv"
-	stadiumPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2024\\stadia.csv"
-	profilePath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2024\\profiles.csv"
+	teamPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\teams.csv"
+	stadiumPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\stadia.csv"
+	// profilePath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\profiles.csv"
 
 	teamCSV := util.ReadCSV(teamPath)
 	stadiumCSV := util.ReadCSV(stadiumPath)
-	profileCSV := util.ReadCSV(profilePath)
+	// profileCSV := util.ReadCSV(profilePath)
 
 	for idx, row := range teamCSV {
 		if idx == 0 {
@@ -742,7 +742,7 @@ func ImportCFBTeams() {
 		}
 
 		stadiumRecord := stadiumCSV[idx]
-		profileRecord := profileCSV[idx]
+		// profileRecord := profileCSV[idx]
 
 		teamID := util.ConvertStringToInt(row[0])
 		stadiumID := util.ConvertStringToInt(stadiumRecord[0])
@@ -801,45 +801,45 @@ func ImportCFBTeams() {
 			IsActive:     isActive,
 		}
 
-		aiBehavior := profileRecord[10]
-		aiQuality := profileRecord[11]
-		min := util.ConvertStringToInt(profileRecord[12])
-		max := util.ConvertStringToInt(profileRecord[13])
-		off := profileRecord[17]
-		def := profileRecord[18]
+		// aiBehavior := profileRecord[10]
+		// aiQuality := profileRecord[11]
+		// min := util.ConvertStringToInt(profileRecord[12])
+		// max := util.ConvertStringToInt(profileRecord[13])
+		// off := profileRecord[17]
+		// def := profileRecord[18]
 
-		teamProfile := structs.RecruitingTeamProfile{
-			Model: gorm.Model{
-				ID: uint(teamID),
-			},
-			TeamID:                    teamID,
-			Team:                      teamName,
-			TeamAbbreviation:          abbr,
-			State:                     state,
-			ScholarshipsAvailable:     40,
-			WeeklyPoints:              100,
-			SpentPoints:               0,
-			TotalCommitments:          0,
-			RecruitClassSize:          20,
-			PortalReputation:          100,
-			BaseEfficiencyScore:       0.6,
-			RecruitingEfficiencyScore: 0.8,
-			IsFBS:                     false,
-			IsUserTeam:                false,
-			IsAI:                      true,
-			AIBehavior:                aiBehavior,
-			AIQuality:                 aiQuality,
-			AIMinThreshold:            min,
-			AIMaxThreshold:            max,
-			AIStarMin:                 1,
-			AIStarMax:                 2,
-			OffensiveScheme:           off,
-			DefensiveScheme:           def,
-		}
+		// teamProfile := structs.RecruitingTeamProfile{
+		// 	Model: gorm.Model{
+		// 		ID: uint(teamID),
+		// 	},
+		// 	TeamID:                    teamID,
+		// 	Team:                      teamName,
+		// 	TeamAbbreviation:          abbr,
+		// 	State:                     state,
+		// 	ScholarshipsAvailable:     40,
+		// 	WeeklyPoints:              100,
+		// 	SpentPoints:               0,
+		// 	TotalCommitments:          0,
+		// 	RecruitClassSize:          20,
+		// 	PortalReputation:          100,
+		// 	BaseEfficiencyScore:       0.6,
+		// 	RecruitingEfficiencyScore: 0.8,
+		// 	IsFBS:                     false,
+		// 	IsUserTeam:                false,
+		// 	IsAI:                      true,
+		// 	AIBehavior:                aiBehavior,
+		// 	AIQuality:                 aiQuality,
+		// 	AIMinThreshold:            min,
+		// 	AIMaxThreshold:            max,
+		// 	AIStarMin:                 1,
+		// 	AIStarMax:                 2,
+		// 	OffensiveScheme:           off,
+		// 	DefensiveScheme:           def,
+		// }
 
 		db.Create(&team)
 		db.Create(&stadium)
-		db.Create(&teamProfile)
+		// db.Create(&teamProfile)
 	}
 }
 
@@ -1034,7 +1034,7 @@ func FixCollegeDTs() {
 func ImportCFBRivals() {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2025\\rivalries.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\rivalries.csv"
 
 	rivalsCSV := util.ReadCSV(path)
 
@@ -1047,20 +1047,20 @@ func ImportCFBRivals() {
 	}
 
 	for idx, row := range rivalsCSV {
-		if idx < 314 {
+		if idx == 0 {
 			continue
 		}
 
 		id := util.ConvertStringToInt(row[0])
-		rival1 := row[2]
-		rival2 := row[4]
+		rival1 := row[4]
+		rival2 := row[6]
 		if len(rival1) == 0 && len(rival2) == 0 {
 			break
 		}
-		rivalryName := row[5]
-		trophyName := row[6]
-		priority1 := util.ConvertStringToInt(row[7])
-		priority2 := util.ConvertStringToInt(row[8])
+		rivalryName := row[1]
+		trophyName := row[2]
+		priority1 := util.ConvertStringToInt(row[8])
+		priority2 := util.ConvertStringToInt(row[9])
 
 		team1, ok := teamMap[rival1]
 		if !ok {
@@ -1071,6 +1071,17 @@ func ImportCFBRivals() {
 		if !ok2 {
 			fmt.Println("FIX!!!")
 		}
+
+		isAnnualRivalry := util.ConvertStringToBool(row[10])
+		conferenceID := 0
+		if team1.ConferenceID > 0 && team1.ConferenceID == team2.ConferenceID {
+			conferenceID = int(team1.ConferenceID)
+		}
+
+		preferredWeek := util.ConvertStringToInt(row[12])
+		preferredTimeSlot := row[13]
+		isNeutral := util.ConvertStringToBool(row[14])
+		stadiumID := util.ConvertStringToInt(row[15])
 
 		rivalry := structs.CollegeRival{
 			Model: gorm.Model{
@@ -1083,6 +1094,12 @@ func ImportCFBRivals() {
 			HasTrophy:       len(trophyName) > 0,
 			TeamOnePriority: uint(priority1),
 			TeamTwoPriority: uint(priority2),
+			IsAnnualRivalry: isAnnualRivalry,
+			ConferenceID:    uint(conferenceID),
+			PreferredWeek:   uint8(preferredWeek),
+			Timeslot:        preferredTimeSlot,
+			IsNeutralSite:   isNeutral,
+			StadiumID:       uint(stadiumID),
 		}
 
 		db.Create(&rivalry)

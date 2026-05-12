@@ -172,7 +172,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/player/preferences", controller.FixPlayerPreferences).Methods("GET")
 	// apiRouter.HandleFunc("/admin/fix/affinities", controller.RecalibrateCrootProfiles).Methods("GET")
 	// apiRouter.HandleFunc("/admin/fix/recruit/points", controller.RecalibrateRecruitPoints).Methods("GET")
-	apiRouter.HandleFunc("/fix/profile/mods", controller.FixRecruitProfileMods).Methods("GET")
+	// apiRouter.HandleFunc("/fix/profile/mods", controller.FixRecruitProfileMods).Methods("GET")
 
 	// Free Agency Controls
 	// apiRouter.HandleFunc("/nfl/extensions/sync", controller.SyncExtensions).Methods("GET")
@@ -197,6 +197,19 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/games/result/cfb/{gameID}", controller.GetCollegeGameResultsByGameID).Methods("GET")
 	apiRouter.HandleFunc("/games/result/nfl/{gameID}", controller.GetNFLGameResultsByGameID).Methods("GET")
 	apiRouter.HandleFunc("/games/export/results/{seasonID}/{weekID}/{nflWeekID}/{timeslot}", controller.ExportCFBGameResults).Methods("GET")
+
+	// Game Request Controls - CFB
+	apiRouter.HandleFunc("/cfb/schedule/game/request/create", controller.CreateCFBGameRequest).Methods("POST")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/accept/{requestID}", controller.AcceptCFBGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/reject/{requestID}", controller.RejectCFBGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/process/{requestID}", controller.ProcessCFBGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/veto/{requestID}", controller.VetoCFBGameRequest).Methods("GET")
+	// Game Request Controls - NFL
+	apiRouter.HandleFunc("/nfl/schedule/game/request/create", controller.CreateNFLGameRequest).Methods("POST")
+	apiRouter.HandleFunc("/nfl/schedule/game/request/accept/{requestID}", controller.AcceptNFLGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/nfl/schedule/game/request/reject/{requestID}", controller.RejectNFLGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/nfl/schedule/game/request/process/{requestID}", controller.ProcessNFLGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/nfl/schedule/game/request/veto/{requestID}", controller.VetoNFLGameRequest).Methods("GET")
 
 	// Gameplan Controls
 	apiRouter.HandleFunc("/gameplan/college/team/{teamID}/", controller.GetTeamGameplanByTeamID).Methods("GET")
@@ -386,6 +399,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/simnfl/mass/test/{off}/{def}", controller.MassNFLUpdateGameplansTEST).Methods("GET")
 	apiRouter.HandleFunc("/teams/college/test/sim/{gameID}/", controller.GetCFBHomeAndAwayTeamTestData).Methods("GET")
 	apiRouter.HandleFunc("/teams/nfl/test/sim/{gameID}/", controller.GetNFLHomeAndAwayTeamTestData).Methods("GET")
+	apiRouter.HandleFunc("/test/scheduler/cfb", controller.TestCFBScheduler).Methods("GET")
 	// apiRouter.HandleFunc("/teams/nfl/test/setup/", controller.SetUpNFLTestDataStructs).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/test/cfb/progression/", controller.TestCFBProgressionAlgorithm).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/test/nfl/progression/", controller.TestNFLProgressionAlgorithm).Methods("GET")

@@ -432,6 +432,7 @@ export class NFLExtensionOffer {
     IsAccepted: boolean;
     IsActive: boolean;
     IsRejected: boolean;
+    IsTag: boolean;
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
@@ -463,6 +464,7 @@ export class NFLExtensionOffer {
         this.IsAccepted = source["IsAccepted"];
         this.IsActive = source["IsActive"];
         this.IsRejected = source["IsRejected"];
+        this.IsTag = source["IsTag"];
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -982,6 +984,21 @@ export class NFLPlayer {
     RelativeID: number;
     RelativeType: number;
     Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
     PlayerID: number;
     TeamID: number;
     CollegeID: number;
@@ -1001,7 +1018,9 @@ export class NFLPlayer {
     NegotiationRound: number;
     SigningRound: number;
     MinimumValue: number;
+    OriginalMinimumValue: number;
     AAV: number;
+    OriginalAAV: number;
     DraftedTeamID: number;
     DraftedTeam: string;
     DraftedRound: number;
@@ -1079,6 +1098,21 @@ export class NFLPlayer {
         this.RelativeID = source["RelativeID"];
         this.RelativeType = source["RelativeType"];
         this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
         this.PlayerID = source["PlayerID"];
         this.TeamID = source["TeamID"];
         this.CollegeID = source["CollegeID"];
@@ -1098,7 +1132,9 @@ export class NFLPlayer {
         this.NegotiationRound = source["NegotiationRound"];
         this.SigningRound = source["SigningRound"];
         this.MinimumValue = source["MinimumValue"];
+        this.OriginalMinimumValue = source["OriginalMinimumValue"];
         this.AAV = source["AAV"];
+        this.OriginalAAV = source["OriginalAAV"];
         this.DraftedTeamID = source["DraftedTeamID"];
         this.DraftedTeam = source["DraftedTeam"];
         this.DraftedRound = source["DraftedRound"];
@@ -1633,6 +1669,7 @@ export class NFLDraftPick {
     DrafteeID: number;
     DraftRound: number;
     DraftNumber: number;
+    OverallPickNumber: number;
     TeamID: number;
     Team: string;
     OriginalTeamID: number;
@@ -1658,6 +1695,7 @@ export class NFLDraftPick {
         this.DrafteeID = source["DrafteeID"];
         this.DraftRound = source["DraftRound"];
         this.DraftNumber = source["DraftNumber"];
+        this.OverallPickNumber = source["OverallPickNumber"];
         this.TeamID = source["TeamID"];
         this.Team = source["Team"];
         this.OriginalTeamID = source["OriginalTeamID"];
@@ -1986,6 +2024,17 @@ export class CollegeStandings {
     PostSeasonStatus: string;
     IsFBS: boolean;
     Rank: number;
+    IsConferenceChampion: boolean;
+    ToucanRank: number;
+    PreseasonRank: number;
+    RegularSeasonRank: number;
+    SOS: number;
+    SOR: number;
+    RPI: number;
+    ConferenceStrengthAdj: number;
+    Tier1Wins: number;
+    Tier2Wins: number;
+    BadLosses: number;
     TotalWins: number;
     TotalLosses: number;
     ConferenceWins: number;
@@ -2020,6 +2069,17 @@ export class CollegeStandings {
         this.PostSeasonStatus = source["PostSeasonStatus"];
         this.IsFBS = source["IsFBS"];
         this.Rank = source["Rank"];
+        this.IsConferenceChampion = source["IsConferenceChampion"];
+        this.ToucanRank = source["ToucanRank"];
+        this.PreseasonRank = source["PreseasonRank"];
+        this.RegularSeasonRank = source["RegularSeasonRank"];
+        this.SOS = source["SOS"];
+        this.SOR = source["SOR"];
+        this.RPI = source["RPI"];
+        this.ConferenceStrengthAdj = source["ConferenceStrengthAdj"];
+        this.Tier1Wins = source["Tier1Wins"];
+        this.Tier2Wins = source["Tier2Wins"];
+        this.BadLosses = source["BadLosses"];
         this.TotalWins = source["TotalWins"];
         this.TotalLosses = source["TotalLosses"];
         this.ConferenceWins = source["ConferenceWins"];
@@ -2462,6 +2522,21 @@ export class CollegePlayer {
     RelativeID: number;
     RelativeType: number;
     Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
     PlayerID: number;
     TeamID: number;
     TeamAbbr: string;
@@ -2540,6 +2615,21 @@ export class CollegePlayer {
         this.RelativeID = source["RelativeID"];
         this.RelativeType = source["RelativeType"];
         this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
         this.PlayerID = source["PlayerID"];
         this.TeamID = source["TeamID"];
         this.TeamAbbr = source["TeamAbbr"];
@@ -2581,7 +2671,7 @@ export class CollegeDepthChartPosition {
     ID: number;
     CreatedAt: Time;
     UpdatedAt: Time;
-    DeletedAt: Time;
+    DeletedAt: DeletedAt;
     DepthChartID: number;
     PlayerID: number;
     Position: string;
@@ -2596,7 +2686,7 @@ export class CollegeDepthChartPosition {
         this.ID = source["ID"];
         this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
         this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
-        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], DeletedAt);
         this.DepthChartID = source["DepthChartID"];
         this.PlayerID = source["PlayerID"];
         this.Position = source["Position"];
@@ -2629,7 +2719,7 @@ export class CollegeTeamDepthChart {
     ID: number;
     CreatedAt: Time;
     UpdatedAt: Time;
-    DeletedAt: Time;
+    DeletedAt: DeletedAt;
     TeamID: number;
     DepthChartPlayers: CollegeDepthChartPosition[];
 
@@ -2638,7 +2728,7 @@ export class CollegeTeamDepthChart {
         this.ID = source["ID"];
         this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
         this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
-        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], DeletedAt);
         this.TeamID = source["TeamID"];
         this.DepthChartPlayers = this.convertValues(source["DepthChartPlayers"], CollegeDepthChartPosition);
     }
@@ -2665,7 +2755,7 @@ export class CollegeGameplan {
     ID: number;
     CreatedAt: Time;
     UpdatedAt: Time;
-    DeletedAt: Time;
+    DeletedAt: DeletedAt;
     TeamID: number;
     OffensiveScheme: string;
     OffRunToPassRatio: number;
@@ -2809,7 +2899,7 @@ export class CollegeGameplan {
         this.ID = source["ID"];
         this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
         this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
-        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], DeletedAt);
         this.TeamID = source["TeamID"];
         this.OffensiveScheme = source["OffensiveScheme"];
         this.OffRunToPassRatio = source["OffRunToPassRatio"];
@@ -3720,6 +3810,21 @@ export class Recruit {
     RelativeID: number;
     RelativeType: number;
     Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
     HighSchool: string;
     City: string;
     State: string;
@@ -3800,6 +3905,21 @@ export class Recruit {
         this.RelativeID = source["RelativeID"];
         this.RelativeType = source["RelativeType"];
         this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
         this.HighSchool = source["HighSchool"];
         this.City = source["City"];
         this.State = source["State"];
@@ -3850,6 +3970,7 @@ export class RecruitPlayerProfile {
     PreviousWeekPoints: number;
     SpendingCount: number;
     RecruitingEfficiencyScore: number;
+    PreferenceModifier: number;
     Scholarship: boolean;
     ScholarshipRevoked: boolean;
     AffinityOneEligible: boolean;
@@ -3877,6 +3998,7 @@ export class RecruitPlayerProfile {
         this.PreviousWeekPoints = source["PreviousWeekPoints"];
         this.SpendingCount = source["SpendingCount"];
         this.RecruitingEfficiencyScore = source["RecruitingEfficiencyScore"];
+        this.PreferenceModifier = source["PreferenceModifier"];
         this.Scholarship = source["Scholarship"];
         this.ScholarshipRevoked = source["ScholarshipRevoked"];
         this.AffinityOneEligible = source["AffinityOneEligible"];
@@ -3965,6 +4087,17 @@ export class RecruitingTeamProfile {
     BigCityAffinity: boolean;
     MediaSpotlightAffinity: boolean;
     RisingStarsAffinity: boolean;
+    ProgramPrestige: number;
+    ProfessionalPrestige: number;
+    Traditions: number;
+    Facilities: number;
+    Atmosphere: number;
+    Academics: number;
+    CampusLife: number;
+    ConferencePrestige: number;
+    CoachRating: number;
+    SeasonMomentum: number;
+    MediaSpotlight: number;
     Recruits: RecruitPlayerProfile[];
     Affinities: ProfileAffinity[];
 
@@ -4025,6 +4158,17 @@ export class RecruitingTeamProfile {
         this.BigCityAffinity = source["BigCityAffinity"];
         this.MediaSpotlightAffinity = source["MediaSpotlightAffinity"];
         this.RisingStarsAffinity = source["RisingStarsAffinity"];
+        this.ProgramPrestige = source["ProgramPrestige"];
+        this.ProfessionalPrestige = source["ProfessionalPrestige"];
+        this.Traditions = source["Traditions"];
+        this.Facilities = source["Facilities"];
+        this.Atmosphere = source["Atmosphere"];
+        this.Academics = source["Academics"];
+        this.CampusLife = source["CampusLife"];
+        this.ConferencePrestige = source["ConferencePrestige"];
+        this.CoachRating = source["CoachRating"];
+        this.SeasonMomentum = source["SeasonMomentum"];
+        this.MediaSpotlight = source["MediaSpotlight"];
         this.Recruits = this.convertValues(source["Recruits"], RecruitPlayerProfile);
         this.Affinities = this.convertValues(source["Affinities"], ProfileAffinity);
     }
@@ -4376,6 +4520,21 @@ export class NFLRetiredPlayer {
     RelativeID: number;
     RelativeType: number;
     Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
     PlayerID: number;
     TeamID: number;
     CollegeID: number;
@@ -4395,7 +4554,9 @@ export class NFLRetiredPlayer {
     NegotiationRound: number;
     SigningRound: number;
     MinimumValue: number;
+    OriginalMinimumValue: number;
     AAV: number;
+    OriginalAAV: number;
     DraftedTeamID: number;
     DraftedTeam: string;
     DraftedRound: number;
@@ -4473,6 +4634,21 @@ export class NFLRetiredPlayer {
         this.RelativeID = source["RelativeID"];
         this.RelativeType = source["RelativeType"];
         this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
         this.PlayerID = source["PlayerID"];
         this.TeamID = source["TeamID"];
         this.CollegeID = source["CollegeID"];
@@ -4492,7 +4668,9 @@ export class NFLRetiredPlayer {
         this.NegotiationRound = source["NegotiationRound"];
         this.SigningRound = source["SigningRound"];
         this.MinimumValue = source["MinimumValue"];
+        this.OriginalMinimumValue = source["OriginalMinimumValue"];
         this.AAV = source["AAV"];
+        this.OriginalAAV = source["OriginalAAV"];
         this.DraftedTeamID = source["DraftedTeamID"];
         this.DraftedTeam = source["DraftedTeam"];
         this.DraftedRound = source["DraftedRound"];
@@ -4711,6 +4889,7 @@ export class NFLGame {
     IsConferenceChampionship: boolean;
     IsSuperBowl: boolean;
     GameComplete: boolean;
+    IsRevealed: boolean;
     IsPreseasonGame: boolean;
     GameTitle: string;
     NextGameID: number;
@@ -4761,6 +4940,7 @@ export class NFLGame {
         this.IsConferenceChampionship = source["IsConferenceChampionship"];
         this.IsSuperBowl = source["IsSuperBowl"];
         this.GameComplete = source["GameComplete"];
+        this.IsRevealed = source["IsRevealed"];
         this.IsPreseasonGame = source["IsPreseasonGame"];
         this.GameTitle = source["GameTitle"];
         this.NextGameID = source["NextGameID"];
@@ -5113,6 +5293,7 @@ export class CollegeGame {
     IsPlayoffGame: boolean;
     IsNationalChampionship: boolean;
     IsRivalryGame: boolean;
+    IsRevealed: boolean;
     GameComplete: boolean;
     IsSpringGame: boolean;
     GameTitle: string;
@@ -5167,6 +5348,7 @@ export class CollegeGame {
         this.IsPlayoffGame = source["IsPlayoffGame"];
         this.IsNationalChampionship = source["IsNationalChampionship"];
         this.IsRivalryGame = source["IsRivalryGame"];
+        this.IsRevealed = source["IsRevealed"];
         this.GameComplete = source["GameComplete"];
         this.IsSpringGame = source["IsSpringGame"];
         this.GameTitle = source["GameTitle"];
@@ -5195,191 +5377,15 @@ export class CollegeGame {
 	    return a;
 	}
 }
-export class HistoricCollegePlayer {
-    ID: number;
-    CreatedAt: Time;
-    UpdatedAt: Time;
-    DeletedAt: Time;
-    FirstName: string;
-    LastName: string;
-    Position: string;
-    Archetype: string;
-    PreviousTeamID: number;
-    PreviousTeam: string;
-    Height: number;
-    Weight: number;
-    Age: number;
-    Stars: number;
-    Overall: number;
-    Stamina: number;
-    Injury: number;
-    FootballIQ: number;
-    Speed: number;
-    Carrying: number;
-    Agility: number;
-    Catching: number;
-    RouteRunning: number;
-    ZoneCoverage: number;
-    ManCoverage: number;
-    Strength: number;
-    Tackle: number;
-    PassBlock: number;
-    RunBlock: number;
-    PassRush: number;
-    RunDefense: number;
-    ThrowPower: number;
-    ThrowAccuracy: number;
-    KickAccuracy: number;
-    KickPower: number;
-    PuntAccuracy: number;
-    PuntPower: number;
-    Progression: number;
-    Discipline: number;
-    PotentialGrade: string;
-    FreeAgency: string;
-    Personality: string;
-    RecruitingBias: string;
-    WorkEthic: string;
-    AcademicBias: string;
-    IsInjured: boolean;
-    InjuryName: string;
-    InjuryType: string;
-    WeeksOfRecovery: number;
-    InjuryReserve: boolean;
-    PrimeAge: number;
-    Clutch: number;
-    Shotgun: number;
-    PositionTwo: string;
-    ArchetypeTwo: string;
-    RelativeID: number;
-    RelativeType: number;
-    Notes: string;
-    PlayerID: number;
-    TeamID: number;
-    TeamAbbr: string;
-    HighSchool: string;
-    City: string;
-    State: string;
-    Year: number;
-    IsRedshirt: boolean;
-    IsRedshirting: boolean;
-    HasGraduated: boolean;
-    TransferStatus: number;
-    TransferLikeliness: string;
-    Stats: CollegePlayerStats[];
-    SeasonStats: CollegePlayerSeasonStats;
-    HasProgressed: boolean;
-    WillDeclare: boolean;
-    LegacyID: number;
-
-    constructor(source: any = {}) {
-        if ('string' === typeof source) source = JSON.parse(source);
-        this.ID = source["ID"];
-        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
-        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
-        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
-        this.FirstName = source["FirstName"];
-        this.LastName = source["LastName"];
-        this.Position = source["Position"];
-        this.Archetype = source["Archetype"];
-        this.PreviousTeamID = source["PreviousTeamID"];
-        this.PreviousTeam = source["PreviousTeam"];
-        this.Height = source["Height"];
-        this.Weight = source["Weight"];
-        this.Age = source["Age"];
-        this.Stars = source["Stars"];
-        this.Overall = source["Overall"];
-        this.Stamina = source["Stamina"];
-        this.Injury = source["Injury"];
-        this.FootballIQ = source["FootballIQ"];
-        this.Speed = source["Speed"];
-        this.Carrying = source["Carrying"];
-        this.Agility = source["Agility"];
-        this.Catching = source["Catching"];
-        this.RouteRunning = source["RouteRunning"];
-        this.ZoneCoverage = source["ZoneCoverage"];
-        this.ManCoverage = source["ManCoverage"];
-        this.Strength = source["Strength"];
-        this.Tackle = source["Tackle"];
-        this.PassBlock = source["PassBlock"];
-        this.RunBlock = source["RunBlock"];
-        this.PassRush = source["PassRush"];
-        this.RunDefense = source["RunDefense"];
-        this.ThrowPower = source["ThrowPower"];
-        this.ThrowAccuracy = source["ThrowAccuracy"];
-        this.KickAccuracy = source["KickAccuracy"];
-        this.KickPower = source["KickPower"];
-        this.PuntAccuracy = source["PuntAccuracy"];
-        this.PuntPower = source["PuntPower"];
-        this.Progression = source["Progression"];
-        this.Discipline = source["Discipline"];
-        this.PotentialGrade = source["PotentialGrade"];
-        this.FreeAgency = source["FreeAgency"];
-        this.Personality = source["Personality"];
-        this.RecruitingBias = source["RecruitingBias"];
-        this.WorkEthic = source["WorkEthic"];
-        this.AcademicBias = source["AcademicBias"];
-        this.IsInjured = source["IsInjured"];
-        this.InjuryName = source["InjuryName"];
-        this.InjuryType = source["InjuryType"];
-        this.WeeksOfRecovery = source["WeeksOfRecovery"];
-        this.InjuryReserve = source["InjuryReserve"];
-        this.PrimeAge = source["PrimeAge"];
-        this.Clutch = source["Clutch"];
-        this.Shotgun = source["Shotgun"];
-        this.PositionTwo = source["PositionTwo"];
-        this.ArchetypeTwo = source["ArchetypeTwo"];
-        this.RelativeID = source["RelativeID"];
-        this.RelativeType = source["RelativeType"];
-        this.Notes = source["Notes"];
-        this.PlayerID = source["PlayerID"];
-        this.TeamID = source["TeamID"];
-        this.TeamAbbr = source["TeamAbbr"];
-        this.HighSchool = source["HighSchool"];
-        this.City = source["City"];
-        this.State = source["State"];
-        this.Year = source["Year"];
-        this.IsRedshirt = source["IsRedshirt"];
-        this.IsRedshirting = source["IsRedshirting"];
-        this.HasGraduated = source["HasGraduated"];
-        this.TransferStatus = source["TransferStatus"];
-        this.TransferLikeliness = source["TransferLikeliness"];
-        this.Stats = this.convertValues(source["Stats"], CollegePlayerStats);
-        this.SeasonStats = this.convertValues(source["SeasonStats"], CollegePlayerSeasonStats);
-        this.HasProgressed = source["HasProgressed"];
-        this.WillDeclare = source["WillDeclare"];
-        this.LegacyID = source["LegacyID"];
-    }
-
-	convertValues(a: any, classs: any, asMap: boolean = false): any {
-	    if (!a) {
-	        return a;
-	    }
-	    if (Array.isArray(a)) {
-	        return (a as any[]).map(elem => this.convertValues(elem, classs));
-	    } else if ("object" === typeof a) {
-	        if (asMap) {
-	            for (const key of Object.keys(a)) {
-	                a[key] = new classs(a[key]);
-	            }
-	            return a;
-	        }
-	        return new classs(a);
-	    }
-	    return a;
-	}
-}
 export class BootstrapDataLanding {
     CollegeTeam: CollegeTeam;
     CollegeRosterMap: {[key: uint]: CollegePlayer[]};
-    HistoricCollegePlayers: HistoricCollegePlayer[];
     CollegeStandings: CollegeStandings[];
     AllCollegeGames: CollegeGame[];
     OfficialPolls: CollegePollOfficial[];
     TopCFBPassers: CollegePlayer[];
     TopCFBRushers: CollegePlayer[];
     TopCFBReceivers: CollegePlayer[];
-    PortalPlayers: CollegePlayer[];
     CollegeInjuryReport: CollegePlayer[];
     CollegeNotifications: Notification[];
     ProTeam: NFLTeam;
@@ -5400,14 +5406,12 @@ export class BootstrapDataLanding {
         if ('string' === typeof source) source = JSON.parse(source);
         this.CollegeTeam = this.convertValues(source["CollegeTeam"], CollegeTeam);
         this.CollegeRosterMap = source["CollegeRosterMap"];
-        this.HistoricCollegePlayers = this.convertValues(source["HistoricCollegePlayers"], HistoricCollegePlayer);
         this.CollegeStandings = this.convertValues(source["CollegeStandings"], CollegeStandings);
         this.AllCollegeGames = this.convertValues(source["AllCollegeGames"], CollegeGame);
         this.OfficialPolls = this.convertValues(source["OfficialPolls"], CollegePollOfficial);
         this.TopCFBPassers = this.convertValues(source["TopCFBPassers"], CollegePlayer);
         this.TopCFBRushers = this.convertValues(source["TopCFBRushers"], CollegePlayer);
         this.TopCFBReceivers = this.convertValues(source["TopCFBReceivers"], CollegePlayer);
-        this.PortalPlayers = this.convertValues(source["PortalPlayers"], CollegePlayer);
         this.CollegeInjuryReport = this.convertValues(source["CollegeInjuryReport"], CollegePlayer);
         this.CollegeNotifications = this.convertValues(source["CollegeNotifications"], Notification);
         this.ProTeam = this.convertValues(source["ProTeam"], NFLTeam);
@@ -5549,118 +5553,6 @@ export class NFLTradePreferences {
 	    return a;
 	}
 }
-export class NFLTradeOptionObj {
-    ID: number;
-    TradeProposalID: number;
-    NFLTeamID: number;
-    NFLPlayerID: number;
-    NFLDraftPickID: number;
-    OptionType: string;
-    SalaryPercentage: number;
-    Player: NFLPlayer;
-    Draftpick: NFLDraftPick;
-
-    constructor(source: any = {}) {
-        if ('string' === typeof source) source = JSON.parse(source);
-        this.ID = source["ID"];
-        this.TradeProposalID = source["TradeProposalID"];
-        this.NFLTeamID = source["NFLTeamID"];
-        this.NFLPlayerID = source["NFLPlayerID"];
-        this.NFLDraftPickID = source["NFLDraftPickID"];
-        this.OptionType = source["OptionType"];
-        this.SalaryPercentage = source["SalaryPercentage"];
-        this.Player = this.convertValues(source["Player"], NFLPlayer);
-        this.Draftpick = this.convertValues(source["Draftpick"], NFLDraftPick);
-    }
-
-	convertValues(a: any, classs: any, asMap: boolean = false): any {
-	    if (!a) {
-	        return a;
-	    }
-	    if (Array.isArray(a)) {
-	        return (a as any[]).map(elem => this.convertValues(elem, classs));
-	    } else if ("object" === typeof a) {
-	        if (asMap) {
-	            for (const key of Object.keys(a)) {
-	                a[key] = new classs(a[key]);
-	            }
-	            return a;
-	        }
-	        return new classs(a);
-	    }
-	    return a;
-	}
-}
-export class NFLTradeProposalDTO {
-    ID: number;
-    NFLTeamID: number;
-    NFLTeam: string;
-    RecepientTeamID: number;
-    RecepientTeam: string;
-    IsTradeAccepted: boolean;
-    IsTradeRejected: boolean;
-    NFLTeamTradeOptions: NFLTradeOptionObj[];
-    RecepientTeamTradeOptions: NFLTradeOptionObj[];
-
-    constructor(source: any = {}) {
-        if ('string' === typeof source) source = JSON.parse(source);
-        this.ID = source["ID"];
-        this.NFLTeamID = source["NFLTeamID"];
-        this.NFLTeam = source["NFLTeam"];
-        this.RecepientTeamID = source["RecepientTeamID"];
-        this.RecepientTeam = source["RecepientTeam"];
-        this.IsTradeAccepted = source["IsTradeAccepted"];
-        this.IsTradeRejected = source["IsTradeRejected"];
-        this.NFLTeamTradeOptions = this.convertValues(source["NFLTeamTradeOptions"], NFLTradeOptionObj);
-        this.RecepientTeamTradeOptions = this.convertValues(source["RecepientTeamTradeOptions"], NFLTradeOptionObj);
-    }
-
-	convertValues(a: any, classs: any, asMap: boolean = false): any {
-	    if (!a) {
-	        return a;
-	    }
-	    if (Array.isArray(a)) {
-	        return (a as any[]).map(elem => this.convertValues(elem, classs));
-	    } else if ("object" === typeof a) {
-	        if (asMap) {
-	            for (const key of Object.keys(a)) {
-	                a[key] = new classs(a[key]);
-	            }
-	            return a;
-	        }
-	        return new classs(a);
-	    }
-	    return a;
-	}
-}
-export class NFLTeamProposals {
-    SentTradeProposals: NFLTradeProposalDTO[];
-    ReceivedTradeProposals: NFLTradeProposalDTO[];
-
-    constructor(source: any = {}) {
-        if ('string' === typeof source) source = JSON.parse(source);
-        this.SentTradeProposals = this.convertValues(source["SentTradeProposals"], NFLTradeProposalDTO);
-        this.ReceivedTradeProposals = this.convertValues(source["ReceivedTradeProposals"], NFLTradeProposalDTO);
-    }
-
-	convertValues(a: any, classs: any, asMap: boolean = false): any {
-	    if (!a) {
-	        return a;
-	    }
-	    if (Array.isArray(a)) {
-	        return (a as any[]).map(elem => this.convertValues(elem, classs));
-	    } else if ("object" === typeof a) {
-	        if (asMap) {
-	            for (const key of Object.keys(a)) {
-	                a[key] = new classs(a[key]);
-	            }
-	            return a;
-	        }
-	        return new classs(a);
-	    }
-	    return a;
-	}
-}
 export class CollegePromise {
     ID: number;
     CreatedAt: Time;
@@ -5715,7 +5607,7 @@ export class BootstrapDataTeamRoster {
     ContractMap: {[key: uint]: NFLContract};
     ExtensionMap: {[key: uint]: NFLExtensionOffer};
     CollegePromises: CollegePromise[];
-    TradeProposals: NFLTeamProposals;
+    TradeProposals: {[key: uint]: NFLTradeProposal[]};
     TradePreferences: {[key: uint]: NFLTradePreferences};
     NFLDraftPicks: NFLDraftPick[];
 
@@ -5724,7 +5616,7 @@ export class BootstrapDataTeamRoster {
         this.ContractMap = this.convertValues(source["ContractMap"], NFLContract, true);
         this.ExtensionMap = this.convertValues(source["ExtensionMap"], NFLExtensionOffer, true);
         this.CollegePromises = this.convertValues(source["CollegePromises"], CollegePromise);
-        this.TradeProposals = this.convertValues(source["TradeProposals"], NFLTeamProposals);
+        this.TradeProposals = source["TradeProposals"];
         this.TradePreferences = this.convertValues(source["TradePreferences"], NFLTradePreferences, true);
         this.NFLDraftPicks = this.convertValues(source["NFLDraftPicks"], NFLDraftPick);
     }
@@ -5793,6 +5685,21 @@ export class Croot {
     OverallGrade: string;
     TotalRank: number;
     LeadingTeams: LeadingTeams[];
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
@@ -5825,6 +5732,21 @@ export class Croot {
         this.OverallGrade = source["OverallGrade"];
         this.TotalRank = source["TotalRank"];
         this.LeadingTeams = this.convertValues(source["LeadingTeams"], LeadingTeams);
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -5907,14 +5829,408 @@ export class BootstrapDataFreeAgency {
 	    return a;
 	}
 }
+export class NFLGameRequest {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    HomeTeamID: number;
+    AwayTeamID: number;
+    SendingTeamID: number;
+    RequestingTeamID: number;
+    IsAccepted: boolean;
+    IsApproved: boolean;
+    ArenaID: number;
+    Arena: string;
+    IsNeutralSite: boolean;
+    SeasonID: number;
+    WeekID: number;
+    Week: number;
+    Timeslot: string;
+    IsPreseason: boolean;
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.HomeTeamID = source["HomeTeamID"];
+        this.AwayTeamID = source["AwayTeamID"];
+        this.SendingTeamID = source["SendingTeamID"];
+        this.RequestingTeamID = source["RequestingTeamID"];
+        this.IsAccepted = source["IsAccepted"];
+        this.IsApproved = source["IsApproved"];
+        this.ArenaID = source["ArenaID"];
+        this.Arena = source["Arena"];
+        this.IsNeutralSite = source["IsNeutralSite"];
+        this.SeasonID = source["SeasonID"];
+        this.WeekID = source["WeekID"];
+        this.Week = source["Week"];
+        this.Timeslot = source["Timeslot"];
+        this.IsPreseason = source["IsPreseason"];
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
+export class CFBGameRequest {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    HomeTeamID: number;
+    AwayTeamID: number;
+    SendingTeamID: number;
+    RequestingTeamID: number;
+    IsAccepted: boolean;
+    IsApproved: boolean;
+    ArenaID: number;
+    Arena: string;
+    IsNeutralSite: boolean;
+    SeasonID: number;
+    WeekID: number;
+    Week: number;
+    Timeslot: string;
+    IsSpringGame: boolean;
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.HomeTeamID = source["HomeTeamID"];
+        this.AwayTeamID = source["AwayTeamID"];
+        this.SendingTeamID = source["SendingTeamID"];
+        this.RequestingTeamID = source["RequestingTeamID"];
+        this.IsAccepted = source["IsAccepted"];
+        this.IsApproved = source["IsApproved"];
+        this.ArenaID = source["ArenaID"];
+        this.Arena = source["Arena"];
+        this.IsNeutralSite = source["IsNeutralSite"];
+        this.SeasonID = source["SeasonID"];
+        this.WeekID = source["WeekID"];
+        this.Week = source["Week"];
+        this.Timeslot = source["Timeslot"];
+        this.IsSpringGame = source["IsSpringGame"];
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
+export class Stadium {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    StadiumName: string;
+    TeamID: number;
+    TeamAbbr: string;
+    City: string;
+    State: string;
+    Country: string;
+    Region: string;
+    WeatherRegion: string;
+    Capacity: number;
+    RecordAttendance: number;
+    FirstSeason: number;
+    LeagueID: number;
+    LeagueName: string;
+    IsDomed: boolean;
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.StadiumName = source["StadiumName"];
+        this.TeamID = source["TeamID"];
+        this.TeamAbbr = source["TeamAbbr"];
+        this.City = source["City"];
+        this.State = source["State"];
+        this.Country = source["Country"];
+        this.Region = source["Region"];
+        this.WeatherRegion = source["WeatherRegion"];
+        this.Capacity = source["Capacity"];
+        this.RecordAttendance = source["RecordAttendance"];
+        this.FirstSeason = source["FirstSeason"];
+        this.LeagueID = source["LeagueID"];
+        this.LeagueName = source["LeagueName"];
+        this.IsDomed = source["IsDomed"];
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
+export class HistoricCollegePlayer {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    FirstName: string;
+    LastName: string;
+    Position: string;
+    Archetype: string;
+    PreviousTeamID: number;
+    PreviousTeam: string;
+    Height: number;
+    Weight: number;
+    Age: number;
+    Stars: number;
+    Overall: number;
+    Stamina: number;
+    Injury: number;
+    FootballIQ: number;
+    Speed: number;
+    Carrying: number;
+    Agility: number;
+    Catching: number;
+    RouteRunning: number;
+    ZoneCoverage: number;
+    ManCoverage: number;
+    Strength: number;
+    Tackle: number;
+    PassBlock: number;
+    RunBlock: number;
+    PassRush: number;
+    RunDefense: number;
+    ThrowPower: number;
+    ThrowAccuracy: number;
+    KickAccuracy: number;
+    KickPower: number;
+    PuntAccuracy: number;
+    PuntPower: number;
+    Progression: number;
+    Discipline: number;
+    PotentialGrade: string;
+    FreeAgency: string;
+    Personality: string;
+    RecruitingBias: string;
+    WorkEthic: string;
+    AcademicBias: string;
+    IsInjured: boolean;
+    InjuryName: string;
+    InjuryType: string;
+    WeeksOfRecovery: number;
+    InjuryReserve: boolean;
+    PrimeAge: number;
+    Clutch: number;
+    Shotgun: number;
+    PositionTwo: string;
+    ArchetypeTwo: string;
+    RelativeID: number;
+    RelativeType: number;
+    Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
+    PlayerID: number;
+    TeamID: number;
+    TeamAbbr: string;
+    HighSchool: string;
+    City: string;
+    State: string;
+    Year: number;
+    IsRedshirt: boolean;
+    IsRedshirting: boolean;
+    HasGraduated: boolean;
+    TransferStatus: number;
+    TransferLikeliness: string;
+    Stats: CollegePlayerStats[];
+    SeasonStats: CollegePlayerSeasonStats;
+    HasProgressed: boolean;
+    WillDeclare: boolean;
+    LegacyID: number;
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.FirstName = source["FirstName"];
+        this.LastName = source["LastName"];
+        this.Position = source["Position"];
+        this.Archetype = source["Archetype"];
+        this.PreviousTeamID = source["PreviousTeamID"];
+        this.PreviousTeam = source["PreviousTeam"];
+        this.Height = source["Height"];
+        this.Weight = source["Weight"];
+        this.Age = source["Age"];
+        this.Stars = source["Stars"];
+        this.Overall = source["Overall"];
+        this.Stamina = source["Stamina"];
+        this.Injury = source["Injury"];
+        this.FootballIQ = source["FootballIQ"];
+        this.Speed = source["Speed"];
+        this.Carrying = source["Carrying"];
+        this.Agility = source["Agility"];
+        this.Catching = source["Catching"];
+        this.RouteRunning = source["RouteRunning"];
+        this.ZoneCoverage = source["ZoneCoverage"];
+        this.ManCoverage = source["ManCoverage"];
+        this.Strength = source["Strength"];
+        this.Tackle = source["Tackle"];
+        this.PassBlock = source["PassBlock"];
+        this.RunBlock = source["RunBlock"];
+        this.PassRush = source["PassRush"];
+        this.RunDefense = source["RunDefense"];
+        this.ThrowPower = source["ThrowPower"];
+        this.ThrowAccuracy = source["ThrowAccuracy"];
+        this.KickAccuracy = source["KickAccuracy"];
+        this.KickPower = source["KickPower"];
+        this.PuntAccuracy = source["PuntAccuracy"];
+        this.PuntPower = source["PuntPower"];
+        this.Progression = source["Progression"];
+        this.Discipline = source["Discipline"];
+        this.PotentialGrade = source["PotentialGrade"];
+        this.FreeAgency = source["FreeAgency"];
+        this.Personality = source["Personality"];
+        this.RecruitingBias = source["RecruitingBias"];
+        this.WorkEthic = source["WorkEthic"];
+        this.AcademicBias = source["AcademicBias"];
+        this.IsInjured = source["IsInjured"];
+        this.InjuryName = source["InjuryName"];
+        this.InjuryType = source["InjuryType"];
+        this.WeeksOfRecovery = source["WeeksOfRecovery"];
+        this.InjuryReserve = source["InjuryReserve"];
+        this.PrimeAge = source["PrimeAge"];
+        this.Clutch = source["Clutch"];
+        this.Shotgun = source["Shotgun"];
+        this.PositionTwo = source["PositionTwo"];
+        this.ArchetypeTwo = source["ArchetypeTwo"];
+        this.RelativeID = source["RelativeID"];
+        this.RelativeType = source["RelativeType"];
+        this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
+        this.PlayerID = source["PlayerID"];
+        this.TeamID = source["TeamID"];
+        this.TeamAbbr = source["TeamAbbr"];
+        this.HighSchool = source["HighSchool"];
+        this.City = source["City"];
+        this.State = source["State"];
+        this.Year = source["Year"];
+        this.IsRedshirt = source["IsRedshirt"];
+        this.IsRedshirting = source["IsRedshirting"];
+        this.HasGraduated = source["HasGraduated"];
+        this.TransferStatus = source["TransferStatus"];
+        this.TransferLikeliness = source["TransferLikeliness"];
+        this.Stats = this.convertValues(source["Stats"], CollegePlayerStats);
+        this.SeasonStats = this.convertValues(source["SeasonStats"], CollegePlayerSeasonStats);
+        this.HasProgressed = source["HasProgressed"];
+        this.WillDeclare = source["WillDeclare"];
+        this.LegacyID = source["LegacyID"];
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
 export class BootstrapDataScheduling {
     OfficialPolls: CollegePollOfficial[];
     PollSubmission: CollegePollSubmission;
+    HistoricCollegePlayers: HistoricCollegePlayer[];
+    RetiredPlayers: NFLRetiredPlayer[];
+    Stadiums: Stadium[];
+    CFBGameRequests: CFBGameRequest[];
+    NFLGameRequests: NFLGameRequest[];
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
         this.OfficialPolls = this.convertValues(source["OfficialPolls"], CollegePollOfficial);
         this.PollSubmission = this.convertValues(source["PollSubmission"], CollegePollSubmission);
+        this.HistoricCollegePlayers = this.convertValues(source["HistoricCollegePlayers"], HistoricCollegePlayer);
+        this.RetiredPlayers = this.convertValues(source["RetiredPlayers"], NFLRetiredPlayer);
+        this.Stadiums = this.convertValues(source["Stadiums"], Stadium);
+        this.CFBGameRequests = this.convertValues(source["CFBGameRequests"], CFBGameRequest);
+        this.NFLGameRequests = this.convertValues(source["NFLGameRequests"], NFLGameRequest);
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -6098,6 +6414,21 @@ export class NFLDraftee {
     RelativeID: number;
     RelativeType: number;
     Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
     PlayerID: number;
     HighSchool: string;
     CollegeID: number;
@@ -6195,6 +6526,21 @@ export class NFLDraftee {
         this.RelativeID = source["RelativeID"];
         this.RelativeType = source["RelativeType"];
         this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
         this.PlayerID = source["PlayerID"];
         this.HighSchool = source["HighSchool"];
         this.CollegeID = source["CollegeID"];
@@ -6254,13 +6600,17 @@ export class NFLDraftee {
 export class BootstrapDataDraft {
     NFLDraftees: NFLDraftee[];
     NFLWarRoomMap: {[key: uint]: NFLWarRoom};
-    DraftScoutingProfileMap: {[key: uint]: ScoutingProfile};
+    DraftScoutingProfileMap: {[key: uint]: ScoutingProfile[]};
+    NFLGameplanMap: {[key: uint]: NFLGameplan};
+    NFLDraftPicks: NFLDraftPick[];
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
         this.NFLDraftees = this.convertValues(source["NFLDraftees"], NFLDraftee);
         this.NFLWarRoomMap = this.convertValues(source["NFLWarRoomMap"], NFLWarRoom, true);
-        this.DraftScoutingProfileMap = this.convertValues(source["DraftScoutingProfileMap"], ScoutingProfile, true);
+        this.DraftScoutingProfileMap = source["DraftScoutingProfileMap"];
+        this.NFLGameplanMap = this.convertValues(source["NFLGameplanMap"], NFLGameplan, true);
+        this.NFLDraftPicks = this.convertValues(source["NFLDraftPicks"], NFLDraftPick);
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -6355,12 +6705,14 @@ export class BootstrapDataPortal {
     TeamProfileMap: {[key: string]: RecruitingTeamProfile};
     TransferPortalProfiles: TransferPortalProfile[];
     CollegePromises: CollegePromise[];
+    PortalPlayers: CollegePlayer[];
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
         this.TeamProfileMap = source["TeamProfileMap"];
         this.TransferPortalProfiles = this.convertValues(source["TransferPortalProfiles"], TransferPortalProfile);
         this.CollegePromises = this.convertValues(source["CollegePromises"], CollegePromise);
+        this.PortalPlayers = this.convertValues(source["PortalPlayers"], CollegePlayer);
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -6492,6 +6844,7 @@ export class BootstrapDataNews {
 	}
 }
 export class AwardsModel {
+    PlayerID: number;
     TeamID: number;
     FirstName: string;
     LastName: string;
@@ -6503,6 +6856,7 @@ export class AwardsModel {
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
+        this.PlayerID = source["PlayerID"];
         this.TeamID = source["TeamID"];
         this.FirstName = source["FirstName"];
         this.LastName = source["LastName"];
@@ -6571,10 +6925,14 @@ export class AwardsList {
 }
 export class BootstrapDataStats {
     PostSeasonAwards: AwardsList;
+    HistoricCollegePlayers: HistoricCollegePlayer[];
+    RetiredPlayers: NFLRetiredPlayer[];
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
         this.PostSeasonAwards = this.convertValues(source["PostSeasonAwards"], AwardsList);
+        this.HistoricCollegePlayers = this.convertValues(source["HistoricCollegePlayers"], HistoricCollegePlayer);
+        this.RetiredPlayers = this.convertValues(source["RetiredPlayers"], NFLRetiredPlayer);
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -6773,6 +7131,100 @@ export class FaceDataResponse {
         this.HairColor = source["HairColor"];
     }
 }
+export class NFLTradeOption {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    TradeProposalID: number;
+    NFLTeamID: number;
+    NFLPlayerID: number;
+    NFLDraftPickID: number;
+    OptionType: string;
+    SalaryPercentage: number;
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.TradeProposalID = source["TradeProposalID"];
+        this.NFLTeamID = source["NFLTeamID"];
+        this.NFLPlayerID = source["NFLPlayerID"];
+        this.NFLDraftPickID = source["NFLDraftPickID"];
+        this.OptionType = source["OptionType"];
+        this.SalaryPercentage = source["SalaryPercentage"];
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
+export class NFLTradeProposal {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    NFLTeamID: number;
+    NFLTeam: string;
+    RecepientTeamID: number;
+    RecepientTeam: string;
+    IsTradeAccepted: boolean;
+    IsTradeRejected: boolean;
+    IsSynced: boolean;
+    NFLTeamTradeOptions: NFLTradeOption[];
+    RecepientTeamTradeOptions: NFLTradeOption[];
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.NFLTeamID = source["NFLTeamID"];
+        this.NFLTeam = source["NFLTeam"];
+        this.RecepientTeamID = source["RecepientTeamID"];
+        this.RecepientTeam = source["RecepientTeam"];
+        this.IsTradeAccepted = source["IsTradeAccepted"];
+        this.IsTradeRejected = source["IsTradeRejected"];
+        this.IsSynced = source["IsSynced"];
+        this.NFLTeamTradeOptions = this.convertValues(source["NFLTeamTradeOptions"], NFLTradeOption);
+        this.RecepientTeamTradeOptions = this.convertValues(source["RecepientTeamTradeOptions"], NFLTradeOption);
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
 export class NFLRequest {
     ID: number;
     CreatedAt: Time;
@@ -6864,11 +7316,15 @@ export class TeamRequest {
 export class TeamRequestsResponse {
     CollegeRequests: TeamRequest[];
     ProRequests: NFLRequest[];
+    AcceptedTrades: NFLTradeProposal[];
+    DraftPicks: NFLDraftPick[];
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
         this.CollegeRequests = this.convertValues(source["CollegeRequests"], TeamRequest);
         this.ProRequests = this.convertValues(source["ProRequests"], NFLRequest);
+        this.AcceptedTrades = this.convertValues(source["AcceptedTrades"], NFLTradeProposal);
+        this.DraftPicks = this.convertValues(source["DraftPicks"], NFLDraftPick);
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -6944,6 +7400,21 @@ export class BasePlayer {
     RelativeID: number;
     RelativeType: number;
     Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
@@ -7001,6 +7472,21 @@ export class BasePlayer {
         this.RelativeID = source["RelativeID"];
         this.RelativeType = source["RelativeType"];
         this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
     }
 }
 
@@ -7079,66 +7565,7 @@ export class BaseTeam {
 }
 
 
-export class Stadium {
-    ID: number;
-    CreatedAt: Time;
-    UpdatedAt: Time;
-    DeletedAt: Time;
-    StadiumName: string;
-    TeamID: number;
-    TeamAbbr: string;
-    City: string;
-    State: string;
-    Country: string;
-    Region: string;
-    WeatherRegion: string;
-    Capacity: number;
-    RecordAttendance: number;
-    FirstSeason: number;
-    LeagueID: number;
-    LeagueName: string;
-    IsDomed: boolean;
 
-    constructor(source: any = {}) {
-        if ('string' === typeof source) source = JSON.parse(source);
-        this.ID = source["ID"];
-        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
-        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
-        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
-        this.StadiumName = source["StadiumName"];
-        this.TeamID = source["TeamID"];
-        this.TeamAbbr = source["TeamAbbr"];
-        this.City = source["City"];
-        this.State = source["State"];
-        this.Country = source["Country"];
-        this.Region = source["Region"];
-        this.WeatherRegion = source["WeatherRegion"];
-        this.Capacity = source["Capacity"];
-        this.RecordAttendance = source["RecordAttendance"];
-        this.FirstSeason = source["FirstSeason"];
-        this.LeagueID = source["LeagueID"];
-        this.LeagueName = source["LeagueName"];
-        this.IsDomed = source["IsDomed"];
-    }
-
-	convertValues(a: any, classs: any, asMap: boolean = false): any {
-	    if (!a) {
-	        return a;
-	    }
-	    if (Array.isArray(a)) {
-	        return (a as any[]).map(elem => this.convertValues(elem, classs));
-	    } else if ("object" === typeof a) {
-	        if (asMap) {
-	            for (const key of Object.keys(a)) {
-	                a[key] = new classs(a[key]);
-	            }
-	            return a;
-	        }
-	        return new classs(a);
-	    }
-	    return a;
-	}
-}
 
 
 
@@ -7778,6 +8205,92 @@ export class UpdateTransferPortalBoard {
 
 
 
+export class NFLUDFAProfile {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    NFLUDFABoardID: number;
+    PlayerID: number;
+    PlayerName: string;
+    Position: string;
+    TeamID: number;
+    TeamAbbr: string;
+    Points: number;
+    IsSigned: boolean;
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.NFLUDFABoardID = source["NFLUDFABoardID"];
+        this.PlayerID = source["PlayerID"];
+        this.PlayerName = source["PlayerName"];
+        this.Position = source["Position"];
+        this.TeamID = source["TeamID"];
+        this.TeamAbbr = source["TeamAbbr"];
+        this.Points = source["Points"];
+        this.IsSigned = source["IsSigned"];
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
+export class NFLUDFABoard {
+    ID: number;
+    CreatedAt: Time;
+    UpdatedAt: Time;
+    DeletedAt: Time;
+    TeamID: number;
+    TeamAbbr: string;
+    Profiles: NFLUDFAProfile[];
+
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.ID = source["ID"];
+        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
+        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
+        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
+        this.TeamID = source["TeamID"];
+        this.TeamAbbr = source["TeamAbbr"];
+        this.Profiles = this.convertValues(source["Profiles"], NFLUDFAProfile);
+    }
+
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
 
 export class FreeAgencyOfferDTO {
     ID: number;
@@ -8043,6 +8556,21 @@ export class CollegePlayerResponse {
     RelativeID: number;
     RelativeType: number;
     Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
     TeamID: number;
     TeamAbbr: string;
     City: string;
@@ -8111,6 +8639,21 @@ export class CollegePlayerResponse {
         this.RelativeID = source["RelativeID"];
         this.RelativeType = source["RelativeType"];
         this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
         this.TeamID = source["TeamID"];
         this.TeamAbbr = source["TeamAbbr"];
         this.City = source["City"];
@@ -8197,6 +8740,21 @@ export class NFLPlayerResponse {
     RelativeID: number;
     RelativeType: number;
     Notes: string;
+    ProgramPref: number;
+    ProfDevPref: number;
+    TraditionsPref: number;
+    FacilitiesPref: number;
+    AtmospherePref: number;
+    AcademicsPref: number;
+    ConferencePref: number;
+    CoachPref: number;
+    SeasonMomentumPref: number;
+    CampusLifePref: number;
+    ReligionPref: number;
+    ServiceAcademyPref: number;
+    SmallTownPref: number;
+    BigCityPref: number;
+    MediaSpotlightPref: number;
     TeamID: number;
     TeamAbbr: string;
     City: string;
@@ -8266,6 +8824,21 @@ export class NFLPlayerResponse {
         this.RelativeID = source["RelativeID"];
         this.RelativeType = source["RelativeType"];
         this.Notes = source["Notes"];
+        this.ProgramPref = source["ProgramPref"];
+        this.ProfDevPref = source["ProfDevPref"];
+        this.TraditionsPref = source["TraditionsPref"];
+        this.FacilitiesPref = source["FacilitiesPref"];
+        this.AtmospherePref = source["AtmospherePref"];
+        this.AcademicsPref = source["AcademicsPref"];
+        this.ConferencePref = source["ConferencePref"];
+        this.CoachPref = source["CoachPref"];
+        this.SeasonMomentumPref = source["SeasonMomentumPref"];
+        this.CampusLifePref = source["CampusLifePref"];
+        this.ReligionPref = source["ReligionPref"];
+        this.ServiceAcademyPref = source["ServiceAcademyPref"];
+        this.SmallTownPref = source["SmallTownPref"];
+        this.BigCityPref = source["BigCityPref"];
+        this.MediaSpotlightPref = source["MediaSpotlightPref"];
         this.TeamID = source["TeamID"];
         this.TeamAbbr = source["TeamAbbr"];
         this.City = source["City"];
@@ -8306,6 +8879,7 @@ export class CollegePlayerCSV {
     ArchetypeTwo: string;
     Year: string;
     Team: string;
+    PreviousTeam: string;
     Age: number;
     Stars: number;
     HighSchool: string;
@@ -8352,6 +8926,7 @@ export class CollegePlayerCSV {
         this.ArchetypeTwo = source["ArchetypeTwo"];
         this.Year = source["Year"];
         this.Team = source["Team"];
+        this.PreviousTeam = source["PreviousTeam"];
         this.Age = source["Age"];
         this.Stars = source["Stars"];
         this.HighSchool = source["HighSchool"];
@@ -8425,30 +9000,29 @@ export class CollegePlayerCSV {
 
 
 
-export class NFLTradeOption {
+
+export class NFLTradeOptionObj {
     ID: number;
-    CreatedAt: Time;
-    UpdatedAt: Time;
-    DeletedAt: Time;
     TradeProposalID: number;
     NFLTeamID: number;
     NFLPlayerID: number;
     NFLDraftPickID: number;
     OptionType: string;
     SalaryPercentage: number;
+    Player: NFLPlayer;
+    Draftpick: NFLDraftPick;
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
         this.ID = source["ID"];
-        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
-        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
-        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
         this.TradeProposalID = source["TradeProposalID"];
         this.NFLTeamID = source["NFLTeamID"];
         this.NFLPlayerID = source["NFLPlayerID"];
         this.NFLDraftPickID = source["NFLDraftPickID"];
         this.OptionType = source["OptionType"];
         this.SalaryPercentage = source["SalaryPercentage"];
+        this.Player = this.convertValues(source["Player"], NFLPlayer);
+        this.Draftpick = this.convertValues(source["Draftpick"], NFLDraftPick);
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -8469,36 +9043,28 @@ export class NFLTradeOption {
 	    return a;
 	}
 }
-export class NFLTradeProposal {
+export class NFLTradeProposalDTO {
     ID: number;
-    CreatedAt: Time;
-    UpdatedAt: Time;
-    DeletedAt: Time;
     NFLTeamID: number;
     NFLTeam: string;
     RecepientTeamID: number;
     RecepientTeam: string;
     IsTradeAccepted: boolean;
     IsTradeRejected: boolean;
-    IsSynced: boolean;
-    NFLTeamTradeOptions: NFLTradeOption[];
-    RecepientTeamTradeOptions: NFLTradeOption[];
+    NFLTeamTradeOptions: NFLTradeOptionObj[];
+    RecepientTeamTradeOptions: NFLTradeOptionObj[];
 
     constructor(source: any = {}) {
         if ('string' === typeof source) source = JSON.parse(source);
         this.ID = source["ID"];
-        this.CreatedAt = this.convertValues(source["CreatedAt"], Time);
-        this.UpdatedAt = this.convertValues(source["UpdatedAt"], Time);
-        this.DeletedAt = this.convertValues(source["DeletedAt"], Time);
         this.NFLTeamID = source["NFLTeamID"];
         this.NFLTeam = source["NFLTeam"];
         this.RecepientTeamID = source["RecepientTeamID"];
         this.RecepientTeam = source["RecepientTeam"];
         this.IsTradeAccepted = source["IsTradeAccepted"];
         this.IsTradeRejected = source["IsTradeRejected"];
-        this.IsSynced = source["IsSynced"];
-        this.NFLTeamTradeOptions = this.convertValues(source["NFLTeamTradeOptions"], NFLTradeOption);
-        this.RecepientTeamTradeOptions = this.convertValues(source["RecepientTeamTradeOptions"], NFLTradeOption);
+        this.NFLTeamTradeOptions = this.convertValues(source["NFLTeamTradeOptions"], NFLTradeOptionObj);
+        this.RecepientTeamTradeOptions = this.convertValues(source["RecepientTeamTradeOptions"], NFLTradeOptionObj);
     }
 
 	convertValues(a: any, classs: any, asMap: boolean = false): any {
@@ -8521,8 +9087,34 @@ export class NFLTradeProposal {
 }
 
 
+export class NFLTeamProposals {
+    SentTradeProposals: NFLTradeProposalDTO[];
+    ReceivedTradeProposals: NFLTradeProposalDTO[];
 
+    constructor(source: any = {}) {
+        if ('string' === typeof source) source = JSON.parse(source);
+        this.SentTradeProposals = this.convertValues(source["SentTradeProposals"], NFLTradeProposalDTO);
+        this.ReceivedTradeProposals = this.convertValues(source["ReceivedTradeProposals"], NFLTradeProposalDTO);
+    }
 
+	convertValues(a: any, classs: any, asMap: boolean = false): any {
+	    if (!a) {
+	        return a;
+	    }
+	    if (Array.isArray(a)) {
+	        return (a as any[]).map(elem => this.convertValues(elem, classs));
+	    } else if ("object" === typeof a) {
+	        if (asMap) {
+	            for (const key of Object.keys(a)) {
+	                a[key] = new classs(a[key]);
+	            }
+	            return a;
+	        }
+	        return new classs(a);
+	    }
+	    return a;
+	}
+}
 
 export class NFLTradePreferencesDTO {
     NFLTeamID: number;
@@ -9157,6 +9749,7 @@ export class Timestamp {
     AIDepthchartsSync: boolean;
     AIRecruitingBoardsSynced: boolean;
     IsFreeAgencyLocked: boolean;
+    PreDraftPhase: boolean;
     IsDraftTime: boolean;
     RunGames: boolean;
     Y1Capspace: number;
@@ -9213,6 +9806,7 @@ export class Timestamp {
         this.AIDepthchartsSync = source["AIDepthchartsSync"];
         this.AIRecruitingBoardsSynced = source["AIRecruitingBoardsSynced"];
         this.IsFreeAgencyLocked = source["IsFreeAgencyLocked"];
+        this.PreDraftPhase = source["PreDraftPhase"];
         this.IsDraftTime = source["IsDraftTime"];
         this.RunGames = source["RunGames"];
         this.Y1Capspace = source["Y1Capspace"];
