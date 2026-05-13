@@ -10,7 +10,8 @@ import (
 )
 
 func TestCFBScheduler(w http.ResponseWriter, r *http.Request) {
-	managers.BaseGenerateCFBSchedule(true)
+	managers.BaseGenerateCFBSchedule(false)
+	managers.GenerateSimNFLSchedule(false)
 	json.NewEncoder(w).Encode(true)
 }
 

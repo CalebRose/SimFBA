@@ -367,9 +367,9 @@ func MakeCollegeGameRecord(homeTeam structs.CollegeTeam, awayTeam structs.Colleg
 
 	return structs.CollegeGame{
 		HomeTeamID:    int(homeTeam.ID),
-		HomeTeam:      homeTeam.TeamName,
+		HomeTeam:      homeTeam.TeamAbbr,
 		AwayTeamID:    int(awayTeam.ID),
-		AwayTeam:      awayTeam.TeamName,
+		AwayTeam:      awayTeam.TeamAbbr,
 		Week:          int(weekPlayed),
 		SeasonID:      int(seasonID),
 		WeekID:        int(weekID),

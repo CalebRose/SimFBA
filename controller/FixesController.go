@@ -29,3 +29,7 @@ func FixPlayerPreferences(w http.ResponseWriter, r *http.Request) {
 func FixRecruitProfileMods(w http.ResponseWriter, r *http.Request) {
 	managers.FixExistingModifiersForRecruits()
 }
+
+func FixNFLStadiums(w http.ResponseWriter, r *http.Request) {
+	managers.EnsureNFLStadiumsExist()
+}

@@ -719,7 +719,7 @@ func GenerateOffseasonData() {
 	BaseGenerateCFBSchedule(false)
 
 	// Generate NFL Regular Season Schedule
-	GenerateSimNFLSchedule()
+	GenerateSimNFLSchedule(false)
 
 	// Reset Media Post Count
 	ResetSimCFBMediaPostCount()
