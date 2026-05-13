@@ -18,7 +18,37 @@ import (
 // CreateCFBGameRequest saves a new CFBGameRequest record to the database.
 func CreateCFBGameRequest(request structs.CFBGameRequest) {
 	db := dbprovider.GetInstance().GetDB()
+	receivingTeamID := request.RequestingTeamID
+	team := GetTeamByTeamID(strconv.Itoa(int(receivingTeamID)))
+	if !isCFBUserTeam(team) {
+		request.Accepted()
+	}
 	repository.CreateCFBGameRequest(request, db)
+	if !isCFBUserTeam(team) {
+		sendingTeam := GetTeamByTeamID(strconv.Itoa(int(request.SendingTeamID)))
+		ctx := context.Background()
+		uids := firebase.ResolveUIDsByUsernames(ctx, []string{sendingTeam.Coach})
+		firebase.NotifyScheduleEvent(ctx, firebase.ScheduleEventNotificationInput{
+			League:         "cfb",
+			Domain:         firebase.DomainCFB,
+			TeamID:         team.ID,
+			RecipientUIDs:  uids,
+			Message:        fmt.Sprintf("Out of Conference Game created against AI Team %s for Week %d.", team.TeamName, request.Week),
+			SourceEventKey: firebase.BuildSourceEventKey("gamerequest", "cfb", "accept", strconv.Itoa(int(request.ID))),
+		})
+	} else {
+		sendingTeam := GetTeamByTeamID(strconv.Itoa(int(request.SendingTeamID)))
+		ctx := context.Background()
+		uids := firebase.ResolveUIDsByUsernames(ctx, []string{team.Coach})
+		firebase.NotifyScheduleEvent(ctx, firebase.ScheduleEventNotificationInput{
+			League:         "cfb",
+			Domain:         firebase.DomainCFB,
+			TeamID:         team.ID,
+			RecipientUIDs:  uids,
+			Message:        fmt.Sprintf("Received OOC Game request for Week %d against %s.", request.Week, sendingTeam.TeamName),
+			SourceEventKey: firebase.BuildSourceEventKey("gamerequest", "cfb", "accept", strconv.Itoa(int(request.ID))),
+		})
+	}
 }
 
 // AcceptCFBGameRequest marks the request as accepted and notifies the sending
