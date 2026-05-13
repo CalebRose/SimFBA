@@ -80,6 +80,8 @@ type BootstrapDataScheduling struct {
 	Stadiums               []structs.Stadium
 	CFBGameRequests        []structs.CFBGameRequest
 	NFLGameRequests        []structs.NFLGameRequest
+	CollegeGameplanMap     map[uint]structs.CollegeGameplan
+	NFLGameplanMap         map[uint]structs.NFLGameplan
 }
 
 type BootstrapDataDraft struct {
@@ -455,9 +457,11 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 		stadiums               []structs.Stadium
 		cfbGameRequests        []structs.CFBGameRequest
 		nflGameRequests        []structs.NFLGameRequest
+		cfbGameplanMap         map[uint]structs.CollegeGameplan
+		nflGameplanMap         map[uint]structs.NFLGameplan
 	)
 	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(4)
+		wg.Add(5)
 		go func() {
 			defer wg.Done()
 			officialPolls = GetAllOfficialPolls()
@@ -474,8 +478,13 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 			defer wg.Done()
 			cfbGameRequests = repository.FindCFBGameRequestRecords(repository.SchedulerQuery{SeasonID: seasonID})
 		}()
+		go func() {
+			defer wg.Done()
+			gameplans := GetAllCollegeGameplans()
+			cfbGameplanMap = MakeCollegeGameplanMap(gameplans)
+		}()
 	}
-	wg.Add(3)
+	wg.Add(4)
 	go func() {
 		defer wg.Done()
 		log.Println("Fetching Retired Players...")
@@ -494,6 +503,11 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 		nflGameRequests = repository.FindNFLGameRequestRecords(repository.SchedulerQuery{SeasonID: seasonID})
 		log.Println("Fetched NFL Game Requests, count:", len(nflGameRequests))
 	}()
+	go func() {
+		defer wg.Done()
+		gameplans := GetAllNFLGameplans()
+		nflGameplanMap = MakeNFLGameplanMap(gameplans)
+	}()
 	wg.Wait()
 
 	return BootstrapDataScheduling{
@@ -504,6 +518,8 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 		Stadiums:               stadiums,
 		CFBGameRequests:        cfbGameRequests,
 		NFLGameRequests:        nflGameRequests,
+		CollegeGameplanMap:     cfbGameplanMap,
+		NFLGameplanMap:         nflGameplanMap,
 	}
 }
 
