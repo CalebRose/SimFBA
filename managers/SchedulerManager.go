@@ -135,8 +135,6 @@ func ProcessCFBGameRequest(requestID string) {
 		state = homeTeam.State
 	}
 
-	isDivisional := homeTeam.DivisionID > 0 && homeTeam.DivisionID == awayTeam.DivisionID
-
 	timeslot := request.Timeslot
 	if timeslot == "" {
 		timeslot = util.GetTimeslot(stadium.State, uint(homeTeam.ConferenceID))
@@ -157,8 +155,8 @@ func ProcessCFBGameRequest(requestID string) {
 		Region:       region,
 		TimeSlot:     timeslot,
 		IsNeutral:    request.IsNeutralSite,
-		IsConference: homeTeam.ConferenceID == awayTeam.ConferenceID,
-		IsDivisional: isDivisional,
+		IsConference: false,
+		IsDivisional: false,
 		IsSpringGame: request.IsSpringGame,
 	}
 
