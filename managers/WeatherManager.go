@@ -26,16 +26,21 @@ func GenerateWeatherForGames() {
 
 	teamRegions := getRegionsForSchools()
 
-	stadiumMap := make(map[uint]structs.Stadium)
+	cfbStadiumMap := make(map[uint]structs.Stadium)
+	nflStadiumMap := make(map[uint]structs.Stadium)
 
 	for _, stadium := range stadiums {
-		stadiumMap[stadium.ID] = stadium
+		if stadium.LeagueName == "NFL" {
+			nflStadiumMap[stadium.TeamID] = stadium
+		} else {
+			cfbStadiumMap[stadium.TeamID] = stadium
+		}
 	}
 	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
 	collegeGames := GetCollegeGamesBySeasonID(seasonID)
 
 	for _, game := range collegeGames {
-		if game.WeekID < ts.CollegeWeekID || (game.LowTemp != 0 && game.HighTemp != 0) {
+		if game.WeekID < ts.CollegeWeekID {
 			continue
 		}
 		GenerateWeatherForGame(db, game, teamRegions, regions, rainForecasts, mixForecasts, snowForecasts)
@@ -44,7 +49,7 @@ func GenerateWeatherForGames() {
 	nflGames := GetNFLGamesBySeasonID(strconv.Itoa(int(ts.NFLSeasonID)))
 
 	for _, game := range nflGames {
-		if game.WeekID < ts.NFLWeekID || game.Stadium == "#N/A" || (game.LowTemp != 0 && game.HighTemp != 0) {
+		if game.WeekID < ts.NFLWeekID || game.Stadium == "#N/A" {
 			continue
 		}
 		homeTeam := GetNFLTeamByTeamID(strconv.Itoa(game.HomeTeamID))

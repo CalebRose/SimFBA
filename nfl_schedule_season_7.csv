@@ -1,0 +1,307 @@
+Week,HomeTeamID,HomeTeam,AwayTeamID,AwayTeam,TimeSlot,Stadium,City,State,IsConference,IsDivisional,HomePreviousBye,AwayPreviousBye
+1,25,Atlanta Falcons,16,Los Angeles Chargers,Thursday Night Football,Mercedes-Benz Stadium,Atlanta,GA,false,false,false,false
+1,6,Cincinnati Bengals,32,Seattle Seahawks,Sunday Night Football,Paul Brown Stadium,Cincinnati,OH,false,false,false,false
+1,5,Baltimore Ravens,2,Miami Dolphins,Monday Night Football,M&T Bank Stadium,Baltimore,MD,true,false,false,false
+1,31,San Francisco 49ers,8,Pittsburgh Steelers,Sunday Afternoon,Levi's Stadium,Santa Clara,CA,false,false,false,false
+1,4,New York Jets,11,Jacksonville Jaguars,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,false,false,false
+1,28,Tampa Bay Buccaneers,13,Denver Broncos,Sunday Noon,Raymond James Stadium,Tampa,FL,false,false,false,false
+1,1,Buffalo Bills,3,New England Patriots,Sunday Noon,Highmark Stadium,Orchard Park,NY,true,true,false,false
+1,10,Indianapolis Colts,14,Kansas City Chiefs,Sunday Noon,Lucas Oil Stadium,Indianapolis,IN,true,false,false,false
+1,22,Detroit Lions,21,Chicago Bears,Sunday Noon,Ford Field,Detroit,MI,true,true,false,false
+1,7,Cleveland Browns,29,Arizona Cardinals,Sunday Noon,FirstEnergy Stadium,Cleveland,OH,false,false,false,false
+1,19,Philadelphia Eagles,20,Washington Commanders,Sunday Noon,Lincoln Financial Field,Philadelphia,PA,true,true,false,false
+1,12,Tennessee Titans,24,Minnesota Vikings,Sunday Noon,Nissan Stadium,Nashville,TN,false,false,false,false
+1,17,Dallas Cowboys,23,Green Bay Packers,Sunday Afternoon,AT&T Stadium,Arlington,TX,true,false,false,false
+1,9,Houston Texans,15,Las Vegas Raiders,Sunday Afternoon,NRG Stadium,Houston,TX,true,false,false,false
+1,27,New Orleans Saints,26,Carolina Panthers,Sunday Afternoon,Caesars Superdome,New Orleans,LA,true,true,false,false
+2,30,Los Angeles Rams,25,Atlanta Falcons,Thursday Night Football,SoFi Stadium,Inglewood,CA,true,false,true,false
+2,15,Las Vegas Raiders,12,Tennessee Titans,Sunday Night Football,Allegiant Stadium,Paradise,NV,true,false,false,false
+2,23,Green Bay Packers,21,Chicago Bears,Monday Night Football,Lambeau Field,Green Bay,WI,true,true,false,false
+2,9,Houston Texans,10,Indianapolis Colts,Sunday Afternoon,NRG Stadium,Houston,TX,true,true,false,false
+2,16,Los Angeles Chargers,4,New York Jets,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,false,false,false
+2,18,New York Giants,17,Dallas Cowboys,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,true,true,false
+2,24,Minnesota Vikings,11,Jacksonville Jaguars,Sunday Afternoon,U.S. Bank Stadium,Minneapolis,MN,false,false,false,false
+2,13,Denver Broncos,2,Miami Dolphins,Sunday Afternoon,Empower Field at Mile High,Denver,CO,true,false,false,false
+2,22,Detroit Lions,32,Seattle Seahawks,Sunday Noon,Ford Field,Detroit,MI,true,false,false,false
+2,5,Baltimore Ravens,8,Pittsburgh Steelers,Sunday Noon,M&T Bank Stadium,Baltimore,MD,true,true,false,false
+2,20,Washington Commanders,1,Buffalo Bills,Sunday Noon,FedExField,Landover,MD,false,false,false,false
+2,31,San Francisco 49ers,29,Arizona Cardinals,Sunday Afternoon,Levi's Stadium,Santa Clara,CA,true,true,false,false
+2,3,New England Patriots,7,Cleveland Browns,Sunday Noon,Gillette Stadium,Foxborough,MA,true,false,false,false
+2,28,Tampa Bay Buccaneers,26,Carolina Panthers,Sunday Noon,Raymond James Stadium,Tampa,FL,true,true,false,false
+3,20,Washington Commanders,18,New York Giants,Thursday Night Football,FedExField,Landover,MD,true,true,false,false
+3,30,Los Angeles Rams,27,New Orleans Saints,Sunday Night Football,SoFi Stadium,Inglewood,CA,true,false,false,true
+3,32,Seattle Seahawks,7,Cleveland Browns,Monday Night Football,Lumen Field,Seattle,WA,false,false,false,false
+3,10,Indianapolis Colts,11,Jacksonville Jaguars,Sunday Noon,Lucas Oil Stadium,Indianapolis,IN,true,true,false,false
+3,15,Las Vegas Raiders,14,Kansas City Chiefs,Sunday Afternoon,Allegiant Stadium,Paradise,NV,true,true,false,true
+3,9,Houston Texans,19,Philadelphia Eagles,Sunday Afternoon,NRG Stadium,Houston,TX,false,false,false,true
+3,21,Chicago Bears,12,Tennessee Titans,Sunday Afternoon,Soldier Field,Chicago,IL,false,false,false,false
+3,23,Green Bay Packers,24,Minnesota Vikings,Sunday Afternoon,Lambeau Field,Green Bay,WI,true,true,false,false
+3,26,Carolina Panthers,13,Denver Broncos,Sunday Noon,Bank of America Stadium,Charlotte,NC,false,false,false,false
+3,1,Buffalo Bills,2,Miami Dolphins,Sunday Noon,Highmark Stadium,Orchard Park,NY,true,true,false,false
+3,3,New England Patriots,4,New York Jets,Sunday Noon,Gillette Stadium,Foxborough,MA,true,true,false,false
+3,8,Pittsburgh Steelers,16,Los Angeles Chargers,Sunday Noon,Heinz Field,Pittsburgh,PA,true,false,false,false
+3,31,San Francisco 49ers,6,Cincinnati Bengals,Sunday Afternoon,Levi's Stadium,Santa Clara,CA,false,false,false,true
+3,5,Baltimore Ravens,29,Arizona Cardinals,Sunday Noon,M&T Bank Stadium,Baltimore,MD,false,false,false,false
+3,22,Detroit Lions,25,Atlanta Falcons,Sunday Noon,Ford Field,Detroit,MI,true,false,false,false
+4,14,Kansas City Chiefs,11,Jacksonville Jaguars,Thursday Night Football,Arrowhead Stadium,Kansas City,MO,true,false,false,false
+4,18,New York Giants,19,Philadelphia Eagles,Sunday Night Football,MetLife Stadium,East Rutherford,NJ,true,true,false,false
+4,13,Denver Broncos,27,New Orleans Saints,Monday Night Football,Empower Field at Mile High,Denver,CO,false,false,false,false
+4,16,Los Angeles Chargers,28,Tampa Bay Buccaneers,Sunday Afternoon,SoFi Stadium,Inglewood,CA,false,false,false,true
+4,26,Carolina Panthers,32,Seattle Seahawks,Sunday Noon,Bank of America Stadium,Charlotte,NC,true,false,false,false
+4,20,Washington Commanders,24,Minnesota Vikings,Sunday Noon,FedExField,Landover,MD,true,false,false,false
+4,4,New York Jets,2,Miami Dolphins,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,true,false,false
+4,6,Cincinnati Bengals,9,Houston Texans,Sunday Noon,Paul Brown Stadium,Cincinnati,OH,true,false,false,false
+4,5,Baltimore Ravens,15,Las Vegas Raiders,Sunday Noon,M&T Bank Stadium,Baltimore,MD,true,false,false,false
+4,3,New England Patriots,10,Indianapolis Colts,Sunday Noon,Gillette Stadium,Foxborough,MA,true,false,false,false
+4,21,Chicago Bears,22,Detroit Lions,Sunday Afternoon,Soldier Field,Chicago,IL,true,true,false,false
+4,7,Cleveland Browns,12,Tennessee Titans,Sunday Noon,FirstEnergy Stadium,Cleveland,OH,true,false,false,false
+4,1,Buffalo Bills,17,Dallas Cowboys,Sunday Noon,Highmark Stadium,Orchard Park,NY,false,false,false,true
+4,29,Arizona Cardinals,8,Pittsburgh Steelers,Sunday Afternoon,State Farm Stadium,Glendale,AZ,false,false,false,false
+4,23,Green Bay Packers,30,Los Angeles Rams,Sunday Afternoon,Lambeau Field,Green Bay,WI,true,false,false,false
+5,24,Minnesota Vikings,29,Arizona Cardinals,Thursday Night Football,U.S. Bank Stadium,Minneapolis,MN,true,false,false,false
+5,7,Cleveland Browns,2,Miami Dolphins,Sunday Night Football,FirstEnergy Stadium,Cleveland,OH,true,false,false,false
+5,1,Buffalo Bills,4,New York Jets,Monday Night Football,Highmark Stadium,Orchard Park,NY,true,true,false,false
+5,5,Baltimore Ravens,10,Indianapolis Colts,Sunday Noon,M&T Bank Stadium,Baltimore,MD,true,false,false,false
+5,32,Seattle Seahawks,20,Washington Commanders,Sunday Afternoon,Lumen Field,Seattle,WA,true,false,false,false
+5,3,New England Patriots,17,Dallas Cowboys,Sunday Noon,Gillette Stadium,Foxborough,MA,false,false,false,false
+5,16,Los Angeles Chargers,11,Jacksonville Jaguars,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,false,false,false
+5,8,Pittsburgh Steelers,6,Cincinnati Bengals,Sunday Noon,Heinz Field,Pittsburgh,PA,true,true,false,false
+5,31,San Francisco 49ers,30,Los Angeles Rams,Sunday Afternoon,Levi's Stadium,Santa Clara,CA,true,true,true,false
+5,25,Atlanta Falcons,28,Tampa Bay Buccaneers,Sunday Noon,Mercedes-Benz Stadium,Atlanta,GA,true,true,true,false
+5,26,Carolina Panthers,15,Las Vegas Raiders,Sunday Noon,Bank of America Stadium,Charlotte,NC,false,false,false,false
+5,22,Detroit Lions,19,Philadelphia Eagles,Sunday Noon,Ford Field,Detroit,MI,true,false,false,false
+5,21,Chicago Bears,18,New York Giants,Sunday Afternoon,Soldier Field,Chicago,IL,true,false,false,false
+5,23,Green Bay Packers,12,Tennessee Titans,Sunday Afternoon,Lambeau Field,Green Bay,WI,false,false,false,false
+5,27,New Orleans Saints,14,Kansas City Chiefs,Sunday Afternoon,Caesars Superdome,New Orleans,LA,false,false,false,false
+6,18,New York Giants,22,Detroit Lions,Thursday Night Football,MetLife Stadium,East Rutherford,NJ,true,false,false,false
+6,24,Minnesota Vikings,17,Dallas Cowboys,Sunday Night Football,U.S. Bank Stadium,Minneapolis,MN,true,false,false,false
+6,27,New Orleans Saints,31,San Francisco 49ers,Monday Night Football,Caesars Superdome,New Orleans,LA,true,false,false,false
+6,6,Cincinnati Bengals,8,Pittsburgh Steelers,Sunday Noon,Paul Brown Stadium,Cincinnati,OH,true,true,false,false
+6,11,Jacksonville Jaguars,9,Houston Texans,Sunday Noon,TIAA Bank Field,Jacksonville,FL,true,true,false,true
+6,30,Los Angeles Rams,5,Baltimore Ravens,Sunday Afternoon,SoFi Stadium,Inglewood,CA,false,false,false,false
+6,13,Denver Broncos,25,Atlanta Falcons,Sunday Afternoon,Empower Field at Mile High,Denver,CO,false,false,true,false
+6,15,Las Vegas Raiders,10,Indianapolis Colts,Sunday Afternoon,Allegiant Stadium,Paradise,NV,true,false,false,false
+6,16,Los Angeles Chargers,14,Kansas City Chiefs,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,true,false,false
+6,19,Philadelphia Eagles,2,Miami Dolphins,Sunday Noon,Lincoln Financial Field,Philadelphia,PA,false,false,false,false
+6,1,Buffalo Bills,7,Cleveland Browns,Sunday Noon,Highmark Stadium,Orchard Park,NY,true,false,false,false
+6,4,New York Jets,3,New England Patriots,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,true,false,false
+6,26,Carolina Panthers,28,Tampa Bay Buccaneers,Sunday Noon,Bank of America Stadium,Charlotte,NC,true,true,false,false
+6,29,Arizona Cardinals,32,Seattle Seahawks,Sunday Afternoon,State Farm Stadium,Glendale,AZ,true,true,false,false
+7,18,New York Giants,3,New England Patriots,Thursday Night Football,MetLife Stadium,East Rutherford,NJ,false,false,false,false
+7,4,New York Jets,6,Cincinnati Bengals,Sunday Night Football,MetLife Stadium,East Rutherford,NJ,true,false,false,false
+7,24,Minnesota Vikings,23,Green Bay Packers,Monday Night Football,U.S. Bank Stadium,Minneapolis,MN,true,true,false,true
+7,12,Tennessee Titans,14,Kansas City Chiefs,Sunday Noon,Nissan Stadium,Nashville,TN,true,false,true,false
+7,9,Houston Texans,13,Denver Broncos,Sunday Afternoon,NRG Stadium,Houston,TX,true,false,false,false
+7,1,Buffalo Bills,5,Baltimore Ravens,Sunday Noon,Highmark Stadium,Orchard Park,NY,true,false,false,false
+7,31,San Francisco 49ers,28,Tampa Bay Buccaneers,Sunday Afternoon,Levi's Stadium,Santa Clara,CA,true,false,false,false
+7,21,Chicago Bears,10,Indianapolis Colts,Sunday Afternoon,Soldier Field,Chicago,IL,false,false,true,false
+7,17,Dallas Cowboys,26,Carolina Panthers,Sunday Afternoon,AT&T Stadium,Arlington,TX,true,false,false,false
+7,30,Los Angeles Rams,29,Arizona Cardinals,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,true,false,false
+7,20,Washington Commanders,25,Atlanta Falcons,Sunday Noon,FedExField,Landover,MD,true,false,true,false
+7,22,Detroit Lions,11,Jacksonville Jaguars,Sunday Noon,Ford Field,Detroit,MI,false,false,false,false
+7,19,Philadelphia Eagles,27,New Orleans Saints,Sunday Noon,Lincoln Financial Field,Philadelphia,PA,true,false,false,false
+7,7,Cleveland Browns,8,Pittsburgh Steelers,Sunday Noon,FirstEnergy Stadium,Cleveland,OH,true,true,false,false
+7,16,Los Angeles Chargers,32,Seattle Seahawks,Sunday Afternoon,SoFi Stadium,Inglewood,CA,false,false,false,false
+8,11,Jacksonville Jaguars,10,Indianapolis Colts,Thursday Night Football,TIAA Bank Field,Jacksonville,FL,true,true,false,false
+8,4,New York Jets,20,Washington Commanders,Sunday Night Football,MetLife Stadium,East Rutherford,NJ,false,false,false,false
+8,29,Arizona Cardinals,26,Carolina Panthers,Monday Night Football,State Farm Stadium,Glendale,AZ,true,false,false,false
+8,18,New York Giants,28,Tampa Bay Buccaneers,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,false,false,false
+8,12,Tennessee Titans,16,Los Angeles Chargers,Sunday Noon,Nissan Stadium,Nashville,TN,true,false,false,false
+8,9,Houston Texans,23,Green Bay Packers,Sunday Afternoon,NRG Stadium,Houston,TX,false,false,false,false
+8,21,Chicago Bears,31,San Francisco 49ers,Sunday Afternoon,Soldier Field,Chicago,IL,true,false,false,false
+8,2,Miami Dolphins,8,Pittsburgh Steelers,Sunday Noon,Hard Rock Stadium,Miami Gardens,FL,true,false,true,false
+8,1,Buffalo Bills,19,Philadelphia Eagles,Sunday Noon,Highmark Stadium,Orchard Park,NY,false,false,false,false
+8,13,Denver Broncos,14,Kansas City Chiefs,Sunday Afternoon,Empower Field at Mile High,Denver,CO,true,true,false,false
+8,5,Baltimore Ravens,6,Cincinnati Bengals,Sunday Noon,M&T Bank Stadium,Baltimore,MD,true,true,false,false
+8,32,Seattle Seahawks,27,New Orleans Saints,Sunday Afternoon,Lumen Field,Seattle,WA,true,false,false,false
+8,24,Minnesota Vikings,22,Detroit Lions,Sunday Afternoon,U.S. Bank Stadium,Minneapolis,MN,true,true,false,false
+8,30,Los Angeles Rams,17,Dallas Cowboys,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,false,false,false
+8,15,Las Vegas Raiders,25,Atlanta Falcons,Sunday Afternoon,Allegiant Stadium,Paradise,NV,false,false,true,false
+9,29,Arizona Cardinals,18,New York Giants,Thursday Night Football,State Farm Stadium,Glendale,AZ,true,false,false,false
+9,2,Miami Dolphins,20,Washington Commanders,Sunday Night Football,Hard Rock Stadium,Miami Gardens,FL,false,false,false,false
+9,14,Kansas City Chiefs,26,Carolina Panthers,Monday Night Football,Arrowhead Stadium,Kansas City,MO,false,false,false,false
+9,13,Denver Broncos,15,Las Vegas Raiders,Sunday Afternoon,Empower Field at Mile High,Denver,CO,true,true,false,false
+9,3,New England Patriots,19,Philadelphia Eagles,Sunday Noon,Gillette Stadium,Foxborough,MA,false,false,true,false
+9,8,Pittsburgh Steelers,11,Jacksonville Jaguars,Sunday Noon,Heinz Field,Pittsburgh,PA,true,false,false,false
+9,22,Detroit Lions,9,Houston Texans,Sunday Noon,Ford Field,Detroit,MI,false,false,false,false
+9,21,Chicago Bears,23,Green Bay Packers,Sunday Afternoon,Soldier Field,Chicago,IL,true,true,false,false
+9,10,Indianapolis Colts,24,Minnesota Vikings,Sunday Noon,Lucas Oil Stadium,Indianapolis,IN,false,false,false,false
+9,6,Cincinnati Bengals,5,Baltimore Ravens,Sunday Noon,Paul Brown Stadium,Cincinnati,OH,true,true,false,false
+9,28,Tampa Bay Buccaneers,32,Seattle Seahawks,Sunday Noon,Raymond James Stadium,Tampa,FL,true,false,false,false
+9,12,Tennessee Titans,17,Dallas Cowboys,Sunday Noon,Nissan Stadium,Nashville,TN,false,false,false,false
+9,7,Cleveland Browns,4,New York Jets,Sunday Noon,FirstEnergy Stadium,Cleveland,OH,true,false,true,false
+9,30,Los Angeles Rams,31,San Francisco 49ers,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,true,false,false
+9,25,Atlanta Falcons,27,New Orleans Saints,Sunday Noon,Mercedes-Benz Stadium,Atlanta,GA,true,true,false,false
+10,25,Atlanta Falcons,14,Kansas City Chiefs,Thursday Night Football,Mercedes-Benz Stadium,Atlanta,GA,false,false,false,false
+10,29,Arizona Cardinals,30,Los Angeles Rams,Sunday Night Football,State Farm Stadium,Glendale,AZ,true,true,false,false
+10,21,Chicago Bears,27,New Orleans Saints,Monday Night Football,Soldier Field,Chicago,IL,true,false,false,false
+10,5,Baltimore Ravens,4,New York Jets,Sunday Noon,M&T Bank Stadium,Baltimore,MD,true,false,false,false
+10,17,Dallas Cowboys,2,Miami Dolphins,Sunday Afternoon,AT&T Stadium,Arlington,TX,false,false,false,false
+10,11,Jacksonville Jaguars,23,Green Bay Packers,Sunday Noon,TIAA Bank Field,Jacksonville,FL,false,false,false,false
+10,20,Washington Commanders,22,Detroit Lions,Sunday Noon,FedExField,Landover,MD,true,false,false,false
+10,31,San Francisco 49ers,26,Carolina Panthers,Sunday Afternoon,Levi's Stadium,Santa Clara,CA,true,false,false,false
+10,24,Minnesota Vikings,28,Tampa Bay Buccaneers,Sunday Afternoon,U.S. Bank Stadium,Minneapolis,MN,true,false,false,false
+10,7,Cleveland Browns,13,Denver Broncos,Sunday Noon,FirstEnergy Stadium,Cleveland,OH,true,false,false,false
+10,9,Houston Texans,12,Tennessee Titans,Sunday Afternoon,NRG Stadium,Houston,TX,true,true,false,false
+10,19,Philadelphia Eagles,18,New York Giants,Sunday Noon,Lincoln Financial Field,Philadelphia,PA,true,true,false,false
+10,6,Cincinnati Bengals,3,New England Patriots,Sunday Noon,Paul Brown Stadium,Cincinnati,OH,true,false,false,false
+10,16,Los Angeles Chargers,15,Las Vegas Raiders,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,true,true,false
+10,8,Pittsburgh Steelers,1,Buffalo Bills,Sunday Noon,Heinz Field,Pittsburgh,PA,true,false,false,true
+11,15,Las Vegas Raiders,16,Los Angeles Chargers,Thursday Night Football,Allegiant Stadium,Paradise,NV,true,true,false,false
+11,12,Tennessee Titans,9,Houston Texans,Sunday Night Football,Nissan Stadium,Nashville,TN,true,true,false,false
+11,14,Kansas City Chiefs,1,Buffalo Bills,Monday Night Football,Arrowhead Stadium,Kansas City,MO,true,false,false,false
+11,24,Minnesota Vikings,19,Philadelphia Eagles,Sunday Afternoon,U.S. Bank Stadium,Minneapolis,MN,true,false,false,false
+11,6,Cincinnati Bengals,7,Cleveland Browns,Sunday Noon,Paul Brown Stadium,Cincinnati,OH,true,true,false,false
+11,17,Dallas Cowboys,21,Chicago Bears,Sunday Afternoon,AT&T Stadium,Arlington,TX,true,false,false,false
+11,28,Tampa Bay Buccaneers,27,New Orleans Saints,Sunday Noon,Raymond James Stadium,Tampa,FL,true,true,false,false
+11,25,Atlanta Falcons,26,Carolina Panthers,Sunday Noon,Mercedes-Benz Stadium,Atlanta,GA,true,true,false,false
+11,32,Seattle Seahawks,29,Arizona Cardinals,Sunday Afternoon,Lumen Field,Seattle,WA,true,true,true,false
+11,18,New York Giants,20,Washington Commanders,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,true,false,false
+11,2,Miami Dolphins,4,New York Jets,Sunday Noon,Hard Rock Stadium,Miami Gardens,FL,true,true,false,false
+11,5,Baltimore Ravens,31,San Francisco 49ers,Sunday Noon,M&T Bank Stadium,Baltimore,MD,false,false,false,false
+11,8,Pittsburgh Steelers,3,New England Patriots,Sunday Noon,Heinz Field,Pittsburgh,PA,true,false,false,false
+11,23,Green Bay Packers,10,Indianapolis Colts,Sunday Afternoon,Lambeau Field,Green Bay,WI,false,false,false,true
+11,13,Denver Broncos,30,Los Angeles Rams,Sunday Afternoon,Empower Field at Mile High,Denver,CO,false,false,false,false
+12,14,Kansas City Chiefs,31,San Francisco 49ers,Thursday Night Football,Arrowhead Stadium,Kansas City,MO,false,false,false,false
+12,17,Dallas Cowboys,4,New York Jets,Sunday Night Football,AT&T Stadium,Arlington,TX,false,false,false,false
+12,3,New England Patriots,5,Baltimore Ravens,Monday Night Football,Gillette Stadium,Foxborough,MA,true,false,false,false
+12,8,Pittsburgh Steelers,7,Cleveland Browns,Sunday Noon,Heinz Field,Pittsburgh,PA,true,true,false,false
+12,30,Los Angeles Rams,32,Seattle Seahawks,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,true,false,false
+12,16,Los Angeles Chargers,26,Carolina Panthers,Sunday Afternoon,SoFi Stadium,Inglewood,CA,false,false,false,false
+12,19,Philadelphia Eagles,21,Chicago Bears,Sunday Noon,Lincoln Financial Field,Philadelphia,PA,true,false,false,false
+12,2,Miami Dolphins,1,Buffalo Bills,Sunday Noon,Hard Rock Stadium,Miami Gardens,FL,true,true,false,false
+12,28,Tampa Bay Buccaneers,15,Las Vegas Raiders,Sunday Noon,Raymond James Stadium,Tampa,FL,false,false,false,false
+12,13,Denver Broncos,12,Tennessee Titans,Sunday Afternoon,Empower Field at Mile High,Denver,CO,true,false,false,false
+12,10,Indianapolis Colts,22,Detroit Lions,Sunday Noon,Lucas Oil Stadium,Indianapolis,IN,false,false,false,true
+12,18,New York Giants,24,Minnesota Vikings,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,false,false,false
+12,27,New Orleans Saints,6,Cincinnati Bengals,Sunday Afternoon,Caesars Superdome,New Orleans,LA,false,false,false,false
+12,23,Green Bay Packers,20,Washington Commanders,Sunday Afternoon,Lambeau Field,Green Bay,WI,true,false,false,false
+12,9,Houston Texans,11,Jacksonville Jaguars,Sunday Afternoon,NRG Stadium,Houston,TX,true,true,false,true
+12,25,Atlanta Falcons,29,Arizona Cardinals,Sunday Noon,Mercedes-Benz Stadium,Atlanta,GA,true,false,false,false
+13,26,Carolina Panthers,27,New Orleans Saints,Sunday Night Football,Bank of America Stadium,Charlotte,NC,true,true,false,false
+13,4,New York Jets,18,New York Giants,Monday Night Football,MetLife Stadium,East Rutherford,NJ,false,false,false,false
+13,1,Buffalo Bills,21,Chicago Bears,Sunday Noon,Highmark Stadium,Orchard Park,NY,false,false,false,false
+13,31,San Francisco 49ers,32,Seattle Seahawks,Thursday Night Football,Levi's Stadium,Santa Clara,CA,true,true,false,false
+13,25,Atlanta Falcons,8,Pittsburgh Steelers,Sunday Noon,Mercedes-Benz Stadium,Atlanta,GA,false,false,false,false
+13,13,Denver Broncos,16,Los Angeles Chargers,Sunday Afternoon,Empower Field at Mile High,Denver,CO,true,true,false,false
+13,30,Los Angeles Rams,7,Cleveland Browns,Sunday Afternoon,SoFi Stadium,Inglewood,CA,false,false,false,false
+13,28,Tampa Bay Buccaneers,5,Baltimore Ravens,Sunday Noon,Raymond James Stadium,Tampa,FL,false,false,false,false
+13,29,Arizona Cardinals,6,Cincinnati Bengals,Sunday Afternoon,State Farm Stadium,Glendale,AZ,false,false,false,false
+13,12,Tennessee Titans,10,Indianapolis Colts,Sunday Noon,Nissan Stadium,Nashville,TN,true,true,false,false
+13,15,Las Vegas Raiders,3,New England Patriots,Sunday Afternoon,Allegiant Stadium,Paradise,NV,true,false,false,false
+13,19,Philadelphia Eagles,17,Dallas Cowboys,Thursday Night Football,Lincoln Financial Field,Philadelphia,PA,true,true,false,false
+13,2,Miami Dolphins,23,Green Bay Packers,Sunday Noon,Hard Rock Stadium,Miami Gardens,FL,false,false,false,false
+13,22,Detroit Lions,24,Minnesota Vikings,Thursday Night Football,Ford Field,Detroit,MI,true,true,false,false
+13,14,Kansas City Chiefs,9,Houston Texans,Sunday Afternoon,Arrowhead Stadium,Kansas City,MO,true,false,false,false
+13,11,Jacksonville Jaguars,20,Washington Commanders,Sunday Noon,TIAA Bank Field,Jacksonville,FL,false,false,false,false
+14,2,Miami Dolphins,6,Cincinnati Bengals,Thursday Night Football,Hard Rock Stadium,Miami Gardens,FL,true,false,false,false
+14,18,New York Giants,1,Buffalo Bills,Sunday Night Football,MetLife Stadium,East Rutherford,NJ,false,false,false,false
+14,17,Dallas Cowboys,19,Philadelphia Eagles,Monday Night Football,AT&T Stadium,Arlington,TX,true,true,false,false
+14,11,Jacksonville Jaguars,12,Tennessee Titans,Sunday Noon,TIAA Bank Field,Jacksonville,FL,true,true,false,false
+14,13,Denver Broncos,10,Indianapolis Colts,Sunday Afternoon,Empower Field at Mile High,Denver,CO,true,false,false,false
+14,5,Baltimore Ravens,7,Cleveland Browns,Sunday Noon,M&T Bank Stadium,Baltimore,MD,true,true,false,false
+14,16,Los Angeles Chargers,9,Houston Texans,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,false,false,false
+14,4,New York Jets,8,Pittsburgh Steelers,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,false,false,false
+14,27,New Orleans Saints,25,Atlanta Falcons,Sunday Afternoon,Caesars Superdome,New Orleans,LA,true,true,false,false
+14,24,Minnesota Vikings,21,Chicago Bears,Sunday Afternoon,U.S. Bank Stadium,Minneapolis,MN,true,true,false,false
+14,15,Las Vegas Raiders,29,Arizona Cardinals,Sunday Afternoon,Allegiant Stadium,Paradise,NV,false,false,false,false
+14,20,Washington Commanders,3,New England Patriots,Sunday Noon,FedExField,Landover,MD,false,false,false,false
+14,22,Detroit Lions,23,Green Bay Packers,Sunday Noon,Ford Field,Detroit,MI,true,true,false,false
+14,32,Seattle Seahawks,31,San Francisco 49ers,Sunday Afternoon,Lumen Field,Seattle,WA,true,true,false,false
+14,26,Carolina Panthers,30,Los Angeles Rams,Sunday Noon,Bank of America Stadium,Charlotte,NC,true,false,false,false
+14,14,Kansas City Chiefs,28,Tampa Bay Buccaneers,Sunday Afternoon,Arrowhead Stadium,Kansas City,MO,false,false,false,false
+15,29,Arizona Cardinals,28,Tampa Bay Buccaneers,Thursday Night Football,State Farm Stadium,Glendale,AZ,true,false,false,false
+15,15,Las Vegas Raiders,27,New Orleans Saints,Sunday Night Football,Allegiant Stadium,Paradise,NV,false,false,false,false
+15,6,Cincinnati Bengals,14,Kansas City Chiefs,Monday Night Football,Paul Brown Stadium,Cincinnati,OH,true,false,false,false
+15,26,Carolina Panthers,7,Cleveland Browns,Sunday Noon,Bank of America Stadium,Charlotte,NC,false,false,false,false
+15,17,Dallas Cowboys,20,Washington Commanders,Sunday Afternoon,AT&T Stadium,Arlington,TX,true,true,false,false
+15,2,Miami Dolphins,12,Tennessee Titans,Sunday Noon,Hard Rock Stadium,Miami Gardens,FL,true,false,false,false
+15,4,New York Jets,22,Detroit Lions,Sunday Noon,MetLife Stadium,East Rutherford,NJ,false,false,false,false
+15,11,Jacksonville Jaguars,13,Denver Broncos,Sunday Noon,TIAA Bank Field,Jacksonville,FL,true,false,false,false
+15,9,Houston Texans,21,Chicago Bears,Sunday Afternoon,NRG Stadium,Houston,TX,false,false,false,false
+15,23,Green Bay Packers,18,New York Giants,Sunday Afternoon,Lambeau Field,Green Bay,WI,true,false,false,false
+15,8,Pittsburgh Steelers,30,Los Angeles Rams,Sunday Noon,Heinz Field,Pittsburgh,PA,false,false,false,false
+15,32,Seattle Seahawks,25,Atlanta Falcons,Sunday Afternoon,Lumen Field,Seattle,WA,true,false,false,false
+15,10,Indianapolis Colts,16,Los Angeles Chargers,Sunday Noon,Lucas Oil Stadium,Indianapolis,IN,true,false,false,false
+15,3,New England Patriots,1,Buffalo Bills,Sunday Noon,Gillette Stadium,Foxborough,MA,true,true,false,false
+15,31,San Francisco 49ers,19,Philadelphia Eagles,Sunday Afternoon,Levi's Stadium,Santa Clara,CA,true,false,false,false
+16,1,Buffalo Bills,9,Houston Texans,Thursday Night Football,Highmark Stadium,Orchard Park,NY,true,false,false,false
+16,21,Chicago Bears,20,Washington Commanders,Sunday Night Football,Soldier Field,Chicago,IL,true,false,false,false
+16,32,Seattle Seahawks,5,Baltimore Ravens,Monday Night Football,Lumen Field,Seattle,WA,false,false,false,true
+16,28,Tampa Bay Buccaneers,25,Atlanta Falcons,Sunday Noon,Raymond James Stadium,Tampa,FL,true,true,false,false
+16,22,Detroit Lions,17,Dallas Cowboys,Sunday Noon,Ford Field,Detroit,MI,true,false,false,false
+16,6,Cincinnati Bengals,30,Los Angeles Rams,Sunday Noon,Paul Brown Stadium,Cincinnati,OH,false,false,false,false
+16,10,Indianapolis Colts,12,Tennessee Titans,Sunday Noon,Lucas Oil Stadium,Indianapolis,IN,true,true,false,false
+16,14,Kansas City Chiefs,13,Denver Broncos,Sunday Afternoon,Arrowhead Stadium,Kansas City,MO,true,true,false,false
+16,27,New Orleans Saints,16,Los Angeles Chargers,Sunday Afternoon,Caesars Superdome,New Orleans,LA,false,false,false,false
+16,2,Miami Dolphins,18,New York Giants,Sunday Noon,Hard Rock Stadium,Miami Gardens,FL,false,false,false,false
+16,19,Philadelphia Eagles,23,Green Bay Packers,Sunday Noon,Lincoln Financial Field,Philadelphia,PA,true,false,false,false
+16,11,Jacksonville Jaguars,15,Las Vegas Raiders,Sunday Noon,TIAA Bank Field,Jacksonville,FL,true,false,false,false
+16,3,New England Patriots,24,Minnesota Vikings,Sunday Noon,Gillette Stadium,Foxborough,MA,false,false,false,true
+16,7,Cleveland Browns,31,San Francisco 49ers,Sunday Noon,FirstEnergy Stadium,Cleveland,OH,false,false,false,false
+17,12,Tennessee Titans,22,Detroit Lions,Thursday Night Football,Nissan Stadium,Nashville,TN,false,false,false,false
+17,20,Washington Commanders,17,Dallas Cowboys,Sunday Night Football,FedExField,Landover,MD,true,true,false,false
+17,28,Tampa Bay Buccaneers,30,Los Angeles Rams,Monday Night Football,Raymond James Stadium,Tampa,FL,true,false,false,false
+17,24,Minnesota Vikings,9,Houston Texans,Sunday Afternoon,U.S. Bank Stadium,Minneapolis,MN,false,false,false,false
+17,11,Jacksonville Jaguars,21,Chicago Bears,Sunday Noon,TIAA Bank Field,Jacksonville,FL,false,false,false,false
+17,27,New Orleans Saints,29,Arizona Cardinals,Sunday Afternoon,Caesars Superdome,New Orleans,LA,true,false,false,true
+17,25,Atlanta Falcons,31,San Francisco 49ers,Sunday Noon,Mercedes-Benz Stadium,Atlanta,GA,true,false,false,false
+17,8,Pittsburgh Steelers,32,Seattle Seahawks,Sunday Noon,Heinz Field,Pittsburgh,PA,false,false,true,false
+17,19,Philadelphia Eagles,4,New York Jets,Sunday Noon,Lincoln Financial Field,Philadelphia,PA,false,false,false,true
+17,6,Cincinnati Bengals,1,Buffalo Bills,Sunday Noon,Paul Brown Stadium,Cincinnati,OH,true,false,false,false
+17,10,Indianapolis Colts,18,New York Giants,Sunday Noon,Lucas Oil Stadium,Indianapolis,IN,false,false,false,false
+17,16,Los Angeles Chargers,13,Denver Broncos,Sunday Afternoon,SoFi Stadium,Inglewood,CA,true,true,false,false
+17,14,Kansas City Chiefs,15,Las Vegas Raiders,Sunday Afternoon,Arrowhead Stadium,Kansas City,MO,true,true,false,false
+17,23,Green Bay Packers,26,Carolina Panthers,Sunday Afternoon,Lambeau Field,Green Bay,WI,true,false,false,true
+17,2,Miami Dolphins,3,New England Patriots,Sunday Noon,Hard Rock Stadium,Miami Gardens,FL,true,true,false,false
+17,7,Cleveland Browns,5,Baltimore Ravens,Sunday Noon,FirstEnergy Stadium,Cleveland,OH,true,true,false,false
+18,23,Green Bay Packers,22,Detroit Lions,Thursday Night Football,Lambeau Field,Green Bay,WI,true,true,false,false
+18,21,Chicago Bears,24,Minnesota Vikings,Sunday Night Football,Soldier Field,Chicago,IL,true,true,false,false
+18,10,Indianapolis Colts,9,Houston Texans,Monday Night Football,Lucas Oil Stadium,Indianapolis,IN,true,true,false,false
+18,32,Seattle Seahawks,30,Los Angeles Rams,Sunday Afternoon,Lumen Field,Seattle,WA,true,true,false,false
+18,4,New York Jets,1,Buffalo Bills,Sunday Noon,MetLife Stadium,East Rutherford,NJ,true,true,false,false
+18,26,Carolina Panthers,25,Atlanta Falcons,Sunday Noon,Bank of America Stadium,Charlotte,NC,true,true,false,false
+18,20,Washington Commanders,19,Philadelphia Eagles,Sunday Noon,FedExField,Landover,MD,true,true,false,false
+18,3,New England Patriots,2,Miami Dolphins,Sunday Noon,Gillette Stadium,Foxborough,MA,true,true,false,false
+18,17,Dallas Cowboys,18,New York Giants,Sunday Afternoon,AT&T Stadium,Arlington,TX,true,true,false,false
+18,15,Las Vegas Raiders,13,Denver Broncos,Sunday Afternoon,Allegiant Stadium,Paradise,NV,true,true,false,false
+18,7,Cleveland Browns,6,Cincinnati Bengals,Sunday Noon,FirstEnergy Stadium,Cleveland,OH,true,true,false,false
+18,29,Arizona Cardinals,31,San Francisco 49ers,Sunday Afternoon,State Farm Stadium,Glendale,AZ,true,true,false,false
+18,27,New Orleans Saints,28,Tampa Bay Buccaneers,Sunday Afternoon,Caesars Superdome,New Orleans,LA,true,true,false,false
+18,12,Tennessee Titans,11,Jacksonville Jaguars,Sunday Noon,Nissan Stadium,Nashville,TN,true,true,false,false
+18,8,Pittsburgh Steelers,5,Baltimore Ravens,Sunday Noon,Heinz Field,Pittsburgh,PA,true,true,false,false
+18,14,Kansas City Chiefs,16,Los Angeles Chargers,Sunday Afternoon,Arrowhead Stadium,Kansas City,MO,true,true,false,false
+
+TeamID,TeamName,HomeGames,AwayGames,TotalGames
+29,Arizona Cardinals,8,9,17
+25,Atlanta Falcons,8,9,17
+26,Carolina Panthers,8,9,17
+14,Kansas City Chiefs,9,8,17
+15,Las Vegas Raiders,9,8,17
+24,Minnesota Vikings,9,8,17
+8,Pittsburgh Steelers,9,8,17
+12,Tennessee Titans,8,9,17
+5,Baltimore Ravens,9,8,17
+17,Dallas Cowboys,8,9,17
+13,Denver Broncos,9,8,17
+27,New Orleans Saints,8,9,17
+19,Philadelphia Eagles,8,9,17
+32,Seattle Seahawks,8,9,17
+2,Miami Dolphins,9,8,17
+4,New York Jets,9,8,17
+18,New York Giants,8,9,17
+20,Washington Commanders,8,9,17
+21,Chicago Bears,9,8,17
+23,Green Bay Packers,9,8,17
+30,Los Angeles Rams,8,9,17
+28,Tampa Bay Buccaneers,8,9,17
+6,Cincinnati Bengals,9,8,17
+7,Cleveland Browns,9,8,17
+11,Jacksonville Jaguars,8,9,17
+16,Los Angeles Chargers,9,8,17
+3,New England Patriots,9,8,17
+22,Detroit Lions,9,8,17
+9,Houston Texans,8,9,17
+10,Indianapolis Colts,8,9,17
+31,San Francisco 49ers,8,9,17
+1,Buffalo Bills,9,8,17

@@ -475,7 +475,7 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 			cfbGameRequests = repository.FindCFBGameRequestRecords(repository.SchedulerQuery{SeasonID: seasonID})
 		}()
 	}
-	wg.Add(4)
+	wg.Add(3)
 	go func() {
 		defer wg.Done()
 		log.Println("Fetching Retired Players...")
