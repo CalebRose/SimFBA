@@ -9,6 +9,7 @@ import (
 	"github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
+	"github.com/CalebRose/SimFBA/util"
 )
 
 // ─────────────────────────────────────────────
@@ -118,9 +119,28 @@ func ProcessCFBGameRequest(requestID string) {
 	for _, s := range stadiums {
 		stadiumByID[s.ID] = s
 	}
-	stadium := stadiumByID[request.ArenaID]
+	arenaID := request.ArenaID
+	if arenaID == 0 {
+		// If no arena specified, assign the home team's stadium
+		arenaID = homeTeam.StadiumID
+	}
+	stadium := stadiumByID[arenaID]
+	stadiumName := stadium.StadiumName
+	city := stadium.City
+	state := stadium.State
+	region := stadium.Region
+	if stadium.ID == 0 {
+		stadiumName = homeTeam.Stadium
+		city = homeTeam.City
+		state = homeTeam.State
+	}
 
 	isDivisional := homeTeam.DivisionID > 0 && homeTeam.DivisionID == awayTeam.DivisionID
+
+	timeslot := request.Timeslot
+	if timeslot == "" {
+		timeslot = util.GetTimeslot(stadium.State, uint(homeTeam.ConferenceID))
+	}
 
 	game := structs.CollegeGame{
 		HomeTeamID:   int(request.HomeTeamID),
@@ -130,12 +150,12 @@ func ProcessCFBGameRequest(requestID string) {
 		Week:         int(request.Week),
 		WeekID:       int(request.WeekID),
 		SeasonID:     int(request.SeasonID),
-		StadiumID:    request.ArenaID,
-		Stadium:      stadium.StadiumName,
-		City:         stadium.City,
-		State:        stadium.State,
-		Region:       stadium.Region,
-		TimeSlot:     request.Timeslot,
+		StadiumID:    arenaID,
+		Stadium:      stadiumName,
+		City:         city,
+		State:        state,
+		Region:       region,
+		TimeSlot:     timeslot,
 		IsNeutral:    request.IsNeutralSite,
 		IsConference: homeTeam.ConferenceID == awayTeam.ConferenceID,
 		IsDivisional: isDivisional,
