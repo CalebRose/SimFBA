@@ -96,7 +96,7 @@ func ProcessTransferIntention() {
 		seasonStats := seasonSnapMap[p.ID]
 		totalSnaps := 0
 		for _, s := range seasonStats {
-			totalSnaps += s.Snaps
+			totalSnaps += int(s.Snaps)
 		}
 		snapsPerGame := totalSnaps / 12
 
@@ -325,7 +325,7 @@ func ProcessTransferIntention() {
 
 		repository.SaveCFBPlayer(p, db)
 		if p.Stars > 2 {
-			message := "Breaking News! " + strconv.Itoa(p.Stars) + " star " + p.Position + " " + p.FirstName + " " + p.LastName + " has announced their intention to transfer from " + p.TeamAbbr + "!"
+			message := "Breaking News! " + strconv.Itoa(int(p.Stars)) + " star " + p.Position + " " + p.FirstName + " " + p.LastName + " has announced their intention to transfer from " + p.TeamAbbr + "!"
 			CreateNewsLog("CFB", message, "Transfer Portal", int(p.TeamID), ts)
 		}
 		if teamProfile != nil && teamProfile.IsUserTeam && teamProfile.Recruiter != "" && teamProfile.Recruiter != "AI" {
@@ -339,7 +339,7 @@ func ProcessTransferIntention() {
 					PlayerID:           uint(p.PlayerID),
 					PlayerName:         p.FirstName + " " + p.LastName,
 					Position:           p.Position,
-					Stars:              p.Stars,
+					Stars:              int(p.Stars),
 					TransferLikeliness: p.TransferLikeliness,
 					RecipientUIDs:      uids,
 					SourceEventKey:     eventKey,
@@ -350,7 +350,7 @@ func ProcessTransferIntention() {
 		// // db.Save(&p)
 		// csvModel := structs.MapPlayerToCSVModel(p)
 		// playerRow := []string{
-		// 	p.TeamAbbr, csvModel.FirstName, csvModel.LastName, strconv.Itoa(p.Stars),
+		// 	p.TeamAbbr, csvModel.FirstName, csvModel.LastName, strconv.Itoa(int(p.Stars)),
 		// 	csvModel.Archetype, csvModel.Position,
 		// 	csvModel.Year, strconv.Itoa(p.Age), csvModel.RedshirtStatus,
 		// 	csvModel.OverallGrade, p.RecruitingBias, p.TransferLikeliness, strconv.Itoa(transferInt), strconv.Itoa(diceRoll),
@@ -636,7 +636,7 @@ func EnterTheTransferPortal() {
 				p.WillTransfer()
 
 				// Create News Log
-				message := "Breaking News! " + p.PreviousTeam + " " + strconv.Itoa(p.Stars) + " Star " + p.Position + " " + p.FirstName + " " + p.LastName + " has officially entered the transfer portal!"
+				message := "Breaking News! " + p.PreviousTeam + " " + strconv.Itoa(int(p.Stars)) + " Star " + p.Position + " " + p.FirstName + " " + p.LastName + " has officially entered the transfer portal!"
 				CreateNewsLog("CFB", message, "Transfer Portal", int(p.PreviousTeamID), ts)
 
 				repository.SaveCFBPlayer(p, db)
@@ -645,7 +645,7 @@ func EnterTheTransferPortal() {
 			}
 
 			// Create News Log
-			message := "Breaking News! " + p.TeamAbbr + " " + strconv.Itoa(p.Stars) + " Star " + p.Position + " " + p.FirstName + " " + p.LastName + " has withdrawn their name from the transfer portal!"
+			message := "Breaking News! " + p.TeamAbbr + " " + strconv.Itoa(int(p.Stars)) + " Star " + p.Position + " " + p.FirstName + " " + p.LastName + " has withdrawn their name from the transfer portal!"
 			CreateNewsLog("CFB", message, "Transfer Portal", int(p.PreviousTeamID), ts)
 
 			promise.MakePromise()
@@ -1005,8 +1005,8 @@ func AICoachAllocateAndPromisePhase() {
 						switch promiseLevel {
 						case 1:
 							promiseBenchmark += 5
-							if promiseBenchmark > tp.Stamina {
-								promiseBenchmark = tp.Stamina - 1
+							if promiseBenchmark > int(tp.Stamina) {
+								promiseBenchmark = int(tp.Stamina) - 1
 							}
 						case -1:
 							promiseBenchmark -= 1
@@ -1194,7 +1194,7 @@ func SyncTransferPortal() {
 						}
 						portalPlayer.SignWithNewTeam(teamProfile.TeamID, teamProfile.TeamAbbreviation)
 						signingLabels = append(signingLabels, fmt.Sprintf("%d★ %s %s %s (%s → %s)", portalPlayer.Stars, portalPlayer.Position, portalPlayer.FirstName, portalPlayer.LastName, portalPlayer.PreviousTeam, portalPlayer.TeamAbbr))
-						message := portalPlayer.FirstName + " " + portalPlayer.LastName + ", " + strconv.Itoa(portalPlayer.Stars) + " star " + portalPlayer.Position + " from " + portalPlayer.PreviousTeam + " has signed with " + portalPlayer.TeamAbbr + " with " + strconv.Itoa(int(odds)) + " percent odds."
+						message := portalPlayer.FirstName + " " + portalPlayer.LastName + ", " + strconv.Itoa(int(portalPlayer.Stars)) + " star " + portalPlayer.Position + " from " + portalPlayer.PreviousTeam + " has signed with " + portalPlayer.TeamAbbr + " with " + strconv.Itoa(int(odds)) + " percent odds."
 						CreateNewsLog("CFB", message, "Transfer Portal", int(winningTeamID), ts)
 						fmt.Println("Created new log!")
 						// Add player to existing roster map
@@ -1301,7 +1301,7 @@ func GetTransferPortalProfilesForPage(teamID string) []structs.TransferPortalPro
 		}
 		cp := collegePlayerMap[p.CollegePlayerID]
 		cpResponse := structs.TransferPlayerResponse{}
-		ovr := util.GetOverallGrade(cp.Overall, cp.Year)
+		ovr := util.GetOverallGrade(int(cp.Overall), cp.Year)
 		teamPromises := promisesTeamMap[p.ProfileID]
 		promiseMapByPlayerID := MakePromiseMapByPlayerIDByTeam(teamPromises)
 		playerPromise := promiseMapByPlayerID[p.CollegePlayerID]
@@ -1447,7 +1447,7 @@ func GetTransferPortalPlayersForPage() []structs.TransferPlayerResponse {
 
 	for _, p := range players {
 		res := structs.TransferPlayerResponse{}
-		ovr := util.GetOverallGrade(p.Overall, p.Year)
+		ovr := util.GetOverallGrade(int(p.Overall), p.Year)
 		res.Map(p, ovr, portalProfileMap[p.ID])
 
 		playerList = append(playerList, res)

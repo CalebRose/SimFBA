@@ -31,26 +31,26 @@ func (up *UnsignedPlayer) GraduatePlayer() {
 func (up *UnsignedPlayer) Progress(attr CollegePlayerProgressions) {
 	up.Age++
 	up.Year++
-	up.Agility = attr.Agility
-	up.Speed = attr.Speed
-	up.FootballIQ = attr.FootballIQ
-	up.Carrying = attr.Carrying
-	up.Catching = attr.Catching
-	up.RouteRunning = attr.RouteRunning
-	up.PassBlock = attr.PassBlock
-	up.RunBlock = attr.RunBlock
-	up.PassRush = attr.PassRush
-	up.RunDefense = attr.RunDefense
-	up.Tackle = attr.Tackle
-	up.Strength = attr.Strength
-	up.ManCoverage = attr.ManCoverage
-	up.ZoneCoverage = attr.ZoneCoverage
-	up.KickAccuracy = attr.KickAccuracy
-	up.KickPower = attr.KickPower
-	up.PuntAccuracy = attr.PuntAccuracy
-	up.PuntPower = attr.PuntPower
-	up.ThrowAccuracy = attr.ThrowAccuracy
-	up.ThrowPower = attr.ThrowPower
+	up.Agility = int8(attr.Agility)
+	up.Speed = int8(attr.Speed)
+	up.FootballIQ = int8(attr.FootballIQ)
+	up.Carrying = int8(attr.Carrying)
+	up.Catching = int8(attr.Catching)
+	up.RouteRunning = int8(attr.RouteRunning)
+	up.PassBlock = int8(attr.PassBlock)
+	up.RunBlock = int8(attr.RunBlock)
+	up.PassRush = int8(attr.PassRush)
+	up.RunDefense = int8(attr.RunDefense)
+	up.Tackle = int8(attr.Tackle)
+	up.Strength = int8(attr.Strength)
+	up.ManCoverage = int8(attr.ManCoverage)
+	up.ZoneCoverage = int8(attr.ZoneCoverage)
+	up.KickAccuracy = int8(attr.KickAccuracy)
+	up.KickPower = int8(attr.KickPower)
+	up.PuntAccuracy = int8(attr.PuntAccuracy)
+	up.PuntPower = int8(attr.PuntPower)
+	up.ThrowAccuracy = int8(attr.ThrowAccuracy)
+	up.ThrowPower = int8(attr.ThrowPower)
 	up.HasProgressed = true
 }
 
@@ -62,7 +62,7 @@ func (up *UnsignedPlayer) MapFromRecruit(r Recruit) {
 	up.HighSchool = r.HighSchool
 	up.City = r.City
 	up.State = r.State
-	up.Year = r.Age - 17
+	up.Year = int(r.Age) - 17
 	up.IsRedshirt = false
 	up.IsRedshirting = false
 	up.HasGraduated = false

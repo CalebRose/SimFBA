@@ -218,7 +218,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 				score += 50
 			}
 			// score += ((cp.ThrowAccuracy + cp.ThrowPower) / 2)
-			score += cp.Overall
+			score += int(cp.Overall)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
@@ -244,7 +244,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 				score -= bonus
 			}
 
-			score += ((cp.Speed + cp.Agility + cp.Strength + cp.Carrying) / 4)
+			score += int((float64(cp.Speed) + float64(cp.Agility) + float64(cp.Strength) + float64(cp.Carrying)) / 4.0)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
@@ -269,7 +269,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 			} else if isBadFit && !isGoodFit {
 				score -= bonus
 			}
-			score += ((cp.Strength + cp.Carrying + cp.PassBlock + cp.RunBlock) / 4)
+			score += ((int(cp.Strength) + int(cp.Carrying) + int(cp.PassBlock) + int(cp.RunBlock)) / 4)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
@@ -720,7 +720,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 				score -= bonus
 			}
 
-			score += cp.PuntAccuracy + cp.PuntPower
+			score += int(cp.PuntAccuracy) + int(cp.PuntPower)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
@@ -747,7 +747,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 			} else if isBadFit && !isGoodFit {
 				score -= bonus
 			}
-			score += cp.KickAccuracy + cp.KickPower
+			score += int(cp.KickAccuracy) + int(cp.KickPower)
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
 				Archetype:     arch,
@@ -774,7 +774,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 				score -= bonus
 			}
 
-			score += cp.KickAccuracy + cp.KickPower
+			score += int(cp.KickAccuracy) + int(cp.KickPower)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
@@ -793,7 +793,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 			} else if pos == "WR" || pos == "RB" {
 				score += 25
 			}
-			score += cp.Agility
+			score += int(cp.Agility)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
@@ -812,7 +812,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 			} else if pos == "WR" || pos == "RB" {
 				score += 25
 			}
-			score += cp.Speed
+			score += int(cp.Speed)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
@@ -832,7 +832,7 @@ func ReAlignCollegeDepthChartTEST(db *gorm.DB, teamID string, gp structs.College
 				score += 25
 			}
 
-			score += cp.Tackle
+			score += int(cp.Tackle)
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:      pos,
 				Archetype:     arch,
@@ -1136,7 +1136,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 			} else if pos == "ATH" && (arch == "Triple-Threat" || arch == "Field General") {
 				score += 50
 			}
-			score += cp.Overall
+			score += int(cp.Overall)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
@@ -1162,7 +1162,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 				score -= bonus
 			}
 
-			score += ((cp.Speed + cp.Agility + cp.Strength + cp.Carrying) / 4)
+			score += (int(cp.Speed) + int(cp.Agility) + int(cp.Strength) + int(cp.Carrying)) / 4
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
 				Archetype: arch,
@@ -1186,7 +1186,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 			} else if isBadFit && !isGoodFit {
 				score -= bonus
 			}
-			score += ((cp.Strength + cp.Carrying + cp.PassBlock + cp.RunBlock) / 4)
+			score += (int(cp.Strength) + int(cp.Carrying) + int(cp.PassBlock) + int(cp.RunBlock)) / 4
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
@@ -1638,7 +1638,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 				score -= bonus
 			}
 
-			score += cp.PuntAccuracy + cp.PuntPower
+			score += int(cp.PuntAccuracy) + int(cp.PuntPower)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
@@ -1665,7 +1665,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 			} else if isBadFit && !isGoodFit {
 				score -= bonus
 			}
-			score += cp.KickAccuracy + cp.KickPower
+			score += int(cp.KickAccuracy) + int(cp.KickPower)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
@@ -1693,7 +1693,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 				score -= bonus
 			}
 
-			score += cp.KickAccuracy + cp.KickPower
+			score += int(cp.KickAccuracy) + int(cp.KickPower)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
@@ -1712,7 +1712,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 			} else if pos == "WR" || pos == "RB" {
 				score += 25
 			}
-			score += cp.Agility
+			score += int(cp.Agility)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
@@ -1731,7 +1731,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 			} else if pos == "WR" || pos == "RB" {
 				score += 25
 			}
-			score += cp.Speed
+			score += int(cp.Speed)
 
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
@@ -1754,7 +1754,7 @@ func ReAlignNFLDepthChartTEST(db *gorm.DB, teamID string, gp structs.NFLGameplan
 				score += 15
 			}
 
-			score += cp.Tackle
+			score += int(cp.Tackle)
 			dcpObj := structs.DepthChartPositionDTO{
 				Position:  pos,
 				Archetype: arch,

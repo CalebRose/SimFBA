@@ -40,8 +40,8 @@ func MigrateHistoricPlayersToNFLDraftees() {
 		draftee := models.NFLDraftee{}
 		draftee.Map(grad)
 		// Map New Progression value for NFL
-		newProgression := util.GenerateNFLPotential(grad.Progression)
-		newPotentialGrade := util.GetWeightedPotentialGrade(newProgression)
+		newProgression := util.GenerateNFLPotential(int(grad.Progression))
+		newPotentialGrade := util.GetWeightedPotentialGrade(int8(newProgression))
 		draftee.MapProgression(newProgression, newPotentialGrade)
 
 		if draftee.Position == "RB" {
@@ -672,15 +672,15 @@ func FixNFLDrafteePotentialGrades() {
 	draftees := GetAllNFLDraftees()
 
 	for _, d := range draftees {
-		newProgression := util.GenerateIntFromRange(d.Progression-5, d.Progression+5)
+		newProgression := util.GenerateIntFromRange(int(d.Progression)-5, int(d.Progression)+5)
 		if newProgression < 0 {
 			newProgression = 1
 		} else if newProgression > 100 {
 			newProgression = 100
 		}
-		newPotentialGrade := util.GetWeightedPotentialGrade(newProgression)
+		newPotentialGrade := util.GetWeightedPotentialGrade(int8(newProgression))
 		d.PotentialGrade = newPotentialGrade
-		d.Progression = newProgression
+		d.Progression = int8(newProgression)
 
 		repository.SaveNFLDrafteeRecord(d, db)
 	}

@@ -42,8 +42,8 @@ func (t *TopPlayer) MapCollegePlayer(player structs.CollegePlayer) {
 	t.PositionTwo = player.PositionTwo
 	t.Archetype = player.Archetype
 	t.ArchetypeTwo = player.ArchetypeTwo
-	t.Overall = player.Overall
-	t.OverallGrade = util.GetOverallGrade(player.Overall, player.Year)
+	t.Overall = int(player.Overall)
+	t.OverallGrade = util.GetOverallGrade(int(player.Overall), player.Year)
 }
 
 func (t *TopPlayer) MapNFLPlayer(player structs.NFLPlayer) {
@@ -54,6 +54,6 @@ func (t *TopPlayer) MapNFLPlayer(player structs.NFLPlayer) {
 	t.PositionTwo = player.PositionTwo
 	t.Archetype = player.Archetype
 	t.ArchetypeTwo = player.ArchetypeTwo
-	t.Overall = player.Overall
-	t.OverallGrade = util.GetNFLOverallGrade(player.Overall)
+	t.Overall = int(player.Overall)
+	t.OverallGrade = util.GetNFLOverallGrade(int(player.Overall))
 }

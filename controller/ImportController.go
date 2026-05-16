@@ -20,7 +20,7 @@ func ImportNFLDraftPicks(w http.ResponseWriter, r *http.Request) {
 }
 
 func ImportRecruitAICSV(w http.ResponseWriter, r *http.Request) {
-	managers.ImportRecruitAICSV()
+	// managers.ImportRecruitAICSV()
 }
 
 func ImportNFLRecords(w http.ResponseWriter, r *http.Request) {
@@ -80,7 +80,7 @@ func ImplementPrimeAge(w http.ResponseWriter, r *http.Request) {
 }
 
 func GenerateCoachesForAITeams(w http.ResponseWriter, r *http.Request) {
-	managers.GenerateCoachesForAITeams()
+	// managers.GenerateCoachesForAITeams()
 }
 
 func FixCollegeDTOVRs(w http.ResponseWriter, r *http.Request) {
@@ -104,7 +104,7 @@ func ImportCFBRivals(w http.ResponseWriter, r *http.Request) {
 
 func Import2021CFBStats(w http.ResponseWriter, r *http.Request) {
 	// managers.MigrateRetiredAndNFLPlayersToHistoricCFBTable()
-	managers.ImportCFB2021PlayerStats()
+	// managers.ImportCFB2021PlayerStats()
 }
 
 func FixATHProgressions(w http.ResponseWriter, r *http.Request) {

@@ -218,7 +218,7 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 							SeasonID:    timestamp.CollegeSeasonID,
 							MessageType: "Commitment",
 							League:      "CFB",
-							Message:     strconv.Itoa(int(recruit.ID)) + " " + recruit.FirstName + " " + recruit.LastName + ", " + strconv.Itoa(recruit.Stars) + " star " + recruit.Position + " from " + recruit.City + ", " + recruit.State + " has signed with " + recruit.College + " with " + strconv.Itoa(int(odds)) + " percent odds.",
+							Message:     strconv.Itoa(int(recruit.ID)) + " " + recruit.FirstName + " " + recruit.LastName + ", " + strconv.Itoa(int(recruit.Stars)) + " star " + recruit.Position + " from " + recruit.City + ", " + recruit.State + " has signed with " + recruit.College + " with " + strconv.Itoa(int(odds)) + " percent odds.",
 						}
 
 						db.Create(&newsLog)
@@ -616,7 +616,7 @@ func FillAIRecruitingBoards() {
 				starMax = 3
 			}
 			if (teamNeeds[croot.Position] < 1) ||
-				(croot.Stars > starMax) || (croot.Stars < starMin) {
+				(int(croot.Stars) > starMax) || (int(croot.Stars) < starMin) {
 				continue
 			}
 

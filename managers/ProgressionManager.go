@@ -58,8 +58,8 @@ func CFBProgressionMain() {
 					draftee := models.NFLDraftee{}
 					draftee.Map(player)
 					// Map New Progression value for NFL
-					newProgression := util.GenerateNFLPotential(player.Progression)
-					newPotentialGrade := util.GetWeightedPotentialGrade(newProgression)
+					newProgression := util.GenerateNFLPotential(int(player.Progression))
+					newPotentialGrade := util.GetWeightedPotentialGrade(int8(newProgression))
 					draftee.MapProgression(newProgression, newPotentialGrade)
 
 					if draftee.Position == "RB" {
@@ -203,8 +203,8 @@ func CFBProgressionMain() {
 			draftee.Map(player)
 
 			// Map New Progression value for NFL
-			newProgression := util.GenerateNFLPotential(player.Progression)
-			newPotentialGrade := util.GetWeightedPotentialGrade(newProgression)
+			newProgression := util.GenerateNFLPotential(int(player.Progression))
+			newPotentialGrade := util.GetWeightedPotentialGrade(int8(newProgression))
 			draftee.MapProgression(newProgression, newPotentialGrade)
 
 			if draftee.Position == "RB" {
@@ -442,26 +442,26 @@ func ProgressNFLPlayers() {
 }
 
 func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsPerGame int, snaps structs.NFLPlayerSeasonSnaps) structs.NFLPlayer {
-	Agility := 0
-	ThrowPower := 0
-	ThrowAccuracy := 0
-	Speed := 0
-	FootballIQ := 0
-	Strength := 0
-	RunBlock := 0
-	PassBlock := 0
-	RunDefense := 0
-	PassRush := 0
-	Carrying := 0
-	Tackle := 0
-	RouteRunning := 0
-	Catching := 0
-	PuntPower := 0
-	PuntAccuracy := 0
-	KickPower := 0
-	KickAccuracy := 0
-	ManCoverage := 0
-	ZoneCoverage := 0
+	Agility := int8(0)
+	ThrowPower := int8(0)
+	ThrowAccuracy := int8(0)
+	Speed := int8(0)
+	FootballIQ := int8(0)
+	Strength := int8(0)
+	RunBlock := int8(0)
+	PassBlock := int8(0)
+	RunDefense := int8(0)
+	PassRush := int8(0)
+	Carrying := int8(0)
+	Tackle := int8(0)
+	RouteRunning := int8(0)
+	Catching := int8(0)
+	PuntPower := int8(0)
+	PuntAccuracy := int8(0)
+	KickPower := int8(0)
+	KickAccuracy := int8(0)
+	ManCoverage := int8(0)
+	ZoneCoverage := int8(0)
 
 	mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, np.Position)
 	totalSnaps -= int(snaps.STSnaps)
@@ -1018,26 +1018,26 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		}
 	}
 
-	ThrowPower = RegressAttribute(ThrowPower, np.Age, int(np.PrimeAge), false)
-	ThrowAccuracy = RegressAttribute(ThrowAccuracy, np.Age, int(np.PrimeAge), false)
-	RunBlock = RegressAttribute(RunBlock, np.Age, int(np.PrimeAge), false)
-	PassBlock = RegressAttribute(PassBlock, np.Age, int(np.PrimeAge), false)
-	RunDefense = RegressAttribute(RunDefense, np.Age, int(np.PrimeAge), false)
-	PassRush = RegressAttribute(PassRush, np.Age, int(np.PrimeAge), false)
-	Carrying = RegressAttribute(Carrying, np.Age, int(np.PrimeAge), false)
-	Tackle = RegressAttribute(Tackle, np.Age, int(np.PrimeAge), false)
-	RouteRunning = RegressAttribute(RouteRunning, np.Age, int(np.PrimeAge), false)
-	Catching = RegressAttribute(Catching, np.Age, int(np.PrimeAge), false)
-	KickPower = RegressAttribute(KickPower, np.Age, int(np.PrimeAge), false)
-	KickAccuracy = RegressAttribute(KickAccuracy, np.Age, int(np.PrimeAge), false)
-	ManCoverage = RegressAttribute(ManCoverage, np.Age, int(np.PrimeAge), false)
-	ZoneCoverage = RegressAttribute(ZoneCoverage, np.Age, int(np.PrimeAge), false)
-	Strength = RegressAttribute(Strength, np.Age, int(np.PrimeAge), false)
-	Speed = RegressAttribute(Speed, np.Age, int(np.PrimeAge), false)
-	Agility = RegressAttribute(Agility, np.Age, int(np.PrimeAge), false)
-	FootballIQ = RegressAttribute(FootballIQ, np.Age, int(np.PrimeAge), true)
-	PuntPower = RegressAttribute(PuntPower, np.Age, int(np.PrimeAge), false)
-	PuntAccuracy = RegressAttribute(PuntAccuracy, np.Age, int(np.PrimeAge), false)
+	ThrowPower = RegressAttribute(ThrowPower, np.Age, int8(np.PrimeAge), false)
+	ThrowAccuracy = RegressAttribute(ThrowAccuracy, np.Age, int8(np.PrimeAge), false)
+	RunBlock = RegressAttribute(RunBlock, np.Age, int8(np.PrimeAge), false)
+	PassBlock = RegressAttribute(PassBlock, np.Age, int8(np.PrimeAge), false)
+	RunDefense = RegressAttribute(RunDefense, np.Age, int8(np.PrimeAge), false)
+	PassRush = RegressAttribute(PassRush, np.Age, int8(np.PrimeAge), false)
+	Carrying = RegressAttribute(Carrying, np.Age, int8(np.PrimeAge), false)
+	Tackle = RegressAttribute(Tackle, np.Age, int8(np.PrimeAge), false)
+	RouteRunning = RegressAttribute(RouteRunning, np.Age, int8(np.PrimeAge), false)
+	Catching = RegressAttribute(Catching, np.Age, int8(np.PrimeAge), false)
+	KickPower = RegressAttribute(KickPower, np.Age, int8(np.PrimeAge), false)
+	KickAccuracy = RegressAttribute(KickAccuracy, np.Age, int8(np.PrimeAge), false)
+	ManCoverage = RegressAttribute(ManCoverage, np.Age, int8(np.PrimeAge), false)
+	ZoneCoverage = RegressAttribute(ZoneCoverage, np.Age, int8(np.PrimeAge), false)
+	Strength = RegressAttribute(Strength, np.Age, int8(np.PrimeAge), false)
+	Speed = RegressAttribute(Speed, np.Age, int8(np.PrimeAge), false)
+	Agility = RegressAttribute(Agility, np.Age, int8(np.PrimeAge), false)
+	FootballIQ = RegressAttribute(FootballIQ, np.Age, int8(np.PrimeAge), true)
+	PuntPower = RegressAttribute(PuntPower, np.Age, int8(np.PrimeAge), false)
+	PuntAccuracy = RegressAttribute(PuntAccuracy, np.Age, int8(np.PrimeAge), false)
 	newPotentialGrade := util.GetWeightedPotentialGrade(np.Progression)
 
 	progressions := structs.CollegePlayerProgressions{
@@ -1075,7 +1075,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 	totalSnaps := 0
 
 	for _, stat := range stats {
-		totalSnaps += stat.Snaps
+		totalSnaps += int(stat.Snaps)
 	}
 
 	var SnapsPerGame int = 0
@@ -1083,26 +1083,26 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		SnapsPerGame = totalSnaps / 12 // 12
 	}
 
-	Agility := 0
-	ThrowPower := 0
-	ThrowAccuracy := 0
-	Speed := 0
-	FootballIQ := 0
-	Strength := 0
-	RunBlock := 0
-	PassBlock := 0
-	RunDefense := 0
-	PassRush := 0
-	Carrying := 0
-	Tackle := 0
-	RouteRunning := 0
-	Catching := 0
-	PuntPower := 0
-	PuntAccuracy := 0
-	KickPower := 0
-	KickAccuracy := 0
-	ManCoverage := 0
-	ZoneCoverage := 0
+	Agility := int8(0)
+	ThrowPower := int8(0)
+	ThrowAccuracy := int8(0)
+	Speed := int8(0)
+	FootballIQ := int8(0)
+	Strength := int8(0)
+	RunBlock := int8(0)
+	PassBlock := int8(0)
+	RunDefense := int8(0)
+	PassRush := int8(0)
+	Carrying := int8(0)
+	Tackle := int8(0)
+	RouteRunning := int8(0)
+	Catching := int8(0)
+	PuntPower := int8(0)
+	PuntAccuracy := int8(0)
+	KickPower := int8(0)
+	KickAccuracy := int8(0)
+	ManCoverage := int8(0)
+	ZoneCoverage := int8(0)
 
 	// Get most played position
 	mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, cp.Position)
@@ -1694,26 +1694,26 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 }
 
 func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, isBoom bool) models.NFLDraftee {
-	Agility := 0
-	ThrowPower := 0
-	ThrowAccuracy := 0
-	Speed := 0
-	FootballIQ := 0
-	Strength := 0
-	RunBlock := 0
-	PassBlock := 0
-	RunDefense := 0
-	PassRush := 0
-	Carrying := 0
-	Tackle := 0
-	RouteRunning := 0
-	Catching := 0
-	PuntPower := 0
-	PuntAccuracy := 0
-	KickPower := 0
-	KickAccuracy := 0
-	ManCoverage := 0
-	ZoneCoverage := 0
+	Agility := int8(0)
+	ThrowPower := int8(0)
+	ThrowAccuracy := int8(0)
+	Speed := int8(0)
+	FootballIQ := int8(0)
+	Strength := int8(0)
+	RunBlock := int8(0)
+	PassBlock := int8(0)
+	RunDefense := int8(0)
+	PassRush := int8(0)
+	Carrying := int8(0)
+	Tackle := int8(0)
+	RouteRunning := int8(0)
+	Catching := int8(0)
+	PuntPower := int8(0)
+	PuntAccuracy := int8(0)
+	KickPower := int8(0)
+	KickAccuracy := int8(0)
+	ManCoverage := int8(0)
+	ZoneCoverage := int8(0)
 
 	if isBoom {
 		switch np.Position {
@@ -2089,26 +2089,26 @@ func BoomBustDraftee(np models.NFLDraftee, SeasonID string, SnapsPerGame int, is
 }
 
 func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int, isBoom bool) structs.CollegePlayer {
-	Agility := 0
-	ThrowPower := 0
-	ThrowAccuracy := 0
-	Speed := 0
-	FootballIQ := 0
-	Strength := 0
-	RunBlock := 0
-	PassBlock := 0
-	RunDefense := 0
-	PassRush := 0
-	Carrying := 0
-	Tackle := 0
-	RouteRunning := 0
-	Catching := 0
-	PuntPower := 0
-	PuntAccuracy := 0
-	KickPower := 0
-	KickAccuracy := 0
-	ManCoverage := 0
-	ZoneCoverage := 0
+	Agility := int8(0)
+	ThrowPower := int8(0)
+	ThrowAccuracy := int8(0)
+	Speed := int8(0)
+	FootballIQ := int8(0)
+	Strength := int8(0)
+	RunBlock := int8(0)
+	PassBlock := int8(0)
+	RunDefense := int8(0)
+	PassRush := int8(0)
+	Carrying := int8(0)
+	Tackle := int8(0)
+	RouteRunning := int8(0)
+	Catching := int8(0)
+	PuntPower := int8(0)
+	PuntAccuracy := int8(0)
+	KickPower := int8(0)
+	KickAccuracy := int8(0)
+	ManCoverage := int8(0)
+	ZoneCoverage := int8(0)
 
 	if isBoom {
 		switch np.Position {
@@ -2429,26 +2429,26 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 			Agility = SecondaryProgression(np.Progression, np.Agility)
 			FootballIQ = SecondaryProgression(np.Progression, np.FootballIQ)
 		case "ATH":
-			ThrowPower = np.ThrowPower + util.GenerateNormalizedIntFromRange(1, 3)
-			ThrowAccuracy = np.ThrowAccuracy + util.GenerateNormalizedIntFromRange(1, 3)
-			PuntPower = np.PuntPower + util.GenerateNormalizedIntFromRange(1, 3)
-			PuntAccuracy = np.PuntAccuracy + util.GenerateNormalizedIntFromRange(1, 3)
-			RunBlock = np.RunBlock + util.GenerateNormalizedIntFromRange(1, 3)
-			PassBlock = np.PassBlock + util.GenerateNormalizedIntFromRange(1, 3)
-			RunDefense = np.RunDefense + util.GenerateNormalizedIntFromRange(1, 3)
-			PassRush = np.PassRush + util.GenerateNormalizedIntFromRange(1, 3)
-			Carrying = np.Carrying + util.GenerateNormalizedIntFromRange(1, 3)
-			Tackle = np.Tackle + util.GenerateNormalizedIntFromRange(1, 3)
-			RouteRunning = np.RouteRunning + util.GenerateNormalizedIntFromRange(1, 3)
-			Catching = np.Catching + util.GenerateNormalizedIntFromRange(1, 3)
-			KickPower = np.KickPower + util.GenerateNormalizedIntFromRange(1, 3)
-			KickAccuracy = np.KickAccuracy + util.GenerateNormalizedIntFromRange(1, 3)
-			ManCoverage = np.ManCoverage + util.GenerateNormalizedIntFromRange(1, 3)
-			ZoneCoverage = np.ZoneCoverage + util.GenerateNormalizedIntFromRange(1, 3)
-			Strength = np.Strength + util.GenerateNormalizedIntFromRange(1, 3)
-			Speed = np.Speed + util.GenerateNormalizedIntFromRange(1, 3)
-			Agility = np.Agility + util.GenerateNormalizedIntFromRange(1, 3)
-			FootballIQ = np.FootballIQ + util.GenerateNormalizedIntFromRange(1, 3)
+			ThrowPower = np.ThrowPower + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			ThrowAccuracy = np.ThrowAccuracy + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			PuntPower = np.PuntPower + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			PuntAccuracy = np.PuntAccuracy + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			RunBlock = np.RunBlock + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			PassBlock = np.PassBlock + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			RunDefense = np.RunDefense + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			PassRush = np.PassRush + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			Carrying = np.Carrying + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			Tackle = np.Tackle + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			RouteRunning = np.RouteRunning + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			Catching = np.Catching + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			KickPower = np.KickPower + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			KickAccuracy = np.KickAccuracy + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			ManCoverage = np.ManCoverage + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			ZoneCoverage = np.ZoneCoverage + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			Strength = np.Strength + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			Speed = np.Speed + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			Agility = np.Agility + int8(util.GenerateNormalizedIntFromRange(1, 3))
+			FootballIQ = np.FootballIQ + int8(util.GenerateNormalizedIntFromRange(1, 3))
 		}
 	} else {
 		// Change regression to be attribute - Normalized Random between 1-3
@@ -2504,7 +2504,7 @@ func BoomBustRecruit(np structs.CollegePlayer, SeasonID string, SnapsPerGame int
 	return np
 }
 
-func PrimaryProgression(progression int, input int, position string, archetype string, spg int, attribute string, isRedshirting bool) int {
+func PrimaryProgression(progression int8, input int8, position string, archetype string, spg int, attribute string, isRedshirting bool) int8 {
 	if input == 0 {
 		return 1
 	}
@@ -2518,7 +2518,7 @@ func PrimaryProgression(progression int, input int, position string, archetype s
 		progress = ((1 - math.Pow((float64(input)/99.0), 15)) * math.Log10(float64(input)) * (0.6 + modifier)) * (1 + (float64(progression) / 70))
 	} else {
 		rsMod := util.GenerateFloatFromRange(1.7, 2.3)
-		progress = ((1 - math.Pow((float64(input)/99), 15)) * math.Log10(float64(input)) * rsMod * (1 + (float64(progression / 60))))
+		progress = ((1 - math.Pow((float64(input)/99.0), 15)) * math.Log10(float64(input)) * rsMod * (1 + (float64(progression) / 60)))
 	}
 
 	if progress+float64(input) > 99 {
@@ -2527,13 +2527,13 @@ func PrimaryProgression(progression int, input int, position string, archetype s
 		progress = progress + float64(input)
 	}
 
-	return int(math.Round(progress))
+	return int8(math.Round(progress))
 }
 
-func SecondaryProgression(progression int, input int) int {
+func SecondaryProgression(progression int8, input int8) int8 {
 	num := rand.Intn(99)
 
-	if num < progression && input < 99 {
+	if num < int(progression) && input < 99 {
 		newInput := input + 1
 		return newInput
 	} else {
@@ -2779,12 +2779,12 @@ func DetermineIfRetiring(player structs.NFLPlayer, statMap map[uint][]structs.NF
 		lastTwoSeasonStats := statMap[player.ID]
 		totalSnaps := 0
 		for _, stat := range lastTwoSeasonStats {
-			totalSnaps += stat.Snaps
+			totalSnaps += int(stat.Snaps)
 		}
 		return totalSnaps == 0
 	}
 
-	if player.Age < int(player.PrimeAge) {
+	if int(player.Age) < int(player.PrimeAge) {
 		return false
 	}
 
@@ -2792,7 +2792,7 @@ func DetermineIfRetiring(player structs.NFLPlayer, statMap map[uint][]structs.NF
 		Thoughts - we could implement historic injuries into this somewhere, although we are impacting prime age upon injuries.
 	*/
 	benchmark := 0
-	age := player.Age
+	age := int(player.Age)
 	primeAge := player.PrimeAge
 	retirementAge := primeAge + uint(util.GenerateIntFromRange(3, 5))
 	if age > int(retirementAge) {
@@ -2864,7 +2864,7 @@ func getAverageNFLSnaps(stats []structs.NFLPlayerStats) (int, int) {
 	totalSnaps := 0
 
 	for _, stat := range stats {
-		totalSnaps += stat.Snaps
+		totalSnaps += int(stat.Snaps)
 	}
 
 	var SnapsPerGame int = 0
@@ -2879,7 +2879,7 @@ func getAverageSnaps(stats []structs.CollegePlayerStats) int {
 	totalSnaps := 0
 
 	for _, stat := range stats {
-		totalSnaps += stat.Snaps
+		totalSnaps += int(stat.Snaps)
 	}
 
 	var SnapsPerGame int = 0
@@ -3004,7 +3004,7 @@ func getNewArchetype(pos, arch, newPos string) (string, bool) {
 	return newArchtype, true
 }
 
-func RegressAttribute(attr, age, primeAge int, isIQ bool) int {
+func RegressAttribute(attr, age, primeAge int8, isIQ bool) int8 {
 	min := 0.0
 	max := 0.0
 	ageRequirement := primeAge
@@ -3024,5 +3024,5 @@ func RegressAttribute(attr, age, primeAge int, isIQ bool) int {
 	regression := util.GenerateFloatFromRange(min, max)
 	newAttrValue := float64(attr) * (1 - regression)
 
-	return int(newAttrValue)
+	return int8(newAttrValue)
 }

@@ -150,8 +150,8 @@ func RevokeScholarshipFromRecruit(w http.ResponseWriter, r *http.Request) {
 
 	recruitingPointsProfile, recruitingProfile := managers.RevokeScholarshipFromRecruit(updateRecruitPointsDto)
 
-	fmt.Printf("\nScholarship revoked from player " + strconv.Itoa(recruitingPointsProfile.RecruitID) + ". Record saved")
-	fmt.Printf("\nProfile: " + strconv.Itoa(recruitingProfile.TeamID) + " Saved")
+	fmt.Printf("%s", "\nScholarship revoked from player "+strconv.Itoa(recruitingPointsProfile.RecruitID)+". Record saved")
+	fmt.Printf("%s", "\nProfile: "+strconv.Itoa(recruitingProfile.TeamID)+" Saved")
 }
 
 // RemoveRecruitFromBoard

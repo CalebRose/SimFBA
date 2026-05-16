@@ -44,9 +44,9 @@ func ExportAllRostersToCSV(w http.ResponseWriter) {
 		idStr := strconv.Itoa(int(player.ID))
 		playerRow := []string{
 			player.TeamAbbr, idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
-			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(player.Age), strconv.Itoa(player.Stars),
-			player.HighSchool, player.City, player.State, strconv.Itoa(player.Height),
-			strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,
+			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(int(player.Age)), strconv.Itoa(int(player.Stars)),
+			player.HighSchool, player.City, player.State, strconv.Itoa(int(player.Height)),
+			strconv.Itoa(int(player.Weight)), csvModel.OverallGrade, csvModel.SpeedGrade,
 			csvModel.FootballIQGrade, csvModel.AgilityGrade, csvModel.CarryingGrade,
 			csvModel.CatchingGrade, csvModel.RouteRunningGrade, csvModel.ZoneCoverageGrade, csvModel.ManCoverageGrade,
 			csvModel.StrengthGrade, csvModel.TackleGrade, csvModel.PassBlockGrade, csvModel.RunBlockGrade,
@@ -103,9 +103,9 @@ func ExportTeamToCSV(TeamID string, w http.ResponseWriter) {
 		idStr := strconv.Itoa(int(player.ID))
 		playerRow := []string{
 			team.TeamName, idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
-			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(player.Age), strconv.Itoa(player.Stars),
-			player.HighSchool, player.City, player.State, strconv.Itoa(player.Height),
-			strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,
+			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(int(player.Age)), strconv.Itoa(int(player.Stars)),
+			player.HighSchool, player.City, player.State, strconv.Itoa(int(player.Height)),
+			strconv.Itoa(int(player.Weight)), csvModel.OverallGrade, csvModel.SpeedGrade,
 			csvModel.FootballIQGrade, csvModel.AgilityGrade, csvModel.CarryingGrade,
 			csvModel.CatchingGrade, csvModel.RouteRunningGrade, csvModel.ZoneCoverageGrade, csvModel.ManCoverageGrade,
 			csvModel.StrengthGrade, csvModel.TackleGrade, csvModel.PassBlockGrade, csvModel.RunBlockGrade,
@@ -161,9 +161,9 @@ func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 		csvModel := structs.MapNFLPlayerToCSVModel(player)
 		playerRow := []string{
 			team.TeamName, strconv.Itoa(int(player.ID)), csvModel.FirstName, csvModel.LastName, csvModel.Position,
-			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(player.Age),
-			player.HighSchool, player.Hometown, player.State, strconv.Itoa(player.Height),
-			strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,
+			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(int(player.Age)),
+			player.HighSchool, player.Hometown, player.State, strconv.Itoa(int(player.Height)),
+			strconv.Itoa(int(player.Weight)), csvModel.OverallGrade, csvModel.SpeedGrade,
 			csvModel.FootballIQGrade, csvModel.AgilityGrade, csvModel.CarryingGrade,
 			csvModel.CatchingGrade, csvModel.RouteRunningGrade, csvModel.ZoneCoverageGrade, csvModel.ManCoverageGrade,
 			csvModel.StrengthGrade, csvModel.TackleGrade, csvModel.PassBlockGrade, csvModel.RunBlockGrade,
@@ -223,9 +223,9 @@ func ExportAllNFLTeamsToCSV(w http.ResponseWriter) {
 			csvModel := structs.MapNFLPlayerToCSVModel(player)
 			playerRow := []string{
 				team.TeamName, strconv.Itoa(int(player.ID)), csvModel.FirstName, csvModel.LastName, csvModel.Position,
-				csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(player.Age),
-				player.HighSchool, player.Hometown, player.State, strconv.Itoa(player.Height),
-				strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,
+				csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(int(player.Age)),
+				player.HighSchool, player.Hometown, player.State, strconv.Itoa(int(player.Height)),
+				strconv.Itoa(int(player.Weight)), csvModel.OverallGrade, csvModel.SpeedGrade,
 				csvModel.FootballIQGrade, csvModel.AgilityGrade, csvModel.CarryingGrade,
 				csvModel.CatchingGrade, csvModel.RouteRunningGrade, csvModel.ZoneCoverageGrade, csvModel.ManCoverageGrade,
 				csvModel.StrengthGrade, csvModel.TackleGrade, csvModel.PassBlockGrade, csvModel.RunBlockGrade,
@@ -336,9 +336,9 @@ func ExportDrafteesToCSV(w http.ResponseWriter) {
 	for _, player := range draftees {
 		playerRow := []string{
 			strconv.Itoa(int(player.ID)), player.FirstName, player.LastName, player.Position,
-			player.Archetype, player.PositionTwo, player.ArchetypeTwo, strconv.Itoa(player.Age), strconv.Itoa(player.Stars), player.College,
-			player.HighSchool, player.City, player.State, strconv.Itoa(player.Height),
-			strconv.Itoa(player.Weight), player.OverallGrade, player.SpeedGrade,
+			player.Archetype, player.PositionTwo, player.ArchetypeTwo, strconv.Itoa(int(player.Age)), strconv.Itoa(int(player.Stars)), player.College,
+			player.HighSchool, player.City, player.State, strconv.Itoa(int(player.Height)),
+			strconv.Itoa(int(player.Weight)), player.OverallGrade, player.SpeedGrade,
 			player.FootballIQGrade, player.AgilityGrade, player.CarryingGrade,
 			player.CatchingGrade, player.RouteRunningGrade, player.ZoneCoverageGrade, player.ManCoverageGrade,
 			player.StrengthGrade, player.TackleGrade, player.PassBlockGrade, player.RunBlockGrade,
@@ -397,20 +397,20 @@ func ExportPlayerStatsToCSV(cp []structs.CollegePlayerResponse, w http.ResponseW
 		seasonStats := p.SeasonStats
 
 		pr := []string{strconv.Itoa(int(p.ID)), p.FirstName, p.LastName, p.Position, p.PositionTwo,
-			p.Archetype, p.ArchetypeTwo, Year, RedshirtStatus, p.TeamAbbr, p.Conference, strconv.Itoa(p.Age), strconv.Itoa(p.Stars),
-			strconv.Itoa(seasonStats.PassingYards), strconv.Itoa(seasonStats.PassAttempts), strconv.Itoa(seasonStats.PassCompletions), strconv.Itoa(int(seasonStats.PassingAvg)),
-			strconv.Itoa(seasonStats.PassingTDs), strconv.Itoa(seasonStats.Interceptions), strconv.Itoa(seasonStats.LongestPass), strconv.Itoa(seasonStats.Sacks),
-			strconv.Itoa(int(seasonStats.QBRating)), strconv.Itoa(seasonStats.RushAttempts), strconv.Itoa(seasonStats.RushingYards), strconv.Itoa(int(seasonStats.RushingAvg)),
-			strconv.Itoa(seasonStats.RushingTDs), strconv.Itoa(seasonStats.Fumbles), strconv.Itoa(seasonStats.LongestRush), strconv.Itoa(seasonStats.Targets),
-			strconv.Itoa(seasonStats.Catches), strconv.Itoa(seasonStats.ReceivingYards), strconv.Itoa(int(seasonStats.ReceivingAvg)), strconv.Itoa(seasonStats.ReceivingTDs),
-			strconv.Itoa(seasonStats.LongestReception), strconv.Itoa(int(seasonStats.SoloTackles)), strconv.Itoa(int(seasonStats.AssistedTackles)), strconv.Itoa(int(seasonStats.TacklesForLoss)),
-			strconv.Itoa(int(seasonStats.SacksMade)), strconv.Itoa(seasonStats.ForcedFumbles), strconv.Itoa(seasonStats.PassDeflections), strconv.Itoa(seasonStats.InterceptionsCaught),
-			strconv.Itoa(seasonStats.Safeties), strconv.Itoa(seasonStats.DefensiveTDs), strconv.Itoa(seasonStats.FGMade), strconv.Itoa(seasonStats.FGAttempts),
-			strconv.Itoa(seasonStats.LongestFG), strconv.Itoa(seasonStats.ExtraPointsMade), strconv.Itoa(seasonStats.ExtraPointsAttempted), strconv.Itoa(seasonStats.KickoffTouchbacks),
-			strconv.Itoa(seasonStats.Punts), strconv.Itoa(seasonStats.PuntTouchbacks), strconv.Itoa(seasonStats.PuntsInside20), strconv.Itoa(seasonStats.KickReturns),
-			strconv.Itoa(seasonStats.KickReturnTDs), strconv.Itoa(seasonStats.KickReturnYards), strconv.Itoa(seasonStats.PuntReturns), strconv.Itoa(seasonStats.PuntReturnTDs),
-			strconv.Itoa(seasonStats.PuntReturnYards), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(seasonStats.PuntsBlocked),
-			strconv.Itoa(seasonStats.FGBlocked), strconv.Itoa(seasonStats.Snaps), strconv.Itoa(seasonStats.Pancakes), "No.",
+			p.Archetype, p.ArchetypeTwo, Year, RedshirtStatus, p.TeamAbbr, p.Conference, strconv.Itoa(int(p.Age)), strconv.Itoa(int(p.Stars)),
+			strconv.Itoa(int(seasonStats.PassingYards)), strconv.Itoa(int(seasonStats.PassAttempts)), strconv.Itoa(int(seasonStats.PassCompletions)), strconv.Itoa(int(seasonStats.PassingAvg)),
+			strconv.Itoa(int(seasonStats.PassingTDs)), strconv.Itoa(int(seasonStats.Interceptions)), strconv.Itoa(int(seasonStats.LongestPass)), strconv.Itoa(int(seasonStats.Sacks)),
+			strconv.Itoa(int(seasonStats.QBRating)), strconv.Itoa(int(seasonStats.RushAttempts)), strconv.Itoa(int(seasonStats.RushingYards)), strconv.Itoa(int(seasonStats.RushingAvg)),
+			strconv.Itoa(int(seasonStats.RushingTDs)), strconv.Itoa(int(seasonStats.Fumbles)), strconv.Itoa(int(seasonStats.LongestRush)), strconv.Itoa(int(seasonStats.Targets)),
+			strconv.Itoa(int(seasonStats.Catches)), strconv.Itoa(int(seasonStats.ReceivingYards)), strconv.Itoa(int(seasonStats.ReceivingAvg)), strconv.Itoa(int(seasonStats.ReceivingTDs)),
+			strconv.Itoa(int(seasonStats.LongestReception)), strconv.Itoa(int(seasonStats.SoloTackles)), strconv.Itoa(int(seasonStats.AssistedTackles)), strconv.Itoa(int(seasonStats.TacklesForLoss)),
+			strconv.Itoa(int(seasonStats.SacksMade)), strconv.Itoa(int(seasonStats.ForcedFumbles)), strconv.Itoa(int(seasonStats.PassDeflections)), strconv.Itoa(int(seasonStats.InterceptionsCaught)),
+			strconv.Itoa(int(seasonStats.Safeties)), strconv.Itoa(int(seasonStats.DefensiveTDs)), strconv.Itoa(int(seasonStats.FGMade)), strconv.Itoa(int(seasonStats.FGAttempts)),
+			strconv.Itoa(int(seasonStats.LongestFG)), strconv.Itoa(int(seasonStats.ExtraPointsMade)), strconv.Itoa(int(seasonStats.ExtraPointsAttempted)), strconv.Itoa(int(seasonStats.KickoffTouchbacks)),
+			strconv.Itoa(int(seasonStats.Punts)), strconv.Itoa(int(seasonStats.PuntTouchbacks)), strconv.Itoa(int(seasonStats.PuntsInside20)), strconv.Itoa(int(seasonStats.KickReturns)),
+			strconv.Itoa(int(seasonStats.KickReturnTDs)), strconv.Itoa(int(seasonStats.KickReturnYards)), strconv.Itoa(int(seasonStats.PuntReturns)), strconv.Itoa(int(seasonStats.PuntReturnTDs)),
+			strconv.Itoa(int(seasonStats.PuntReturnYards)), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(int(seasonStats.PuntsBlocked)),
+			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), "No.",
 		}
 		err = writer.Write(pr)
 		if err != nil {
@@ -445,9 +445,9 @@ func ExportTransferPlayersToCSV(transfers []structs.CollegePlayer, w http.Respon
 	for _, player := range transfers {
 		csvModel := structs.MapPlayerToCSVModel(player)
 		playerRow := []string{
-			player.TeamAbbr, strconv.Itoa(int(player.ID)), csvModel.FirstName, csvModel.LastName, strconv.Itoa(player.Stars),
+			player.TeamAbbr, strconv.Itoa(int(player.ID)), csvModel.FirstName, csvModel.LastName, strconv.Itoa(int(player.Stars)),
 			csvModel.Archetype, csvModel.Position,
-			csvModel.Year, strconv.Itoa(player.Age), csvModel.RedshirtStatus,
+			csvModel.Year, strconv.Itoa(int(player.Age)), csvModel.RedshirtStatus,
 			csvModel.OverallGrade,
 		}
 
@@ -808,20 +808,20 @@ func ExportCollegePlayerStatsToCSV(cp []structs.CollegePlayerResponse, viewType 
 		}
 
 		pr := []string{p.FirstName, p.LastName, p.Position,
-			p.Archetype, Year, RedshirtStatus, p.TeamAbbr, p.Conference, strconv.Itoa(p.Age), strconv.Itoa(p.Stars),
-			strconv.Itoa(seasonStats.PassingYards), strconv.Itoa(seasonStats.PassAttempts), strconv.Itoa(seasonStats.PassCompletions), strconv.Itoa(int(seasonStats.PassingAvg)),
-			strconv.Itoa(seasonStats.PassingTDs), strconv.Itoa(seasonStats.Interceptions), strconv.Itoa(seasonStats.LongestPass), strconv.Itoa(seasonStats.Sacks),
-			strconv.Itoa(int(seasonStats.QBRating)), strconv.Itoa(seasonStats.RushAttempts), strconv.Itoa(seasonStats.RushingYards), strconv.Itoa(int(seasonStats.RushingAvg)),
-			strconv.Itoa(seasonStats.RushingTDs), strconv.Itoa(seasonStats.Fumbles), strconv.Itoa(seasonStats.LongestRush), strconv.Itoa(seasonStats.Targets),
-			strconv.Itoa(seasonStats.Catches), strconv.Itoa(seasonStats.ReceivingYards), strconv.Itoa(int(seasonStats.ReceivingAvg)), strconv.Itoa(seasonStats.ReceivingTDs),
-			strconv.Itoa(seasonStats.LongestReception), strconv.Itoa(int(seasonStats.SoloTackles)), strconv.Itoa(int(seasonStats.AssistedTackles)), strconv.Itoa(int(seasonStats.TacklesForLoss)),
-			strconv.Itoa(int(seasonStats.SacksMade)), strconv.Itoa(seasonStats.ForcedFumbles), strconv.Itoa(seasonStats.PassDeflections), strconv.Itoa(seasonStats.InterceptionsCaught),
-			strconv.Itoa(seasonStats.Safeties), strconv.Itoa(seasonStats.DefensiveTDs), strconv.Itoa(seasonStats.FGMade), strconv.Itoa(seasonStats.FGAttempts),
-			strconv.Itoa(seasonStats.LongestFG), strconv.Itoa(seasonStats.ExtraPointsMade), strconv.Itoa(seasonStats.ExtraPointsAttempted), strconv.Itoa(seasonStats.KickoffTouchbacks),
-			strconv.Itoa(seasonStats.Punts), strconv.Itoa(seasonStats.PuntTouchbacks), strconv.Itoa(seasonStats.PuntsInside20), strconv.Itoa(seasonStats.KickReturns),
-			strconv.Itoa(seasonStats.KickReturnTDs), strconv.Itoa(seasonStats.KickReturnYards), strconv.Itoa(seasonStats.PuntReturns), strconv.Itoa(seasonStats.PuntReturnTDs),
-			strconv.Itoa(seasonStats.PuntReturnYards), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(seasonStats.PuntsBlocked),
-			strconv.Itoa(seasonStats.FGBlocked), strconv.Itoa(seasonStats.Snaps), strconv.Itoa(seasonStats.Pancakes), answer,
+			p.Archetype, Year, RedshirtStatus, p.TeamAbbr, p.Conference, strconv.Itoa(int(p.Age)), strconv.Itoa(int(p.Stars)),
+			strconv.Itoa(int(seasonStats.PassingYards)), strconv.Itoa(int(seasonStats.PassAttempts)), strconv.Itoa(int(seasonStats.PassCompletions)), strconv.Itoa(int(seasonStats.PassingAvg)),
+			strconv.Itoa(int(seasonStats.PassingTDs)), strconv.Itoa(int(seasonStats.Interceptions)), strconv.Itoa(int(seasonStats.LongestPass)), strconv.Itoa(int(seasonStats.Sacks)),
+			strconv.Itoa(int(seasonStats.RushAttempts)), strconv.Itoa(int(seasonStats.RushingYards)), strconv.Itoa(int(seasonStats.RushingAvg)),
+			strconv.Itoa(int(seasonStats.RushingTDs)), strconv.Itoa(int(seasonStats.Fumbles)), strconv.Itoa(int(seasonStats.LongestRush)), strconv.Itoa(int(seasonStats.Targets)),
+			strconv.Itoa(int(seasonStats.Catches)), strconv.Itoa(int(seasonStats.ReceivingYards)), strconv.Itoa(int(seasonStats.ReceivingAvg)), strconv.Itoa(int(seasonStats.ReceivingTDs)),
+			strconv.Itoa(int(seasonStats.LongestReception)), strconv.Itoa(int(seasonStats.SoloTackles)), strconv.Itoa(int(seasonStats.AssistedTackles)), strconv.Itoa(int(seasonStats.TacklesForLoss)),
+			strconv.Itoa(int(seasonStats.SacksMade)), strconv.Itoa(int(seasonStats.ForcedFumbles)), strconv.Itoa(int(seasonStats.PassDeflections)), strconv.Itoa(int(seasonStats.InterceptionsCaught)),
+			strconv.Itoa(int(seasonStats.Safeties)), strconv.Itoa(int(seasonStats.DefensiveTDs)), strconv.Itoa(int(seasonStats.FGMade)), strconv.Itoa(int(seasonStats.FGAttempts)),
+			strconv.Itoa(int(seasonStats.LongestFG)), strconv.Itoa(int(seasonStats.ExtraPointsMade)), strconv.Itoa(int(seasonStats.ExtraPointsAttempted)), strconv.Itoa(int(seasonStats.KickoffTouchbacks)),
+			strconv.Itoa(int(seasonStats.Punts)), strconv.Itoa(int(seasonStats.PuntTouchbacks)), strconv.Itoa(int(seasonStats.PuntsInside20)), strconv.Itoa(int(seasonStats.KickReturns)),
+			strconv.Itoa(int(seasonStats.KickReturnTDs)), strconv.Itoa(int(seasonStats.KickReturnYards)), strconv.Itoa(int(seasonStats.PuntReturns)), strconv.Itoa(int(seasonStats.PuntReturnTDs)),
+			strconv.Itoa(int(seasonStats.PuntReturnYards)), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(int(seasonStats.PuntsBlocked)),
+			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), answer,
 		}
 		err = writer.Write(pr)
 		if err != nil {
@@ -884,20 +884,20 @@ func ExportNFLPlayerStatsToCSV(cp []structs.NFLPlayerResponse, viewType string, 
 		}
 
 		pr := []string{p.FirstName, p.LastName, p.Position,
-			p.Archetype, p.PositionTwo, p.ArchetypeTwo, Year, p.TeamAbbr, p.Conference, p.Division, strconv.Itoa(p.Age), strconv.Itoa(p.Stars),
-			strconv.Itoa(seasonStats.PassingYards), strconv.Itoa(seasonStats.PassAttempts), strconv.Itoa(seasonStats.PassCompletions), strconv.Itoa(int(seasonStats.PassingAvg)),
-			strconv.Itoa(seasonStats.PassingTDs), strconv.Itoa(seasonStats.Interceptions), strconv.Itoa(seasonStats.LongestPass), strconv.Itoa(seasonStats.Sacks),
-			strconv.Itoa(int(seasonStats.QBRating)), strconv.Itoa(seasonStats.RushAttempts), strconv.Itoa(seasonStats.RushingYards), strconv.Itoa(int(seasonStats.RushingAvg)),
-			strconv.Itoa(seasonStats.RushingTDs), strconv.Itoa(seasonStats.Fumbles), strconv.Itoa(seasonStats.LongestRush), strconv.Itoa(seasonStats.Targets),
-			strconv.Itoa(seasonStats.Catches), strconv.Itoa(seasonStats.ReceivingYards), strconv.Itoa(int(seasonStats.ReceivingAvg)), strconv.Itoa(seasonStats.ReceivingTDs),
-			strconv.Itoa(seasonStats.LongestReception), strconv.Itoa(int(seasonStats.SoloTackles)), strconv.Itoa(int(seasonStats.AssistedTackles)), strconv.Itoa(int(seasonStats.TacklesForLoss)),
-			strconv.Itoa(int(seasonStats.SacksMade)), strconv.Itoa(seasonStats.ForcedFumbles), strconv.Itoa(seasonStats.PassDeflections), strconv.Itoa(seasonStats.InterceptionsCaught),
-			strconv.Itoa(seasonStats.Safeties), strconv.Itoa(seasonStats.DefensiveTDs), strconv.Itoa(seasonStats.FGMade), strconv.Itoa(seasonStats.FGAttempts),
-			strconv.Itoa(seasonStats.LongestFG), strconv.Itoa(seasonStats.ExtraPointsMade), strconv.Itoa(seasonStats.ExtraPointsAttempted), strconv.Itoa(seasonStats.KickoffTouchbacks),
-			strconv.Itoa(seasonStats.Punts), strconv.Itoa(seasonStats.PuntTouchbacks), strconv.Itoa(seasonStats.PuntsInside20), strconv.Itoa(seasonStats.KickReturns),
-			strconv.Itoa(seasonStats.KickReturnTDs), strconv.Itoa(seasonStats.KickReturnYards), strconv.Itoa(seasonStats.PuntReturns), strconv.Itoa(seasonStats.PuntReturnTDs),
-			strconv.Itoa(seasonStats.PuntReturnYards), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(seasonStats.PuntsBlocked),
-			strconv.Itoa(seasonStats.FGBlocked), strconv.Itoa(seasonStats.Snaps), strconv.Itoa(seasonStats.Pancakes), "No.",
+			p.Archetype, p.PositionTwo, p.ArchetypeTwo, Year, p.TeamAbbr, p.Conference, p.Division, strconv.Itoa(int(p.Age)), strconv.Itoa(int(p.Stars)),
+			strconv.Itoa(int(seasonStats.PassingYards)), strconv.Itoa(int(seasonStats.PassAttempts)), strconv.Itoa(int(seasonStats.PassCompletions)), strconv.Itoa(int(seasonStats.PassingAvg)),
+			strconv.Itoa(int(seasonStats.PassingTDs)), strconv.Itoa(int(seasonStats.Interceptions)), strconv.Itoa(int(seasonStats.LongestPass)), strconv.Itoa(int(seasonStats.Sacks)),
+			strconv.Itoa(int(seasonStats.QBRating)), strconv.Itoa(int(seasonStats.RushAttempts)), strconv.Itoa(int(seasonStats.RushingYards)), strconv.Itoa(int(seasonStats.RushingAvg)),
+			strconv.Itoa(int(seasonStats.RushingTDs)), strconv.Itoa(int(seasonStats.Fumbles)), strconv.Itoa(int(seasonStats.LongestRush)), strconv.Itoa(int(seasonStats.Targets)),
+			strconv.Itoa(int(seasonStats.Catches)), strconv.Itoa(int(seasonStats.ReceivingYards)), strconv.Itoa(int(seasonStats.ReceivingAvg)), strconv.Itoa(int(seasonStats.ReceivingTDs)),
+			strconv.Itoa(int(seasonStats.LongestReception)), strconv.Itoa(int(seasonStats.SoloTackles)), strconv.Itoa(int(seasonStats.AssistedTackles)), strconv.Itoa(int(seasonStats.TacklesForLoss)),
+			strconv.Itoa(int(seasonStats.ForcedFumbles)), strconv.Itoa(int(seasonStats.PassDeflections)), strconv.Itoa(int(seasonStats.InterceptionsCaught)),
+			strconv.Itoa(int(seasonStats.Safeties)), strconv.Itoa(int(seasonStats.DefensiveTDs)), strconv.Itoa(int(seasonStats.FGMade)), strconv.Itoa(int(seasonStats.FGAttempts)),
+			strconv.Itoa(int(seasonStats.LongestFG)), strconv.Itoa(int(seasonStats.ExtraPointsMade)), strconv.Itoa(int(seasonStats.ExtraPointsAttempted)), strconv.Itoa(int(seasonStats.KickoffTouchbacks)),
+			strconv.Itoa(int(seasonStats.Punts)), strconv.Itoa(int(seasonStats.PuntTouchbacks)), strconv.Itoa(int(seasonStats.PuntsInside20)), strconv.Itoa(int(seasonStats.KickReturns)),
+			strconv.Itoa(int(seasonStats.KickReturnTDs)), strconv.Itoa(int(seasonStats.KickReturnYards)), strconv.Itoa(int(seasonStats.PuntReturns)), strconv.Itoa(int(seasonStats.PuntReturnTDs)),
+			strconv.Itoa(int(seasonStats.PuntReturnYards)), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(int(seasonStats.PuntsBlocked)),
+			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), "No.",
 		}
 		err = writer.Write(pr)
 		if err != nil {
@@ -1002,9 +1002,9 @@ func ExportNFLFreeAgentsToCSV(w http.ResponseWriter) {
 		idStr := strconv.Itoa(int(player.PlayerID))
 		playerRow := []string{
 			csvModel.PreviousTeam, idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
-			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(player.Age), strconv.Itoa(player.Stars),
-			player.State, strconv.Itoa(player.Height),
-			strconv.Itoa(player.Weight), csvModel.OverallGrade, csvModel.SpeedGrade,
+			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(int(player.Age)), strconv.Itoa(int(player.Stars)),
+			player.State, strconv.Itoa(int(player.Height)),
+			strconv.Itoa(int(player.Weight)), csvModel.OverallGrade, csvModel.SpeedGrade,
 			csvModel.FootballIQGrade, csvModel.AgilityGrade, csvModel.CarryingGrade,
 			csvModel.CatchingGrade, csvModel.RouteRunningGrade, csvModel.ZoneCoverageGrade, csvModel.ManCoverageGrade,
 			csvModel.StrengthGrade, csvModel.TackleGrade, csvModel.PassBlockGrade, csvModel.RunBlockGrade,

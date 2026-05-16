@@ -136,25 +136,25 @@ func (r *Recruit) AssignRecruitingModifier(recruitingMod float64) {
 
 func (r *Recruit) ProgressUnsignedRecruit(attr CollegePlayerProgressions) {
 	r.Age++
-	r.Agility = attr.Agility
-	r.Speed = attr.Speed
-	r.FootballIQ = attr.FootballIQ
-	r.Carrying = attr.Carrying
-	r.Catching = attr.Catching
-	r.RouteRunning = attr.RouteRunning
-	r.PassBlock = attr.PassBlock
-	r.RunBlock = attr.RunBlock
-	r.PassRush = attr.PassRush
-	r.RunDefense = attr.RunDefense
-	r.Tackle = attr.Tackle
-	r.ManCoverage = attr.ManCoverage
-	r.ZoneCoverage = attr.ZoneCoverage
-	r.KickAccuracy = attr.KickAccuracy
-	r.KickPower = attr.KickPower
-	r.PuntAccuracy = attr.PuntAccuracy
-	r.PuntPower = attr.PuntPower
-	r.ThrowAccuracy = attr.ThrowAccuracy
-	r.ThrowPower = attr.ThrowPower
+	r.Agility = int8(attr.Agility)
+	r.Speed = int8(attr.Speed)
+	r.FootballIQ = int8(attr.FootballIQ)
+	r.Carrying = int8(attr.Carrying)
+	r.Catching = int8(attr.Catching)
+	r.RouteRunning = int8(attr.RouteRunning)
+	r.PassBlock = int8(attr.PassBlock)
+	r.RunBlock = int8(attr.RunBlock)
+	r.PassRush = int8(attr.PassRush)
+	r.RunDefense = int8(attr.RunDefense)
+	r.Tackle = int8(attr.Tackle)
+	r.ManCoverage = int8(attr.ManCoverage)
+	r.ZoneCoverage = int8(attr.ZoneCoverage)
+	r.KickAccuracy = int8(attr.KickAccuracy)
+	r.KickPower = int8(attr.KickPower)
+	r.PuntAccuracy = int8(attr.PuntAccuracy)
+	r.PuntPower = int8(attr.PuntPower)
+	r.ThrowAccuracy = int8(attr.ThrowAccuracy)
+	r.ThrowPower = int8(attr.ThrowPower)
 }
 
 func (r *Recruit) GetOverall() {
@@ -162,96 +162,96 @@ func (r *Recruit) GetOverall() {
 	switch r.Position {
 	case "QB":
 		ovr = (0.1 * float64(r.Agility)) + (0.25 * float64(r.ThrowPower)) + (0.25 * float64(r.ThrowAccuracy)) + (0.1 * float64(r.Speed)) + (0.2 * float64(r.FootballIQ)) + (0.1 * float64(r.Strength))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "RB":
 		ovr = (0.2 * float64(r.Agility)) + (0.05 * float64(r.PassBlock)) +
 			(0.1 * float64(r.Carrying)) + (0.25 * float64(r.Speed)) +
 			(0.15 * float64(r.FootballIQ)) + (0.2 * float64(r.Strength)) +
 			(0.05 * float64(r.Catching))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "FB":
 		ovr = (0.1 * float64(r.Agility)) + (0.1 * float64(r.PassBlock)) +
 			(0.1 * float64(r.Carrying)) + (0.05 * float64(r.Speed)) +
 			(0.15 * float64(r.FootballIQ)) + (0.2 * float64(r.Strength)) +
 			(0.05 * float64(r.Catching)) + (0.25 * float64(r.RunBlock))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "WR":
 		ovr = (0.15 * float64(r.FootballIQ)) + (0.2 * float64(r.Speed)) +
 			(0.1 * float64(r.Agility)) + (0.05 * float64(r.Carrying)) +
 			(0.05 * float64(r.Strength)) + (0.25 * float64(r.Catching)) +
 			(0.2 * float64(r.RouteRunning))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "TE":
 		ovr = (0.15 * float64(r.FootballIQ)) + (0.1 * float64(r.Speed)) +
 			(0.1 * float64(r.Agility)) + (0.05 * float64(r.Carrying)) +
 			(0.05 * float64(r.PassBlock)) + (0.15 * float64(r.RunBlock)) +
 			(0.1 * float64(r.Strength)) + (0.20 * float64(r.Catching)) +
 			(0.1 * float64(r.RouteRunning))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "OT", "OG":
 		ovr = (0.15 * float64(r.FootballIQ)) + (0.05 * float64(r.Agility)) +
 			(0.3 * float64(r.RunBlock)) + (0.2 * float64(r.Strength)) +
 			(0.3 * float64(r.PassBlock))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "C":
 		ovr = (0.2 * float64(r.FootballIQ)) + (0.05 * float64(r.Agility)) +
 			(0.3 * float64(r.RunBlock)) + (0.15 * float64(r.Strength)) +
 			(0.3 * float64(r.PassBlock))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "DT":
 		ovr = (0.15 * float64(r.FootballIQ)) + (0.05 * float64(r.Agility)) +
 			(0.25 * float64(r.RunDefense)) + (0.2 * float64(r.Strength)) +
 			(0.15 * float64(r.PassRush)) + (0.2 * float64(r.Tackle)) +
 			(0.1 * float64(r.Agility))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "DE":
 		ovr = (0.15 * float64(r.FootballIQ)) + (0.1 * float64(r.Speed)) +
 			(0.15 * float64(r.RunDefense)) + (0.1 * float64(r.Strength)) +
 			(0.2 * float64(r.PassRush)) + (0.2 * float64(r.Tackle)) +
 			(0.1 * float64(r.Agility))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "ILB":
 		ovr = (0.2 * float64(r.FootballIQ)) + (0.1 * float64(r.Speed)) +
 			(0.15 * float64(r.RunDefense)) + (0.1 * float64(r.Strength)) +
 			(0.1 * float64(r.PassRush)) + (0.15 * float64(r.Tackle)) +
 			(0.1 * float64(r.ZoneCoverage)) + (0.05 * float64(r.ManCoverage)) +
 			(0.05 * float64(r.Agility))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "OLB":
 		ovr = (0.15 * float64(r.FootballIQ)) + (0.1 * float64(r.Speed)) +
 			(0.15 * float64(r.RunDefense)) + (0.1 * float64(r.Strength)) +
 			(0.15 * float64(r.PassRush)) + (0.15 * float64(r.Tackle)) +
 			(0.1 * float64(r.ZoneCoverage)) + (0.05 * float64(r.ManCoverage)) +
 			(0.05 * float64(r.Agility))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "CB":
 		ovr = (0.15 * float64(r.FootballIQ)) + (0.25 * float64(r.Speed)) +
 			(0.05 * float64(r.Tackle)) + (0.05 * float64(r.Strength)) +
 			(0.15 * float64(r.Agility)) + (0.15 * float64(r.ZoneCoverage)) +
 			(0.15 * float64(r.ManCoverage)) + (0.05 * float64(r.Catching))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "FS":
 		ovr = (0.2 * float64(r.FootballIQ)) + (0.2 * float64(r.Speed)) +
 			(0.05 * float64(r.RunDefense)) + (0.05 * float64(r.Strength)) +
 			(0.05 * float64(r.Catching)) + (0.05 * float64(r.Tackle)) +
 			(0.15 * float64(r.ZoneCoverage)) + (0.15 * float64(r.ManCoverage)) +
 			(0.1 * float64(r.Agility))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "SS":
 		ovr = (0.15 * float64(r.FootballIQ)) + (0.2 * float64(r.Speed)) +
 			(0.05 * float64(r.RunDefense)) + (0.05 * float64(r.Strength)) +
 			(0.05 * float64(r.Catching)) + (0.1 * float64(r.Tackle)) +
 			(0.15 * float64(r.ZoneCoverage)) + (0.15 * float64(r.ManCoverage)) +
 			(0.1 * float64(r.Agility))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "K":
 		ovr = (0.2 * float64(r.FootballIQ)) + (0.45 * float64(r.KickPower)) +
 			(0.45 * float64(r.KickAccuracy))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "P":
 		ovr = (0.2 * float64(r.FootballIQ)) + (0.45 * float64(r.PuntPower)) +
 			(0.45 * float64(r.PuntAccuracy))
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	case "ATH":
 		ovr = (float64(r.FootballIQ) + float64(r.Speed) + float64(r.Agility) +
 			float64(r.Carrying) + float64(r.Catching) + float64(r.RouteRunning) +
@@ -260,7 +260,7 @@ func (r *Recruit) GetOverall() {
 			float64(r.ZoneCoverage) + float64(r.ManCoverage) + float64(r.ThrowAccuracy) +
 			float64(r.ThrowPower) + float64(r.PuntAccuracy) + float64(r.PuntPower) +
 			float64(r.KickAccuracy) + float64(r.KickPower)) / 20
-		r.Overall = int(ovr)
+		r.Overall = int8(ovr)
 	}
 }
 

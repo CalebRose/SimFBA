@@ -26,16 +26,16 @@ type BootstrapDataTeams struct {
 
 type BootstrapDataLanding struct {
 	CollegeTeam          structs.CollegeTeam
-	CollegeRosterMap     map[uint][]structs.CollegePlayer
 	CollegeStandings     []structs.CollegeStandings
 	AllCollegeGames      []structs.CollegeGame
 	OfficialPolls        []structs.CollegePollOfficial
 	TopCFBPassers        []structs.CollegePlayer
 	TopCFBRushers        []structs.CollegePlayer
 	TopCFBReceivers      []structs.CollegePlayer
-	CollegeInjuryReport  []structs.CollegePlayer
 	CollegeNotifications []structs.Notification
 	ProTeam              structs.NFLTeam
+	ProRosterMap         map[uint][]structs.NFLPlayer
+	CollegeRosterMap     map[uint][]structs.CollegePlayer
 	ProNotifications     []structs.Notification
 	ProStandings         []structs.NFLStandings
 	AllProGames          []structs.NFLGame
@@ -43,9 +43,6 @@ type BootstrapDataLanding struct {
 	TopNFLPassers        []structs.NFLPlayer
 	TopNFLRushers        []structs.NFLPlayer
 	TopNFLReceivers      []structs.NFLPlayer
-	ProRosterMap         map[uint][]structs.NFLPlayer
-	ProInjuryReport      []structs.NFLPlayer
-	PracticeSquadPlayers []structs.NFLPlayer
 	CapsheetMap          map[uint]structs.NFLCapsheet
 	RetiredPlayers       []structs.NFLRetiredPlayer
 }
@@ -119,6 +116,14 @@ type BootstrapDataStats struct {
 	RetiredPlayers         []structs.NFLRetiredPlayer
 }
 
+type BootstrapPlayerData struct {
+	CollegeRosterMap     map[uint][]structs.CollegePlayer
+	CollegeInjuryReport  []structs.CollegePlayer
+	ProRosterMap         map[uint][]structs.NFLPlayer
+	ProInjuryReport      []structs.NFLPlayer
+	PracticeSquadPlayers []structs.NFLPlayer
+}
+
 /*
  * IF ANY OF THE ABOVE MODELS ARE MODIFIED, THE EASYJSON HELPER WILL NEED TO BE REGENERATED.
  * See the comment at the top of the file for instructions.
@@ -149,37 +154,75 @@ func GetTeamsBootstrap() BootstrapDataTeams {
 	}
 }
 
+func GetPlayerBootstrap(collegeID, proID string) BootstrapPlayerData {
+	var wg sync.WaitGroup
+
+	var (
+		collegePlayerMap      map[uint][]structs.CollegePlayer
+		injuredCollegePlayers []structs.CollegePlayer
+		proRosterMap          map[uint][]structs.NFLPlayer
+		injuredProPlayers     []structs.NFLPlayer
+		practiceSquadPlayers  []structs.NFLPlayer
+	)
+
+	if len(collegeID) > 0 && collegeID != "0" {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			collegePlayers := GetAllCollegePlayers()
+			collegePlayerMap = MakeCollegePlayerMapByTeamID(collegePlayers, true)
+			injuredCollegePlayers = MakeCollegeInjuryList(collegePlayers)
+		}()
+	}
+
+	if len(proID) > 0 && proID != "0" {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			proPlayers := GetAllNFLPlayers()
+			proRosterMap = MakeNFLPlayerMapByTeamID(proPlayers, true)
+			injuredProPlayers = MakeProInjuryList(proPlayers)
+			practiceSquadPlayers = MakePracticeSquadList(proPlayers)
+		}()
+	}
+
+	wg.Wait()
+	return BootstrapPlayerData{
+		CollegeRosterMap:     collegePlayerMap,
+		CollegeInjuryReport:  injuredCollegePlayers,
+		ProRosterMap:         proRosterMap,
+		ProInjuryReport:      injuredProPlayers,
+		PracticeSquadPlayers: practiceSquadPlayers,
+	}
+}
+
 func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 	var wg sync.WaitGroup
-	var mu sync.Mutex
 
 	// College Data
 	var (
-		collegeTeam           structs.CollegeTeam
-		collegePlayers        []structs.CollegePlayer
-		collegePlayerMap      map[uint][]structs.CollegePlayer
-		injuredCollegePlayers []structs.CollegePlayer
-		collegeNotifications  []structs.Notification
-		topCfbPassers         []structs.CollegePlayer
-		topCfbRushers         []structs.CollegePlayer
-		topCfbReceivers       []structs.CollegePlayer
-		collegeStandings      []structs.CollegeStandings
-		collegeGames          []structs.CollegeGame
+		collegeTeam          structs.CollegeTeam
+		collegeNotifications []structs.Notification
+		collegePlayerMap     map[uint][]structs.CollegePlayer
+		topCfbPassers        []structs.CollegePlayer
+		topCfbRushers        []structs.CollegePlayer
+		topCfbReceivers      []structs.CollegePlayer
+		collegeStandings     []structs.CollegeStandings
+		collegeGames         []structs.CollegeGame
 	)
 
 	// Professional Data
 	var (
-		proTeam              structs.NFLTeam
-		proNotifications     []structs.Notification
-		topNflPassers        []structs.NFLPlayer
-		topNflRushers        []structs.NFLPlayer
-		topNflReceivers      []structs.NFLPlayer
-		proRosterMap         map[uint][]structs.NFLPlayer
-		practiceSquadPlayers []structs.NFLPlayer
-		injuredProPlayers    []structs.NFLPlayer
-		capsheetMap          map[uint]structs.NFLCapsheet
-		proStandings         []structs.NFLStandings
-		proGames             []structs.NFLGame
+		proTeam          structs.NFLTeam
+		proNotifications []structs.Notification
+		topNflPassers    []structs.NFLPlayer
+		topNflRushers    []structs.NFLPlayer
+		topNflReceivers  []structs.NFLPlayer
+		proRosterMap     map[uint][]structs.NFLPlayer
+
+		capsheetMap  map[uint]structs.NFLCapsheet
+		proStandings []structs.NFLStandings
+		proGames     []structs.NFLGame
 	)
 
 	ts := GetTimestamp()
@@ -193,26 +236,19 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		wg.Add(5)
 		go func() {
 			defer wg.Done()
-			mu.Lock()
 			collegeTeam = GetTeamByTeamID(collegeID)
 			collegeTeam.UpdateLatestInstance()
 			repository.SaveCFBTeam(collegeTeam, dbprovider.GetInstance().GetDB())
-			mu.Unlock()
 		}()
 		go func() {
 			defer wg.Done()
-			collegePlayers = GetAllCollegePlayers()
-
-			cfbStats := GetCollegePlayerSeasonStatsBySeason(seasonID, gtStr)
-
-			mu.Lock()
-			collegePlayerMap = MakeCollegePlayerMapByTeamID(collegePlayers, true)
-			injuredCollegePlayers = MakeCollegeInjuryList(collegePlayers)
-			fullCollegePlayerMap := MakeCollegePlayerMap(collegePlayers)
-			topCfbPassers = getCFBOrderedListByStatType("PASSING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
-			topCfbRushers = getCFBOrderedListByStatType("RUSHING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
-			topCfbReceivers = getCFBOrderedListByStatType("RECEIVING", uint(cfbTeamId), cfbStats, fullCollegePlayerMap)
-			mu.Unlock()
+			teamPlayers := GetAllCollegePlayersByTeamId(collegeID)
+			collegePlayerMap = MakeCollegePlayerMapByTeamID(teamPlayers, false)
+			cfbStats := repository.FindCollegePlayerSeasonStatsRecords(repository.StatsQuery{SeasonID: seasonID, GameType: gtStr, TeamID: collegeID})
+			teamPlayerMap := MakeCollegePlayerMap(teamPlayers)
+			topCfbPassers = getCFBOrderedListByStatType("PASSING", uint(cfbTeamId), cfbStats, teamPlayerMap)
+			topCfbRushers = getCFBOrderedListByStatType("RUSHING", uint(cfbTeamId), cfbStats, teamPlayerMap)
+			topCfbReceivers = getCFBOrderedListByStatType("RECEIVING", uint(cfbTeamId), cfbStats, teamPlayerMap)
 		}()
 		go func() {
 			defer wg.Done()
@@ -238,11 +274,9 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		wg.Add(6)
 		go func() {
 			defer wg.Done()
-			mu.Lock()
 			proTeam = GetNFLTeamByTeamID(proID)
 			proTeam.UpdateLatestInstance()
 			repository.SaveNFLTeam(proTeam, dbprovider.GetInstance().GetDB())
-			mu.Unlock()
 		}()
 
 		go func() {
@@ -251,20 +285,14 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 		}()
 		go func() {
 			defer wg.Done()
-			log.Println("Fetching NFL Players for roster mapping...")
-			proPlayers := GetAllNFLPlayers()
-			nflStats := GetNFLPlayerSeasonStatsBySeason(seasonID, gtStr)
-
-			mu.Lock()
-			nflPlayerMap := MakeNFLPlayerMap(proPlayers)
-			proRosterMap = MakeNFLPlayerMapByTeamID(proPlayers, true)
-			injuredProPlayers = MakeProInjuryList(proPlayers)
-			practiceSquadPlayers = MakePracticeSquadList(proPlayers)
+			log.Println("Fetching NFL Players for leaderboard...")
+			teamPlayers := GetNFLPlayersByTeamID(proID)
+			nflStats := repository.FindProPlayerSeasonStatsRecords(repository.StatsQuery{SeasonID: seasonID, GameType: gtStr, TeamID: proID})
+			nflPlayerMap := MakeNFLPlayerMap(teamPlayers)
 			topNflPassers = getNFLOrderedListByStatType("PASSING", uint(nflTeamID), nflStats, nflPlayerMap)
 			topNflRushers = getNFLOrderedListByStatType("RUSHING", uint(nflTeamID), nflStats, nflPlayerMap)
 			topNflReceivers = getNFLOrderedListByStatType("RECEIVING", uint(nflTeamID), nflStats, nflPlayerMap)
-			mu.Unlock()
-			log.Println("Fetched NFL Players, roster count:", len(proRosterMap), "injured count:", len(injuredProPlayers))
+			log.Println("Fetched NFL leaderboard players, count:", len(teamPlayers))
 		}()
 		go func() {
 			defer wg.Done()
@@ -289,22 +317,19 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 	wg.Wait()
 	return BootstrapDataLanding{
 		CollegeTeam:          collegeTeam,
-		CollegeRosterMap:     collegePlayerMap,
-		CollegeInjuryReport:  injuredCollegePlayers,
 		CollegeNotifications: collegeNotifications,
 		AllCollegeGames:      collegeGames,
 		ProTeam:              proTeam,
 		ProNotifications:     proNotifications,
 		AllProGames:          proGames,
+		CollegeRosterMap:     collegePlayerMap,
+		ProRosterMap:         proRosterMap,
 		TopCFBPassers:        topCfbPassers,
 		TopCFBRushers:        topCfbRushers,
 		TopCFBReceivers:      topCfbReceivers,
 		TopNFLPassers:        topNflPassers,
 		TopNFLRushers:        topNflRushers,
 		TopNFLReceivers:      topNflReceivers,
-		ProRosterMap:         proRosterMap,
-		PracticeSquadPlayers: practiceSquadPlayers,
-		ProInjuryReport:      injuredProPlayers,
 		CapsheetMap:          capsheetMap,
 		CollegeStandings:     collegeStandings,
 		ProStandings:         proStandings,

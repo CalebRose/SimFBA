@@ -30,47 +30,48 @@ type BasePlayerGameSnaps struct {
 }
 
 func (g *BasePlayerGameSnaps) MapSnapsToPosition(pos string, snaps int) {
-	if pos == "QB" {
+	switch pos {
+	case "QB":
 		g.QBSnaps += uint16(snaps)
-	} else if pos == "RB" {
+	case "RB":
 		g.RBSnaps += uint16(snaps)
-	} else if pos == "FB" {
+	case "FB":
 		g.FBSnaps += uint16(snaps)
-	} else if pos == "WR" {
+	case "WR":
 		g.WRSnaps += uint16(snaps)
-	} else if pos == "TE" {
+	case "TE":
 		g.TESnaps += uint16(snaps)
-	} else if pos == "OT" {
+	case "OT":
 		g.OTSnaps += uint16(snaps)
-	} else if pos == "OG" {
+	case "OG":
 		g.OGSnaps += uint16(snaps)
-	} else if pos == "C" {
+	case "C":
 		g.CSnaps += uint16(snaps)
-	} else if pos == "DE" {
+	case "DE":
 		g.DESnaps += uint16(snaps)
-	} else if pos == "DT" {
+	case "DT":
 		g.DTSnaps += uint16(snaps)
-	} else if pos == "OLB" {
+	case "OLB":
 		g.OLBSnaps += uint16(snaps)
-	} else if pos == "ILB" {
+	case "ILB":
 		g.ILBSnaps += uint16(snaps)
-	} else if pos == "CB" {
+	case "CB":
 		g.CBSnaps += uint16(snaps)
-	} else if pos == "FS" {
+	case "FS":
 		g.FSSnaps += uint16(snaps)
-	} else if pos == "SS" {
+	case "SS":
 		g.SSSnaps += uint16(snaps)
-	} else if pos == "P" {
+	case "P":
 		g.PSnaps += uint16(snaps)
-	} else if pos == "K" {
+	case "K":
 		g.KSnaps += uint16(snaps)
-	} else if pos == "ST" {
+	case "ST":
 		g.STSnaps += uint16(snaps)
-	} else if pos == "KR" {
+	case "KR":
 		g.KRSnaps += uint16(snaps)
-	} else if pos == "PR" {
+	case "PR":
 		g.PRSnaps += uint16(snaps)
-	} else if pos == "KOS" {
+	case "KOS":
 		g.KOSSnaps += uint16(snaps)
 	}
 }

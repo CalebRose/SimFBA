@@ -1,26 +1,69 @@
 package repository
 
 import (
+	"log"
+
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/structs"
 )
 
-func FindCollegePlayerSeasonStatsRecords(SeasonID, gameType string) []structs.CollegePlayerSeasonStats {
+type StatsQuery struct {
+	SeasonID string
+	GameType string
+	WeekID   string
+	TeamID   string
+	PlayerID string
+}
+
+func FindCollegePlayerSeasonStatsRecords(clauses StatsQuery) []structs.CollegePlayerSeasonStats {
 	db := dbprovider.GetInstance().GetDB()
 
 	var playerStats []structs.CollegePlayerSeasonStats
 
-	db.Order("passing_yards desc").Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&playerStats)
+	query := db.Model(&playerStats)
+	if len(clauses.SeasonID) > 0 {
+		query = query.Where("season_id = ?", clauses.SeasonID)
+	}
+	if len(clauses.GameType) > 0 {
+		query = query.Where("game_type = ?", clauses.GameType)
+	}
+	if len(clauses.TeamID) > 0 {
+		query = query.Where("team_id = ?", clauses.TeamID)
+	}
+	if len(clauses.PlayerID) > 0 {
+		query = query.Where("player_id = ?", clauses.PlayerID)
+	}
+
+	if err := query.Order("passing_yards desc").Find(&playerStats).Error; err != nil {
+		// handle the error, for example, log it
+		log.Println("Error finding college player season stats records:", err)
+	}
 
 	return playerStats
 }
 
-func FindProPlayerSeasonStatsRecords(SeasonID, gameType string) []structs.NFLPlayerSeasonStats {
+func FindProPlayerSeasonStatsRecords(clauses StatsQuery) []structs.NFLPlayerSeasonStats {
 	db := dbprovider.GetInstance().GetDB()
 
 	var playerStats []structs.NFLPlayerSeasonStats
 
-	db.Order("passing_yards desc").Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&playerStats)
+	query := db.Model(&playerStats)
+	if len(clauses.SeasonID) > 0 {
+		query = query.Where("season_id = ?", clauses.SeasonID)
+	}
+	if len(clauses.GameType) > 0 {
+		query = query.Where("game_type = ?", clauses.GameType)
+	}
+	if len(clauses.TeamID) > 0 {
+		query = query.Where("team_id = ?", clauses.TeamID)
+	}
+	if len(clauses.PlayerID) > 0 {
+		query = query.Where("player_id = ?", clauses.PlayerID)
+	}
+
+	if err := query.Order("passing_yards desc").Find(&playerStats).Error; err != nil {
+		log.Println("Error finding pro player season stats records:", err)
+	}
 
 	return playerStats
 }
@@ -88,12 +131,29 @@ func FindCollegeTeamSeasonStatsRecords(SeasonID, gameType string) []structs.Coll
 	return teamStats
 }
 
-func FindProTeamSeasonStatsRecords(SeasonID, gameType string) []structs.NFLTeamSeasonStats {
+func FindProTeamSeasonStatsRecords(clauses StatsQuery) []structs.NFLTeamSeasonStats {
 	db := dbprovider.GetInstance().GetDB()
 
 	var teamStats []structs.NFLTeamSeasonStats
 
-	db.Where("season_id = ? AND game_type = ?", SeasonID, gameType).Find(&teamStats)
+	query := db.Model(&teamStats)
+	if len(clauses.SeasonID) > 0 {
+		query = query.Where("season_id = ?", clauses.SeasonID)
+	}
+	if len(clauses.GameType) > 0 {
+		query = query.Where("game_type = ?", clauses.GameType)
+	}
+	if len(clauses.TeamID) > 0 {
+		query = query.Where("team_id = ?", clauses.TeamID)
+	}
+	if len(clauses.PlayerID) > 0 {
+		query = query.Where("player_id = ?", clauses.PlayerID)
+	}
+
+	if err := query.Order("passing_yards desc").Find(&teamStats).Error; err != nil {
+		// handle the error, for example, log it
+		log.Println("Error finding pro team season stats records:", err)
+	}
 
 	return teamStats
 }

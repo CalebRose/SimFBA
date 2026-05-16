@@ -234,7 +234,7 @@ func (pg *CrootGenerator) generatePlayer() (structs.Recruit, structs.Player) {
 
 	skinColor := getSkinColorByEthnicity(pg.pickedEthnicity)
 
-	face := getFace(pg.newID, player.Weight, skinColor, "", pg.faceDataBlob)
+	face := getFace(pg.newID, int(player.Weight), skinColor, "", pg.faceDataBlob)
 
 	pg.FacesList = append(pg.FacesList, face)
 
@@ -256,13 +256,13 @@ func (pg *CrootGenerator) generateTwin(player *structs.Recruit) (structs.Recruit
 	stars := util.GetStarRating()
 	if coinFlip == 2 {
 		twinPosition = player.Position
-		stars = player.Stars
+		stars = int(player.Stars)
 	}
-	twinNotes := "Twin Brother of " + strconv.Itoa(player.Stars) + " Star Recruit " + player.Position + " " + player.FirstName + " " + player.LastName
+	twinNotes := "Twin Brother of " + strconv.Itoa(int(player.Stars)) + " Star Recruit " + player.Position + " " + player.FirstName + " " + player.LastName
 	twinPlayer := createRecruit(twinPosition, stars, twinN, player.LastName, pg.attributeBlob, player.State, pg.crootLocations[player.State])
 	twinPlayer.AssignRelativeData(uint(firstTwinRelativeID), 4, 0, "", twinNotes)
 	twinPlayer.AssignTwinData(player.LastName, player.City, player.State, player.HighSchool)
-	notes := "Twin Brother of " + strconv.Itoa(twinPlayer.Stars) + " Star Recruit " + twinPlayer.Position + " " + twinPlayer.FirstName + " " + twinPlayer.LastName
+	notes := "Twin Brother of " + strconv.Itoa(int(twinPlayer.Stars)) + " Star Recruit " + twinPlayer.Position + " " + twinPlayer.FirstName + " " + twinPlayer.LastName
 	player.AssignRelativeData(uint(secondTwinRelativeID), 4, 0, "", notes)
 	globalTwinPlayer := structs.Player{
 		CollegePlayerID: int(secondTwinRelativeID),
@@ -278,7 +278,7 @@ func (pg *CrootGenerator) generateTwin(player *structs.Recruit) (structs.Recruit
 	globalPlayer.AssignID(uint(firstTwinRelativeID))
 	skinColor := getSkinColorByEthnicity(pg.pickedEthnicity)
 
-	face := getFace(secondTwinRelativeID, twinPlayer.Weight, skinColor, "", pg.faceDataBlob)
+	face := getFace(secondTwinRelativeID, int(twinPlayer.Weight), skinColor, "", pg.faceDataBlob)
 
 	pg.FacesList = append(pg.FacesList, face)
 	return twinPlayer, globalTwinPlayer
@@ -336,11 +336,11 @@ func (pg *CrootGenerator) updateStatistics(player structs.Recruit) {
 		pg.athCount++
 	}
 
-	if player.Overall > pg.highestOvr {
-		pg.highestOvr = player.Overall
+	if int(player.Overall) > pg.highestOvr {
+		pg.highestOvr = int(player.Overall)
 	}
-	if player.Overall < pg.lowestOvr {
-		pg.lowestOvr = player.Overall
+	if int(player.Overall) < pg.lowestOvr {
+		pg.lowestOvr = int(player.Overall)
 	}
 }
 
@@ -509,7 +509,7 @@ func GenerateWalkOns() {
 
 			skinColor := getSkinColorByEthnicity(ethnicity)
 
-			face := getFace(newID, recruit.Weight, skinColor, "", faceDataBlob)
+			face := getFace(newID, int(recruit.Weight), skinColor, "", faceDataBlob)
 			faces = append(faces, face)
 			globalPlayerList = append(globalPlayerList, playerRecord)
 			recruitBatchList = append(recruitBatchList, recruit)
@@ -566,46 +566,6 @@ func CreateCustomCroots() {
 	repository.CreateGlobalPlayerRecordsBatch(db, globalList, 100)
 }
 
-func GenerateCoachesForAITeams() {
-	db := dbprovider.GetInstance().GetDB()
-
-	teams := GetOnlyAITeamRecruitingProfiles()
-	firstNameMap, lastNameMap := getNameMaps()
-
-	coachList := []structs.CollegeCoach{}
-	allActiveCoaches := GetAllAICollegeCoaches()
-
-	retiredPlayers := GetRetiredSimNFLPlayers()
-	retireeMap := make(map[uint]bool)
-	coachMap := make(map[uint]bool)
-
-	for _, coach := range allActiveCoaches {
-		if coach.FormerPlayerID > 0 {
-			coachMap[coach.FormerPlayerID] = true
-		}
-	}
-
-	for _, team := range teams {
-		// Skip over teams currently controlled by a user
-		if !team.IsAI || team.IsUserTeam {
-			continue
-		}
-
-		pickedEthnicity := pickEthnicity()
-		almaMater := pickAlmaMater(teams)
-		coach := createCollegeCoach(team, almaMater.ID, almaMater.TeamAbbreviation, firstNameMap[pickedEthnicity], lastNameMap[pickedEthnicity], retiredPlayers, &retireeMap, &coachMap)
-		team.UpdateAIBehavior(true, true, coach.StarMax, coach.StarMin, coach.PointMin, coach.PointMax, coach.OffensiveScheme, coach.DefensiveScheme)
-		team.AssignRecruiter(coach.CoachName)
-		coachList = append(coachList, coach)
-
-		db.Save(&team)
-	}
-
-	for _, coach := range coachList {
-		db.Create(&coach)
-	}
-}
-
 func createRecruit(position string, stars int, firstName, lastName string, blob map[string]map[string]map[string]map[string]interface{}, state string, hsBlob []structs.CrootLocation) structs.Recruit {
 	age := 18
 	city, highSchool := getCityAndHighSchool(hsBlob)
@@ -643,7 +603,7 @@ func createRecruit(position string, stars int, firstName, lastName string, blob 
 	recruitingBias := util.GetRecruitingBias()
 	workEthic := util.GetWorkEthic()
 	academicBias := util.GetAcademicBias()
-	potentialGrade := util.GetWeightedPotentialGrade(int(progression))
+	potentialGrade := util.GetWeightedPotentialGrade(int8(progression))
 
 	affinityOne := util.PickAffinity(stars, "", false)
 	affinityTwo := util.PickAffinity(stars, affinityOne, true)
@@ -672,34 +632,34 @@ func createRecruit(position string, stars int, firstName, lastName string, blob 
 		LastName:       lastName,
 		Position:       position,
 		Archetype:      archetype,
-		Age:            age,
-		Stars:          stars,
-		Height:         height,
-		Weight:         weight,
-		Stamina:        int(stamina),
-		Injury:         int(injury),
-		FootballIQ:     footballIQ,
-		Speed:          speed,
-		Carrying:       carrying,
-		Agility:        agility,
-		Catching:       catching,
-		RouteRunning:   routeRunning,
-		ZoneCoverage:   zoneCoverage,
-		ManCoverage:    manCoverage,
-		Strength:       strength,
-		Tackle:         tackle,
-		PassBlock:      passBlock,
-		RunBlock:       runBlock,
-		PassRush:       passRush,
-		RunDefense:     runDefense,
-		ThrowPower:     throwPower,
-		ThrowAccuracy:  throwAccuracy,
-		KickAccuracy:   kickAccuracy,
-		KickPower:      kickPower,
-		PuntAccuracy:   puntAccuracy,
-		PuntPower:      puntPower,
-		Progression:    int(progression),
-		Discipline:     int(discipline),
+		Age:            int8(age),
+		Stars:          int8(stars),
+		Height:         int8(height),
+		Weight:         int8(weight),
+		Stamina:        int8(stamina),
+		Injury:         int8(injury),
+		FootballIQ:     int8(footballIQ),
+		Speed:          int8(speed),
+		Carrying:       int8(carrying),
+		Agility:        int8(agility),
+		Catching:       int8(catching),
+		RouteRunning:   int8(routeRunning),
+		ZoneCoverage:   int8(zoneCoverage),
+		ManCoverage:    int8(manCoverage),
+		Strength:       int8(strength),
+		Tackle:         int8(tackle),
+		PassBlock:      int8(passBlock),
+		RunBlock:       int8(runBlock),
+		PassRush:       int8(passRush),
+		RunDefense:     int8(runDefense),
+		ThrowPower:     int8(throwPower),
+		ThrowAccuracy:  int8(throwAccuracy),
+		KickAccuracy:   int8(kickAccuracy),
+		KickPower:      int8(kickPower),
+		PuntAccuracy:   int8(puntAccuracy),
+		PuntPower:      int8(puntPower),
+		Progression:    int8(progression),
+		Discipline:     int8(discipline),
 		PotentialGrade: potentialGrade,
 		FreeAgency:     freeAgency,
 		Personality:    personality,
@@ -781,41 +741,41 @@ func createWalkon(position string, firstNameList [][]string, lastNameList [][]st
 	recruitingBias := util.GetRecruitingBias()
 	workEthic := util.GetWorkEthic()
 	academicBias := util.GetAcademicBias()
-	potentialGrade := util.GetWeightedPotentialGrade(int(progression))
+	potentialGrade := util.GetWeightedPotentialGrade(int8(progression))
 	primeAge := util.GetPrimeAge(position, archetype)
 	basePlayer := structs.BasePlayer{
 		FirstName:      firstName,
 		LastName:       lastName,
 		Position:       position,
 		Archetype:      archetype,
-		Age:            age,
+		Age:            int8(age),
 		Stars:          0,
-		Height:         height,
-		Weight:         weight,
-		Stamina:        int(stamina),
-		Injury:         int(injury),
-		FootballIQ:     footballIQ,
-		Speed:          speed,
-		Carrying:       carrying,
-		Agility:        agility,
-		Catching:       catching,
-		RouteRunning:   routeRunning,
-		ZoneCoverage:   zoneCoverage,
-		ManCoverage:    manCoverage,
-		Strength:       strength,
-		Tackle:         tackle,
-		PassBlock:      passBlock,
-		RunBlock:       runBlock,
-		PassRush:       passRush,
-		RunDefense:     runDefense,
-		ThrowPower:     throwPower,
-		ThrowAccuracy:  throwAccuracy,
-		KickAccuracy:   kickAccuracy,
-		KickPower:      kickPower,
-		PuntAccuracy:   puntAccuracy,
-		PuntPower:      puntPower,
-		Progression:    int(progression),
-		Discipline:     int(discipline),
+		Height:         int8(height),
+		Weight:         int8(weight),
+		Stamina:        int8(stamina),
+		Injury:         int8(injury),
+		FootballIQ:     int8(footballIQ),
+		Speed:          int8(speed),
+		Carrying:       int8(carrying),
+		Agility:        int8(agility),
+		Catching:       int8(catching),
+		RouteRunning:   int8(routeRunning),
+		ZoneCoverage:   int8(zoneCoverage),
+		ManCoverage:    int8(manCoverage),
+		Strength:       int8(strength),
+		Tackle:         int8(tackle),
+		PassBlock:      int8(passBlock),
+		RunBlock:       int8(runBlock),
+		PassRush:       int8(passRush),
+		RunDefense:     int8(runDefense),
+		ThrowPower:     int8(throwPower),
+		ThrowAccuracy:  int8(throwAccuracy),
+		KickAccuracy:   int8(kickAccuracy),
+		KickPower:      int8(kickPower),
+		PuntAccuracy:   int8(puntAccuracy),
+		PuntPower:      int8(puntPower),
+		Progression:    int8(progression),
+		Discipline:     int8(discipline),
 		PotentialGrade: potentialGrade,
 		FreeAgency:     freeAgency,
 		Personality:    personality,
@@ -891,7 +851,7 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 	recruitingBias := util.GetRecruitingBias()
 	workEthic := util.GetWorkEthic()
 	academicBias := util.GetAcademicBias()
-	potentialGrade := util.GetWeightedPotentialGrade(progression)
+	potentialGrade := util.GetWeightedPotentialGrade(int8(progression))
 	if hasNoAffinities {
 		affinityOne = util.PickAffinity(stars, "", false)
 		affinityTwo = util.PickAffinity(stars, affinityOne, true)
@@ -902,34 +862,34 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 		LastName:       lastName,
 		Position:       position,
 		Archetype:      archetype,
-		Age:            age,
-		Stars:          stars,
-		Height:         height,
-		Weight:         weight,
-		Stamina:        stamina,
-		Injury:         injury,
-		FootballIQ:     footballIQ,
-		Speed:          speed,
-		Carrying:       carrying,
-		Agility:        agility,
-		Catching:       catching,
-		RouteRunning:   routeRunning,
-		ZoneCoverage:   zoneCoverage,
-		ManCoverage:    manCoverage,
-		Strength:       strength,
-		Tackle:         tackle,
-		PassBlock:      passBlock,
-		RunBlock:       runBlock,
-		PassRush:       passRush,
-		RunDefense:     runDefense,
-		ThrowPower:     throwPower,
-		ThrowAccuracy:  throwAccuracy,
-		KickAccuracy:   kickAccuracy,
-		KickPower:      kickPower,
-		PuntAccuracy:   puntAccuracy,
-		PuntPower:      puntPower,
-		Progression:    progression,
-		Discipline:     discipline,
+		Age:            int8(age),
+		Stars:          int8(stars),
+		Height:         int8(height),
+		Weight:         int8(weight),
+		Stamina:        int8(stamina),
+		Injury:         int8(injury),
+		FootballIQ:     int8(footballIQ),
+		Speed:          int8(speed),
+		Carrying:       int8(carrying),
+		Agility:        int8(agility),
+		Catching:       int8(catching),
+		RouteRunning:   int8(routeRunning),
+		ZoneCoverage:   int8(zoneCoverage),
+		ManCoverage:    int8(manCoverage),
+		Strength:       int8(strength),
+		Tackle:         int8(tackle),
+		PassBlock:      int8(passBlock),
+		RunBlock:       int8(runBlock),
+		PassRush:       int8(passRush),
+		RunDefense:     int8(runDefense),
+		ThrowPower:     int8(throwPower),
+		ThrowAccuracy:  int8(throwAccuracy),
+		KickAccuracy:   int8(kickAccuracy),
+		KickPower:      int8(kickPower),
+		PuntAccuracy:   int8(puntAccuracy),
+		PuntPower:      int8(puntPower),
+		Progression:    int8(progression),
+		Discipline:     int8(discipline),
 		PotentialGrade: potentialGrade,
 		FreeAgency:     freeAgency,
 		Personality:    personality,
@@ -961,153 +921,6 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 	}
 
 	return recruit, faceData
-}
-
-func createCollegeCoach(team structs.RecruitingTeamProfile, almaMaterID uint, almaMater string, firstNameList, lastNameList [][]string, retiredPlayers []structs.NFLRetiredPlayer, retireeMap, coachMap *map[uint]bool) structs.CollegeCoach {
-	firstName := ""
-	lastName := ""
-	diceRoll := util.GenerateIntFromRange(1, 50)
-	formerPlayerID := uint(0)
-	almaID := almaMaterID
-	alma := almaMater
-	age := 32
-	posOne := ""
-	posTwo := ""
-	posThree := ""
-	if diceRoll == 50 {
-		// Get a former player as a coach
-		idx := util.GenerateIntFromRange(0, len(retiredPlayers)-1)
-		retiree := retiredPlayers[idx]
-		for (*retireeMap)[retiree.ID] || (*coachMap)[retiree.ID] {
-			idx = util.GenerateIntFromRange(0, len(retiredPlayers)-1)
-			retiree = retiredPlayers[idx]
-		}
-		(*retireeMap)[retiree.ID] = true
-		(*coachMap)[retiree.ID] = true
-		formerPlayerID = retiree.ID
-		alma = retiree.College
-		firstName = retiree.FirstName
-		lastName = retiree.LastName
-		posOne = retiree.Position
-		age = retiree.Age + 1
-	} else {
-		fName := getName(firstNameList)
-		lName := getName(lastNameList)
-		caser := cases.Title(language.English)
-		firstName = caser.String(strings.ToLower(fName))
-		lastName = caser.String(strings.ToLower(lName))
-		age = getCoachAge()
-	}
-	fullName := firstName + " " + lastName
-
-	schoolQuality := team.AIQuality
-	adminBehavior := team.AIBehavior
-	goodHire := getGoodHire(schoolQuality, adminBehavior)
-	starMin, starMax := getStarRange(schoolQuality, goodHire)
-	pointMin, pointmax := getPointRange(schoolQuality, goodHire)
-	odds1 := 0
-	odds2 := 0
-	odds3 := 0
-	odds4 := 0
-	odds5 := 0
-
-	starList := make([]int, 5)
-	for i := starMin; i <= starMax; i++ {
-		starList = append(starList, i)
-	}
-
-	for _, star := range starList {
-		switch star {
-		case 1:
-			odds1 = 10
-		case 2:
-			odds2 = 10
-		case 3:
-			odds3 = 8
-		case 4:
-			odds4 = 5
-		case 5:
-			odds5 = 5
-		}
-	}
-
-	offensiveSchemeList := []string{"Power Run", "Vertical", "West Coast", "I Option", "Run and Shoot", "Air Raid", "Pistol", "Spread Option", "Wing-T", "Double Wing", "Wishbone", "Flexbone"}
-	offensiveScheme := util.PickFromStringList(offensiveSchemeList)
-	defensiveSchemeList := []string{"Old School Front 7 Man", "2-Gap Zone", "4-man Front Spread Stopper Zone", "3-man Front Spread Stopper Zone", "Speed Man", "Multiple Man"}
-	defensiveScheme := util.PickFromStringList(defensiveSchemeList)
-	contractLength := util.GenerateIntFromRange(2, 5)
-	startingPrestige := getStartingPrestige(goodHire)
-	teamBuildingList := []string{"Recruiting", "Transfer", "Average"}
-	teamBuildPref := util.PickFromStringList(teamBuildingList)
-	careerPrefList := []string{"Average", "Prefers to Stay at Current Job", "Wants to coach Alma-Mater", "Wants a more competitive job", "Average"}
-	careerPref := util.PickFromStringList(careerPrefList)
-	promiseTendencyList := []string{"Average", "Under-Promise", "Over-Promise"}
-	promiseTendency := util.PickFromStringList(promiseTendencyList)
-	positionList := []string{"QB", "RB", "WR", "TE", "FB", "OT", "OG", "C", "DT", "DE", "ILB", "OLB", "FS", "SS", "CB", "P", "K", "ATH"}
-	if posOne == "" {
-		posOne = util.PickFromStringList(positionList)
-	}
-	for posTwo == "" || posTwo == posOne {
-		posTwo = util.PickFromStringList(positionList)
-	}
-	for posThree == "" || posThree == posOne || posThree == posTwo {
-		posThree = util.PickFromStringList(positionList)
-	}
-	if (careerPref == "Wants to coach at Alma Mater" && almaID == team.ID) || (schoolQuality == "Blue Blood" && careerPref == "Wants a more competitive job") {
-		careerPref = "Prefers to Stay at Current Job"
-	}
-	if goodHire {
-		fmt.Println("Good hire for " + team.TeamAbbreviation + "!")
-	}
-	formerPlayer := formerPlayerID > 0
-
-	if formerPlayer {
-		fmt.Println("Former SimNFL Player " + fullName + " is committing to coach for " + team.TeamAbbreviation + "!")
-	}
-
-	coach := structs.CollegeCoach{
-		CoachName:              fullName,
-		Age:                    age,
-		TeamID:                 team.ID,
-		Team:                   team.TeamAbbreviation,
-		FormerPlayerID:         formerPlayerID,
-		AlmaMaterID:            almaID,
-		AlmaMater:              alma,
-		Prestige:               startingPrestige,
-		PointMin:               pointMin,
-		PointMax:               pointmax,
-		StarMin:                starMin,
-		StarMax:                starMax,
-		Odds1:                  odds1,
-		Odds2:                  odds2,
-		Odds3:                  odds3,
-		Odds4:                  odds4,
-		Odds5:                  odds5,
-		OffensiveScheme:        offensiveScheme,
-		DefensiveScheme:        defensiveScheme,
-		TeambuildingPreference: teamBuildPref,
-		CareerPreference:       careerPref,
-		PromiseTendency:        promiseTendency,
-		SchoolTenure:           0,
-		CareerTenure:           0,
-		ContractLength:         contractLength,
-		YearsRemaining:         contractLength,
-		IsRetired:              false,
-		IsFormerPlayer:         formerPlayer,
-		PortalReputation:       100,
-		PositionOne:            posOne,
-		PositionTwo:            posTwo,
-		PositionThree:          posThree,
-	}
-
-	if startingPrestige > 1 {
-		for i := 0; i < startingPrestige; i++ {
-			selectStar := util.GenerateIntFromRange(starMin, starMax)
-			coach.IncrementOdds(selectStar)
-		}
-	}
-
-	return coach
 }
 
 func pickEthnicity() string {

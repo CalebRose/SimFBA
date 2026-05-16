@@ -24,10 +24,6 @@ import (
 // accTeamIDs for convenience
 var accTeamIDs = []uint{14, 18, 22, 26, 32, 37, 52, 57, 66, 71, 85, 91, 96, 97, 121, 122, 123}
 
-// accTobaccoRoad: Duke(26), UNC(71), NC State(66), Wake Forest(123)
-// All four play each other every season (6 intra-group games).
-var accTobaccoRoadTeams = []uint{26, 71, 66, 123}
-
 // accWeek14ConfLocks: conference games always in Week 14
 var accWeek14ConfLocks = []SchedulerHistoryKey{
 	makeHistoryKey(18, 96),   // California vs Stanford

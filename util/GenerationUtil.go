@@ -50,13 +50,13 @@ func GenerateNormalizedIntFromMeanStdev(mean, stdDev float64) float64 {
 	return float64(intNum)
 }
 
-func RegressValue(val, min, max int) int {
-	newVal := val - GenerateNormalizedIntFromRange(min, max)
+func RegressValue(val int8, min, max int) int8 {
+	newVal := int(val) - GenerateNormalizedIntFromRange(min, max)
 
 	if newVal < 1 {
 		return 1
 	}
-	return newVal
+	return int8(newVal)
 }
 
 func PickFromStringList(list []string) string {
@@ -110,8 +110,8 @@ func GenerateNFLPotential(pot int) int {
 	return GenerateIntFromRange(floor, ceil)
 }
 
-func GetWeightedPotentialGrade(rating int) string {
-	weightedRating := GenerateIntFromRange(rating-15, rating+15)
+func GetWeightedPotentialGrade(rating int8) string {
+	weightedRating := GenerateIntFromRange(int(rating)-15, int(rating)+15)
 	if weightedRating > 100 {
 		weightedRating = 99
 	} else if weightedRating < 0 {
