@@ -377,17 +377,11 @@ func GetALLCollegePlayerSeasonStatsBySeason(SeasonID string) []structs.CollegePl
 }
 
 func GetCollegePlayerSeasonStatsBySeason(SeasonID, gameType string) []structs.CollegePlayerSeasonStats {
-	return repository.FindCollegePlayerSeasonStatsRecords(SeasonID, gameType)
+	return repository.FindCollegePlayerSeasonStatsRecords(repository.StatsQuery{SeasonID: SeasonID, GameType: gameType})
 }
 
 func GetNFLTeamSeasonStatsBySeason(SeasonID, gameType string) []structs.NFLTeamSeasonStats {
-	db := dbprovider.GetInstance().GetDB()
-
-	var teamStats []structs.NFLTeamSeasonStats
-
-	db.Where("season_id = ?", SeasonID).Find(&teamStats)
-
-	return teamStats
+	return repository.FindProTeamSeasonStatsRecords(repository.StatsQuery{SeasonID: SeasonID, GameType: gameType})
 }
 
 func GetALLNFLPlayerSeasonStatsBySeason(SeasonID string) []structs.NFLPlayerSeasonStats {
@@ -401,7 +395,7 @@ func GetALLNFLPlayerSeasonStatsBySeason(SeasonID string) []structs.NFLPlayerSeas
 }
 
 func GetNFLPlayerSeasonStatsBySeason(SeasonID, gameType string) []structs.NFLPlayerSeasonStats {
-	return repository.FindProPlayerSeasonStatsRecords(SeasonID, gameType)
+	return repository.FindProPlayerSeasonStatsRecords(repository.StatsQuery{SeasonID: SeasonID, GameType: gameType})
 }
 
 func GetAllNFLPlayerSeasonStatsByPlayerID(playerID, gameType string) []structs.NFLPlayerSeasonStats {
@@ -1967,11 +1961,11 @@ func GetProTeamGameStatsBySeason(SeasonID, gameType string) []structs.NFLTeamSta
 }
 
 func GetProPlayerSeasonStatsBySeason(SeasonID, gameType string) []structs.NFLPlayerSeasonStats {
-	return repository.FindProPlayerSeasonStatsRecords(SeasonID, gameType)
+	return repository.FindProPlayerSeasonStatsRecords(repository.StatsQuery{SeasonID: SeasonID, GameType: gameType})
 }
 
 func GetProTeamSeasonStatsBySeason(SeasonID, gameType string) []structs.NFLTeamSeasonStats {
-	return repository.FindProTeamSeasonStatsRecords(SeasonID, gameType)
+	return repository.FindProTeamSeasonStatsRecords(repository.StatsQuery{SeasonID: SeasonID, GameType: gameType})
 }
 
 func SearchCollegeStats(seasonID, weekID, viewType, gameType string) structs.SearchStatsResponse {

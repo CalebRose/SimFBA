@@ -55,6 +55,16 @@ func GetAllNFLPlayers() []structs.NFLPlayer {
 	return nflPlayers
 }
 
+func GetNFLPlayersByTeamID(teamID string) []structs.NFLPlayer {
+	db := dbprovider.GetInstance().GetDB()
+
+	var nflPlayers []structs.NFLPlayer
+
+	db.Where("team_id = ?", teamID).Find(&nflPlayers)
+
+	return nflPlayers
+}
+
 func GetAllRetiredPlayers() []structs.NFLRetiredPlayer {
 	db := dbprovider.GetInstance().GetDB()
 

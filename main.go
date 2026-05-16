@@ -136,6 +136,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/bootstrap/gameplan/{collegeID}/{proID}", controller.BootstrapGameplanData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/news/{collegeID}/{proID}", controller.BootstrapNewsData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/stats/{collegeID}/{proID}", controller.BootstrapStatsData).Methods("GET")
+	apiRouter.HandleFunc("/bootstrap/players/{collegeID}/{proID}", controller.BootstrapPlayerData).Methods("GET")
 
 	// Capsheet Controls
 	apiRouter.HandleFunc("/nfl/capsheet/generate", controller.GenerateCapsheets).Methods("GET")
