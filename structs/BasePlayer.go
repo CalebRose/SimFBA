@@ -26,7 +26,7 @@ type BasePlayer struct {
 	PreviousTeamID  uint
 	PreviousTeam    string
 	Height          int8
-	Weight          int8
+	Weight          int16
 	Age             int8
 	Stars           int8
 	Overall         int8

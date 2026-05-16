@@ -779,7 +779,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in *jlexer.Lexer, ou
 		case "Height":
 			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int8(in.Int8())
+			out.Weight = int16(in.Int16())
 		case "Age":
 			out.Age = int8(in.Int8())
 		case "Stars":
@@ -1072,7 +1072,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out *jwriter.Writer,
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int8(int8(in.Weight))
+		out.Int16(int16(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
@@ -3563,7 +3563,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs6(in *jlexer.Lexer, ou
 		case "Height":
 			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int8(in.Int8())
+			out.Weight = int16(in.Int16())
 		case "Age":
 			out.Age = int8(in.Int8())
 		case "Stars":
@@ -3994,7 +3994,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out *jwriter.Writer,
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int8(int8(in.Weight))
+		out.Int16(int16(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
@@ -15202,7 +15202,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in *jlexer.Lexer, o
 		case "Height":
 			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int8(in.Int8())
+			out.Weight = int16(in.Int16())
 		case "Age":
 			out.Age = int8(in.Int8())
 		case "Stars":
@@ -15505,7 +15505,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out *jwriter.Writer
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int8(int8(in.Weight))
+		out.Int16(int16(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
@@ -17671,7 +17671,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in *jlexer.Lexer, o
 		case "Height":
 			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int8(in.Int8())
+			out.Weight = int16(in.Int16())
 		case "Age":
 			out.Age = int8(in.Int8())
 		case "Stars":
@@ -18102,7 +18102,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out *jwriter.Writer
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int8(int8(in.Weight))
+		out.Int16(int16(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
@@ -18524,7 +18524,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs38(in *jlexer.Lexer, o
 		case "Height":
 			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int8(in.Int8())
+			out.Weight = int16(in.Int16())
 		case "Age":
 			out.Age = int8(in.Int8())
 		case "Stars":
@@ -18817,7 +18817,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out *jwriter.Writer
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int8(int8(in.Weight))
+		out.Int16(int16(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
@@ -25883,7 +25883,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAModels(in *jlexer.Lexer, out 
 		case "Height":
 			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int8(in.Int8())
+			out.Weight = int16(in.Int16())
 		case "Age":
 			out.Age = int8(in.Int8())
 		case "Stars":
@@ -26260,7 +26260,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out *jwriter.Writer, i
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int8(int8(in.Weight))
+		out.Int16(int16(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
