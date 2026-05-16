@@ -289,6 +289,7 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 			teamPlayers := GetNFLPlayersByTeamID(proID)
 			nflStats := repository.FindProPlayerSeasonStatsRecords(repository.StatsQuery{SeasonID: seasonID, GameType: gtStr, TeamID: proID})
 			nflPlayerMap := MakeNFLPlayerMap(teamPlayers)
+			proRosterMap = MakeNFLPlayerMapByTeamID(teamPlayers, false)
 			topNflPassers = getNFLOrderedListByStatType("PASSING", uint(nflTeamID), nflStats, nflPlayerMap)
 			topNflRushers = getNFLOrderedListByStatType("RUSHING", uint(nflTeamID), nflStats, nflPlayerMap)
 			topNflReceivers = getNFLOrderedListByStatType("RECEIVING", uint(nflTeamID), nflStats, nflPlayerMap)
