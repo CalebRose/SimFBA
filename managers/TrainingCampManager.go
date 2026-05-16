@@ -123,7 +123,7 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 	applyDrillResult(changedAttrs, positionDrillAttribute, positionDrillResult)
 	applyDrillResult(changedAttrs, teamDrillAttribute, teamDrillResult)
 
-	csvWriter.Write([]string{strconv.Itoa(player.PlayerID), player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.Itoa(player.Age), positionDrill, positionDrillAttribute,
+	csvWriter.Write([]string{strconv.Itoa(player.PlayerID), player.TeamAbbr, drillPosition, drillArchetype, player.FirstName, player.LastName, strconv.Itoa(int(player.Age)), positionDrill, positionDrillAttribute,
 		strconv.Itoa(positionDrillResult), teamDrill, teamDrillAttribute, strconv.Itoa(teamDrillResult), eventText, injuryText,
 		strconv.Itoa(injuryWeeks)},
 	)
@@ -376,144 +376,145 @@ func getDrillResult(player structs.NFLPlayer, eventModifier int) int {
 }
 
 func applyDrillResult(progression *structs.CollegePlayerProgressions, attribute string, modifier int) {
+	m := int8(modifier)
 	if attribute == "football_iq" {
-		if progression.FootballIQ + modifier > 99 {
+		if progression.FootballIQ + m > 99 {
 			progression.FootballIQ = 99
 		} else {
-			progression.FootballIQ += modifier
+			progression.FootballIQ += m
 		}
 	}
 	if attribute == "speed" {
-		if progression.Speed + modifier > 99 {
+		if progression.Speed + m > 99 {
 			progression.Speed = 99
 		} else {
-			progression.Speed += modifier
+			progression.Speed += m
 		}
 	}
 	if attribute == "carrying" {
-		if progression.Carrying + modifier > 99 {
+		if progression.Carrying + m > 99 {
 			progression.Carrying = 99
 		} else {
-			progression.Carrying += modifier
+			progression.Carrying += m
 		}
 	}
 	if attribute == "agility" {
-		if progression.Agility + modifier > 99 {
+		if progression.Agility + m > 99 {
 			progression.Agility = 99
 		} else {
-			progression.Agility += modifier
+			progression.Agility += m
 		}
 	}
 	if attribute == "catching" {
-		if progression.Catching + modifier > 99 {
+		if progression.Catching + m > 99 {
 			progression.Catching = 99
 		} else {
-			progression.Catching += modifier
+			progression.Catching += m
 		}
 	}
 	if attribute == "route_running" {
-		if progression.RouteRunning + modifier > 99 {
+		if progression.RouteRunning + m > 99 {
 			progression.RouteRunning = 99
 		} else {
-			progression.RouteRunning += modifier
+			progression.RouteRunning += m
 		}
 	}
 	if attribute == "zone_coverage" {
-		if progression.ZoneCoverage + modifier > 99 {
+		if progression.ZoneCoverage + m > 99 {
 			progression.ZoneCoverage = 99
 		} else {
-			progression.ZoneCoverage += modifier
+			progression.ZoneCoverage += m
 		}
 	}
 	if attribute == "man_coverage" {
-		if progression.ManCoverage + modifier > 99 {
+		if progression.ManCoverage + m > 99 {
 			progression.ManCoverage = 99
 		} else {
-			progression.ManCoverage += modifier
+			progression.ManCoverage += m
 		}
 	}
 	if attribute == "strength" {
-		if progression.Strength + modifier > 99 {
+		if progression.Strength + m > 99 {
 			progression.Strength = 99
 		} else {
-			progression.Strength += modifier
+			progression.Strength += m
 		}
 	}
 	if attribute == "tackle" {
-		if progression.Tackle + modifier > 99 {
+		if progression.Tackle + m > 99 {
 			progression.Tackle = 99
 		} else {
-			progression.Tackle += modifier
+			progression.Tackle += m
 		}
 	}
 	if attribute == "pass_block" {
-		if progression.PassBlock + modifier > 99 {
+		if progression.PassBlock + m > 99 {
 			progression.PassBlock = 99
 		} else {
-			progression.PassBlock += modifier
+			progression.PassBlock += m
 		}
 	}
 	if attribute == "run_block" {
-		if progression.RunBlock + modifier > 99 {
+		if progression.RunBlock + m > 99 {
 			progression.RunBlock = 99
 		} else {
-			progression.RunBlock += modifier
+			progression.RunBlock += m
 		}
 	}
 	if attribute == "pass_rush" {
-		if progression.PassRush + modifier > 99 {
+		if progression.PassRush + m > 99 {
 			progression.PassRush = 99
 		} else {
-			progression.PassRush += modifier
+			progression.PassRush += m
 		}
 	}
 	if attribute == "run_defense" {
-		if progression.RunDefense + modifier > 99 {
+		if progression.RunDefense + m > 99 {
 			progression.RunDefense = 99
 		} else {
-			progression.RunDefense += modifier
+			progression.RunDefense += m
 		}
 	}
 	if attribute == "throw_power" {
-		if progression.ThrowPower + modifier > 99 {
+		if progression.ThrowPower + m > 99 {
 			progression.ThrowPower = 99
 		} else {
-			progression.ThrowPower += modifier
+			progression.ThrowPower += m
 		}
 	}
 	if attribute == "throw_accuracy" {
-		if progression.ThrowAccuracy + modifier > 99 {
+		if progression.ThrowAccuracy + m > 99 {
 			progression.ThrowAccuracy = 99
 		} else {
-			progression.ThrowAccuracy += modifier
+			progression.ThrowAccuracy += m
 		}
 	}
 	if attribute == "kick_accuracy" {
-		if progression.KickAccuracy + modifier > 99 {
+		if progression.KickAccuracy + m > 99 {
 			progression.KickAccuracy = 99
 		} else {
-			progression.KickAccuracy += modifier
+			progression.KickAccuracy += m
 		}
 	}
 	if attribute == "kick_power" {
-		if progression.KickPower + modifier > 99 {
+		if progression.KickPower + m > 99 {
 			progression.KickPower = 99
 		} else {
-			progression.KickPower += modifier
+			progression.KickPower += m
 		}
 	}
 	if attribute == "punt_accuracy" {
-		if progression.PuntAccuracy + modifier > 99 {
+		if progression.PuntAccuracy + m > 99 {
 			progression.PuntAccuracy = 99
 		} else {
-			progression.PuntAccuracy += modifier
+			progression.PuntAccuracy += m
 		}
 	}
 	if attribute == "punt_power" {
-		if progression.PuntPower + modifier > 99 {
+		if progression.PuntPower + m > 99 {
 			progression.PuntPower = 99
 		} else {
-			progression.PuntPower += modifier
+			progression.PuntPower += m
 		}
 	}
 }

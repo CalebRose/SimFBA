@@ -9,6 +9,7 @@ import (
 	"time"
 
 	config "github.com/CalebRose/SimFBA/secrets"
+	"github.com/CalebRose/SimFBA/structs"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"golang.org/x/crypto/ssh"
 	"gorm.io/driver/mysql"
@@ -70,12 +71,12 @@ func (p *Provider) InitDatabase() bool {
 
 	// College
 
-	// db.AutoMigrate(&structs.CollegePlayer{})
-	// db.AutoMigrate(&structs.HistoricCollegePlayer{})
+	db.AutoMigrate(&structs.CollegePlayer{})
+	db.AutoMigrate(&structs.HistoricCollegePlayer{})
 	// db.AutoMigrate(&structs.TransferPortalProfile{})
 	// db.AutoMigrate(&structs.Player{})
-	// db.AutoMigrate(&structs.CollegePlayerSeasonStats{})
-	// db.AutoMigrate(&structs.CollegePlayerStats{})
+	db.AutoMigrate(&structs.CollegePlayerSeasonStats{})
+	db.AutoMigrate(&structs.CollegePlayerStats{})
 	// db.AutoMigrate(&structs.CollegePlayerGameSnaps{})
 	// db.AutoMigrate(&structs.CollegePlayerSeasonSnaps{})
 	// db.AutoMigrate(&structs.CollegePromise{})
@@ -135,10 +136,10 @@ func (p *Provider) InitDatabase() bool {
 	// db.AutoMigrate(&structs.NFLTradePreferences{})
 	// db.AutoMigrate(&structs.NFLTradeProposal{})
 	// db.AutoMigrate(&structs.NFLTradeOption{})
-	// db.AutoMigrate(&structs.NFLPlayer{})
-	// db.AutoMigrate(&structs.NFLRetiredPlayer{})
-	// db.AutoMigrate(&structs.NFLPlayerSeasonStats{})
-	// db.AutoMigrate(&structs.NFLPlayerStats{})
+	db.AutoMigrate(&structs.NFLPlayer{})
+	db.AutoMigrate(&structs.NFLRetiredPlayer{})
+	db.AutoMigrate(&structs.NFLPlayerSeasonStats{})
+	db.AutoMigrate(&structs.NFLPlayerStats{})
 	// db.AutoMigrate(&structs.NFLPlayerGameSnaps{})
 	// db.AutoMigrate(&structs.NFLPlayerSeasonSnaps{})
 	// db.AutoMigrate(&structs.NFLUser{})

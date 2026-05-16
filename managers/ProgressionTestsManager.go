@@ -71,8 +71,8 @@ func CFBProgressionExport(w http.ResponseWriter) {
 					draftee := models.NFLDraftee{}
 					draftee.Map(player)
 					// Map New Progression value for NFL
-					newProgression := util.GenerateNFLPotential(player.Progression)
-					newPotentialGrade := util.GetWeightedPotentialGrade(newProgression)
+					newProgression := util.GenerateNFLPotential(int(player.Progression))
+					newPotentialGrade := util.GetWeightedPotentialGrade(int8(newProgression))
 					draftee.MapProgression(newProgression, newPotentialGrade)
 
 					if draftee.Position == "RB" {
@@ -125,15 +125,15 @@ func CFBProgressionExport(w http.ResponseWriter) {
 					csvModel := models.MapNFLDrafteeToModel(draftee)
 					playerRow := []string{
 						"", idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
-						csvModel.Archetype, "0", strconv.Itoa(draftee.Age), strconv.Itoa(draftee.Stars),
-						draftee.HighSchool, draftee.City, draftee.State, strconv.Itoa(draftee.Height),
-						strconv.Itoa(draftee.Weight), strconv.Itoa(draftee.Overall), strconv.Itoa(draftee.Speed),
-						strconv.Itoa(draftee.FootballIQ), strconv.Itoa(draftee.Agility), strconv.Itoa(draftee.Carrying),
-						strconv.Itoa(draftee.Catching), strconv.Itoa(draftee.RouteRunning), strconv.Itoa(draftee.ZoneCoverage), strconv.Itoa(draftee.ManCoverage),
-						strconv.Itoa(draftee.Strength), strconv.Itoa(draftee.Tackle), strconv.Itoa(draftee.PassBlock), strconv.Itoa(draftee.RunBlock),
-						strconv.Itoa(draftee.PassRush), strconv.Itoa(draftee.RunDefense), strconv.Itoa(draftee.ThrowPower), strconv.Itoa(draftee.ThrowAccuracy),
-						strconv.Itoa(draftee.KickPower), strconv.Itoa(draftee.KickAccuracy), strconv.Itoa(draftee.PuntPower), strconv.Itoa(draftee.PuntAccuracy),
-						strconv.Itoa(draftee.Stamina), strconv.Itoa(draftee.Injury), csvModel.PotentialGrade, "None",
+						csvModel.Archetype, "0", strconv.Itoa(int(draftee.Age)), strconv.Itoa(int(draftee.Stars)),
+						draftee.HighSchool, draftee.City, draftee.State, strconv.Itoa(int(draftee.Height)),
+						strconv.Itoa(int(draftee.Weight)), strconv.Itoa(int(draftee.Overall)), strconv.Itoa(int(draftee.Speed)),
+						strconv.Itoa(int(draftee.FootballIQ)), strconv.Itoa(int(draftee.Agility)), strconv.Itoa(int(draftee.Carrying)),
+						strconv.Itoa(int(draftee.Catching)), strconv.Itoa(int(draftee.RouteRunning)), strconv.Itoa(int(draftee.ZoneCoverage)), strconv.Itoa(int(draftee.ManCoverage)),
+						strconv.Itoa(int(draftee.Strength)), strconv.Itoa(int(draftee.Tackle)), strconv.Itoa(int(draftee.PassBlock)), strconv.Itoa(int(draftee.RunBlock)),
+						strconv.Itoa(int(draftee.PassRush)), strconv.Itoa(int(draftee.RunDefense)), strconv.Itoa(int(draftee.ThrowPower)), strconv.Itoa(int(draftee.ThrowAccuracy)),
+						strconv.Itoa(int(draftee.KickPower)), strconv.Itoa(int(draftee.KickAccuracy)), strconv.Itoa(int(draftee.PuntPower)), strconv.Itoa(int(draftee.PuntAccuracy)),
+						strconv.Itoa(int(draftee.Stamina)), strconv.Itoa(int(draftee.Injury)), csvModel.PotentialGrade, "None",
 						boomBustStatus, strconv.Itoa(tier), "Draftee", csvModel.College,
 					}
 					csvRows = append(csvRows, playerRow)
@@ -143,15 +143,15 @@ func CFBProgressionExport(w http.ResponseWriter) {
 				idStr := strconv.Itoa(int(player.ID))
 				playerRow := []string{
 					team.TeamName, idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
-					csvModel.Archetype, csvModel.Year, strconv.Itoa(player.Age), strconv.Itoa(player.Stars),
-					player.HighSchool, player.City, player.State, strconv.Itoa(player.Height),
-					strconv.Itoa(player.Weight), strconv.Itoa(player.Overall), strconv.Itoa(player.Speed),
-					strconv.Itoa(player.FootballIQ), strconv.Itoa(player.Agility), strconv.Itoa(player.Carrying),
-					strconv.Itoa(player.Catching), strconv.Itoa(player.RouteRunning), strconv.Itoa(player.ZoneCoverage), strconv.Itoa(player.ManCoverage),
-					strconv.Itoa(player.Strength), strconv.Itoa(player.Tackle), strconv.Itoa(player.PassBlock), strconv.Itoa(player.RunBlock),
-					strconv.Itoa(player.PassRush), strconv.Itoa(player.RunDefense), strconv.Itoa(player.ThrowPower), strconv.Itoa(player.ThrowAccuracy),
-					strconv.Itoa(player.KickPower), strconv.Itoa(player.KickAccuracy), strconv.Itoa(player.PuntPower), strconv.Itoa(player.PuntAccuracy),
-					strconv.Itoa(player.Stamina), strconv.Itoa(player.Injury), csvModel.PotentialGrade, csvModel.RedshirtStatus,
+					csvModel.Archetype, csvModel.Year, strconv.Itoa(int(player.Age)), strconv.Itoa(int(player.Stars)),
+					player.HighSchool, player.City, player.State, strconv.Itoa(int(player.Height)),
+					strconv.Itoa(int(player.Weight)), strconv.Itoa(int(player.Overall)), strconv.Itoa(int(player.Speed)),
+					strconv.Itoa(int(player.FootballIQ)), strconv.Itoa(int(player.Agility)), strconv.Itoa(int(player.Carrying)),
+					strconv.Itoa(int(player.Catching)), strconv.Itoa(int(player.RouteRunning)), strconv.Itoa(int(player.ZoneCoverage)), strconv.Itoa(int(player.ManCoverage)),
+					strconv.Itoa(int(player.Strength)), strconv.Itoa(int(player.Tackle)), strconv.Itoa(int(player.PassBlock)), strconv.Itoa(int(player.RunBlock)),
+					strconv.Itoa(int(player.PassRush)), strconv.Itoa(int(player.RunDefense)), strconv.Itoa(int(player.ThrowPower)), strconv.Itoa(int(player.ThrowAccuracy)),
+					strconv.Itoa(int(player.KickPower)), strconv.Itoa(int(player.KickAccuracy)), strconv.Itoa(int(player.PuntPower)), strconv.Itoa(int(player.PuntAccuracy)),
+					strconv.Itoa(int(player.Stamina)), strconv.Itoa(int(player.Injury)), csvModel.PotentialGrade, csvModel.RedshirtStatus,
 					"None", "", "Collegiate", "",
 				}
 				csvRows = append(csvRows, playerRow)
@@ -204,15 +204,15 @@ func CFBProgressionExport(w http.ResponseWriter) {
 				idStr := strconv.Itoa(int(cp.ID))
 				playerRow := []string{
 					team.TeamName, idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
-					csvModel.Archetype, csvModel.Year, strconv.Itoa(cp.Age), strconv.Itoa(cp.Stars),
-					cp.HighSchool, cp.City, cp.State, strconv.Itoa(cp.Height),
-					strconv.Itoa(cp.Weight), strconv.Itoa(cp.Overall), strconv.Itoa(cp.Speed),
-					strconv.Itoa(cp.FootballIQ), strconv.Itoa(cp.Agility), strconv.Itoa(cp.Carrying),
-					strconv.Itoa(cp.Catching), strconv.Itoa(cp.RouteRunning), strconv.Itoa(cp.ZoneCoverage), strconv.Itoa(cp.ManCoverage),
-					strconv.Itoa(cp.Strength), strconv.Itoa(cp.Tackle), strconv.Itoa(cp.PassBlock), strconv.Itoa(cp.RunBlock),
-					strconv.Itoa(cp.PassRush), strconv.Itoa(cp.RunDefense), strconv.Itoa(cp.ThrowPower), strconv.Itoa(cp.ThrowAccuracy),
-					strconv.Itoa(cp.KickPower), strconv.Itoa(cp.KickAccuracy), strconv.Itoa(cp.PuntPower), strconv.Itoa(cp.PuntAccuracy),
-					strconv.Itoa(cp.Stamina), strconv.Itoa(cp.Injury), csvModel.PotentialGrade, csvModel.RedshirtStatus,
+					csvModel.Archetype, csvModel.Year, strconv.Itoa(int(cp.Age)), strconv.Itoa(int(cp.Stars)),
+					cp.HighSchool, cp.City, cp.State, strconv.Itoa(int(cp.Height)),
+					strconv.Itoa(int(cp.Weight)), strconv.Itoa(int(cp.Overall)), strconv.Itoa(int(cp.Speed)),
+					strconv.Itoa(int(cp.FootballIQ)), strconv.Itoa(int(cp.Agility)), strconv.Itoa(int(cp.Carrying)),
+					strconv.Itoa(int(cp.Catching)), strconv.Itoa(int(cp.RouteRunning)), strconv.Itoa(int(cp.ZoneCoverage)), strconv.Itoa(int(cp.ManCoverage)),
+					strconv.Itoa(int(cp.Strength)), strconv.Itoa(int(cp.Tackle)), strconv.Itoa(int(cp.PassBlock)), strconv.Itoa(int(cp.RunBlock)),
+					strconv.Itoa(int(cp.PassRush)), strconv.Itoa(int(cp.RunDefense)), strconv.Itoa(int(cp.ThrowPower)), strconv.Itoa(int(cp.ThrowAccuracy)),
+					strconv.Itoa(int(cp.KickPower)), strconv.Itoa(int(cp.KickAccuracy)), strconv.Itoa(int(cp.PuntPower)), strconv.Itoa(int(cp.PuntAccuracy)),
+					strconv.Itoa(int(cp.Stamina)), strconv.Itoa(int(cp.Injury)), csvModel.PotentialGrade, csvModel.RedshirtStatus,
 					boomBustStatus, strconv.Itoa(tier), "Collegiate", "",
 				}
 				csvRows = append(csvRows, playerRow)
@@ -297,15 +297,15 @@ func NFLProgressionExport(w http.ResponseWriter) {
 			idStr := strconv.Itoa(int(player.ID))
 			playerRow := []string{
 				team.TeamName, idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
-				csvModel.Archetype, csvModel.Year, strconv.Itoa(player.Age), strconv.Itoa(int(player.PrimeAge)), strconv.Itoa(player.Stars),
-				player.HighSchool, "", player.State, strconv.Itoa(player.Height),
-				strconv.Itoa(player.Weight), strconv.Itoa(player.Overall), strconv.Itoa(player.Speed),
-				strconv.Itoa(player.FootballIQ), strconv.Itoa(player.Agility), strconv.Itoa(player.Carrying),
-				strconv.Itoa(player.Catching), strconv.Itoa(player.RouteRunning), strconv.Itoa(player.ZoneCoverage), strconv.Itoa(player.ManCoverage),
-				strconv.Itoa(player.Strength), strconv.Itoa(player.Tackle), strconv.Itoa(player.PassBlock), strconv.Itoa(player.RunBlock),
-				strconv.Itoa(player.PassRush), strconv.Itoa(player.RunDefense), strconv.Itoa(player.ThrowPower), strconv.Itoa(player.ThrowAccuracy),
-				strconv.Itoa(player.KickPower), strconv.Itoa(player.KickAccuracy), strconv.Itoa(player.PuntPower), strconv.Itoa(player.PuntAccuracy),
-				strconv.Itoa(player.Stamina), strconv.Itoa(player.Injury), csvModel.PotentialGrade, "",
+				csvModel.Archetype, csvModel.Year, strconv.Itoa(int(player.Age)), strconv.Itoa(int(player.PrimeAge)), strconv.Itoa(int(player.Stars)),
+				player.HighSchool, "", player.State, strconv.Itoa(int(player.Height)),
+				strconv.Itoa(int(player.Weight)), strconv.Itoa(int(player.Overall)), strconv.Itoa(int(player.Speed)),
+				strconv.Itoa(int(player.FootballIQ)), strconv.Itoa(int(player.Agility)), strconv.Itoa(int(player.Carrying)),
+				strconv.Itoa(int(player.Catching)), strconv.Itoa(int(player.RouteRunning)), strconv.Itoa(int(player.ZoneCoverage)), strconv.Itoa(int(player.ManCoverage)),
+				strconv.Itoa(int(player.Strength)), strconv.Itoa(int(player.Tackle)), strconv.Itoa(int(player.PassBlock)), strconv.Itoa(int(player.RunBlock)),
+				strconv.Itoa(int(player.PassRush)), strconv.Itoa(int(player.RunDefense)), strconv.Itoa(int(player.ThrowPower)), strconv.Itoa(int(player.ThrowAccuracy)),
+				strconv.Itoa(int(player.KickPower)), strconv.Itoa(int(player.KickAccuracy)), strconv.Itoa(int(player.PuntPower)), strconv.Itoa(int(player.PuntAccuracy)),
+				strconv.Itoa(int(player.Stamina)), strconv.Itoa(int(player.Injury)), csvModel.PotentialGrade, "",
 				retireStatus, player.College,
 			}
 			csvRows = append(csvRows, playerRow)
@@ -334,15 +334,15 @@ func NFLProgressionExport(w http.ResponseWriter) {
 		idStr := strconv.Itoa(int(player.ID))
 		playerRow := []string{
 			"FA", idStr, csvModel.FirstName, csvModel.LastName, csvModel.Position,
-			csvModel.Archetype, csvModel.Year, strconv.Itoa(player.Age), strconv.Itoa(int(player.PrimeAge)), strconv.Itoa(player.Stars),
-			player.HighSchool, "", player.State, strconv.Itoa(player.Height),
-			strconv.Itoa(player.Weight), strconv.Itoa(player.Overall), strconv.Itoa(player.Speed),
-			strconv.Itoa(player.FootballIQ), strconv.Itoa(player.Agility), strconv.Itoa(player.Carrying),
-			strconv.Itoa(player.Catching), strconv.Itoa(player.RouteRunning), strconv.Itoa(player.ZoneCoverage), strconv.Itoa(player.ManCoverage),
-			strconv.Itoa(player.Strength), strconv.Itoa(player.Tackle), strconv.Itoa(player.PassBlock), strconv.Itoa(player.RunBlock),
-			strconv.Itoa(player.PassRush), strconv.Itoa(player.RunDefense), strconv.Itoa(player.ThrowPower), strconv.Itoa(player.ThrowAccuracy),
-			strconv.Itoa(player.KickPower), strconv.Itoa(player.KickAccuracy), strconv.Itoa(player.PuntPower), strconv.Itoa(player.PuntAccuracy),
-			strconv.Itoa(player.Stamina), strconv.Itoa(player.Injury), csvModel.PotentialGrade, "",
+			csvModel.Archetype, csvModel.Year, strconv.Itoa(int(player.Age)), strconv.Itoa(int(player.PrimeAge)), strconv.Itoa(int(player.Stars)),
+			player.HighSchool, "", player.State, strconv.Itoa(int(player.Height)),
+			strconv.Itoa(int(player.Weight)), strconv.Itoa(int(player.Overall)), strconv.Itoa(int(player.Speed)),
+			strconv.Itoa(int(player.FootballIQ)), strconv.Itoa(int(player.Agility)), strconv.Itoa(int(player.Carrying)),
+			strconv.Itoa(int(player.Catching)), strconv.Itoa(int(player.RouteRunning)), strconv.Itoa(int(player.ZoneCoverage)), strconv.Itoa(int(player.ManCoverage)),
+			strconv.Itoa(int(player.Strength)), strconv.Itoa(int(player.Tackle)), strconv.Itoa(int(player.PassBlock)), strconv.Itoa(int(player.RunBlock)),
+			strconv.Itoa(int(player.PassRush)), strconv.Itoa(int(player.RunDefense)), strconv.Itoa(int(player.ThrowPower)), strconv.Itoa(int(player.ThrowAccuracy)),
+			strconv.Itoa(int(player.KickPower)), strconv.Itoa(int(player.KickAccuracy)), strconv.Itoa(int(player.PuntPower)), strconv.Itoa(int(player.PuntAccuracy)),
+			strconv.Itoa(int(player.Stamina)), strconv.Itoa(int(player.Injury)), csvModel.PotentialGrade, "",
 			retireStatus, player.College,
 		}
 		csvRows = append(csvRows, playerRow)

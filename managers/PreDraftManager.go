@@ -87,15 +87,15 @@ func RunEvents(draftee models.NFLDraftee, shouldHidePerformance bool, event mode
 }
 
 func RunUniversalEvents(draftee models.NFLDraftee, shouldHidePerformance bool, event models.EventResults) models.EventResults {
-	event.FourtyYardDash = Run40YardDash(draftee.Speed, event.IsCombine)
-	event.BenchPress = RunBenchPress(draftee.Strength, event.IsCombine, draftee.Position)
-	event.Shuttle = RunShuttle(draftee.Agility, event.IsCombine)
-	event.ThreeCone = Run3Cone(draftee.Agility, event.IsCombine)
-	event.VerticalJump = RunVertJump(draftee.Agility, draftee.Strength, draftee.Weight, event.IsCombine)
-	event.BroadJump = RunBroadJump(draftee.Agility, draftee.Strength, draftee.Weight, event.IsCombine)
+	event.FourtyYardDash = Run40YardDash(int(draftee.Speed), event.IsCombine)
+	event.BenchPress = RunBenchPress(int(draftee.Strength), event.IsCombine, draftee.Position)
+	event.Shuttle = RunShuttle(int(draftee.Agility), event.IsCombine)
+	event.ThreeCone = Run3Cone(int(draftee.Agility), event.IsCombine)
+	event.VerticalJump = RunVertJump(int(draftee.Agility), int(draftee.Strength), int(draftee.Weight), event.IsCombine)
+	event.BroadJump = RunBroadJump(int(draftee.Agility), int(draftee.Strength), int(draftee.Weight), event.IsCombine)
 
 	if event.IsCombine {
-		event.Wonderlic = RunWonderlic(draftee.FootballIQ)
+		event.Wonderlic = RunWonderlic(int(draftee.FootballIQ))
 	}
 
 	return event
@@ -124,91 +124,91 @@ func RunPositionEvents(draftee models.NFLDraftee, shouldHidePerformance bool, ev
 
 	// Must handle whether player's true attributes should be hidden
 	if strings.Contains(strings.ToLower(position), strings.ToLower("QB")) {
-		event.ThrowingDistance = RunQBDistance(draftee.ThrowPower, event.IsCombine)
-		event.ThrowingAccuracy = RunQBAccuracy(draftee.ThrowAccuracy, event.IsCombine)
+		event.ThrowingDistance = RunQBDistance(int(draftee.ThrowPower), event.IsCombine)
+		event.ThrowingAccuracy = RunQBAccuracy(int(draftee.ThrowAccuracy), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("RB")) {
-		event.InsideRun = RunInsideRun(draftee.Speed, draftee.Strength, event.IsCombine)
-		event.OutsideRun = RunOutsideRun(draftee.Speed, draftee.Agility, event.IsCombine)
-		event.Catching = RunCatching(draftee.Catching, event.IsCombine)
-		event.RouteRunning = RunRouteRunning(draftee.RouteRunning, event.IsCombine)
+		event.InsideRun = RunInsideRun(int(draftee.Speed), int(draftee.Strength), event.IsCombine)
+		event.OutsideRun = RunOutsideRun(int(draftee.Speed), int(draftee.Agility), event.IsCombine)
+		event.Catching = RunCatching(int(draftee.Catching), event.IsCombine)
+		event.RouteRunning = RunRouteRunning(int(draftee.RouteRunning), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("WR")) {
-		event.Catching = RunCatching(draftee.Catching, event.IsCombine)
-		event.RouteRunning = RunRouteRunning(draftee.RouteRunning, event.IsCombine)
+		event.Catching = RunCatching(int(draftee.Catching), event.IsCombine)
+		event.RouteRunning = RunRouteRunning(int(draftee.RouteRunning), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("TE")) {
-		event.Catching = RunCatching(draftee.Catching, event.IsCombine)
-		event.RouteRunning = RunRouteRunning(draftee.RouteRunning, event.IsCombine)
-		event.RunBlocking = RunRunBlocking(draftee.RunBlock, event.IsCombine, position)
+		event.Catching = RunCatching(int(draftee.Catching), event.IsCombine)
+		event.RouteRunning = RunRouteRunning(int(draftee.RouteRunning), event.IsCombine)
+		event.RunBlocking = RunRunBlocking(int(draftee.RunBlock), event.IsCombine, position)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("FB")) {
-		event.InsideRun = RunInsideRun(draftee.Speed, draftee.Strength, event.IsCombine)
-		event.OutsideRun = RunOutsideRun(draftee.Speed, draftee.Agility, event.IsCombine)
-		event.Catching = RunCatching(draftee.Catching, event.IsCombine)
-		event.RouteRunning = RunRouteRunning(draftee.RouteRunning, event.IsCombine)
-		event.RunBlocking = RunRunBlocking(draftee.RunBlock, event.IsCombine, position)
+		event.InsideRun = RunInsideRun(int(draftee.Speed), int(draftee.Strength), event.IsCombine)
+		event.OutsideRun = RunOutsideRun(int(draftee.Speed), int(draftee.Agility), event.IsCombine)
+		event.Catching = RunCatching(int(draftee.Catching), event.IsCombine)
+		event.RouteRunning = RunRouteRunning(int(draftee.RouteRunning), event.IsCombine)
+		event.RunBlocking = RunRunBlocking(int(draftee.RunBlock), event.IsCombine, position)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("TE")) {
-		event.Catching = RunCatching(draftee.Catching, event.IsCombine)
-		event.RouteRunning = RunRouteRunning(draftee.RouteRunning, event.IsCombine)
-		event.RunBlocking = RunRunBlocking(draftee.RunBlock, event.IsCombine, position)
+		event.Catching = RunCatching(int(draftee.Catching), event.IsCombine)
+		event.RouteRunning = RunRouteRunning(int(draftee.RouteRunning), event.IsCombine)
+		event.RunBlocking = RunRunBlocking(int(draftee.RunBlock), event.IsCombine, position)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("OT")) {
-		event.RunBlocking = RunRunBlocking(draftee.RunBlock, event.IsCombine, position)
-		event.PassBlocking = RunPassBlocking(draftee.PassBlock, event.IsCombine, position)
+		event.RunBlocking = RunRunBlocking(int(draftee.RunBlock), event.IsCombine, position)
+		event.PassBlocking = RunPassBlocking(int(draftee.PassBlock), event.IsCombine, position)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("OG")) {
-		event.RunBlocking = RunRunBlocking(draftee.RunBlock, event.IsCombine, position)
-		event.PassBlocking = RunPassBlocking(draftee.PassBlock, event.IsCombine, position)
+		event.RunBlocking = RunRunBlocking(int(draftee.RunBlock), event.IsCombine, position)
+		event.PassBlocking = RunPassBlocking(int(draftee.PassBlock), event.IsCombine, position)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("C")) && !strings.Contains(strings.ToLower(position), strings.ToLower("CB")) { // Special case so we don't get CBs in here.
-		event.RunBlocking = RunRunBlocking(draftee.RunBlock, event.IsCombine, position)
-		event.PassBlocking = RunPassBlocking(draftee.PassBlock, event.IsCombine, position)
+		event.RunBlocking = RunRunBlocking(int(draftee.RunBlock), event.IsCombine, position)
+		event.PassBlocking = RunPassBlocking(int(draftee.PassBlock), event.IsCombine, position)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("DT")) {
-		event.RunStop = RunRunStop(draftee.RunDefense, event.IsCombine)
-		event.PassRush = RunPassRush(draftee.PassRush, event.IsCombine)
+		event.RunStop = RunRunStop(int(draftee.RunDefense), event.IsCombine)
+		event.PassRush = RunPassRush(int(draftee.PassRush), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("DE")) {
-		event.RunStop = RunRunStop(draftee.RunDefense, event.IsCombine)
-		event.PassRush = RunPassRush(draftee.PassRush, event.IsCombine)
+		event.RunStop = RunRunStop(int(draftee.RunDefense), event.IsCombine)
+		event.PassRush = RunPassRush(int(draftee.PassRush), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("OLB")) && strings.Contains(strings.ToLower(archetype), strings.ToLower("Pass Rush")) {
-		event.RunStop = RunRunStop(draftee.RunDefense, event.IsCombine)
-		event.PassRush = RunPassRush(draftee.PassRush, event.IsCombine)
+		event.RunStop = RunRunStop(int(draftee.RunDefense), event.IsCombine)
+		event.PassRush = RunPassRush(int(draftee.PassRush), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("OLB")) && !strings.Contains(strings.ToLower(archetype), strings.ToLower("Pass Rush")) {
-		event.RunStop = RunRunStop(draftee.RunDefense, event.IsCombine)
-		event.LBCoverage = RunLBCoverage(draftee.ManCoverage, draftee.ZoneCoverage, event.IsCombine)
+		event.RunStop = RunRunStop(int(draftee.RunDefense), event.IsCombine)
+		event.LBCoverage = RunLBCoverage(int(draftee.ManCoverage), int(draftee.ZoneCoverage), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("ILB")) {
-		event.RunStop = RunRunStop(draftee.RunDefense, event.IsCombine)
-		event.LBCoverage = RunLBCoverage(draftee.ManCoverage, draftee.ZoneCoverage, event.IsCombine)
+		event.RunStop = RunRunStop(int(draftee.RunDefense), event.IsCombine)
+		event.LBCoverage = RunLBCoverage(int(draftee.ManCoverage), int(draftee.ZoneCoverage), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("CB")) {
-		event.ManCoverage = RunManCoverage(draftee.ManCoverage, event.IsCombine)
-		event.ZoneCoverage = RunZoneCoverage(draftee.ZoneCoverage, event.IsCombine)
+		event.ManCoverage = RunManCoverage(int(draftee.ManCoverage), event.IsCombine)
+		event.ZoneCoverage = RunZoneCoverage(int(draftee.ZoneCoverage), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("FS")) {
-		event.ManCoverage = RunManCoverage(draftee.ManCoverage, event.IsCombine)
-		event.ZoneCoverage = RunZoneCoverage(draftee.ZoneCoverage, event.IsCombine)
+		event.ManCoverage = RunManCoverage(int(draftee.ManCoverage), event.IsCombine)
+		event.ZoneCoverage = RunZoneCoverage(int(draftee.ZoneCoverage), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("SS")) {
-		event.ManCoverage = RunManCoverage(draftee.ManCoverage, event.IsCombine)
-		event.ZoneCoverage = RunZoneCoverage(draftee.ZoneCoverage, event.IsCombine)
+		event.ManCoverage = RunManCoverage(int(draftee.ManCoverage), event.IsCombine)
+		event.ZoneCoverage = RunZoneCoverage(int(draftee.ZoneCoverage), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("K")) {
-		event.Kickoff = RunKickoffDrill(draftee.KickPower, draftee.PuntPower, event.IsCombine)
-		event.Fieldgoal = RunFieldGoalDrill(draftee.KickPower, draftee.KickAccuracy, event.IsCombine)
-		event.PuntDistance = RunPuntDistance(draftee.PuntPower, event.IsCombine)
-		event.CoffinPunt = RunCoffinPunt(draftee.PuntAccuracy, event.IsCombine)
+		event.Kickoff = RunKickoffDrill(int(draftee.KickPower), int(draftee.PuntPower), event.IsCombine)
+		event.Fieldgoal = RunFieldGoalDrill(int(draftee.KickPower), int(draftee.KickAccuracy), event.IsCombine)
+		event.PuntDistance = RunPuntDistance(int(draftee.PuntPower), event.IsCombine)
+		event.CoffinPunt = RunCoffinPunt(int(draftee.PuntAccuracy), event.IsCombine)
 	}
 	if strings.Contains(strings.ToLower(position), strings.ToLower("P")) {
-		event.Kickoff = RunKickoffDrill(draftee.KickPower, draftee.PuntPower, event.IsCombine)
-		event.Fieldgoal = RunFieldGoalDrill(draftee.KickPower, draftee.KickAccuracy, event.IsCombine)
-		event.PuntDistance = RunPuntDistance(draftee.PuntPower, event.IsCombine)
-		event.CoffinPunt = RunCoffinPunt(draftee.PuntAccuracy, event.IsCombine)
+		event.Kickoff = RunKickoffDrill(int(draftee.KickPower), int(draftee.PuntPower), event.IsCombine)
+		event.Fieldgoal = RunFieldGoalDrill(int(draftee.KickPower), int(draftee.KickAccuracy), event.IsCombine)
+		event.PuntDistance = RunPuntDistance(int(draftee.PuntPower), event.IsCombine)
+		event.CoffinPunt = RunCoffinPunt(int(draftee.PuntAccuracy), event.IsCombine)
 	}
 
 	return event
@@ -221,26 +221,26 @@ func GetDummyDraftee(orginalDraftee models.NFLDraftee) models.NFLDraftee {
 	attributeMeans := config.AttributeMeans()
 
 	tempDraftee := orginalDraftee
-	tempDraftee.Speed = int(GetNewAttributeRating(tempDraftee.SpeedGrade, attributeMeans, "Speed", (tempDraftee.Position)))
-	tempDraftee.Agility = int(GetNewAttributeRating(tempDraftee.AgilityGrade, attributeMeans, "Agility", (tempDraftee.Position)))
-	tempDraftee.Strength = int(GetNewAttributeRating(tempDraftee.StrengthGrade, attributeMeans, "Strength", (tempDraftee.Position)))
-	tempDraftee.ThrowPower = int(GetNewAttributeRating(tempDraftee.ThrowPowerGrade, attributeMeans, "ThrowPower", (tempDraftee.Position)))
-	tempDraftee.ThrowAccuracy = int(GetNewAttributeRating(tempDraftee.ThrowAccuracyGrade, attributeMeans, "ThrowAccuracy", (tempDraftee.Position)))
-	tempDraftee.Catching = int(GetNewAttributeRating(tempDraftee.CarryingGrade, attributeMeans, "Catching", (tempDraftee.Position)))
-	tempDraftee.RouteRunning = int(GetNewAttributeRating(tempDraftee.RouteRunningGrade, attributeMeans, "RouteRunning", (tempDraftee.Position)))
-	tempDraftee.RunBlock = int(GetNewAttributeRating(tempDraftee.RunBlockGrade, attributeMeans, "RunBlock", (tempDraftee.Position)))
-	tempDraftee.PassBlock = int(GetNewAttributeRating(tempDraftee.PassBlockGrade, attributeMeans, "PassBlock", (tempDraftee.Position)))
-	tempDraftee.RunDefense = int(GetNewAttributeRating(tempDraftee.RunDefenseGrade, attributeMeans, "RunDefense", (tempDraftee.Position)))
-	tempDraftee.PassRush = int(GetNewAttributeRating(tempDraftee.PassRushGrade, attributeMeans, "PassRush", (tempDraftee.Position)))
-	tempDraftee.ManCoverage = int(GetNewAttributeRating(tempDraftee.ManCoverageGrade, attributeMeans, "ManCoverage", (tempDraftee.Position)))
-	tempDraftee.ZoneCoverage = int(GetNewAttributeRating(tempDraftee.ZoneCoverageGrade, attributeMeans, "ZoneCoverage", (tempDraftee.Position)))
-	tempDraftee.KickPower = int(GetNewAttributeRating(tempDraftee.KickPowerGrade, attributeMeans, "KickPower", (tempDraftee.Position)))
-	tempDraftee.KickAccuracy = int(GetNewAttributeRating(tempDraftee.KickAccuracyGrade, attributeMeans, "KickAccuracy", (tempDraftee.Position)))
-	tempDraftee.PuntPower = int(GetNewAttributeRating(tempDraftee.PuntPowerGrade, attributeMeans, "PuntPower", (tempDraftee.Position)))
-	tempDraftee.PuntAccuracy = int(GetNewAttributeRating(tempDraftee.PuntAccuracyGrade, attributeMeans, "PuntAccuracy", (tempDraftee.Position)))
-	tempDraftee.FootballIQ = int(GetNewAttributeRating(tempDraftee.FootballIQGrade, attributeMeans, "FootballIQ", (tempDraftee.Position)))
-	tempDraftee.Tackle = int(GetNewAttributeRating(tempDraftee.FootballIQGrade, attributeMeans, "Tackle", (tempDraftee.Position)))
-	tempDraftee.Carrying = int(GetNewAttributeRating(tempDraftee.FootballIQGrade, attributeMeans, "Carrying", (tempDraftee.Position)))
+	tempDraftee.Speed = int8(GetNewAttributeRating(tempDraftee.SpeedGrade, attributeMeans, "Speed", (tempDraftee.Position)))
+	tempDraftee.Agility = int8(GetNewAttributeRating(tempDraftee.AgilityGrade, attributeMeans, "Agility", (tempDraftee.Position)))
+	tempDraftee.Strength = int8(GetNewAttributeRating(tempDraftee.StrengthGrade, attributeMeans, "Strength", (tempDraftee.Position)))
+	tempDraftee.ThrowPower = int8(GetNewAttributeRating(tempDraftee.ThrowPowerGrade, attributeMeans, "ThrowPower", (tempDraftee.Position)))
+	tempDraftee.ThrowAccuracy = int8(GetNewAttributeRating(tempDraftee.ThrowAccuracyGrade, attributeMeans, "ThrowAccuracy", (tempDraftee.Position)))
+	tempDraftee.Catching = int8(GetNewAttributeRating(tempDraftee.CarryingGrade, attributeMeans, "Catching", (tempDraftee.Position)))
+	tempDraftee.RouteRunning = int8(GetNewAttributeRating(tempDraftee.RouteRunningGrade, attributeMeans, "RouteRunning", (tempDraftee.Position)))
+	tempDraftee.RunBlock = int8(GetNewAttributeRating(tempDraftee.RunBlockGrade, attributeMeans, "RunBlock", (tempDraftee.Position)))
+	tempDraftee.PassBlock = int8(GetNewAttributeRating(tempDraftee.PassBlockGrade, attributeMeans, "PassBlock", (tempDraftee.Position)))
+	tempDraftee.RunDefense = int8(GetNewAttributeRating(tempDraftee.RunDefenseGrade, attributeMeans, "RunDefense", (tempDraftee.Position)))
+	tempDraftee.PassRush = int8(GetNewAttributeRating(tempDraftee.PassRushGrade, attributeMeans, "PassRush", (tempDraftee.Position)))
+	tempDraftee.ManCoverage = int8(GetNewAttributeRating(tempDraftee.ManCoverageGrade, attributeMeans, "ManCoverage", (tempDraftee.Position)))
+	tempDraftee.ZoneCoverage = int8(GetNewAttributeRating(tempDraftee.ZoneCoverageGrade, attributeMeans, "ZoneCoverage", (tempDraftee.Position)))
+	tempDraftee.KickPower = int8(GetNewAttributeRating(tempDraftee.KickPowerGrade, attributeMeans, "KickPower", (tempDraftee.Position)))
+	tempDraftee.KickAccuracy = int8(GetNewAttributeRating(tempDraftee.KickAccuracyGrade, attributeMeans, "KickAccuracy", (tempDraftee.Position)))
+	tempDraftee.PuntPower = int8(GetNewAttributeRating(tempDraftee.PuntPowerGrade, attributeMeans, "PuntPower", (tempDraftee.Position)))
+	tempDraftee.PuntAccuracy = int8(GetNewAttributeRating(tempDraftee.PuntAccuracyGrade, attributeMeans, "PuntAccuracy", (tempDraftee.Position)))
+	tempDraftee.FootballIQ = int8(GetNewAttributeRating(tempDraftee.FootballIQGrade, attributeMeans, "FootballIQ", (tempDraftee.Position)))
+	tempDraftee.Tackle = int8(GetNewAttributeRating(tempDraftee.FootballIQGrade, attributeMeans, "Tackle", (tempDraftee.Position)))
+	tempDraftee.Carrying = int8(GetNewAttributeRating(tempDraftee.FootballIQGrade, attributeMeans, "Carrying", (tempDraftee.Position)))
 
 	return tempDraftee
 }

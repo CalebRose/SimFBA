@@ -321,10 +321,10 @@ func AcceptTradeProposal(proposalID string) {
 		if options.NFLTeamID == proposal.NFLTeamID {
 			if options.NFLPlayerID > 0 {
 				playerRecord := GetNFLPlayerRecord(strconv.Itoa(int(options.NFLPlayerID)))
-				ovrGrade := util.GetNFLOverallGrade(playerRecord.Overall)
+				ovrGrade := util.GetNFLOverallGrade(int(playerRecord.Overall))
 				ovr := playerRecord.Overall
 				if playerRecord.Experience > 1 {
-					newsLogMessage += playerRecord.Position + " " + strconv.Itoa(ovr) + " " + playerRecord.FirstName + " " + playerRecord.LastName + " to " + proposal.RecepientTeam + "\n"
+					newsLogMessage += playerRecord.Position + " " + strconv.Itoa(int(ovr)) + " " + playerRecord.FirstName + " " + playerRecord.LastName + " to " + proposal.RecepientTeam + "\n"
 				} else {
 					newsLogMessage += playerRecord.Position + " " + ovrGrade + " " + playerRecord.FirstName + " " + playerRecord.LastName + " to " + proposal.RecepientTeam + "\n"
 				}

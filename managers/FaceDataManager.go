@@ -143,7 +143,7 @@ func MigrateFaceDataToRecruits() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(r.ID, r.Weight, skinColor, "", faceDataBlob)
+		face := getFace(r.ID, int(r.Weight), skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -165,7 +165,7 @@ func MigrateFaceDataToCollegePlayers() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(p.ID, p.Weight, skinColor, "", faceDataBlob)
+		face := getFace(p.ID, int(p.Weight), skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -187,7 +187,7 @@ func MigrateFaceDataToHistoricCollegePlayers() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(p.ID, p.Weight, skinColor, "", faceDataBlob)
+		face := getFace(p.ID, int(p.Weight), skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -212,7 +212,7 @@ func MigrateFaceDataToNFLPlayers() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(p.ID, p.Weight, skinColor, "", faceDataBlob)
+		face := getFace(p.ID, int(p.Weight), skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}
@@ -234,7 +234,7 @@ func MigrateFaceDataToRetiredPlayers() {
 		skinColor := getSkinColor(lastName, lNameMap)
 		// Store data
 
-		face := getFace(p.ID, p.Weight, skinColor, "", faceDataBlob)
+		face := getFace(p.ID, int(p.Weight), skinColor, "", faceDataBlob)
 
 		faceDataList = append(faceDataList, face)
 	}

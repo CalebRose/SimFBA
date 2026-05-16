@@ -218,7 +218,7 @@ func (r *RecruitingTeamProfile) ResetStarCount() {
 	r.FiveStars = 0
 }
 
-func (r *RecruitingTeamProfile) AddStarPlayer(stars int) {
+func (r *RecruitingTeamProfile) AddStarPlayer(stars int8) {
 	switch stars {
 	case 3:
 		r.ThreeStars += 1

@@ -1,59 +1,59 @@
 package structs
 
 type BasePlayerStats struct {
-	PassingYards         int
-	PassAttempts         int
-	PassCompletions      int
-	PassingTDs           int
-	Interceptions        int
-	LongestPass          int
-	Sacks                int
-	RushAttempts         int
-	RushingYards         int
-	RushingTDs           int
-	Fumbles              int
-	LongestRush          int
-	Targets              int
-	Catches              int
-	ReceivingYards       int
-	ReceivingTDs         int
-	LongestReception     int
+	PassingYards         int16
+	PassAttempts         int16
+	PassCompletions      int16
+	PassingTDs           int16
+	Interceptions        int16
+	LongestPass          int16
+	Sacks                int16
+	RushAttempts         int16
+	RushingYards         int16
+	RushingTDs           int16
+	Fumbles              int16
+	LongestRush          int16
+	Targets              int16
+	Catches              int16
+	ReceivingYards       int16
+	ReceivingTDs         int16
+	LongestReception     int16
 	SoloTackles          float64
 	AssistedTackles      float64
 	TacklesForLoss       float64
 	SacksMade            float64
-	ForcedFumbles        int
-	RecoveredFumbles     int
-	PassDeflections      int
-	InterceptionsCaught  int
-	Safeties             int
-	DefensiveTDs         int
-	FGMade               int
-	FGAttempts           int
-	LongestFG            int
-	ExtraPointsMade      int
-	ExtraPointsAttempted int
-	KickoffTouchbacks    int
-	Punts                int
-	GrossPuntDistance    int
-	NetPuntDistance      int
-	PuntTouchbacks       int
-	PuntsInside20        int
-	KickReturns          int
-	KickReturnTDs        int
-	KickReturnYards      int
-	PuntReturns          int
-	PuntReturnTDs        int
-	PuntReturnYards      int
+	ForcedFumbles        int16
+	RecoveredFumbles     int16
+	PassDeflections      int16
+	InterceptionsCaught  int16
+	Safeties             int16
+	DefensiveTDs         int16
+	FGMade               int16
+	FGAttempts           int16
+	LongestFG            int16
+	ExtraPointsMade      int16
+	ExtraPointsAttempted int16
+	KickoffTouchbacks    int16
+	Punts                int16
+	GrossPuntDistance    int16
+	NetPuntDistance      int16
+	PuntTouchbacks       int16
+	PuntsInside20        int16
+	KickReturns          int16
+	KickReturnTDs        int16
+	KickReturnYards      int16
+	PuntReturns          int16
+	PuntReturnTDs        int16
+	PuntReturnYards      int16
 	STSoloTackles        float64
 	STAssistedTackles    float64
-	PuntsBlocked         int
-	FGBlocked            int
-	Snaps                int
-	Pancakes             int
-	SacksAllowed         int
-	PlayedGame           int
-	StartedGame          int
+	PuntsBlocked         int16
+	FGBlocked            int16
+	Snaps                int16
+	Pancakes             int16
+	SacksAllowed         int16
+	PlayedGame           int16
+	StartedGame          int16
 	WasInjured           bool
 	WeeksOfRecovery      uint
 	InjuryType           string

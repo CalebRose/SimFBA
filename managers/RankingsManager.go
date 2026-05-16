@@ -31,7 +31,7 @@ func AssignAllRecruitRanks() {
 		// Rivals Ranking
 		var rivalsRank float64 = 0
 		rivalsBonus := rivalsMod
-		rivalsRank = GetRivalsRanking(croot.Stars, rivalsBonus)
+		rivalsRank = GetRivalsRanking(int(croot.Stars), rivalsBonus)
 
 		var r float64 = croot.TopRankModifier
 
@@ -76,7 +76,7 @@ func GetESPNRanking(r structs.Recruit) float64 {
 	// ESPN Ranking = Star Rank + Archetype Modifier + weight difference + height difference
 	// + potential val, and then round.
 
-	starRank := GetESPNStarRank(r.Stars)
+	starRank := GetESPNStarRank(int(r.Stars))
 	archMod := GetArchetypeModifier(r.Archetype)
 	potentialMod := GetESPNPotentialModifier(r.PotentialGrade)
 
@@ -192,7 +192,7 @@ func GetPredictiveOverall(r structs.Recruit) int {
 		potentialProg = 4
 	}
 
-	return currentOverall + (potentialProg * 3)
+	return int(currentOverall) + (potentialProg * 3)
 }
 
 func GetRivalsStarModifier(stars int) float64 {

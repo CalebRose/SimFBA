@@ -777,63 +777,63 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in *jlexer.Lexer, ou
 		case "PreviousTeam":
 			out.PreviousTeam = string(in.String())
 		case "Height":
-			out.Height = int(in.Int())
+			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int(in.Int())
+			out.Weight = int8(in.Int8())
 		case "Age":
-			out.Age = int(in.Int())
+			out.Age = int8(in.Int8())
 		case "Stars":
-			out.Stars = int(in.Int())
+			out.Stars = int8(in.Int8())
 		case "Overall":
-			out.Overall = int(in.Int())
+			out.Overall = int8(in.Int8())
 		case "Stamina":
-			out.Stamina = int(in.Int())
+			out.Stamina = int8(in.Int8())
 		case "Injury":
-			out.Injury = int(in.Int())
+			out.Injury = int8(in.Int8())
 		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
+			out.FootballIQ = int8(in.Int8())
 		case "Speed":
-			out.Speed = int(in.Int())
+			out.Speed = int8(in.Int8())
 		case "Carrying":
-			out.Carrying = int(in.Int())
+			out.Carrying = int8(in.Int8())
 		case "Agility":
-			out.Agility = int(in.Int())
+			out.Agility = int8(in.Int8())
 		case "Catching":
-			out.Catching = int(in.Int())
+			out.Catching = int8(in.Int8())
 		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
+			out.RouteRunning = int8(in.Int8())
 		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
+			out.ZoneCoverage = int8(in.Int8())
 		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
+			out.ManCoverage = int8(in.Int8())
 		case "Strength":
-			out.Strength = int(in.Int())
+			out.Strength = int8(in.Int8())
 		case "Tackle":
-			out.Tackle = int(in.Int())
+			out.Tackle = int8(in.Int8())
 		case "PassBlock":
-			out.PassBlock = int(in.Int())
+			out.PassBlock = int8(in.Int8())
 		case "RunBlock":
-			out.RunBlock = int(in.Int())
+			out.RunBlock = int8(in.Int8())
 		case "PassRush":
-			out.PassRush = int(in.Int())
+			out.PassRush = int8(in.Int8())
 		case "RunDefense":
-			out.RunDefense = int(in.Int())
+			out.RunDefense = int8(in.Int8())
 		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
+			out.ThrowPower = int8(in.Int8())
 		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
+			out.ThrowAccuracy = int8(in.Int8())
 		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
+			out.KickAccuracy = int8(in.Int8())
 		case "KickPower":
-			out.KickPower = int(in.Int())
+			out.KickPower = int8(in.Int8())
 		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
+			out.PuntAccuracy = int8(in.Int8())
 		case "PuntPower":
-			out.PuntPower = int(in.Int())
+			out.PuntPower = int8(in.Int8())
 		case "Progression":
-			out.Progression = int(in.Int())
+			out.Progression = int8(in.Int8())
 		case "Discipline":
-			out.Discipline = int(in.Int())
+			out.Discipline = int8(in.Int8())
 		case "PotentialGrade":
 			out.PotentialGrade = string(in.String())
 		case "FreeAgency":
@@ -1067,147 +1067,147 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out *jwriter.Writer,
 	{
 		const prefix string = ",\"Height\":"
 		out.RawString(prefix)
-		out.Int(int(in.Height))
+		out.Int8(int8(in.Height))
 	}
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int(int(in.Weight))
+		out.Int8(int8(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
 		out.RawString(prefix)
-		out.Int(int(in.Age))
+		out.Int8(int8(in.Age))
 	}
 	{
 		const prefix string = ",\"Stars\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stars))
+		out.Int8(int8(in.Stars))
 	}
 	{
 		const prefix string = ",\"Overall\":"
 		out.RawString(prefix)
-		out.Int(int(in.Overall))
+		out.Int8(int8(in.Overall))
 	}
 	{
 		const prefix string = ",\"Stamina\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stamina))
+		out.Int8(int8(in.Stamina))
 	}
 	{
 		const prefix string = ",\"Injury\":"
 		out.RawString(prefix)
-		out.Int(int(in.Injury))
+		out.Int8(int8(in.Injury))
 	}
 	{
 		const prefix string = ",\"FootballIQ\":"
 		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
+		out.Int8(int8(in.FootballIQ))
 	}
 	{
 		const prefix string = ",\"Speed\":"
 		out.RawString(prefix)
-		out.Int(int(in.Speed))
+		out.Int8(int8(in.Speed))
 	}
 	{
 		const prefix string = ",\"Carrying\":"
 		out.RawString(prefix)
-		out.Int(int(in.Carrying))
+		out.Int8(int8(in.Carrying))
 	}
 	{
 		const prefix string = ",\"Agility\":"
 		out.RawString(prefix)
-		out.Int(int(in.Agility))
+		out.Int8(int8(in.Agility))
 	}
 	{
 		const prefix string = ",\"Catching\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catching))
+		out.Int8(int8(in.Catching))
 	}
 	{
 		const prefix string = ",\"RouteRunning\":"
 		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
+		out.Int8(int8(in.RouteRunning))
 	}
 	{
 		const prefix string = ",\"ZoneCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
+		out.Int8(int8(in.ZoneCoverage))
 	}
 	{
 		const prefix string = ",\"ManCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
+		out.Int8(int8(in.ManCoverage))
 	}
 	{
 		const prefix string = ",\"Strength\":"
 		out.RawString(prefix)
-		out.Int(int(in.Strength))
+		out.Int8(int8(in.Strength))
 	}
 	{
 		const prefix string = ",\"Tackle\":"
 		out.RawString(prefix)
-		out.Int(int(in.Tackle))
+		out.Int8(int8(in.Tackle))
 	}
 	{
 		const prefix string = ",\"PassBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
+		out.Int8(int8(in.PassBlock))
 	}
 	{
 		const prefix string = ",\"RunBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
+		out.Int8(int8(in.RunBlock))
 	}
 	{
 		const prefix string = ",\"PassRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassRush))
+		out.Int8(int8(in.PassRush))
 	}
 	{
 		const prefix string = ",\"RunDefense\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
+		out.Int8(int8(in.RunDefense))
 	}
 	{
 		const prefix string = ",\"ThrowPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
+		out.Int8(int8(in.ThrowPower))
 	}
 	{
 		const prefix string = ",\"ThrowAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
+		out.Int8(int8(in.ThrowAccuracy))
 	}
 	{
 		const prefix string = ",\"KickAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
+		out.Int8(int8(in.KickAccuracy))
 	}
 	{
 		const prefix string = ",\"KickPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickPower))
+		out.Int8(int8(in.KickPower))
 	}
 	{
 		const prefix string = ",\"PuntAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
+		out.Int8(int8(in.PuntAccuracy))
 	}
 	{
 		const prefix string = ",\"PuntPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
+		out.Int8(int8(in.PuntPower))
 	}
 	{
 		const prefix string = ",\"Progression\":"
 		out.RawString(prefix)
-		out.Int(int(in.Progression))
+		out.Int8(int8(in.Progression))
 	}
 	{
 		const prefix string = ",\"Discipline\":"
 		out.RawString(prefix)
-		out.Int(int(in.Discipline))
+		out.Int8(int8(in.Discipline))
 	}
 	{
 		const prefix string = ",\"PotentialGrade\":"
@@ -1439,39 +1439,39 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs5(in *jlexer.Lexer, ou
 		case "IsRedshirt":
 			out.IsRedshirt = bool(in.Bool())
 		case "PassingYards":
-			out.PassingYards = int(in.Int())
+			out.PassingYards = int16(in.Int16())
 		case "PassAttempts":
-			out.PassAttempts = int(in.Int())
+			out.PassAttempts = int16(in.Int16())
 		case "PassCompletions":
-			out.PassCompletions = int(in.Int())
+			out.PassCompletions = int16(in.Int16())
 		case "PassingTDs":
-			out.PassingTDs = int(in.Int())
+			out.PassingTDs = int16(in.Int16())
 		case "Interceptions":
-			out.Interceptions = int(in.Int())
+			out.Interceptions = int16(in.Int16())
 		case "LongestPass":
-			out.LongestPass = int(in.Int())
+			out.LongestPass = int16(in.Int16())
 		case "Sacks":
-			out.Sacks = int(in.Int())
+			out.Sacks = int16(in.Int16())
 		case "RushAttempts":
-			out.RushAttempts = int(in.Int())
+			out.RushAttempts = int16(in.Int16())
 		case "RushingYards":
-			out.RushingYards = int(in.Int())
+			out.RushingYards = int16(in.Int16())
 		case "RushingTDs":
-			out.RushingTDs = int(in.Int())
+			out.RushingTDs = int16(in.Int16())
 		case "Fumbles":
-			out.Fumbles = int(in.Int())
+			out.Fumbles = int16(in.Int16())
 		case "LongestRush":
-			out.LongestRush = int(in.Int())
+			out.LongestRush = int16(in.Int16())
 		case "Targets":
-			out.Targets = int(in.Int())
+			out.Targets = int16(in.Int16())
 		case "Catches":
-			out.Catches = int(in.Int())
+			out.Catches = int16(in.Int16())
 		case "ReceivingYards":
-			out.ReceivingYards = int(in.Int())
+			out.ReceivingYards = int16(in.Int16())
 		case "ReceivingTDs":
-			out.ReceivingTDs = int(in.Int())
+			out.ReceivingTDs = int16(in.Int16())
 		case "LongestReception":
-			out.LongestReception = int(in.Int())
+			out.LongestReception = int16(in.Int16())
 		case "SoloTackles":
 			out.SoloTackles = float64(in.Float64())
 		case "AssistedTackles":
@@ -1481,69 +1481,69 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs5(in *jlexer.Lexer, ou
 		case "SacksMade":
 			out.SacksMade = float64(in.Float64())
 		case "ForcedFumbles":
-			out.ForcedFumbles = int(in.Int())
+			out.ForcedFumbles = int16(in.Int16())
 		case "RecoveredFumbles":
-			out.RecoveredFumbles = int(in.Int())
+			out.RecoveredFumbles = int16(in.Int16())
 		case "PassDeflections":
-			out.PassDeflections = int(in.Int())
+			out.PassDeflections = int16(in.Int16())
 		case "InterceptionsCaught":
-			out.InterceptionsCaught = int(in.Int())
+			out.InterceptionsCaught = int16(in.Int16())
 		case "Safeties":
-			out.Safeties = int(in.Int())
+			out.Safeties = int16(in.Int16())
 		case "DefensiveTDs":
-			out.DefensiveTDs = int(in.Int())
+			out.DefensiveTDs = int16(in.Int16())
 		case "FGMade":
-			out.FGMade = int(in.Int())
+			out.FGMade = int16(in.Int16())
 		case "FGAttempts":
-			out.FGAttempts = int(in.Int())
+			out.FGAttempts = int16(in.Int16())
 		case "LongestFG":
-			out.LongestFG = int(in.Int())
+			out.LongestFG = int16(in.Int16())
 		case "ExtraPointsMade":
-			out.ExtraPointsMade = int(in.Int())
+			out.ExtraPointsMade = int16(in.Int16())
 		case "ExtraPointsAttempted":
-			out.ExtraPointsAttempted = int(in.Int())
+			out.ExtraPointsAttempted = int16(in.Int16())
 		case "KickoffTouchbacks":
-			out.KickoffTouchbacks = int(in.Int())
+			out.KickoffTouchbacks = int16(in.Int16())
 		case "Punts":
-			out.Punts = int(in.Int())
+			out.Punts = int16(in.Int16())
 		case "GrossPuntDistance":
-			out.GrossPuntDistance = int(in.Int())
+			out.GrossPuntDistance = int16(in.Int16())
 		case "NetPuntDistance":
-			out.NetPuntDistance = int(in.Int())
+			out.NetPuntDistance = int16(in.Int16())
 		case "PuntTouchbacks":
-			out.PuntTouchbacks = int(in.Int())
+			out.PuntTouchbacks = int16(in.Int16())
 		case "PuntsInside20":
-			out.PuntsInside20 = int(in.Int())
+			out.PuntsInside20 = int16(in.Int16())
 		case "KickReturns":
-			out.KickReturns = int(in.Int())
+			out.KickReturns = int16(in.Int16())
 		case "KickReturnTDs":
-			out.KickReturnTDs = int(in.Int())
+			out.KickReturnTDs = int16(in.Int16())
 		case "KickReturnYards":
-			out.KickReturnYards = int(in.Int())
+			out.KickReturnYards = int16(in.Int16())
 		case "PuntReturns":
-			out.PuntReturns = int(in.Int())
+			out.PuntReturns = int16(in.Int16())
 		case "PuntReturnTDs":
-			out.PuntReturnTDs = int(in.Int())
+			out.PuntReturnTDs = int16(in.Int16())
 		case "PuntReturnYards":
-			out.PuntReturnYards = int(in.Int())
+			out.PuntReturnYards = int16(in.Int16())
 		case "STSoloTackles":
 			out.STSoloTackles = float64(in.Float64())
 		case "STAssistedTackles":
 			out.STAssistedTackles = float64(in.Float64())
 		case "PuntsBlocked":
-			out.PuntsBlocked = int(in.Int())
+			out.PuntsBlocked = int16(in.Int16())
 		case "FGBlocked":
-			out.FGBlocked = int(in.Int())
+			out.FGBlocked = int16(in.Int16())
 		case "Snaps":
-			out.Snaps = int(in.Int())
+			out.Snaps = int16(in.Int16())
 		case "Pancakes":
-			out.Pancakes = int(in.Int())
+			out.Pancakes = int16(in.Int16())
 		case "SacksAllowed":
-			out.SacksAllowed = int(in.Int())
+			out.SacksAllowed = int16(in.Int16())
 		case "PlayedGame":
-			out.PlayedGame = int(in.Int())
+			out.PlayedGame = int16(in.Int16())
 		case "StartedGame":
-			out.StartedGame = int(in.Int())
+			out.StartedGame = int16(in.Int16())
 		case "WasInjured":
 			out.WasInjured = bool(in.Bool())
 		case "WeeksOfRecovery":
@@ -1636,87 +1636,87 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs5(out *jwriter.Writer,
 	{
 		const prefix string = ",\"PassingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassingYards))
+		out.Int16(int16(in.PassingYards))
 	}
 	{
 		const prefix string = ",\"PassAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassAttempts))
+		out.Int16(int16(in.PassAttempts))
 	}
 	{
 		const prefix string = ",\"PassCompletions\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassCompletions))
+		out.Int16(int16(in.PassCompletions))
 	}
 	{
 		const prefix string = ",\"PassingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassingTDs))
+		out.Int16(int16(in.PassingTDs))
 	}
 	{
 		const prefix string = ",\"Interceptions\":"
 		out.RawString(prefix)
-		out.Int(int(in.Interceptions))
+		out.Int16(int16(in.Interceptions))
 	}
 	{
 		const prefix string = ",\"LongestPass\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestPass))
+		out.Int16(int16(in.LongestPass))
 	}
 	{
 		const prefix string = ",\"Sacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.Sacks))
+		out.Int16(int16(in.Sacks))
 	}
 	{
 		const prefix string = ",\"RushAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushAttempts))
+		out.Int16(int16(in.RushAttempts))
 	}
 	{
 		const prefix string = ",\"RushingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushingYards))
+		out.Int16(int16(in.RushingYards))
 	}
 	{
 		const prefix string = ",\"RushingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushingTDs))
+		out.Int16(int16(in.RushingTDs))
 	}
 	{
 		const prefix string = ",\"Fumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.Fumbles))
+		out.Int16(int16(in.Fumbles))
 	}
 	{
 		const prefix string = ",\"LongestRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestRush))
+		out.Int16(int16(in.LongestRush))
 	}
 	{
 		const prefix string = ",\"Targets\":"
 		out.RawString(prefix)
-		out.Int(int(in.Targets))
+		out.Int16(int16(in.Targets))
 	}
 	{
 		const prefix string = ",\"Catches\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catches))
+		out.Int16(int16(in.Catches))
 	}
 	{
 		const prefix string = ",\"ReceivingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.ReceivingYards))
+		out.Int16(int16(in.ReceivingYards))
 	}
 	{
 		const prefix string = ",\"ReceivingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.ReceivingTDs))
+		out.Int16(int16(in.ReceivingTDs))
 	}
 	{
 		const prefix string = ",\"LongestReception\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestReception))
+		out.Int16(int16(in.LongestReception))
 	}
 	{
 		const prefix string = ",\"SoloTackles\":"
@@ -1741,117 +1741,117 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs5(out *jwriter.Writer,
 	{
 		const prefix string = ",\"ForcedFumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.ForcedFumbles))
+		out.Int16(int16(in.ForcedFumbles))
 	}
 	{
 		const prefix string = ",\"RecoveredFumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.RecoveredFumbles))
+		out.Int16(int16(in.RecoveredFumbles))
 	}
 	{
 		const prefix string = ",\"PassDeflections\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassDeflections))
+		out.Int16(int16(in.PassDeflections))
 	}
 	{
 		const prefix string = ",\"InterceptionsCaught\":"
 		out.RawString(prefix)
-		out.Int(int(in.InterceptionsCaught))
+		out.Int16(int16(in.InterceptionsCaught))
 	}
 	{
 		const prefix string = ",\"Safeties\":"
 		out.RawString(prefix)
-		out.Int(int(in.Safeties))
+		out.Int16(int16(in.Safeties))
 	}
 	{
 		const prefix string = ",\"DefensiveTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.DefensiveTDs))
+		out.Int16(int16(in.DefensiveTDs))
 	}
 	{
 		const prefix string = ",\"FGMade\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGMade))
+		out.Int16(int16(in.FGMade))
 	}
 	{
 		const prefix string = ",\"FGAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGAttempts))
+		out.Int16(int16(in.FGAttempts))
 	}
 	{
 		const prefix string = ",\"LongestFG\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestFG))
+		out.Int16(int16(in.LongestFG))
 	}
 	{
 		const prefix string = ",\"ExtraPointsMade\":"
 		out.RawString(prefix)
-		out.Int(int(in.ExtraPointsMade))
+		out.Int16(int16(in.ExtraPointsMade))
 	}
 	{
 		const prefix string = ",\"ExtraPointsAttempted\":"
 		out.RawString(prefix)
-		out.Int(int(in.ExtraPointsAttempted))
+		out.Int16(int16(in.ExtraPointsAttempted))
 	}
 	{
 		const prefix string = ",\"KickoffTouchbacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickoffTouchbacks))
+		out.Int16(int16(in.KickoffTouchbacks))
 	}
 	{
 		const prefix string = ",\"Punts\":"
 		out.RawString(prefix)
-		out.Int(int(in.Punts))
+		out.Int16(int16(in.Punts))
 	}
 	{
 		const prefix string = ",\"GrossPuntDistance\":"
 		out.RawString(prefix)
-		out.Int(int(in.GrossPuntDistance))
+		out.Int16(int16(in.GrossPuntDistance))
 	}
 	{
 		const prefix string = ",\"NetPuntDistance\":"
 		out.RawString(prefix)
-		out.Int(int(in.NetPuntDistance))
+		out.Int16(int16(in.NetPuntDistance))
 	}
 	{
 		const prefix string = ",\"PuntTouchbacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntTouchbacks))
+		out.Int16(int16(in.PuntTouchbacks))
 	}
 	{
 		const prefix string = ",\"PuntsInside20\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntsInside20))
+		out.Int16(int16(in.PuntsInside20))
 	}
 	{
 		const prefix string = ",\"KickReturns\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturns))
+		out.Int16(int16(in.KickReturns))
 	}
 	{
 		const prefix string = ",\"KickReturnTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturnTDs))
+		out.Int16(int16(in.KickReturnTDs))
 	}
 	{
 		const prefix string = ",\"KickReturnYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturnYards))
+		out.Int16(int16(in.KickReturnYards))
 	}
 	{
 		const prefix string = ",\"PuntReturns\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturns))
+		out.Int16(int16(in.PuntReturns))
 	}
 	{
 		const prefix string = ",\"PuntReturnTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturnTDs))
+		out.Int16(int16(in.PuntReturnTDs))
 	}
 	{
 		const prefix string = ",\"PuntReturnYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturnYards))
+		out.Int16(int16(in.PuntReturnYards))
 	}
 	{
 		const prefix string = ",\"STSoloTackles\":"
@@ -1866,37 +1866,37 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs5(out *jwriter.Writer,
 	{
 		const prefix string = ",\"PuntsBlocked\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntsBlocked))
+		out.Int16(int16(in.PuntsBlocked))
 	}
 	{
 		const prefix string = ",\"FGBlocked\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGBlocked))
+		out.Int16(int16(in.FGBlocked))
 	}
 	{
 		const prefix string = ",\"Snaps\":"
 		out.RawString(prefix)
-		out.Int(int(in.Snaps))
+		out.Int16(int16(in.Snaps))
 	}
 	{
 		const prefix string = ",\"Pancakes\":"
 		out.RawString(prefix)
-		out.Int(int(in.Pancakes))
+		out.Int16(int16(in.Pancakes))
 	}
 	{
 		const prefix string = ",\"SacksAllowed\":"
 		out.RawString(prefix)
-		out.Int(int(in.SacksAllowed))
+		out.Int16(int16(in.SacksAllowed))
 	}
 	{
 		const prefix string = ",\"PlayedGame\":"
 		out.RawString(prefix)
-		out.Int(int(in.PlayedGame))
+		out.Int16(int16(in.PlayedGame))
 	}
 	{
 		const prefix string = ",\"StartedGame\":"
 		out.RawString(prefix)
-		out.Int(int(in.StartedGame))
+		out.Int16(int16(in.StartedGame))
 	}
 	{
 		const prefix string = ",\"WasInjured\":"
@@ -2505,39 +2505,39 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs(in *jlexer.Lexer, out
 		case "Completion":
 			out.Completion = float64(in.Float64())
 		case "PassingYards":
-			out.PassingYards = int(in.Int())
+			out.PassingYards = int16(in.Int16())
 		case "PassAttempts":
-			out.PassAttempts = int(in.Int())
+			out.PassAttempts = int16(in.Int16())
 		case "PassCompletions":
-			out.PassCompletions = int(in.Int())
+			out.PassCompletions = int16(in.Int16())
 		case "PassingTDs":
-			out.PassingTDs = int(in.Int())
+			out.PassingTDs = int16(in.Int16())
 		case "Interceptions":
-			out.Interceptions = int(in.Int())
+			out.Interceptions = int16(in.Int16())
 		case "LongestPass":
-			out.LongestPass = int(in.Int())
+			out.LongestPass = int16(in.Int16())
 		case "Sacks":
-			out.Sacks = int(in.Int())
+			out.Sacks = int16(in.Int16())
 		case "RushAttempts":
-			out.RushAttempts = int(in.Int())
+			out.RushAttempts = int16(in.Int16())
 		case "RushingYards":
-			out.RushingYards = int(in.Int())
+			out.RushingYards = int16(in.Int16())
 		case "RushingTDs":
-			out.RushingTDs = int(in.Int())
+			out.RushingTDs = int16(in.Int16())
 		case "Fumbles":
-			out.Fumbles = int(in.Int())
+			out.Fumbles = int16(in.Int16())
 		case "LongestRush":
-			out.LongestRush = int(in.Int())
+			out.LongestRush = int16(in.Int16())
 		case "Targets":
-			out.Targets = int(in.Int())
+			out.Targets = int16(in.Int16())
 		case "Catches":
-			out.Catches = int(in.Int())
+			out.Catches = int16(in.Int16())
 		case "ReceivingYards":
-			out.ReceivingYards = int(in.Int())
+			out.ReceivingYards = int16(in.Int16())
 		case "ReceivingTDs":
-			out.ReceivingTDs = int(in.Int())
+			out.ReceivingTDs = int16(in.Int16())
 		case "LongestReception":
-			out.LongestReception = int(in.Int())
+			out.LongestReception = int16(in.Int16())
 		case "SoloTackles":
 			out.SoloTackles = float64(in.Float64())
 		case "AssistedTackles":
@@ -2547,69 +2547,69 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs(in *jlexer.Lexer, out
 		case "SacksMade":
 			out.SacksMade = float64(in.Float64())
 		case "ForcedFumbles":
-			out.ForcedFumbles = int(in.Int())
+			out.ForcedFumbles = int16(in.Int16())
 		case "RecoveredFumbles":
-			out.RecoveredFumbles = int(in.Int())
+			out.RecoveredFumbles = int16(in.Int16())
 		case "PassDeflections":
-			out.PassDeflections = int(in.Int())
+			out.PassDeflections = int16(in.Int16())
 		case "InterceptionsCaught":
-			out.InterceptionsCaught = int(in.Int())
+			out.InterceptionsCaught = int16(in.Int16())
 		case "Safeties":
-			out.Safeties = int(in.Int())
+			out.Safeties = int16(in.Int16())
 		case "DefensiveTDs":
-			out.DefensiveTDs = int(in.Int())
+			out.DefensiveTDs = int16(in.Int16())
 		case "FGMade":
-			out.FGMade = int(in.Int())
+			out.FGMade = int16(in.Int16())
 		case "FGAttempts":
-			out.FGAttempts = int(in.Int())
+			out.FGAttempts = int16(in.Int16())
 		case "LongestFG":
-			out.LongestFG = int(in.Int())
+			out.LongestFG = int16(in.Int16())
 		case "ExtraPointsMade":
-			out.ExtraPointsMade = int(in.Int())
+			out.ExtraPointsMade = int16(in.Int16())
 		case "ExtraPointsAttempted":
-			out.ExtraPointsAttempted = int(in.Int())
+			out.ExtraPointsAttempted = int16(in.Int16())
 		case "KickoffTouchbacks":
-			out.KickoffTouchbacks = int(in.Int())
+			out.KickoffTouchbacks = int16(in.Int16())
 		case "Punts":
-			out.Punts = int(in.Int())
+			out.Punts = int16(in.Int16())
 		case "GrossPuntDistance":
-			out.GrossPuntDistance = int(in.Int())
+			out.GrossPuntDistance = int16(in.Int16())
 		case "NetPuntDistance":
-			out.NetPuntDistance = int(in.Int())
+			out.NetPuntDistance = int16(in.Int16())
 		case "PuntTouchbacks":
-			out.PuntTouchbacks = int(in.Int())
+			out.PuntTouchbacks = int16(in.Int16())
 		case "PuntsInside20":
-			out.PuntsInside20 = int(in.Int())
+			out.PuntsInside20 = int16(in.Int16())
 		case "KickReturns":
-			out.KickReturns = int(in.Int())
+			out.KickReturns = int16(in.Int16())
 		case "KickReturnTDs":
-			out.KickReturnTDs = int(in.Int())
+			out.KickReturnTDs = int16(in.Int16())
 		case "KickReturnYards":
-			out.KickReturnYards = int(in.Int())
+			out.KickReturnYards = int16(in.Int16())
 		case "PuntReturns":
-			out.PuntReturns = int(in.Int())
+			out.PuntReturns = int16(in.Int16())
 		case "PuntReturnTDs":
-			out.PuntReturnTDs = int(in.Int())
+			out.PuntReturnTDs = int16(in.Int16())
 		case "PuntReturnYards":
-			out.PuntReturnYards = int(in.Int())
+			out.PuntReturnYards = int16(in.Int16())
 		case "STSoloTackles":
 			out.STSoloTackles = float64(in.Float64())
 		case "STAssistedTackles":
 			out.STAssistedTackles = float64(in.Float64())
 		case "PuntsBlocked":
-			out.PuntsBlocked = int(in.Int())
+			out.PuntsBlocked = int16(in.Int16())
 		case "FGBlocked":
-			out.FGBlocked = int(in.Int())
+			out.FGBlocked = int16(in.Int16())
 		case "Snaps":
-			out.Snaps = int(in.Int())
+			out.Snaps = int16(in.Int16())
 		case "Pancakes":
-			out.Pancakes = int(in.Int())
+			out.Pancakes = int16(in.Int16())
 		case "SacksAllowed":
-			out.SacksAllowed = int(in.Int())
+			out.SacksAllowed = int16(in.Int16())
 		case "PlayedGame":
-			out.PlayedGame = int(in.Int())
+			out.PlayedGame = int16(in.Int16())
 		case "StartedGame":
-			out.StartedGame = int(in.Int())
+			out.StartedGame = int16(in.Int16())
 		case "WasInjured":
 			out.WasInjured = bool(in.Bool())
 		case "WeeksOfRecovery":
@@ -2722,87 +2722,87 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs(out *jwriter.Writer, 
 	{
 		const prefix string = ",\"PassingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassingYards))
+		out.Int16(int16(in.PassingYards))
 	}
 	{
 		const prefix string = ",\"PassAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassAttempts))
+		out.Int16(int16(in.PassAttempts))
 	}
 	{
 		const prefix string = ",\"PassCompletions\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassCompletions))
+		out.Int16(int16(in.PassCompletions))
 	}
 	{
 		const prefix string = ",\"PassingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassingTDs))
+		out.Int16(int16(in.PassingTDs))
 	}
 	{
 		const prefix string = ",\"Interceptions\":"
 		out.RawString(prefix)
-		out.Int(int(in.Interceptions))
+		out.Int16(int16(in.Interceptions))
 	}
 	{
 		const prefix string = ",\"LongestPass\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestPass))
+		out.Int16(int16(in.LongestPass))
 	}
 	{
 		const prefix string = ",\"Sacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.Sacks))
+		out.Int16(int16(in.Sacks))
 	}
 	{
 		const prefix string = ",\"RushAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushAttempts))
+		out.Int16(int16(in.RushAttempts))
 	}
 	{
 		const prefix string = ",\"RushingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushingYards))
+		out.Int16(int16(in.RushingYards))
 	}
 	{
 		const prefix string = ",\"RushingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushingTDs))
+		out.Int16(int16(in.RushingTDs))
 	}
 	{
 		const prefix string = ",\"Fumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.Fumbles))
+		out.Int16(int16(in.Fumbles))
 	}
 	{
 		const prefix string = ",\"LongestRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestRush))
+		out.Int16(int16(in.LongestRush))
 	}
 	{
 		const prefix string = ",\"Targets\":"
 		out.RawString(prefix)
-		out.Int(int(in.Targets))
+		out.Int16(int16(in.Targets))
 	}
 	{
 		const prefix string = ",\"Catches\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catches))
+		out.Int16(int16(in.Catches))
 	}
 	{
 		const prefix string = ",\"ReceivingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.ReceivingYards))
+		out.Int16(int16(in.ReceivingYards))
 	}
 	{
 		const prefix string = ",\"ReceivingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.ReceivingTDs))
+		out.Int16(int16(in.ReceivingTDs))
 	}
 	{
 		const prefix string = ",\"LongestReception\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestReception))
+		out.Int16(int16(in.LongestReception))
 	}
 	{
 		const prefix string = ",\"SoloTackles\":"
@@ -2827,117 +2827,117 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs(out *jwriter.Writer, 
 	{
 		const prefix string = ",\"ForcedFumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.ForcedFumbles))
+		out.Int16(int16(in.ForcedFumbles))
 	}
 	{
 		const prefix string = ",\"RecoveredFumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.RecoveredFumbles))
+		out.Int16(int16(in.RecoveredFumbles))
 	}
 	{
 		const prefix string = ",\"PassDeflections\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassDeflections))
+		out.Int16(int16(in.PassDeflections))
 	}
 	{
 		const prefix string = ",\"InterceptionsCaught\":"
 		out.RawString(prefix)
-		out.Int(int(in.InterceptionsCaught))
+		out.Int16(int16(in.InterceptionsCaught))
 	}
 	{
 		const prefix string = ",\"Safeties\":"
 		out.RawString(prefix)
-		out.Int(int(in.Safeties))
+		out.Int16(int16(in.Safeties))
 	}
 	{
 		const prefix string = ",\"DefensiveTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.DefensiveTDs))
+		out.Int16(int16(in.DefensiveTDs))
 	}
 	{
 		const prefix string = ",\"FGMade\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGMade))
+		out.Int16(int16(in.FGMade))
 	}
 	{
 		const prefix string = ",\"FGAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGAttempts))
+		out.Int16(int16(in.FGAttempts))
 	}
 	{
 		const prefix string = ",\"LongestFG\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestFG))
+		out.Int16(int16(in.LongestFG))
 	}
 	{
 		const prefix string = ",\"ExtraPointsMade\":"
 		out.RawString(prefix)
-		out.Int(int(in.ExtraPointsMade))
+		out.Int16(int16(in.ExtraPointsMade))
 	}
 	{
 		const prefix string = ",\"ExtraPointsAttempted\":"
 		out.RawString(prefix)
-		out.Int(int(in.ExtraPointsAttempted))
+		out.Int16(int16(in.ExtraPointsAttempted))
 	}
 	{
 		const prefix string = ",\"KickoffTouchbacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickoffTouchbacks))
+		out.Int16(int16(in.KickoffTouchbacks))
 	}
 	{
 		const prefix string = ",\"Punts\":"
 		out.RawString(prefix)
-		out.Int(int(in.Punts))
+		out.Int16(int16(in.Punts))
 	}
 	{
 		const prefix string = ",\"GrossPuntDistance\":"
 		out.RawString(prefix)
-		out.Int(int(in.GrossPuntDistance))
+		out.Int16(int16(in.GrossPuntDistance))
 	}
 	{
 		const prefix string = ",\"NetPuntDistance\":"
 		out.RawString(prefix)
-		out.Int(int(in.NetPuntDistance))
+		out.Int16(int16(in.NetPuntDistance))
 	}
 	{
 		const prefix string = ",\"PuntTouchbacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntTouchbacks))
+		out.Int16(int16(in.PuntTouchbacks))
 	}
 	{
 		const prefix string = ",\"PuntsInside20\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntsInside20))
+		out.Int16(int16(in.PuntsInside20))
 	}
 	{
 		const prefix string = ",\"KickReturns\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturns))
+		out.Int16(int16(in.KickReturns))
 	}
 	{
 		const prefix string = ",\"KickReturnTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturnTDs))
+		out.Int16(int16(in.KickReturnTDs))
 	}
 	{
 		const prefix string = ",\"KickReturnYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturnYards))
+		out.Int16(int16(in.KickReturnYards))
 	}
 	{
 		const prefix string = ",\"PuntReturns\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturns))
+		out.Int16(int16(in.PuntReturns))
 	}
 	{
 		const prefix string = ",\"PuntReturnTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturnTDs))
+		out.Int16(int16(in.PuntReturnTDs))
 	}
 	{
 		const prefix string = ",\"PuntReturnYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturnYards))
+		out.Int16(int16(in.PuntReturnYards))
 	}
 	{
 		const prefix string = ",\"STSoloTackles\":"
@@ -2952,37 +2952,37 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs(out *jwriter.Writer, 
 	{
 		const prefix string = ",\"PuntsBlocked\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntsBlocked))
+		out.Int16(int16(in.PuntsBlocked))
 	}
 	{
 		const prefix string = ",\"FGBlocked\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGBlocked))
+		out.Int16(int16(in.FGBlocked))
 	}
 	{
 		const prefix string = ",\"Snaps\":"
 		out.RawString(prefix)
-		out.Int(int(in.Snaps))
+		out.Int16(int16(in.Snaps))
 	}
 	{
 		const prefix string = ",\"Pancakes\":"
 		out.RawString(prefix)
-		out.Int(int(in.Pancakes))
+		out.Int16(int16(in.Pancakes))
 	}
 	{
 		const prefix string = ",\"SacksAllowed\":"
 		out.RawString(prefix)
-		out.Int(int(in.SacksAllowed))
+		out.Int16(int16(in.SacksAllowed))
 	}
 	{
 		const prefix string = ",\"PlayedGame\":"
 		out.RawString(prefix)
-		out.Int(int(in.PlayedGame))
+		out.Int16(int16(in.PlayedGame))
 	}
 	{
 		const prefix string = ",\"StartedGame\":"
 		out.RawString(prefix)
-		out.Int(int(in.StartedGame))
+		out.Int16(int16(in.StartedGame))
 	}
 	{
 		const prefix string = ",\"WasInjured\":"
@@ -5558,63 +5558,63 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in *jlexer.Lexer, o
 		case "PreviousTeam":
 			out.PreviousTeam = string(in.String())
 		case "Height":
-			out.Height = int(in.Int())
+			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int(in.Int())
+			out.Weight = int8(in.Int8())
 		case "Age":
-			out.Age = int(in.Int())
+			out.Age = int8(in.Int8())
 		case "Stars":
-			out.Stars = int(in.Int())
+			out.Stars = int8(in.Int8())
 		case "Overall":
-			out.Overall = int(in.Int())
+			out.Overall = int8(in.Int8())
 		case "Stamina":
-			out.Stamina = int(in.Int())
+			out.Stamina = int8(in.Int8())
 		case "Injury":
-			out.Injury = int(in.Int())
+			out.Injury = int8(in.Int8())
 		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
+			out.FootballIQ = int8(in.Int8())
 		case "Speed":
-			out.Speed = int(in.Int())
+			out.Speed = int8(in.Int8())
 		case "Carrying":
-			out.Carrying = int(in.Int())
+			out.Carrying = int8(in.Int8())
 		case "Agility":
-			out.Agility = int(in.Int())
+			out.Agility = int8(in.Int8())
 		case "Catching":
-			out.Catching = int(in.Int())
+			out.Catching = int8(in.Int8())
 		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
+			out.RouteRunning = int8(in.Int8())
 		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
+			out.ZoneCoverage = int8(in.Int8())
 		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
+			out.ManCoverage = int8(in.Int8())
 		case "Strength":
-			out.Strength = int(in.Int())
+			out.Strength = int8(in.Int8())
 		case "Tackle":
-			out.Tackle = int(in.Int())
+			out.Tackle = int8(in.Int8())
 		case "PassBlock":
-			out.PassBlock = int(in.Int())
+			out.PassBlock = int8(in.Int8())
 		case "RunBlock":
-			out.RunBlock = int(in.Int())
+			out.RunBlock = int8(in.Int8())
 		case "PassRush":
-			out.PassRush = int(in.Int())
+			out.PassRush = int8(in.Int8())
 		case "RunDefense":
-			out.RunDefense = int(in.Int())
+			out.RunDefense = int8(in.Int8())
 		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
+			out.ThrowPower = int8(in.Int8())
 		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
+			out.ThrowAccuracy = int8(in.Int8())
 		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
+			out.KickAccuracy = int8(in.Int8())
 		case "KickPower":
-			out.KickPower = int(in.Int())
+			out.KickPower = int8(in.Int8())
 		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
+			out.PuntAccuracy = int8(in.Int8())
 		case "PuntPower":
-			out.PuntPower = int(in.Int())
+			out.PuntPower = int8(in.Int8())
 		case "Progression":
-			out.Progression = int(in.Int())
+			out.Progression = int8(in.Int8())
 		case "Discipline":
-			out.Discipline = int(in.Int())
+			out.Discipline = int8(in.Int8())
 		case "PotentialGrade":
 			out.PotentialGrade = string(in.String())
 		case "FreeAgency":
@@ -5986,147 +5986,147 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out *jwriter.Writer
 	{
 		const prefix string = ",\"Height\":"
 		out.RawString(prefix)
-		out.Int(int(in.Height))
+		out.Int8(int8(in.Height))
 	}
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int(int(in.Weight))
+		out.Int8(int8(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
 		out.RawString(prefix)
-		out.Int(int(in.Age))
+		out.Int8(int8(in.Age))
 	}
 	{
 		const prefix string = ",\"Stars\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stars))
+		out.Int8(int8(in.Stars))
 	}
 	{
 		const prefix string = ",\"Overall\":"
 		out.RawString(prefix)
-		out.Int(int(in.Overall))
+		out.Int8(int8(in.Overall))
 	}
 	{
 		const prefix string = ",\"Stamina\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stamina))
+		out.Int8(int8(in.Stamina))
 	}
 	{
 		const prefix string = ",\"Injury\":"
 		out.RawString(prefix)
-		out.Int(int(in.Injury))
+		out.Int8(int8(in.Injury))
 	}
 	{
 		const prefix string = ",\"FootballIQ\":"
 		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
+		out.Int8(int8(in.FootballIQ))
 	}
 	{
 		const prefix string = ",\"Speed\":"
 		out.RawString(prefix)
-		out.Int(int(in.Speed))
+		out.Int8(int8(in.Speed))
 	}
 	{
 		const prefix string = ",\"Carrying\":"
 		out.RawString(prefix)
-		out.Int(int(in.Carrying))
+		out.Int8(int8(in.Carrying))
 	}
 	{
 		const prefix string = ",\"Agility\":"
 		out.RawString(prefix)
-		out.Int(int(in.Agility))
+		out.Int8(int8(in.Agility))
 	}
 	{
 		const prefix string = ",\"Catching\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catching))
+		out.Int8(int8(in.Catching))
 	}
 	{
 		const prefix string = ",\"RouteRunning\":"
 		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
+		out.Int8(int8(in.RouteRunning))
 	}
 	{
 		const prefix string = ",\"ZoneCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
+		out.Int8(int8(in.ZoneCoverage))
 	}
 	{
 		const prefix string = ",\"ManCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
+		out.Int8(int8(in.ManCoverage))
 	}
 	{
 		const prefix string = ",\"Strength\":"
 		out.RawString(prefix)
-		out.Int(int(in.Strength))
+		out.Int8(int8(in.Strength))
 	}
 	{
 		const prefix string = ",\"Tackle\":"
 		out.RawString(prefix)
-		out.Int(int(in.Tackle))
+		out.Int8(int8(in.Tackle))
 	}
 	{
 		const prefix string = ",\"PassBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
+		out.Int8(int8(in.PassBlock))
 	}
 	{
 		const prefix string = ",\"RunBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
+		out.Int8(int8(in.RunBlock))
 	}
 	{
 		const prefix string = ",\"PassRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassRush))
+		out.Int8(int8(in.PassRush))
 	}
 	{
 		const prefix string = ",\"RunDefense\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
+		out.Int8(int8(in.RunDefense))
 	}
 	{
 		const prefix string = ",\"ThrowPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
+		out.Int8(int8(in.ThrowPower))
 	}
 	{
 		const prefix string = ",\"ThrowAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
+		out.Int8(int8(in.ThrowAccuracy))
 	}
 	{
 		const prefix string = ",\"KickAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
+		out.Int8(int8(in.KickAccuracy))
 	}
 	{
 		const prefix string = ",\"KickPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickPower))
+		out.Int8(int8(in.KickPower))
 	}
 	{
 		const prefix string = ",\"PuntAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
+		out.Int8(int8(in.PuntAccuracy))
 	}
 	{
 		const prefix string = ",\"PuntPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
+		out.Int8(int8(in.PuntPower))
 	}
 	{
 		const prefix string = ",\"Progression\":"
 		out.RawString(prefix)
-		out.Int(int(in.Progression))
+		out.Int8(int8(in.Progression))
 	}
 	{
 		const prefix string = ",\"Discipline\":"
 		out.RawString(prefix)
-		out.Int(int(in.Discipline))
+		out.Int8(int8(in.Discipline))
 	}
 	{
 		const prefix string = ",\"PotentialGrade\":"
@@ -6932,39 +6932,39 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs19(in *jlexer.Lexer, o
 		case "Completion":
 			out.Completion = float64(in.Float64())
 		case "PassingYards":
-			out.PassingYards = int(in.Int())
+			out.PassingYards = int16(in.Int16())
 		case "PassAttempts":
-			out.PassAttempts = int(in.Int())
+			out.PassAttempts = int16(in.Int16())
 		case "PassCompletions":
-			out.PassCompletions = int(in.Int())
+			out.PassCompletions = int16(in.Int16())
 		case "PassingTDs":
-			out.PassingTDs = int(in.Int())
+			out.PassingTDs = int16(in.Int16())
 		case "Interceptions":
-			out.Interceptions = int(in.Int())
+			out.Interceptions = int16(in.Int16())
 		case "LongestPass":
-			out.LongestPass = int(in.Int())
+			out.LongestPass = int16(in.Int16())
 		case "Sacks":
-			out.Sacks = int(in.Int())
+			out.Sacks = int16(in.Int16())
 		case "RushAttempts":
-			out.RushAttempts = int(in.Int())
+			out.RushAttempts = int16(in.Int16())
 		case "RushingYards":
-			out.RushingYards = int(in.Int())
+			out.RushingYards = int16(in.Int16())
 		case "RushingTDs":
-			out.RushingTDs = int(in.Int())
+			out.RushingTDs = int16(in.Int16())
 		case "Fumbles":
-			out.Fumbles = int(in.Int())
+			out.Fumbles = int16(in.Int16())
 		case "LongestRush":
-			out.LongestRush = int(in.Int())
+			out.LongestRush = int16(in.Int16())
 		case "Targets":
-			out.Targets = int(in.Int())
+			out.Targets = int16(in.Int16())
 		case "Catches":
-			out.Catches = int(in.Int())
+			out.Catches = int16(in.Int16())
 		case "ReceivingYards":
-			out.ReceivingYards = int(in.Int())
+			out.ReceivingYards = int16(in.Int16())
 		case "ReceivingTDs":
-			out.ReceivingTDs = int(in.Int())
+			out.ReceivingTDs = int16(in.Int16())
 		case "LongestReception":
-			out.LongestReception = int(in.Int())
+			out.LongestReception = int16(in.Int16())
 		case "SoloTackles":
 			out.SoloTackles = float64(in.Float64())
 		case "AssistedTackles":
@@ -6974,69 +6974,69 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs19(in *jlexer.Lexer, o
 		case "SacksMade":
 			out.SacksMade = float64(in.Float64())
 		case "ForcedFumbles":
-			out.ForcedFumbles = int(in.Int())
+			out.ForcedFumbles = int16(in.Int16())
 		case "RecoveredFumbles":
-			out.RecoveredFumbles = int(in.Int())
+			out.RecoveredFumbles = int16(in.Int16())
 		case "PassDeflections":
-			out.PassDeflections = int(in.Int())
+			out.PassDeflections = int16(in.Int16())
 		case "InterceptionsCaught":
-			out.InterceptionsCaught = int(in.Int())
+			out.InterceptionsCaught = int16(in.Int16())
 		case "Safeties":
-			out.Safeties = int(in.Int())
+			out.Safeties = int16(in.Int16())
 		case "DefensiveTDs":
-			out.DefensiveTDs = int(in.Int())
+			out.DefensiveTDs = int16(in.Int16())
 		case "FGMade":
-			out.FGMade = int(in.Int())
+			out.FGMade = int16(in.Int16())
 		case "FGAttempts":
-			out.FGAttempts = int(in.Int())
+			out.FGAttempts = int16(in.Int16())
 		case "LongestFG":
-			out.LongestFG = int(in.Int())
+			out.LongestFG = int16(in.Int16())
 		case "ExtraPointsMade":
-			out.ExtraPointsMade = int(in.Int())
+			out.ExtraPointsMade = int16(in.Int16())
 		case "ExtraPointsAttempted":
-			out.ExtraPointsAttempted = int(in.Int())
+			out.ExtraPointsAttempted = int16(in.Int16())
 		case "KickoffTouchbacks":
-			out.KickoffTouchbacks = int(in.Int())
+			out.KickoffTouchbacks = int16(in.Int16())
 		case "Punts":
-			out.Punts = int(in.Int())
+			out.Punts = int16(in.Int16())
 		case "GrossPuntDistance":
-			out.GrossPuntDistance = int(in.Int())
+			out.GrossPuntDistance = int16(in.Int16())
 		case "NetPuntDistance":
-			out.NetPuntDistance = int(in.Int())
+			out.NetPuntDistance = int16(in.Int16())
 		case "PuntTouchbacks":
-			out.PuntTouchbacks = int(in.Int())
+			out.PuntTouchbacks = int16(in.Int16())
 		case "PuntsInside20":
-			out.PuntsInside20 = int(in.Int())
+			out.PuntsInside20 = int16(in.Int16())
 		case "KickReturns":
-			out.KickReturns = int(in.Int())
+			out.KickReturns = int16(in.Int16())
 		case "KickReturnTDs":
-			out.KickReturnTDs = int(in.Int())
+			out.KickReturnTDs = int16(in.Int16())
 		case "KickReturnYards":
-			out.KickReturnYards = int(in.Int())
+			out.KickReturnYards = int16(in.Int16())
 		case "PuntReturns":
-			out.PuntReturns = int(in.Int())
+			out.PuntReturns = int16(in.Int16())
 		case "PuntReturnTDs":
-			out.PuntReturnTDs = int(in.Int())
+			out.PuntReturnTDs = int16(in.Int16())
 		case "PuntReturnYards":
-			out.PuntReturnYards = int(in.Int())
+			out.PuntReturnYards = int16(in.Int16())
 		case "STSoloTackles":
 			out.STSoloTackles = float64(in.Float64())
 		case "STAssistedTackles":
 			out.STAssistedTackles = float64(in.Float64())
 		case "PuntsBlocked":
-			out.PuntsBlocked = int(in.Int())
+			out.PuntsBlocked = int16(in.Int16())
 		case "FGBlocked":
-			out.FGBlocked = int(in.Int())
+			out.FGBlocked = int16(in.Int16())
 		case "Snaps":
-			out.Snaps = int(in.Int())
+			out.Snaps = int16(in.Int16())
 		case "Pancakes":
-			out.Pancakes = int(in.Int())
+			out.Pancakes = int16(in.Int16())
 		case "SacksAllowed":
-			out.SacksAllowed = int(in.Int())
+			out.SacksAllowed = int16(in.Int16())
 		case "PlayedGame":
-			out.PlayedGame = int(in.Int())
+			out.PlayedGame = int16(in.Int16())
 		case "StartedGame":
-			out.StartedGame = int(in.Int())
+			out.StartedGame = int16(in.Int16())
 		case "WasInjured":
 			out.WasInjured = bool(in.Bool())
 		case "WeeksOfRecovery":
@@ -7144,87 +7144,87 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out *jwriter.Writer
 	{
 		const prefix string = ",\"PassingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassingYards))
+		out.Int16(int16(in.PassingYards))
 	}
 	{
 		const prefix string = ",\"PassAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassAttempts))
+		out.Int16(int16(in.PassAttempts))
 	}
 	{
 		const prefix string = ",\"PassCompletions\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassCompletions))
+		out.Int16(int16(in.PassCompletions))
 	}
 	{
 		const prefix string = ",\"PassingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassingTDs))
+		out.Int16(int16(in.PassingTDs))
 	}
 	{
 		const prefix string = ",\"Interceptions\":"
 		out.RawString(prefix)
-		out.Int(int(in.Interceptions))
+		out.Int16(int16(in.Interceptions))
 	}
 	{
 		const prefix string = ",\"LongestPass\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestPass))
+		out.Int16(int16(in.LongestPass))
 	}
 	{
 		const prefix string = ",\"Sacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.Sacks))
+		out.Int16(int16(in.Sacks))
 	}
 	{
 		const prefix string = ",\"RushAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushAttempts))
+		out.Int16(int16(in.RushAttempts))
 	}
 	{
 		const prefix string = ",\"RushingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushingYards))
+		out.Int16(int16(in.RushingYards))
 	}
 	{
 		const prefix string = ",\"RushingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushingTDs))
+		out.Int16(int16(in.RushingTDs))
 	}
 	{
 		const prefix string = ",\"Fumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.Fumbles))
+		out.Int16(int16(in.Fumbles))
 	}
 	{
 		const prefix string = ",\"LongestRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestRush))
+		out.Int16(int16(in.LongestRush))
 	}
 	{
 		const prefix string = ",\"Targets\":"
 		out.RawString(prefix)
-		out.Int(int(in.Targets))
+		out.Int16(int16(in.Targets))
 	}
 	{
 		const prefix string = ",\"Catches\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catches))
+		out.Int16(int16(in.Catches))
 	}
 	{
 		const prefix string = ",\"ReceivingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.ReceivingYards))
+		out.Int16(int16(in.ReceivingYards))
 	}
 	{
 		const prefix string = ",\"ReceivingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.ReceivingTDs))
+		out.Int16(int16(in.ReceivingTDs))
 	}
 	{
 		const prefix string = ",\"LongestReception\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestReception))
+		out.Int16(int16(in.LongestReception))
 	}
 	{
 		const prefix string = ",\"SoloTackles\":"
@@ -7249,117 +7249,117 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out *jwriter.Writer
 	{
 		const prefix string = ",\"ForcedFumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.ForcedFumbles))
+		out.Int16(int16(in.ForcedFumbles))
 	}
 	{
 		const prefix string = ",\"RecoveredFumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.RecoveredFumbles))
+		out.Int16(int16(in.RecoveredFumbles))
 	}
 	{
 		const prefix string = ",\"PassDeflections\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassDeflections))
+		out.Int16(int16(in.PassDeflections))
 	}
 	{
 		const prefix string = ",\"InterceptionsCaught\":"
 		out.RawString(prefix)
-		out.Int(int(in.InterceptionsCaught))
+		out.Int16(int16(in.InterceptionsCaught))
 	}
 	{
 		const prefix string = ",\"Safeties\":"
 		out.RawString(prefix)
-		out.Int(int(in.Safeties))
+		out.Int16(int16(in.Safeties))
 	}
 	{
 		const prefix string = ",\"DefensiveTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.DefensiveTDs))
+		out.Int16(int16(in.DefensiveTDs))
 	}
 	{
 		const prefix string = ",\"FGMade\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGMade))
+		out.Int16(int16(in.FGMade))
 	}
 	{
 		const prefix string = ",\"FGAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGAttempts))
+		out.Int16(int16(in.FGAttempts))
 	}
 	{
 		const prefix string = ",\"LongestFG\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestFG))
+		out.Int16(int16(in.LongestFG))
 	}
 	{
 		const prefix string = ",\"ExtraPointsMade\":"
 		out.RawString(prefix)
-		out.Int(int(in.ExtraPointsMade))
+		out.Int16(int16(in.ExtraPointsMade))
 	}
 	{
 		const prefix string = ",\"ExtraPointsAttempted\":"
 		out.RawString(prefix)
-		out.Int(int(in.ExtraPointsAttempted))
+		out.Int16(int16(in.ExtraPointsAttempted))
 	}
 	{
 		const prefix string = ",\"KickoffTouchbacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickoffTouchbacks))
+		out.Int16(int16(in.KickoffTouchbacks))
 	}
 	{
 		const prefix string = ",\"Punts\":"
 		out.RawString(prefix)
-		out.Int(int(in.Punts))
+		out.Int16(int16(in.Punts))
 	}
 	{
 		const prefix string = ",\"GrossPuntDistance\":"
 		out.RawString(prefix)
-		out.Int(int(in.GrossPuntDistance))
+		out.Int16(int16(in.GrossPuntDistance))
 	}
 	{
 		const prefix string = ",\"NetPuntDistance\":"
 		out.RawString(prefix)
-		out.Int(int(in.NetPuntDistance))
+		out.Int16(int16(in.NetPuntDistance))
 	}
 	{
 		const prefix string = ",\"PuntTouchbacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntTouchbacks))
+		out.Int16(int16(in.PuntTouchbacks))
 	}
 	{
 		const prefix string = ",\"PuntsInside20\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntsInside20))
+		out.Int16(int16(in.PuntsInside20))
 	}
 	{
 		const prefix string = ",\"KickReturns\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturns))
+		out.Int16(int16(in.KickReturns))
 	}
 	{
 		const prefix string = ",\"KickReturnTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturnTDs))
+		out.Int16(int16(in.KickReturnTDs))
 	}
 	{
 		const prefix string = ",\"KickReturnYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturnYards))
+		out.Int16(int16(in.KickReturnYards))
 	}
 	{
 		const prefix string = ",\"PuntReturns\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturns))
+		out.Int16(int16(in.PuntReturns))
 	}
 	{
 		const prefix string = ",\"PuntReturnTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturnTDs))
+		out.Int16(int16(in.PuntReturnTDs))
 	}
 	{
 		const prefix string = ",\"PuntReturnYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturnYards))
+		out.Int16(int16(in.PuntReturnYards))
 	}
 	{
 		const prefix string = ",\"STSoloTackles\":"
@@ -7374,37 +7374,37 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out *jwriter.Writer
 	{
 		const prefix string = ",\"PuntsBlocked\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntsBlocked))
+		out.Int16(int16(in.PuntsBlocked))
 	}
 	{
 		const prefix string = ",\"FGBlocked\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGBlocked))
+		out.Int16(int16(in.FGBlocked))
 	}
 	{
 		const prefix string = ",\"Snaps\":"
 		out.RawString(prefix)
-		out.Int(int(in.Snaps))
+		out.Int16(int16(in.Snaps))
 	}
 	{
 		const prefix string = ",\"Pancakes\":"
 		out.RawString(prefix)
-		out.Int(int(in.Pancakes))
+		out.Int16(int16(in.Pancakes))
 	}
 	{
 		const prefix string = ",\"SacksAllowed\":"
 		out.RawString(prefix)
-		out.Int(int(in.SacksAllowed))
+		out.Int16(int16(in.SacksAllowed))
 	}
 	{
 		const prefix string = ",\"PlayedGame\":"
 		out.RawString(prefix)
-		out.Int(int(in.PlayedGame))
+		out.Int16(int16(in.PlayedGame))
 	}
 	{
 		const prefix string = ",\"StartedGame\":"
 		out.RawString(prefix)
-		out.Int(int(in.StartedGame))
+		out.Int16(int16(in.StartedGame))
 	}
 	{
 		const prefix string = ",\"WasInjured\":"
@@ -7511,39 +7511,39 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in *jlexer.Lexer, o
 		case "Year":
 			out.Year = int(in.Int())
 		case "PassingYards":
-			out.PassingYards = int(in.Int())
+			out.PassingYards = int16(in.Int16())
 		case "PassAttempts":
-			out.PassAttempts = int(in.Int())
+			out.PassAttempts = int16(in.Int16())
 		case "PassCompletions":
-			out.PassCompletions = int(in.Int())
+			out.PassCompletions = int16(in.Int16())
 		case "PassingTDs":
-			out.PassingTDs = int(in.Int())
+			out.PassingTDs = int16(in.Int16())
 		case "Interceptions":
-			out.Interceptions = int(in.Int())
+			out.Interceptions = int16(in.Int16())
 		case "LongestPass":
-			out.LongestPass = int(in.Int())
+			out.LongestPass = int16(in.Int16())
 		case "Sacks":
-			out.Sacks = int(in.Int())
+			out.Sacks = int16(in.Int16())
 		case "RushAttempts":
-			out.RushAttempts = int(in.Int())
+			out.RushAttempts = int16(in.Int16())
 		case "RushingYards":
-			out.RushingYards = int(in.Int())
+			out.RushingYards = int16(in.Int16())
 		case "RushingTDs":
-			out.RushingTDs = int(in.Int())
+			out.RushingTDs = int16(in.Int16())
 		case "Fumbles":
-			out.Fumbles = int(in.Int())
+			out.Fumbles = int16(in.Int16())
 		case "LongestRush":
-			out.LongestRush = int(in.Int())
+			out.LongestRush = int16(in.Int16())
 		case "Targets":
-			out.Targets = int(in.Int())
+			out.Targets = int16(in.Int16())
 		case "Catches":
-			out.Catches = int(in.Int())
+			out.Catches = int16(in.Int16())
 		case "ReceivingYards":
-			out.ReceivingYards = int(in.Int())
+			out.ReceivingYards = int16(in.Int16())
 		case "ReceivingTDs":
-			out.ReceivingTDs = int(in.Int())
+			out.ReceivingTDs = int16(in.Int16())
 		case "LongestReception":
-			out.LongestReception = int(in.Int())
+			out.LongestReception = int16(in.Int16())
 		case "SoloTackles":
 			out.SoloTackles = float64(in.Float64())
 		case "AssistedTackles":
@@ -7553,69 +7553,69 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in *jlexer.Lexer, o
 		case "SacksMade":
 			out.SacksMade = float64(in.Float64())
 		case "ForcedFumbles":
-			out.ForcedFumbles = int(in.Int())
+			out.ForcedFumbles = int16(in.Int16())
 		case "RecoveredFumbles":
-			out.RecoveredFumbles = int(in.Int())
+			out.RecoveredFumbles = int16(in.Int16())
 		case "PassDeflections":
-			out.PassDeflections = int(in.Int())
+			out.PassDeflections = int16(in.Int16())
 		case "InterceptionsCaught":
-			out.InterceptionsCaught = int(in.Int())
+			out.InterceptionsCaught = int16(in.Int16())
 		case "Safeties":
-			out.Safeties = int(in.Int())
+			out.Safeties = int16(in.Int16())
 		case "DefensiveTDs":
-			out.DefensiveTDs = int(in.Int())
+			out.DefensiveTDs = int16(in.Int16())
 		case "FGMade":
-			out.FGMade = int(in.Int())
+			out.FGMade = int16(in.Int16())
 		case "FGAttempts":
-			out.FGAttempts = int(in.Int())
+			out.FGAttempts = int16(in.Int16())
 		case "LongestFG":
-			out.LongestFG = int(in.Int())
+			out.LongestFG = int16(in.Int16())
 		case "ExtraPointsMade":
-			out.ExtraPointsMade = int(in.Int())
+			out.ExtraPointsMade = int16(in.Int16())
 		case "ExtraPointsAttempted":
-			out.ExtraPointsAttempted = int(in.Int())
+			out.ExtraPointsAttempted = int16(in.Int16())
 		case "KickoffTouchbacks":
-			out.KickoffTouchbacks = int(in.Int())
+			out.KickoffTouchbacks = int16(in.Int16())
 		case "Punts":
-			out.Punts = int(in.Int())
+			out.Punts = int16(in.Int16())
 		case "GrossPuntDistance":
-			out.GrossPuntDistance = int(in.Int())
+			out.GrossPuntDistance = int16(in.Int16())
 		case "NetPuntDistance":
-			out.NetPuntDistance = int(in.Int())
+			out.NetPuntDistance = int16(in.Int16())
 		case "PuntTouchbacks":
-			out.PuntTouchbacks = int(in.Int())
+			out.PuntTouchbacks = int16(in.Int16())
 		case "PuntsInside20":
-			out.PuntsInside20 = int(in.Int())
+			out.PuntsInside20 = int16(in.Int16())
 		case "KickReturns":
-			out.KickReturns = int(in.Int())
+			out.KickReturns = int16(in.Int16())
 		case "KickReturnTDs":
-			out.KickReturnTDs = int(in.Int())
+			out.KickReturnTDs = int16(in.Int16())
 		case "KickReturnYards":
-			out.KickReturnYards = int(in.Int())
+			out.KickReturnYards = int16(in.Int16())
 		case "PuntReturns":
-			out.PuntReturns = int(in.Int())
+			out.PuntReturns = int16(in.Int16())
 		case "PuntReturnTDs":
-			out.PuntReturnTDs = int(in.Int())
+			out.PuntReturnTDs = int16(in.Int16())
 		case "PuntReturnYards":
-			out.PuntReturnYards = int(in.Int())
+			out.PuntReturnYards = int16(in.Int16())
 		case "STSoloTackles":
 			out.STSoloTackles = float64(in.Float64())
 		case "STAssistedTackles":
 			out.STAssistedTackles = float64(in.Float64())
 		case "PuntsBlocked":
-			out.PuntsBlocked = int(in.Int())
+			out.PuntsBlocked = int16(in.Int16())
 		case "FGBlocked":
-			out.FGBlocked = int(in.Int())
+			out.FGBlocked = int16(in.Int16())
 		case "Snaps":
-			out.Snaps = int(in.Int())
+			out.Snaps = int16(in.Int16())
 		case "Pancakes":
-			out.Pancakes = int(in.Int())
+			out.Pancakes = int16(in.Int16())
 		case "SacksAllowed":
-			out.SacksAllowed = int(in.Int())
+			out.SacksAllowed = int16(in.Int16())
 		case "PlayedGame":
-			out.PlayedGame = int(in.Int())
+			out.PlayedGame = int16(in.Int16())
 		case "StartedGame":
-			out.StartedGame = int(in.Int())
+			out.StartedGame = int16(in.Int16())
 		case "WasInjured":
 			out.WasInjured = bool(in.Bool())
 		case "WeeksOfRecovery":
@@ -7708,87 +7708,87 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out *jwriter.Writer
 	{
 		const prefix string = ",\"PassingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassingYards))
+		out.Int16(int16(in.PassingYards))
 	}
 	{
 		const prefix string = ",\"PassAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassAttempts))
+		out.Int16(int16(in.PassAttempts))
 	}
 	{
 		const prefix string = ",\"PassCompletions\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassCompletions))
+		out.Int16(int16(in.PassCompletions))
 	}
 	{
 		const prefix string = ",\"PassingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassingTDs))
+		out.Int16(int16(in.PassingTDs))
 	}
 	{
 		const prefix string = ",\"Interceptions\":"
 		out.RawString(prefix)
-		out.Int(int(in.Interceptions))
+		out.Int16(int16(in.Interceptions))
 	}
 	{
 		const prefix string = ",\"LongestPass\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestPass))
+		out.Int16(int16(in.LongestPass))
 	}
 	{
 		const prefix string = ",\"Sacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.Sacks))
+		out.Int16(int16(in.Sacks))
 	}
 	{
 		const prefix string = ",\"RushAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushAttempts))
+		out.Int16(int16(in.RushAttempts))
 	}
 	{
 		const prefix string = ",\"RushingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushingYards))
+		out.Int16(int16(in.RushingYards))
 	}
 	{
 		const prefix string = ",\"RushingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.RushingTDs))
+		out.Int16(int16(in.RushingTDs))
 	}
 	{
 		const prefix string = ",\"Fumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.Fumbles))
+		out.Int16(int16(in.Fumbles))
 	}
 	{
 		const prefix string = ",\"LongestRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestRush))
+		out.Int16(int16(in.LongestRush))
 	}
 	{
 		const prefix string = ",\"Targets\":"
 		out.RawString(prefix)
-		out.Int(int(in.Targets))
+		out.Int16(int16(in.Targets))
 	}
 	{
 		const prefix string = ",\"Catches\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catches))
+		out.Int16(int16(in.Catches))
 	}
 	{
 		const prefix string = ",\"ReceivingYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.ReceivingYards))
+		out.Int16(int16(in.ReceivingYards))
 	}
 	{
 		const prefix string = ",\"ReceivingTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.ReceivingTDs))
+		out.Int16(int16(in.ReceivingTDs))
 	}
 	{
 		const prefix string = ",\"LongestReception\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestReception))
+		out.Int16(int16(in.LongestReception))
 	}
 	{
 		const prefix string = ",\"SoloTackles\":"
@@ -7813,117 +7813,117 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out *jwriter.Writer
 	{
 		const prefix string = ",\"ForcedFumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.ForcedFumbles))
+		out.Int16(int16(in.ForcedFumbles))
 	}
 	{
 		const prefix string = ",\"RecoveredFumbles\":"
 		out.RawString(prefix)
-		out.Int(int(in.RecoveredFumbles))
+		out.Int16(int16(in.RecoveredFumbles))
 	}
 	{
 		const prefix string = ",\"PassDeflections\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassDeflections))
+		out.Int16(int16(in.PassDeflections))
 	}
 	{
 		const prefix string = ",\"InterceptionsCaught\":"
 		out.RawString(prefix)
-		out.Int(int(in.InterceptionsCaught))
+		out.Int16(int16(in.InterceptionsCaught))
 	}
 	{
 		const prefix string = ",\"Safeties\":"
 		out.RawString(prefix)
-		out.Int(int(in.Safeties))
+		out.Int16(int16(in.Safeties))
 	}
 	{
 		const prefix string = ",\"DefensiveTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.DefensiveTDs))
+		out.Int16(int16(in.DefensiveTDs))
 	}
 	{
 		const prefix string = ",\"FGMade\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGMade))
+		out.Int16(int16(in.FGMade))
 	}
 	{
 		const prefix string = ",\"FGAttempts\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGAttempts))
+		out.Int16(int16(in.FGAttempts))
 	}
 	{
 		const prefix string = ",\"LongestFG\":"
 		out.RawString(prefix)
-		out.Int(int(in.LongestFG))
+		out.Int16(int16(in.LongestFG))
 	}
 	{
 		const prefix string = ",\"ExtraPointsMade\":"
 		out.RawString(prefix)
-		out.Int(int(in.ExtraPointsMade))
+		out.Int16(int16(in.ExtraPointsMade))
 	}
 	{
 		const prefix string = ",\"ExtraPointsAttempted\":"
 		out.RawString(prefix)
-		out.Int(int(in.ExtraPointsAttempted))
+		out.Int16(int16(in.ExtraPointsAttempted))
 	}
 	{
 		const prefix string = ",\"KickoffTouchbacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickoffTouchbacks))
+		out.Int16(int16(in.KickoffTouchbacks))
 	}
 	{
 		const prefix string = ",\"Punts\":"
 		out.RawString(prefix)
-		out.Int(int(in.Punts))
+		out.Int16(int16(in.Punts))
 	}
 	{
 		const prefix string = ",\"GrossPuntDistance\":"
 		out.RawString(prefix)
-		out.Int(int(in.GrossPuntDistance))
+		out.Int16(int16(in.GrossPuntDistance))
 	}
 	{
 		const prefix string = ",\"NetPuntDistance\":"
 		out.RawString(prefix)
-		out.Int(int(in.NetPuntDistance))
+		out.Int16(int16(in.NetPuntDistance))
 	}
 	{
 		const prefix string = ",\"PuntTouchbacks\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntTouchbacks))
+		out.Int16(int16(in.PuntTouchbacks))
 	}
 	{
 		const prefix string = ",\"PuntsInside20\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntsInside20))
+		out.Int16(int16(in.PuntsInside20))
 	}
 	{
 		const prefix string = ",\"KickReturns\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturns))
+		out.Int16(int16(in.KickReturns))
 	}
 	{
 		const prefix string = ",\"KickReturnTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturnTDs))
+		out.Int16(int16(in.KickReturnTDs))
 	}
 	{
 		const prefix string = ",\"KickReturnYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickReturnYards))
+		out.Int16(int16(in.KickReturnYards))
 	}
 	{
 		const prefix string = ",\"PuntReturns\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturns))
+		out.Int16(int16(in.PuntReturns))
 	}
 	{
 		const prefix string = ",\"PuntReturnTDs\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturnTDs))
+		out.Int16(int16(in.PuntReturnTDs))
 	}
 	{
 		const prefix string = ",\"PuntReturnYards\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntReturnYards))
+		out.Int16(int16(in.PuntReturnYards))
 	}
 	{
 		const prefix string = ",\"STSoloTackles\":"
@@ -7938,37 +7938,37 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out *jwriter.Writer
 	{
 		const prefix string = ",\"PuntsBlocked\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntsBlocked))
+		out.Int16(int16(in.PuntsBlocked))
 	}
 	{
 		const prefix string = ",\"FGBlocked\":"
 		out.RawString(prefix)
-		out.Int(int(in.FGBlocked))
+		out.Int16(int16(in.FGBlocked))
 	}
 	{
 		const prefix string = ",\"Snaps\":"
 		out.RawString(prefix)
-		out.Int(int(in.Snaps))
+		out.Int16(int16(in.Snaps))
 	}
 	{
 		const prefix string = ",\"Pancakes\":"
 		out.RawString(prefix)
-		out.Int(int(in.Pancakes))
+		out.Int16(int16(in.Pancakes))
 	}
 	{
 		const prefix string = ",\"SacksAllowed\":"
 		out.RawString(prefix)
-		out.Int(int(in.SacksAllowed))
+		out.Int16(int16(in.SacksAllowed))
 	}
 	{
 		const prefix string = ",\"PlayedGame\":"
 		out.RawString(prefix)
-		out.Int(int(in.PlayedGame))
+		out.Int16(int16(in.PlayedGame))
 	}
 	{
 		const prefix string = ",\"StartedGame\":"
 		out.RawString(prefix)
-		out.Int(int(in.StartedGame))
+		out.Int16(int16(in.StartedGame))
 	}
 	{
 		const prefix string = ",\"WasInjured\":"
@@ -14886,63 +14886,63 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in *jlexer.Lexer, o
 		case "PreviousTeam":
 			out.PreviousTeam = string(in.String())
 		case "Height":
-			out.Height = int(in.Int())
+			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int(in.Int())
+			out.Weight = int8(in.Int8())
 		case "Age":
-			out.Age = int(in.Int())
+			out.Age = int8(in.Int8())
 		case "Stars":
-			out.Stars = int(in.Int())
+			out.Stars = int8(in.Int8())
 		case "Overall":
-			out.Overall = int(in.Int())
+			out.Overall = int8(in.Int8())
 		case "Stamina":
-			out.Stamina = int(in.Int())
+			out.Stamina = int8(in.Int8())
 		case "Injury":
-			out.Injury = int(in.Int())
+			out.Injury = int8(in.Int8())
 		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
+			out.FootballIQ = int8(in.Int8())
 		case "Speed":
-			out.Speed = int(in.Int())
+			out.Speed = int8(in.Int8())
 		case "Carrying":
-			out.Carrying = int(in.Int())
+			out.Carrying = int8(in.Int8())
 		case "Agility":
-			out.Agility = int(in.Int())
+			out.Agility = int8(in.Int8())
 		case "Catching":
-			out.Catching = int(in.Int())
+			out.Catching = int8(in.Int8())
 		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
+			out.RouteRunning = int8(in.Int8())
 		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
+			out.ZoneCoverage = int8(in.Int8())
 		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
+			out.ManCoverage = int8(in.Int8())
 		case "Strength":
-			out.Strength = int(in.Int())
+			out.Strength = int8(in.Int8())
 		case "Tackle":
-			out.Tackle = int(in.Int())
+			out.Tackle = int8(in.Int8())
 		case "PassBlock":
-			out.PassBlock = int(in.Int())
+			out.PassBlock = int8(in.Int8())
 		case "RunBlock":
-			out.RunBlock = int(in.Int())
+			out.RunBlock = int8(in.Int8())
 		case "PassRush":
-			out.PassRush = int(in.Int())
+			out.PassRush = int8(in.Int8())
 		case "RunDefense":
-			out.RunDefense = int(in.Int())
+			out.RunDefense = int8(in.Int8())
 		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
+			out.ThrowPower = int8(in.Int8())
 		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
+			out.ThrowAccuracy = int8(in.Int8())
 		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
+			out.KickAccuracy = int8(in.Int8())
 		case "KickPower":
-			out.KickPower = int(in.Int())
+			out.KickPower = int8(in.Int8())
 		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
+			out.PuntAccuracy = int8(in.Int8())
 		case "PuntPower":
-			out.PuntPower = int(in.Int())
+			out.PuntPower = int8(in.Int8())
 		case "Progression":
-			out.Progression = int(in.Int())
+			out.Progression = int8(in.Int8())
 		case "Discipline":
-			out.Discipline = int(in.Int())
+			out.Discipline = int8(in.Int8())
 		case "PotentialGrade":
 			out.PotentialGrade = string(in.String())
 		case "FreeAgency":
@@ -15186,147 +15186,147 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out *jwriter.Writer
 	{
 		const prefix string = ",\"Height\":"
 		out.RawString(prefix)
-		out.Int(int(in.Height))
+		out.Int8(int8(in.Height))
 	}
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int(int(in.Weight))
+		out.Int8(int8(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
 		out.RawString(prefix)
-		out.Int(int(in.Age))
+		out.Int8(int8(in.Age))
 	}
 	{
 		const prefix string = ",\"Stars\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stars))
+		out.Int8(int8(in.Stars))
 	}
 	{
 		const prefix string = ",\"Overall\":"
 		out.RawString(prefix)
-		out.Int(int(in.Overall))
+		out.Int8(int8(in.Overall))
 	}
 	{
 		const prefix string = ",\"Stamina\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stamina))
+		out.Int8(int8(in.Stamina))
 	}
 	{
 		const prefix string = ",\"Injury\":"
 		out.RawString(prefix)
-		out.Int(int(in.Injury))
+		out.Int8(int8(in.Injury))
 	}
 	{
 		const prefix string = ",\"FootballIQ\":"
 		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
+		out.Int8(int8(in.FootballIQ))
 	}
 	{
 		const prefix string = ",\"Speed\":"
 		out.RawString(prefix)
-		out.Int(int(in.Speed))
+		out.Int8(int8(in.Speed))
 	}
 	{
 		const prefix string = ",\"Carrying\":"
 		out.RawString(prefix)
-		out.Int(int(in.Carrying))
+		out.Int8(int8(in.Carrying))
 	}
 	{
 		const prefix string = ",\"Agility\":"
 		out.RawString(prefix)
-		out.Int(int(in.Agility))
+		out.Int8(int8(in.Agility))
 	}
 	{
 		const prefix string = ",\"Catching\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catching))
+		out.Int8(int8(in.Catching))
 	}
 	{
 		const prefix string = ",\"RouteRunning\":"
 		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
+		out.Int8(int8(in.RouteRunning))
 	}
 	{
 		const prefix string = ",\"ZoneCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
+		out.Int8(int8(in.ZoneCoverage))
 	}
 	{
 		const prefix string = ",\"ManCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
+		out.Int8(int8(in.ManCoverage))
 	}
 	{
 		const prefix string = ",\"Strength\":"
 		out.RawString(prefix)
-		out.Int(int(in.Strength))
+		out.Int8(int8(in.Strength))
 	}
 	{
 		const prefix string = ",\"Tackle\":"
 		out.RawString(prefix)
-		out.Int(int(in.Tackle))
+		out.Int8(int8(in.Tackle))
 	}
 	{
 		const prefix string = ",\"PassBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
+		out.Int8(int8(in.PassBlock))
 	}
 	{
 		const prefix string = ",\"RunBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
+		out.Int8(int8(in.RunBlock))
 	}
 	{
 		const prefix string = ",\"PassRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassRush))
+		out.Int8(int8(in.PassRush))
 	}
 	{
 		const prefix string = ",\"RunDefense\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
+		out.Int8(int8(in.RunDefense))
 	}
 	{
 		const prefix string = ",\"ThrowPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
+		out.Int8(int8(in.ThrowPower))
 	}
 	{
 		const prefix string = ",\"ThrowAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
+		out.Int8(int8(in.ThrowAccuracy))
 	}
 	{
 		const prefix string = ",\"KickAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
+		out.Int8(int8(in.KickAccuracy))
 	}
 	{
 		const prefix string = ",\"KickPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickPower))
+		out.Int8(int8(in.KickPower))
 	}
 	{
 		const prefix string = ",\"PuntAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
+		out.Int8(int8(in.PuntAccuracy))
 	}
 	{
 		const prefix string = ",\"PuntPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
+		out.Int8(int8(in.PuntPower))
 	}
 	{
 		const prefix string = ",\"Progression\":"
 		out.RawString(prefix)
-		out.Int(int(in.Progression))
+		out.Int8(int8(in.Progression))
 	}
 	{
 		const prefix string = ",\"Discipline\":"
 		out.RawString(prefix)
-		out.Int(int(in.Discipline))
+		out.Int8(int8(in.Discipline))
 	}
 	{
 		const prefix string = ",\"PotentialGrade\":"
@@ -17355,63 +17355,63 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in *jlexer.Lexer, o
 		case "PreviousTeam":
 			out.PreviousTeam = string(in.String())
 		case "Height":
-			out.Height = int(in.Int())
+			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int(in.Int())
+			out.Weight = int8(in.Int8())
 		case "Age":
-			out.Age = int(in.Int())
+			out.Age = int8(in.Int8())
 		case "Stars":
-			out.Stars = int(in.Int())
+			out.Stars = int8(in.Int8())
 		case "Overall":
-			out.Overall = int(in.Int())
+			out.Overall = int8(in.Int8())
 		case "Stamina":
-			out.Stamina = int(in.Int())
+			out.Stamina = int8(in.Int8())
 		case "Injury":
-			out.Injury = int(in.Int())
+			out.Injury = int8(in.Int8())
 		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
+			out.FootballIQ = int8(in.Int8())
 		case "Speed":
-			out.Speed = int(in.Int())
+			out.Speed = int8(in.Int8())
 		case "Carrying":
-			out.Carrying = int(in.Int())
+			out.Carrying = int8(in.Int8())
 		case "Agility":
-			out.Agility = int(in.Int())
+			out.Agility = int8(in.Int8())
 		case "Catching":
-			out.Catching = int(in.Int())
+			out.Catching = int8(in.Int8())
 		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
+			out.RouteRunning = int8(in.Int8())
 		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
+			out.ZoneCoverage = int8(in.Int8())
 		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
+			out.ManCoverage = int8(in.Int8())
 		case "Strength":
-			out.Strength = int(in.Int())
+			out.Strength = int8(in.Int8())
 		case "Tackle":
-			out.Tackle = int(in.Int())
+			out.Tackle = int8(in.Int8())
 		case "PassBlock":
-			out.PassBlock = int(in.Int())
+			out.PassBlock = int8(in.Int8())
 		case "RunBlock":
-			out.RunBlock = int(in.Int())
+			out.RunBlock = int8(in.Int8())
 		case "PassRush":
-			out.PassRush = int(in.Int())
+			out.PassRush = int8(in.Int8())
 		case "RunDefense":
-			out.RunDefense = int(in.Int())
+			out.RunDefense = int8(in.Int8())
 		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
+			out.ThrowPower = int8(in.Int8())
 		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
+			out.ThrowAccuracy = int8(in.Int8())
 		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
+			out.KickAccuracy = int8(in.Int8())
 		case "KickPower":
-			out.KickPower = int(in.Int())
+			out.KickPower = int8(in.Int8())
 		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
+			out.PuntAccuracy = int8(in.Int8())
 		case "PuntPower":
-			out.PuntPower = int(in.Int())
+			out.PuntPower = int8(in.Int8())
 		case "Progression":
-			out.Progression = int(in.Int())
+			out.Progression = int8(in.Int8())
 		case "Discipline":
-			out.Discipline = int(in.Int())
+			out.Discipline = int8(in.Int8())
 		case "PotentialGrade":
 			out.PotentialGrade = string(in.String())
 		case "FreeAgency":
@@ -17783,147 +17783,147 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out *jwriter.Writer
 	{
 		const prefix string = ",\"Height\":"
 		out.RawString(prefix)
-		out.Int(int(in.Height))
+		out.Int8(int8(in.Height))
 	}
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int(int(in.Weight))
+		out.Int8(int8(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
 		out.RawString(prefix)
-		out.Int(int(in.Age))
+		out.Int8(int8(in.Age))
 	}
 	{
 		const prefix string = ",\"Stars\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stars))
+		out.Int8(int8(in.Stars))
 	}
 	{
 		const prefix string = ",\"Overall\":"
 		out.RawString(prefix)
-		out.Int(int(in.Overall))
+		out.Int8(int8(in.Overall))
 	}
 	{
 		const prefix string = ",\"Stamina\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stamina))
+		out.Int8(int8(in.Stamina))
 	}
 	{
 		const prefix string = ",\"Injury\":"
 		out.RawString(prefix)
-		out.Int(int(in.Injury))
+		out.Int8(int8(in.Injury))
 	}
 	{
 		const prefix string = ",\"FootballIQ\":"
 		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
+		out.Int8(int8(in.FootballIQ))
 	}
 	{
 		const prefix string = ",\"Speed\":"
 		out.RawString(prefix)
-		out.Int(int(in.Speed))
+		out.Int8(int8(in.Speed))
 	}
 	{
 		const prefix string = ",\"Carrying\":"
 		out.RawString(prefix)
-		out.Int(int(in.Carrying))
+		out.Int8(int8(in.Carrying))
 	}
 	{
 		const prefix string = ",\"Agility\":"
 		out.RawString(prefix)
-		out.Int(int(in.Agility))
+		out.Int8(int8(in.Agility))
 	}
 	{
 		const prefix string = ",\"Catching\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catching))
+		out.Int8(int8(in.Catching))
 	}
 	{
 		const prefix string = ",\"RouteRunning\":"
 		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
+		out.Int8(int8(in.RouteRunning))
 	}
 	{
 		const prefix string = ",\"ZoneCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
+		out.Int8(int8(in.ZoneCoverage))
 	}
 	{
 		const prefix string = ",\"ManCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
+		out.Int8(int8(in.ManCoverage))
 	}
 	{
 		const prefix string = ",\"Strength\":"
 		out.RawString(prefix)
-		out.Int(int(in.Strength))
+		out.Int8(int8(in.Strength))
 	}
 	{
 		const prefix string = ",\"Tackle\":"
 		out.RawString(prefix)
-		out.Int(int(in.Tackle))
+		out.Int8(int8(in.Tackle))
 	}
 	{
 		const prefix string = ",\"PassBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
+		out.Int8(int8(in.PassBlock))
 	}
 	{
 		const prefix string = ",\"RunBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
+		out.Int8(int8(in.RunBlock))
 	}
 	{
 		const prefix string = ",\"PassRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassRush))
+		out.Int8(int8(in.PassRush))
 	}
 	{
 		const prefix string = ",\"RunDefense\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
+		out.Int8(int8(in.RunDefense))
 	}
 	{
 		const prefix string = ",\"ThrowPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
+		out.Int8(int8(in.ThrowPower))
 	}
 	{
 		const prefix string = ",\"ThrowAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
+		out.Int8(int8(in.ThrowAccuracy))
 	}
 	{
 		const prefix string = ",\"KickAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
+		out.Int8(int8(in.KickAccuracy))
 	}
 	{
 		const prefix string = ",\"KickPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickPower))
+		out.Int8(int8(in.KickPower))
 	}
 	{
 		const prefix string = ",\"PuntAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
+		out.Int8(int8(in.PuntAccuracy))
 	}
 	{
 		const prefix string = ",\"PuntPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
+		out.Int8(int8(in.PuntPower))
 	}
 	{
 		const prefix string = ",\"Progression\":"
 		out.RawString(prefix)
-		out.Int(int(in.Progression))
+		out.Int8(int8(in.Progression))
 	}
 	{
 		const prefix string = ",\"Discipline\":"
 		out.RawString(prefix)
-		out.Int(int(in.Discipline))
+		out.Int8(int8(in.Discipline))
 	}
 	{
 		const prefix string = ",\"PotentialGrade\":"
@@ -18208,63 +18208,63 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs38(in *jlexer.Lexer, o
 		case "PreviousTeam":
 			out.PreviousTeam = string(in.String())
 		case "Height":
-			out.Height = int(in.Int())
+			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int(in.Int())
+			out.Weight = int8(in.Int8())
 		case "Age":
-			out.Age = int(in.Int())
+			out.Age = int8(in.Int8())
 		case "Stars":
-			out.Stars = int(in.Int())
+			out.Stars = int8(in.Int8())
 		case "Overall":
-			out.Overall = int(in.Int())
+			out.Overall = int8(in.Int8())
 		case "Stamina":
-			out.Stamina = int(in.Int())
+			out.Stamina = int8(in.Int8())
 		case "Injury":
-			out.Injury = int(in.Int())
+			out.Injury = int8(in.Int8())
 		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
+			out.FootballIQ = int8(in.Int8())
 		case "Speed":
-			out.Speed = int(in.Int())
+			out.Speed = int8(in.Int8())
 		case "Carrying":
-			out.Carrying = int(in.Int())
+			out.Carrying = int8(in.Int8())
 		case "Agility":
-			out.Agility = int(in.Int())
+			out.Agility = int8(in.Int8())
 		case "Catching":
-			out.Catching = int(in.Int())
+			out.Catching = int8(in.Int8())
 		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
+			out.RouteRunning = int8(in.Int8())
 		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
+			out.ZoneCoverage = int8(in.Int8())
 		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
+			out.ManCoverage = int8(in.Int8())
 		case "Strength":
-			out.Strength = int(in.Int())
+			out.Strength = int8(in.Int8())
 		case "Tackle":
-			out.Tackle = int(in.Int())
+			out.Tackle = int8(in.Int8())
 		case "PassBlock":
-			out.PassBlock = int(in.Int())
+			out.PassBlock = int8(in.Int8())
 		case "RunBlock":
-			out.RunBlock = int(in.Int())
+			out.RunBlock = int8(in.Int8())
 		case "PassRush":
-			out.PassRush = int(in.Int())
+			out.PassRush = int8(in.Int8())
 		case "RunDefense":
-			out.RunDefense = int(in.Int())
+			out.RunDefense = int8(in.Int8())
 		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
+			out.ThrowPower = int8(in.Int8())
 		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
+			out.ThrowAccuracy = int8(in.Int8())
 		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
+			out.KickAccuracy = int8(in.Int8())
 		case "KickPower":
-			out.KickPower = int(in.Int())
+			out.KickPower = int8(in.Int8())
 		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
+			out.PuntAccuracy = int8(in.Int8())
 		case "PuntPower":
-			out.PuntPower = int(in.Int())
+			out.PuntPower = int8(in.Int8())
 		case "Progression":
-			out.Progression = int(in.Int())
+			out.Progression = int8(in.Int8())
 		case "Discipline":
-			out.Discipline = int(in.Int())
+			out.Discipline = int8(in.Int8())
 		case "PotentialGrade":
 			out.PotentialGrade = string(in.String())
 		case "FreeAgency":
@@ -18498,147 +18498,147 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out *jwriter.Writer
 	{
 		const prefix string = ",\"Height\":"
 		out.RawString(prefix)
-		out.Int(int(in.Height))
+		out.Int8(int8(in.Height))
 	}
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int(int(in.Weight))
+		out.Int8(int8(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
 		out.RawString(prefix)
-		out.Int(int(in.Age))
+		out.Int8(int8(in.Age))
 	}
 	{
 		const prefix string = ",\"Stars\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stars))
+		out.Int8(int8(in.Stars))
 	}
 	{
 		const prefix string = ",\"Overall\":"
 		out.RawString(prefix)
-		out.Int(int(in.Overall))
+		out.Int8(int8(in.Overall))
 	}
 	{
 		const prefix string = ",\"Stamina\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stamina))
+		out.Int8(int8(in.Stamina))
 	}
 	{
 		const prefix string = ",\"Injury\":"
 		out.RawString(prefix)
-		out.Int(int(in.Injury))
+		out.Int8(int8(in.Injury))
 	}
 	{
 		const prefix string = ",\"FootballIQ\":"
 		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
+		out.Int8(int8(in.FootballIQ))
 	}
 	{
 		const prefix string = ",\"Speed\":"
 		out.RawString(prefix)
-		out.Int(int(in.Speed))
+		out.Int8(int8(in.Speed))
 	}
 	{
 		const prefix string = ",\"Carrying\":"
 		out.RawString(prefix)
-		out.Int(int(in.Carrying))
+		out.Int8(int8(in.Carrying))
 	}
 	{
 		const prefix string = ",\"Agility\":"
 		out.RawString(prefix)
-		out.Int(int(in.Agility))
+		out.Int8(int8(in.Agility))
 	}
 	{
 		const prefix string = ",\"Catching\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catching))
+		out.Int8(int8(in.Catching))
 	}
 	{
 		const prefix string = ",\"RouteRunning\":"
 		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
+		out.Int8(int8(in.RouteRunning))
 	}
 	{
 		const prefix string = ",\"ZoneCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
+		out.Int8(int8(in.ZoneCoverage))
 	}
 	{
 		const prefix string = ",\"ManCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
+		out.Int8(int8(in.ManCoverage))
 	}
 	{
 		const prefix string = ",\"Strength\":"
 		out.RawString(prefix)
-		out.Int(int(in.Strength))
+		out.Int8(int8(in.Strength))
 	}
 	{
 		const prefix string = ",\"Tackle\":"
 		out.RawString(prefix)
-		out.Int(int(in.Tackle))
+		out.Int8(int8(in.Tackle))
 	}
 	{
 		const prefix string = ",\"PassBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
+		out.Int8(int8(in.PassBlock))
 	}
 	{
 		const prefix string = ",\"RunBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
+		out.Int8(int8(in.RunBlock))
 	}
 	{
 		const prefix string = ",\"PassRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassRush))
+		out.Int8(int8(in.PassRush))
 	}
 	{
 		const prefix string = ",\"RunDefense\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
+		out.Int8(int8(in.RunDefense))
 	}
 	{
 		const prefix string = ",\"ThrowPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
+		out.Int8(int8(in.ThrowPower))
 	}
 	{
 		const prefix string = ",\"ThrowAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
+		out.Int8(int8(in.ThrowAccuracy))
 	}
 	{
 		const prefix string = ",\"KickAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
+		out.Int8(int8(in.KickAccuracy))
 	}
 	{
 		const prefix string = ",\"KickPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickPower))
+		out.Int8(int8(in.KickPower))
 	}
 	{
 		const prefix string = ",\"PuntAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
+		out.Int8(int8(in.PuntAccuracy))
 	}
 	{
 		const prefix string = ",\"PuntPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
+		out.Int8(int8(in.PuntPower))
 	}
 	{
 		const prefix string = ",\"Progression\":"
 		out.RawString(prefix)
-		out.Int(int(in.Progression))
+		out.Int8(int8(in.Progression))
 	}
 	{
 		const prefix string = ",\"Discipline\":"
 		out.RawString(prefix)
-		out.Int(int(in.Discipline))
+		out.Int8(int8(in.Discipline))
 	}
 	{
 		const prefix string = ",\"PotentialGrade\":"
@@ -25684,63 +25684,63 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAModels(in *jlexer.Lexer, out 
 		case "PreviousTeam":
 			out.PreviousTeam = string(in.String())
 		case "Height":
-			out.Height = int(in.Int())
+			out.Height = int8(in.Int8())
 		case "Weight":
-			out.Weight = int(in.Int())
+			out.Weight = int8(in.Int8())
 		case "Age":
-			out.Age = int(in.Int())
+			out.Age = int8(in.Int8())
 		case "Stars":
-			out.Stars = int(in.Int())
+			out.Stars = int8(in.Int8())
 		case "Overall":
-			out.Overall = int(in.Int())
+			out.Overall = int8(in.Int8())
 		case "Stamina":
-			out.Stamina = int(in.Int())
+			out.Stamina = int8(in.Int8())
 		case "Injury":
-			out.Injury = int(in.Int())
+			out.Injury = int8(in.Int8())
 		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
+			out.FootballIQ = int8(in.Int8())
 		case "Speed":
-			out.Speed = int(in.Int())
+			out.Speed = int8(in.Int8())
 		case "Carrying":
-			out.Carrying = int(in.Int())
+			out.Carrying = int8(in.Int8())
 		case "Agility":
-			out.Agility = int(in.Int())
+			out.Agility = int8(in.Int8())
 		case "Catching":
-			out.Catching = int(in.Int())
+			out.Catching = int8(in.Int8())
 		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
+			out.RouteRunning = int8(in.Int8())
 		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
+			out.ZoneCoverage = int8(in.Int8())
 		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
+			out.ManCoverage = int8(in.Int8())
 		case "Strength":
-			out.Strength = int(in.Int())
+			out.Strength = int8(in.Int8())
 		case "Tackle":
-			out.Tackle = int(in.Int())
+			out.Tackle = int8(in.Int8())
 		case "PassBlock":
-			out.PassBlock = int(in.Int())
+			out.PassBlock = int8(in.Int8())
 		case "RunBlock":
-			out.RunBlock = int(in.Int())
+			out.RunBlock = int8(in.Int8())
 		case "PassRush":
-			out.PassRush = int(in.Int())
+			out.PassRush = int8(in.Int8())
 		case "RunDefense":
-			out.RunDefense = int(in.Int())
+			out.RunDefense = int8(in.Int8())
 		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
+			out.ThrowPower = int8(in.Int8())
 		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
+			out.ThrowAccuracy = int8(in.Int8())
 		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
+			out.KickAccuracy = int8(in.Int8())
 		case "KickPower":
-			out.KickPower = int(in.Int())
+			out.KickPower = int8(in.Int8())
 		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
+			out.PuntAccuracy = int8(in.Int8())
 		case "PuntPower":
-			out.PuntPower = int(in.Int())
+			out.PuntPower = int8(in.Int8())
 		case "Progression":
-			out.Progression = int(in.Int())
+			out.Progression = int8(in.Int8())
 		case "Discipline":
-			out.Discipline = int(in.Int())
+			out.Discipline = int8(in.Int8())
 		case "PotentialGrade":
 			out.PotentialGrade = string(in.String())
 		case "FreeAgency":
@@ -26058,147 +26058,147 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out *jwriter.Writer, i
 	{
 		const prefix string = ",\"Height\":"
 		out.RawString(prefix)
-		out.Int(int(in.Height))
+		out.Int8(int8(in.Height))
 	}
 	{
 		const prefix string = ",\"Weight\":"
 		out.RawString(prefix)
-		out.Int(int(in.Weight))
+		out.Int8(int8(in.Weight))
 	}
 	{
 		const prefix string = ",\"Age\":"
 		out.RawString(prefix)
-		out.Int(int(in.Age))
+		out.Int8(int8(in.Age))
 	}
 	{
 		const prefix string = ",\"Stars\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stars))
+		out.Int8(int8(in.Stars))
 	}
 	{
 		const prefix string = ",\"Overall\":"
 		out.RawString(prefix)
-		out.Int(int(in.Overall))
+		out.Int8(int8(in.Overall))
 	}
 	{
 		const prefix string = ",\"Stamina\":"
 		out.RawString(prefix)
-		out.Int(int(in.Stamina))
+		out.Int8(int8(in.Stamina))
 	}
 	{
 		const prefix string = ",\"Injury\":"
 		out.RawString(prefix)
-		out.Int(int(in.Injury))
+		out.Int8(int8(in.Injury))
 	}
 	{
 		const prefix string = ",\"FootballIQ\":"
 		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
+		out.Int8(int8(in.FootballIQ))
 	}
 	{
 		const prefix string = ",\"Speed\":"
 		out.RawString(prefix)
-		out.Int(int(in.Speed))
+		out.Int8(int8(in.Speed))
 	}
 	{
 		const prefix string = ",\"Carrying\":"
 		out.RawString(prefix)
-		out.Int(int(in.Carrying))
+		out.Int8(int8(in.Carrying))
 	}
 	{
 		const prefix string = ",\"Agility\":"
 		out.RawString(prefix)
-		out.Int(int(in.Agility))
+		out.Int8(int8(in.Agility))
 	}
 	{
 		const prefix string = ",\"Catching\":"
 		out.RawString(prefix)
-		out.Int(int(in.Catching))
+		out.Int8(int8(in.Catching))
 	}
 	{
 		const prefix string = ",\"RouteRunning\":"
 		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
+		out.Int8(int8(in.RouteRunning))
 	}
 	{
 		const prefix string = ",\"ZoneCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
+		out.Int8(int8(in.ZoneCoverage))
 	}
 	{
 		const prefix string = ",\"ManCoverage\":"
 		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
+		out.Int8(int8(in.ManCoverage))
 	}
 	{
 		const prefix string = ",\"Strength\":"
 		out.RawString(prefix)
-		out.Int(int(in.Strength))
+		out.Int8(int8(in.Strength))
 	}
 	{
 		const prefix string = ",\"Tackle\":"
 		out.RawString(prefix)
-		out.Int(int(in.Tackle))
+		out.Int8(int8(in.Tackle))
 	}
 	{
 		const prefix string = ",\"PassBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
+		out.Int8(int8(in.PassBlock))
 	}
 	{
 		const prefix string = ",\"RunBlock\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
+		out.Int8(int8(in.RunBlock))
 	}
 	{
 		const prefix string = ",\"PassRush\":"
 		out.RawString(prefix)
-		out.Int(int(in.PassRush))
+		out.Int8(int8(in.PassRush))
 	}
 	{
 		const prefix string = ",\"RunDefense\":"
 		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
+		out.Int8(int8(in.RunDefense))
 	}
 	{
 		const prefix string = ",\"ThrowPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
+		out.Int8(int8(in.ThrowPower))
 	}
 	{
 		const prefix string = ",\"ThrowAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
+		out.Int8(int8(in.ThrowAccuracy))
 	}
 	{
 		const prefix string = ",\"KickAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
+		out.Int8(int8(in.KickAccuracy))
 	}
 	{
 		const prefix string = ",\"KickPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.KickPower))
+		out.Int8(int8(in.KickPower))
 	}
 	{
 		const prefix string = ",\"PuntAccuracy\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
+		out.Int8(int8(in.PuntAccuracy))
 	}
 	{
 		const prefix string = ",\"PuntPower\":"
 		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
+		out.Int8(int8(in.PuntPower))
 	}
 	{
 		const prefix string = ",\"Progression\":"
 		out.RawString(prefix)
-		out.Int(int(in.Progression))
+		out.Int8(int8(in.Progression))
 	}
 	{
 		const prefix string = ",\"Discipline\":"
 		out.RawString(prefix)
-		out.Int(int(in.Discipline))
+		out.Int8(int8(in.Discipline))
 	}
 	{
 		const prefix string = ",\"PotentialGrade\":"

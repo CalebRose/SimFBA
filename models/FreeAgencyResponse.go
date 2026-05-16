@@ -19,32 +19,32 @@ type FreeAgentResponse struct {
 	PositionTwo       string
 	Archetype         string
 	ArchetypeTwo      string
-	Height            int
-	Weight            int
-	Age               int
-	Overall           int
-	FootballIQ        int
-	Speed             int
-	Carrying          int
-	Agility           int
-	Catching          int
-	RouteRunning      int
-	ZoneCoverage      int
-	ManCoverage       int
-	Strength          int
-	Tackle            int
-	PassBlock         int
-	RunBlock          int
-	PassRush          int
-	RunDefense        int
-	ThrowPower        int
-	ThrowAccuracy     int
-	KickAccuracy      int
-	KickPower         int
-	PuntAccuracy      int
-	PuntPower         int
-	InjuryRating      int
-	Stamina           int
+	Height            int8
+	Weight            int8
+	Age               int8
+	Overall           int8
+	FootballIQ        int8
+	Speed             int8
+	Carrying          int8
+	Agility           int8
+	Catching          int8
+	RouteRunning      int8
+	ZoneCoverage      int8
+	ManCoverage       int8
+	Strength          int8
+	Tackle            int8
+	PassBlock         int8
+	RunBlock          int8
+	PassRush          int8
+	RunDefense        int8
+	ThrowPower        int8
+	ThrowAccuracy     int8
+	KickAccuracy      int8
+	KickPower         int8
+	PuntAccuracy      int8
+	PuntPower         int8
+	InjuryRating      int8
+	Stamina           int8
 	PotentialGrade    string
 	FreeAgency        string
 	Personality       string

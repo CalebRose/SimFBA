@@ -48,29 +48,29 @@ type NFLDrafteeCSV struct {
 func MapNFLDrafteeToModel(player NFLDraftee) NFLDrafteeCSV {
 
 	attributeMeans := config.AttributeMeans()
-	OverallGrade := util.GetNFLOverallGrade(player.Overall)
-	StaminaGrade := util.GetLetterGrade(player.Stamina, attributeMeans["Stamina"][player.Position]["mean"], attributeMeans["Stamina"][player.Position]["stddev"], 4)
-	InjuryGrade := util.GetLetterGrade(player.Injury, attributeMeans["Injury"][player.Position]["mean"], attributeMeans["Injury"][player.Position]["stddev"], 4)
-	SpeedGrade := util.GetLetterGrade(player.Speed, attributeMeans["Speed"][player.Position]["mean"], attributeMeans["Speed"][player.Position]["stddev"], 4)
-	FootballIQGrade := util.GetLetterGrade(player.FootballIQ, attributeMeans["FootballIQ"][player.Position]["mean"], attributeMeans["FootballIQ"][player.Position]["stddev"], 4)
-	AgilityGrade := util.GetLetterGrade(player.Agility, attributeMeans["Agility"][player.Position]["mean"], attributeMeans["Agility"][player.Position]["stddev"], 4)
-	CarryingGrade := util.GetLetterGrade(player.Carrying, attributeMeans["Carrying"][player.Position]["mean"], attributeMeans["Carrying"][player.Position]["stddev"], 4)
-	CatchingGrade := util.GetLetterGrade(player.Catching, attributeMeans["Catching"][player.Position]["mean"], attributeMeans["Catching"][player.Position]["stddev"], 4)
-	RouteRunningGrade := util.GetLetterGrade(player.RouteRunning, attributeMeans["RouteRunning"][player.Position]["mean"], attributeMeans["RouteRunning"][player.Position]["stddev"], 4)
-	ZoneCoverageGrade := util.GetLetterGrade(player.ZoneCoverage, attributeMeans["ZoneCoverage"][player.Position]["mean"], attributeMeans["ZoneCoverage"][player.Position]["stddev"], 4)
-	ManCoverageGrade := util.GetLetterGrade(player.ManCoverage, attributeMeans["ManCoverage"][player.Position]["mean"], attributeMeans["ManCoverage"][player.Position]["stddev"], 4)
-	StrengthGrade := util.GetLetterGrade(player.Strength, attributeMeans["Strength"][player.Position]["mean"], attributeMeans["Strength"][player.Position]["stddev"], 4)
-	TackleGrade := util.GetLetterGrade(player.Tackle, attributeMeans["Tackle"][player.Position]["mean"], attributeMeans["Tackle"][player.Position]["stddev"], 4)
-	PassBlockGrade := util.GetLetterGrade(player.PassBlock, attributeMeans["PassBlock"][player.Position]["mean"], attributeMeans["PassBlock"][player.Position]["stddev"], 4)
-	RunBlockGrade := util.GetLetterGrade(player.RunBlock, attributeMeans["RunBlock"][player.Position]["mean"], attributeMeans["RunBlock"][player.Position]["stddev"], 4)
-	PassRushGrade := util.GetLetterGrade(player.PassRush, attributeMeans["PassRush"][player.Position]["mean"], attributeMeans["PassRush"][player.Position]["stddev"], 4)
-	RunDefenseGrade := util.GetLetterGrade(player.RunDefense, attributeMeans["RunDefense"][player.Position]["mean"], attributeMeans["RunDefense"][player.Position]["stddev"], 4)
-	ThrowPowerGrade := util.GetLetterGrade(player.ThrowPower, attributeMeans["ThrowPower"][player.Position]["mean"], attributeMeans["ThrowPower"][player.Position]["stddev"], 4)
-	ThrowAccuracyGrade := util.GetLetterGrade(player.ThrowAccuracy, attributeMeans["ThrowAccuracy"][player.Position]["mean"], attributeMeans["ThrowAccuracy"][player.Position]["stddev"], 4)
-	KickPowerGrade := util.GetLetterGrade(player.KickPower, attributeMeans["KickPower"][player.Position]["mean"], attributeMeans["KickPower"][player.Position]["stddev"], 4)
-	KickAccuracyGrade := util.GetLetterGrade(player.KickAccuracy, attributeMeans["KickAccuracy"][player.Position]["mean"], attributeMeans["KickAccuracy"][player.Position]["stddev"], 4)
-	PuntPowerGrade := util.GetLetterGrade(player.PuntPower, attributeMeans["PuntPower"][player.Position]["mean"], attributeMeans["PuntPower"][player.Position]["stddev"], 4)
-	PuntAccuracyGrade := util.GetLetterGrade(player.PuntAccuracy, attributeMeans["PuntAccuracy"][player.Position]["mean"], attributeMeans["PuntAccuracy"][player.Position]["stddev"], 4)
+	OverallGrade := util.GetNFLOverallGrade(int(player.Overall))
+	StaminaGrade := util.GetLetterGrade(int(player.Stamina), attributeMeans["Stamina"][player.Position]["mean"], attributeMeans["Stamina"][player.Position]["stddev"], 4)
+	InjuryGrade := util.GetLetterGrade(int(player.Injury), attributeMeans["Injury"][player.Position]["mean"], attributeMeans["Injury"][player.Position]["stddev"], 4)
+	SpeedGrade := util.GetLetterGrade(int(player.Speed), attributeMeans["Speed"][player.Position]["mean"], attributeMeans["Speed"][player.Position]["stddev"], 4)
+	FootballIQGrade := util.GetLetterGrade(int(player.FootballIQ), attributeMeans["FootballIQ"][player.Position]["mean"], attributeMeans["FootballIQ"][player.Position]["stddev"], 4)
+	AgilityGrade := util.GetLetterGrade(int(player.Agility), attributeMeans["Agility"][player.Position]["mean"], attributeMeans["Agility"][player.Position]["stddev"], 4)
+	CarryingGrade := util.GetLetterGrade(int(player.Carrying), attributeMeans["Carrying"][player.Position]["mean"], attributeMeans["Carrying"][player.Position]["stddev"], 4)
+	CatchingGrade := util.GetLetterGrade(int(player.Catching), attributeMeans["Catching"][player.Position]["mean"], attributeMeans["Catching"][player.Position]["stddev"], 4)
+	RouteRunningGrade := util.GetLetterGrade(int(player.RouteRunning), attributeMeans["RouteRunning"][player.Position]["mean"], attributeMeans["RouteRunning"][player.Position]["stddev"], 4)
+	ZoneCoverageGrade := util.GetLetterGrade(int(player.ZoneCoverage), attributeMeans["ZoneCoverage"][player.Position]["mean"], attributeMeans["ZoneCoverage"][player.Position]["stddev"], 4)
+	ManCoverageGrade := util.GetLetterGrade(int(player.ManCoverage), attributeMeans["ManCoverage"][player.Position]["mean"], attributeMeans["ManCoverage"][player.Position]["stddev"], 4)
+	StrengthGrade := util.GetLetterGrade(int(player.Strength), attributeMeans["Strength"][player.Position]["mean"], attributeMeans["Strength"][player.Position]["stddev"], 4)
+	TackleGrade := util.GetLetterGrade(int(player.Tackle), attributeMeans["Tackle"][player.Position]["mean"], attributeMeans["Tackle"][player.Position]["stddev"], 4)
+	PassBlockGrade := util.GetLetterGrade(int(player.PassBlock), attributeMeans["PassBlock"][player.Position]["mean"], attributeMeans["PassBlock"][player.Position]["stddev"], 4)
+	RunBlockGrade := util.GetLetterGrade(int(player.RunBlock), attributeMeans["RunBlock"][player.Position]["mean"], attributeMeans["RunBlock"][player.Position]["stddev"], 4)
+	PassRushGrade := util.GetLetterGrade(int(player.PassRush), attributeMeans["PassRush"][player.Position]["mean"], attributeMeans["PassRush"][player.Position]["stddev"], 4)
+	RunDefenseGrade := util.GetLetterGrade(int(player.RunDefense), attributeMeans["RunDefense"][player.Position]["mean"], attributeMeans["RunDefense"][player.Position]["stddev"], 4)
+	ThrowPowerGrade := util.GetLetterGrade(int(player.ThrowPower), attributeMeans["ThrowPower"][player.Position]["mean"], attributeMeans["ThrowPower"][player.Position]["stddev"], 4)
+	ThrowAccuracyGrade := util.GetLetterGrade(int(player.ThrowAccuracy), attributeMeans["ThrowAccuracy"][player.Position]["mean"], attributeMeans["ThrowAccuracy"][player.Position]["stddev"], 4)
+	KickPowerGrade := util.GetLetterGrade(int(player.KickPower), attributeMeans["KickPower"][player.Position]["mean"], attributeMeans["KickPower"][player.Position]["stddev"], 4)
+	KickAccuracyGrade := util.GetLetterGrade(int(player.KickAccuracy), attributeMeans["KickAccuracy"][player.Position]["mean"], attributeMeans["KickAccuracy"][player.Position]["stddev"], 4)
+	PuntPowerGrade := util.GetLetterGrade(int(player.PuntPower), attributeMeans["PuntPower"][player.Position]["mean"], attributeMeans["PuntPower"][player.Position]["stddev"], 4)
+	PuntAccuracyGrade := util.GetLetterGrade(int(player.PuntAccuracy), attributeMeans["PuntAccuracy"][player.Position]["mean"], attributeMeans["PuntAccuracy"][player.Position]["stddev"], 4)
 
 	return NFLDrafteeCSV{
 		PlayerID:           player.PlayerID,
@@ -78,14 +78,14 @@ func MapNFLDrafteeToModel(player NFLDraftee) NFLDrafteeCSV {
 		LastName:           player.LastName,
 		Position:           player.Position,
 		Archetype:          player.Archetype,
-		Age:                player.Age,
-		Stars:              player.Stars,
+		Age:                int(player.Age),
+		Stars:              int(player.Stars),
 		College:            player.College,
 		HighSchool:         player.HighSchool,
 		City:               player.City,
 		State:              player.State,
-		Height:             player.Height,
-		Weight:             player.Weight,
+		Height:             int(player.Height),
+		Weight:             int(player.Weight),
 		OverallGrade:       OverallGrade,
 		StaminaGrade:       StaminaGrade,
 		InjuryGrade:        InjuryGrade,

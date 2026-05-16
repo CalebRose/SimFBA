@@ -63,7 +63,7 @@ func (np *NFLPlayer) SetID(val uint) {
 }
 
 func (np *NFLPlayer) AssignMissingValues(pr int, aca string, fa string, per string, rec string, we string) {
-	np.Progression = pr
+	np.Progression = int8(pr)
 	np.AcademicBias = aca
 	np.FreeAgency = fa
 	np.Personality = per
@@ -209,26 +209,26 @@ func (f *NFLPlayer) ToggleHasProgressed() {
 func (np *NFLPlayer) Progress(attr CollegePlayerProgressions) {
 	np.Age++
 	np.Experience++
-	np.Agility = AddAttribute(attr.Agility)
-	np.Speed = AddAttribute(attr.Speed)
-	np.FootballIQ = AddAttribute(attr.FootballIQ)
-	np.Carrying = AddAttribute(attr.Carrying)
-	np.Catching = AddAttribute(attr.Catching)
-	np.RouteRunning = AddAttribute(attr.RouteRunning)
-	np.PassBlock = AddAttribute(attr.PassBlock)
-	np.RunBlock = AddAttribute(attr.RunBlock)
-	np.PassRush = AddAttribute(attr.PassRush)
-	np.RunDefense = AddAttribute(attr.RunDefense)
-	np.Tackle = AddAttribute(attr.Tackle)
-	np.Strength = AddAttribute(attr.Strength)
-	np.ManCoverage = AddAttribute(attr.ManCoverage)
-	np.ZoneCoverage = AddAttribute(attr.ZoneCoverage)
-	np.KickAccuracy = AddAttribute(attr.KickAccuracy)
-	np.KickPower = AddAttribute(attr.KickPower)
-	np.PuntAccuracy = AddAttribute(attr.PuntAccuracy)
-	np.PuntPower = AddAttribute(attr.PuntPower)
-	np.ThrowAccuracy = AddAttribute(attr.ThrowAccuracy)
-	np.ThrowPower = AddAttribute(attr.ThrowPower)
+	np.Agility = int8(AddAttribute(int(attr.Agility)))
+	np.Speed = int8(AddAttribute(int(attr.Speed)))
+	np.FootballIQ = int8(AddAttribute(int(attr.FootballIQ)))
+	np.Carrying = int8(AddAttribute(int(attr.Carrying)))
+	np.Catching = int8(AddAttribute(int(attr.Catching)))
+	np.RouteRunning = int8(AddAttribute(int(attr.RouteRunning)))
+	np.PassBlock = int8(AddAttribute(int(attr.PassBlock)))
+	np.RunBlock = int8(AddAttribute(int(attr.RunBlock)))
+	np.PassRush = int8(AddAttribute(int(attr.PassRush)))
+	np.RunDefense = int8(AddAttribute(int(attr.RunDefense)))
+	np.Tackle = int8(AddAttribute(int(attr.Tackle)))
+	np.Strength = int8(AddAttribute(int(attr.Strength)))
+	np.ManCoverage = int8(AddAttribute(int(attr.ManCoverage)))
+	np.ZoneCoverage = int8(AddAttribute(int(attr.ZoneCoverage)))
+	np.KickAccuracy = int8(AddAttribute(int(attr.KickAccuracy)))
+	np.KickPower = int8(AddAttribute(int(attr.KickPower)))
+	np.PuntAccuracy = int8(AddAttribute(int(attr.PuntAccuracy)))
+	np.PuntPower = int8(AddAttribute(int(attr.PuntPower)))
+	np.ThrowAccuracy = int8(AddAttribute(int(attr.ThrowAccuracy)))
+	np.ThrowPower = int8(AddAttribute(int(attr.ThrowPower)))
 	np.HasProgressed = true
 	np.ShowLetterGrade = false
 	np.IsInjured = false
@@ -250,26 +250,26 @@ func (f *NFLPlayer) AddTagType(tagType uint8) {
 }
 
 func (np *NFLPlayer) ApplyTrainingCampInfo(attr CollegePlayerProgressions) {
-	np.Agility = AddAttribute(attr.Agility)
-	np.Speed = AddAttribute(attr.Speed)
-	np.FootballIQ = AddAttribute(attr.FootballIQ)
-	np.Carrying = AddAttribute(attr.Carrying)
-	np.Catching = AddAttribute(attr.Catching)
-	np.RouteRunning = AddAttribute(attr.RouteRunning)
-	np.PassBlock = AddAttribute(attr.PassBlock)
-	np.RunBlock = AddAttribute(attr.RunBlock)
-	np.PassRush = AddAttribute(attr.PassRush)
-	np.RunDefense = AddAttribute(attr.RunDefense)
-	np.Tackle = AddAttribute(attr.Tackle)
-	np.Strength = AddAttribute(attr.Strength)
-	np.ManCoverage = AddAttribute(attr.ManCoverage)
-	np.ZoneCoverage = AddAttribute(attr.ZoneCoverage)
-	np.KickAccuracy = AddAttribute(attr.KickAccuracy)
-	np.KickPower = AddAttribute(attr.KickPower)
-	np.PuntAccuracy = AddAttribute(attr.PuntAccuracy)
-	np.PuntPower = AddAttribute(attr.PuntPower)
-	np.ThrowAccuracy = AddAttribute(attr.ThrowAccuracy)
-	np.ThrowPower = AddAttribute(attr.ThrowPower)
+	np.Agility = int8(AddAttribute(int(attr.Agility)))
+	np.Speed = int8(AddAttribute(int(attr.Speed)))
+	np.FootballIQ = int8(AddAttribute(int(attr.FootballIQ)))
+	np.Carrying = int8(AddAttribute(int(attr.Carrying)))
+	np.Catching = int8(AddAttribute(int(attr.Catching)))
+	np.RouteRunning = int8(AddAttribute(int(attr.RouteRunning)))
+	np.PassBlock = int8(AddAttribute(int(attr.PassBlock)))
+	np.RunBlock = int8(AddAttribute(int(attr.RunBlock)))
+	np.PassRush = int8(AddAttribute(int(attr.PassRush)))
+	np.RunDefense = int8(AddAttribute(int(attr.RunDefense)))
+	np.Tackle = int8(AddAttribute(int(attr.Tackle)))
+	np.Strength = int8(AddAttribute(int(attr.Strength)))
+	np.ManCoverage = int8(AddAttribute(int(attr.ManCoverage)))
+	np.ZoneCoverage = int8(AddAttribute(int(attr.ZoneCoverage)))
+	np.KickAccuracy = int8(AddAttribute(int(attr.KickAccuracy)))
+	np.KickPower = int8(AddAttribute(int(attr.KickPower)))
+	np.PuntAccuracy = int8(AddAttribute(int(attr.PuntAccuracy)))
+	np.PuntPower = int8(AddAttribute(int(attr.PuntPower)))
+	np.ThrowAccuracy = int8(AddAttribute(int(attr.ThrowAccuracy)))
+	np.ThrowPower = int8(AddAttribute(int(attr.ThrowPower)))
 	np.IsInjured = attr.WeeksOfRecovery > 0
 	np.WeeksOfRecovery = uint(attr.WeeksOfRecovery)
 	np.InjuryName = attr.InjuryText

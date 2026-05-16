@@ -466,12 +466,12 @@ func GetNFLPlayer(depthChartPlayers structs.NFLDepthChart, position string, leve
 	return structs.NFLPlayer{}
 }
 
-func GetKickReturnOverall(speed int, agility int) float64 {
+func GetKickReturnOverall(speed int8, agility int8) float64 {
 	grade := (float64(speed) * 0.75) + (float64(agility) * 0.25)
 	return grade
 }
 
-func GetPuntReturnOverall(speed int, agility int) float64 {
+func GetPuntReturnOverall(speed int8, agility int8) float64 {
 	grade := (float64(speed) * 0.25) + (float64(agility) * 0.75)
 	return grade
 }
