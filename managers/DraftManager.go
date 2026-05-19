@@ -290,7 +290,7 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 		draftee := GetNFLDrafteeByID(playerId)
 		scoutProfile := GetOnlyScoutProfileByPlayerIDandTeamID(playerId, teamId)
 
-		draftee.AssignDraftedTeam(pick.DraftNumber, pick.ID, pick.TeamID, pick.Team)
+		draftee.AssignDraftedTeam(pick.OverallPickNumber, pick.DraftRound, pick.ID, pick.TeamID, pick.Team)
 
 		showLetterGrade := scoutProfile.ShowCount < 4
 		NFLPlayer := structs.NFLPlayer{
@@ -304,7 +304,7 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 			DraftedTeamID:   pick.TeamID,
 			DraftedTeam:     pick.Team,
 			DraftedRound:    pick.DraftRound,
-			DraftedPick:     pick.DraftNumber,
+			DraftedPick:     pick.OverallPickNumber,
 			ShowLetterGrade: showLetterGrade,
 			HighSchool:      draftee.HighSchool,
 			Hometown:        draftee.City,

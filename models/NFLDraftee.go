@@ -251,8 +251,9 @@ func (n *NFLDraftee) MapNewOverallGrade(grade string) {
 	n.OverallGrade = grade
 }
 
-func (n *NFLDraftee) AssignDraftedTeam(num uint, pickID uint, teamID uint, team string) {
+func (n *NFLDraftee) AssignDraftedTeam(num, round uint, pickID uint, teamID uint, team string) {
 	n.DraftedPick = num
+	n.DraftedRound = round
 	n.DraftPickID = pickID
 	n.DraftedTeamID = teamID
 	n.DraftedTeam = team

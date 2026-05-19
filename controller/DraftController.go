@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"sync"
 
@@ -108,8 +107,6 @@ func ExportDraftedPicks(w http.ResponseWriter, r *http.Request) {
 	saveComplete := managers.ExportDraftedPlayers(draftPickDTO.DraftPicks)
 
 	json.NewEncoder(w).Encode(saveComplete)
-
-	fmt.Fprintf(w, "Exported Players to new tables")
 }
 
 func RevealScoutingAttribute(w http.ResponseWriter, r *http.Request) {
