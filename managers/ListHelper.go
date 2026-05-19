@@ -45,3 +45,25 @@ func MakePracticeSquadList(players []structs.NFLPlayer) []structs.NFLPlayer {
 	}
 	return playerList
 }
+
+func MakeGeneralFreeAgentList(players []structs.NFLPlayer) []structs.NFLPlayer {
+	playerList := []structs.NFLPlayer{}
+
+	for _, p := range players {
+		if p.IsFreeAgent && p.Experience > 1 {
+			playerList = append(playerList, p)
+		}
+	}
+	return playerList
+}
+
+func MakeUDFAList(players []structs.NFLPlayer) []structs.NFLPlayer {
+	playerList := []structs.NFLPlayer{}
+
+	for _, p := range players {
+		if p.IsFreeAgent && p.Experience <= 1 {
+			playerList = append(playerList, p)
+		}
+	}
+	return playerList
+}

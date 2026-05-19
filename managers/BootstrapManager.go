@@ -64,6 +64,7 @@ type BootstrapDataRecruiting struct {
 
 type BootstrapDataFreeAgency struct {
 	FreeAgents      []structs.NFLPlayer
+	UDFAs           []structs.NFLPlayer
 	WaiverPlayers   []structs.NFLPlayer
 	FreeAgentOffers []structs.FreeAgencyOffer
 	WaiverOffers    []structs.NFLWaiverOffer
@@ -436,6 +437,7 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 		waiverPlayers   []structs.NFLPlayer
 		freeAgentoffers []structs.FreeAgencyOffer
 		waiverOffers    []structs.NFLWaiverOffer
+		udfas           []structs.NFLPlayer
 	)
 
 	if len(proID) > 0 && proID != "0" {
@@ -453,7 +455,9 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 
 		go func() {
 			defer wg.Done()
-			freeAgents = GetAllFreeAgents()
+			freeAgentList := GetAllFreeAgents()
+			freeAgents = MakeGeneralFreeAgentList(freeAgentList)
+			udfas = MakeUDFAList(freeAgentList)
 		}()
 
 		go func() {
@@ -469,6 +473,7 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 		FreeAgentOffers: freeAgentoffers,
 		WaiverOffers:    waiverOffers,
 		FreeAgents:      freeAgents,
+		UDFAs:           udfas,
 		WaiverPlayers:   waiverPlayers,
 	}
 }
