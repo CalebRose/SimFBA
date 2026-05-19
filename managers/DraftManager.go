@@ -285,7 +285,7 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 		if pick.IsVoid {
 			continue
 		}
-		playerId := strconv.Itoa(int(pick.SelectedPlayerID))
+		playerId := strconv.Itoa(int(pick.DrafteeID))
 		teamId := strconv.Itoa(int(pick.TeamID))
 		draftee := GetNFLDrafteeByID(playerId)
 		scoutProfile := GetOnlyScoutProfileByPlayerIDandTeamID(playerId, teamId)
@@ -313,7 +313,7 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 			Experience:      1,
 		}
 
-		NFLPlayer.SetID(pick.SelectedPlayerID)
+		NFLPlayer.SetID(pick.DrafteeID)
 		playerReference := nflPlayerMap[NFLPlayer.ID]
 		if playerReference.ID > 0 {
 			continue
