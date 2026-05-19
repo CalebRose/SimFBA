@@ -82,7 +82,7 @@ func ProcessUDFAs(isDryRun bool) {
 
 	// 1. Get all Undrafted Players
 	var undraftedPlayers []models.NFLDraftee
-	db.Where("draft_pick_id = 0 AND drafted_team_id = 0").Find(&undraftedPlayers)
+	db.Where("experience = 1 AND is_free_agent = true").Find(&undraftedPlayers)
 
 	// 2. Get all Bids
 	var allBids []structs.NFLUDFAProfile
