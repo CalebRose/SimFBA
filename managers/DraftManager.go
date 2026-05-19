@@ -318,14 +318,14 @@ func ExportDraftedPlayers(picks []structs.NFLDraftPick) bool {
 		if playerReference.ID > 0 {
 			continue
 		}
-		year1Salary := util.GetDrafteeSalary(pick.DraftNumber, 1, pick.DraftRound, true)
-		year2Salary := util.GetDrafteeSalary(pick.DraftNumber, 2, pick.DraftRound, true)
-		year3Salary := util.GetDrafteeSalary(pick.DraftNumber, 3, pick.DraftRound, true)
-		year4Salary := util.GetDrafteeSalary(pick.DraftNumber, 4, pick.DraftRound, true)
-		year1Bonus := util.GetDrafteeSalary(pick.DraftNumber, 1, pick.DraftRound, false)
-		year2Bonus := util.GetDrafteeSalary(pick.DraftNumber, 2, pick.DraftRound, false)
-		year3Bonus := util.GetDrafteeSalary(pick.DraftNumber, 3, pick.DraftRound, false)
-		year4Bonus := util.GetDrafteeSalary(pick.DraftNumber, 4, pick.DraftRound, false)
+		year1Salary := util.GetDrafteeSalary(pick.OverallPickNumber, 1, pick.DraftRound, true)
+		year2Salary := util.GetDrafteeSalary(pick.OverallPickNumber, 2, pick.DraftRound, true)
+		year3Salary := util.GetDrafteeSalary(pick.OverallPickNumber, 3, pick.DraftRound, true)
+		year4Salary := util.GetDrafteeSalary(pick.OverallPickNumber, 4, pick.DraftRound, true)
+		year1Bonus := util.GetDrafteeSalary(pick.OverallPickNumber, 1, pick.DraftRound, false)
+		year2Bonus := util.GetDrafteeSalary(pick.OverallPickNumber, 2, pick.DraftRound, false)
+		year3Bonus := util.GetDrafteeSalary(pick.OverallPickNumber, 3, pick.DraftRound, false)
+		year4Bonus := util.GetDrafteeSalary(pick.OverallPickNumber, 4, pick.DraftRound, false)
 		yearsRemaining := 4
 		contract := structs.NFLContract{
 			PlayerID:       NFLPlayer.PlayerID,
