@@ -130,7 +130,7 @@ func ImportMinimumFAValues() {
 
 		NFLPlayerRecord.AssignMinimumValue(value, aav)
 
-		repository.SaveNFLPlayer(NFLPlayerRecord, db)
+		repository.SaveNFLPlayerRecord(NFLPlayerRecord, db)
 	}
 }
 
@@ -752,7 +752,7 @@ func ImplementPrimeAge() {
 		}
 		primeAge := util.GetPrimeAge(nflP.Position, nflP.Archetype)
 		nflP.AssignPrimeAge(uint(primeAge))
-		repository.SaveNFLPlayer(nflP, db)
+		repository.SaveNFLPlayerRecord(nflP, db)
 	}
 }
 
@@ -861,7 +861,7 @@ func FixCollegeDTs() {
 
 		p.GetOverall()
 
-		repository.SaveNFLPlayer(p, db)
+		repository.SaveNFLPlayerRecord(p, db)
 	}
 }
 
@@ -1468,7 +1468,7 @@ func FixSecondaryPositions() {
 		if !hasSecondaryPosition {
 			continue
 		}
-		repository.SaveNFLPlayer(p, db)
+		repository.SaveNFLPlayerRecord(p, db)
 	}
 }
 

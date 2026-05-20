@@ -461,7 +461,7 @@ func SyncTimeslot(timeslot string) {
 					}
 					playerRecord := GetNFLPlayerRecord(strconv.Itoa(h.NFLPlayerID))
 					playerRecord.SetIsInjured(h.WasInjured, h.InjuryType, h.WeeksOfRecovery)
-					repository.SaveNFLPlayer(playerRecord, db)
+					repository.SaveNFLPlayerRecord(playerRecord, db)
 				}
 				// playerSeasonStat := playerSeasonStatsMap[h.NFLPlayerID]
 				seasonStats := GetNFLSeasonStatsByPlayerAndSeason(strconv.Itoa(h.NFLPlayerID), strconv.Itoa(int(ts.NFLSeasonID)), nflgt)
@@ -518,7 +518,7 @@ func SyncTimeslot(timeslot string) {
 					}
 					playerRecord := GetNFLPlayerRecord(strconv.Itoa(a.NFLPlayerID))
 					playerRecord.SetIsInjured(a.WasInjured, a.InjuryType, a.WeeksOfRecovery)
-					repository.SaveNFLPlayer(playerRecord, db)
+					repository.SaveNFLPlayerRecord(playerRecord, db)
 				}
 				// playerSeasonStat := playerSeasonStatsMap[a.NFLPlayerID]
 				seasonStats := GetNFLSeasonStatsByPlayerAndSeason(strconv.Itoa(a.NFLPlayerID), strconv.Itoa(int(ts.NFLSeasonID)), nflgt)

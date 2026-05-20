@@ -90,7 +90,7 @@ func SaveNFLTeam(team structs.NFLTeam, db *gorm.DB) {
 	}
 }
 
-func SaveNFLPlayer(player structs.NFLPlayer, db *gorm.DB) {
+func SaveNFLPlayerRecord(player structs.NFLPlayer, db *gorm.DB) {
 	player.SeasonStats = structs.NFLPlayerSeasonStats{}
 	player.Stats = nil
 	player.Offers = nil

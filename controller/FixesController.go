@@ -33,3 +33,7 @@ func FixRecruitProfileMods(w http.ResponseWriter, r *http.Request) {
 func FixNFLStadiums(w http.ResponseWriter, r *http.Request) {
 	managers.EnsureNFLStadiumsExist()
 }
+
+func FixPlayerWeights(w http.ResponseWriter, r *http.Request) {
+	managers.FixPlayerWeights()
+}

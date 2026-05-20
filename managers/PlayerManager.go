@@ -1058,7 +1058,7 @@ func CutNFLPlayer(playerId string) {
 
 	capsheet.CutPlayerFromCapsheet(contract)
 	repository.SaveNFLContract(contract, db)
-	repository.SaveNFLPlayer(player, db)
+	repository.SaveNFLPlayerRecord(player, db)
 	repository.SaveNFLCapsheet(capsheet, db)
 }
 
@@ -1084,7 +1084,7 @@ func PlaceNFLPlayerOnInjuryReserve(playerId string) {
 	player := GetOnlyNFLPlayerRecord(playerId)
 	player.ToggleInjuryReserve()
 
-	repository.SaveNFLPlayer(player, db)
+	repository.SaveNFLPlayerRecord(player, db)
 }
 
 func PlaceCFBPlayerOnInjuryReserve(playerId string) {

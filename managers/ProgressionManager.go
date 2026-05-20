@@ -395,7 +395,7 @@ func ProgressNFLPlayers() {
 			}
 			if !willRetire {
 				player.ToggleHasProgressed()
-				repository.SaveNFLPlayer(player, db)
+				repository.SaveNFLPlayerRecord(player, db)
 				continue
 			}
 
@@ -428,7 +428,7 @@ func ProgressNFLPlayers() {
 
 		if !willRetire {
 			player.ToggleHasProgressed()
-			repository.SaveNFLPlayer(player, db)
+			repository.SaveNFLPlayerRecord(player, db)
 			continue
 		}
 
