@@ -2,13 +2,12 @@ package managers
 
 import (
 	"fmt"
-	"math/rand"
 	"strconv"
-	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
-	"github.com/CalebRose/SimFBA/models"
+	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
+	"github.com/CalebRose/SimFBA/util"
 )
 
 // ------------------------------------------------------------------------
@@ -79,9 +78,10 @@ func RemovePlayerFromUDFABoard(profileID string) {
 
 func ProcessUDFAs(isDryRun bool) {
 	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
 
 	// 1. Get all Undrafted Players
-	var undraftedPlayers []models.NFLDraftee
+	var undraftedPlayers []structs.NFLPlayer
 	db.Where("experience = 1 AND is_free_agent = true").Find(&undraftedPlayers)
 
 	// 2. Get all Bids
@@ -120,8 +120,8 @@ func ProcessUDFAs(isDryRun bool) {
 
 		// Tie-breaker: Random Roll
 		if len(tiedBids) > 1 {
-			rand.Seed(time.Now().UnixNano())
-			winningBid = tiedBids[rand.Intn(len(tiedBids))]
+			randIdx := util.GenerateIntFromRange(0, len(tiedBids)-1)
+			winningBid = tiedBids[randIdx]
 		}
 
 		// Execute
@@ -155,52 +155,19 @@ func ProcessUDFAs(isDryRun bool) {
 		}
 
 		// Fire off the automated post to Firebase!
-		// CreateNFLUDFASyncForumThread(ts.NFLSeasonID, forumSignings) - COMMENTED OUT FOR LOCALTEST
+		CreateNFLUDFASyncForumThread(ts.Season, forumSignings)
 	}
 }
 
-// SendToFreeAgency officially moves an unsigned UDFA into the Free Agency pool
-// and sets their minimum contract demands.
-func SendToFreeAgency(draftee models.NFLDraftee) {
+func SignUDFA(draftee structs.NFLPlayer, bid structs.NFLUDFAProfile) {
 	db := dbprovider.GetInstance().GetDB()
+	draftee.SignPlayer(int(bid.TeamID), bid.TeamAbbr)
 
-	// 1. Fetch the actual NFLPlayer record associated with this Draftee
-	var proPlayer structs.NFLPlayer
-	db.Where("player_id = ?", draftee.PlayerID).Find(&proPlayer)
-
-	// If we somehow can't find the pro player record, abort to prevent a crash
-	if proPlayer.ID == 0 {
-		return
-	}
-
-	// 2. Set the minimum contract demands on the PRO player record
-	proPlayer.MinimumValue = 0.5
-	proPlayer.AAV = 0.5
-	proPlayer.IsFreeAgent = true
-	proPlayer.IsAcceptingOffers = true
-
-	// 3. Save the updated PRO player to the database
-	// db.Save(&proPlayer) - COMMENTED OUT FOR LOCAL TEST
-}
-
-func SignUDFA(draftee models.NFLDraftee, bid structs.NFLUDFAProfile) {
-	db := dbprovider.GetInstance().GetDB()
-
-	// Convert Draftee to an active NFLPlayer
-	nflPlayer := structs.NFLPlayer{
-		BasePlayer:  draftee.BasePlayer,
-		TeamID:      int(bid.TeamID),
-		TeamAbbr:    bid.TeamAbbr,
-		Experience:  1,
-		IsActive:    true,
-		IsFreeAgent: false,
-	}
-	nflPlayer.ID = draftee.ID
-	db.Create(&nflPlayer)
+	repository.SaveNFLPlayer(draftee, db)
 
 	// Create 3-year contract: 0.5M Salary, 0 Bonus
 	contract := structs.NFLContract{
-		NFLPlayerID:    int(nflPlayer.ID),
+		NFLPlayerID:    int(draftee.ID),
 		TeamID:         bid.TeamID,
 		Team:           bid.TeamAbbr,
 		ContractLength: 3,
@@ -211,7 +178,4 @@ func SignUDFA(draftee models.NFLDraftee, bid structs.NFLUDFAProfile) {
 	}
 	contract.CalculateContract() // Updates the AAV and total values
 	db.Create(&contract)
-
-	// Delete from draftee table so they don't show up in the draft pool anymore
-	db.Delete(&draftee)
 }
