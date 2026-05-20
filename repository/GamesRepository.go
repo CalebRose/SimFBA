@@ -7,8 +7,9 @@ import (
 )
 
 type GamesQuery struct {
-	SeasonID      string
-	IsSpringGames string
+	SeasonID        string
+	IsSpringGames   string
+	IsPreseasonGame string
 }
 
 func FindCollegeGamesRecords(clauses GamesQuery) []structs.CollegeGame {
@@ -33,18 +34,23 @@ func FindCollegeGamesRecords(clauses GamesQuery) []structs.CollegeGame {
 	return games
 }
 
-func FindNFLGamesRecords(SeasonID string, isSpringGames bool) []structs.NFLGame {
+func FindNFLGamesRecords(clauses GamesQuery) []structs.NFLGame {
 	db := dbprovider.GetInstance().GetDB()
 
 	var games []structs.NFLGame
 
 	query := db.Model(&games)
 
-	if len(SeasonID) > 0 {
-		query = query.Where("season_id = ?", SeasonID)
+	if len(clauses.SeasonID) > 0 {
+		query = query.Where("season_id = ?", clauses.SeasonID)
 	}
 
-	if err := query.Order("week_id asc").Where("is_preseason_game = ?", isSpringGames).Find(&games).Error; err != nil {
+	if len(clauses.IsPreseasonGame) > 0 {
+		isPreseasonGame := clauses.IsPreseasonGame == "Y"
+		query = query.Where("is_preseason_game = ?", isPreseasonGame)
+	}
+
+	if err := query.Order("week_id asc").Find(&games).Error; err != nil {
 		return []structs.NFLGame{}
 	}
 	return games

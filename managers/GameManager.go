@@ -128,8 +128,9 @@ func GetNFLGamesByWeekAndSeasonID(WeekID string, SeasonID string) []structs.NFLG
 }
 
 func GetNFLGamesBySeasonID(SeasonID string) []structs.NFLGame {
-	ts := GetTimestamp()
-	return repository.FindNFLGamesRecords(SeasonID, ts.NFLPreseason)
+	return repository.FindNFLGamesRecords(repository.GamesQuery{
+		SeasonID: SeasonID,
+	})
 }
 
 func GetNFLGamesByWeekId(id string, isPreseason bool) []structs.NFLGame {

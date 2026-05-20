@@ -1124,7 +1124,10 @@ func ExportCFBSpringPlayByPlayToCSV(w http.ResponseWriter) {
 }
 
 func ExportNFLPreseasonPlayByPlayToCSV(w http.ResponseWriter) {
-	games := repository.FindNFLGamesRecords("6", true)
+	games := repository.FindNFLGamesRecords(repository.GamesQuery{
+		SeasonID:        "6",
+		IsPreseasonGame: "Y",
+	})
 	nflPlayers := GetAllNFLPlayers()
 	participantMap := make(map[uint]structs.GameResultsPlayer)
 	for _, p := range nflPlayers {
