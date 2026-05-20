@@ -1027,7 +1027,10 @@ func ExportNFLFreeAgentsToCSV(w http.ResponseWriter) {
 }
 
 func ExportCFBSpringPlayByPlayToCSV(w http.ResponseWriter) {
-	games := repository.FindCollegeGamesRecords("6", true)
+	games := repository.FindCollegeGamesRecords(repository.GamesQuery{
+		SeasonID:      "6",
+		IsSpringGames: "N",
+	})
 	collegePlayers := GetAllCollegePlayers()
 	participantMap := make(map[uint]structs.GameResultsPlayer)
 	for _, p := range collegePlayers {

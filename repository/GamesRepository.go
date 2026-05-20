@@ -6,18 +6,28 @@ import (
 	"gorm.io/gorm"
 )
 
-func FindCollegeGamesRecords(SeasonID string, isSpringGames bool) []structs.CollegeGame {
+type GamesQuery struct {
+	SeasonID      string
+	IsSpringGames string
+}
+
+func FindCollegeGamesRecords(clauses GamesQuery) []structs.CollegeGame {
 	db := dbprovider.GetInstance().GetDB()
 
 	var games []structs.CollegeGame
 
 	query := db.Model(&games)
 
-	if len(SeasonID) > 0 {
-		query = query.Where("season_id = ?", SeasonID)
+	if len(clauses.SeasonID) > 0 {
+		query = query.Where("season_id = ?", clauses.SeasonID)
 	}
 
-	if err := query.Order("week_id asc").Where("is_spring_game = ?", isSpringGames).Find(&games).Error; err != nil {
+	if len(clauses.IsSpringGames) > 0 {
+		isSpringGames := clauses.IsSpringGames == "Y"
+		query = query.Where("is_spring_game = ?", isSpringGames)
+	}
+
+	if err := query.Order("week_id asc").Find(&games).Error; err != nil {
 		return []structs.CollegeGame{}
 	}
 	return games

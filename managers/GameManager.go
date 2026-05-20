@@ -100,8 +100,9 @@ func GetCollegeGamesByTeamIdAndSeasonId(TeamID string, SeasonID string, isSpring
 }
 
 func GetCollegeGamesBySeasonID(SeasonID string) []structs.CollegeGame {
-	ts := GetTimestamp()
-	return repository.FindCollegeGamesRecords(SeasonID, ts.CFBSpringGames)
+	return repository.FindCollegeGamesRecords(repository.GamesQuery{
+		SeasonID: SeasonID,
+	})
 }
 
 func GetNFLGamesByTeamIdAndSeasonId(TeamID string, SeasonID string) []structs.NFLGame {

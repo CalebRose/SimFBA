@@ -383,7 +383,10 @@ func GetAllPostSeasonAwardsLists() AwardsList {
 	collegeTeams := GetAllCollegeTeams()
 	collegeStandings := GetAllCollegeStandingsBySeasonID(seasonID)
 	cfbStandingsMap := MakeCollegeStandingsMapByTeamID(collegeStandings)
-	collegeGames := repository.FindCollegeGamesRecords(seasonID, false)
+	collegeGames := repository.FindCollegeGamesRecords(repository.GamesQuery{
+		SeasonID:      seasonID,
+		IsSpringGames: "N",
+	})
 	cfbGameMap := MakeCollegeGameMapByTeamID(collegeGames)
 
 	var collegePlayers []structs.CollegePlayer

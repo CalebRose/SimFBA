@@ -377,7 +377,10 @@ func GenerateCollegeRankings(seasonID string) {
 	collegeTeams := GetAllCollegeTeams()
 	collegeTeamMap := MakeCollegeTeamMap(collegeTeams)
 	collegeStandings := repository.FindAllCollegeStandingsRecords(repository.StandingsQuery{SeasonID: seasonID})
-	collegeGames := repository.FindCollegeGamesRecords(seasonID, false)
+	collegeGames := repository.FindCollegeGamesRecords(repository.GamesQuery{
+		SeasonID:      seasonID,
+		IsSpringGames: "N",
+	})
 
 	preSeasonCFBSeasonStats := GetAllCollegeTeamSeasonStatsBySeason(seasonID, "1")
 	regularSeasonCFBSeasonStats := GetAllCollegeTeamSeasonStatsBySeason(seasonID, "2")
