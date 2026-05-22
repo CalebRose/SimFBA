@@ -183,13 +183,13 @@ func ProcessTransferIntention() {
 		} else if p.Year == 2 && !p.IsRedshirt {
 			ageMod = .4
 		} else if p.Year == 3 && p.IsRedshirt {
-			ageMod = .7
+			ageMod = .75
 		} else if p.Year == 3 && !p.IsRedshirt {
 			ageMod = 1
 		} else if p.Year == 4 {
 			ageMod = 1.25
 		} else if p.Year == 5 {
-			ageMod = 1.45
+			ageMod = 1.5
 		}
 
 		/// Higher star players are more likely to transfer
@@ -226,7 +226,7 @@ func ProcessTransferIntention() {
 					p.Position == "K" ||
 					p.Position == "FB" ||
 					p.Position == "C") && idx > 1 {
-					depthChartCompetitionMod += 33
+					depthChartCompetitionMod += 34
 				}
 
 				if (p.Position == "RB" ||
@@ -239,12 +239,12 @@ func ProcessTransferIntention() {
 					p.Position == "OLB" ||
 					p.Position == "ILB" ||
 					p.Position == "SS") && idx > 2 {
-					depthChartCompetitionMod += 33
+					depthChartCompetitionMod += 34
 				}
 
 				if (p.Position == "WR" ||
 					p.Position == "CB") && idx > 3 {
-					depthChartCompetitionMod += 33
+					depthChartCompetitionMod += 34
 				}
 			}
 		}
@@ -252,9 +252,9 @@ func ProcessTransferIntention() {
 		// If there's a modifier applied and there's a younger player ahead on the roster, double the amount on the modifier
 		if depthChartCompetitionMod > 0 {
 			if youngerPlayerAhead {
-				depthChartCompetitionMod += 33
+				depthChartCompetitionMod += 34
 			} else {
-				depthChartCompetitionMod = .63 * depthChartCompetitionMod
+				depthChartCompetitionMod = .66 * depthChartCompetitionMod
 			}
 		}
 
@@ -272,8 +272,8 @@ func ProcessTransferIntention() {
 
 		fcsMod := 1.0
 		if p.TeamID > 134 && !teamProfile.IsFBS {
-			if p.Year > 2 && p.Overall > 39 {
-				fcsMod += (0.1 * float64(p.Year))
+			if p.Year > 2 && p.Overall > 38 {
+				fcsMod += (0.15 * float64(p.Year))
 			}
 			if p.Personality == "Loyal" {
 				fcsMod = 0.0
@@ -315,9 +315,9 @@ func ProcessTransferIntention() {
 			redshirtSeniorCount++
 		}
 
-		if transferWeight < 30 {
+		if transferWeight < 34 {
 			lowCount++
-		} else if transferWeight < 70 {
+		} else if transferWeight < 66 {
 			mediumCount++
 		} else {
 			highCount++
