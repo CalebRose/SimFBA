@@ -496,7 +496,7 @@ func syncAcceptedOptions(db *gorm.DB, options []structs.NFLTradeOption, senderID
 			}
 
 			if playerRecord.ID > 0 {
-				repository.SaveNFLPlayer(playerRecord, db)
+				repository.SaveNFLPlayerRecord(playerRecord, db)
 			}
 			if contract.ID > 0 {
 				repository.SaveNFLContract(contract, db)

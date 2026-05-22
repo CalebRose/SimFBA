@@ -116,3 +116,66 @@ func FixExistingModifiersForRecruits() {
 		repository.SaveRecruitProfile(profile, db)
 	}
 }
+
+func FixPlayerWeights() {
+	db := dbprovider.GetInstance().GetDB()
+	collegePlayers := GetAllCollegePlayers()
+	recruits := GetAllRecruitRecords()
+	nflPlayers := GetAllNFLPlayers()
+	recruitMap := MakeCollegeRecruitMapByID(recruits)
+	collegePlayerMap := MakeCollegePlayerMap(collegePlayers)
+	nflPlayerMap := MakeNFLPlayerMap(nflPlayers)
+
+	collegePlayerPath := "data/2027/weight_fix/cfb_players_backup.csv"
+	collegePlayersCSV := util.ReadCSV(collegePlayerPath)
+	recruitPath := "data/2027/weight_fix/2027Croots_with_weight.csv"
+	recruitsCSV := util.ReadCSV(recruitPath)
+	nflPlayerPath := "data/2027/weight_fix/simnfl_players.csv"
+	nflPlayersCSV := util.ReadCSV(nflPlayerPath)
+	draftedPlayerPath := "data/2027/weight_fix/2027_nfl_draftees.csv"
+	draftedPlayersCSV := util.ReadCSV(draftedPlayerPath)
+
+	for idx, row := range collegePlayersCSV {
+		if idx == 0 {
+			continue
+		}
+		weight := util.ConvertStringToInt(row[4])
+		id := util.ConvertStringToInt(row[0])
+		player := collegePlayerMap[uint(id)]
+		player.Weight = int16(weight)
+		repository.SaveCollegePlayerRecord(player, db)
+	}
+
+	for idx, row := range recruitsCSV {
+		if idx == 0 {
+			continue
+		}
+		weight := util.ConvertStringToInt(row[3])
+		id := util.ConvertStringToInt(row[0])
+		player := recruitMap[uint(id)]
+		player.Weight = int16(weight)
+		repository.SaveRecruitRecord(player, db)
+	}
+
+	for idx, row := range nflPlayersCSV {
+		if idx == 0 {
+			continue
+		}
+		weight := util.ConvertStringToInt(row[4])
+		id := util.ConvertStringToInt(row[0])
+		player := nflPlayerMap[uint(id)]
+		player.Weight = int16(weight)
+		repository.SaveNFLPlayerRecord(player, db)
+	}
+
+	for idx, row := range draftedPlayersCSV {
+		if idx == 0 {
+			continue
+		}
+		weight := util.ConvertStringToInt(row[4])
+		id := util.ConvertStringToInt(row[0])
+		player := nflPlayerMap[uint(id)]
+		player.Weight = int16(weight)
+		repository.SaveNFLPlayerRecord(player, db)
+	}
+}

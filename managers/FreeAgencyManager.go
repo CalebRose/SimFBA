@@ -620,7 +620,7 @@ func SyncFreeAgencyOffers() {
 				SignFreeAgent(WinningOffer, FA, ts)
 			} else if ts.IsNFLOffSeason {
 				FA.WaitUntilAfterDraft()
-				repository.SaveNFLPlayer(FA, db)
+				repository.SaveNFLPlayerRecord(FA, db)
 			}
 		}
 	}
@@ -714,7 +714,7 @@ func SyncFreeAgencyOffers() {
 			}
 			if ownerOffer.ID > 0 {
 				SignFreeAgent(ownerOffer, p, ts)
-				repository.SaveNFLPlayer(p, db)
+				repository.SaveNFLPlayerRecord(p, db)
 			} else {
 				sort.Sort(structs.ByContractValue(Offers))
 
@@ -743,7 +743,7 @@ func SyncFreeAgencyOffers() {
 					SignFreeAgent(WinningOffer, p, ts)
 				} else if ts.IsNFLOffSeason {
 					p.WaitUntilAfterDraft()
-					repository.SaveNFLPlayer(p, db)
+					repository.SaveNFLPlayerRecord(p, db)
 				}
 			}
 		}
@@ -771,7 +771,7 @@ func LowerFreeAgencyMinimums(db *gorm.DB) {
 		fa.DecreaseMinimumValue()
 		// If the minimum value was decreased, save the player record
 		if previousMin != fa.MinimumValue {
-			repository.SaveNFLPlayer(fa, db)
+			repository.SaveNFLPlayerRecord(fa, db)
 		}
 	}
 }
@@ -1033,7 +1033,7 @@ func TagPlayer(tagDTO structs.NFLTagDTO) {
 
 	// SAVE
 	repository.CreateNFLExtensionOffer(extensionOffer, db)
-	repository.SaveNFLPlayer(nflPlayerRecord, db)
+	repository.SaveNFLPlayerRecord(nflPlayerRecord, db)
 }
 
 func getExtensionPercentageOdds(percentage float64) float64 {

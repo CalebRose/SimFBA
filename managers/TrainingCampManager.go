@@ -130,7 +130,7 @@ func runDrills(player structs.NFLPlayer, drillPosition string, drillArchetype st
 	player.ApplyTrainingCampInfo(*changedAttrs)
 	player.GetOverall()
 
-	repository.SaveNFLPlayer(player, db)
+	repository.SaveNFLPlayerRecord(player, db)
 }
 
 func getPositionOverrides(overrides string) []string {
@@ -378,140 +378,140 @@ func getDrillResult(player structs.NFLPlayer, eventModifier int) int {
 func applyDrillResult(progression *structs.CollegePlayerProgressions, attribute string, modifier int) {
 	m := int8(modifier)
 	if attribute == "football_iq" {
-		if progression.FootballIQ + m > 99 {
+		if progression.FootballIQ+m > 99 {
 			progression.FootballIQ = 99
 		} else {
 			progression.FootballIQ += m
 		}
 	}
 	if attribute == "speed" {
-		if progression.Speed + m > 99 {
+		if progression.Speed+m > 99 {
 			progression.Speed = 99
 		} else {
 			progression.Speed += m
 		}
 	}
 	if attribute == "carrying" {
-		if progression.Carrying + m > 99 {
+		if progression.Carrying+m > 99 {
 			progression.Carrying = 99
 		} else {
 			progression.Carrying += m
 		}
 	}
 	if attribute == "agility" {
-		if progression.Agility + m > 99 {
+		if progression.Agility+m > 99 {
 			progression.Agility = 99
 		} else {
 			progression.Agility += m
 		}
 	}
 	if attribute == "catching" {
-		if progression.Catching + m > 99 {
+		if progression.Catching+m > 99 {
 			progression.Catching = 99
 		} else {
 			progression.Catching += m
 		}
 	}
 	if attribute == "route_running" {
-		if progression.RouteRunning + m > 99 {
+		if progression.RouteRunning+m > 99 {
 			progression.RouteRunning = 99
 		} else {
 			progression.RouteRunning += m
 		}
 	}
 	if attribute == "zone_coverage" {
-		if progression.ZoneCoverage + m > 99 {
+		if progression.ZoneCoverage+m > 99 {
 			progression.ZoneCoverage = 99
 		} else {
 			progression.ZoneCoverage += m
 		}
 	}
 	if attribute == "man_coverage" {
-		if progression.ManCoverage + m > 99 {
+		if progression.ManCoverage+m > 99 {
 			progression.ManCoverage = 99
 		} else {
 			progression.ManCoverage += m
 		}
 	}
 	if attribute == "strength" {
-		if progression.Strength + m > 99 {
+		if progression.Strength+m > 99 {
 			progression.Strength = 99
 		} else {
 			progression.Strength += m
 		}
 	}
 	if attribute == "tackle" {
-		if progression.Tackle + m > 99 {
+		if progression.Tackle+m > 99 {
 			progression.Tackle = 99
 		} else {
 			progression.Tackle += m
 		}
 	}
 	if attribute == "pass_block" {
-		if progression.PassBlock + m > 99 {
+		if progression.PassBlock+m > 99 {
 			progression.PassBlock = 99
 		} else {
 			progression.PassBlock += m
 		}
 	}
 	if attribute == "run_block" {
-		if progression.RunBlock + m > 99 {
+		if progression.RunBlock+m > 99 {
 			progression.RunBlock = 99
 		} else {
 			progression.RunBlock += m
 		}
 	}
 	if attribute == "pass_rush" {
-		if progression.PassRush + m > 99 {
+		if progression.PassRush+m > 99 {
 			progression.PassRush = 99
 		} else {
 			progression.PassRush += m
 		}
 	}
 	if attribute == "run_defense" {
-		if progression.RunDefense + m > 99 {
+		if progression.RunDefense+m > 99 {
 			progression.RunDefense = 99
 		} else {
 			progression.RunDefense += m
 		}
 	}
 	if attribute == "throw_power" {
-		if progression.ThrowPower + m > 99 {
+		if progression.ThrowPower+m > 99 {
 			progression.ThrowPower = 99
 		} else {
 			progression.ThrowPower += m
 		}
 	}
 	if attribute == "throw_accuracy" {
-		if progression.ThrowAccuracy + m > 99 {
+		if progression.ThrowAccuracy+m > 99 {
 			progression.ThrowAccuracy = 99
 		} else {
 			progression.ThrowAccuracy += m
 		}
 	}
 	if attribute == "kick_accuracy" {
-		if progression.KickAccuracy + m > 99 {
+		if progression.KickAccuracy+m > 99 {
 			progression.KickAccuracy = 99
 		} else {
 			progression.KickAccuracy += m
 		}
 	}
 	if attribute == "kick_power" {
-		if progression.KickPower + m > 99 {
+		if progression.KickPower+m > 99 {
 			progression.KickPower = 99
 		} else {
 			progression.KickPower += m
 		}
 	}
 	if attribute == "punt_accuracy" {
-		if progression.PuntAccuracy + m > 99 {
+		if progression.PuntAccuracy+m > 99 {
 			progression.PuntAccuracy = 99
 		} else {
 			progression.PuntAccuracy += m
 		}
 	}
 	if attribute == "punt_power" {
-		if progression.PuntPower + m > 99 {
+		if progression.PuntPower+m > 99 {
 			progression.PuntPower = 99
 		} else {
 			progression.PuntPower += m
