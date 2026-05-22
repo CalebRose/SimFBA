@@ -76,6 +76,13 @@ func (np *NFLPlayer) AssignMinimumValue(val, aav float64) {
 	np.AAV = aav
 }
 
+// AssignCalculatedValues sets both the working values and the originals so that
+// ResetMinimumAndAAVValues() will restore them to this newly computed baseline.
+func (np *NFLPlayer) AssignCalculatedValues(val, aav float64) {
+	np.OriginalMinimumValue = val
+	np.OriginalAAV = aav
+}
+
 func (np *NFLPlayer) ShowRealAttributeValue() {
 	np.ShowLetterGrade = false
 }
@@ -239,6 +246,12 @@ func (np *NFLPlayer) Progress(attr CollegePlayerProgressions) {
 		np.PotentialGrade = attr.PotentialGrade
 	}
 	np.Rejections = 0
+	np.ResetMinimumAndAAVValues()
+}
+
+func (f *NFLPlayer) ResetMinimumAndAAVValues() {
+	f.MinimumValue = f.OriginalMinimumValue
+	f.AAV = f.OriginalAAV
 }
 
 func (f *NFLPlayer) MapSeasonStats(seasonStats NFLPlayerSeasonStats) {

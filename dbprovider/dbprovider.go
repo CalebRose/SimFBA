@@ -9,6 +9,7 @@ import (
 	"time"
 
 	config "github.com/CalebRose/SimFBA/secrets"
+	"github.com/CalebRose/SimFBA/structs"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"golang.org/x/crypto/ssh"
 	"gorm.io/driver/mysql"
@@ -150,6 +151,7 @@ func (p *Provider) InitDatabase() bool {
 	// db.AutoMigrate(&structs.NFLWaiverOffer{})
 	// db.AutoMigrate(&structs.NFLUDFABoard{})
 	// db.AutoMigrate(&structs.NFLUDFAProfile{})
+	db.AutoMigrate(&structs.NFLTagData{})
 
 	// All
 	// db.AutoMigrate(&structs.AdminRecruitModifier{})

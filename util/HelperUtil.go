@@ -1,7 +1,15 @@
 package util
 
+import "fmt"
+
 func GetNFLFullTeamName(teamName, mascot string) string {
 	return teamName + " " + mascot
+}
+
+// FormatDollarAmount formats a float64 as a dollar string to one decimal place
+// (e.g., 12.3 → "$12.3M").
+func FormatDollarAmount(amount float64) string {
+	return fmt.Sprintf("$%.1fM", amount)
 }
 
 func GetWeekID(seasonID uint, week uint) uint {

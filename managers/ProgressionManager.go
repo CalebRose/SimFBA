@@ -1118,6 +1118,11 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		} else {
 			mostPlayedPosition = cp.Position
 		}
+		if mostPlayedPosition == "RB" && cp.Position == "QB" {
+			// Lower the prime age of the player to that of a RB.
+			newPrimeAge := util.GetPrimeAge(mostPlayedPosition, newArchetype)
+			cp.AssignPrimeAge(uint(newPrimeAge))
+		}
 	} else {
 		mostPlayedPosition = cp.Position
 	}
