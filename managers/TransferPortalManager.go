@@ -1124,9 +1124,6 @@ func SyncTransferPortal() {
 			promise := collegePromiseMap[uint(portalProfiles[i].PromiseID.Int64)]
 			teamProfile := teamProfileMap[strconv.Itoa(int(portalProfiles[i].ProfileID))]
 			multiplier := getMultiplier(promise)
-			if portalProfiles[i].ID == 297478 {
-				continue
-			}
 			portalProfiles[i].AddPointsToTotal(multiplier, teamProfile.PortalReputation)
 		}
 
