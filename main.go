@@ -276,6 +276,10 @@ func handleRequests() http.Handler {
 	// Offseason
 	apiRouter.HandleFunc("/offseason/fix/postseason/status", controller.FixPostseasonStatus).Methods("GET")
 	apiRouter.HandleFunc("/offseason/update/team/profile/affinities", controller.UpdateTeamProfileAffinities).Methods("GET")
+	apiRouter.HandleFunc("/offseason/nfl/calculate/extension/values", controller.CalculateExtensionValues).Methods("GET")
+	apiRouter.HandleFunc("/offseason/nfl/calculate/tag/values", controller.CalculateTagValues).Methods("GET")
+	apiRouter.HandleFunc("/offseason/nfl/reset/minimum/values", controller.ResetNFLMinimumValues).Methods("GET")
+	apiRouter.HandleFunc("/offseason/nfl/seed/tag/data", controller.SeedTagDataFromJSON).Methods("GET")
 
 	// Player Controls
 	apiRouter.HandleFunc("/players/all/", controller.AllPlayers).Methods("GET")

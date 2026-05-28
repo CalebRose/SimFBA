@@ -467,7 +467,7 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 	totalSnaps -= int(snaps.STSnaps)
 	posThreshold := float64(totalSnaps) * 0.8
 
-	if mostPlayedPosition != np.Position && float64(mostPlayedSnaps) > posThreshold {
+	if mostPlayedPosition != np.Position && float64(mostPlayedSnaps) > posThreshold && np.PositionTwo == "" {
 		// Designate New Position
 		newArchetype, archCheck := getNewArchetype(np.Position, np.Archetype, mostPlayedPosition)
 		// If Archhetype exists, assign new position. Otherwise, progress by old position
@@ -475,6 +475,11 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			np.DesignateNewPosition(mostPlayedPosition, newArchetype)
 		} else {
 			mostPlayedPosition = np.Position
+		}
+		if mostPlayedPosition == "RB" && np.Position == "QB" {
+			// Lower the prime age of the player to that of a RB.
+			newPrimeAge := util.GetPrimeAge(mostPlayedPosition, newArchetype)
+			np.AssignPrimeAge(uint(newPrimeAge))
 		}
 	} else {
 		mostPlayedPosition = np.Position
@@ -1109,7 +1114,7 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 	totalSnaps -= int(snaps.STSnaps)
 	posThreshold := float64(totalSnaps) * 0.8
 
-	if mostPlayedPosition != cp.Position && float64(mostPlayedSnaps) > posThreshold {
+	if mostPlayedPosition != cp.Position && float64(mostPlayedSnaps) > posThreshold && cp.PositionTwo == "" {
 		// Designate New Position
 		newArchetype, archCheck := getNewArchetype(cp.Position, cp.Archetype, mostPlayedPosition)
 		// If Archhetype exists, assign new position. Otherwise, progress by old position
@@ -1117,6 +1122,11 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			cp.DesignateNewPosition(mostPlayedPosition, newArchetype)
 		} else {
 			mostPlayedPosition = cp.Position
+		}
+		if mostPlayedPosition == "RB" && cp.Position == "QB" {
+			// Lower the prime age of the player to that of a RB.
+			newPrimeAge := util.GetPrimeAge(mostPlayedPosition, newArchetype)
+			cp.AssignPrimeAge(uint(newPrimeAge))
 		}
 	} else {
 		mostPlayedPosition = cp.Position
@@ -2818,8 +2828,9 @@ func DetermineIfDeclaring(player structs.CollegePlayer, avgSnaps int) bool {
 	// Year 3 AND redshirt == Redshirt Sophomore
 	// Year 2 AND redshirt == Redshirt Freshmen
 	// All players that are freshmen, redshirt freshmen, sophomore, redshirt sophomores, and non-redshirt juniors
-	isRedshirtJunior := player.Year == 4 && player.IsRedshirt
-	if !isRedshirtJunior {
+	isRedshirtSophomore := player.Year == 3 && player.IsRedshirt
+	isJunior := player.Year == 3 && !player.IsRedshirt
+	if !isJunior && !isRedshirtSophomore {
 		return false
 	}
 
@@ -2842,11 +2853,11 @@ func DetermineIfDeclaring(player structs.CollegePlayer, avgSnaps int) bool {
 	odds := util.GenerateIntFromRange(1, 100) - snapMod
 	if ovr > 54 && odds <= 25 {
 		return true
-	} else if ovr > 56 && odds <= 30 {
+	} else if ovr > 56 && odds <= 35 {
 		return true
-	} else if ovr > 57 && odds <= 35 {
+	} else if ovr > 57 && odds <= 45 {
 		return true
-	} else if ovr > 58 && odds <= 45 {
+	} else if ovr > 58 && odds <= 55 {
 		return true
 	} else if ovr > 59 && odds <= 70 {
 		return true

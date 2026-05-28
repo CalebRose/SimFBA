@@ -175,6 +175,7 @@ func SignUDFA(draftee structs.NFLPlayer, bid structs.NFLUDFAProfile) {
 		Y2BaseSalary:   0.5,
 		Y3BaseSalary:   0.5,
 		IsActive:       true,
+		ContractType:   "UDFA",
 	}
 	contract.CalculateContract() // Updates the AAV and total values
 	db.Create(&contract)

@@ -504,7 +504,10 @@ func SignFreeAgent(offer structs.FreeAgencyOffer, FreeAgent structs.NFLPlayer, t
 	db.Save(&FreeAgent)
 
 	// News Log
-	message := messageStart + FreeAgent.Position + " " + FreeAgent.FirstName + " " + FreeAgent.LastName + " has signed with the " + NFLTeam.TeamName + " with a contract worth approximately $" + strconv.Itoa(int(Contract.ContractValue)) + " Million Dollars."
+	totalValue := offer.TotalSalary + offer.TotalBonus
+	contractValue := offer.ContractValue
+	years := offer.ContractLength
+	message := messageStart + FreeAgent.Position + " " + FreeAgent.FirstName + " " + FreeAgent.LastName + " has signed with the " + NFLTeam.TeamName + ". Total: " + util.FormatDollarAmount(totalValue) + " CV: " + util.FormatDollarAmount(contractValue) + " Length: " + strconv.Itoa(years) + " years."
 	CreateNewsLog("NFL", message, "Free Agency", int(offer.TeamID), ts)
 }
 
@@ -819,16 +822,22 @@ func SyncExtensionOffers() {
 						// Rejects offer
 						e.DeclineOffer(ts.NFLWeek)
 						player.DeclineOffer(ts.NFLWeek)
+						totalValue := e.TotalSalary + e.TotalBonus
+						contractValue := e.ContractValue
+						years := e.ContractLength
 						if e.IsRejected || player.Rejections > 2 {
-							message = player.Position + " " + player.FirstName + " " + player.LastName + " has rejected an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars and will enter Free Agency."
+							message = player.Position + " " + player.FirstName + " " + player.LastName + " has rejected an extension offer from " + e.Team + ". Total: " + util.FormatDollarAmount(totalValue) + " CV: " + util.FormatDollarAmount(contractValue) + " Length: " + strconv.Itoa(years) + " years, and is no longer negotiating."
 						} else {
-							message = player.Position + " " + player.FirstName + " " + player.LastName + " has declined an extension offer from " + e.Team + " with an extension worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars, and is still negotiating."
+							message = player.Position + " " + player.FirstName + " " + player.LastName + " has declined an extension offer from " + e.Team + ". Total: " + util.FormatDollarAmount(totalValue) + " CV: " + util.FormatDollarAmount(contractValue) + " Length: " + strconv.Itoa(years) + " years, and is still negotiating."
 						}
 						CreateNewsLog("NFL", message, "Free Agency", int(e.TeamID), ts)
 						db.Save(&player)
 					} else {
 						e.AcceptOffer()
-						message = player.Position + " " + player.FirstName + " " + player.LastName + " has accepted an extension offer from " + e.Team + " worth approximately $" + strconv.Itoa(int(e.ContractValue)) + " Million Dollars."
+						totalValue := e.TotalSalary + e.TotalBonus
+						contractValue := e.ContractValue
+						years := e.ContractLength
+						message = player.Position + " " + player.FirstName + " " + player.LastName + " has accepted an extension offer from " + e.Team + ". Total: " + util.FormatDollarAmount(totalValue) + " CV: " + util.FormatDollarAmount(contractValue) + " Length: " + strconv.Itoa(years) + " years."
 						CreateNewsLog("NFL", message, "Free Agency", int(e.TeamID), ts)
 						db.Save(&team)
 					}
@@ -1014,10 +1023,21 @@ func TagPlayer(tagDTO structs.NFLTagDTO) {
 		repository.SaveNFLTeam(nflTeam, db)
 	}
 
-	// Get the json file containing all tag data by position and tag type
-	tagDataBlob := util.GetTagObject()
+	// Resolve player's position group and look up tag amounts from DB (falls back to JSON)
+	playerGroup := getPositionGroup(nflPlayerRecord.Position, nflPlayerRecord.Archetype, nflPlayerRecord.Position)
+	tagAmounts := GetTagAmountsForGroup(playerGroup)
 	fifthYearSalary := 0.5
-	fifthYearBonus := tagDataBlob[tagDTO.Position][tagTypeStr]
+	var fifthYearBonus float64
+	switch tagTypeStr {
+	case "Franchise":
+		fifthYearBonus = tagAmounts.Franchise
+	case "Transition":
+		fifthYearBonus = tagAmounts.Transition
+	case "Playtime":
+		fifthYearBonus = tagAmounts.Playtime
+	default:
+		fifthYearBonus = tagAmounts.Basic
+	}
 
 	extensionOffer := structs.NFLExtensionOffer{
 		NFLPlayerID:    nflPlayerRecord.ID,
