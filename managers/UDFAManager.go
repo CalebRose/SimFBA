@@ -163,10 +163,11 @@ func SignUDFA(draftee structs.NFLPlayer, bid structs.NFLUDFAProfile) {
 	db := dbprovider.GetInstance().GetDB()
 	draftee.SignPlayer(int(bid.TeamID), bid.TeamAbbr)
 
-	repository.SaveNFLPlayer(draftee, db)
+	repository.SaveNFLPlayerRecord(draftee, db)
 
 	// Create 3-year contract: 0.5M Salary, 0 Bonus
 	contract := structs.NFLContract{
+		PlayerID:       int(draftee.ID),
 		NFLPlayerID:    int(draftee.ID),
 		TeamID:         bid.TeamID,
 		Team:           bid.TeamAbbr,
