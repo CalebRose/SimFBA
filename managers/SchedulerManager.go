@@ -428,6 +428,12 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 	numberOfGamesExpectedPerSlot := len(collegeTeams) / 2 // Each game has 2 teams
 	gamesScheduledPerTeam := make(map[uint]int)
 
+	teamMap := GetCollegeTeamMap()
+
+	// Keep track of whether FBS teams scheduled an FCS opponent or if an FCS team has scheduled an FBS opponent.
+	playedFCSOpponent := make(map[uint]bool)
+	playedFBSOpponent := make(map[uint]bool)
+
 	// Create a map to track user vs AI teams
 	isUserTeam := make(map[uint]bool)
 	for _, team := range collegeTeams {
@@ -466,6 +472,18 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 		// Initialize nested maps if needed, guarding against team IDs not present in collegeTeams
 		gamesScheduledPerTeam[uint(match.HomeTeamID)]++
 		gamesScheduledPerTeam[uint(match.AwayTeamID)]++
+
+		homeTeam := teamMap[uint(match.HomeTeamID)]
+		awayTeam := teamMap[uint(match.AwayTeamID)]
+
+		if homeTeam.IsFBS && !awayTeam.IsFBS {
+			playedFCSOpponent[homeTeam.ID] = true
+			playedFBSOpponent[awayTeam.ID] = true
+		}
+		if !homeTeam.IsFBS && awayTeam.IsFBS {
+			playedFBSOpponent[homeTeam.ID] = true
+			playedFCSOpponent[awayTeam.ID] = true
+		}
 
 		// Mark time slots as occupied
 		if opponentsFacedMap[uint(match.HomeTeamID)] == nil {
@@ -522,6 +540,14 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 					opponent.ConferenceID != team.ConferenceID &&
 					remainingGamesLeftByTeam[opponent.ID] > 0 &&
 					!opponentsFacedMap[team.ID][opponent.ID] {
+					// Ensure FBS teams haven't already scheduled an FCS opponent and vice versa
+					if team.IsFBS && !opponent.IsFBS && playedFCSOpponent[team.ID] {
+						continue
+					}
+					if !team.IsFBS && opponent.IsFBS && playedFBSOpponent[team.ID] {
+						continue
+					}
+
 					opponentIndex = j
 					break
 				}
@@ -589,6 +615,16 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 			// Mark that these teams have faced each other
 			opponentsFacedMap[homeTeam.ID][awayTeam.ID] = true
 			opponentsFacedMap[awayTeam.ID][homeTeam.ID] = true
+
+			// Update FBS/FCS opponent tracking
+			if homeTeam.IsFBS && !awayTeam.IsFBS {
+				playedFCSOpponent[homeTeam.ID] = true
+				playedFBSOpponent[awayTeam.ID] = true
+			}
+			if !homeTeam.IsFBS && awayTeam.IsFBS {
+				playedFBSOpponent[homeTeam.ID] = true
+				playedFCSOpponent[awayTeam.ID] = true
+			}
 		}
 
 		// Log teams that were available this slot but could not be paired
@@ -634,6 +670,15 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 					opponent.ConferenceID != team.ConferenceID &&
 					remainingGamesLeftByTeam[opponent.ID] > 0 &&
 					!opponentsFacedMap[team.ID][opponent.ID] {
+
+					// Ensure FBS teams haven't already scheduled an FCS opponent and vice versa
+					if team.IsFBS && !opponent.IsFBS && playedFCSOpponent[team.ID] {
+						continue
+					}
+					if !team.IsFBS && opponent.IsFBS && playedFBSOpponent[team.ID] {
+						continue
+					}
+
 					opponentIndex = j
 					break
 				}
@@ -689,6 +734,16 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 
 			opponentsFacedMap[homeTeam.ID][awayTeam.ID] = true
 			opponentsFacedMap[awayTeam.ID][homeTeam.ID] = true
+
+			// Update FBS/FCS opponent tracking
+			if homeTeam.IsFBS && !awayTeam.IsFBS {
+				playedFCSOpponent[homeTeam.ID] = true
+				playedFBSOpponent[awayTeam.ID] = true
+			}
+			if !homeTeam.IsFBS && awayTeam.IsFBS {
+				playedFBSOpponent[homeTeam.ID] = true
+				playedFCSOpponent[awayTeam.ID] = true
+			}
 
 			fmt.Printf("Cleanup: Scheduled Week %d: TeamID %d (%s) vs TeamID %d (%s)\n",
 				week, homeTeam.ID, homeTeam.TeamAbbr, awayTeam.ID, awayTeam.TeamAbbr)
