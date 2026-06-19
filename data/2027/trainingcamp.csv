@@ -1,0 +1,33 @@
+TeamID,QB,RB,FB,WR,TE,OL,DL,LB,CB,S,KP,TeamDrill,PositionOverrides
+29,film,lift,film,square,square,sled,shed,runfit,hipturn,centerfield,power,team_pass,5248 15005 15255
+25,film,plyometrics,speed,jugs,square,sled,shed,speed,zonedrop,centerfield,power,team_pass,
+5,screen,plyometrics,lead,square,square,mirror,shed,zonedrop,zonedrop,centerfield,accuracy,team_pass,244
+1,plyometrics,lift,jugs,jugs,square,mirror,shed,rushlane,jugs,plyometrics,power,lift,15917
+26,dropback,gauntlet,gauntlet,jugs,film,mirror,rip,film,hipturn,plyometrics,power,team_run,
+21,speed,gauntlet,gauntlet,square,arc,mirror,rip,rushlane,hipturn,match,accuracy,team_pass,14971
+6,film,gauntlet,lead,jugs,arc,sled,rip,rushlane,hipturn,match,power,team_pass,
+7,film,plyometrics,plyometrics,square,square,sled,shed,runfit,hipturn,speed,power,team_pass,33
+17,speed,film,lift,square,blitzpickup,sled,rip,hipturn,zonedrop,centerfield,accuracy,team_pass,
+13,dropback,lift,lift,square,arc,sled,shed,runfit,zonedrop,centerfield,power,team_run,
+22,dropback,plyometrics,lift,square,square,sled,shed,rushlane,zonedrop,centerfield,accuracy,team_pass,
+23,dropback,gauntlet,lead,jugs,square,lift,rip,runfit,zonedrop,film,power,team_pass,
+9,film,plyometrics,lead,square,arc,mirror,rip,runfit,jugs,film,power,team_run,15572
+10,dropback,plyometrics,speed,speed,arc,sled,shed,speed,hipturn,centerfield,power,plyometrics,15109
+11,film,speed,lift,speed,speed,lift,shed,runfit,hipturn,alley,power,team_pass,
+14,dropback,gauntlet,gauntlet,square,arc,sled,shed,runfit,zonedrop,speed,power,team_pass,
+16,plyometrics,plyometrics,plyometrics,plyometrics,arc,sled,rip,runfit,hipturn,centerfield,accuracy,plyometrics,
+30,film,gauntlet,blitzpickup,jugs,jugs,mirror,lift,runfit,hipturn,centerfield,power,team_pass,69989
+15,film,plyometrics,blitzpickup,jugs,jugs,mirror,shed,runfit,speed,centerfield,power,team_run,50173
+2,film,gauntlet,jugs,jugs,gauntlet,film,rip,zonedrop,jugs,jugs,power,speed,
+24,lift,gauntlet,gauntlet,jugs,square,film,shed,lift,hipturn,lift,power,team_pass,
+3,plyometrics,gauntlet,lead,jugs,arc,sled,rip,zonedrop,jugs,centerfield,accuracy,team_pass,
+27,film,gauntlet,lead,square,square,mirror,shed,film,hipturn,jugs,accuracy,team_pass,15074
+18,screen,gauntlet,lift,square,plyometrics,lift,lift,film,speed,film,power,film,
+4,plyometrics,lift,lift,gauntlet,square,plyometrics,film,film,lift,alley,accuracy,film,
+19,dropback,plyometrics,plyometrics,square,arc,sled,lift,speed,speed,speed,power,film,
+8,dropback,plyometrics,lift,square,square,sled,shed,zonedrop,zonedrop,match,power,plyometrics,24984
+32,screen,plyometrics,lead,jugs,jugs,mirror,shed,runfit,hipturn,centerfield,accuracy,team_run,
+31,film,jugs,blitzpickup,jugs,square,mirror,rip,zonedrop,jugs,match,power,team_pass,10321
+28,film,plyometrics,speed,square,jugs,mirror,rip,rushlane,hipturn,match,power,team_pass,
+12,screen,lift,lift,jugs,arc,sled,lift,film,hipturn,jugs,power,team_run,214 204 5234 10347 19974
+20,film,plyometrics,lift,square,square,sled,shed,runfit,hipturn,centerfield,power,team_pass,15241 15685
