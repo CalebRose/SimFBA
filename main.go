@@ -207,6 +207,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/cfb/schedule/game/request/reject/{requestID}", controller.RejectCFBGameRequest).Methods("GET")
 	apiRouter.HandleFunc("/cfb/schedule/game/request/process/{requestID}", controller.ProcessCFBGameRequest).Methods("GET")
 	apiRouter.HandleFunc("/cfb/schedule/game/request/veto/{requestID}", controller.VetoCFBGameRequest).Methods("GET")
+	apiRouter.HandleFunc("/cfb/schedule/game/request/swap/{gameID}", controller.SwapCFBHomeAndAwayTeams).Methods("GET")
 	// Game Request Controls - NFL
 	apiRouter.HandleFunc("/nfl/schedule/game/request/create", controller.CreateNFLGameRequest).Methods("POST")
 	apiRouter.HandleFunc("/nfl/schedule/game/request/accept/{requestID}", controller.AcceptNFLGameRequest).Methods("GET")
@@ -424,7 +425,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/trades/nfl/proposal/cancel/{proposalID}", controller.CancelTradeOffer).Methods("GET")
 
 	// Training Camp
-	// apiRouter.HandleFunc("/nfl/training/camp/{year}", controller.RunTrainingCamps).Methods("GET")
+	apiRouter.HandleFunc("/nfl/training/camp/{year}", controller.RunTrainingCamps).Methods("GET")
 
 	// Transfer Intentions
 	apiRouter.HandleFunc("/simfba/sync/transfer/intention", controller.ProcessTransferIntention).Methods("GET")

@@ -458,7 +458,7 @@ func ImportCFBGames(isSpringGames bool) {
 func ImportNFLGames() {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_nfl_postseason_games.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\2027_nfl_regularseason_games.csv"
 
 	gamesCSV := util.ReadCSV(path)
 
@@ -504,14 +504,19 @@ func ImportNFLGames() {
 			awayTeamCoach = "AI"
 		}
 		timeSlot := row[12]
+		isNeutralSite := util.ConvertStringToBool(row[5])
 		// Need to implement Stadium ID
 		stadium := ht.Stadium
 		city := ht.City
 		state := ht.State
+		if isNeutralSite {
+			stadium = row[13]
+			city = row[14]
+			state = row[15]
+		}
 		// Need to check for if a game is in a domed stadium or not
 		isConferenceGame := ht.ConferenceID == at.ConferenceID
 		isDivisionGame := ht.DivisionID == at.DivisionID && ht.DivisionID > 0
-		isNeutralSite := util.ConvertStringToBool(row[5])
 		isPreseasonGame := util.ConvertStringToBool(row[6])
 		// isConferenceChampionship := util.ConvertStringToBool(row[7])
 		isPlayoffGame := util.ConvertStringToBool(row[8])
