@@ -1,6 +1,8 @@
 package managers
 
 import (
+	"strconv"
+
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
@@ -177,5 +179,21 @@ func FixPlayerWeights() {
 		player := nflPlayerMap[uint(id)]
 		player.Weight = int16(weight)
 		repository.SaveNFLPlayerRecord(player, db)
+	}
+}
+
+func FixTimeslots() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	cfbTeamMap := GetCollegeTeamMap()
+
+	collegeGames := repository.FindCollegeGamesRecords(repository.GamesQuery{SeasonID: strconv.Itoa(int(ts.CollegeSeasonID))})
+
+	for _, game := range collegeGames {
+		if game.TimeSlot == "Thursday Night" && !game.IsNeutral && game.IsSpringGame {
+			homeTeam := cfbTeamMap[uint(game.HomeTeamID)]
+			game.TimeSlot = util.GetTimeslot(game.State, uint(homeTeam.ConferenceID))
+			repository.SaveCFBGameRecord(game, db)
+		}
 	}
 }

@@ -2069,6 +2069,9 @@ func DetermineAIGameplan() {
 		if t.Coach != "AI" {
 			continue
 		}
+		if t.ID < 265 {
+			continue
+		}
 		id := strconv.Itoa(int(t.ID))
 
 		roster := GetAllCollegePlayersByTeamId(id)

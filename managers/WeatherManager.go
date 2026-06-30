@@ -49,7 +49,7 @@ func GenerateWeatherForGames() {
 	nflGames := GetNFLGamesBySeasonID(strconv.Itoa(int(ts.NFLSeasonID)))
 
 	for _, game := range nflGames {
-		if game.WeekID < ts.NFLWeekID || game.Stadium == "#N/A" {
+		if game.WeekID < ts.NFLWeekID || game.Stadium == "#N/A" || game.GameTemp != 0 {
 			continue
 		}
 		homeTeam := GetNFLTeamByTeamID(strconv.Itoa(game.HomeTeamID))

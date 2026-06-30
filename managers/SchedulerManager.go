@@ -410,13 +410,27 @@ func GenerateOOCSchedule() {
 		}
 	}
 
-	// Upload matches to database
-	repository.CreateCFBGameRecordsBatch(db, matchesToUpload, 100)
+	testTheData := false
+	// Export to CSV
+	// Conduct Upload
+	if testTheData {
+		exportPath := fmt.Sprintf("schedule_preview_season_%d.csv", ts.Season)
+		existingMatches := repository.FindCollegeGamesRecords(repository.GamesQuery{SeasonID: seasonID, IsSpringGames: "N"})
+		matchesToUpload = append(matchesToUpload, existingMatches...)
+		if err := ExportScheduleToCSV(matchesToUpload, exportPath); err != nil {
+			fmt.Printf("CSV export failed: %v\n", err)
+		} else {
+			fmt.Printf("Schedule preview exported to %s (%d total games)\n", exportPath, len(matchesToUpload))
+		}
+	} else {
+		// Upload matches to database
+		repository.CreateCFBGameRecordsBatch(db, matchesToUpload, 100)
+	}
 }
 
 func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTeams []structs.CollegeTeam, stadiumMap map[uint]structs.Stadium, stadiumMapByID map[uint]structs.Stadium, rivalryMap map[uint][]structs.CollegeRival) ([]structs.CollegeGame, error) {
 	maxNumberOfGamesPerTeam := 12
-	oocWeeks := []uint{14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0} // Schedule backwards: fill constrained weeks (7-15) first
+	oocWeeks := []uint{13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 14} // Schedule backwards: fill constrained weeks (7-15) first
 
 	// Initialize tracking maps
 	remainingGamesLeftByTeam := make(map[uint]int)
@@ -446,27 +460,33 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 	}
 
 	// Process existing matches to update counters
-	allActiveMatches := repository.FindCollegeGamesRecords(repository.GamesQuery{SeasonID: seasonID})
+	allActiveMatches := repository.FindCollegeGamesRecords(repository.GamesQuery{SeasonID: seasonID, IsSpringGames: "N"})
 	// Check all active games to ensure no team is scheduled twice in the same timeslot
 	// teamSlotSeen: teamID -> "week:timeSlot" -> matchID
-	teamSlotSeen := make(map[uint]uint)
+	teamSlotSeen := make(map[uint]map[uint]bool)
 	for _, match := range allActiveMatches {
 		if match.AwayTeamID == 0 && match.HomeTeamID == 0 {
 			continue
 		}
 		weekTimeSlotCounts[uint(match.Week)]++
 		for _, teamID := range []uint{uint(match.HomeTeamID), uint(match.AwayTeamID)} {
-			if firstMatchID, exists := teamSlotSeen[teamID]; exists {
-				fmt.Printf("DOUBLE-SCHEDULED: TeamID %d appears in Week %d in both MatchID %d and MatchID %d\n",
-					teamID, match.Week, firstMatchID, match.ID)
+			if _, exists := teamSlotSeen[teamID]; !exists {
+				teamSlotSeen[teamID] = make(map[uint]bool)
+			}
+			if teamSlotSeen[teamID][uint(match.Week)] {
+				fmt.Printf("DOUBLE-SCHEDULED: TeamID %d appears in Week %d in both matches\n",
+					teamID, match.Week)
 			} else {
-				teamSlotSeen[teamID] = match.ID
+				teamSlotSeen[teamID][uint(match.Week)] = true
 			}
 		}
 	}
 
 	for _, match := range allActiveMatches {
 		if match.AwayTeamID == 0 && match.HomeTeamID == 0 {
+			continue
+		}
+		if match.IsSpringGame {
 			continue
 		}
 		// Initialize nested maps if needed, guarding against team IDs not present in collegeTeams
@@ -511,7 +531,6 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 			// Check if team needs games and has the time slot available
 			if remainingGamesLeftByTeam[team.ID] > 0 {
 				availableTeams = append(availableTeams, team)
-
 			}
 		}
 
@@ -524,6 +543,9 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 		// Try to pair teams
 		for i := 0; i < len(availableTeams); i++ {
 			team := availableTeams[i]
+			if gamesScheduledPerTeam[team.ID] >= maxNumberOfGamesPerTeam {
+				continue
+			}
 
 			// Skip if already matched in this slot
 			if matchedInSlot[team.ID] {
@@ -541,10 +563,16 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 					remainingGamesLeftByTeam[opponent.ID] > 0 &&
 					!opponentsFacedMap[team.ID][opponent.ID] {
 					// Ensure FBS teams haven't already scheduled an FCS opponent and vice versa
-					if team.IsFBS && !opponent.IsFBS && playedFCSOpponent[team.ID] {
+					if team.IsFBS && !opponent.IsFBS && (playedFCSOpponent[team.ID] || playedFBSOpponent[opponent.ID]) {
 						continue
 					}
-					if !team.IsFBS && opponent.IsFBS && playedFBSOpponent[team.ID] {
+					if !team.IsFBS && opponent.IsFBS && (playedFBSOpponent[team.ID] || playedFCSOpponent[opponent.ID]) {
+						continue
+					}
+					if gamesScheduledPerTeam[opponent.ID] >= maxNumberOfGamesPerTeam {
+						continue
+					}
+					if teamSlotSeen[team.ID][uint(week)] || teamSlotSeen[opponent.ID][uint(week)] {
 						continue
 					}
 
@@ -606,6 +634,15 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 			matchedInSlot[team.ID] = true
 			matchedInSlot[opponent.ID] = true
 
+			if _, exists := teamSlotSeen[team.ID]; !exists {
+				teamSlotSeen[team.ID] = make(map[uint]bool)
+			}
+			if _, exists := teamSlotSeen[opponent.ID]; !exists {
+				teamSlotSeen[opponent.ID] = make(map[uint]bool)
+			}
+			teamSlotSeen[team.ID][uint(week)] = true
+			teamSlotSeen[opponent.ID][uint(week)] = true
+
 			remainingGamesLeftByTeam[homeTeam.ID]--
 			remainingGamesLeftByTeam[awayTeam.ID]--
 
@@ -645,7 +682,6 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 		for _, team := range collegeTeams {
 			if remainingGamesLeftByTeam[team.ID] > 0 {
 				cleanupAvailable = append(cleanupAvailable, team)
-
 			}
 		}
 
@@ -728,7 +764,8 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 
 			remainingGamesLeftByTeam[homeTeam.ID]--
 			remainingGamesLeftByTeam[awayTeam.ID]--
-
+			gamesScheduledPerTeam[uint(match.HomeTeamID)]++
+			gamesScheduledPerTeam[uint(match.AwayTeamID)]++
 			homeGamesByTeam[homeTeam.ID]++
 			awayGamesByTeam[awayTeam.ID]++
 
@@ -751,18 +788,12 @@ func attemptGenerateOOCSchedule(ts structs.Timestamp, seasonID string, collegeTe
 
 	}
 
-	// Validate the schedule - check if all teams that need OOC games got enough
-	expectedGamesPerTeam := len(oocWeeks) // 4 weeks * 2 slots = 8 games expected per team
-
-	for _, match := range matchesToUpload {
-		gamesScheduledPerTeam[uint(match.HomeTeamID)]++
-		gamesScheduledPerTeam[uint(match.AwayTeamID)]++
-	}
+	// homeAndAwayRebalanceTries := 5
 
 	// Count teams with insufficient games
 	insufficientTeams := 0
 	for _, team := range collegeTeams {
-		if gamesScheduledPerTeam[team.ID] < expectedGamesPerTeam {
+		if remainingGamesLeftByTeam[team.ID] > 0 {
 			insufficientTeams++
 		}
 	}
