@@ -59,13 +59,13 @@ func GetHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
 
 	go func() {
 		defer waitgroup.Done()
-		ht := managers.GetTeamByTeamID(homeTeamID)
+		ht := managers.GetCollegeTeamForSimulationByTeamID(homeTeamID)
 		homeTeamChan <- ht
 	}()
 
 	go func() {
 		defer waitgroup.Done()
-		at := managers.GetTeamByTeamID(awayTeamID)
+		at := managers.GetCollegeTeamForSimulationByTeamID(awayTeamID)
 		awayTeamChan <- at
 	}()
 
