@@ -56,7 +56,7 @@ func SwapCFBGameHomeAndAwayTeams(gameID string) {
 	repository.SaveCFBGameRecord(game, db)
 
 	// Generate Weather
-	GenerateWeatherForGames()
+	// GenerateWeatherForGames()
 }
 
 func GetCollegeGamesByWeekIdAndSeasonID(WeekID string, SeasonID string) []structs.CollegeGame {

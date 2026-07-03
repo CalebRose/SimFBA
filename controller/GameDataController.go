@@ -41,7 +41,9 @@ func GetHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
 	homeRosterChan := make(chan []structs.CollegePlayer)
 	awayRosterChan := make(chan []structs.CollegePlayer)
 	stadiumChan := make(chan structs.Stadium)
-
+	homeTeamID := strconv.Itoa(int(game.HomeTeamID))
+	awayTeamID := strconv.Itoa(int(game.AwayTeamID))
+	stadiumID := strconv.Itoa(int(game.StadiumID))
 	go func() {
 		waitgroup.Wait()
 		close(homeTeamChan)
@@ -57,21 +59,21 @@ func GetHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
 
 	go func() {
 		defer waitgroup.Done()
-		ht := managers.GetTeamByTeamAbbr(game.HomeTeam)
+		ht := managers.GetTeamByTeamID(homeTeamID)
 		homeTeamChan <- ht
 	}()
 
 	go func() {
 		defer waitgroup.Done()
-		at := managers.GetTeamByTeamAbbr(game.AwayTeam)
+		at := managers.GetTeamByTeamID(awayTeamID)
 		awayTeamChan <- at
 	}()
 
 	homeTeam := <-homeTeamChan
 	awayTeam := <-awayTeamChan
-	homeTeamID := strconv.Itoa(int(homeTeam.ID))
-	awayTeamID := strconv.Itoa(int(awayTeam.ID))
-	stadiumID := strconv.Itoa(int(game.StadiumID))
+	if stadiumID == "0" {
+		stadiumID = strconv.Itoa(int(homeTeam.StadiumID))
+	}
 
 	go func() {
 		defer rosterGroup.Done()
@@ -87,7 +89,17 @@ func GetHomeAndAwayTeamData(w http.ResponseWriter, r *http.Request) {
 
 	go func() {
 		defer rosterGroup.Done()
-		st := managers.GetStadiumByStadiumID(stadiumID)
+		st := structs.Stadium{}
+		if stadiumID == "0" {
+			stadiumID = game.Stadium
+			stadiums := managers.GetAllStadiums()
+			stadiumMap := managers.MakeStadiumMapByID(stadiums)
+			if s, ok := stadiumMap[game.StadiumID]; ok {
+				st = s
+			}
+		} else {
+			st = managers.GetStadiumByStadiumID(stadiumID)
+		}
 		stadiumChan <- st
 	}()
 

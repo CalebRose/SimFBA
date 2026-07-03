@@ -37,3 +37,7 @@ func FixNFLStadiums(w http.ResponseWriter, r *http.Request) {
 func FixPlayerWeights(w http.ResponseWriter, r *http.Request) {
 	managers.FixPlayerWeights()
 }
+
+func FixTimeslots(w http.ResponseWriter, r *http.Request) {
+	managers.FixTimeslots()
+}

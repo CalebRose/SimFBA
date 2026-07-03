@@ -135,3 +135,8 @@ func SwapCFBHomeAndAwayTeams(w http.ResponseWriter, r *http.Request) {
 	managers.SwapCFBGameHomeAndAwayTeams(gameID)
 	json.NewEncoder(w).Encode(true)
 }
+
+func GenerateOOCGames(w http.ResponseWriter, r *http.Request) {
+	managers.GenerateOOCSchedule()
+	json.NewEncoder(w).Encode(true)
+}

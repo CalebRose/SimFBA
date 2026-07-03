@@ -458,7 +458,7 @@ func ImportCFBGames(isSpringGames bool) {
 func ImportNFLGames() {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_nfl_postseason_games.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\2027_nfl_regularseason_games.csv"
 
 	gamesCSV := util.ReadCSV(path)
 
@@ -504,14 +504,19 @@ func ImportNFLGames() {
 			awayTeamCoach = "AI"
 		}
 		timeSlot := row[12]
+		isNeutralSite := util.ConvertStringToBool(row[5])
 		// Need to implement Stadium ID
 		stadium := ht.Stadium
 		city := ht.City
 		state := ht.State
+		if isNeutralSite {
+			stadium = row[13]
+			city = row[14]
+			state = row[15]
+		}
 		// Need to check for if a game is in a domed stadium or not
 		isConferenceGame := ht.ConferenceID == at.ConferenceID
 		isDivisionGame := ht.DivisionID == at.DivisionID && ht.DivisionID > 0
-		isNeutralSite := util.ConvertStringToBool(row[5])
 		isPreseasonGame := util.ConvertStringToBool(row[6])
 		// isConferenceChampionship := util.ConvertStringToBool(row[7])
 		isPlayoffGame := util.ConvertStringToBool(row[8])
@@ -562,38 +567,31 @@ func ImportNFLGames() {
 func ImportCFBTeams() {
 	db := dbprovider.GetInstance().GetDB()
 
-	teamPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\teams.csv"
+	// teamPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\teams.csv"
 	stadiumPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\stadia.csv"
 	// profilePath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\profiles.csv"
 
-	teamCSV := util.ReadCSV(teamPath)
+	// teamCSV := util.ReadCSV(teamPath)
 	stadiumCSV := util.ReadCSV(stadiumPath)
 	// profileCSV := util.ReadCSV(profilePath)
 
-	for idx, row := range teamCSV {
+	for idx, row := range stadiumCSV {
 		if idx == 0 {
 			continue
 		}
 
-		stadiumRecord := stadiumCSV[idx]
 		// profileRecord := profileCSV[idx]
 
-		teamID := util.ConvertStringToInt(row[0])
-		stadiumID := util.ConvertStringToInt(stadiumRecord[0])
-		stadiumName := stadiumRecord[1]
-		capacity := util.ConvertStringToInt(stadiumRecord[8])
-		recordAtt := util.ConvertStringToInt(stadiumRecord[9])
-		teamName := row[1]
-		mascot := row[2]
-		abbr := row[3]
+		teamID := 0
+		stadiumID := util.ConvertStringToInt(row[0])
+		stadiumName := row[1]
+		capacity := util.ConvertStringToInt(row[8])
+		recordAtt := util.ConvertStringToInt(row[9])
+		abbr := ""
 		city := row[4]
 		state := row[5]
-		country := "USA"
-		conferenceID := util.ConvertStringToInt(row[7])
-		conference := row[8]
+		country := row[6]
 		firstSeason := 2027
-		isFBS := false
-		isActive := false
 
 		stadium := structs.Stadium{
 			Model: gorm.Model{
@@ -608,33 +606,9 @@ func ImportCFBTeams() {
 			Capacity:         uint(capacity),
 			RecordAttendance: uint(recordAtt),
 			FirstSeason:      uint(firstSeason),
-			LeagueID:         2,
-			LeagueName:       "FCS",
+			LeagueID:         3,
+			LeagueName:       "NFL",
 		}
-
-		team := structs.CollegeTeam{
-			Model: gorm.Model{
-				ID: uint(teamID),
-			},
-			BaseTeam: structs.BaseTeam{
-				TeamName:         teamName,
-				Mascot:           mascot,
-				TeamAbbr:         abbr,
-				City:             city,
-				State:            state,
-				Country:          country,
-				StadiumID:        uint(stadiumID),
-				Stadium:          stadiumName,
-				RecordAttendance: recordAtt,
-				Enrollment:       0,
-				FirstPlayed:      firstSeason,
-			},
-			ConferenceID: conferenceID,
-			Conference:   conference,
-			IsFBS:        isFBS,
-			IsActive:     isActive,
-		}
-
 		// aiBehavior := profileRecord[10]
 		// aiQuality := profileRecord[11]
 		// min := util.ConvertStringToInt(profileRecord[12])
@@ -671,7 +645,6 @@ func ImportCFBTeams() {
 		// 	DefensiveScheme:           def,
 		// }
 
-		db.Create(&team)
 		db.Create(&stadium)
 		// db.Create(&teamProfile)
 	}

@@ -1,5 +1,33 @@
 id,stadium_name,team_id,team_abbr,city,state,country,region,capacity,record_attendance,first_season,league_id,league_name,is_domed
-292,National Football Stadium,267,UOG,Mangilao,GM,USA,Pacific,1000,0,2027,2,FCS,0
-293,Veterans Memorial Stadium,268,SAMO,Pago Pago,AS,USA,Pacific,1000,0,2027,2,FCS,0
-294,Darrell Gooden Stadium,269,UWF,Pensacola,FL,USA,Southeast,7500,0,2027,2,FCS,0
-295,Marquette Stadium,270,MARQ,Milwaukee,WI,USA,Midwest,24000,0,2027,2,FCS,0
+328,Rogers Centre,0,,Toronto,ON,Canada,Northeast,39150,0,2027,3,NFL,1
+297,Estadio Azteca,0,,Coyoacan,MC,Mexico,Southwest,87523,0,2027,3,NFL,0
+298,Wembley Stadium,0,,London,,UK,Europe,86000,0,2027,3,NFL,0
+299,Tokyo Dome,0,,Bunkyo,TK,Japan,Northwest,57000,0,2027,3,NFL,1
+300,Croke Park,0,,Dublin,,Ireland,Europe,90556,0,2027,3,NFL,0
+301,BC Place,0,,Vancouver,BC,Canada,Northwest,54500,0,2027,3,NFL,1
+302,Maracana Stadium,0,,Maracana,Rio,Brazil,South,73139,0,2027,3,NFL,0
+303,Allianz Arena,0,,Munich,BV,Germany,Europe,75024,0,2027,3,NFL,0
+304,Modi Stadium,0,,Ahmedabad,GJ,India,South,132000,0,2027,3,NFL,0
+305,Melbourne Cricket Ground,0,,Melbourne,VC,Australia,South,100024,0,2027,3,NFL,0
+306,Camp Nou,0,,Barcelona,,Spain,Europe,99354,0,2027,3,NFL,0
+307,FNB Stadium,0,,Johannesburg,,South Africa,Africa,94736,0,2027,3,NFL,0
+308,Bukit Jalil National Stadium,0,,Kuala Lumpur,,Malaysia,Oceania,87500,0,2027,3,NFL,0
+309,Borg El Arab Stadium,0,,Alexandria,,Egypt,North Africa,86000,0,2027,3,NFL,0
+310,Estadio Monumental,0,,Buenos Aires,,Argentina,South America,85018,0,2027,3,NFL,0
+311,Bernabeu,0,,Madrid,,Spain,Europe,83186,0,2027,3,NFL,1
+312,Signal Iduna Park,0,,Dortmund,,Germany,Europe,81365,0,2027,3,NFL,0
+313,Stade de France,0,,Saint-Denis,,France,Europe,81338,0,2027,3,NFL,0
+314,San Siro,0,,Milan,,Italy,Europe,80018,0,2027,3,NFL,0
+315,Tangier Grand Stadium,0,,Tangier,,Morocco,North Africa,75500,0,2027,3,NFL,0
+316,Beijing National Stadium,0,,Beijing,,China,North China,91000,0,2027,3,NFL,0
+317,Old Trafford,0,,Manchester,,England,England,74244,0,2027,3,NFL,0
+318,Olympic Stadium,0,,Athens,,Greece,Mediterranean,75000,0,2027,3,NFL,0
+319,Stadio Olimpico,0,,Rome,,Italy,Mediterranean,70634,0,2027,3,NFL,0
+320,Seoul Olympic Stadium,0,,Seoul,,South Korea,Asia Pacific,65599,0,2027,3,NFL,0
+321,National Stadium,0,,Yuoying,Kaohsiung,Taiwan,Asia Pacific,55000,0,2027,3,NFL,0
+322,National Stadium,0,,Singapore,Singapore,Singapore,Asia Pacific,55000,0,2027,3,NFL,0
+323,ISS International,0,,Space,Space,Space,Space,7,0,2027,3,NFL,1
+324,Nelson Road,0,,Richmond,London,England,England,34000,0,2027,3,NFL,0
+325,Taipei Dome,0,,Xinyi,Taipei,Taiwan,Asia Pacific,40000,0,2027,3,NFL,1
+326,Jeju World Cup Stadium,0,,Seogwipo,Jeju,South Korea,Asia Pacific,42000,0,2027,3,NFL,0
+327,Centennial Ataturk Stadium,0,,Bursa,,Turkey,Mediterranean,43361,0,2027,3,NFL,0

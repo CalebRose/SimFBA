@@ -19,13 +19,15 @@ import (
 
 func RunTrainingCamps(year string) error {
 	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	season := strconv.Itoa(ts.Season)
 
-	readPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\" + year + "\\trainingcamp.csv"
-	writePath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\" + year + "\\trainingcamp_results.csv"
+	readPath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\" + season + "\\trainingcamp.csv"
+	writePath := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\" + season + "\\trainingcamp_results.csv"
 
 	_, err := os.Stat(readPath)
 	if errors.Is(err, os.ErrNotExist) {
-		return errors.New("Training camp CSV not found for year " + year)
+		return errors.New("Training camp CSV not found for season " + season)
 	} else if err != nil {
 		return errors.New("Error checking for training camp CSV for " + year + ": " + err.Error())
 	}

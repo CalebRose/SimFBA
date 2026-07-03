@@ -40,7 +40,7 @@ func GenerateWeatherForGames() {
 	collegeGames := GetCollegeGamesBySeasonID(seasonID)
 
 	for _, game := range collegeGames {
-		if game.WeekID < ts.CollegeWeekID {
+		if game.WeekID < ts.CollegeWeekID || game.GameTemp != 0 {
 			continue
 		}
 		GenerateWeatherForGame(db, game, teamRegions, regions, rainForecasts, mixForecasts, snowForecasts)
@@ -49,11 +49,11 @@ func GenerateWeatherForGames() {
 	nflGames := GetNFLGamesBySeasonID(strconv.Itoa(int(ts.NFLSeasonID)))
 
 	for _, game := range nflGames {
-		if game.WeekID < ts.NFLWeekID || game.Stadium == "#N/A" {
+		if game.WeekID < ts.NFLWeekID || game.Stadium == "#N/A" || game.GameTemp != 0 {
 			continue
 		}
 		homeTeam := GetNFLTeamByTeamID(strconv.Itoa(game.HomeTeamID))
-		GenerateWeatherForNFLGame(db, game, homeTeam.TeamAbbr, teamRegions, regions, rainForecasts, mixForecasts, snowForecasts)
+		GenerateWeatherForNFLGame(db, game, homeTeam.TeamAbbr, teamRegions, regions, rainForecasts, mixForecasts, snowForecasts, nflStadiumMap)
 	}
 
 }
@@ -276,8 +276,12 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 	db.Save(&game)
 }
 
-func GenerateWeatherForNFLGame(db *gorm.DB, game structs.NFLGame, abbr string, teamRegions map[string]string, regions map[string]structs.WeatherRegion, rainForecasts map[float64]map[int]string, mixForecasts map[float64]map[int]string, snowForecasts map[float64]map[int]string) {
+func GenerateWeatherForNFLGame(db *gorm.DB, game structs.NFLGame, abbr string, teamRegions map[string]string, regions map[string]structs.WeatherRegion, rainForecasts map[float64]map[int]string, mixForecasts map[float64]map[int]string, snowForecasts map[float64]map[int]string, nflStadiumMap map[uint]structs.Stadium) {
 	regionName := teamRegions[abbr]
+	if game.IsNeutral {
+		stadium := nflStadiumMap[game.StadiumID]
+		regionName = stadium.WeatherRegion
+	}
 	region := regions[regionName]
 	chances := []structs.WeatherChance{}
 

@@ -13,8 +13,9 @@ import (
 )
 
 func ExportAllRostersToCSV(w http.ResponseWriter) {
+	ts := GetTimestamp()
 	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
-	w.Header().Set("Content-Disposition", "attachment;filename=2023_Rosters.csv")
+	w.Header().Set("Content-Disposition", "attachment;filename="+strconv.Itoa(int(ts.Season))+"_Rosters.csv")
 	w.Header().Set("Transfer-Encoding", "chunked")
 	// Initialize writer
 	writer := csv.NewWriter(w)
