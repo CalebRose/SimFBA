@@ -151,9 +151,9 @@ func getPositionDrill(drillPosition string, row []string, player structs.NFLPlay
 		return row[2]
 	case "FB":
 		return row[3]
-	case "TE":
-		return row[4]
 	case "WR":
+		return row[4]
+	case "TE":
 		return row[5]
 	case "OT", "OG", "C":
 		return row[6]
@@ -185,12 +185,12 @@ func getEventModifier(player structs.NFLPlayer) int {
 	positive := (.6 * discipline) + negative
 
 	// Older veterans are more acclimated to the NFL and are less likely to have camp events, positive or negative.
-	if player.Age > 24 {
-		negative = negative / 2
-		positive = positive / 2
-	} else if player.Age > 27 {
+	if player.Age > 27 {
 		negative = negative / 4
 		positive = positive / 4
+	} else if player.Age > 24 {
+		negative = negative / 2
+		positive = positive / 2
 	}
 
 	eventRoll := float32(rand.IntN(100))
@@ -560,17 +560,18 @@ func getAttribute(position string, archetype string, drill string) string {
 	} else if drill == "plyometrics" {
 		return "agility"
 	} else if position == "QB" {
-		if drill == "dropback" {
+		switch drill {
+		case "dropback":
 			return "throw_power"
-		} else if drill == "screen" {
+		case "screen":
 			return "throw_accuracy"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			if archetype == "Pocket" || archetype == "Balanced" {
 				return "throw_power"
 			} else {
 				return "throw_accuracy"
 			}
-		} else {
+		default:
 			if archetype == "Pocket" || archetype == "Balanced" {
 				return "throw_accuracy"
 			} else {
@@ -578,15 +579,16 @@ func getAttribute(position string, archetype string, drill string) string {
 			}
 		}
 	} else if position == "RB" {
-		if drill == "gauntlet" {
+		switch drill {
+		case "gauntlet":
 			return "carrying"
-		} else if drill == "square" {
+		case "square":
 			return "route_running"
-		} else if drill == "blitzpickup" {
+		case "blitzpickup":
 			return "pass_block"
-		} else if drill == "jugs" {
+		case "jugs":
 			return "catching"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			switch archetype {
 			case "Speed", "Balanced":
 				return "catching"
@@ -595,7 +597,7 @@ func getAttribute(position string, archetype string, drill string) string {
 			default:
 				return "route_running"
 			}
-		} else {
+		default:
 			switch archetype {
 			case "Power":
 				return "strength"
@@ -610,23 +612,24 @@ func getAttribute(position string, archetype string, drill string) string {
 			}
 		}
 	} else if position == "FB" {
-		if drill == "gauntlet" {
+		switch drill {
+		case "gauntlet":
 			return "carrying"
-		} else if drill == "square" {
+		case "square":
 			return "route_running"
-		} else if drill == "blitzpickup" {
+		case "blitzpickup":
 			return "pass_block"
-		} else if drill == "jugs" {
+		case "jugs":
 			return "catching"
-		} else if drill == "lead" {
+		case "lead":
 			return "run_block"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			if archetype == "Blocking" {
 				return "pass_block"
 			} else {
 				return "catching"
 			}
-		} else {
+		default:
 			switch archetype {
 			case "Blocking":
 				return "run_block"
@@ -646,17 +649,18 @@ func getAttribute(position string, archetype string, drill string) string {
 			}
 		}
 	} else if position == "TE" {
-		if drill == "gauntlet" {
+		switch drill {
+		case "gauntlet":
 			return "carrying"
-		} else if drill == "square" {
+		case "square":
 			return "route_running"
-		} else if drill == "blitzpickup" {
+		case "blitzpickup":
 			return "pass_block"
-		} else if drill == "jugs" {
+		case "jugs":
 			return "catching"
-		} else if drill == "arc" {
+		case "arc":
 			return "run_block"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			switch archetype {
 			case "Blocking":
 				return "pass_block"
@@ -665,19 +669,20 @@ func getAttribute(position string, archetype string, drill string) string {
 			default:
 				return "catching"
 			}
-		} else {
+		default:
 			return "run_block"
 		}
 	} else if position == "WR" {
-		if drill == "gauntlet" {
+		switch drill {
+		case "gauntlet":
 			return "carrying"
-		} else if drill == "square" {
+		case "square":	
 			return "route_running"
-		} else if drill == "jugs" {
+		case "jugs":
 			return "catching"
-		} else if drill == "screenblock" {
+		case "screenblock":
 			return "run_block"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			switch archetype {
 			case "Possession", "Red Zone Threat":
 				return "catching"
@@ -686,117 +691,126 @@ func getAttribute(position string, archetype string, drill string) string {
 			default:
 				return "route_running"
 			}
-		} else {
+		default:
 			return "run_block"
 		}
 	} else if position == "OT" {
-		if drill == "mirror" {
+		switch drill {
+		case "mirror":
 			return "pass_block"
-		} else if drill == "sled" {
+		case "sled":
 			return "run_block"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			return "pass_block"
-		} else {
+		default:
 			return "run_block"
 		}
 	} else if position == "OG" {
-		if drill == "mirror" {
+		switch drill {
+		case "mirror":
 			return "pass_block"
-		} else if drill == "sled" {
+		case "sled":
 			return "run_block"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			return "pass_block"
-		} else {
+		default:
 			return "run_block"
 		}
 	} else if position == "C" {
-		if drill == "mirror" {
+		switch drill {
+		case "mirror":
 			return "pass_block"
-		} else if drill == "sled" {
+		case "sled":
 			return "run_block"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			return "pass_block"
-		} else {
+		default:
 			return "run_block"
 		}
 	} else if position == "DT" {
-		if drill == "rip" {
+		switch drill {
+		case "rip":
 			return "pass_rush"
-		} else if drill == "shed" {
+		case "shed":
 			return "run_defense"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			return "pass_rush"
-		} else {
+		default:
 			return "run_defense"
 		}
 	} else if position == "DE" {
-		if drill == "rip" {
+		switch drill {
+		case "rip":
 			return "pass_rush"
-		} else if drill == "shed" {
+		case "shed":
 			return "run_defense"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			return "pass_rush"
-		} else {
+		default:
 			return "run_defense"
 		}
 	} else if position == "OLB" {
 		// EDGE
 		if archetype == "Pass Rush" || archetype == "Run Stopper" {
-			if drill == "rip" {
+			switch drill {
+			case "rip":
 				return "pass_rush"
-			} else if drill == "shed" {
+			case "shed":
 				return "run_defense"
-			} else if strings.Contains(drill, "pass") {
+			case "team_pass":
 				return "pass_rush"
-			} else {
+			default:
 				return "run_defense"
 			}
 			// Off Ball
 		} else {
-			if drill == "runfit" {
+			switch drill {
+			case "runfit":
 				return "run_defense"
-			} else if drill == "rushlane" {
+			case "rushlane":
 				return "pass_rush"
-			} else if drill == "zonedrop" {
+			case "zonedrop":
 				return "zone_coverage"
-			} else if drill == "hipturn" {
+			case "hipturn":
 				return "man_coverage"
-			} else if strings.Contains(drill, "pass") {
+			case "team_pass":
 				chance := rand.IntN(2)
 				if chance == 0 {
 					return "zone_coverage"
 				}
 				return "man_coverage"
-			} else {
+			default:
 				return "run_defense"
 			}
 		}
 	} else if position == "ILB" {
-		if drill == "runfit" {
+		switch drill {
+		case "runfit":
 			return "run_defense"
-		} else if drill == "rushlane" {
+		case "rushlane":
 			return "pass_rush"
-		} else if drill == "zonedrop" {
+		case "zonedrop":
 			return "zone_coverage"
-		} else if drill == "hipturn" {
+		case "hipturn":
 			return "man_coverage"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			chance := rand.IntN(2)
 			if chance == 0 {
 				return "zone_coverage"
 			}
 			return "man_coverage"
-		} else {
+		default:
 			return "run_defense"
 		}
 	} else if position == "CB" {
-		if drill == "zonedrop" {
+		switch drill {
+		case "zonedrop":
 			return "zone_coverage"
-		} else if drill == "hipturn" {
+		case "hipturn":
 			return "man_coverage"
-		} else if drill == "jugs" {
+		case "jugs":
 			return "catching"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			switch archetype {
 			case "Man Coverage":
 				return "man_coverage"
@@ -809,21 +823,22 @@ func getAttribute(position string, archetype string, drill string) string {
 				}
 				return "man_coverage"
 			}
-		} else {
+		default:
 			return "tackle"
 		}
 	} else if position == "FS" {
-		if drill == "centerfield" {
+		switch drill {
+		case "centerfield":
 			return "zone_coverage"
-		} else if drill == "match" {
+		case "match":
 			return "man_coverage"
-		} else if drill == "jugs" {
+		case "jugs":
 			return "catching"
-		} else if drill == "alley" {
+		case "alley":
 			return "run_defense"
-		} else if drill == "handcombat" {
+		case "handcombat":
 			return "pass_rush"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			switch archetype {
 			case "Man Coverage":
 				return "man_coverage"
@@ -836,21 +851,22 @@ func getAttribute(position string, archetype string, drill string) string {
 				}
 				return "man_coverage"
 			}
-		} else {
+		default:
 			return "tackle"
 		}
 	} else if position == "SS" {
-		if drill == "centerfield" {
+		switch drill {
+		case "centerfield":
 			return "zone_coverage"
-		} else if drill == "match" {
+		case "match":
 			return "man_coverage"
-		} else if drill == "jugs" {
+		case "jugs":
 			return "catching"
-		} else if drill == "alley" {
+		case "alley":
 			return "run_defense"
-		} else if drill == "handcombat" {
+		case "handcombat":
 			return "pass_rush"
-		} else if strings.Contains(drill, "pass") {
+		case "team_pass":
 			switch archetype {
 			case "Man Coverage":
 				return "man_coverage"
@@ -863,7 +879,7 @@ func getAttribute(position string, archetype string, drill string) string {
 				}
 				return "man_coverage"
 			}
-		} else {
+		default:
 			return "tackle"
 		}
 	}
