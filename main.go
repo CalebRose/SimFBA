@@ -486,6 +486,12 @@ func handleRequests() http.Handler {
 	// Easter Controls
 	apiRouter.HandleFunc("/easter/egg/collude/", controller.CollusionButton).Methods("POST")
 
+	// --- NEW LIVE SCOREBOARD ROUTES ADDED HERE ---
+	apiRouter.HandleFunc("/games/plays/bulk/cfb", controller.GetBulkPlayByPlay).Methods("GET")
+	apiRouter.HandleFunc("/games/plays/bulk/nfl", controller.GetBulkPlayByPlay).Methods("GET")
+	apiRouter.HandleFunc("/games/fb/games/stream/queue/{league}", controller.GetFBGameQueue).Methods("GET")
+	apiRouter.HandleFunc("/games/cfb/live-plays/test/", controller.TestCFBCronJob).Methods("GET")
+
 	// Firebase test endpoints
 	apiRouter.HandleFunc("/firebase/test/notification/", controller.TestNotificationToTuscan).Methods("GET")
 	// apiRouter.HandleFunc("/firebase/test/forum/", controller.TestForumPost).Methods("GET")
@@ -543,6 +549,10 @@ func handleCron() *cron.Cron {
 		c.AddFunc("0 18 * * 1", controller.SyncToNextWeekViaCron)
 		c.AddFunc("0 2 * * 2", controller.RunCFBProgressionsViaCron)
 		c.AddFunc("0 3 * * 2", controller.RunNFLProgressionsViaCron)
+
+		// Live Stream
+		// c.AddFunc("30 14 * * 0,2,4,6", controller.StreamCFBGamesToInterfaceViaCron)
+		// c.AddFunc("35 14 * * 0,2,4,6", controller.StreamNFLGamesToInterfaceViaCron)
 	}
 
 	c.Start()

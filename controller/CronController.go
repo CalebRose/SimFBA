@@ -329,3 +329,11 @@ func ShowNFLMonNitViaCron() {
 		managers.SyncTimeslot(timeslot)
 	}
 }
+
+func StreamCFBGamesToInterfaceViaCron() {
+	managers.StartCFBLiveStreamingCron()
+}
+
+func StreamNFLGamesToInterfaceViaCron() {
+	managers.StartNFLLiveStreamingCron()
+}

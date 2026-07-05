@@ -2335,7 +2335,7 @@ func FixBrokenGameplans() {
 	gameplanMap := GetCollegeGameplanMap()
 	recruitingProfileMap := GetTeamProfileMap()
 	ts := GetTimestamp()
-	currentGames := GetCollegeGamesByWeekIdAndSeasonID(strconv.Itoa(ts.CollegeWeekID), strconv.Itoa(ts.CollegeSeasonID))
+	currentGames := GetCollegeGamesByWeekIdAndSeasonID(strconv.Itoa(ts.CollegeWeekID), strconv.Itoa(ts.CollegeSeasonID), ts.CFBSpringGames)
 	teamIDs := []uint{}
 
 	for _, g := range currentGames {
@@ -2448,7 +2448,7 @@ func CheckForSchemePenalties() {
 
 	gameplanMap := GetCollegeGameplanMap()
 	ts := GetTimestamp()
-	currentGames := GetCollegeGamesByWeekIdAndSeasonID(strconv.Itoa(ts.CollegeWeekID), strconv.Itoa(ts.CollegeSeasonID))
+	currentGames := GetCollegeGamesByWeekIdAndSeasonID(strconv.Itoa(ts.CollegeWeekID), strconv.Itoa(ts.CollegeSeasonID), ts.CFBSpringGames)
 	teamIDs := []uint{}
 
 	for _, g := range currentGames {

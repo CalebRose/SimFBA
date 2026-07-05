@@ -37,7 +37,7 @@ func GetPollSubmission(w http.ResponseWriter, r *http.Request) {
 	weekID := strconv.Itoa(int(ts.CollegeWeekID))
 	poll := managers.GetPollSubmissionByUsernameWeekAndSeason(username)
 	conferenceStandings := managers.GetAllCollegeStandingsBySeasonID(seasonID)
-	collegeGames := managers.GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID)
+	collegeGames := managers.GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID, false)
 
 	res := structs.PollDataResponse{
 		Poll:      poll,

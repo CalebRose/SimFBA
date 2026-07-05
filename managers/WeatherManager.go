@@ -517,7 +517,7 @@ func GetCurrentWeekWeather() []structs.GameResponse {
 
 	resList := []structs.GameResponse{}
 
-	collegeGames := GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID)
+	collegeGames := GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID, ts.CFBSpringGames)
 
 	nflGames := GetNFLGamesByWeekAndSeasonID(nflWeekID, nflSeasonID)
 
@@ -645,7 +645,7 @@ func GetFutureWeather() []structs.GameResponse {
 
 	resList := []structs.GameResponse{}
 
-	nextWeekGames := GetCollegeGamesByWeekIdAndSeasonID(futureWeekID, seasonID)
+	nextWeekGames := GetCollegeGamesByWeekIdAndSeasonID(futureWeekID, seasonID, ts.CFBSpringGames)
 	nextWeekNFLGames := GetNFLGamesByWeekAndSeasonID(futureNFLWeekID, nflSeasonID)
 
 	for _, cg := range nextWeekGames {

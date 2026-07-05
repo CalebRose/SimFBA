@@ -59,12 +59,12 @@ func SwapCFBGameHomeAndAwayTeams(gameID string) {
 	// GenerateWeatherForGames()
 }
 
-func GetCollegeGamesByWeekIdAndSeasonID(WeekID string, SeasonID string) []structs.CollegeGame {
+func GetCollegeGamesByWeekIdAndSeasonID(WeekID string, SeasonID string, isPreseason bool) []structs.CollegeGame {
 	db := dbprovider.GetInstance().GetDB()
 
 	var games []structs.CollegeGame
 
-	db.Where("week_id = ? AND season_id = ?", WeekID, SeasonID).Find(&games)
+	db.Where("week_id = ? AND season_id = ? AND is_preseason_game = ?", WeekID, SeasonID, isPreseason).Find(&games)
 
 	return games
 }
@@ -215,7 +215,7 @@ func GetCFBScheduleByConference(conf string) []structs.CollegeGame {
 
 	weekID := strconv.Itoa(int(ts.CollegeWeekID))
 	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
-	matches := GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID)
+	matches := GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID, false)
 	for _, m := range matches {
 		if teamMap[uint(m.HomeTeamID)] || teamMap[uint(m.AwayTeamID)] {
 			games = append(games, m)

@@ -7,6 +7,8 @@ import (
 )
 
 type GamesQuery struct {
+	TimeSlot        string
+	WeekID          string
 	SeasonID        string
 	IsSpringGames   string
 	IsPreseasonGame string
@@ -28,6 +30,14 @@ func FindCollegeGamesRecords(clauses GamesQuery) []structs.CollegeGame {
 		query = query.Where("is_spring_game = ?", isSpringGames)
 	}
 
+	if len(clauses.TimeSlot) > 0 {
+		query = query.Where("time_slot = ?", clauses.TimeSlot)
+	}
+
+	if len(clauses.WeekID) > 0 {
+		query = query.Where("week_id = ?", clauses.WeekID)
+	}
+
 	if err := query.Order("week_id asc").Find(&games).Error; err != nil {
 		return []structs.CollegeGame{}
 	}
@@ -43,6 +53,10 @@ func FindNFLGamesRecords(clauses GamesQuery) []structs.NFLGame {
 
 	if len(clauses.SeasonID) > 0 {
 		query = query.Where("season_id = ?", clauses.SeasonID)
+	}
+
+	if len(clauses.WeekID) > 0 {
+		query = query.Where("week_id = ?", clauses.WeekID)
 	}
 
 	if len(clauses.IsPreseasonGame) > 0 {

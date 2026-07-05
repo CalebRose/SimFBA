@@ -19,7 +19,9 @@ func GetCollegeGamesByWeekId(w http.ResponseWriter, r *http.Request) {
 		panic("User did not provide weekID")
 	}
 
-	collegeGames := managers.GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID)
+	ts := managers.GetTimestamp()
+
+	collegeGames := managers.GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID, ts.CFBSpringGames)
 
 	json.NewEncoder(w).Encode(collegeGames)
 }
