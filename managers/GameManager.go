@@ -64,7 +64,7 @@ func GetCollegeGamesByWeekIdAndSeasonID(WeekID string, SeasonID string, isPresea
 
 	var games []structs.CollegeGame
 
-	db.Where("week_id = ? AND season_id = ? AND is_preseason_game = ?", WeekID, SeasonID, isPreseason).Find(&games)
+	db.Where("week_id = ? AND season_id = ? AND is_spring_game = ?", WeekID, SeasonID, isPreseason).Find(&games)
 
 	return games
 }
