@@ -48,14 +48,11 @@ func SyncRecruitingViaCron() {
 	ts := managers.GetTimestamp()
 	if ts.RunCron && !ts.IsOffSeason && !ts.CollegeSeasonOver && !ts.CFBSpringGames && ts.CollegeWeek > 0 && ts.CollegeWeek < 21 {
 		managers.SyncRecruiting(ts)
-		if ts.CollegeWeek == 20 {
-			managers.GenerateWalkOns()
-		}
 	}
-	if ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 1 {
+	if (ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 1) || ts.Phase == 31 {
 		managers.ProcessTransferIntention()
 	}
-	if ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 2 {
+	if (ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 2) || ts.Phase == 32 {
 		managers.EnterTheTransferPortal()
 	} else if ts.RunCron && (ts.CollegeSeasonOver || ts.IsOffSeason) && ts.TransferPortalPhase == 3 && ts.TransferPortalRound <= 10 {
 		managers.SyncTransferPortal()
@@ -73,52 +70,17 @@ func SyncFreeAgencyViaCron() {
 	}
 }
 
-func RunCFBProgressionsViaCron() {
-	db := dbprovider.GetInstance().GetDB()
-	ts := managers.GetTimestamp()
-	if !ts.RunCron {
-		return
-	}
-	if ts.CollegeWeek < 21 {
-		return
-	}
-	if ts.CollegeSeasonOver && !ts.ProgressedCollegePlayers {
-		// Reset progression flags on all teams and players before running
-		db.Model(&structs.CollegeTeam{}).Where("id > ?", 0).Updates(map[string]interface{}{"players_progressed": false, "recruits_added": false})
-		db.Model(&structs.CollegePlayer{}).Where("id > ?", 0).Update("has_progressed", false)
-
-		managers.CFBProgressionMain()
-		ts.ToggleCollegeProgression()
-		managers.RecruitingAndTransferPortalCleanUp()
-		repository.SaveTimestamp(ts, db)
-	}
-}
-
-func RunNFLProgressionsViaCron() {
-	db := dbprovider.GetInstance().GetDB()
-	ts := managers.GetTimestamp()
-	if !ts.RunCron {
-		return
-	}
-	if ts.NFLWeek < 23 {
-		return
-	}
-
-	if ts.NFLSeasonOver && !ts.ProgressedProfessionalPlayers {
-		// Reset progression flags on all teams and players before running
-		db.Model(&structs.NFLPlayer{}).Where("id > ?", 0).Update("has_progressed", false)
-		managers.NFLProgressionMain()
-		ts.ToggleProfessionalProgression()
-		managers.FreeAgencyCleanUp()
-		repository.SaveTimestamp(ts, db)
-	}
-}
-
 func SyncToNextWeekViaCron() {
 	ts := managers.GetTimestamp()
-	if !ts.RunGames && ts.NFLWeek < 23 {
+
+	ts.MoveUpPhase()
+
+	if ts.Phase < 7 {
+		db := dbprovider.GetInstance().GetDB()
+		repository.SaveTimestamp(ts, db)
 		return
 	}
+
 	if ts.RunCron {
 		if !ts.IsOffSeason && !ts.IsNFLOffSeason {
 			ts = managers.MoveUpWeek()
@@ -131,21 +93,104 @@ func SyncToNextWeekViaCron() {
 		}
 
 		// Once National Championship is over and we move up a week.
-		if ts.CollegeSeasonOver && ts.CollegeWeek == 21 {
+		if (ts.CollegeSeasonOver && ts.CollegeWeek == 21) || ts.Phase == 31 {
+			db := dbprovider.GetInstance().GetDB()
+
 			// Sync Promises
 			managers.SyncPromises()
 			ts.TransferPortalPhase = 1
 			ts.TransferPortalRound = 1
-			db := dbprovider.GetInstance().GetDB()
 			repository.SaveTimestamp(ts, db)
 		}
 
-		if ts.NFLSeasonOver && ts.CollegeSeasonOver && !ts.IsNFLOffSeason && !ts.IsOffSeason && ts.ProgressedCollegePlayers && ts.ProgressedProfessionalPlayers {
+		if (ts.NFLSeasonOver && ts.CollegeSeasonOver && !ts.IsNFLOffSeason && !ts.IsOffSeason && ts.ProgressedCollegePlayers && ts.ProgressedProfessionalPlayers) || ts.Phase > 34 {
 			db := dbprovider.GetInstance().GetDB()
 			ts.MoveUpSeason()
 			repository.SaveTimestamp(ts, db)
 			managers.GenerateOffseasonData()
 		}
+	}
+}
+
+// Sync Phase Tuesday via Cron - Handling separate actions based on the current phase of the season.
+func SyncPhaseTuesdayViaCron() {
+	ts := managers.GetTimestamp()
+	if !ts.RunCron {
+		return
+	}
+	db := dbprovider.GetInstance().GetDB()
+	if ts.Phase == 1 {
+		// Generate weather for existing CFB Games
+		managers.GenerateWeatherForGames()
+	}
+
+	if ts.Phase == 6 {
+		managers.GenerateOOCSchedule()
+		managers.GenerateWeatherForGames()
+	}
+
+	// Calculate Player Minimum Values and Average Annual Value (AAV) for players
+	if ts.Phase == 19 || ts.NFLWeek == 9 {
+		managers.CalculatePlayerMinimumAndAAVValues()
+	}
+
+	if (ts.CollegeSeasonOver && !ts.ProgressedCollegePlayers) || (ts.Phase == 31 && !ts.ProgressedCollegePlayers) {
+		// Reset progression flags on all teams and players before running
+		db.Model(&structs.CollegeTeam{}).Where("id > ?", 0).Updates(map[string]interface{}{"players_progressed": false, "recruits_added": false})
+		db.Model(&structs.CollegePlayer{}).Where("id > ?", 0).Update("has_progressed", false)
+
+		managers.CFBProgressionMain()
+		ts.ToggleCollegeProgression()
+		managers.RecruitingAndTransferPortalCleanUp()
+		repository.SaveTimestamp(ts, db)
+	}
+
+	if (ts.NFLWeek == 23 || ts.Phase == 33) && ts.NFLSeasonOver && !ts.ProgressedProfessionalPlayers {
+		// Reset progression flags on all teams and players before running
+		db.Model(&structs.NFLPlayer{}).Where("id > ?", 0).Update("has_progressed", false)
+		managers.NFLProgressionMain()
+		ts.ToggleProfessionalProgression()
+		managers.FreeAgencyCleanUp()
+		repository.SaveTimestamp(ts, db)
+	}
+}
+
+// Sync Phase Wednesday via Cron - Handling separate actions based on the current phase of the season.
+func SyncPhaseWednesdayViaCron() {
+	ts := managers.GetTimestamp()
+	if !ts.RunCron {
+		return
+	}
+
+	// Run UDFAs
+	if ts.Phase == 4 {
+		managers.ProcessUDFAs(false)
+	}
+
+	if ts.Phase == 5 {
+		managers.RunTrainingCamps("")
+	}
+
+	// Generate Walkons in the middle of the night.
+	if ts.CollegeWeek == 20 || ts.Phase == 30 {
+		managers.GenerateWalkOns()
+		managers.AssignAllRecruitRanks()
+	}
+}
+
+// Sync Phase Thursday via Cron - Handling separate actions based on the current phase of the season.
+func SyncPhaseThursdayViaCron() {
+	ts := managers.GetTimestamp()
+	if !ts.RunCron {
+		return
+	}
+}
+
+// Sync Phase Friday via Cron - Handling separate actions based on the current phase of the season.
+func SyncPhaseFridayViaCron() {
+	ts := managers.GetTimestamp()
+	if !ts.RunCron {
+		return
 	}
 }
 
@@ -330,10 +375,26 @@ func ShowNFLMonNitViaCron() {
 	}
 }
 
-func StreamCFBGamesToInterfaceViaCron() {
+func StreamCFBThursdayGamesToInterfaceViaCron() {
 	managers.StartCFBLiveStreamingCron()
 }
 
-func StreamNFLGamesToInterfaceViaCron() {
+func StreamCFBFridayGamesToInterfaceViaCron() {
+	managers.StartCFBLiveStreamingCron()
+}
+
+func StreamCFBSaturdayGamesToInterfaceViaCron() {
+	managers.StartCFBLiveStreamingCron()
+}
+
+func StreamNFLThursdayGamesToInterfaceViaCron() {
+	managers.StartNFLLiveStreamingCron()
+}
+
+func StreamNFLSundayGamesToInterfaceViaCron() {
+	managers.StartNFLLiveStreamingCron()
+}
+
+func StreamNFLMondayGamesToInterfaceViaCron() {
 	managers.StartNFLLiveStreamingCron()
 }

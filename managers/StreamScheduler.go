@@ -3,6 +3,7 @@ package managers
 import (
 	"context"
 	"log"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -38,6 +39,7 @@ type PendingGame struct {
 	City          string
 	State         string
 	Country       string
+	TimeSlot      string
 }
 
 // GameStream represents one active streaming slot.
@@ -146,6 +148,16 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 			if !g.GameComplete || g.IsRevealed {
 				continue
 			}
+			if gameDay == "Thursday Night" && g.TimeSlot != "Thursday Night" {
+				continue
+			}
+			if gameDay == "Friday Night" && g.TimeSlot != "Friday Night" {
+				continue
+			}
+			// Queue up all of the saturday games together
+			if gameDay == "Saturday Morning" && (g.TimeSlot == "Thursday Night" || g.TimeSlot == "Friday Night") {
+				continue
+			}
 			homeTeam := teamMap[uint(g.HomeTeamID)]
 			awayTeam := teamMap[uint(g.AwayTeamID)]
 			pg := PendingGame{
@@ -161,6 +173,7 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 				City:         g.City,
 				State:        g.State,
 				Country:      "",
+				TimeSlot:     g.TimeSlot,
 			}
 			if pg.IsUserGame {
 				userGames = append(userGames, pg)
@@ -184,6 +197,12 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 			if !g.GameComplete || g.IsRevealed {
 				continue
 			}
+			if gameDay == "Thursday Night Football" && g.TimeSlot != "Thursday Night Football" {
+				continue
+			}
+			if gameDay == "Monday Night Football" && g.TimeSlot != "Monday Night Football" {
+				continue
+			}
 			homeTeam := nflTeamMap[uint(g.HomeTeamID)]
 			awayTeam := nflTeamMap[uint(g.AwayTeamID)]
 			isUser := homeTeam.NFLOwnerName != "" || awayTeam.NFLOwnerName != "" ||
@@ -201,6 +220,7 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 				City:         g.City,
 				State:        g.State,
 				Country:      "",
+				TimeSlot:     g.TimeSlot,
 			}
 			if pg.IsUserGame {
 				userGames = append(userGames, pg)
@@ -212,6 +232,32 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 
 	// User-coached games fill the front of the queue; AI games follow.
 	s.Queue = append(userGames, aiGames...)
+	// sort Queue by timeslot (Thursday Night, Thursday Night Football, Friday Night, Saturday Morning, Saturday Afternoon, Saturday Evening, Saturday Night, Sunday Morning, Sunday Noon, Sunday Night Football, Monday Night Football, all else)
+	sort.Slice(s.Queue, func(i, j int) bool {
+		timeslotOrder := map[string]int{
+			"Thursday Night":          1,
+			"Thursday Night Football": 2,
+			"Friday Night":            3,
+			"Saturday Morning":        4,
+			"Saturday Afternoon":      5,
+			"Saturday Evening":        6,
+			"Saturday Night":          7,
+			"Sunday Morning":          8,
+			"Sunday Noon":             9,
+			"Sunday Night Football":   10,
+			"Monday Night Football":   11,
+		}
+		iOrder, iOk := timeslotOrder[s.Queue[i].TimeSlot]
+		jOrder, jOk := timeslotOrder[s.Queue[j].TimeSlot]
+		if !iOk {
+			iOrder = 12
+		}
+		if !jOk {
+			jOrder = 12
+		}
+		return iOrder < jOrder
+	})
+
 	log.Printf("StreamScheduler(%s): queued %d games (%d user, %d AI)",
 		s.League, len(s.Queue), len(userGames), len(aiGames))
 }
@@ -347,15 +393,6 @@ func StartCFBLiveStreamingCron() {
 	}
 	if ts.FridayGames {
 		gameDay = "Saturday Morning"
-	}
-	if ts.SaturdayMorning {
-		gameDay = "Saturday Afternoon"
-	}
-	if ts.SaturdayNoon {
-		gameDay = "Saturday Evening"
-	}
-	if ts.SaturdayEvening {
-		gameDay = "Saturday Night"
 	}
 
 	scheduler := &StreamScheduler{League: "cfb", isCollege: true}

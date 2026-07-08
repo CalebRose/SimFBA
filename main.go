@@ -177,7 +177,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/nfl/stadiums", controller.FixNFLStadiums).Methods("GET")
 	// apiRouter.HandleFunc("/fix/player/weights", controller.FixPlayerWeights).Methods("GET")
 	// apiRouter.HandleFunc("/fix/timeslots", controller.FixTimeslots).Methods("GET")
-
+	apiRouter.HandleFunc("/fix/broken/gameplans", controller.FixBrokenGameplans).Methods("GET")
 	// Free Agency Controls
 	// apiRouter.HandleFunc("/nfl/extensions/sync", controller.SyncExtensions).Methods("GET")
 	apiRouter.HandleFunc("/nfl/extension/create/offer", controller.CreateExtensionOffer).Methods("POST")
@@ -547,12 +547,18 @@ func handleCron() *cron.Cron {
 		c.AddFunc("0 17 * * 1", controller.ShowNFLMonNitViaCron)   // Mon Nit
 		// Sync Week
 		c.AddFunc("0 18 * * 1", controller.SyncToNextWeekViaCron)
-		c.AddFunc("0 2 * * 2", controller.RunCFBProgressionsViaCron)
-		c.AddFunc("0 3 * * 2", controller.RunNFLProgressionsViaCron)
+		c.AddFunc("0 2 * * 2", controller.SyncPhaseTuesdayViaCron)
+		c.AddFunc("0 2 * * 3", controller.SyncPhaseWednesdayViaCron)
+		c.AddFunc("0 2 * * 4", controller.SyncPhaseThursdayViaCron)
+		c.AddFunc("0 2 * * 5", controller.SyncPhaseFridayViaCron)
 
 		// Live Stream
-		// c.AddFunc("30 14 * * 0,2,4,6", controller.StreamCFBGamesToInterfaceViaCron)
-		// c.AddFunc("35 14 * * 0,2,4,6", controller.StreamNFLGamesToInterfaceViaCron)
+		c.AddFunc("30 16 * * 4", controller.StreamCFBThursdayGamesToInterfaceViaCron)
+		c.AddFunc("30 16 * * 5", controller.StreamCFBFridayGamesToInterfaceViaCron)
+		c.AddFunc("30 15 * * 6", controller.StreamCFBSaturdayGamesToInterfaceViaCron)
+		c.AddFunc("30 17 * * 4", controller.StreamNFLThursdayGamesToInterfaceViaCron)
+		c.AddFunc("0 14 * * 0", controller.StreamNFLSundayGamesToInterfaceViaCron)
+		c.AddFunc("0 15 * * 1", controller.StreamNFLMondayGamesToInterfaceViaCron)
 	}
 
 	c.Start()

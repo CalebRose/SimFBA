@@ -2333,7 +2333,7 @@ func FixBrokenGameplans() {
 		teamMap[t.ID] = t
 	}
 	gameplanMap := GetCollegeGameplanMap()
-	recruitingProfileMap := GetTeamProfileMap()
+	// recruitingProfileMap := GetTeamProfileMap()
 	ts := GetTimestamp()
 	currentGames := GetCollegeGamesByWeekIdAndSeasonID(strconv.Itoa(ts.CollegeWeekID), strconv.Itoa(ts.CollegeSeasonID), ts.CFBSpringGames)
 	teamIDs := []uint{}
@@ -2342,51 +2342,61 @@ func FixBrokenGameplans() {
 		teamIDs = append(teamIDs, uint(g.HomeTeamID), uint(g.AwayTeamID))
 	}
 	for _, t := range teamIDs {
-		team := teamMap[t]
+		// team := teamMap[t]
 		id := strconv.Itoa(int(t))
 		gp := gameplanMap[t]
-		rtp := *recruitingProfileMap[id]
+		// rtp := *recruitingProfileMap[id]
 
 		dc := GetDepthchartByTeamID(id)
 
 		isBroken := false
-		playerLabel := ""
+		// playerLabel := ""
 
 		players := dc.DepthChartPlayers
 		for _, dcp := range players {
 			p := dcp.CollegePlayer
 			if p.IsRedshirting || (p.IsInjured && p.WeeksOfRecovery > 0) {
 				isBroken = true
-				playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
+				// playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
+				break
+			}
+			if dcp.PlayerID == 0 && (dcp.PositionLevel == "1" || dcp.PositionLevel == "2") {
+				isBroken = true
+				// playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
+				break
+			}
+			if dcp.PlayerID != 0 && p.ID == 0 {
+				isBroken = true
+				// playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
 				break
 			}
 		}
 
 		if isBroken {
 			// Penalize CFB Team
-			rtp.SubtractScholarshipsAvailable()
-			repository.SaveRecruitingTeamProfile(rtp, db)
-			team.MarkTeamForPenalty()
-			repository.SaveCFBTeam(team, db)
-			// Notify team coach via Firebase
-			if team.Coach != "" && team.Coach != "AI" {
-				message := rtp.TeamAbbreviation + " has lost a scholarship due to having an injured player (" + playerLabel + ") on their depthchart. This is penalty number " + strconv.Itoa(int(team.PenaltyMarks)) + "."
-				ctx := context.Background()
-				uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{team.Coach})
-				if len(uids) > 0 {
-					eventKey := fbsvc.BuildSourceEventKey("gameplan_penalty", "cfb", strconv.Itoa(int(t)))
-					_ = fbsvc.NotifyGameplanIssue(ctx, fbsvc.GameplanNotificationInput{
-						League:         "cfb",
-						Domain:         fbsvc.DomainCFB,
-						TeamID:         t,
-						TeamName:       team.TeamName,
-						TeamAbbr:       rtp.TeamAbbreviation,
-						Message:        message,
-						RecipientUIDs:  uids,
-						SourceEventKey: eventKey,
-					})
-				}
-			}
+			// rtp.SubtractScholarshipsAvailable()
+			// repository.SaveRecruitingTeamProfile(rtp, db)
+			// team.MarkTeamForPenalty()
+			// repository.SaveCFBTeam(team, db)
+			// // Notify team coach via Firebase
+			// if team.Coach != "" && team.Coach != "AI" {
+			// 	message := rtp.TeamAbbreviation + " has lost a scholarship due to having an injured player (" + playerLabel + ") on their depthchart. This is penalty number " + strconv.Itoa(int(team.PenaltyMarks)) + "."
+			// 	ctx := context.Background()
+			// 	uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{team.Coach})
+			// 	if len(uids) > 0 {
+			// 		eventKey := fbsvc.BuildSourceEventKey("gameplan_penalty", "cfb", strconv.Itoa(int(t)))
+			// 		_ = fbsvc.NotifyGameplanIssue(ctx, fbsvc.GameplanNotificationInput{
+			// 			League:         "cfb",
+			// 			Domain:         fbsvc.DomainCFB,
+			// 			TeamID:         t,
+			// 			TeamName:       team.TeamName,
+			// 			TeamAbbr:       rtp.TeamAbbreviation,
+			// 			Message:        message,
+			// 			RecipientUIDs:  uids,
+			// 			SourceEventKey: eventKey,
+			// 		})
+			// 	}
+			// }
 			// Autosort Depth Chart
 			ReAlignCollegeDepthChart(db, id, gp)
 		}

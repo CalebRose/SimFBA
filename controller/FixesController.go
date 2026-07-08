@@ -41,3 +41,7 @@ func FixPlayerWeights(w http.ResponseWriter, r *http.Request) {
 func FixTimeslots(w http.ResponseWriter, r *http.Request) {
 	managers.FixTimeslots()
 }
+
+func FixBrokenGameplans(w http.ResponseWriter, r *http.Request) {
+	managers.FixBrokenGameplans()
+}

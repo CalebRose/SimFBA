@@ -4,6 +4,7 @@ import "github.com/jinzhu/gorm"
 
 type Timestamp struct {
 	gorm.Model
+	Phase                         uint
 	CollegeWeekID                 int
 	CollegeWeek                   int
 	CollegeSeasonID               int
@@ -56,6 +57,10 @@ type Timestamp struct {
 	TransferPortalRound           uint
 }
 
+func (t *Timestamp) MoveUpPhase() {
+	t.Phase++
+}
+
 func (t *Timestamp) MoveUpWeekCollege() {
 	t.CollegeWeekID++
 	t.CollegeWeek++
@@ -101,6 +106,7 @@ func (t *Timestamp) DraftIsOver() {
 }
 
 func (t *Timestamp) MoveUpSeason() {
+	t.Phase = 1
 	t.CollegeSeasonID++
 	t.Season++
 	t.CollegeWeek = 0
@@ -168,6 +174,40 @@ func (t *Timestamp) SyncToNextWeek() {
 	t.ToggleGMActions()
 
 	// Migrate game results ?
+}
+
+func (t *Timestamp) AdminSetWeek(collegeWeek int, nflWeek int) {
+	t.CollegeWeek = collegeWeek
+	t.NFLWeek = nflWeek
+	t.CollegeWeekID = (((t.CollegeSeasonID + 2020) - 2000) * 100) + t.CollegeWeek
+	t.NFLWeekID = (((t.CollegeSeasonID + 2020) - 2000) * 100) + t.NFLWeek
+}
+
+func (t *Timestamp) AdminToggleTimeSlot(ts string) {
+	switch ts {
+	case "Thursday Night":
+		t.ThursdayGames = !t.ThursdayGames
+	case "Thursday Night Football":
+		t.NFLThursday = !t.NFLThursday
+	case "Friday Night":
+		t.FridayGames = !t.FridayGames
+	case "Saturday Morning":
+		t.SaturdayMorning = !t.SaturdayMorning
+	case "Saturday Afternoon":
+		t.SaturdayNoon = !t.SaturdayNoon
+	case "Saturday Evening":
+		t.SaturdayEvening = !t.SaturdayEvening
+	case "Saturday Night":
+		t.SaturdayNight = !t.SaturdayNight
+	case "Sunday Noon":
+		t.NFLSundayNoon = !t.NFLSundayNoon
+	case "Sunday Afternoon":
+		t.NFLSundayAfternoon = !t.NFLSundayAfternoon
+	case "Sunday Night Football":
+		t.NFLSundayEvening = !t.NFLSundayEvening
+	case "Monday Night Football":
+		t.NFLMondayEvening = !t.NFLMondayEvening
+	}
 }
 
 func (t *Timestamp) ToggleTimeSlot(ts string) {

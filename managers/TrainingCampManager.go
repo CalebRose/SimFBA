@@ -17,6 +17,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// We will need to rewrite this to look at training camp forms
 func RunTrainingCamps(year string) error {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
@@ -29,14 +30,14 @@ func RunTrainingCamps(year string) error {
 	if errors.Is(err, os.ErrNotExist) {
 		return errors.New("Training camp CSV not found for season " + season)
 	} else if err != nil {
-		return errors.New("Error checking for training camp CSV for " + year + ": " + err.Error())
+		return errors.New("Error checking for training camp CSV for " + season + ": " + err.Error())
 	}
 
 	_, err = os.Stat(writePath)
 	if err == nil {
-		return errors.New("Training camp output CSV already exists for " + year + ". Training camp may have already applied.")
+		return errors.New("Training camp output CSV already exists for " + season + ". Training camp may have already applied.")
 	} else if !errors.Is(err, os.ErrNotExist) {
-		return errors.New("Something weird happened. Training camp output may already exist for " + year + ", but an unrelated error occurred while checking for it: " + err.Error())
+		return errors.New("Something weird happened. Training camp output may already exist for " + season + ", but an unrelated error occurred while checking for it: " + err.Error())
 	}
 
 	drillSelectionsCSV := util.ReadCSV(readPath)
@@ -676,7 +677,7 @@ func getAttribute(position string, archetype string, drill string) string {
 		switch drill {
 		case "gauntlet":
 			return "carrying"
-		case "square":	
+		case "square":
 			return "route_running"
 		case "jugs":
 			return "catching"
