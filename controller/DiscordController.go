@@ -335,8 +335,6 @@ func RevealCFBGameResults(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.RevealCFBGameOnInterface(gameID)
-
-	json.NewEncoder(w).Encode("Done!")
 }
 
 func RevealNFLGameResults(w http.ResponseWriter, r *http.Request) {
@@ -347,6 +345,4 @@ func RevealNFLGameResults(w http.ResponseWriter, r *http.Request) {
 	}
 
 	managers.RevealNFLGameOnInterface(gameID)
-
-	json.NewEncoder(w).Encode("Done!")
 }
