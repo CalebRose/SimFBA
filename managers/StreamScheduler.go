@@ -479,9 +479,6 @@ func StartNFLLiveStreamingCron() {
 	if ts.NFLSundayNoon {
 		gameDay = "Sunday Afternoon"
 	}
-	if ts.NFLSundayAfternoon {
-		gameDay = "Sunday Evening"
-	}
 	if ts.NFLSundayEvening {
 		gameDay = "Monday Night Football"
 	}

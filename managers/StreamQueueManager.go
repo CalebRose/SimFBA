@@ -42,7 +42,19 @@ func buildCFBStreamQueue(weekID, seasonID, gameDay string, isPreseason bool) []S
 	if isPreseason {
 		isSpringGames = "Y"
 	}
-	games := repository.FindCollegeGamesRecords(repository.GamesQuery{WeekID: weekID, SeasonID: seasonID, TimeSlot: gameDay, IsSpringGames: isSpringGames})
+	gamesFetch := repository.FindCollegeGamesRecords(repository.GamesQuery{WeekID: weekID, SeasonID: seasonID, IsSpringGames: isSpringGames})
+	games := []structs.CollegeGame{}
+	for _, game := range gamesFetch {
+		if game.TimeSlot == "Thursday Night" && game.TimeSlot == gameDay {
+			games = append(games, game)
+		}
+		if game.TimeSlot == "Friday Night" && game.TimeSlot == gameDay {
+			games = append(games, game)
+		}
+		if gameDay == "Saturday Morning" && game.TimeSlot != "Thursday Night" && game.TimeSlot != "Friday Night" {
+			games = append(games, game)
+		}
+	}
 	cfbPlayByPlayMap := make(map[uint][]structs.CollegePlayByPlay)
 	nflPlayByPlayMap := make(map[uint][]structs.NFLPlayByPlay)
 	gameIDs := make([]string, len(games))
@@ -89,13 +101,25 @@ func buildCFBStreamQueue(weekID, seasonID, gameDay string, isPreseason bool) []S
 func buildNFLStreamQueue(weekID, seasonID, gameDay string, isPreseason bool) []StreamGameQueueItem {
 	var userGames, aiGames []StreamGameQueueItem
 
-	games := repository.FindNFLGamesRecords(repository.GamesQuery{WeekID: weekID, SeasonID: seasonID, TimeSlot: gameDay, IsPreseasonGame: func() string {
+	gamesFetch := repository.FindNFLGamesRecords(repository.GamesQuery{WeekID: weekID, SeasonID: seasonID, TimeSlot: gameDay, IsPreseasonGame: func() string {
 		if isPreseason {
 			return "Y"
 		} else {
 			return "N"
 		}
 	}()})
+	games := []structs.NFLGame{}
+	for _, game := range gamesFetch {
+		if game.TimeSlot == "Thursday Night Football" && game.TimeSlot == gameDay {
+			games = append(games, game)
+		}
+		if game.TimeSlot == "Monday Night Football" && game.TimeSlot == gameDay {
+			games = append(games, game)
+		}
+		if gameDay == "Sunday Noon" && game.TimeSlot != "Thursday Night Football" && game.TimeSlot != "Monday Night Football" {
+			games = append(games, game)
+		}
+	}
 	cfbPlayByPlayMap := make(map[uint][]structs.CollegePlayByPlay)
 	nflPlayByPlayMap := make(map[uint][]structs.NFLPlayByPlay)
 	gameIDs := make([]string, len(games))
