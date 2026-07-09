@@ -1246,12 +1246,32 @@ func GetCFBPlayByPlaysByGameID(id string) []structs.CollegePlayByPlay {
 	return plays
 }
 
+func GetCFBPlayByPlaysByGameIDs(ids []string) []structs.CollegePlayByPlay {
+	db := dbprovider.GetInstance().GetDB()
+
+	plays := []structs.CollegePlayByPlay{}
+
+	db.Where("game_id IN ?", ids).Find(&plays)
+
+	return plays
+}
+
 func GetNFLPlayByPlaysByGameID(id string) []structs.NFLPlayByPlay {
 	db := dbprovider.GetInstance().GetDB()
 
 	plays := []structs.NFLPlayByPlay{}
 
 	db.Where("game_id = ?", id).Find(&plays)
+
+	return plays
+}
+
+func GetNFLPlayByPlaysByGameIDs(ids []string) []structs.NFLPlayByPlay {
+	db := dbprovider.GetInstance().GetDB()
+
+	plays := []structs.NFLPlayByPlay{}
+
+	db.Where("game_id IN ?", ids).Find(&plays)
 
 	return plays
 }

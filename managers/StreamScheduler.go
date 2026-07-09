@@ -11,6 +11,7 @@ import (
 
 	fbsvc "github.com/CalebRose/SimFBA/firebase"
 	"github.com/CalebRose/SimFBA/repository"
+	"github.com/CalebRose/SimFBA/structs"
 )
 
 const maxStreamSlots = 8
@@ -53,11 +54,13 @@ type GameStream struct {
 // StreamScheduler manages up to maxStreamSlots concurrent game streams and an
 // ordered queue of pending games for a single league.
 type StreamScheduler struct {
-	mu          sync.Mutex
-	ActiveSlots [maxStreamSlots]*GameStream
-	Queue       []PendingGame
-	League      string // "chl" or "phl"
-	isCollege   bool
+	mu               sync.Mutex
+	ActiveSlots      [maxStreamSlots]*GameStream
+	Queue            []PendingGame
+	League           string // "chl" or "phl"
+	isCollege        bool
+	CFBPlayByPlayMap map[uint][]structs.CollegePlayByPlay
+	NFLPlayByPlayMap map[uint][]structs.NFLPlayByPlay
 }
 
 // parseMMSS converts a clock string in "MM:SS" format to the equivalent number
@@ -91,12 +94,11 @@ func computeStreamTimes(totalSecs int) (start, end time.Time) {
 // A regulation game (4 quarters, ending at 0:00) yields 3600 s.  Overtime
 // quarters each add another 900 s; a walk-off ending mid-quarter subtracts the
 // unused clock via parseMMSS.  Returns 0 if no records are found.
-func loadTotalSeconds(gameID uint, isCollege bool) int {
+func loadTotalSeconds(gameID uint, cfbPlayByPlayMap map[uint][]structs.CollegePlayByPlay, nflPlayByPlayMap map[uint][]structs.NFLPlayByPlay, isCollege bool) int {
 	const quarterSecs = 15 * 60 // 900 seconds per quarter
-	gameIDStr := strconv.FormatUint(uint64(gameID), 10)
 
 	if isCollege {
-		plays := repository.FindCFBPlayByPlaysRecordsByGameID(gameIDStr)
+		plays := cfbPlayByPlayMap[gameID]
 		if len(plays) == 0 {
 			return 0
 		}
@@ -105,7 +107,7 @@ func loadTotalSeconds(gameID uint, isCollege bool) int {
 		return int(last.Quarter)*quarterSecs - timeRemainingInLastQuarter
 	}
 
-	plays := repository.FindNFLPlayByPlaysRecordsByGameID(gameIDStr)
+	plays := nflPlayByPlayMap[gameID]
 	if len(plays) == 0 {
 		return 0
 	}
@@ -115,12 +117,11 @@ func loadTotalSeconds(gameID uint, isCollege bool) int {
 }
 
 // loadTotalPlays returns the number of play-by-play records for a game.
-func loadTotalPlays(gameID uint, isCollege bool) int {
-	gameIDStr := strconv.FormatUint(uint64(gameID), 10)
+func loadTotalPlays(gameID uint, cfbPlayByPlayMap map[uint][]structs.CollegePlayByPlay, nflPlayByPlayMap map[uint][]structs.NFLPlayByPlay, isCollege bool) int {
 	if isCollege {
-		return len(repository.FindCFBPlayByPlaysRecordsByGameID(gameIDStr))
+		return len(cfbPlayByPlayMap[gameID])
 	}
-	return len(repository.FindNFLPlayByPlaysRecordsByGameID(gameIDStr))
+	return len(nflPlayByPlayMap[gameID])
 }
 
 // dequeue pops the first item from the queue.
@@ -140,9 +141,19 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 	defer s.mu.Unlock()
 
 	var userGames, aiGames []PendingGame
+	cfbPlayByPlayMap := make(map[uint][]structs.CollegePlayByPlay)
+	nflPlayByPlayMap := make(map[uint][]structs.NFLPlayByPlay)
 
 	if s.isCollege {
 		games := GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID, isPreseason)
+		gameIDs := make([]string, len(games))
+		for i, g := range games {
+			gameIDs[i] = strconv.Itoa(int(g.ID))
+		}
+		playByPlays := GetCFBPlayByPlaysByGameIDs(gameIDs)
+		for _, play := range playByPlays {
+			cfbPlayByPlayMap[uint(play.GameID)] = append(cfbPlayByPlayMap[uint(play.GameID)], play)
+		}
 		teamMap := GetCollegeTeamMap()
 		for _, g := range games {
 			if !g.GameComplete || g.IsRevealed {
@@ -191,6 +202,14 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 			WeekID:          weekID,
 			IsPreseasonGame: preseason,
 		})
+		gameIDs := make([]string, len(games))
+		for i, g := range games {
+			gameIDs[i] = strconv.Itoa(int(g.ID))
+		}
+		playByPlays := GetNFLPlayByPlaysByGameIDs(gameIDs)
+		for _, play := range playByPlays {
+			nflPlayByPlayMap[uint(play.GameID)] = append(nflPlayByPlayMap[uint(play.GameID)], play)
+		}
 		nflTeams := GetAllNFLTeams()
 		nflTeamMap := MakeNFLTeamMap(nflTeams)
 		for _, g := range games {
@@ -229,6 +248,9 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 			}
 		}
 	}
+
+	s.CFBPlayByPlayMap = cfbPlayByPlayMap
+	s.NFLPlayByPlayMap = nflPlayByPlayMap
 
 	// User-coached games fill the front of the queue; AI games follow.
 	s.Queue = append(userGames, aiGames...)
@@ -305,13 +327,13 @@ func (s *StreamScheduler) Tick(ctx context.Context) {
 			break
 		}
 
-		totalSecs := loadTotalSeconds(next.GameID, s.isCollege)
+		totalSecs := loadTotalSeconds(next.GameID, s.CFBPlayByPlayMap, s.NFLPlayByPlayMap, s.isCollege)
 		if totalSecs == 0 {
 			log.Printf("StreamScheduler(%s): skipping game %d — no PbP records found", s.League, next.GameID)
 			i--
 			continue
 		}
-		totalPlays := loadTotalPlays(next.GameID, s.isCollege)
+		totalPlays := loadTotalPlays(next.GameID, s.CFBPlayByPlayMap, s.NFLPlayByPlayMap, s.isCollege)
 		start, end := computeStreamTimes(totalSecs)
 		record := fbsvc.LiveGameRecord{
 			GameID:          int(next.GameID),

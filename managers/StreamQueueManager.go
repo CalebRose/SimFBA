@@ -1,6 +1,11 @@
 package managers
 
-import "github.com/CalebRose/SimFBA/repository"
+import (
+	"strconv"
+
+	"github.com/CalebRose/SimFBA/repository"
+	"github.com/CalebRose/SimFBA/structs"
+)
 
 // StreamGameQueueItem is the wire shape simsn-live consumes to build its
 // own PendingGame queue without touching SimHockey's database directly.
@@ -38,6 +43,17 @@ func buildCFBStreamQueue(weekID, seasonID, gameDay string, isPreseason bool) []S
 		isSpringGames = "Y"
 	}
 	games := repository.FindCollegeGamesRecords(repository.GamesQuery{WeekID: weekID, SeasonID: seasonID, TimeSlot: gameDay, IsSpringGames: isSpringGames})
+	cfbPlayByPlayMap := make(map[uint][]structs.CollegePlayByPlay)
+	nflPlayByPlayMap := make(map[uint][]structs.NFLPlayByPlay)
+	gameIDs := make([]string, len(games))
+	for i, g := range games {
+		gameIDs[i] = strconv.Itoa(int(g.ID))
+	}
+	playByPlays := GetCFBPlayByPlaysByGameIDs(gameIDs)
+	for _, play := range playByPlays {
+		cfbPlayByPlayMap[uint(play.GameID)] = append(cfbPlayByPlayMap[uint(play.GameID)], play)
+	}
+
 	teamMap := GetCollegeTeamMap()
 	for _, g := range games {
 		if !g.GameComplete || g.IsRevealed {
@@ -58,8 +74,8 @@ func buildCFBStreamQueue(weekID, seasonID, gameDay string, isPreseason bool) []S
 			City:         g.City,
 			State:        g.State,
 			Country:      "",
-			TotalSeconds: loadTotalSeconds(g.ID, true),
-			TotalPlays:   loadTotalPlays(g.ID, true),
+			TotalSeconds: loadTotalSeconds(g.ID, cfbPlayByPlayMap, nflPlayByPlayMap, true),
+			TotalPlays:   loadTotalPlays(g.ID, cfbPlayByPlayMap, nflPlayByPlayMap, true),
 		}
 		if item.IsUserGame {
 			userGames = append(userGames, item)
@@ -80,6 +96,17 @@ func buildNFLStreamQueue(weekID, seasonID, gameDay string, isPreseason bool) []S
 			return "N"
 		}
 	}()})
+	cfbPlayByPlayMap := make(map[uint][]structs.CollegePlayByPlay)
+	nflPlayByPlayMap := make(map[uint][]structs.NFLPlayByPlay)
+	gameIDs := make([]string, len(games))
+	for i, g := range games {
+		gameIDs[i] = strconv.Itoa(int(g.ID))
+	}
+	playByPlays := GetNFLPlayByPlaysByGameIDs(gameIDs)
+	for _, play := range playByPlays {
+		nflPlayByPlayMap[uint(play.GameID)] = append(nflPlayByPlayMap[uint(play.GameID)], play)
+	}
+
 	nflTeams := GetAllNFLTeams()
 	teamMap := MakeNFLTeamMap(nflTeams)
 	for _, g := range games {
@@ -103,8 +130,8 @@ func buildNFLStreamQueue(weekID, seasonID, gameDay string, isPreseason bool) []S
 			City:         g.City,
 			State:        g.State,
 			Country:      "",
-			TotalSeconds: loadTotalSeconds(g.ID, false),
-			TotalPlays:   loadTotalPlays(g.ID, false),
+			TotalSeconds: loadTotalSeconds(g.ID, cfbPlayByPlayMap, nflPlayByPlayMap, false),
+			TotalPlays:   loadTotalPlays(g.ID, cfbPlayByPlayMap, nflPlayByPlayMap, false),
 		}
 		if item.IsUserGame {
 			userGames = append(userGames, item)
