@@ -55,6 +55,8 @@ func (ss *NFLTeamSeasonStats) ResetStats() {
 	ss.DefensiveInterceptions = 0
 	ss.Safeties = 0
 	ss.DefensiveTDs = 0
+	ss.DefensivePressures = 0
+	ss.DefensiveExpectedSacks = 0
 	ss.FieldGoalsMade = 0
 	ss.FieldGoalsAttempted = 0
 	ss.LongestFieldGoal = 0
@@ -123,6 +125,8 @@ func (ss *NFLTeamSeasonStats) MapStats(stats []NFLTeamStats, season, seasonID in
 		ss.DefensiveInterceptions = ss.DefensiveInterceptions + stat.DefensiveInterceptions
 		ss.Safeties = ss.Safeties + stat.Safeties
 		ss.DefensiveTDs = ss.DefensiveTDs + stat.DefensiveTDs
+		ss.DefensivePressures = ss.DefensivePressures + stat.DefensivePressures
+		ss.DefensiveExpectedSacks = ss.DefensiveExpectedSacks + stat.DefensiveExpectedSacks
 		ss.FieldGoalsMade = ss.FieldGoalsMade + stat.FieldGoalsMade
 		ss.FieldGoalsAttempted = ss.FieldGoalsAttempted + stat.FieldGoalsAttempted
 		if stat.LongestFieldGoal > ss.LongestFieldGoal {
@@ -198,6 +202,8 @@ func (ss *NFLTeamSeasonStats) SubtractStats(stats []NFLTeamStats) {
 		ss.DefensiveInterceptions = ss.DefensiveInterceptions - stat.DefensiveInterceptions
 		ss.Safeties = ss.Safeties - stat.Safeties
 		ss.DefensiveTDs = ss.DefensiveTDs - stat.DefensiveTDs
+		ss.DefensivePressures = ss.DefensivePressures - stat.DefensivePressures
+		ss.DefensiveExpectedSacks = ss.DefensiveExpectedSacks - stat.DefensiveExpectedSacks
 		ss.FieldGoalsMade = ss.FieldGoalsMade - stat.FieldGoalsMade
 		ss.FieldGoalsAttempted = ss.FieldGoalsAttempted - stat.FieldGoalsAttempted
 		if stat.LongestFieldGoal > ss.LongestFieldGoal {

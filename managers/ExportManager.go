@@ -385,7 +385,10 @@ func ExportPlayerStatsToCSV(cp []structs.CollegePlayerResponse, w http.ResponseW
 		"Punts", "Punt Touchbacks", "Punts Inside 20", "Kick Returns",
 		"Kick Return TDs", "Kick Return Yards", "Punt Returns", "Punt Return TDs",
 		"Punt Return Yards", "ST Solo Tackles", "ST Assisted Tackles", "Punts Blocked",
-		"FG Blocked", "Snaps", "Pancakes", "Ready for Mars?",
+		"FG Blocked", "Snaps", "Pancakes", "Sacks Allowed",
+		"Pass Block Snaps", "Pass Block Wins", "Pressures Allowed",
+		"Pass Rush Snaps", "Pass Rush Wins", "Defensive Pressures", "Hurries",
+		"Ready for Mars?",
 	}
 
 	err := writer.Write(HeaderRow)
@@ -411,7 +414,10 @@ func ExportPlayerStatsToCSV(cp []structs.CollegePlayerResponse, w http.ResponseW
 			strconv.Itoa(int(seasonStats.Punts)), strconv.Itoa(int(seasonStats.PuntTouchbacks)), strconv.Itoa(int(seasonStats.PuntsInside20)), strconv.Itoa(int(seasonStats.KickReturns)),
 			strconv.Itoa(int(seasonStats.KickReturnTDs)), strconv.Itoa(int(seasonStats.KickReturnYards)), strconv.Itoa(int(seasonStats.PuntReturns)), strconv.Itoa(int(seasonStats.PuntReturnTDs)),
 			strconv.Itoa(int(seasonStats.PuntReturnYards)), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(int(seasonStats.PuntsBlocked)),
-			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), "No.",
+			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), strconv.Itoa(int(seasonStats.SacksAllowed)),
+			strconv.Itoa(int(seasonStats.PassBlockSnaps)), strconv.Itoa(int(seasonStats.PassBlockWins)), strconv.Itoa(int(seasonStats.PressuresAllowed)),
+			strconv.Itoa(int(seasonStats.PassRushSnaps)), strconv.Itoa(int(seasonStats.PassRushWins)), strconv.Itoa(int(seasonStats.DefensivePressures)), strconv.Itoa(int(seasonStats.Hurries)),
+			"No.",
 		}
 		err = writer.Write(pr)
 		if err != nil {
@@ -786,7 +792,10 @@ func ExportCollegePlayerStatsToCSV(cp []structs.CollegePlayerResponse, viewType 
 		"Punts", "Punt Touchbacks", "Punts Inside 20", "Kick Returns",
 		"Kick Return TDs", "Kick Return Yards", "Punt Returns", "Punt Return TDs",
 		"Punt Return Yards", "ST Solo Tackles", "ST Assisted Tackles", "Punts Blocked",
-		"FG Blocked", "Snaps", "Pancakes", "Likely to transfer to Guam?",
+		"FG Blocked", "Snaps", "Pancakes", "Sacks Allowed",
+		"Pass Block Snaps", "Pass Block Wins", "Pressures Allowed",
+		"Pass Rush Snaps", "Pass Rush Wins", "Defensive Pressures", "Hurries",
+		"Likely to transfer to Guam?",
 	}
 
 	err := writer.Write(HeaderRow)
@@ -812,6 +821,7 @@ func ExportCollegePlayerStatsToCSV(cp []structs.CollegePlayerResponse, viewType 
 			p.Archetype, Year, RedshirtStatus, p.TeamAbbr, p.Conference, strconv.Itoa(int(p.Age)), strconv.Itoa(int(p.Stars)),
 			strconv.Itoa(int(seasonStats.PassingYards)), strconv.Itoa(int(seasonStats.PassAttempts)), strconv.Itoa(int(seasonStats.PassCompletions)), strconv.Itoa(int(seasonStats.PassingAvg)),
 			strconv.Itoa(int(seasonStats.PassingTDs)), strconv.Itoa(int(seasonStats.Interceptions)), strconv.Itoa(int(seasonStats.LongestPass)), strconv.Itoa(int(seasonStats.Sacks)),
+			strconv.Itoa(int(seasonStats.QBRating)),
 			strconv.Itoa(int(seasonStats.RushAttempts)), strconv.Itoa(int(seasonStats.RushingYards)), strconv.Itoa(int(seasonStats.RushingAvg)),
 			strconv.Itoa(int(seasonStats.RushingTDs)), strconv.Itoa(int(seasonStats.Fumbles)), strconv.Itoa(int(seasonStats.LongestRush)), strconv.Itoa(int(seasonStats.Targets)),
 			strconv.Itoa(int(seasonStats.Catches)), strconv.Itoa(int(seasonStats.ReceivingYards)), strconv.Itoa(int(seasonStats.ReceivingAvg)), strconv.Itoa(int(seasonStats.ReceivingTDs)),
@@ -822,7 +832,10 @@ func ExportCollegePlayerStatsToCSV(cp []structs.CollegePlayerResponse, viewType 
 			strconv.Itoa(int(seasonStats.Punts)), strconv.Itoa(int(seasonStats.PuntTouchbacks)), strconv.Itoa(int(seasonStats.PuntsInside20)), strconv.Itoa(int(seasonStats.KickReturns)),
 			strconv.Itoa(int(seasonStats.KickReturnTDs)), strconv.Itoa(int(seasonStats.KickReturnYards)), strconv.Itoa(int(seasonStats.PuntReturns)), strconv.Itoa(int(seasonStats.PuntReturnTDs)),
 			strconv.Itoa(int(seasonStats.PuntReturnYards)), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(int(seasonStats.PuntsBlocked)),
-			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), answer,
+			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), strconv.Itoa(int(seasonStats.SacksAllowed)),
+			strconv.Itoa(int(seasonStats.PassBlockSnaps)), strconv.Itoa(int(seasonStats.PassBlockWins)), strconv.Itoa(int(seasonStats.PressuresAllowed)),
+			strconv.Itoa(int(seasonStats.PassRushSnaps)), strconv.Itoa(int(seasonStats.PassRushWins)), strconv.Itoa(int(seasonStats.DefensivePressures)), strconv.Itoa(int(seasonStats.Hurries)),
+			answer,
 		}
 		err = writer.Write(pr)
 		if err != nil {
@@ -868,7 +881,10 @@ func ExportNFLPlayerStatsToCSV(cp []structs.NFLPlayerResponse, viewType string, 
 		"Punts", "Punt Touchbacks", "Punts Inside 20", "Kick Returns",
 		"Kick Return TDs", "Kick Return Yards", "Punt Returns", "Punt Return TDs",
 		"Punt Return Yards", "ST Solo Tackles", "ST Assisted Tackles", "Punts Blocked",
-		"FG Blocked", "Snaps", "Pancakes", "Likelihood to be traded to WAS?",
+		"FG Blocked", "Snaps", "Pancakes", "Sacks Allowed",
+		"Pass Block Snaps", "Pass Block Wins", "Pressures Allowed",
+		"Pass Rush Snaps", "Pass Rush Wins", "Defensive Pressures", "Hurries",
+		"Likelihood to be traded to WAS?",
 	}
 
 	err := writer.Write(HeaderRow)
@@ -892,13 +908,17 @@ func ExportNFLPlayerStatsToCSV(cp []structs.NFLPlayerResponse, viewType string, 
 			strconv.Itoa(int(seasonStats.RushingTDs)), strconv.Itoa(int(seasonStats.Fumbles)), strconv.Itoa(int(seasonStats.LongestRush)), strconv.Itoa(int(seasonStats.Targets)),
 			strconv.Itoa(int(seasonStats.Catches)), strconv.Itoa(int(seasonStats.ReceivingYards)), strconv.Itoa(int(seasonStats.ReceivingAvg)), strconv.Itoa(int(seasonStats.ReceivingTDs)),
 			strconv.Itoa(int(seasonStats.LongestReception)), strconv.Itoa(int(seasonStats.SoloTackles)), strconv.Itoa(int(seasonStats.AssistedTackles)), strconv.Itoa(int(seasonStats.TacklesForLoss)),
+			strconv.Itoa(int(seasonStats.SacksMade)),
 			strconv.Itoa(int(seasonStats.ForcedFumbles)), strconv.Itoa(int(seasonStats.PassDeflections)), strconv.Itoa(int(seasonStats.InterceptionsCaught)),
 			strconv.Itoa(int(seasonStats.Safeties)), strconv.Itoa(int(seasonStats.DefensiveTDs)), strconv.Itoa(int(seasonStats.FGMade)), strconv.Itoa(int(seasonStats.FGAttempts)),
 			strconv.Itoa(int(seasonStats.LongestFG)), strconv.Itoa(int(seasonStats.ExtraPointsMade)), strconv.Itoa(int(seasonStats.ExtraPointsAttempted)), strconv.Itoa(int(seasonStats.KickoffTouchbacks)),
 			strconv.Itoa(int(seasonStats.Punts)), strconv.Itoa(int(seasonStats.PuntTouchbacks)), strconv.Itoa(int(seasonStats.PuntsInside20)), strconv.Itoa(int(seasonStats.KickReturns)),
 			strconv.Itoa(int(seasonStats.KickReturnTDs)), strconv.Itoa(int(seasonStats.KickReturnYards)), strconv.Itoa(int(seasonStats.PuntReturns)), strconv.Itoa(int(seasonStats.PuntReturnTDs)),
 			strconv.Itoa(int(seasonStats.PuntReturnYards)), strconv.Itoa(int(seasonStats.STSoloTackles)), strconv.Itoa(int(seasonStats.STAssistedTackles)), strconv.Itoa(int(seasonStats.PuntsBlocked)),
-			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), "No.",
+			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), strconv.Itoa(int(seasonStats.SacksAllowed)),
+			strconv.Itoa(int(seasonStats.PassBlockSnaps)), strconv.Itoa(int(seasonStats.PassBlockWins)), strconv.Itoa(int(seasonStats.PressuresAllowed)),
+			strconv.Itoa(int(seasonStats.PassRushSnaps)), strconv.Itoa(int(seasonStats.PassRushWins)), strconv.Itoa(int(seasonStats.DefensivePressures)), strconv.Itoa(int(seasonStats.Hurries)),
+			"No.",
 		}
 		err = writer.Write(pr)
 		if err != nil {

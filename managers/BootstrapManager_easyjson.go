@@ -1540,6 +1540,20 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs5(in *jlexer.Lexer, ou
 			out.Pancakes = int16(in.Int16())
 		case "SacksAllowed":
 			out.SacksAllowed = int16(in.Int16())
+		case "DefensivePressures":
+			out.DefensivePressures = int16(in.Int16())
+		case "Hurries":
+			out.Hurries = int16(in.Int16())
+		case "PassRushSnaps":
+			out.PassRushSnaps = int16(in.Int16())
+		case "PassRushWins":
+			out.PassRushWins = int16(in.Int16())
+		case "PressuresAllowed":
+			out.PressuresAllowed = int16(in.Int16())
+		case "PassBlockSnaps":
+			out.PassBlockSnaps = int16(in.Int16())
+		case "PassBlockWins":
+			out.PassBlockWins = int16(in.Int16())
 		case "PlayedGame":
 			out.PlayedGame = int16(in.Int16())
 		case "StartedGame":
@@ -1887,6 +1901,41 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs5(out *jwriter.Writer,
 		const prefix string = ",\"SacksAllowed\":"
 		out.RawString(prefix)
 		out.Int16(int16(in.SacksAllowed))
+	}
+	{
+		const prefix string = ",\"DefensivePressures\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.DefensivePressures))
+	}
+	{
+		const prefix string = ",\"Hurries\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.Hurries))
+	}
+	{
+		const prefix string = ",\"PassRushSnaps\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassRushSnaps))
+	}
+	{
+		const prefix string = ",\"PassRushWins\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassRushWins))
+	}
+	{
+		const prefix string = ",\"PressuresAllowed\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PressuresAllowed))
+	}
+	{
+		const prefix string = ",\"PassBlockSnaps\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassBlockSnaps))
+	}
+	{
+		const prefix string = ",\"PassBlockWins\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassBlockWins))
 	}
 	{
 		const prefix string = ",\"PlayedGame\":"
@@ -2606,6 +2655,20 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs(in *jlexer.Lexer, out
 			out.Pancakes = int16(in.Int16())
 		case "SacksAllowed":
 			out.SacksAllowed = int16(in.Int16())
+		case "DefensivePressures":
+			out.DefensivePressures = int16(in.Int16())
+		case "Hurries":
+			out.Hurries = int16(in.Int16())
+		case "PassRushSnaps":
+			out.PassRushSnaps = int16(in.Int16())
+		case "PassRushWins":
+			out.PassRushWins = int16(in.Int16())
+		case "PressuresAllowed":
+			out.PressuresAllowed = int16(in.Int16())
+		case "PassBlockSnaps":
+			out.PassBlockSnaps = int16(in.Int16())
+		case "PassBlockWins":
+			out.PassBlockWins = int16(in.Int16())
 		case "PlayedGame":
 			out.PlayedGame = int16(in.Int16())
 		case "StartedGame":
@@ -2973,6 +3036,41 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs(out *jwriter.Writer, 
 		const prefix string = ",\"SacksAllowed\":"
 		out.RawString(prefix)
 		out.Int16(int16(in.SacksAllowed))
+	}
+	{
+		const prefix string = ",\"DefensivePressures\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.DefensivePressures))
+	}
+	{
+		const prefix string = ",\"Hurries\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.Hurries))
+	}
+	{
+		const prefix string = ",\"PassRushSnaps\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassRushSnaps))
+	}
+	{
+		const prefix string = ",\"PassRushWins\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassRushWins))
+	}
+	{
+		const prefix string = ",\"PressuresAllowed\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PressuresAllowed))
+	}
+	{
+		const prefix string = ",\"PassBlockSnaps\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassBlockSnaps))
+	}
+	{
+		const prefix string = ",\"PassBlockWins\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassBlockWins))
 	}
 	{
 		const prefix string = ",\"PlayedGame\":"
@@ -5320,6 +5418,20 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in *jlexer.Lexer, ou
 			out.Pancakes = int16(in.Int16())
 		case "SacksAllowed":
 			out.SacksAllowed = int16(in.Int16())
+		case "DefensivePressures":
+			out.DefensivePressures = int16(in.Int16())
+		case "Hurries":
+			out.Hurries = int16(in.Int16())
+		case "PassRushSnaps":
+			out.PassRushSnaps = int16(in.Int16())
+		case "PassRushWins":
+			out.PassRushWins = int16(in.Int16())
+		case "PressuresAllowed":
+			out.PressuresAllowed = int16(in.Int16())
+		case "PassBlockSnaps":
+			out.PassBlockSnaps = int16(in.Int16())
+		case "PassBlockWins":
+			out.PassBlockWins = int16(in.Int16())
 		case "PlayedGame":
 			out.PlayedGame = int16(in.Int16())
 		case "StartedGame":
@@ -5684,6 +5796,41 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out *jwriter.Writer,
 		out.Int16(int16(in.SacksAllowed))
 	}
 	{
+		const prefix string = ",\"DefensivePressures\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.DefensivePressures))
+	}
+	{
+		const prefix string = ",\"Hurries\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.Hurries))
+	}
+	{
+		const prefix string = ",\"PassRushSnaps\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassRushSnaps))
+	}
+	{
+		const prefix string = ",\"PassRushWins\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassRushWins))
+	}
+	{
+		const prefix string = ",\"PressuresAllowed\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PressuresAllowed))
+	}
+	{
+		const prefix string = ",\"PassBlockSnaps\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassBlockSnaps))
+	}
+	{
+		const prefix string = ",\"PassBlockWins\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassBlockWins))
+	}
+	{
 		const prefix string = ",\"PlayedGame\":"
 		out.RawString(prefix)
 		out.Int16(int16(in.PlayedGame))
@@ -5899,6 +6046,20 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in *jlexer.Lexer, ou
 			out.Pancakes = int16(in.Int16())
 		case "SacksAllowed":
 			out.SacksAllowed = int16(in.Int16())
+		case "DefensivePressures":
+			out.DefensivePressures = int16(in.Int16())
+		case "Hurries":
+			out.Hurries = int16(in.Int16())
+		case "PassRushSnaps":
+			out.PassRushSnaps = int16(in.Int16())
+		case "PassRushWins":
+			out.PassRushWins = int16(in.Int16())
+		case "PressuresAllowed":
+			out.PressuresAllowed = int16(in.Int16())
+		case "PassBlockSnaps":
+			out.PassBlockSnaps = int16(in.Int16())
+		case "PassBlockWins":
+			out.PassBlockWins = int16(in.Int16())
 		case "PlayedGame":
 			out.PlayedGame = int16(in.Int16())
 		case "StartedGame":
@@ -6246,6 +6407,41 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out *jwriter.Writer,
 		const prefix string = ",\"SacksAllowed\":"
 		out.RawString(prefix)
 		out.Int16(int16(in.SacksAllowed))
+	}
+	{
+		const prefix string = ",\"DefensivePressures\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.DefensivePressures))
+	}
+	{
+		const prefix string = ",\"Hurries\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.Hurries))
+	}
+	{
+		const prefix string = ",\"PassRushSnaps\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassRushSnaps))
+	}
+	{
+		const prefix string = ",\"PassRushWins\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassRushWins))
+	}
+	{
+		const prefix string = ",\"PressuresAllowed\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PressuresAllowed))
+	}
+	{
+		const prefix string = ",\"PassBlockSnaps\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassBlockSnaps))
+	}
+	{
+		const prefix string = ",\"PassBlockWins\":"
+		out.RawString(prefix)
+		out.Int16(int16(in.PassBlockWins))
 	}
 	{
 		const prefix string = ",\"PlayedGame\":"
@@ -8756,6 +8952,10 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in *jlexer.Lexer, o
 			out.DefensiveTDs = int(in.Int())
 		case "Safeties":
 			out.Safeties = int(in.Int())
+		case "DefensivePressures":
+			out.DefensivePressures = int(in.Int())
+		case "DefensiveExpectedSacks":
+			out.DefensiveExpectedSacks = float64(in.Float64())
 		case "ExtraPointsMade":
 			out.ExtraPointsMade = int(in.Int())
 		case "ExtraPointsAttempted":
@@ -9112,6 +9312,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out *jwriter.Writer
 		out.Int(int(in.Safeties))
 	}
 	{
+		const prefix string = ",\"DefensivePressures\":"
+		out.RawString(prefix)
+		out.Int(int(in.DefensivePressures))
+	}
+	{
+		const prefix string = ",\"DefensiveExpectedSacks\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.DefensiveExpectedSacks))
+	}
+	{
 		const prefix string = ",\"ExtraPointsMade\":"
 		out.RawString(prefix)
 		out.Int(int(in.ExtraPointsMade))
@@ -9433,6 +9643,10 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in *jlexer.Lexer, o
 			out.DefensiveTDs = int(in.Int())
 		case "Safeties":
 			out.Safeties = int(in.Int())
+		case "DefensivePressures":
+			out.DefensivePressures = int(in.Int())
+		case "DefensiveExpectedSacks":
+			out.DefensiveExpectedSacks = float64(in.Float64())
 		case "ExtraPointsMade":
 			out.ExtraPointsMade = int(in.Int())
 		case "ExtraPointsAttempted":
@@ -9772,6 +9986,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out *jwriter.Writer
 		const prefix string = ",\"Safeties\":"
 		out.RawString(prefix)
 		out.Int(int(in.Safeties))
+	}
+	{
+		const prefix string = ",\"DefensivePressures\":"
+		out.RawString(prefix)
+		out.Int(int(in.DefensivePressures))
+	}
+	{
+		const prefix string = ",\"DefensiveExpectedSacks\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.DefensiveExpectedSacks))
 	}
 	{
 		const prefix string = ",\"ExtraPointsMade\":"
@@ -12942,6 +13166,10 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs26(in *jlexer.Lexer, o
 			out.DefensiveTDs = int(in.Int())
 		case "Safeties":
 			out.Safeties = int(in.Int())
+		case "DefensivePressures":
+			out.DefensivePressures = int(in.Int())
+		case "DefensiveExpectedSacks":
+			out.DefensiveExpectedSacks = float64(in.Float64())
 		case "ExtraPointsMade":
 			out.ExtraPointsMade = int(in.Int())
 		case "ExtraPointsAttempted":
@@ -13290,6 +13518,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs26(out *jwriter.Writer
 		out.Int(int(in.Safeties))
 	}
 	{
+		const prefix string = ",\"DefensivePressures\":"
+		out.RawString(prefix)
+		out.Int(int(in.DefensivePressures))
+	}
+	{
+		const prefix string = ",\"DefensiveExpectedSacks\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.DefensiveExpectedSacks))
+	}
+	{
 		const prefix string = ",\"ExtraPointsMade\":"
 		out.RawString(prefix)
 		out.Int(int(in.ExtraPointsMade))
@@ -13605,6 +13843,10 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs25(in *jlexer.Lexer, o
 			out.DefensiveTDs = int(in.Int())
 		case "Safeties":
 			out.Safeties = int(in.Int())
+		case "DefensivePressures":
+			out.DefensivePressures = int(in.Int())
+		case "DefensiveExpectedSacks":
+			out.DefensiveExpectedSacks = float64(in.Float64())
 		case "ExtraPointsMade":
 			out.ExtraPointsMade = int(in.Int())
 		case "ExtraPointsAttempted":
@@ -13939,6 +14181,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs25(out *jwriter.Writer
 		const prefix string = ",\"Safeties\":"
 		out.RawString(prefix)
 		out.Int(int(in.Safeties))
+	}
+	{
+		const prefix string = ",\"DefensivePressures\":"
+		out.RawString(prefix)
+		out.Int(int(in.DefensivePressures))
+	}
+	{
+		const prefix string = ",\"DefensiveExpectedSacks\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.DefensiveExpectedSacks))
 	}
 	{
 		const prefix string = ",\"ExtraPointsMade\":"

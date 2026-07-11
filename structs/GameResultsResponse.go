@@ -65,6 +65,13 @@ type GameResultsPlayer struct {
 	Snaps                int
 	Pancakes             int
 	SacksAllowed         int
+	DefensivePressures   int
+	Hurries              int
+	PassRushSnaps        int
+	PassRushWins         int
+	PressuresAllowed     int
+	PassBlockSnaps       int
+	PassBlockWins        int
 	PlayedGame           int
 	StartedGame          int
 	WasInjured           bool

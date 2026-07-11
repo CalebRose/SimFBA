@@ -81,6 +81,13 @@ func (ss *NFLPlayerSeasonStats) ResetStats() {
 	ss.Snaps = 0
 	ss.Pancakes = 0
 	ss.SacksAllowed = 0
+	ss.DefensivePressures = 0
+	ss.Hurries = 0
+	ss.PassRushSnaps = 0
+	ss.PassRushWins = 0
+	ss.PressuresAllowed = 0
+	ss.PassBlockSnaps = 0
+	ss.PassBlockWins = 0
 	ss.PlayedGame = 0
 	ss.StartedGame = 0
 	ss.QBRating = 0
@@ -162,6 +169,13 @@ func (ss *NFLPlayerSeasonStats) MapStats(stats []NFLPlayerStats, ts Timestamp) {
 			ss.FGBlocked = ss.FGBlocked + stat.FGBlocked
 			ss.Pancakes = ss.Pancakes + stat.Pancakes
 			ss.SacksAllowed = ss.SacksAllowed + stat.SacksAllowed
+			ss.DefensivePressures = ss.DefensivePressures + stat.DefensivePressures
+			ss.Hurries = ss.Hurries + stat.Hurries
+			ss.PassRushSnaps = ss.PassRushSnaps + stat.PassRushSnaps
+			ss.PassRushWins = ss.PassRushWins + stat.PassRushWins
+			ss.PressuresAllowed = ss.PressuresAllowed + stat.PressuresAllowed
+			ss.PassBlockSnaps = ss.PassBlockSnaps + stat.PassBlockSnaps
+			ss.PassBlockWins = ss.PassBlockWins + stat.PassBlockWins
 			ss.PlayedGame = ss.PlayedGame + stat.PlayedGame
 			ss.StartedGame = ss.StartedGame + stat.StartedGame
 		}
@@ -249,6 +263,13 @@ func (ss *NFLPlayerSeasonStats) SubtractStats(stats []NFLPlayerStats, ts Timesta
 			ss.FGBlocked = ss.FGBlocked - stat.FGBlocked
 			ss.Pancakes = ss.Pancakes - stat.Pancakes
 			ss.SacksAllowed = ss.SacksAllowed - stat.SacksAllowed
+			ss.DefensivePressures = ss.DefensivePressures - stat.DefensivePressures
+			ss.Hurries = ss.Hurries - stat.Hurries
+			ss.PassRushSnaps = ss.PassRushSnaps - stat.PassRushSnaps
+			ss.PassRushWins = ss.PassRushWins - stat.PassRushWins
+			ss.PressuresAllowed = ss.PressuresAllowed - stat.PressuresAllowed
+			ss.PassBlockSnaps = ss.PassBlockSnaps - stat.PassBlockSnaps
+			ss.PassBlockWins = ss.PassBlockWins - stat.PassBlockWins
 			ss.PlayedGame = ss.PlayedGame - stat.PlayedGame
 			ss.StartedGame = ss.StartedGame - stat.StartedGame
 		}

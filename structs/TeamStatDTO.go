@@ -1,62 +1,64 @@
 package structs
 
 type TeamStatDTO struct {
-	Abbreviation     string
-	Points           int
-	TwoPointTries    int
-	TwoPointSucceed  int
-	PassAttempts     int
-	PassCompletions  int
-	PassYards        int
-	PassTDS          int
-	PassINTs         int
-	LongestPass      int
-	TimesSacked      int
-	RushAttempts     int
-	RushYards        int
-	RushTDs          int
-	LongestRush      int
-	Fumbles          int
-	RushYardsAllowed int
-	PassYardsAllowed int
-	PointsAllowed    int
-	SoloTackles      int
-	AssistedTackles  int
-	TacklesForLoss   float64
-	Sacks            float64
-	ForcedFumbles    int
-	RecoveredFumbles int
-	INTs             int
-	Safeties         int
-	DefensiveTDs     int
-	TurnoverYards    int
-	FGAttempts       int
-	FGMade           int
-	LongestFG        int
-	XPAttempts       int
-	XPMade           int
-	KickoffTBs       int
-	PuntTBs          int
-	PuntYards        int
-	PuntInside20     int
-	KickReturnYards  int
-	KickReturnTDs    int
-	PuntReturnYards  int
-	PuntReturnTDs    int
-	OffPenalties     int
-	DefPenalties     int
-	OffPenaltyYards  int
-	DefPenaltyYards  int
-	Score1Q          int
-	Score2Q          int
-	Score3Q          int
-	Score4Q          int
-	Score5Q          int
-	Score6Q          int
-	Score7Q          int
-	ScoreOT          int
-	OffensiveScheme  string
-	DefensiveScheme  string
+	Abbreviation           string
+	Points                 int
+	TwoPointTries          int
+	TwoPointSucceed        int
+	PassAttempts           int
+	PassCompletions        int
+	PassYards              int
+	PassTDS                int
+	PassINTs               int
+	LongestPass            int
+	TimesSacked            int
+	RushAttempts           int
+	RushYards              int
+	RushTDs                int
+	LongestRush            int
+	Fumbles                int
+	RushYardsAllowed       int
+	PassYardsAllowed       int
+	PointsAllowed          int
+	SoloTackles            int
+	AssistedTackles        int
+	TacklesForLoss         float64
+	Sacks                  float64
+	ForcedFumbles          int
+	RecoveredFumbles       int
+	INTs                   int
+	Safeties               int
+	DefensiveTDs           int
+	DefensivePressures     int
+	DefensiveExpectedSacks float64
+	TurnoverYards          int
+	FGAttempts             int
+	FGMade                 int
+	LongestFG              int
+	XPAttempts             int
+	XPMade                 int
+	KickoffTBs             int
+	PuntTBs                int
+	PuntYards              int
+	PuntInside20           int
+	KickReturnYards        int
+	KickReturnTDs          int
+	PuntReturnYards        int
+	PuntReturnTDs          int
+	OffPenalties           int
+	DefPenalties           int
+	OffPenaltyYards        int
+	DefPenaltyYards        int
+	Score1Q                int
+	Score2Q                int
+	Score3Q                int
+	Score4Q                int
+	Score5Q                int
+	Score6Q                int
+	Score7Q                int
+	ScoreOT                int
+	OffensiveScheme        string
+	DefensiveScheme        string
 }
 
 func (t *TeamStatDTO) GetAbbreviation() string {
@@ -93,6 +95,8 @@ func (t *TeamStatDTO) MapToBaseTeamStatsObject(gameType uint8) BaseTeamStats {
 		TurnoverYards:          t.TurnoverYards,
 		DefensiveTDs:           t.DefensiveTDs,
 		Safeties:               t.Safeties,
+		DefensivePressures:     t.DefensivePressures,
+		DefensiveExpectedSacks: t.DefensiveExpectedSacks,
 		ExtraPointsMade:        t.XPMade,
 		ExtraPointsAttempted:   t.XPAttempts,
 		FieldGoalsMade:         t.FGMade,

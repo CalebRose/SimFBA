@@ -52,6 +52,13 @@ type BasePlayerStats struct {
 	Snaps                int16
 	Pancakes             int16
 	SacksAllowed         int16
+	DefensivePressures   int16
+	Hurries              int16
+	PassRushSnaps        int16
+	PassRushWins         int16
+	PressuresAllowed     int16
+	PassBlockSnaps       int16
+	PassBlockWins        int16
 	PlayedGame           int16
 	StartedGame          int16
 	WasInjured           bool
