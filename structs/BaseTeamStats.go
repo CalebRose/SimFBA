@@ -41,6 +41,8 @@ type BaseTeamStats struct {
 	TurnoverYards                 int
 	DefensiveTDs                  int
 	Safeties                      int
+	DefensivePressures            int
+	DefensiveExpectedSacks        float64
 	ExtraPointsMade               int
 	ExtraPointsAttempted          int
 	ExtraPointPercentage          float64
