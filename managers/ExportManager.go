@@ -900,6 +900,12 @@ func ExportNFLPlayerStatsToCSV(cp []structs.NFLPlayerResponse, viewType string, 
 			seasonStats.MapStats([]structs.NFLPlayerStats{p.Stats}, ts)
 		}
 
+		answer := "No."
+		diceRoll := util.GenerateIntFromRange(1, 1000)
+		if diceRoll == 1000 {
+			answer = "Maybe."
+		}
+
 		pr := []string{p.FirstName, p.LastName, p.Position,
 			p.Archetype, p.PositionTwo, p.ArchetypeTwo, Year, p.TeamAbbr, p.Conference, p.Division, strconv.Itoa(int(p.Age)), strconv.Itoa(int(p.Stars)),
 			strconv.Itoa(int(seasonStats.PassingYards)), strconv.Itoa(int(seasonStats.PassAttempts)), strconv.Itoa(int(seasonStats.PassCompletions)), strconv.Itoa(int(seasonStats.PassingAvg)),
@@ -918,7 +924,7 @@ func ExportNFLPlayerStatsToCSV(cp []structs.NFLPlayerResponse, viewType string, 
 			strconv.Itoa(int(seasonStats.FGBlocked)), strconv.Itoa(int(seasonStats.Snaps)), strconv.Itoa(int(seasonStats.Pancakes)), strconv.Itoa(int(seasonStats.SacksAllowed)),
 			strconv.Itoa(int(seasonStats.PassBlockSnaps)), strconv.Itoa(int(seasonStats.PassBlockWins)), strconv.Itoa(int(seasonStats.PressuresAllowed)),
 			strconv.Itoa(int(seasonStats.PassRushSnaps)), strconv.Itoa(int(seasonStats.PassRushWins)), strconv.Itoa(int(seasonStats.DefensivePressures)), strconv.Itoa(int(seasonStats.Hurries)),
-			"No.",
+			answer,
 		}
 		err = writer.Write(pr)
 		if err != nil {

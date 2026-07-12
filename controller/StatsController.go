@@ -174,7 +174,7 @@ func GetStatsPageContentForSeason(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-func ExportStatsPageContentForSeason(w http.ResponseWriter, r *http.Request) {
+func ExportCFBStatsPageContentForSeason(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	seasonID := vars["seasonID"]
 	viewType := vars["viewType"]
