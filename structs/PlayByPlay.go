@@ -38,11 +38,18 @@ type PlayersInvoledInPlay struct {
 	Extradb3 uint
 	Fs       uint
 	Ss       uint
-	Fcb      uint
+	Fcb      uint `json:"-"`
 	Lcb      uint
 	Blitzer1 uint
 	Blitzer2 uint
 	Blitzer3 uint
+}
+
+func (p PlayersInvoledInPlay) NormalizeCornerbacks() PlayersInvoledInPlay {
+	if p.Lcb == 0 && p.Fcb != 0 {
+		p.Lcb = p.Fcb
+	}
+	return p
 }
 
 type PlayByPlay struct {
@@ -158,14 +165,14 @@ func (p *PlayByPlay) Map(play PlayByPlayDTO) {
 	p.IsComplete = play.IsComplete
 	p.IsGood = play.IsGood
 	p.IsLeft = play.IsLeft
-	p.IsLeft = play.IsRight
+	p.IsRight = play.IsRight
 	p.IsOffUpright = play.IsOffUpright
 	p.IsShort = play.IsShort
 	p.KickDistance = int8(play.KickDistance)
 	p.OnOffense = play.OnOffense
 	p.HomeHasBall = play.HomeHasBall
 	p.PressureID = uint(play.PressureID)
-	p.PlayersInvoledInPlay = play.PlayersInvoledInPlay
+	p.PlayersInvoledInPlay = play.PlayersInvoledInPlay.NormalizeCornerbacks()
 }
 
 type PlayByPlayDTO struct {

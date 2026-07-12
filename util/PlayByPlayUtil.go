@@ -494,7 +494,7 @@ func GetFGEndStatement(isGood bool, isLeft, isOffUpright, isRight bool) string {
 				" and its just slightly misses from the right. No good. ",
 				" and it looks like it's just too far right. No good. ",
 				" and it's too wide right. No good. ",
-				" and it just misses from the left. The kicker looks frustrated. ",
+				" and it just misses from the right. The kicker looks frustrated. ",
 				" and it veers right, no good! ",
 				" and it hooks to the right! No good! ",
 				" and the kick is right of the mark! No good. ",
