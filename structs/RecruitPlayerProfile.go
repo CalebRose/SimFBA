@@ -65,6 +65,7 @@ func (rp *RecruitPlayerProfile) ToggleAffinityTwo() {
 func (rp *RecruitPlayerProfile) ToggleRemoveFromBoard() {
 	rp.RemovedFromBoard = !rp.RemovedFromBoard
 	rp.CurrentWeeksPoints = 0
+	rp.PreviousWeekPoints = 0
 }
 
 func (rp *RecruitPlayerProfile) ToggleScholarship() {
