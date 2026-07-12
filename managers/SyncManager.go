@@ -103,6 +103,15 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 				pointsPlaced = true
 			}
 
+			if (recruitProfiles)[i].RemovedFromBoard || (recruitProfiles)[i].IsLocked {
+				if pointsPlaced {
+					(recruitProfiles)[i].CurrentWeeksPoints = 0
+					(recruitProfiles)[i].ResetSpendingCount()
+					repository.SaveRecruitProfile(recruitProfiles[i], db)
+				}
+				continue
+			}
+
 			rpa := structs.RecruitPointAllocation{
 				RecruitID:        uint((recruitProfiles)[i].RecruitID),
 				TeamProfileID:    uint((recruitProfiles)[i].ProfileID),
@@ -153,6 +162,9 @@ func SyncRecruiting(timestamp structs.Timestamp) {
 		sort.Sort(structs.ByPoints(recruitProfiles))
 
 		for i := 0; i < len(recruitProfiles) && pointsPlaced; i++ {
+			if (recruitProfiles)[i].RemovedFromBoard || (recruitProfiles)[i].IsLocked {
+				continue
+			}
 			recruitTeamProfile := teamMap[strconv.Itoa(recruitProfiles[i].ProfileID)]
 			if recruitTeamProfile.TotalCommitments >= recruitTeamProfile.RecruitClassSize || (recruitProfiles[i].RemovedFromBoard && recruitProfiles[i].ScholarshipRevoked) {
 				continue
