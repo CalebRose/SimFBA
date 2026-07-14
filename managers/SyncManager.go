@@ -732,6 +732,10 @@ func AllocatePointsToAIBoards() {
 				break
 			}
 
+			if croot.RemovedFromBoard {
+				continue
+			}
+
 			if croot.IsSigned || croot.CurrentWeeksPoints > 0 || croot.ScholarshipRevoked {
 				continue
 			}

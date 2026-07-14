@@ -804,8 +804,8 @@ func ExportCollegePlayerStatsToCSV(cp []structs.CollegePlayerResponse, viewType 
 	}
 
 	for _, p := range cp {
-		Year, RedshirtStatus := util.GetYearAndRedshirtStatus(p.Year, p.IsRedshirt)
 		seasonStats := p.SeasonStats
+		Year, RedshirtStatus := util.GetYearAndRedshirtStatus(int(seasonStats.Year), seasonStats.IsRedshirt)
 		if viewType != "SEASON" {
 			seasonStats = structs.CollegePlayerSeasonStats{}
 			seasonStats.MapStats([]structs.CollegePlayerStats{p.Stats})
