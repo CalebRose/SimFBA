@@ -88,9 +88,9 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 		collegePlayerMap := MakeCollegePlayerMap(collegePlayers)
 
 		for _, g := range games {
-			if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
-				continue
-			}
+			// if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
+			// 	continue
+			// }
 			response.Plays[g.ID] = []structs.PlayByPlayResponse{}
 		}
 
@@ -102,9 +102,9 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 		db.Where("game_id IN ?", gameIDs).Find(&allPbPs)
 
 		for _, g := range games {
-			if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
-				continue
-			}
+			// if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
+			// 	continue
+			// }
 			gameIDStr := strconv.Itoa(int(g.ID))
 			response.Plays[g.ID] = []structs.PlayByPlayResponse{}
 
@@ -187,9 +187,9 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 		db.Where("game_id IN ?", gameIDs).Find(&allPbPs)
 
 		for _, g := range games {
-			if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
-				continue
-			}
+			// if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
+			// 	continue
+			// }
 			gameIDStr := strconv.Itoa(int(g.ID))
 			response.Plays[g.ID] = []structs.PlayByPlayResponse{}
 
