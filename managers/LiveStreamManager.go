@@ -68,7 +68,8 @@ type GameRosterDTO struct {
 func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, reqTimeslot string) BulkSpoofDataDTO {
 	ts := GetTimestamp()
 	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
-	weekID := strconv.Itoa(int(ts.CollegeWeekID))
+	//weekID := strconv.Itoa(int(ts.CollegeWeekID))
+	weekID := "2701" // Hardcoded for now, since we don't have a way to get the current week from the timestamp
 
 	response := BulkSpoofDataDTO{
 		Plays:   make(map[uint][]structs.PlayByPlayResponse),

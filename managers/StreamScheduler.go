@@ -419,7 +419,7 @@ func StartCFBLiveStreamingCron() {
 
 	scheduler := &StreamScheduler{League: "cfb", isCollege: true}
 	scheduler.InitQueue(
-		strconv.Itoa(int(ts.CollegeWeekID)),
+		"2701",
 		strconv.Itoa(int(ts.CollegeSeasonID)),
 		gameDay,
 		ts.CFBSpringGames,
