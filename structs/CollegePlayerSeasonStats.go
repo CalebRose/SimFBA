@@ -88,6 +88,7 @@ func (ss *CollegePlayerSeasonStats) ResetStats() {
 
 func (ss *CollegePlayerSeasonStats) MapStats(stats []CollegePlayerStats) {
 	for _, stat := range stats {
+		ss.IsRedshirt = stat.IsRedshirt
 		if ss.TeamID == 0 {
 			ss.TeamID = stat.TeamID
 			ss.Team = stat.Team

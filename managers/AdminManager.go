@@ -180,6 +180,7 @@ func SyncTimeslot(timeslot string) {
 						CollegePlayerID: uint(h.CollegePlayerID),
 						SeasonID:        uint(ts.CollegeSeasonID),
 						Year:            uint(h.Year),
+						IsRedshirt:      h.IsRedshirt,
 						BasePlayerStats: structs.BasePlayerStats{
 							GameType: uint8(cgt),
 						},
@@ -230,6 +231,7 @@ func SyncTimeslot(timeslot string) {
 						CollegePlayerID: uint(a.CollegePlayerID),
 						SeasonID:        uint(ts.CollegeSeasonID),
 						Year:            uint(a.Year),
+						IsRedshirt:      a.IsRedshirt,
 						BasePlayerStats: structs.BasePlayerStats{
 							GameType: uint8(cgt),
 						},
