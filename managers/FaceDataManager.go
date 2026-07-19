@@ -355,14 +355,17 @@ func getFaceDataBlob() map[string][]string {
 }
 
 func getSkinColorByEthnicity(ethn string) string {
-	if ethn == "Caucasian" {
+	if ethn == "Caucasian" || ethn == "caucasian" {
 		return "white"
 	}
-	if ethn == "Asian" {
+	if ethn == "Asian" || ethn == "asian" {
 		return "asian"
 	}
-	if ethn == "African" {
+	if ethn == "African" || ethn == "african" {
 		return "black"
+	}
+	if ethn == "Hispanic" || ethn == "hispanic" {
+		return "brown"
 	}
 	return "brown"
 }

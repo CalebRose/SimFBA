@@ -301,7 +301,7 @@ func (s *StreamScheduler) Tick(ctx context.Context) {
 			continue
 		}
 		gameID := strconv.Itoa(int(slot.GameID))
-		if slot.League == "chl" {
+		if slot.League == "cfb" {
 			RevealCFBGameOnInterface(gameID)
 		} else {
 			RevealNFLGameOnInterface(gameID)

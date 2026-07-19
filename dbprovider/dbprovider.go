@@ -9,6 +9,7 @@ import (
 	"time"
 
 	config "github.com/CalebRose/SimFBA/secrets"
+	"github.com/CalebRose/SimFBA/structs"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"golang.org/x/crypto/ssh"
 	"gorm.io/driver/mysql"
@@ -85,8 +86,8 @@ func (p *Provider) InitDatabase() bool {
 	// db.AutoMigrate(&structs.League{})
 	// db.AutoMigrate(&structs.CollegeConference{})
 	// db.AutoMigrate(&structs.CollegeDivision{})
-	// db.AutoMigrate(&structs.CollegeTeamStats{})
-	// db.AutoMigrate(&structs.CollegeTeamSeasonStats{})
+	db.AutoMigrate(&structs.CollegeTeamStats{})
+	db.AutoMigrate(&structs.CollegeTeamSeasonStats{})
 	// db.AutoMigrate(&structs.CollegeTeamDepthChart{})
 	// db.AutoMigrate(&structs.CollegeDepthChartPosition{})
 	// db.AutoMigrate(&structs.CollegeGameplan{})
@@ -143,8 +144,8 @@ func (p *Provider) InitDatabase() bool {
 	// db.AutoMigrate(&structs.NFLPlayerSeasonSnaps{})
 	// db.AutoMigrate(&structs.NFLUser{})
 	// db.AutoMigrate(&structs.NFLTeam{})
-	// db.AutoMigrate(&structs.NFLTeamStats{})
-	// db.AutoMigrate(&structs.NFLTeamSeasonStats{})
+	db.AutoMigrate(&structs.NFLTeamStats{})
+	db.AutoMigrate(&structs.NFLTeamSeasonStats{})
 	// db.AutoMigrate(&structs.NFLStandings{})
 	// db.AutoMigrate(&structs.NFLRequest{})
 	// db.AutoMigrate(&structs.NFLWaiverOffer{})

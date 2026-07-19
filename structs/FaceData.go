@@ -38,6 +38,10 @@ type FaceData struct {
 	Gender          uint
 }
 
+func (fd *FaceData) AdjustHairColor(color uint8) {
+	fd.HairColor = color
+}
+
 // Will need to come up with a range of allowable characteristics for this view.
 
 type FaceDataResponse struct {

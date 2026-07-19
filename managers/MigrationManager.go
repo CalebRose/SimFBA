@@ -341,11 +341,11 @@ func migrateNFLPlayerSeasonStats(nflPlayerSeasonStatMap map[uint][]structs.NFLPl
 func MigrateCFBPlayerStatsFromPreviousSeason() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
-	seasonID2026 := ts.CollegeSeasonID
-	seasonID := strconv.Itoa(seasonID2026)
+	seasonID2022 := ts.CollegeSeasonID - 3 // Season ID should be 7
+	seasonID := strconv.Itoa(seasonID2022)
 	cfbPlayerSeasonStatMap := GetALLCFBPlayerSeasonStatMapBySeason(seasonID)
 	cfbPlayerStatMap := GetCFBPlayerIndividualStatMapBySeason(seasonID)
-	unsignedPlayers := GetAllUnsignedPlayers()
+	unsignedPlayers := GetAllCollegePlayersByTeamId("0")
 	historicCollegePlayers := GetAllHistoricCollegePlayers()
 	gameMap := GetCFBGamesMapSeasonId(seasonID)
 
@@ -362,8 +362,7 @@ func MigrateCFBPlayerStatsFromPreviousSeason() {
 
 	fmt.Println("Iterating through unsigned players...")
 	for _, p := range unsignedPlayers {
-		player := structs.CollegePlayer(p)
-		migrateCFBPlayerSeasonStats(cfbPlayerSeasonStatMap, player, cfbPlayerStatMap, gameMap, db)
+		migrateCFBPlayerSeasonStats(cfbPlayerSeasonStatMap, p, cfbPlayerStatMap, gameMap, db)
 	}
 
 	fmt.Println("Iterating through historic graduated players...")

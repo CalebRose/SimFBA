@@ -1137,3 +1137,12 @@ func PickAffinity(stars int, af1 string, pickingAf2 bool) string {
 
 	return PickFromStringList(list)
 }
+
+func GetIndexOfStringInList(list []string, target string) int {
+	for i, str := range list {
+		if str == target {
+			return i
+		}
+	}
+	return -1 // Return -1 if the target string is not found in the list
+}

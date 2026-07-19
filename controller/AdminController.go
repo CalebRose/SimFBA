@@ -150,3 +150,11 @@ func SyncToNextSeason(w http.ResponseWriter, r *http.Request) {
 	repository.SaveTimestamp(ts, db)
 	managers.GenerateOffseasonData()
 }
+
+func NFLAttributePercentilesReport(w http.ResponseWriter, r *http.Request) {
+	managers.NFLAttributePercentilesReport()
+}
+
+func CFBAttributePercentilesReport(w http.ResponseWriter, r *http.Request) {
+	managers.CFBAttributePercentilesReport()
+}

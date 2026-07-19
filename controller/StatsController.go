@@ -323,7 +323,7 @@ func ExportNFLStatsPageContent(w http.ResponseWriter, r *http.Request) {
 
 func ResetCFBSeasonalStats(w http.ResponseWriter, r *http.Request) {
 	managers.MigrateCFBPlayerStatsFromPreviousSeason()
-	managers.MigrateCFBTeamSnapsFromPreviousSeason()
+	// managers.MigrateCFBTeamSnapsFromPreviousSeason()
 }
 
 func ResetNFLSeasonalStats(w http.ResponseWriter, r *http.Request) {

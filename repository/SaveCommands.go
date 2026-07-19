@@ -218,10 +218,10 @@ func SaveCollegePromiseRecord(promise structs.CollegePromise, db *gorm.DB) {
 }
 
 func SaveCFBTeamStats(teamStat structs.CollegeTeamStats, db *gorm.DB) {
-	// Save NFL Team Stats Record
+	// Save CFB Team Stats Record
 	err := db.Save(&teamStat).Error
 	if err != nil {
-		log.Panicln("Could not save nfl team seasons stats record")
+		log.Panicln("Could not save cfb team seasons stats record")
 	}
 }
 
@@ -229,7 +229,7 @@ func SaveCFBTeamSeasonStats(seasonStats structs.CollegeTeamSeasonStats, db *gorm
 	// Save NFL Team Season Stats Record
 	err := db.Save(&seasonStats).Error
 	if err != nil {
-		log.Panicln("Could not save nfl team seasons stats record")
+		log.Panicln("Could not save cfb team seasons stats record")
 	}
 }
 

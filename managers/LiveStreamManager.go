@@ -173,9 +173,9 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 		proPlayerMap := MakeNFLPlayerMap(nflPlayers)
 
 		for _, g := range games {
-			if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
-				continue
-			}
+			// if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
+			// 	continue
+			// }
 			response.Plays[g.ID] = []structs.PlayByPlayResponse{}
 		}
 

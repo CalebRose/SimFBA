@@ -529,7 +529,7 @@ func GenerateWalkOns() {
 
 func CreateCustomCroots() {
 	db := dbprovider.GetInstance().GetDB()
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_Custom_Croot_Class.csv"
+	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\2027_Custom_Croot_Class.csv"
 	crootCSV := util.ReadCSV(path)
 	attributeBlob := getAttributeBlob()
 	latestID := getLatestRecord(db)
@@ -635,7 +635,7 @@ func createRecruit(position string, stars int, firstName, lastName string, blob 
 		Age:            int8(age),
 		Stars:          int8(stars),
 		Height:         int8(height),
-		Weight: int16(weight),
+		Weight:         int16(weight),
 		Stamina:        int8(stamina),
 		Injury:         int8(injury),
 		FootballIQ:     int8(footballIQ),
@@ -751,7 +751,7 @@ func createWalkon(position string, firstNameList [][]string, lastNameList [][]st
 		Age:            int8(age),
 		Stars:          0,
 		Height:         int8(height),
-		Weight: int16(weight),
+		Weight:         int16(weight),
 		Stamina:        int8(stamina),
 		Injury:         int8(injury),
 		FootballIQ:     int8(footballIQ),
@@ -813,14 +813,14 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 	relativeID := croot[10]
 	relativeType := croot[11]
 	notes := croot[12]
-	affinityOne := croot[13]
-	affinityTwo := croot[14]
+	preferenceOne := croot[13]
+	preferenceTwo := croot[14]
 	ethnicity := croot[15]
 	if ethnicity == "" {
 		ethnicity = pickEthnicity()
 	}
-	gender := croot[16]
-	hasNoAffinities := affinityOne == "" && affinityTwo == ""
+	hair := croot[16]
+	gender := croot[17]
 	age := 18
 	footballIQ := getAttributeValue(position, archetype, stars, "Football IQ", blob)
 	speed := getAttributeValue(position, archetype, stars, "Speed", blob)
@@ -852,11 +852,69 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 	workEthic := util.GetWorkEthic()
 	academicBias := util.GetAcademicBias()
 	potentialGrade := util.GetWeightedPotentialGrade(int8(progression))
-	if hasNoAffinities {
-		affinityOne = util.PickAffinity(stars, "", false)
-		affinityTwo = util.PickAffinity(stars, affinityOne, true)
-	}
 	primeAge := util.GetPrimeAge(position, archetype)
+	// Preferences
+	program := util.GenerateNormalizedIntFromRange(1, 9)
+	profDevelopment := util.GenerateNormalizedIntFromRange(1, 9)
+	traditions := util.GenerateNormalizedIntFromRange(1, 9)
+	facilities := util.GenerateNormalizedIntFromRange(1, 9)
+	atmosphere := util.GenerateNormalizedIntFromRange(1, 9)
+	academics := util.GenerateNormalizedIntFromRange(1, 9)
+	conferencePrestige := util.GenerateNormalizedIntFromRange(1, 9)
+	coachPref := util.GenerateNormalizedIntFromRange(1, 9)
+	seasonMomentumPref := util.GenerateNormalizedIntFromRange(1, 9)
+	campusLife := util.GenerateNormalizedIntFromRange(1, 9)
+	religionPref := util.GenerateNormalizedIntFromRange(1, 9)
+	serviceAcademyPref := util.GenerateNormalizedIntFromRange(1, 9)
+	smallTownPref := util.GenerateNormalizedIntFromRange(1, 9)
+	bigCityPref := util.GenerateNormalizedIntFromRange(1, 9)
+	mediaSpotlightPref := util.GenerateNormalizedIntFromRange(1, 9)
+	if preferenceOne == "Program Development" || preferenceTwo == "Program Development" {
+		program = 1
+	}
+	if preferenceOne == "Professional Development" || preferenceTwo == "Professional Development" {
+		profDevelopment = 1
+	}
+	if preferenceOne == "Traditions" || preferenceTwo == "Traditions" {
+		traditions = 1
+	}
+	if preferenceOne == "Facilities" || preferenceTwo == "Facilities" {
+		facilities = 1
+	}
+	if preferenceOne == "Atmosphere" || preferenceTwo == "Atmosphere" {
+		atmosphere = 1
+	}
+	if preferenceOne == "Academics" || preferenceTwo == "Academics" {
+		academics = 1
+	}
+	if preferenceOne == "Conference Prestige" || preferenceTwo == "Conference Prestige" {
+		conferencePrestige = 1
+	}
+	if preferenceOne == "Coach" || preferenceTwo == "Coach" {
+		coachPref = 1
+	}
+	if preferenceOne == "Season Momentum" || preferenceTwo == "Season Momentum" {
+		seasonMomentumPref = 1
+	}
+	if preferenceOne == "Campus Life" || preferenceTwo == "Campus Life" {
+		campusLife = 1
+	}
+	if preferenceOne == "Religion" || preferenceTwo == "Religion" {
+		religionPref = 1
+	}
+	if preferenceOne == "Service Academy" || preferenceTwo == "Service Academy" {
+		serviceAcademyPref = 1
+	}
+	if preferenceOne == "Small Town" || preferenceTwo == "Small Town" {
+		smallTownPref = 1
+	}
+	if preferenceOne == "Big City" || preferenceTwo == "Big City" {
+		bigCityPref = 1
+	}
+	if preferenceOne == "Media Spotlight" || preferenceTwo == "Media Spotlight" {
+		mediaSpotlightPref = 1
+	}
+
 	basePlayer := structs.BasePlayer{
 		FirstName:      firstName,
 		LastName:       lastName,
@@ -865,7 +923,7 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 		Age:            int8(age),
 		Stars:          int8(stars),
 		Height:         int8(height),
-		Weight: int16(weight),
+		Weight:         int16(weight),
 		Stamina:        int8(stamina),
 		Injury:         int8(injury),
 		FootballIQ:     int8(footballIQ),
@@ -900,6 +958,23 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 		RelativeType:   uint(util.ConvertStringToInt(relativeType)),
 		Notes:          notes,
 		PrimeAge:       uint(primeAge),
+		PlayerPreferences: structs.PlayerPreferences{
+			ProgramPref:        uint8(program),
+			ProfDevPref:        uint8(profDevelopment),
+			TraditionsPref:     uint8(traditions),
+			FacilitiesPref:     uint8(facilities),
+			AtmospherePref:     uint8(atmosphere),
+			AcademicsPref:      uint8(academics),
+			ConferencePref:     uint8(conferencePrestige),
+			CoachPref:          uint8(coachPref),
+			SeasonMomentumPref: uint8(seasonMomentumPref),
+			CampusLifePref:     uint8(campusLife),
+			ReligionPref:       uint8(religionPref),
+			ServiceAcademyPref: uint8(serviceAcademyPref),
+			SmallTownPref:      uint8(smallTownPref),
+			BigCityPref:        uint8(bigCityPref),
+			MediaSpotlightPref: uint8(mediaSpotlightPref),
+		},
 	}
 
 	basePlayer.GetOverall()
@@ -907,6 +982,14 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 	skinColor := getSkinColorByEthnicity(ethnicity)
 
 	faceData := getFace(id, weight, skinColor, gender, faceDataBlob)
+	hairColorIdx := -1
+	if hair != "" {
+		hairColorList := faceDataBlob["HairColor"]
+		hairColorIdx = util.GetIndexOfStringInList(hairColorList, "#"+hair)
+	}
+	if hairColorIdx > -1 {
+		faceData.AdjustHairColor(uint8(hairColorIdx))
+	}
 	recruit := structs.Recruit{
 		BasePlayer:     basePlayer,
 		PlayerID:       int(id),
@@ -916,8 +999,8 @@ func createCustomCroot(croot []string, id uint, blob map[string]map[string]map[s
 		IsSigned:       false,
 		IsCustomCroot:  true,
 		CustomCrootFor: crootFor,
-		AffinityOne:    affinityOne,
-		AffinityTwo:    affinityTwo,
+		AffinityOne:    preferenceOne,
+		AffinityTwo:    preferenceTwo,
 	}
 
 	return recruit, faceData

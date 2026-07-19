@@ -379,6 +379,8 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/statistics/reset/nfl/season/", controller.ResetNFLSeasonalStats).Methods("GET")
 	apiRouter.HandleFunc("/statistics/cfb/export/crootforthecrootgod/", controller.ExportAllSpringGamesPbPToCSV).Methods("GET")
 	apiRouter.HandleFunc("/statistics/nfl/export/crootforthecrootgod/", controller.ExportAllPreseasonGamesPbPToCSV).Methods("GET")
+	apiRouter.HandleFunc("/statistics/nfl/attribute/report/", controller.NFLAttributePercentilesReport).Methods("GET")
+	apiRouter.HandleFunc("/statistics/cfb/attribute/report/", controller.CFBAttributePercentilesReport).Methods("GET")
 
 	// Team Controls
 	apiRouter.HandleFunc("/teams/college/all/", controller.GetAllCollegeTeams).Methods("GET")
@@ -557,7 +559,7 @@ func handleCron() *cron.Cron {
 		c.AddFunc("30 16 * * 5", controller.StreamCFBFridayGamesToInterfaceViaCron)
 		c.AddFunc("30 15 * * 6", controller.StreamCFBSaturdayGamesToInterfaceViaCron)
 		c.AddFunc("30 17 * * 4", controller.StreamNFLThursdayGamesToInterfaceViaCron)
-		c.AddFunc("0 14 * * 0", controller.StreamNFLSundayGamesToInterfaceViaCron)
+		c.AddFunc("0 17 * * 0", controller.StreamNFLSundayGamesToInterfaceViaCron)
 		c.AddFunc("0 15 * * 1", controller.StreamNFLMondayGamesToInterfaceViaCron)
 	}
 

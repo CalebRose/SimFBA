@@ -1,0 +1,1781 @@
+Scope,Position,Archetype,Attribute,Count,Min,P10,P25,Median,P75,P90,P95,P99,Max,Reliable
+Position,RB,,Speed,2262,35.00,44.00,48.00,54.00,60.00,67.00,70.00,76.39,87.00,true
+Position,RB,,Agility,2262,8.00,17.00,21.00,27.00,33.00,39.00,43.00,50.00,57.00,true
+Position,RB,,FootballIQ,2262,4.00,11.00,14.00,18.00,24.00,29.00,32.00,38.00,47.00,true
+Position,RB,,Strength,2262,1.00,10.00,14.00,19.00,24.00,30.00,33.00,40.00,48.00,true
+Position,RB,,Carrying,2262,2.00,11.00,16.00,21.00,27.00,33.00,36.00,42.39,51.00,true
+Position,RB,,Catching,2262,1.00,10.00,13.00,19.00,27.00,34.00,38.00,47.00,55.00,true
+Position,RB,,RouteRunning,2262,0.00,1.00,4.00,7.00,16.00,27.00,31.00,36.00,42.00,true
+Position,RB,,ZoneCoverage,2262,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position,RB,,ManCoverage,2262,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,29.00,true
+Position,RB,,Tackle,2262,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,RB,,PassBlock,2262,1.00,3.00,6.00,11.00,24.00,29.90,33.00,38.00,46.00,true
+Position,RB,,RunBlock,2262,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.39,17.00,true
+Position,RB,,PassRush,2262,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,RB,,RunDefense,2262,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,17.00,true
+Position,RB,,ThrowPower,2262,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,RB,,ThrowAccuracy,2262,0.00,4.00,7.00,10.00,15.00,19.00,21.00,24.00,30.00,true
+Position,RB,,KickAccuracy,2262,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,RB,,KickPower,2262,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,RB,,PuntAccuracy,2262,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,17.00,true
+Position,RB,,PuntPower,2262,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,SS,,Speed,1014,27.00,35.00,39.00,45.00,51.00,57.00,60.00,66.00,81.00,true
+Position,SS,,Agility,1014,14.00,19.00,23.00,27.00,34.00,39.00,41.00,48.87,56.00,true
+Position,SS,,FootballIQ,1014,5.00,10.00,14.00,21.00,27.00,34.00,38.00,44.00,49.00,true
+Position,SS,,Strength,1014,3.00,7.00,9.00,13.00,17.00,23.00,28.00,36.87,44.00,true
+Position,SS,,Carrying,1014,1.00,3.00,6.00,10.00,14.00,19.00,21.00,24.00,28.00,true
+Position,SS,,Catching,1014,3.00,8.00,10.00,14.00,19.00,28.00,33.00,41.00,52.00,true
+Position,SS,,RouteRunning,1014,0.00,1.00,3.00,5.00,8.00,10.00,12.35,18.87,25.00,true
+Position,SS,,ZoneCoverage,1014,13.00,20.00,25.00,32.00,39.00,46.00,51.00,58.00,65.00,true
+Position,SS,,ManCoverage,1014,14.00,20.00,25.00,31.00,38.00,45.00,51.35,59.87,75.00,true
+Position,SS,,Tackle,1014,5.00,10.00,13.25,20.00,26.00,33.00,37.00,42.87,50.00,true
+Position,SS,,PassBlock,1014,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,SS,,RunBlock,1014,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,SS,,PassRush,1014,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position,SS,,RunDefense,1014,7.00,15.00,19.00,25.00,31.00,37.00,41.00,48.00,53.00,true
+Position,SS,,ThrowPower,1014,0.00,3.00,6.00,10.00,14.00,18.00,21.00,24.00,30.00,true
+Position,SS,,ThrowAccuracy,1014,0.00,3.00,6.00,10.00,14.00,18.00,20.00,24.00,30.00,true
+Position,SS,,KickAccuracy,1014,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,16.00,true
+Position,SS,,KickPower,1014,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.87,17.00,true
+Position,SS,,PuntAccuracy,1014,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.00,16.00,true
+Position,SS,,PuntPower,1014,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,K,,Speed,741,0.00,3.00,6.00,9.00,14.00,18.00,20.00,24.00,28.00,true
+Position,K,,Agility,741,0.00,3.00,6.00,10.00,14.00,19.00,21.00,25.00,29.00,true
+Position,K,,FootballIQ,741,5.00,8.00,11.00,14.00,18.00,22.00,24.00,28.00,30.00,true
+Position,K,,Strength,741,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,K,,Carrying,741,0.00,3.00,6.00,10.00,13.00,19.00,20.00,24.00,30.00,true
+Position,K,,Catching,741,0.00,3.00,6.00,10.00,14.00,19.00,21.00,25.00,26.00,true
+Position,K,,RouteRunning,741,0.00,1.00,3.00,6.00,8.00,9.00,10.00,12.60,16.00,true
+Position,K,,ZoneCoverage,741,1.00,3.00,6.00,10.00,14.00,18.00,20.00,23.00,25.00,true
+Position,K,,ManCoverage,741,0.00,3.00,6.00,9.00,14.00,18.00,20.00,25.00,26.00,true
+Position,K,,Tackle,741,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.60,16.00,true
+Position,K,,PassBlock,741,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,15.00,true
+Position,K,,RunBlock,741,0.00,2.00,3.00,6.00,8.00,10.00,11.00,12.60,16.00,true
+Position,K,,PassRush,741,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,K,,RunDefense,741,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.60,16.00,true
+Position,K,,ThrowPower,741,1.00,3.00,5.00,9.00,14.00,18.00,20.00,25.00,27.00,true
+Position,K,,ThrowAccuracy,741,0.00,3.00,6.00,9.00,13.00,18.00,20.00,24.00,27.00,true
+Position,K,,KickAccuracy,741,6.00,13.00,19.00,25.00,32.00,41.00,46.00,54.60,62.00,true
+Position,K,,KickPower,741,5.00,12.00,18.00,25.00,33.00,42.00,47.00,55.00,60.00,true
+Position,K,,PuntAccuracy,741,0.00,3.00,6.00,9.00,14.00,18.00,20.00,24.00,30.00,true
+Position,K,,PuntPower,741,0.00,3.00,6.00,9.00,14.00,18.00,20.00,24.60,28.00,true
+Position,OG,,Speed,1660,10.00,14.90,16.00,19.00,22.00,24.00,25.00,28.00,31.00,true
+Position,OG,,Agility,1660,3.00,8.00,11.00,14.00,18.00,23.00,28.00,38.00,47.00,true
+Position,OG,,FootballIQ,1660,3.00,11.00,13.75,18.00,24.00,29.00,32.00,38.00,46.00,true
+Position,OG,,Strength,1660,25.00,35.00,39.00,44.00,50.00,55.00,59.00,65.00,76.00,true
+Position,OG,,Carrying,1660,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position,OG,,Catching,1660,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,35.00,true
+Position,OG,,RouteRunning,1660,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,16.00,true
+Position,OG,,ZoneCoverage,1660,0.00,3.00,7.00,10.00,15.00,19.00,20.00,25.00,29.00,true
+Position,OG,,ManCoverage,1660,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position,OG,,Tackle,1660,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position,OG,,PassBlock,1660,7.00,18.00,23.75,31.00,38.00,45.00,49.00,57.41,69.00,true
+Position,OG,,RunBlock,1660,6.00,17.00,22.00,29.00,36.00,43.00,47.00,54.41,64.00,true
+Position,OG,,PassRush,1660,0.00,2.00,5.00,8.00,11.00,16.00,19.00,24.00,28.00,true
+Position,OG,,RunDefense,1660,0.00,2.00,4.00,7.00,9.00,13.00,15.00,18.00,23.00,true
+Position,OG,,ThrowPower,1660,0.00,2.00,4.00,8.00,11.00,16.00,19.00,24.00,28.00,true
+Position,OG,,ThrowAccuracy,1660,0.00,2.00,5.00,8.00,11.00,16.00,19.00,23.00,30.00,true
+Position,OG,,KickAccuracy,1660,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,18.00,true
+Position,OG,,KickPower,1660,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,OG,,PuntAccuracy,1660,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,OG,,PuntPower,1660,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,OLB,,Speed,1907,18.00,26.00,31.00,40.00,49.00,57.40,62.00,70.00,84.00,true
+Position,OLB,,Agility,1907,10.00,19.00,23.00,29.00,36.00,42.00,45.00,52.00,61.00,true
+Position,OLB,,FootballIQ,1907,6.00,11.00,14.00,19.00,25.00,30.00,33.00,37.00,50.00,true
+Position,OLB,,Strength,1907,10.00,18.00,23.00,29.00,35.00,42.00,46.00,54.00,61.00,true
+Position,OLB,,Carrying,1907,0.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position,OLB,,Catching,1907,0.00,4.00,7.00,11.00,16.00,20.00,22.00,26.00,30.00,true
+Position,OLB,,RouteRunning,1907,0.00,1.00,3.00,5.00,8.00,10.00,10.00,14.00,15.00,true
+Position,OLB,,ZoneCoverage,1907,7.00,15.00,19.00,26.00,32.00,39.00,43.00,50.00,64.00,true
+Position,OLB,,ManCoverage,1907,7.00,14.00,19.00,26.00,32.00,39.00,43.00,50.00,65.00,true
+Position,OLB,,Tackle,1907,17.00,25.00,29.00,34.00,40.00,45.00,49.00,53.00,63.00,true
+Position,OLB,,PassBlock,1907,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,18.00,true
+Position,OLB,,RunBlock,1907,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,OLB,,PassRush,1907,4.00,9.00,13.00,19.00,33.00,45.00,49.00,57.00,71.00,true
+Position,OLB,,RunDefense,1907,10.00,18.00,23.00,30.00,36.00,42.00,47.00,53.94,63.00,true
+Position,OLB,,ThrowPower,1907,0.00,4.00,7.00,10.00,15.00,19.00,20.70,25.00,32.00,true
+Position,OLB,,ThrowAccuracy,1907,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position,OLB,,KickAccuracy,1907,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,OLB,,KickPower,1907,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,OLB,,PuntAccuracy,1907,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,OLB,,PuntPower,1907,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,17.00,true
+Position,C,,Speed,976,11.00,14.00,16.00,19.00,22.00,24.00,25.00,28.00,30.00,true
+Position,C,,Agility,976,4.00,8.00,10.00,14.00,17.00,22.00,28.00,36.00,45.00,true
+Position,C,,FootballIQ,976,5.00,11.00,14.00,21.00,32.00,40.00,45.00,51.25,66.00,true
+Position,C,,Strength,976,29.00,35.00,38.00,43.00,49.00,55.00,58.00,66.25,75.00,true
+Position,C,,Carrying,976,0.00,3.00,6.00,10.00,14.00,19.00,21.00,24.25,27.00,true
+Position,C,,Catching,976,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.25,33.00,true
+Position,C,,RouteRunning,976,0.00,1.00,3.00,5.00,8.00,10.00,10.00,14.00,16.00,true
+Position,C,,ZoneCoverage,976,0.00,4.00,6.00,10.00,14.00,18.00,20.00,25.00,30.00,true
+Position,C,,ManCoverage,976,1.00,3.00,6.00,10.00,14.00,18.00,21.00,25.00,28.00,true
+Position,C,,Tackle,976,1.00,3.00,6.00,10.00,15.00,18.00,20.25,25.00,30.00,true
+Position,C,,PassBlock,976,9.00,16.00,21.00,27.50,35.00,43.00,48.00,55.00,63.00,true
+Position,C,,RunBlock,976,9.00,16.00,20.00,27.00,34.00,41.00,45.00,54.25,65.00,true
+Position,C,,PassRush,976,0.00,2.00,5.00,8.00,11.00,16.00,19.00,24.00,30.00,true
+Position,C,,RunDefense,976,0.00,2.00,4.00,7.00,10.00,12.00,14.00,17.25,20.00,true
+Position,C,,ThrowPower,976,1.00,2.00,5.00,8.00,11.00,15.00,19.00,24.00,27.00,true
+Position,C,,ThrowAccuracy,976,0.00,2.00,5.00,8.00,11.00,15.00,19.00,25.00,32.00,true
+Position,C,,KickAccuracy,976,0.00,2.00,4.00,6.00,9.00,10.00,11.25,14.25,17.00,true
+Position,C,,KickPower,976,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,C,,PuntAccuracy,976,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,C,,PuntPower,976,0.00,2.00,3.75,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,TE,,Speed,1343,17.00,28.00,33.00,41.00,48.00,55.00,60.00,67.00,75.00,true
+Position,TE,,Agility,1343,6.00,17.00,20.00,26.00,32.00,38.00,41.00,49.00,56.00,true
+Position,TE,,FootballIQ,1343,5.00,11.00,13.00,18.00,24.00,29.00,32.00,37.58,43.00,true
+Position,TE,,Strength,1343,20.00,28.00,33.00,38.00,45.00,50.00,54.00,60.00,71.00,true
+Position,TE,,Carrying,1343,4.00,13.00,15.00,19.00,23.50,28.00,32.00,38.00,43.00,true
+Position,TE,,Catching,1343,8.00,17.00,21.00,27.00,32.50,39.00,42.00,48.58,55.00,true
+Position,TE,,RouteRunning,1343,1.00,9.00,12.00,16.00,21.00,26.00,29.00,35.00,43.00,true
+Position,TE,,ZoneCoverage,1343,0.00,3.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position,TE,,ManCoverage,1343,0.00,4.00,6.00,10.00,15.00,19.00,20.00,24.58,30.00,true
+Position,TE,,Tackle,1343,1.00,3.20,6.00,10.00,15.00,19.00,21.00,24.00,29.00,true
+Position,TE,,PassBlock,1343,8.00,18.00,23.00,28.00,34.00,39.00,42.00,49.58,60.00,true
+Position,TE,,RunBlock,1343,15.00,21.00,24.00,29.00,35.50,41.00,44.00,52.00,59.00,true
+Position,TE,,PassRush,1343,1.00,4.00,8.00,12.00,18.00,22.00,24.00,28.58,33.00,true
+Position,TE,,RunDefense,1343,0.00,3.00,7.00,10.00,14.00,18.80,21.00,25.00,31.00,true
+Position,TE,,ThrowPower,1343,0.00,4.00,7.00,10.00,15.00,19.00,20.00,25.00,31.00,true
+Position,TE,,ThrowAccuracy,1343,1.00,3.20,7.00,10.00,15.00,19.00,21.00,24.00,27.00,true
+Position,TE,,KickAccuracy,1343,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,TE,,KickPower,1343,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,18.00,true
+Position,TE,,PuntAccuracy,1343,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,TE,,PuntPower,1343,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,DT,,Speed,1792,7.00,16.00,20.00,25.00,29.00,34.00,37.00,43.00,51.00,true
+Position,DT,,Agility,1792,3.00,12.00,17.00,22.00,29.00,35.00,38.00,45.00,60.00,true
+Position,DT,,FootballIQ,1792,1.00,10.00,13.00,18.00,23.00,29.00,32.00,39.00,49.00,true
+Position,DT,,Strength,1792,15.00,23.00,27.00,33.00,39.00,47.00,51.00,59.00,70.00,true
+Position,DT,,Carrying,1792,0.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position,DT,,Catching,1792,1.00,4.00,7.00,11.00,16.00,20.00,23.00,26.09,34.00,true
+Position,DT,,RouteRunning,1792,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,16.00,true
+Position,DT,,ZoneCoverage,1792,0.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position,DT,,ManCoverage,1792,0.00,3.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position,DT,,Tackle,1792,18.00,25.00,28.00,33.00,38.00,44.00,48.00,55.00,68.00,true
+Position,DT,,PassBlock,1792,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,DT,,RunBlock,1792,0.00,2.00,3.00,6.00,8.25,10.00,11.00,15.00,17.00,true
+Position,DT,,PassRush,1792,3.00,13.00,17.00,23.00,29.00,36.00,39.00,47.00,56.00,true
+Position,DT,,RunDefense,1792,10.00,17.10,22.00,27.00,33.00,38.00,42.00,49.00,66.00,true
+Position,DT,,ThrowPower,1792,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position,DT,,ThrowAccuracy,1792,0.00,3.00,7.00,10.00,15.00,19.00,21.00,25.09,31.00,true
+Position,DT,,KickAccuracy,1792,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,DT,,KickPower,1792,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.09,17.00,true
+Position,DT,,PuntAccuracy,1792,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,19.00,true
+Position,DT,,PuntPower,1792,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,FS,,Speed,1258,30.00,36.00,40.00,45.00,51.00,58.00,62.00,70.00,80.00,true
+Position,FS,,Agility,1258,18.00,25.00,28.00,33.00,39.00,45.00,49.00,56.43,62.00,true
+Position,FS,,FootballIQ,1258,7.00,11.00,15.00,20.00,27.00,33.00,37.00,42.43,57.00,true
+Position,FS,,Strength,1258,1.00,7.00,10.00,14.00,19.00,25.00,29.00,39.00,54.00,true
+Position,FS,,Carrying,1258,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,32.00,true
+Position,FS,,Catching,1258,1.00,8.00,10.00,14.00,20.00,30.00,36.00,45.43,52.00,true
+Position,FS,,RouteRunning,1258,0.00,1.00,3.00,6.00,9.00,10.00,13.00,19.43,24.00,true
+Position,FS,,ZoneCoverage,1258,15.00,21.00,25.00,33.00,41.00,48.00,52.15,61.00,74.00,true
+Position,FS,,ManCoverage,1258,13.00,21.00,25.00,32.00,39.00,46.00,51.00,61.00,73.00,true
+Position,FS,,Tackle,1258,5.00,11.00,14.00,20.00,26.00,33.00,37.00,45.00,56.00,true
+Position,FS,,PassBlock,1258,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,FS,,RunBlock,1258,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,FS,,PassRush,1258,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,FS,,RunDefense,1258,5.00,11.00,15.00,20.00,26.00,31.00,35.15,42.00,56.00,true
+Position,FS,,ThrowPower,1258,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,28.00,true
+Position,FS,,ThrowAccuracy,1258,0.00,3.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position,FS,,KickAccuracy,1258,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,FS,,KickPower,1258,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.43,18.00,true
+Position,FS,,PuntAccuracy,1258,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,FS,,PuntPower,1258,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,CB,,Speed,2468,29.00,35.00,39.00,44.00,50.00,56.00,59.00,66.00,76.00,true
+Position,CB,,Agility,2468,19.00,25.00,29.00,34.00,40.00,45.00,48.00,54.00,65.00,true
+Position,CB,,FootballIQ,2468,4.00,11.00,14.00,19.00,24.00,30.00,33.00,38.33,50.00,true
+Position,CB,,Strength,2468,1.00,7.00,9.00,12.00,15.00,19.00,21.00,25.00,31.00,true
+Position,CB,,Carrying,2468,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,CB,,Catching,2468,1.00,8.00,11.00,14.00,21.00,31.00,36.00,44.00,52.00,true
+Position,CB,,RouteRunning,2468,0.00,2.00,5.00,8.00,13.00,17.00,20.00,24.00,30.00,true
+Position,CB,,ZoneCoverage,2468,13.00,22.00,27.00,35.00,42.00,49.00,53.00,61.00,76.00,true
+Position,CB,,ManCoverage,2468,14.00,23.00,27.00,35.00,42.00,49.00,53.00,59.33,74.00,true
+Position,CB,,Tackle,2468,1.00,6.00,9.00,13.00,17.00,21.00,23.65,28.00,38.00,true
+Position,CB,,PassBlock,2468,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,18.00,true
+Position,CB,,RunBlock,2468,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,CB,,PassRush,2468,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,CB,,RunDefense,2468,1.00,3.00,5.00,8.00,10.00,13.00,15.00,17.00,22.00,true
+Position,CB,,ThrowPower,2468,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,CB,,ThrowAccuracy,2468,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,CB,,KickAccuracy,2468,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,CB,,KickPower,2468,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,18.00,true
+Position,CB,,PuntAccuracy,2468,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,CB,,PuntPower,2468,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,WR,,Speed,2871,29.00,38.00,43.00,49.00,56.00,63.00,68.00,76.00,95.00,true
+Position,WR,,Agility,2871,11.00,21.00,25.00,30.00,35.00,40.00,44.00,50.00,62.00,true
+Position,WR,,FootballIQ,2871,5.00,11.00,14.00,19.00,24.00,29.00,32.00,38.00,56.00,true
+Position,WR,,Strength,2871,1.00,6.00,11.00,17.00,25.00,31.00,35.00,43.00,54.00,true
+Position,WR,,Carrying,2871,1.00,10.00,13.00,18.00,23.00,28.00,31.00,37.00,50.00,true
+Position,WR,,Catching,2871,12.00,21.00,25.00,31.00,38.00,45.00,49.00,56.00,70.00,true
+Position,WR,,RouteRunning,2871,8.00,16.00,20.00,25.00,30.00,34.00,37.00,44.00,56.00,true
+Position,WR,,ZoneCoverage,2871,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,WR,,ManCoverage,2871,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,WR,,Tackle,2871,0.00,2.00,5.00,8.00,11.00,16.00,19.00,24.00,29.00,true
+Position,WR,,PassBlock,2871,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,19.00,true
+Position,WR,,RunBlock,2871,3.00,7.00,10.00,13.00,19.00,32.00,35.00,38.00,47.00,true
+Position,WR,,PassRush,2871,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,WR,,RunDefense,2871,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,WR,,ThrowPower,2871,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.30,30.00,true
+Position,WR,,ThrowAccuracy,2871,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,WR,,KickAccuracy,2871,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,WR,,KickPower,2871,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,WR,,PuntAccuracy,2871,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.30,18.00,true
+Position,WR,,PuntPower,2871,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,OT,,Speed,2455,12.00,15.00,17.00,19.00,22.00,24.00,26.00,28.00,31.00,true
+Position,OT,,Agility,2455,1.00,8.00,11.00,14.00,18.00,23.00,28.00,36.00,46.00,true
+Position,OT,,FootballIQ,2455,5.00,11.00,14.00,19.00,24.00,29.00,32.00,38.00,46.00,true
+Position,OT,,Strength,2455,29.00,35.00,39.00,44.00,50.00,55.00,59.00,64.46,76.00,true
+Position,OT,,Carrying,2455,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position,OT,,Catching,2455,1.00,4.00,7.00,11.00,16.00,19.00,21.00,25.00,31.00,true
+Position,OT,,RouteRunning,2455,0.00,1.00,3.00,5.00,8.00,10.00,10.00,14.00,16.00,true
+Position,OT,,ZoneCoverage,2455,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,OT,,ManCoverage,2455,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,OT,,Tackle,2455,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position,OT,,PassBlock,2455,7.00,18.00,23.00,30.00,38.00,45.00,49.00,56.00,71.00,true
+Position,OT,,RunBlock,2455,8.00,17.00,22.00,29.00,37.00,43.00,48.00,54.00,66.00,true
+Position,OT,,PassRush,2455,0.00,2.00,5.00,8.00,12.00,17.00,20.00,24.00,29.00,true
+Position,OT,,RunDefense,2455,0.00,2.00,4.00,7.00,10.00,12.00,14.00,18.00,22.00,true
+Position,OT,,ThrowPower,2455,0.00,2.00,5.00,8.00,12.00,17.00,19.00,24.00,29.00,true
+Position,OT,,ThrowAccuracy,2455,0.00,2.00,5.00,8.00,12.00,17.00,19.00,23.46,29.00,true
+Position,OT,,KickAccuracy,2455,0.00,2.00,3.50,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,OT,,KickPower,2455,0.00,2.00,3.50,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,OT,,PuntAccuracy,2455,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,18.00,true
+Position,OT,,PuntPower,2455,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,P,,Speed,654,1.00,3.00,6.00,10.00,14.00,18.00,20.00,23.47,25.00,true
+Position,P,,Agility,654,0.00,3.00,6.00,10.00,15.00,19.00,21.00,26.00,31.00,true
+Position,P,,FootballIQ,654,2.00,8.30,11.00,14.00,19.00,23.00,25.00,28.00,33.00,true
+Position,P,,Strength,654,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position,P,,Carrying,654,1.00,3.00,6.00,10.00,14.00,18.00,20.00,23.00,28.00,true
+Position,P,,Catching,654,1.00,3.00,6.00,10.00,14.75,19.00,22.00,26.00,30.00,true
+Position,P,,RouteRunning,654,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,15.00,true
+Position,P,,ZoneCoverage,654,1.00,3.00,6.00,10.00,14.00,18.00,20.00,24.47,26.00,true
+Position,P,,ManCoverage,654,0.00,3.00,6.00,10.00,14.00,18.00,21.00,24.00,28.00,true
+Position,P,,Tackle,654,0.00,2.00,4.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position,P,,PassBlock,654,0.00,2.00,4.00,6.00,8.75,10.00,11.00,14.00,16.00,true
+Position,P,,RunBlock,654,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,P,,PassRush,654,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,P,,RunDefense,654,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,P,,ThrowPower,654,1.00,3.00,6.00,9.00,14.00,18.00,20.00,24.47,30.00,true
+Position,P,,ThrowAccuracy,654,0.00,3.00,6.00,9.00,14.00,19.00,21.00,24.47,29.00,true
+Position,P,,KickAccuracy,654,0.00,3.00,6.00,9.00,15.00,19.00,20.35,25.00,26.00,true
+Position,P,,KickPower,654,1.00,3.00,6.00,10.00,14.00,19.00,21.00,25.00,28.00,true
+Position,P,,PuntAccuracy,654,7.00,13.00,19.00,26.00,33.75,41.00,44.35,52.47,58.00,true
+Position,P,,PuntPower,654,6.00,12.00,18.00,25.00,33.75,42.00,48.00,54.47,62.00,true
+Position,QB,,Speed,1989,13.00,21.00,27.00,34.00,53.00,66.00,71.00,78.00,89.00,true
+Position,QB,,Agility,1989,1.00,7.00,11.00,17.00,25.00,32.20,36.00,43.00,54.00,true
+Position,QB,,FootballIQ,1989,4.00,13.00,18.00,24.00,33.00,41.00,45.00,54.00,70.00,true
+Position,QB,,Strength,1989,3.00,8.00,11.00,16.00,23.00,29.00,33.00,40.00,47.00,true
+Position,QB,,Carrying,1989,0.00,5.00,8.00,14.00,23.00,31.00,34.60,39.00,55.00,true
+Position,QB,,Catching,1989,0.00,4.00,7.00,11.00,15.00,19.00,22.00,26.00,34.00,true
+Position,QB,,RouteRunning,1989,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,16.00,true
+Position,QB,,ZoneCoverage,1989,0.00,4.00,7.00,11.00,15.00,20.00,22.00,25.00,31.00,true
+Position,QB,,ManCoverage,1989,0.00,4.00,7.00,11.00,15.00,20.00,21.00,26.00,32.00,true
+Position,QB,,Tackle,1989,0.00,4.00,7.00,11.00,15.00,19.00,20.00,24.00,29.00,true
+Position,QB,,PassBlock,1989,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.00,20.00,true
+Position,QB,,RunBlock,1989,0.00,2.00,4.00,6.00,9.00,10.00,12.00,15.00,19.00,true
+Position,QB,,PassRush,1989,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,18.00,true
+Position,QB,,RunDefense,1989,0.00,2.00,4.00,6.00,9.00,10.00,12.00,15.00,17.00,true
+Position,QB,,ThrowPower,1989,12.00,20.00,26.00,32.00,39.00,45.00,50.00,56.12,78.00,true
+Position,QB,,ThrowAccuracy,1989,13.00,21.00,26.00,32.00,39.00,46.00,50.00,56.12,73.00,true
+Position,QB,,KickAccuracy,1989,0.00,2.00,4.00,6.00,9.00,10.00,11.60,15.00,17.00,true
+Position,QB,,KickPower,1989,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,QB,,PuntAccuracy,1989,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,QB,,PuntPower,1989,0.00,2.00,4.00,6.00,9.00,10.00,11.60,15.00,17.00,true
+Position,FB,,Speed,715,17.00,24.00,29.00,35.00,41.00,47.00,50.30,59.72,70.00,true
+Position,FB,,Agility,715,5.00,12.00,17.00,22.00,28.00,33.00,37.00,44.86,57.00,true
+Position,FB,,FootballIQ,715,6.00,9.00,12.00,16.00,23.00,29.00,32.00,37.00,42.00,true
+Position,FB,,Strength,715,23.00,28.00,31.00,36.00,42.00,48.00,52.30,58.86,66.00,true
+Position,FB,,Carrying,715,4.00,7.00,10.00,14.00,19.00,25.00,28.00,35.00,40.00,true
+Position,FB,,Catching,715,3.00,8.00,11.00,16.00,23.00,30.00,33.00,41.00,46.00,true
+Position,FB,,RouteRunning,715,0.00,1.00,3.00,7.00,10.00,14.00,17.00,25.86,38.00,true
+Position,FB,,ZoneCoverage,715,0.00,3.00,6.00,9.00,14.00,18.60,21.00,24.00,28.00,true
+Position,FB,,ManCoverage,715,1.00,3.00,6.00,10.00,14.00,18.00,20.30,25.00,28.00,true
+Position,FB,,Tackle,715,1.00,3.00,6.00,10.00,14.50,20.00,22.30,25.00,28.00,true
+Position,FB,,PassBlock,715,19.00,24.00,28.00,33.00,41.00,47.00,51.00,58.00,68.00,true
+Position,FB,,RunBlock,715,17.00,24.00,28.00,33.00,41.00,47.00,51.00,57.00,62.00,true
+Position,FB,,PassRush,715,0.00,2.00,3.50,6.00,9.00,11.00,13.00,18.86,25.00,true
+Position,FB,,RunDefense,715,0.00,2.00,4.00,6.00,9.00,11.00,15.00,22.86,30.00,true
+Position,FB,,ThrowPower,715,1.00,3.00,6.00,9.00,14.00,18.00,20.00,25.00,27.00,true
+Position,FB,,ThrowAccuracy,715,0.00,3.00,6.00,10.00,14.00,19.00,21.00,25.00,31.00,true
+Position,FB,,KickAccuracy,715,0.00,2.00,4.00,6.00,8.00,10.00,11.00,14.86,16.00,true
+Position,FB,,KickPower,715,0.00,2.00,3.00,6.00,9.00,11.00,11.00,14.00,16.00,true
+Position,FB,,PuntAccuracy,715,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position,FB,,PuntPower,715,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.86,16.00,true
+Position,ATH,,Speed,1248,1.00,22.00,29.00,37.00,44.00,50.00,54.65,60.00,67.00,true
+Position,ATH,,Agility,1248,1.00,18.00,22.00,27.00,33.00,38.00,42.00,51.00,59.00,true
+Position,ATH,,FootballIQ,1248,1.00,13.00,17.00,23.00,29.25,35.00,38.00,43.00,49.00,true
+Position,ATH,,Strength,1248,1.00,9.70,17.00,26.00,37.00,47.00,53.00,60.00,70.00,true
+Position,ATH,,Carrying,1248,0.00,4.00,8.00,12.00,19.00,26.00,30.00,36.00,46.00,true
+Position,ATH,,Catching,1248,0.00,6.00,11.00,18.00,25.00,31.00,34.00,41.00,53.00,true
+Position,ATH,,RouteRunning,1248,0.00,3.00,6.00,10.00,19.00,29.00,33.00,41.00,51.00,true
+Position,ATH,,ZoneCoverage,1248,0.00,5.00,9.00,16.00,25.00,35.00,39.00,48.00,54.00,true
+Position,ATH,,ManCoverage,1248,0.00,6.00,9.00,16.00,24.00,34.00,38.00,47.00,58.00,true
+Position,ATH,,Tackle,1248,0.00,6.00,10.00,16.00,26.00,34.00,38.00,45.53,52.00,true
+Position,ATH,,PassBlock,1248,0.00,2.00,6.00,9.00,14.00,23.00,30.00,40.00,48.00,true
+Position,ATH,,RunBlock,1248,0.00,3.00,6.00,9.00,15.00,28.00,34.65,43.00,52.00,true
+Position,ATH,,PassRush,1248,0.00,4.00,8.00,11.00,18.00,26.00,30.00,36.53,41.00,true
+Position,ATH,,RunDefense,1248,0.00,4.00,7.00,13.00,24.00,30.00,34.00,39.53,54.00,true
+Position,ATH,,ThrowPower,1248,0.00,3.00,7.00,11.00,18.00,26.00,31.00,38.00,50.00,true
+Position,ATH,,ThrowAccuracy,1248,0.00,4.00,7.00,11.00,18.00,26.00,31.00,39.00,52.00,true
+Position,ATH,,KickAccuracy,1248,0.00,2.00,5.00,8.00,12.00,17.00,25.00,36.00,46.00,true
+Position,ATH,,KickPower,1248,0.00,2.00,5.00,8.00,12.00,18.00,26.00,34.53,43.00,true
+Position,ATH,,PuntAccuracy,1248,0.00,2.00,5.00,8.00,12.00,16.00,25.00,35.00,45.00,true
+Position,ATH,,PuntPower,1248,0.00,2.00,5.00,8.00,12.00,16.00,25.00,35.00,48.00,true
+Position,ILB,,Speed,1465,25.00,31.00,35.00,41.00,47.00,54.00,58.00,65.36,73.00,true
+Position,ILB,,Agility,1465,10.00,18.00,22.00,28.00,34.00,40.00,44.00,51.00,59.00,true
+Position,ILB,,FootballIQ,1465,3.00,11.00,15.00,22.00,30.00,39.00,43.00,51.36,61.00,true
+Position,ILB,,Strength,1465,13.00,21.00,25.00,31.00,37.00,43.00,48.00,55.36,73.00,true
+Position,ILB,,Carrying,1465,0.00,3.00,6.00,10.00,15.00,19.00,20.00,25.00,31.00,true
+Position,ILB,,Catching,1465,0.00,4.00,7.00,11.00,15.00,20.00,22.00,28.36,31.00,true
+Position,ILB,,RouteRunning,1465,0.00,1.00,3.00,5.00,8.00,9.00,10.00,14.00,16.00,true
+Position,ILB,,ZoneCoverage,1465,10.00,19.00,24.00,30.00,37.00,43.00,46.00,52.00,60.00,true
+Position,ILB,,ManCoverage,1465,7.00,17.00,21.00,27.00,34.00,40.00,44.00,50.00,60.00,true
+Position,ILB,,Tackle,1465,12.00,22.00,26.00,31.00,37.00,43.00,46.00,52.00,63.00,true
+Position,ILB,,PassBlock,1465,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,18.00,true
+Position,ILB,,RunBlock,1465,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,17.00,true
+Position,ILB,,PassRush,1465,2.00,8.00,11.00,14.00,18.00,22.00,24.80,30.00,35.00,true
+Position,ILB,,RunDefense,1465,15.00,22.00,27.00,32.00,39.00,45.00,49.00,54.36,63.00,true
+Position,ILB,,ThrowPower,1465,0.00,3.00,6.00,10.00,15.00,19.00,20.00,25.00,31.00,true
+Position,ILB,,ThrowAccuracy,1465,0.00,4.00,6.00,10.00,15.00,18.00,20.00,25.00,33.00,true
+Position,ILB,,KickAccuracy,1465,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,ILB,,KickPower,1465,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,ILB,,PuntAccuracy,1465,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,ILB,,PuntPower,1465,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,DE,,Speed,2648,20.00,27.00,31.00,36.00,42.00,48.00,51.00,56.00,71.00,true
+Position,DE,,Agility,2648,10.00,18.00,22.00,28.00,34.00,40.00,43.00,49.00,60.00,true
+Position,DE,,FootballIQ,2648,4.00,11.00,14.00,19.00,24.00,29.00,32.00,38.00,51.00,true
+Position,DE,,Strength,2648,12.00,21.00,25.00,30.00,36.00,41.00,44.65,52.00,66.00,true
+Position,DE,,Carrying,2648,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,DE,,Catching,2648,0.00,4.00,7.00,12.00,16.00,20.00,22.00,26.00,35.00,true
+Position,DE,,RouteRunning,2648,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,16.00,true
+Position,DE,,ZoneCoverage,2648,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position,DE,,ManCoverage,2648,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,DE,,Tackle,2648,13.00,22.00,26.00,31.00,37.00,42.00,46.00,54.00,62.00,true
+Position,DE,,PassBlock,2648,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position,DE,,RunBlock,2648,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.53,18.00,true
+Position,DE,,PassRush,2648,8.00,18.00,23.00,29.00,35.00,41.00,44.00,51.00,64.00,true
+Position,DE,,RunDefense,2648,10.00,18.00,23.00,29.00,35.00,41.00,45.00,52.53,64.00,true
+Position,DE,,ThrowPower,2648,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position,DE,,ThrowAccuracy,2648,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,29.00,true
+Position,DE,,KickAccuracy,2648,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,DE,,KickPower,2648,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position,DE,,PuntAccuracy,2648,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position,DE,,PuntPower,2648,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,QB,Balanced,Speed,474,23.00,28.00,31.00,35.00,41.00,47.70,51.00,58.00,60.00,true
+Position+Archetype,QB,Balanced,Agility,474,7.00,11.00,14.00,19.00,25.00,31.70,35.00,41.54,50.00,true
+Position+Archetype,QB,Balanced,FootballIQ,474,10.00,14.00,17.00,22.00,28.00,34.00,37.00,44.00,50.00,true
+Position+Archetype,QB,Balanced,Strength,474,5.00,9.00,12.00,16.00,22.00,28.00,31.35,37.00,47.00,true
+Position+Archetype,QB,Balanced,Carrying,474,0.00,4.00,7.00,11.00,16.00,20.00,22.00,25.27,32.00,true
+Position+Archetype,QB,Balanced,Catching,474,1.00,4.00,7.00,11.00,16.00,20.00,22.00,26.00,30.00,true
+Position+Archetype,QB,Balanced,RouteRunning,474,0.00,2.00,3.00,6.00,9.00,10.00,10.00,14.00,15.00,true
+Position+Archetype,QB,Balanced,ZoneCoverage,474,1.00,4.00,7.00,11.00,16.00,19.70,22.00,25.00,31.00,true
+Position+Archetype,QB,Balanced,ManCoverage,474,0.00,4.00,7.00,11.00,16.00,20.00,23.00,27.00,32.00,true
+Position+Archetype,QB,Balanced,Tackle,474,1.00,4.00,7.00,11.00,16.00,19.00,20.00,25.00,26.00,true
+Position+Archetype,QB,Balanced,PassBlock,474,0.00,2.00,3.00,6.00,9.00,10.00,12.00,14.27,16.00,true
+Position+Archetype,QB,Balanced,RunBlock,474,0.00,2.00,4.00,6.00,9.00,11.00,12.00,16.00,17.00,true
+Position+Archetype,QB,Balanced,PassRush,474,0.00,2.00,4.00,6.00,9.00,11.00,12.00,15.00,16.00,true
+Position+Archetype,QB,Balanced,RunDefense,474,0.00,2.00,4.00,6.00,9.00,10.00,11.35,14.00,16.00,true
+Position+Archetype,QB,Balanced,ThrowPower,474,20.00,26.00,30.00,35.00,41.00,47.00,51.00,56.27,71.00,true
+Position+Archetype,QB,Balanced,ThrowAccuracy,474,22.00,26.00,30.00,34.00,41.00,47.00,51.00,57.00,73.00,true
+Position+Archetype,QB,Balanced,KickAccuracy,474,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,QB,Balanced,KickPower,474,0.00,2.00,4.00,7.00,9.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,QB,Balanced,PuntAccuracy,474,0.00,2.00,4.00,7.00,9.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,QB,Balanced,PuntPower,474,0.00,2.00,4.00,6.00,9.00,11.00,12.00,15.00,17.00,true
+Position+Archetype,FS,Run Stopper,Speed,292,30.00,34.10,38.00,43.00,49.00,55.00,59.00,67.18,71.00,true
+Position+Archetype,FS,Run Stopper,Agility,292,20.00,25.00,27.00,32.00,39.00,45.00,48.45,55.18,61.00,true
+Position+Archetype,FS,Run Stopper,FootballIQ,292,7.00,10.00,13.00,18.00,23.00,29.00,33.00,40.09,45.00,true
+Position+Archetype,FS,Run Stopper,Strength,292,10.00,15.00,17.00,22.00,28.00,34.00,38.00,45.00,54.00,true
+Position+Archetype,FS,Run Stopper,Carrying,292,1.00,4.00,6.00,10.00,14.00,18.00,20.45,26.27,30.00,true
+Position+Archetype,FS,Run Stopper,Catching,292,3.00,7.00,9.00,12.00,14.00,17.00,19.00,22.09,27.00,true
+Position+Archetype,FS,Run Stopper,RouteRunning,292,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.09,15.00,true
+Position+Archetype,FS,Run Stopper,ZoneCoverage,292,15.00,18.10,22.00,26.00,31.00,37.90,42.00,48.00,55.00,true
+Position+Archetype,FS,Run Stopper,ManCoverage,292,15.00,19.00,22.00,26.00,32.00,38.00,41.45,51.09,56.00,true
+Position+Archetype,FS,Run Stopper,Tackle,292,14.00,19.00,23.00,27.00,33.25,40.00,44.00,51.09,56.00,true
+Position+Archetype,FS,Run Stopper,PassBlock,292,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,FS,Run Stopper,RunBlock,292,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.09,17.00,true
+Position+Archetype,FS,Run Stopper,PassRush,292,0.00,1.00,3.00,6.00,9.00,10.00,10.00,12.00,16.00,true
+Position+Archetype,FS,Run Stopper,RunDefense,292,13.00,18.00,22.00,26.00,31.00,36.00,39.45,48.09,56.00,true
+Position+Archetype,FS,Run Stopper,ThrowPower,292,1.00,4.00,6.00,10.00,15.00,19.00,21.00,25.09,27.00,true
+Position+Archetype,FS,Run Stopper,ThrowAccuracy,292,1.00,3.00,7.00,10.00,14.00,19.00,20.45,25.18,28.00,true
+Position+Archetype,FS,Run Stopper,KickAccuracy,292,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.18,16.00,true
+Position+Archetype,FS,Run Stopper,KickPower,292,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,15.00,true
+Position+Archetype,FS,Run Stopper,PuntAccuracy,292,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,FS,Run Stopper,PuntPower,292,1.00,2.00,4.00,6.00,8.00,10.00,11.00,14.09,16.00,true
+Position+Archetype,RB,Power,Speed,479,35.00,40.00,43.00,48.00,54.00,59.00,63.00,69.22,73.00,true
+Position+Archetype,RB,Power,Agility,479,10.00,14.80,18.00,22.00,28.00,33.00,36.00,42.00,47.00,true
+Position+Archetype,RB,Power,FootballIQ,479,6.00,10.00,13.00,18.00,23.00,27.00,31.00,37.22,41.00,true
+Position+Archetype,RB,Power,Strength,479,10.00,14.00,17.00,23.00,29.00,34.00,37.00,43.00,48.00,true
+Position+Archetype,RB,Power,Carrying,479,15.00,20.00,23.00,27.00,33.00,38.20,42.00,47.22,51.00,true
+Position+Archetype,RB,Power,Catching,479,5.00,8.00,10.00,13.00,18.00,22.00,26.00,32.00,34.00,true
+Position+Archetype,RB,Power,RouteRunning,479,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,16.00,true
+Position+Archetype,RB,Power,ZoneCoverage,479,0.00,4.00,7.00,10.00,15.00,19.00,21.00,24.00,27.00,true
+Position+Archetype,RB,Power,ManCoverage,479,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,RB,Power,Tackle,479,0.00,3.80,7.00,10.00,15.00,19.00,21.00,25.00,27.00,true
+Position+Archetype,RB,Power,PassBlock,479,1.00,3.00,5.00,9.00,27.00,33.00,36.10,42.00,46.00,true
+Position+Archetype,RB,Power,RunBlock,479,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.22,16.00,true
+Position+Archetype,RB,Power,PassRush,479,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.22,16.00,true
+Position+Archetype,RB,Power,RunDefense,479,0.00,2.00,4.00,6.00,8.00,10.00,11.00,13.22,16.00,true
+Position+Archetype,RB,Power,ThrowPower,479,1.00,4.00,7.00,11.00,15.00,19.00,21.10,25.00,28.00,true
+Position+Archetype,RB,Power,ThrowAccuracy,479,1.00,4.00,6.00,10.00,15.00,20.00,21.00,25.00,29.00,true
+Position+Archetype,RB,Power,KickAccuracy,479,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,RB,Power,KickPower,479,1.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,RB,Power,PuntAccuracy,479,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,RB,Power,PuntPower,479,0.00,2.00,3.50,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,ATH,Triple-Threat,Speed,120,29.00,38.90,42.00,47.50,52.25,58.10,60.00,62.00,63.00,true
+Position+Archetype,ATH,Triple-Threat,Agility,120,14.00,20.00,23.00,28.50,34.00,38.00,39.05,44.00,50.00,true
+Position+Archetype,ATH,Triple-Threat,FootballIQ,120,4.00,14.00,17.75,22.00,28.25,36.00,37.05,42.81,45.00,true
+Position+Archetype,ATH,Triple-Threat,Strength,120,4.00,9.00,11.75,17.00,20.00,24.00,25.00,26.81,31.00,true
+Position+Archetype,ATH,Triple-Threat,Carrying,120,1.00,3.90,8.00,11.00,28.25,33.10,34.05,37.81,38.00,true
+Position+Archetype,ATH,Triple-Threat,Catching,120,8.00,15.00,18.00,23.00,28.00,33.00,35.00,38.62,40.00,true
+Position+Archetype,ATH,Triple-Threat,RouteRunning,120,3.00,10.00,13.00,18.50,24.00,29.00,30.00,33.81,34.00,true
+Position+Archetype,ATH,Triple-Threat,ZoneCoverage,120,2.00,5.00,8.00,11.50,17.00,20.00,21.00,22.81,24.00,true
+Position+Archetype,ATH,Triple-Threat,ManCoverage,120,3.00,6.90,9.00,12.00,16.00,19.00,21.00,22.81,23.00,true
+Position+Archetype,ATH,Triple-Threat,Tackle,120,0.00,6.00,7.00,10.00,16.00,19.10,21.00,23.00,24.00,true
+Position+Archetype,ATH,Triple-Threat,PassBlock,120,0.00,3.00,7.00,10.50,15.00,18.00,19.05,22.62,24.00,true
+Position+Archetype,ATH,Triple-Threat,RunBlock,120,0.00,3.00,6.00,10.00,14.25,18.00,20.00,21.81,27.00,true
+Position+Archetype,ATH,Triple-Threat,PassRush,120,1.00,2.00,4.00,8.00,11.00,13.00,14.00,15.00,16.00,true
+Position+Archetype,ATH,Triple-Threat,RunDefense,120,0.00,2.00,5.00,8.00,10.00,13.00,14.00,15.00,18.00,true
+Position+Archetype,ATH,Triple-Threat,ThrowPower,120,12.00,18.00,20.75,24.00,31.00,36.00,38.00,41.81,50.00,true
+Position+Archetype,ATH,Triple-Threat,ThrowAccuracy,120,14.00,18.00,20.00,24.00,31.25,36.10,39.00,41.81,52.00,true
+Position+Archetype,ATH,Triple-Threat,KickAccuracy,120,1.00,3.00,7.75,10.00,17.00,20.00,22.00,24.00,29.00,true
+Position+Archetype,ATH,Triple-Threat,KickPower,120,1.00,3.00,7.00,11.00,16.00,22.00,24.10,27.81,28.00,true
+Position+Archetype,ATH,Triple-Threat,PuntAccuracy,120,1.00,1.00,5.00,9.50,12.00,16.00,17.10,24.43,26.00,true
+Position+Archetype,ATH,Triple-Threat,PuntPower,120,0.00,1.00,6.00,9.50,13.00,17.10,20.00,24.81,28.00,true
+Position+Archetype,FS,Zone Coverage,Speed,362,30.00,35.00,39.00,45.00,50.00,56.00,59.95,65.00,80.00,true
+Position+Archetype,FS,Zone Coverage,Agility,362,19.00,25.00,29.00,34.00,40.00,45.00,47.95,55.00,59.00,true
+Position+Archetype,FS,Zone Coverage,FootballIQ,362,12.00,16.00,20.00,26.00,32.00,37.00,41.00,47.00,57.00,true
+Position+Archetype,FS,Zone Coverage,Strength,362,1.00,6.10,9.00,12.00,15.00,20.00,21.00,26.39,31.00,true
+Position+Archetype,FS,Zone Coverage,Carrying,362,0.00,4.00,7.00,11.00,15.00,19.00,21.00,24.39,31.00,true
+Position+Archetype,FS,Zone Coverage,Catching,362,2.00,7.00,10.00,12.00,15.00,17.00,19.00,22.00,27.00,true
+Position+Archetype,FS,Zone Coverage,RouteRunning,362,0.00,1.00,3.00,6.00,8.00,9.00,11.00,14.39,15.00,true
+Position+Archetype,FS,Zone Coverage,ZoneCoverage,362,28.00,35.00,38.00,43.00,49.00,54.00,58.95,64.39,74.00,true
+Position+Archetype,FS,Zone Coverage,ManCoverage,362,13.00,19.00,22.00,28.00,32.00,38.00,42.00,48.39,54.00,true
+Position+Archetype,FS,Zone Coverage,Tackle,362,6.00,11.00,13.00,18.00,24.00,29.00,32.95,37.39,46.00,true
+Position+Archetype,FS,Zone Coverage,PassBlock,362,0.00,2.00,4.00,6.50,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,FS,Zone Coverage,RunBlock,362,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,FS,Zone Coverage,PassRush,362,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,FS,Zone Coverage,RunDefense,362,5.00,10.00,13.25,18.00,24.00,29.00,32.95,40.00,48.00,true
+Position+Archetype,FS,Zone Coverage,ThrowPower,362,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,FS,Zone Coverage,ThrowAccuracy,362,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,FS,Zone Coverage,KickAccuracy,362,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,FS,Zone Coverage,KickPower,362,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,18.00,true
+Position+Archetype,FS,Zone Coverage,PuntAccuracy,362,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.39,16.00,true
+Position+Archetype,FS,Zone Coverage,PuntPower,362,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,FB,Balanced,Speed,156,22.00,25.00,27.00,32.00,37.00,44.50,48.25,50.45,53.00,true
+Position+Archetype,FB,Balanced,Agility,156,10.00,12.50,16.75,21.00,29.00,33.00,35.25,39.45,41.00,true
+Position+Archetype,FB,Balanced,FootballIQ,156,7.00,10.00,12.00,17.00,23.00,28.00,30.25,33.45,40.00,true
+Position+Archetype,FB,Balanced,Strength,156,25.00,27.00,31.00,36.00,44.00,48.00,51.25,57.00,59.00,true
+Position+Archetype,FB,Balanced,Carrying,156,5.00,7.00,10.00,14.50,21.00,25.00,28.25,34.00,34.00,true
+Position+Archetype,FB,Balanced,Catching,156,7.00,9.00,12.00,17.00,23.00,30.00,32.00,34.45,37.00,true
+Position+Archetype,FB,Balanced,RouteRunning,156,0.00,1.50,3.00,6.00,8.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,FB,Balanced,ZoneCoverage,156,1.00,3.00,6.00,9.00,14.00,19.00,20.25,24.00,25.00,true
+Position+Archetype,FB,Balanced,ManCoverage,156,1.00,4.00,7.00,10.00,15.00,19.00,20.25,25.00,26.00,true
+Position+Archetype,FB,Balanced,Tackle,156,1.00,2.00,6.00,9.00,15.00,22.00,23.00,26.45,28.00,true
+Position+Archetype,FB,Balanced,PassBlock,156,22.00,25.00,28.00,33.00,41.00,46.00,50.00,54.45,58.00,true
+Position+Archetype,FB,Balanced,RunBlock,156,22.00,24.50,27.00,34.00,41.25,46.00,49.25,53.45,55.00,true
+Position+Archetype,FB,Balanced,PassRush,156,1.00,2.00,4.00,8.00,11.00,15.00,18.25,20.45,25.00,true
+Position+Archetype,FB,Balanced,RunDefense,156,1.00,2.00,4.00,8.00,12.25,19.00,22.25,27.35,30.00,true
+Position+Archetype,FB,Balanced,ThrowPower,156,1.00,4.00,7.00,10.00,15.00,19.00,20.00,23.90,27.00,true
+Position+Archetype,FB,Balanced,ThrowAccuracy,156,1.00,3.00,6.00,10.00,14.00,20.00,22.00,25.00,25.00,true
+Position+Archetype,FB,Balanced,KickAccuracy,156,1.00,2.00,4.00,6.00,8.00,10.00,10.00,13.00,14.00,true
+Position+Archetype,FB,Balanced,KickPower,156,1.00,2.00,3.75,6.00,9.00,11.00,11.00,16.00,16.00,true
+Position+Archetype,FB,Balanced,PuntAccuracy,156,1.00,2.00,4.00,6.00,9.00,10.00,11.00,13.80,16.00,true
+Position+Archetype,FB,Balanced,PuntPower,156,1.00,2.00,4.00,6.00,9.00,10.00,12.25,15.00,15.00,true
+Position+Archetype,WR,Possession,Speed,812,30.00,36.00,41.00,45.00,51.00,56.00,59.00,64.00,70.00,true
+Position+Archetype,WR,Possession,Agility,812,13.00,20.00,24.00,29.00,34.00,39.00,42.00,47.89,61.00,true
+Position+Archetype,WR,Possession,FootballIQ,812,5.00,11.00,15.00,20.00,25.00,30.00,33.00,38.00,48.00,true
+Position+Archetype,WR,Possession,Strength,812,4.00,10.00,14.00,18.00,24.00,29.00,32.00,37.00,49.00,true
+Position+Archetype,WR,Possession,Carrying,812,1.00,10.00,13.00,19.00,24.00,29.00,32.00,36.00,44.00,true
+Position+Archetype,WR,Possession,Catching,812,25.00,31.00,35.00,40.00,46.00,50.00,54.00,59.89,70.00,true
+Position+Archetype,WR,Possession,RouteRunning,812,8.00,16.00,19.00,24.00,29.00,33.00,35.00,39.89,47.00,true
+Position+Archetype,WR,Possession,ZoneCoverage,812,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,WR,Possession,ManCoverage,812,0.00,4.00,7.00,11.50,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,WR,Possession,Tackle,812,0.00,2.00,5.00,8.00,11.00,15.90,18.00,24.89,28.00,true
+Position+Archetype,WR,Possession,PassBlock,812,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,WR,Possession,RunBlock,812,4.00,7.00,9.00,11.00,14.00,16.90,18.00,21.00,25.00,true
+Position+Archetype,WR,Possession,PassRush,812,0.00,2.00,3.00,6.00,9.00,10.00,12.00,14.00,16.00,true
+Position+Archetype,WR,Possession,RunDefense,812,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,WR,Possession,ThrowPower,812,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,WR,Possession,ThrowAccuracy,812,0.00,4.00,7.00,11.00,16.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,WR,Possession,KickAccuracy,812,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,WR,Possession,KickPower,812,0.00,2.00,3.00,6.00,9.00,10.00,11.45,14.00,16.00,true
+Position+Archetype,WR,Possession,PuntAccuracy,812,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.89,16.00,true
+Position+Archetype,WR,Possession,PuntPower,812,0.00,2.00,3.00,6.00,8.00,10.90,11.00,14.00,17.00,true
+Position+Archetype,ILB,Coverage,Speed,383,25.00,30.00,33.50,38.00,44.00,49.00,53.90,57.00,62.00,true
+Position+Archetype,ILB,Coverage,Agility,383,13.00,20.00,23.50,28.00,33.00,39.00,43.00,48.36,54.00,true
+Position+Archetype,ILB,Coverage,FootballIQ,383,6.00,11.00,14.00,18.00,24.00,29.00,32.00,39.00,43.00,true
+Position+Archetype,ILB,Coverage,Strength,383,15.00,20.00,23.00,28.00,34.00,38.80,42.00,47.00,56.00,true
+Position+Archetype,ILB,Coverage,Carrying,383,0.00,4.00,7.00,10.00,14.00,18.00,19.90,24.18,29.00,true
+Position+Archetype,ILB,Coverage,Catching,383,1.00,5.00,8.00,12.00,18.00,23.00,27.90,30.00,31.00,true
+Position+Archetype,ILB,Coverage,RouteRunning,383,0.00,1.00,3.00,6.00,8.00,9.00,10.00,13.00,16.00,true
+Position+Archetype,ILB,Coverage,ZoneCoverage,383,19.00,25.00,28.00,33.00,39.00,45.00,47.00,52.18,57.00,true
+Position+Archetype,ILB,Coverage,ManCoverage,383,19.00,25.00,28.00,33.00,39.00,44.00,48.00,54.18,60.00,true
+Position+Archetype,ILB,Coverage,Tackle,383,20.00,25.00,29.00,33.00,38.00,44.00,47.00,55.00,61.00,true
+Position+Archetype,ILB,Coverage,PassBlock,383,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.36,17.00,true
+Position+Archetype,ILB,Coverage,RunBlock,383,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,ILB,Coverage,PassRush,383,5.00,8.00,11.00,14.00,18.00,22.00,24.00,29.18,35.00,true
+Position+Archetype,ILB,Coverage,RunDefense,383,15.00,19.20,23.00,28.00,33.00,38.80,42.00,48.00,52.00,true
+Position+Archetype,ILB,Coverage,ThrowPower,383,1.00,3.00,6.00,10.00,14.00,17.80,20.00,23.00,27.00,true
+Position+Archetype,ILB,Coverage,ThrowAccuracy,383,1.00,4.00,6.00,10.00,14.00,18.00,20.00,23.54,30.00,true
+Position+Archetype,ILB,Coverage,KickAccuracy,383,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,ILB,Coverage,KickPower,383,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,ILB,Coverage,PuntAccuracy,383,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,ILB,Coverage,PuntPower,383,0.00,2.00,3.00,6.00,8.00,10.00,10.90,14.18,16.00,true
+Position+Archetype,K,Balanced,Speed,204,1.00,3.00,5.75,9.00,13.00,16.00,19.85,21.97,24.00,true
+Position+Archetype,K,Balanced,Agility,204,1.00,3.00,6.00,10.00,14.25,19.00,22.00,25.00,27.00,true
+Position+Archetype,K,Balanced,FootballIQ,204,5.00,8.00,10.00,13.00,18.00,21.00,23.00,26.94,28.00,true
+Position+Archetype,K,Balanced,Strength,204,0.00,1.00,3.00,6.00,8.00,10.00,11.00,12.97,15.00,true
+Position+Archetype,K,Balanced,Carrying,204,0.00,3.00,6.00,9.00,12.25,17.00,19.85,22.94,25.00,true
+Position+Archetype,K,Balanced,Catching,204,1.00,3.00,6.00,10.00,15.00,20.00,22.00,25.00,26.00,true
+Position+Archetype,K,Balanced,RouteRunning,204,0.00,1.00,3.00,6.00,8.00,9.00,10.00,12.94,14.00,true
+Position+Archetype,K,Balanced,ZoneCoverage,204,1.00,3.00,5.00,9.00,13.00,17.00,19.00,21.00,24.00,true
+Position+Archetype,K,Balanced,ManCoverage,204,1.00,3.00,6.00,9.00,13.00,17.00,18.00,21.97,25.00,true
+Position+Archetype,K,Balanced,Tackle,204,0.00,2.00,3.00,6.00,9.00,10.00,10.00,13.97,15.00,true
+Position+Archetype,K,Balanced,PassBlock,204,0.00,2.00,3.00,6.00,8.00,10.00,10.00,12.00,14.00,true
+Position+Archetype,K,Balanced,RunBlock,204,0.00,2.00,3.75,6.00,9.00,10.00,11.00,11.00,14.00,true
+Position+Archetype,K,Balanced,PassRush,204,0.00,2.00,3.00,6.50,9.00,10.00,10.00,11.00,16.00,true
+Position+Archetype,K,Balanced,RunDefense,204,0.00,2.00,3.00,6.00,8.00,10.00,10.00,12.00,15.00,true
+Position+Archetype,K,Balanced,ThrowPower,204,1.00,2.00,5.00,9.00,13.00,18.00,19.00,21.00,25.00,true
+Position+Archetype,K,Balanced,ThrowAccuracy,204,1.00,3.00,6.00,9.00,13.00,17.00,19.85,23.00,25.00,true
+Position+Archetype,K,Balanced,KickAccuracy,204,14.00,18.00,21.00,24.00,30.00,35.00,37.00,40.97,43.00,true
+Position+Archetype,K,Balanced,KickPower,204,15.00,19.00,21.00,26.00,31.00,35.70,37.00,42.94,46.00,true
+Position+Archetype,K,Balanced,PuntAccuracy,204,1.00,3.00,5.75,9.00,13.00,17.00,19.00,22.94,24.00,true
+Position+Archetype,K,Balanced,PuntPower,204,1.00,3.00,6.00,8.00,13.00,17.00,18.85,22.00,25.00,true
+Position+Archetype,WR,Speed,Speed,680,45.00,50.90,55.00,60.00,66.00,72.00,76.00,86.21,95.00,true
+Position+Archetype,WR,Speed,Agility,680,15.00,19.00,23.00,28.00,34.00,40.00,43.00,51.00,59.00,true
+Position+Archetype,WR,Speed,FootballIQ,680,6.00,11.00,14.00,19.00,24.00,29.00,33.00,39.21,56.00,true
+Position+Archetype,WR,Speed,Strength,680,1.00,4.00,8.00,12.00,17.00,23.00,26.05,35.42,39.00,true
+Position+Archetype,WR,Speed,Carrying,680,3.00,10.00,13.00,18.00,23.00,29.00,32.00,39.21,50.00,true
+Position+Archetype,WR,Speed,Catching,680,15.00,19.90,23.75,28.00,34.00,40.00,43.00,50.21,65.00,true
+Position+Archetype,WR,Speed,RouteRunning,680,8.00,14.00,18.00,23.00,28.00,32.00,35.05,40.21,46.00,true
+Position+Archetype,WR,Speed,ZoneCoverage,680,1.00,4.00,7.00,11.00,15.00,19.00,22.00,26.21,30.00,true
+Position+Archetype,WR,Speed,ManCoverage,680,1.00,4.00,7.00,11.00,15.00,20.00,22.00,26.00,31.00,true
+Position+Archetype,WR,Speed,Tackle,680,0.00,2.00,5.00,8.00,12.00,16.00,19.00,24.21,28.00,true
+Position+Archetype,WR,Speed,PassBlock,680,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,WR,Speed,RunBlock,680,3.00,7.00,9.00,11.00,14.00,17.00,18.00,21.00,26.00,true
+Position+Archetype,WR,Speed,PassRush,680,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,WR,Speed,RunDefense,680,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,WR,Speed,ThrowPower,680,1.00,4.00,7.00,11.00,15.00,19.00,21.00,27.00,30.00,true
+Position+Archetype,WR,Speed,ThrowAccuracy,680,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,WR,Speed,KickAccuracy,680,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,WR,Speed,KickPower,680,0.00,2.00,3.75,6.00,8.25,10.00,11.00,14.21,16.00,true
+Position+Archetype,WR,Speed,PuntAccuracy,680,0.00,2.00,3.75,6.00,9.00,10.00,11.00,15.00,18.00,true
+Position+Archetype,WR,Speed,PuntPower,680,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,RB,Receiving,Speed,578,38.00,45.00,48.00,54.00,59.00,66.00,68.00,73.00,78.00,true
+Position+Archetype,RB,Receiving,Agility,578,18.00,25.00,29.00,33.00,39.00,45.00,48.00,54.00,56.00,true
+Position+Archetype,RB,Receiving,FootballIQ,578,5.00,10.70,14.00,19.00,24.00,29.00,32.15,36.23,44.00,true
+Position+Archetype,RB,Receiving,Strength,578,2.00,7.00,11.00,15.00,20.00,26.00,28.15,34.00,43.00,true
+Position+Archetype,RB,Receiving,Carrying,578,2.00,9.00,12.00,17.00,23.00,28.00,31.00,36.00,42.00,true
+Position+Archetype,RB,Receiving,Catching,578,15.00,22.00,25.00,30.00,36.00,42.00,46.00,50.00,55.00,true
+Position+Archetype,RB,Receiving,RouteRunning,578,14.00,18.00,21.00,25.00,30.00,33.00,35.00,40.00,42.00,true
+Position+Archetype,RB,Receiving,ZoneCoverage,578,0.00,4.00,7.00,10.00,15.00,19.00,20.15,25.23,27.00,true
+Position+Archetype,RB,Receiving,ManCoverage,578,1.00,4.00,7.00,11.00,15.00,19.00,20.00,24.23,29.00,true
+Position+Archetype,RB,Receiving,Tackle,578,1.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,27.00,true
+Position+Archetype,RB,Receiving,PassBlock,578,1.00,2.00,5.00,10.00,22.00,27.00,29.00,34.00,36.00,true
+Position+Archetype,RB,Receiving,RunBlock,578,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,RB,Receiving,PassRush,578,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,RB,Receiving,RunDefense,578,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,RB,Receiving,ThrowPower,578,0.00,3.00,6.25,10.50,15.00,18.00,20.00,24.00,26.00,true
+Position+Archetype,RB,Receiving,ThrowAccuracy,578,0.00,4.00,7.00,11.00,15.00,19.00,20.00,24.00,26.00,true
+Position+Archetype,RB,Receiving,KickAccuracy,578,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.23,16.00,true
+Position+Archetype,RB,Receiving,KickPower,578,0.00,2.00,3.25,6.00,9.00,10.00,11.00,14.23,16.00,true
+Position+Archetype,RB,Receiving,PuntAccuracy,578,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.23,17.00,true
+Position+Archetype,RB,Receiving,PuntPower,578,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OLB,Coverage,Speed,443,20.00,25.00,29.00,36.00,44.00,50.00,54.00,60.16,68.00,true
+Position+Archetype,OLB,Coverage,Agility,443,13.00,20.00,24.00,29.00,34.00,39.00,43.90,49.00,56.00,true
+Position+Archetype,OLB,Coverage,FootballIQ,443,6.00,11.00,14.00,19.00,24.00,29.00,33.00,37.00,50.00,true
+Position+Archetype,OLB,Coverage,Strength,443,14.00,19.00,23.00,29.00,34.00,39.00,43.90,50.16,61.00,true
+Position+Archetype,OLB,Coverage,Carrying,443,0.00,3.00,6.00,10.00,14.00,19.00,21.00,24.00,30.00,true
+Position+Archetype,OLB,Coverage,Catching,443,1.00,5.00,8.00,13.00,18.00,22.00,24.00,27.58,30.00,true
+Position+Archetype,OLB,Coverage,RouteRunning,443,0.00,1.00,3.00,5.00,8.00,9.00,10.00,14.00,15.00,true
+Position+Archetype,OLB,Coverage,ZoneCoverage,443,20.00,25.00,28.00,34.00,40.00,46.00,49.00,54.58,64.00,true
+Position+Archetype,OLB,Coverage,ManCoverage,443,18.00,25.00,28.00,33.00,40.00,45.80,49.90,55.58,65.00,true
+Position+Archetype,OLB,Coverage,Tackle,443,20.00,25.00,28.50,34.00,40.00,45.00,49.00,53.00,63.00,true
+Position+Archetype,OLB,Coverage,PassBlock,443,0.00,1.00,3.00,6.00,9.00,10.00,11.00,13.58,16.00,true
+Position+Archetype,OLB,Coverage,RunBlock,443,0.00,2.00,4.00,6.00,8.00,10.00,11.00,14.58,16.00,true
+Position+Archetype,OLB,Coverage,PassRush,443,7.00,10.20,14.00,19.00,24.00,29.00,32.90,37.32,47.00,true
+Position+Archetype,OLB,Coverage,RunDefense,443,15.00,19.00,23.00,29.00,34.00,40.00,43.00,49.16,56.00,true
+Position+Archetype,OLB,Coverage,ThrowPower,443,0.00,3.00,6.00,10.00,15.00,18.00,21.00,25.58,27.00,true
+Position+Archetype,OLB,Coverage,ThrowAccuracy,443,0.00,3.20,6.00,10.00,15.00,19.00,21.00,25.00,26.00,true
+Position+Archetype,OLB,Coverage,KickAccuracy,443,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.58,16.00,true
+Position+Archetype,OLB,Coverage,KickPower,443,0.00,2.00,3.50,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,OLB,Coverage,PuntAccuracy,443,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OLB,Coverage,PuntPower,443,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.00,15.00,true
+Position+Archetype,P,Balanced,Speed,181,1.00,3.00,6.00,9.00,13.00,18.00,20.00,23.20,25.00,true
+Position+Archetype,P,Balanced,Agility,181,1.00,4.00,6.00,10.00,16.00,21.00,23.00,29.20,31.00,true
+Position+Archetype,P,Balanced,FootballIQ,181,7.00,8.00,11.00,13.00,18.00,23.00,25.00,28.00,29.00,true
+Position+Archetype,P,Balanced,Strength,181,1.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,P,Balanced,Carrying,181,1.00,3.00,6.00,9.00,15.00,19.00,20.00,22.60,25.00,true
+Position+Archetype,P,Balanced,Catching,181,1.00,3.00,7.00,11.00,16.00,21.00,24.00,30.00,30.00,true
+Position+Archetype,P,Balanced,RouteRunning,181,0.00,1.00,3.00,6.00,9.00,10.00,10.00,13.00,15.00,true
+Position+Archetype,P,Balanced,ZoneCoverage,181,1.00,3.00,6.00,10.00,14.00,19.00,20.00,23.20,26.00,true
+Position+Archetype,P,Balanced,ManCoverage,181,1.00,4.00,6.00,10.00,13.00,18.00,20.00,23.20,25.00,true
+Position+Archetype,P,Balanced,Tackle,181,0.00,2.00,4.00,6.00,8.00,10.00,12.00,14.20,15.00,true
+Position+Archetype,P,Balanced,PassBlock,181,0.00,2.00,4.00,6.00,8.00,10.00,11.00,13.20,14.00,true
+Position+Archetype,P,Balanced,RunBlock,181,1.00,2.00,4.00,6.00,9.00,10.00,11.00,15.20,16.00,true
+Position+Archetype,P,Balanced,PassRush,181,0.00,2.00,4.00,7.00,9.00,10.00,11.00,13.20,16.00,true
+Position+Archetype,P,Balanced,RunDefense,181,1.00,2.00,3.00,6.00,8.00,10.00,11.00,15.20,17.00,true
+Position+Archetype,P,Balanced,ThrowPower,181,1.00,3.00,6.00,9.00,15.00,17.00,19.00,24.00,25.00,true
+Position+Archetype,P,Balanced,ThrowAccuracy,181,1.00,3.00,6.00,10.00,14.00,19.00,21.00,24.00,25.00,true
+Position+Archetype,P,Balanced,KickAccuracy,181,1.00,4.00,6.00,9.00,15.00,19.00,21.00,23.00,25.00,true
+Position+Archetype,P,Balanced,KickPower,181,1.00,3.00,6.00,9.00,14.00,19.00,21.00,25.00,25.00,true
+Position+Archetype,P,Balanced,PuntAccuracy,181,14.00,17.00,21.00,26.00,32.00,37.00,39.00,43.20,47.00,true
+Position+Archetype,P,Balanced,PuntPower,181,13.00,18.00,22.00,26.00,32.00,38.00,41.00,46.20,49.00,true
+Position+Archetype,OLB,Speed,Speed,480,33.00,41.00,46.00,53.00,60.00,66.00,68.00,75.00,84.00,true
+Position+Archetype,OLB,Speed,Agility,480,15.00,20.00,23.00,29.00,34.00,40.00,42.00,47.21,54.00,true
+Position+Archetype,OLB,Speed,FootballIQ,480,6.00,11.00,14.00,19.00,25.00,29.00,32.00,36.21,41.00,true
+Position+Archetype,OLB,Speed,Strength,480,15.00,20.00,23.00,28.00,34.00,40.00,43.00,46.21,56.00,true
+Position+Archetype,OLB,Speed,Carrying,480,1.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,OLB,Speed,Catching,480,1.00,3.00,7.00,11.00,15.00,19.00,21.00,25.21,30.00,true
+Position+Archetype,OLB,Speed,RouteRunning,480,0.00,1.00,3.00,6.00,9.00,10.00,10.05,14.00,15.00,true
+Position+Archetype,OLB,Speed,ZoneCoverage,480,15.00,20.00,23.00,28.00,34.00,39.00,42.00,48.00,60.00,true
+Position+Archetype,OLB,Speed,ManCoverage,480,14.00,19.00,23.00,28.00,34.00,39.00,42.00,49.00,53.00,true
+Position+Archetype,OLB,Speed,Tackle,480,20.00,25.00,28.75,33.00,39.00,45.00,48.00,52.21,56.00,true
+Position+Archetype,OLB,Speed,PassBlock,480,0.00,2.00,4.00,6.00,8.00,10.00,11.00,13.21,15.00,true
+Position+Archetype,OLB,Speed,RunBlock,480,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,OLB,Speed,PassRush,480,4.00,7.00,11.00,14.00,18.00,23.00,25.05,30.00,41.00,true
+Position+Archetype,OLB,Speed,RunDefense,480,15.00,20.00,23.00,28.00,34.00,39.00,42.00,47.21,51.00,true
+Position+Archetype,OLB,Speed,ThrowPower,480,0.00,4.00,7.00,10.00,15.00,19.00,20.00,26.00,32.00,true
+Position+Archetype,OLB,Speed,ThrowAccuracy,480,1.00,4.00,7.00,11.00,15.00,19.00,21.00,25.21,31.00,true
+Position+Archetype,OLB,Speed,KickAccuracy,480,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OLB,Speed,KickPower,480,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.21,15.00,true
+Position+Archetype,OLB,Speed,PuntAccuracy,480,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.21,16.00,true
+Position+Archetype,OLB,Speed,PuntPower,480,0.00,2.00,3.00,5.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,ATH,Return Specialist,Speed,120,30.00,34.00,38.00,44.00,49.25,55.00,58.00,61.62,63.00,true
+Position+Archetype,ATH,Return Specialist,Agility,120,15.00,18.00,22.00,26.00,31.00,35.00,37.05,42.62,44.00,true
+Position+Archetype,ATH,Return Specialist,FootballIQ,120,6.00,9.90,12.75,17.00,21.00,26.00,28.00,32.81,33.00,true
+Position+Archetype,ATH,Return Specialist,Strength,120,1.00,3.00,6.00,10.50,17.00,20.00,23.00,23.81,29.00,true
+Position+Archetype,ATH,Return Specialist,Carrying,120,5.00,13.00,16.00,22.00,25.00,30.00,31.05,34.00,42.00,true
+Position+Archetype,ATH,Return Specialist,Catching,120,5.00,8.90,12.00,17.00,23.00,27.00,32.00,35.00,46.00,true
+Position+Archetype,ATH,Return Specialist,RouteRunning,120,3.00,7.90,10.00,14.00,19.00,23.00,25.00,28.00,31.00,true
+Position+Archetype,ATH,Return Specialist,ZoneCoverage,120,2.00,8.00,11.75,19.00,24.00,29.00,31.00,34.81,35.00,true
+Position+Archetype,ATH,Return Specialist,ManCoverage,120,4.00,8.90,11.75,16.50,21.00,25.00,27.05,31.00,39.00,true
+Position+Archetype,ATH,Return Specialist,Tackle,120,1.00,4.00,7.00,11.50,16.00,20.00,23.00,25.00,28.00,true
+Position+Archetype,ATH,Return Specialist,PassBlock,120,0.00,1.00,5.00,7.00,11.00,15.00,15.00,16.00,19.00,true
+Position+Archetype,ATH,Return Specialist,RunBlock,120,0.00,1.00,5.00,7.00,11.00,14.00,15.00,15.81,20.00,true
+Position+Archetype,ATH,Return Specialist,PassRush,120,1.00,3.00,6.00,8.50,10.25,12.00,15.00,18.00,26.00,true
+Position+Archetype,ATH,Return Specialist,RunDefense,120,0.00,2.00,4.00,7.00,10.00,13.00,15.00,16.81,19.00,true
+Position+Archetype,ATH,Return Specialist,ThrowPower,120,0.00,2.00,6.00,8.00,13.00,15.00,15.00,17.00,28.00,true
+Position+Archetype,ATH,Return Specialist,ThrowAccuracy,120,0.00,4.00,6.00,10.00,13.00,15.00,15.00,21.00,29.00,true
+Position+Archetype,ATH,Return Specialist,KickAccuracy,120,0.00,1.00,5.00,8.00,10.25,14.00,15.00,15.00,19.00,true
+Position+Archetype,ATH,Return Specialist,KickPower,120,0.00,2.90,5.00,8.00,11.00,15.00,15.00,18.00,19.00,true
+Position+Archetype,ATH,Return Specialist,PuntAccuracy,120,0.00,2.00,6.00,9.00,11.25,14.00,15.00,16.00,16.00,true
+Position+Archetype,ATH,Return Specialist,PuntPower,120,1.00,2.90,5.00,8.00,11.00,14.00,15.00,16.81,17.00,true
+Position+Archetype,QB,Scrambler,Speed,551,45.00,52.00,57.00,62.00,69.00,73.00,76.00,81.00,89.00,true
+Position+Archetype,QB,Scrambler,Agility,551,15.00,19.00,22.50,28.00,33.00,38.00,40.00,46.50,54.00,true
+Position+Archetype,QB,Scrambler,FootballIQ,551,10.00,14.00,18.00,23.00,28.00,33.00,35.00,42.00,48.00,true
+Position+Archetype,QB,Scrambler,Strength,551,10.00,15.00,19.00,23.00,29.00,34.00,38.00,43.50,47.00,true
+Position+Archetype,QB,Scrambler,Carrying,551,18.00,22.00,25.00,29.00,33.00,36.00,38.50,42.00,55.00,true
+Position+Archetype,QB,Scrambler,Catching,551,0.00,4.00,7.00,11.00,15.00,19.00,22.00,25.00,34.00,true
+Position+Archetype,QB,Scrambler,RouteRunning,551,0.00,1.00,3.00,5.00,8.00,10.00,10.50,14.50,15.00,true
+Position+Archetype,QB,Scrambler,ZoneCoverage,551,1.00,4.00,7.00,11.00,15.00,20.00,21.00,25.00,27.00,true
+Position+Archetype,QB,Scrambler,ManCoverage,551,1.00,5.00,7.00,11.00,15.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,QB,Scrambler,Tackle,551,1.00,4.00,7.00,11.00,16.00,19.00,20.00,24.00,28.00,true
+Position+Archetype,QB,Scrambler,PassBlock,551,0.00,2.00,4.00,6.00,8.00,10.00,12.00,15.00,20.00,true
+Position+Archetype,QB,Scrambler,RunBlock,551,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,QB,Scrambler,PassRush,551,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,QB,Scrambler,RunDefense,551,0.00,2.00,4.00,6.00,9.00,11.00,12.00,15.00,16.00,true
+Position+Archetype,QB,Scrambler,ThrowPower,551,12.00,18.00,22.00,27.00,33.00,37.00,40.00,46.00,53.00,true
+Position+Archetype,QB,Scrambler,ThrowAccuracy,551,13.00,18.00,22.00,27.00,33.00,37.00,40.00,46.00,51.00,true
+Position+Archetype,QB,Scrambler,KickAccuracy,551,0.00,2.00,4.00,6.00,9.00,11.00,12.00,15.00,17.00,true
+Position+Archetype,QB,Scrambler,KickPower,551,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,QB,Scrambler,PuntAccuracy,551,0.00,2.00,4.00,6.00,9.00,11.00,12.00,14.50,16.00,true
+Position+Archetype,QB,Scrambler,PuntPower,551,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,SS,Man Coverage,Speed,247,35.00,40.00,43.00,49.00,56.00,62.00,64.00,72.16,81.00,true
+Position+Archetype,SS,Man Coverage,Agility,247,15.00,20.00,23.00,28.00,34.00,40.40,42.70,52.54,56.00,true
+Position+Archetype,SS,Man Coverage,FootballIQ,247,7.00,10.00,13.00,18.00,24.00,29.00,33.00,41.08,44.00,true
+Position+Archetype,SS,Man Coverage,Strength,247,4.00,6.00,9.00,12.00,15.50,18.00,22.00,25.62,32.00,true
+Position+Archetype,SS,Man Coverage,Carrying,247,1.00,3.00,6.50,10.00,15.00,19.00,21.00,24.54,28.00,true
+Position+Archetype,SS,Man Coverage,Catching,247,5.00,8.00,10.00,12.00,15.00,18.00,20.00,22.00,25.00,true
+Position+Archetype,SS,Man Coverage,RouteRunning,247,0.00,2.00,4.00,7.00,10.00,14.00,18.00,24.00,25.00,true
+Position+Archetype,SS,Man Coverage,ZoneCoverage,247,15.00,18.00,22.00,26.00,33.00,38.00,42.00,47.62,53.00,true
+Position+Archetype,SS,Man Coverage,ManCoverage,247,30.00,35.00,37.00,42.00,48.00,55.00,58.70,68.54,75.00,true
+Position+Archetype,SS,Man Coverage,Tackle,247,7.00,10.00,13.00,17.00,22.00,29.00,33.00,40.00,47.00,true
+Position+Archetype,SS,Man Coverage,PassBlock,247,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.54,16.00,true
+Position+Archetype,SS,Man Coverage,RunBlock,247,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.54,16.00,true
+Position+Archetype,SS,Man Coverage,PassRush,247,0.00,2.00,4.00,6.00,9.00,10.00,11.70,15.00,15.00,true
+Position+Archetype,SS,Man Coverage,RunDefense,247,10.00,15.00,17.00,23.00,28.00,33.00,39.00,46.62,48.00,true
+Position+Archetype,SS,Man Coverage,ThrowPower,247,1.00,4.00,7.00,10.00,14.00,19.00,22.00,25.00,27.00,true
+Position+Archetype,SS,Man Coverage,ThrowAccuracy,247,0.00,4.00,6.00,10.00,14.00,18.40,20.70,25.00,30.00,true
+Position+Archetype,SS,Man Coverage,KickAccuracy,247,0.00,2.00,4.00,6.00,8.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,SS,Man Coverage,KickPower,247,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.00,17.00,true
+Position+Archetype,SS,Man Coverage,PuntAccuracy,247,1.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,SS,Man Coverage,PuntPower,247,0.00,1.60,3.00,5.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,SS,Ball Hawk,Speed,240,27.00,34.00,37.00,42.50,48.00,54.00,57.00,61.61,66.00,true
+Position+Archetype,SS,Ball Hawk,Agility,240,15.00,19.00,22.00,26.00,33.00,37.10,41.00,47.61,52.00,true
+Position+Archetype,SS,Ball Hawk,FootballIQ,240,5.00,9.90,13.00,17.00,22.00,27.00,30.00,33.61,40.00,true
+Position+Archetype,SS,Ball Hawk,Strength,240,3.00,6.00,8.00,11.00,14.00,18.00,20.00,23.61,28.00,true
+Position+Archetype,SS,Ball Hawk,Carrying,240,1.00,3.00,6.00,9.50,14.00,18.00,19.05,21.00,25.00,true
+Position+Archetype,SS,Ball Hawk,Catching,240,11.00,19.00,22.75,27.00,32.00,37.00,41.00,48.00,52.00,true
+Position+Archetype,SS,Ball Hawk,RouteRunning,240,0.00,1.00,3.00,5.00,8.00,10.00,10.00,11.00,13.00,true
+Position+Archetype,SS,Ball Hawk,ZoneCoverage,240,20.00,24.00,27.00,31.00,36.00,41.00,43.00,50.05,55.00,true
+Position+Archetype,SS,Ball Hawk,ManCoverage,240,15.00,23.00,27.00,31.00,36.00,41.00,43.05,51.00,55.00,true
+Position+Archetype,SS,Ball Hawk,Tackle,240,5.00,10.00,12.00,15.00,21.00,25.00,28.05,35.00,42.00,true
+Position+Archetype,SS,Ball Hawk,PassBlock,240,0.00,1.00,3.00,6.00,8.00,10.00,10.00,11.00,15.00,true
+Position+Archetype,SS,Ball Hawk,RunBlock,240,0.00,2.00,3.00,6.00,8.00,10.00,11.00,11.61,16.00,true
+Position+Archetype,SS,Ball Hawk,PassRush,240,1.00,2.00,3.00,5.00,8.00,9.10,10.00,12.00,16.00,true
+Position+Archetype,SS,Ball Hawk,RunDefense,240,7.00,14.00,17.00,21.00,27.00,32.00,35.05,42.00,47.00,true
+Position+Archetype,SS,Ball Hawk,ThrowPower,240,1.00,3.00,6.00,10.00,14.00,17.00,18.05,22.00,25.00,true
+Position+Archetype,SS,Ball Hawk,ThrowAccuracy,240,0.00,3.00,6.00,10.00,14.00,17.10,20.00,22.61,26.00,true
+Position+Archetype,SS,Ball Hawk,KickAccuracy,240,0.00,2.00,3.00,5.00,8.00,10.00,10.00,13.61,16.00,true
+Position+Archetype,SS,Ball Hawk,KickPower,240,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.22,16.00,true
+Position+Archetype,SS,Ball Hawk,PuntAccuracy,240,1.00,2.00,3.00,6.00,8.25,10.00,10.05,12.00,15.00,true
+Position+Archetype,SS,Ball Hawk,PuntPower,240,0.00,2.00,4.00,6.00,8.00,10.00,11.00,12.00,13.00,true
+Position+Archetype,DT,Balanced,Speed,653,10.00,17.00,20.00,24.00,28.00,32.00,34.00,39.00,45.00,true
+Position+Archetype,DT,Balanced,Agility,653,10.00,14.00,18.00,22.00,28.00,34.00,37.00,43.48,49.00,true
+Position+Archetype,DT,Balanced,FootballIQ,653,1.00,10.00,13.00,18.00,24.00,29.00,32.40,38.48,43.00,true
+Position+Archetype,DT,Balanced,Strength,653,20.00,25.00,28.00,34.00,39.00,45.00,49.00,56.00,60.00,true
+Position+Archetype,DT,Balanced,Carrying,653,0.00,3.00,6.00,10.00,15.00,19.00,21.00,24.00,27.00,true
+Position+Archetype,DT,Balanced,Catching,653,1.00,5.00,8.00,13.00,18.00,22.00,24.00,30.00,34.00,true
+Position+Archetype,DT,Balanced,RouteRunning,653,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,15.00,true
+Position+Archetype,DT,Balanced,ZoneCoverage,653,0.00,3.00,6.00,10.00,14.00,19.00,21.00,25.48,30.00,true
+Position+Archetype,DT,Balanced,ManCoverage,653,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,DT,Balanced,Tackle,653,19.00,25.00,28.00,33.00,39.00,44.00,48.40,55.00,65.00,true
+Position+Archetype,DT,Balanced,PassBlock,653,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.48,16.00,true
+Position+Archetype,DT,Balanced,RunBlock,653,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,DT,Balanced,PassRush,653,10.00,15.00,18.00,23.00,29.00,33.00,37.00,43.00,50.00,true
+Position+Archetype,DT,Balanced,RunDefense,653,15.00,19.00,23.00,28.00,34.00,38.00,43.00,49.00,54.00,true
+Position+Archetype,DT,Balanced,ThrowPower,653,1.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,DT,Balanced,ThrowAccuracy,653,0.00,3.00,7.00,10.00,15.00,19.00,21.00,26.48,30.00,true
+Position+Archetype,DT,Balanced,KickAccuracy,653,0.00,2.00,4.00,6.00,9.00,10.00,12.00,14.00,16.00,true
+Position+Archetype,DT,Balanced,KickPower,653,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,DT,Balanced,PuntAccuracy,653,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,DT,Balanced,PuntPower,653,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,K,Power,Speed,255,1.00,3.00,6.00,10.00,15.50,19.00,22.00,24.46,28.00,true
+Position+Archetype,K,Power,Agility,255,1.00,4.00,7.00,10.00,15.00,19.00,20.00,26.00,29.00,true
+Position+Archetype,K,Power,FootballIQ,255,6.00,9.00,12.00,15.00,20.00,23.00,26.00,28.46,30.00,true
+Position+Archetype,K,Power,Strength,255,0.00,2.00,3.00,6.00,9.00,10.60,12.00,14.46,16.00,true
+Position+Archetype,K,Power,Carrying,255,0.00,3.00,6.00,10.00,14.50,19.60,22.00,25.00,30.00,true
+Position+Archetype,K,Power,Catching,255,0.00,4.00,7.00,10.00,14.00,18.60,21.00,24.00,26.00,true
+Position+Archetype,K,Power,RouteRunning,255,0.00,1.00,3.00,6.00,8.00,10.00,10.00,12.00,15.00,true
+Position+Archetype,K,Power,ZoneCoverage,255,1.00,4.00,6.50,10.00,15.00,19.00,21.00,23.46,25.00,true
+Position+Archetype,K,Power,ManCoverage,255,0.00,3.00,6.00,10.00,15.00,19.00,21.00,25.00,26.00,true
+Position+Archetype,K,Power,Tackle,255,0.00,2.00,4.00,6.00,8.00,10.00,11.00,13.46,15.00,true
+Position+Archetype,K,Power,PassBlock,255,0.00,2.00,3.00,6.00,8.00,10.00,11.30,14.00,15.00,true
+Position+Archetype,K,Power,RunBlock,255,0.00,2.00,4.00,6.00,8.00,10.00,11.00,13.46,15.00,true
+Position+Archetype,K,Power,PassRush,255,0.00,2.00,4.00,7.00,9.00,10.00,11.00,15.46,16.00,true
+Position+Archetype,K,Power,RunDefense,255,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.46,16.00,true
+Position+Archetype,K,Power,ThrowPower,255,1.00,3.00,6.00,10.00,15.00,19.00,21.00,25.00,26.00,true
+Position+Archetype,K,Power,ThrowAccuracy,255,1.00,3.00,6.00,10.00,14.00,19.00,21.00,24.00,27.00,true
+Position+Archetype,K,Power,KickAccuracy,255,6.00,9.40,13.00,17.00,22.50,27.00,31.00,35.46,40.00,true
+Position+Archetype,K,Power,KickPower,255,20.00,25.00,29.50,36.00,43.00,48.00,52.30,56.46,60.00,true
+Position+Archetype,K,Power,PuntAccuracy,255,0.00,3.00,6.00,10.00,15.00,19.00,21.00,24.46,30.00,true
+Position+Archetype,K,Power,PuntPower,255,1.00,4.00,6.00,10.00,14.00,19.00,21.00,24.46,28.00,true
+Position+Archetype,WR,Possesion,Speed,1,49.00,49.00,49.00,49.00,49.00,49.00,49.00,49.00,49.00,false
+Position+Archetype,WR,Possesion,Agility,1,36.00,36.00,36.00,36.00,36.00,36.00,36.00,36.00,36.00,false
+Position+Archetype,WR,Possesion,FootballIQ,1,28.00,28.00,28.00,28.00,28.00,28.00,28.00,28.00,28.00,false
+Position+Archetype,WR,Possesion,Strength,1,27.00,27.00,27.00,27.00,27.00,27.00,27.00,27.00,27.00,false
+Position+Archetype,WR,Possesion,Carrying,1,19.00,19.00,19.00,19.00,19.00,19.00,19.00,19.00,19.00,false
+Position+Archetype,WR,Possesion,Catching,1,48.00,48.00,48.00,48.00,48.00,48.00,48.00,48.00,48.00,false
+Position+Archetype,WR,Possesion,RouteRunning,1,26.00,26.00,26.00,26.00,26.00,26.00,26.00,26.00,26.00,false
+Position+Archetype,WR,Possesion,ZoneCoverage,1,11.00,11.00,11.00,11.00,11.00,11.00,11.00,11.00,11.00,false
+Position+Archetype,WR,Possesion,ManCoverage,1,12.00,12.00,12.00,12.00,12.00,12.00,12.00,12.00,12.00,false
+Position+Archetype,WR,Possesion,Tackle,1,9.00,9.00,9.00,9.00,9.00,9.00,9.00,9.00,9.00,false
+Position+Archetype,WR,Possesion,PassBlock,1,8.00,8.00,8.00,8.00,8.00,8.00,8.00,8.00,8.00,false
+Position+Archetype,WR,Possesion,RunBlock,1,9.00,9.00,9.00,9.00,9.00,9.00,9.00,9.00,9.00,false
+Position+Archetype,WR,Possesion,PassRush,1,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,false
+Position+Archetype,WR,Possesion,RunDefense,1,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,false
+Position+Archetype,WR,Possesion,ThrowPower,1,8.00,8.00,8.00,8.00,8.00,8.00,8.00,8.00,8.00,false
+Position+Archetype,WR,Possesion,ThrowAccuracy,1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,false
+Position+Archetype,WR,Possesion,KickAccuracy,1,7.00,7.00,7.00,7.00,7.00,7.00,7.00,7.00,7.00,false
+Position+Archetype,WR,Possesion,KickPower,1,7.00,7.00,7.00,7.00,7.00,7.00,7.00,7.00,7.00,false
+Position+Archetype,WR,Possesion,PuntAccuracy,1,2.00,2.00,2.00,2.00,2.00,2.00,2.00,2.00,2.00,false
+Position+Archetype,WR,Possesion,PuntPower,1,8.00,8.00,8.00,8.00,8.00,8.00,8.00,8.00,8.00,false
+Position+Archetype,ATH,Field General,Speed,135,23.00,28.00,31.00,36.00,40.00,45.60,48.00,54.00,56.00,true
+Position+Archetype,ATH,Field General,Agility,135,15.00,19.00,22.00,26.00,32.00,35.60,40.00,42.66,45.00,true
+Position+Archetype,ATH,Field General,FootballIQ,135,21.00,25.00,28.50,31.00,38.00,41.60,44.60,47.66,49.00,true
+Position+Archetype,ATH,Field General,Strength,135,15.00,19.40,23.00,29.00,36.00,42.00,44.00,47.32,48.00,true
+Position+Archetype,ATH,Field General,Carrying,135,1.00,3.00,6.50,10.00,13.00,17.00,20.30,25.32,27.00,true
+Position+Archetype,ATH,Field General,Catching,135,1.00,9.80,16.00,21.00,25.00,29.60,32.00,33.00,37.00,true
+Position+Archetype,ATH,Field General,RouteRunning,135,0.00,2.00,5.00,8.00,10.00,14.00,16.30,19.00,24.00,true
+Position+Archetype,ATH,Field General,ZoneCoverage,135,3.00,9.00,12.00,17.00,23.00,29.60,33.00,40.00,41.00,true
+Position+Archetype,ATH,Field General,ManCoverage,135,5.00,9.00,13.00,18.00,24.50,30.00,35.30,39.32,42.00,true
+Position+Archetype,ATH,Field General,Tackle,135,10.00,15.00,20.00,24.00,30.00,34.00,36.60,42.30,47.00,true
+Position+Archetype,ATH,Field General,PassBlock,135,0.00,2.00,5.00,8.00,11.00,15.00,17.00,19.00,26.00,true
+Position+Archetype,ATH,Field General,RunBlock,135,0.00,2.00,5.00,8.00,12.00,14.60,16.30,20.00,22.00,true
+Position+Archetype,ATH,Field General,PassRush,135,0.00,3.00,8.00,10.00,12.00,14.00,15.00,20.66,24.00,true
+Position+Archetype,ATH,Field General,RunDefense,135,10.00,14.40,19.00,25.00,31.00,35.60,38.00,42.00,43.00,true
+Position+Archetype,ATH,Field General,ThrowPower,135,13.00,17.00,20.00,26.00,30.00,33.60,38.00,40.32,42.00,true
+Position+Archetype,ATH,Field General,ThrowAccuracy,135,13.00,18.00,21.00,26.00,30.50,35.00,37.30,40.66,43.00,true
+Position+Archetype,ATH,Field General,KickAccuracy,135,0.00,2.00,5.00,8.00,10.00,13.00,15.30,22.00,25.00,true
+Position+Archetype,ATH,Field General,KickPower,135,0.00,1.00,4.00,8.00,12.00,15.00,17.30,19.66,24.00,true
+Position+Archetype,ATH,Field General,PuntAccuracy,135,0.00,2.00,4.50,8.00,11.00,15.00,17.00,20.66,26.00,true
+Position+Archetype,ATH,Field General,PuntPower,135,0.00,3.00,5.00,8.00,11.00,15.00,16.60,20.66,22.00,true
+Position+Archetype,ILB,Run Stopper,Speed,388,25.00,30.00,33.00,38.00,44.25,49.00,51.65,57.13,65.00,true
+Position+Archetype,ILB,Run Stopper,Agility,388,10.00,14.00,17.00,22.00,28.00,33.00,35.65,42.00,49.00,true
+Position+Archetype,ILB,Run Stopper,FootballIQ,388,7.00,10.00,13.00,17.50,23.25,29.00,32.00,37.26,46.00,true
+Position+Archetype,ILB,Run Stopper,Strength,388,24.00,29.00,33.00,38.00,43.25,49.00,53.00,62.13,73.00,true
+Position+Archetype,ILB,Run Stopper,Carrying,388,1.00,3.00,6.00,10.00,14.00,18.00,20.00,24.00,30.00,true
+Position+Archetype,ILB,Run Stopper,Catching,388,0.00,3.00,6.00,10.00,14.00,18.00,20.00,22.13,31.00,true
+Position+Archetype,ILB,Run Stopper,RouteRunning,388,0.00,1.00,3.00,5.00,8.00,9.00,10.00,12.00,15.00,true
+Position+Archetype,ILB,Run Stopper,ZoneCoverage,388,10.00,14.00,18.00,22.00,28.25,33.00,37.65,42.13,48.00,true
+Position+Archetype,ILB,Run Stopper,ManCoverage,388,10.00,15.00,18.00,23.00,28.25,34.00,36.00,44.00,48.00,true
+Position+Archetype,ILB,Run Stopper,Tackle,388,20.00,25.00,28.00,33.00,39.00,45.00,48.00,52.26,63.00,true
+Position+Archetype,ILB,Run Stopper,PassBlock,388,0.00,2.00,3.00,6.00,8.00,10.00,10.00,15.13,18.00,true
+Position+Archetype,ILB,Run Stopper,RunBlock,388,0.00,2.00,3.00,6.00,8.00,10.00,11.00,12.13,15.00,true
+Position+Archetype,ILB,Run Stopper,PassRush,388,3.00,8.00,10.00,14.00,18.00,22.00,24.00,29.13,32.00,true
+Position+Archetype,ILB,Run Stopper,RunDefense,388,25.00,30.00,34.00,39.00,44.00,50.00,52.00,59.00,63.00,true
+Position+Archetype,ILB,Run Stopper,ThrowPower,388,0.00,4.00,7.00,10.00,14.00,17.30,19.65,24.00,26.00,true
+Position+Archetype,ILB,Run Stopper,ThrowAccuracy,388,1.00,4.00,6.00,10.00,14.00,18.00,20.00,24.13,26.00,true
+Position+Archetype,ILB,Run Stopper,KickAccuracy,388,0.00,2.00,3.75,6.00,9.00,10.00,11.00,15.00,15.00,true
+Position+Archetype,ILB,Run Stopper,KickPower,388,0.00,2.00,3.00,6.00,8.00,10.00,10.00,13.00,14.00,true
+Position+Archetype,ILB,Run Stopper,PuntAccuracy,388,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.00,16.00,true
+Position+Archetype,ILB,Run Stopper,PuntPower,388,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.13,16.00,true
+Position+Archetype,DE,Run Stopper,Speed,923,20.00,25.00,29.00,34.00,39.00,45.00,48.00,54.00,64.00,true
+Position+Archetype,DE,Run Stopper,Agility,923,10.00,14.00,18.00,23.00,28.00,34.00,37.00,43.00,53.00,true
+Position+Archetype,DE,Run Stopper,FootballIQ,923,6.00,11.00,14.00,19.00,25.00,29.00,32.90,39.00,45.00,true
+Position+Archetype,DE,Run Stopper,Strength,923,19.00,25.00,29.00,34.00,39.00,45.00,48.00,56.00,66.00,true
+Position+Archetype,DE,Run Stopper,Carrying,923,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,DE,Run Stopper,Catching,923,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,DE,Run Stopper,RouteRunning,923,0.00,1.00,3.00,6.00,8.00,10.00,10.90,14.00,15.00,true
+Position+Archetype,DE,Run Stopper,ZoneCoverage,923,0.00,4.00,7.00,11.00,16.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,DE,Run Stopper,ManCoverage,923,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,DE,Run Stopper,Tackle,923,20.00,25.00,29.00,34.00,39.50,45.00,48.00,55.78,62.00,true
+Position+Archetype,DE,Run Stopper,PassBlock,923,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,DE,Run Stopper,RunBlock,923,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,DE,Run Stopper,PassRush,923,8.00,15.00,18.00,23.00,28.50,34.00,38.00,43.78,54.00,true
+Position+Archetype,DE,Run Stopper,RunDefense,923,19.00,25.00,29.00,34.00,40.00,46.00,49.90,56.78,64.00,true
+Position+Archetype,DE,Run Stopper,ThrowPower,923,0.00,4.00,7.00,11.00,16.00,20.00,21.00,25.00,31.00,true
+Position+Archetype,DE,Run Stopper,ThrowAccuracy,923,0.00,4.00,7.00,11.00,16.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,DE,Run Stopper,KickAccuracy,923,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,DE,Run Stopper,KickPower,923,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.78,16.00,true
+Position+Archetype,DE,Run Stopper,PuntAccuracy,923,0.00,2.00,3.00,6.00,8.50,10.00,11.00,14.00,16.00,true
+Position+Archetype,DE,Run Stopper,PuntPower,923,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OLB,Pass Rush,Speed,554,20.00,26.00,30.00,38.00,45.00,51.00,55.00,60.00,66.00,true
+Position+Archetype,OLB,Pass Rush,Agility,554,20.00,26.00,29.00,35.00,41.00,45.70,50.00,55.00,61.00,true
+Position+Archetype,OLB,Pass Rush,FootballIQ,554,6.00,11.00,14.00,20.00,25.00,31.00,33.00,37.47,48.00,true
+Position+Archetype,OLB,Pass Rush,Strength,554,10.00,15.00,19.00,24.00,31.00,35.00,38.35,44.00,53.00,true
+Position+Archetype,OLB,Pass Rush,Carrying,554,0.00,3.00,7.00,10.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,OLB,Pass Rush,Catching,554,0.00,3.00,7.00,11.00,15.00,20.00,22.00,25.00,28.00,true
+Position+Archetype,OLB,Pass Rush,RouteRunning,554,0.00,1.00,3.00,5.00,8.00,9.70,11.00,14.00,15.00,true
+Position+Archetype,OLB,Pass Rush,ZoneCoverage,554,7.00,11.00,14.00,19.00,25.00,29.00,33.00,40.00,47.00,true
+Position+Archetype,OLB,Pass Rush,ManCoverage,554,7.00,11.00,14.00,18.00,25.00,29.00,33.00,38.94,45.00,true
+Position+Archetype,OLB,Pass Rush,Tackle,554,19.00,26.00,30.00,35.00,41.00,46.00,50.00,55.00,56.00,true
+Position+Archetype,OLB,Pass Rush,PassBlock,554,0.00,2.00,4.00,6.00,9.00,10.00,12.00,15.00,18.00,true
+Position+Archetype,OLB,Pass Rush,RunBlock,554,0.00,2.00,3.00,6.00,9.00,11.00,12.00,15.00,16.00,true
+Position+Archetype,OLB,Pass Rush,PassRush,554,25.00,32.00,35.00,40.00,47.75,52.70,55.00,61.47,71.00,true
+Position+Archetype,OLB,Pass Rush,RunDefense,554,10.00,15.00,19.00,24.00,30.00,35.00,38.00,44.47,54.00,true
+Position+Archetype,OLB,Pass Rush,ThrowPower,554,1.00,4.00,7.00,11.00,15.00,19.00,20.35,24.47,27.00,true
+Position+Archetype,OLB,Pass Rush,ThrowAccuracy,554,0.00,3.00,6.00,11.00,15.00,20.00,21.35,25.00,29.00,true
+Position+Archetype,OLB,Pass Rush,KickAccuracy,554,0.00,2.00,4.00,6.00,9.00,11.00,12.00,15.00,17.00,true
+Position+Archetype,OLB,Pass Rush,KickPower,554,0.00,2.00,4.00,6.00,9.00,10.00,11.35,14.00,15.00,true
+Position+Archetype,OLB,Pass Rush,PuntAccuracy,554,0.00,2.00,4.00,6.00,9.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,OLB,Pass Rush,PuntPower,554,0.00,2.00,4.00,6.00,9.00,10.00,11.35,15.00,17.00,true
+Position+Archetype,OT,Balanced,Speed,669,12.00,14.00,16.00,19.00,22.00,24.00,25.00,28.00,29.00,true
+Position+Archetype,OT,Balanced,Agility,669,5.00,8.00,10.00,13.00,17.00,22.00,25.00,33.32,43.00,true
+Position+Archetype,OT,Balanced,FootballIQ,669,5.00,10.00,13.00,18.00,23.00,27.00,29.00,35.32,45.00,true
+Position+Archetype,OT,Balanced,Strength,669,29.00,35.00,38.00,43.00,48.00,54.00,56.60,61.32,73.00,true
+Position+Archetype,OT,Balanced,Carrying,669,0.00,4.00,7.00,11.00,14.00,18.00,20.00,24.00,27.00,true
+Position+Archetype,OT,Balanced,Catching,669,1.00,3.00,7.00,12.00,16.00,20.00,21.00,27.32,31.00,true
+Position+Archetype,OT,Balanced,RouteRunning,669,0.00,1.00,3.00,6.00,8.00,10.00,10.00,13.00,15.00,true
+Position+Archetype,OT,Balanced,ZoneCoverage,669,0.00,4.00,7.00,10.00,15.00,18.20,20.00,24.32,29.00,true
+Position+Archetype,OT,Balanced,ManCoverage,669,1.00,4.00,7.00,11.00,15.00,19.00,20.00,24.32,27.00,true
+Position+Archetype,OT,Balanced,Tackle,669,1.00,4.00,7.00,11.00,15.00,18.20,20.00,24.32,27.00,true
+Position+Archetype,OT,Balanced,PassBlock,669,15.00,20.00,23.00,29.00,34.00,39.00,42.00,48.32,56.00,true
+Position+Archetype,OT,Balanced,RunBlock,669,16.00,20.00,24.00,29.00,34.00,39.00,42.00,47.00,55.00,true
+Position+Archetype,OT,Balanced,PassRush,669,1.00,2.00,4.00,7.00,10.00,15.00,18.00,21.00,27.00,true
+Position+Archetype,OT,Balanced,RunDefense,669,1.00,2.00,4.00,7.00,10.00,14.00,17.00,20.00,22.00,true
+Position+Archetype,OT,Balanced,ThrowPower,669,0.00,2.00,4.00,7.00,11.00,15.00,18.00,22.32,26.00,true
+Position+Archetype,OT,Balanced,ThrowAccuracy,669,0.00,2.00,4.00,7.00,10.00,15.00,17.60,21.32,28.00,true
+Position+Archetype,OT,Balanced,KickAccuracy,669,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.32,16.00,true
+Position+Archetype,OT,Balanced,KickPower,669,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.32,17.00,true
+Position+Archetype,OT,Balanced,PuntAccuracy,669,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.32,16.00,true
+Position+Archetype,OT,Balanced,PuntPower,669,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,FB,Rushing,Speed,171,30.00,35.00,37.00,41.00,46.00,51.00,55.00,63.80,70.00,true
+Position+Archetype,FB,Rushing,Agility,171,10.00,18.00,21.50,25.00,30.00,34.00,39.50,51.20,57.00,true
+Position+Archetype,FB,Rushing,FootballIQ,171,6.00,9.00,12.00,16.00,19.50,25.00,31.50,39.30,42.00,true
+Position+Archetype,FB,Rushing,Strength,171,23.00,29.00,31.00,34.00,39.00,43.00,50.00,59.80,66.00,true
+Position+Archetype,FB,Rushing,Carrying,171,4.00,8.00,11.00,15.00,20.00,24.00,29.00,37.30,40.00,true
+Position+Archetype,FB,Rushing,Catching,171,3.00,7.00,9.00,12.00,15.00,19.00,21.50,28.90,32.00,true
+Position+Archetype,FB,Rushing,RouteRunning,171,0.00,1.00,3.00,5.00,8.00,10.00,10.00,13.30,15.00,true
+Position+Archetype,FB,Rushing,ZoneCoverage,171,1.00,3.00,6.00,9.00,13.00,17.00,20.00,22.60,28.00,true
+Position+Archetype,FB,Rushing,ManCoverage,171,1.00,2.00,5.00,9.00,13.00,18.00,19.50,25.00,28.00,true
+Position+Archetype,FB,Rushing,Tackle,171,1.00,3.00,5.00,9.00,13.00,17.00,19.00,24.00,28.00,true
+Position+Archetype,FB,Rushing,PassBlock,171,19.00,23.00,25.00,29.00,34.00,38.00,42.00,53.80,60.00,true
+Position+Archetype,FB,Rushing,RunBlock,171,17.00,23.00,26.00,29.00,33.00,39.00,44.50,53.90,57.00,true
+Position+Archetype,FB,Rushing,PassRush,171,0.00,2.00,4.00,6.00,8.00,10.00,11.00,12.30,15.00,true
+Position+Archetype,FB,Rushing,RunDefense,171,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.30,17.00,true
+Position+Archetype,FB,Rushing,ThrowPower,171,1.00,3.00,6.00,8.00,12.00,17.00,20.00,25.30,27.00,true
+Position+Archetype,FB,Rushing,ThrowAccuracy,171,1.00,3.00,6.00,9.00,13.00,18.00,20.00,25.00,31.00,true
+Position+Archetype,FB,Rushing,KickAccuracy,171,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.30,16.00,true
+Position+Archetype,FB,Rushing,KickPower,171,1.00,2.00,3.00,6.00,9.00,11.00,11.00,14.00,14.00,true
+Position+Archetype,FB,Rushing,PuntAccuracy,171,1.00,2.00,3.00,6.00,9.00,10.00,11.00,13.30,15.00,true
+Position+Archetype,FB,Rushing,PuntPower,171,1.00,1.00,3.00,6.00,8.00,10.00,11.00,13.00,15.00,true
+Position+Archetype,DE,Speed Rusher,Speed,928,25.00,30.00,34.00,39.00,44.00,50.00,53.65,59.73,71.00,true
+Position+Archetype,DE,Speed Rusher,Agility,928,19.00,25.00,29.00,33.00,38.00,43.00,46.00,52.00,60.00,true
+Position+Archetype,DE,Speed Rusher,FootballIQ,928,6.00,11.00,14.00,19.00,24.00,28.30,32.00,37.73,51.00,true
+Position+Archetype,DE,Speed Rusher,Strength,928,15.00,20.00,24.00,28.00,34.00,39.00,42.00,46.00,61.00,true
+Position+Archetype,DE,Speed Rusher,Carrying,928,1.00,4.00,7.00,11.00,15.00,19.00,20.65,25.00,30.00,true
+Position+Archetype,DE,Speed Rusher,Catching,928,0.00,4.00,7.00,11.00,15.00,19.00,21.00,24.00,31.00,true
+Position+Archetype,DE,Speed Rusher,RouteRunning,928,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,16.00,true
+Position+Archetype,DE,Speed Rusher,ZoneCoverage,928,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,DE,Speed Rusher,ManCoverage,928,0.00,4.00,7.00,11.00,15.00,19.00,21.00,24.73,26.00,true
+Position+Archetype,DE,Speed Rusher,Tackle,928,13.00,20.00,23.00,29.00,34.00,39.00,42.00,46.00,62.00,true
+Position+Archetype,DE,Speed Rusher,PassBlock,928,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.73,17.00,true
+Position+Archetype,DE,Speed Rusher,RunBlock,928,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.73,18.00,true
+Position+Archetype,DE,Speed Rusher,PassRush,928,18.00,25.00,29.00,34.00,40.00,45.00,48.00,54.73,64.00,true
+Position+Archetype,DE,Speed Rusher,RunDefense,928,10.00,15.00,18.00,23.00,29.00,33.00,36.00,42.46,55.00,true
+Position+Archetype,DE,Speed Rusher,ThrowPower,928,1.00,4.00,7.00,11.00,15.00,19.00,20.00,25.00,29.00,true
+Position+Archetype,DE,Speed Rusher,ThrowAccuracy,928,0.00,4.00,7.00,11.00,15.00,19.00,20.00,25.00,27.00,true
+Position+Archetype,DE,Speed Rusher,KickAccuracy,928,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.73,16.00,true
+Position+Archetype,DE,Speed Rusher,KickPower,928,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,DE,Speed Rusher,PuntAccuracy,928,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,DE,Speed Rusher,PuntPower,928,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,C,Balanced,Speed,243,11.00,14.00,15.00,18.00,22.00,24.00,26.00,28.00,30.00,true
+Position+Archetype,C,Balanced,Agility,243,4.00,8.00,10.00,13.00,17.00,23.00,29.00,36.00,45.00,true
+Position+Archetype,C,Balanced,FootballIQ,243,5.00,9.00,11.50,16.00,24.00,28.00,31.80,38.58,49.00,true
+Position+Archetype,C,Balanced,Strength,243,29.00,33.00,37.00,42.00,49.00,54.80,58.90,67.16,75.00,true
+Position+Archetype,C,Balanced,Carrying,243,1.00,3.00,5.00,9.00,15.00,19.00,20.00,24.00,26.00,true
+Position+Archetype,C,Balanced,Catching,243,1.00,5.00,7.00,11.00,18.00,21.00,24.00,30.00,33.00,true
+Position+Archetype,C,Balanced,RouteRunning,243,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.58,16.00,true
+Position+Archetype,C,Balanced,ZoneCoverage,243,1.00,4.00,6.00,9.00,14.00,18.00,20.00,25.00,29.00,true
+Position+Archetype,C,Balanced,ManCoverage,243,1.00,3.00,5.00,9.00,14.00,19.00,21.00,25.58,28.00,true
+Position+Archetype,C,Balanced,Tackle,243,1.00,3.00,6.00,9.00,15.00,19.00,22.00,26.00,30.00,true
+Position+Archetype,C,Balanced,PassBlock,243,15.00,19.00,22.00,27.00,34.00,39.80,43.00,49.00,60.00,true
+Position+Archetype,C,Balanced,RunBlock,243,16.00,19.00,22.50,27.00,34.00,39.00,42.90,48.00,55.00,true
+Position+Archetype,C,Balanced,PassRush,243,0.00,2.00,4.00,7.00,10.50,15.00,17.90,24.58,30.00,true
+Position+Archetype,C,Balanced,RunDefense,243,0.00,2.00,4.00,7.00,10.00,15.00,17.00,19.00,20.00,true
+Position+Archetype,C,Balanced,ThrowPower,243,1.00,2.00,4.00,8.00,10.00,15.00,19.00,24.00,25.00,true
+Position+Archetype,C,Balanced,ThrowAccuracy,243,1.00,2.00,4.00,7.00,10.00,14.00,18.00,25.00,32.00,true
+Position+Archetype,C,Balanced,KickAccuracy,243,0.00,2.00,3.50,7.00,9.00,10.00,12.00,14.00,17.00,true
+Position+Archetype,C,Balanced,KickPower,243,0.00,2.00,3.00,6.00,9.00,10.00,12.00,16.00,17.00,true
+Position+Archetype,C,Balanced,PuntAccuracy,243,0.00,2.00,3.00,7.00,9.00,10.00,11.00,14.58,16.00,true
+Position+Archetype,C,Balanced,PuntPower,243,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,SS,Zone Coverage,Speed,265,30.00,35.00,39.00,44.00,50.00,55.00,58.80,65.36,70.00,true
+Position+Archetype,SS,Zone Coverage,Agility,265,16.00,20.00,23.00,28.00,35.00,38.00,41.00,46.08,51.00,true
+Position+Archetype,SS,Zone Coverage,FootballIQ,265,17.00,21.00,24.00,30.00,36.00,41.00,43.00,47.36,49.00,true
+Position+Archetype,SS,Zone Coverage,Strength,265,4.00,7.00,9.00,12.00,15.00,19.00,20.00,24.00,25.00,true
+Position+Archetype,SS,Zone Coverage,Carrying,265,1.00,2.00,6.00,10.00,14.00,19.00,21.00,24.00,26.00,true
+Position+Archetype,SS,Zone Coverage,Catching,265,5.00,7.00,10.00,12.00,15.00,18.00,19.00,21.00,22.00,true
+Position+Archetype,SS,Zone Coverage,RouteRunning,265,0.00,1.00,3.00,5.00,8.00,9.00,10.00,12.00,14.00,true
+Position+Archetype,SS,Zone Coverage,ZoneCoverage,265,30.00,34.00,37.00,43.00,49.00,54.60,57.00,62.00,65.00,true
+Position+Archetype,SS,Zone Coverage,ManCoverage,265,14.00,18.00,22.00,27.00,32.00,37.60,40.00,44.00,46.00,true
+Position+Archetype,SS,Zone Coverage,Tackle,265,7.00,10.00,12.00,17.00,23.00,28.00,32.00,35.00,37.00,true
+Position+Archetype,SS,Zone Coverage,PassBlock,265,0.00,2.00,4.00,6.00,9.00,10.00,10.80,14.00,15.00,true
+Position+Archetype,SS,Zone Coverage,RunBlock,265,0.00,2.00,3.00,6.00,9.00,10.00,10.00,15.00,16.00,true
+Position+Archetype,SS,Zone Coverage,PassRush,265,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.00,15.00,true
+Position+Archetype,SS,Zone Coverage,RunDefense,265,8.00,14.00,17.00,22.00,29.00,33.00,37.00,42.00,53.00,true
+Position+Archetype,SS,Zone Coverage,ThrowPower,265,0.00,4.00,7.00,10.00,14.00,19.00,20.80,24.00,30.00,true
+Position+Archetype,SS,Zone Coverage,ThrowAccuracy,265,0.00,3.00,7.00,10.00,15.00,18.00,20.00,23.36,26.00,true
+Position+Archetype,SS,Zone Coverage,KickAccuracy,265,0.00,2.00,4.00,6.00,8.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,SS,Zone Coverage,KickPower,265,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,SS,Zone Coverage,PuntAccuracy,265,0.00,2.00,3.00,6.00,9.00,10.00,11.00,12.72,15.00,true
+Position+Archetype,SS,Zone Coverage,PuntPower,265,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.36,16.00,true
+Position+Archetype,FB,Receiving,Speed,141,27.00,30.00,32.00,36.00,42.00,47.00,51.00,54.60,58.00,true
+Position+Archetype,FB,Receiving,Agility,141,15.00,19.00,21.00,25.00,32.00,38.00,40.00,45.60,50.00,true
+Position+Archetype,FB,Receiving,FootballIQ,141,7.00,9.00,12.00,15.00,22.00,28.00,30.00,36.60,37.00,true
+Position+Archetype,FB,Receiving,Strength,141,25.00,28.00,31.00,35.00,41.00,47.00,50.00,54.60,55.00,true
+Position+Archetype,FB,Receiving,Carrying,141,5.00,7.00,10.00,13.00,18.00,25.00,28.00,33.80,36.00,true
+Position+Archetype,FB,Receiving,Catching,141,17.00,20.00,22.00,27.00,33.00,39.00,41.00,46.00,46.00,true
+Position+Archetype,FB,Receiving,RouteRunning,141,5.00,7.00,10.00,14.00,17.00,22.00,26.00,28.60,38.00,true
+Position+Archetype,FB,Receiving,ZoneCoverage,141,1.00,3.00,6.00,9.00,13.00,18.00,21.00,24.00,25.00,true
+Position+Archetype,FB,Receiving,ManCoverage,141,1.00,3.00,6.00,9.00,14.00,18.00,23.00,25.00,25.00,true
+Position+Archetype,FB,Receiving,Tackle,141,1.00,4.00,6.00,9.00,14.00,19.00,22.00,25.00,26.00,true
+Position+Archetype,FB,Receiving,PassBlock,141,20.00,22.00,25.00,29.00,36.00,41.00,46.00,50.00,53.00,true
+Position+Archetype,FB,Receiving,RunBlock,141,20.00,23.00,25.00,30.00,36.00,42.00,46.00,50.80,52.00,true
+Position+Archetype,FB,Receiving,PassRush,141,0.00,2.00,3.00,7.00,9.00,10.00,11.00,12.00,12.00,true
+Position+Archetype,FB,Receiving,RunDefense,141,1.00,2.00,4.00,6.00,9.00,10.00,11.00,12.00,15.00,true
+Position+Archetype,FB,Receiving,ThrowPower,141,1.00,3.00,5.00,9.00,14.00,17.00,19.00,22.00,25.00,true
+Position+Archetype,FB,Receiving,ThrowAccuracy,141,0.00,3.00,6.00,9.00,13.00,19.00,20.00,25.00,26.00,true
+Position+Archetype,FB,Receiving,KickAccuracy,141,1.00,2.00,4.00,6.00,8.00,10.00,12.00,14.60,16.00,true
+Position+Archetype,FB,Receiving,KickPower,141,1.00,2.00,4.00,6.00,9.00,11.00,13.00,14.60,16.00,true
+Position+Archetype,FB,Receiving,PuntAccuracy,141,1.00,2.00,3.00,7.00,9.00,11.00,11.00,14.60,15.00,true
+Position+Archetype,FB,Receiving,PuntPower,141,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.20,16.00,true
+Position+Archetype,ATH,Strongside,Speed,141,25.00,30.00,34.00,38.00,43.00,46.00,49.00,55.60,59.00,true
+Position+Archetype,ATH,Strongside,Agility,141,8.00,15.00,20.00,26.00,34.00,40.00,44.00,49.40,55.00,true
+Position+Archetype,ATH,Strongside,FootballIQ,141,9.00,16.00,22.00,27.00,31.00,33.00,36.00,41.20,42.00,true
+Position+Archetype,ATH,Strongside,Strength,141,25.00,29.00,34.00,39.00,50.00,56.00,57.00,60.60,61.00,true
+Position+Archetype,ATH,Strongside,Carrying,141,0.00,2.00,7.00,10.00,14.00,17.00,19.00,24.00,27.00,true
+Position+Archetype,ATH,Strongside,Catching,141,5.00,7.00,9.00,14.00,19.00,22.00,24.00,29.20,31.00,true
+Position+Archetype,ATH,Strongside,RouteRunning,141,0.00,1.00,3.00,6.00,9.00,13.00,14.00,14.00,15.00,true
+Position+Archetype,ATH,Strongside,ZoneCoverage,141,4.00,12.00,18.00,25.00,34.00,37.00,41.00,43.00,51.00,true
+Position+Archetype,ATH,Strongside,ManCoverage,141,5.00,11.00,17.00,22.00,30.00,37.00,40.00,43.60,45.00,true
+Position+Archetype,ATH,Strongside,Tackle,141,11.00,18.00,22.00,28.00,34.00,39.00,44.00,46.00,47.00,true
+Position+Archetype,ATH,Strongside,PassBlock,141,0.00,1.00,4.00,7.00,9.00,12.00,13.00,15.00,16.00,true
+Position+Archetype,ATH,Strongside,RunBlock,141,0.00,2.00,4.00,8.00,10.00,13.00,14.00,15.60,16.00,true
+Position+Archetype,ATH,Strongside,PassRush,141,5.00,12.00,15.00,20.00,24.00,30.00,34.00,38.40,41.00,true
+Position+Archetype,ATH,Strongside,RunDefense,141,8.00,14.00,20.00,25.00,32.00,37.00,40.00,45.80,54.00,true
+Position+Archetype,ATH,Strongside,ThrowPower,141,0.00,2.00,6.00,9.00,12.00,15.00,17.00,19.00,20.00,true
+Position+Archetype,ATH,Strongside,ThrowAccuracy,141,1.00,3.00,6.00,9.00,13.00,15.00,16.00,20.20,21.00,true
+Position+Archetype,ATH,Strongside,KickAccuracy,141,0.00,2.00,4.00,7.00,10.00,12.00,14.00,15.00,15.00,true
+Position+Archetype,ATH,Strongside,KickPower,141,0.00,2.00,4.00,7.00,10.00,12.00,12.00,15.00,16.00,true
+Position+Archetype,ATH,Strongside,PuntAccuracy,141,0.00,2.00,4.00,7.00,10.00,13.00,14.00,15.60,16.00,true
+Position+Archetype,ATH,Strongside,PuntPower,141,0.00,1.00,4.00,6.00,10.00,14.00,14.00,15.00,16.00,true
+Position+Archetype,QB,Pocket,Speed,536,15.00,20.00,24.00,28.00,34.00,39.00,42.00,48.65,61.00,true
+Position+Archetype,QB,Pocket,Agility,536,1.00,5.00,8.00,11.00,15.00,19.00,22.00,30.00,42.00,true
+Position+Archetype,QB,Pocket,FootballIQ,536,4.00,10.00,13.00,19.00,25.00,31.00,35.00,43.30,54.00,true
+Position+Archetype,QB,Pocket,Strength,536,3.00,6.00,9.00,13.00,18.00,23.00,26.00,34.65,43.00,true
+Position+Archetype,QB,Pocket,Carrying,536,0.00,4.00,7.00,11.00,16.00,20.00,21.00,26.00,32.00,true
+Position+Archetype,QB,Pocket,Catching,536,0.00,4.00,7.00,11.00,15.00,19.00,22.00,26.65,31.00,true
+Position+Archetype,QB,Pocket,RouteRunning,536,0.00,1.00,3.00,5.00,8.00,10.00,10.00,14.00,16.00,true
+Position+Archetype,QB,Pocket,ZoneCoverage,536,0.00,4.00,7.00,11.00,15.25,20.00,22.00,26.00,30.00,true
+Position+Archetype,QB,Pocket,ManCoverage,536,1.00,4.00,7.00,10.50,15.00,20.00,21.00,25.65,28.00,true
+Position+Archetype,QB,Pocket,Tackle,536,0.00,3.00,6.00,11.00,15.00,19.00,20.00,24.00,29.00,true
+Position+Archetype,QB,Pocket,PassBlock,536,0.00,1.00,3.00,5.50,9.00,10.00,11.00,14.00,18.00,true
+Position+Archetype,QB,Pocket,RunBlock,536,0.00,2.00,3.75,6.00,9.00,10.00,12.00,15.00,19.00,true
+Position+Archetype,QB,Pocket,PassRush,536,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,18.00,true
+Position+Archetype,QB,Pocket,RunDefense,536,0.00,1.00,3.00,6.00,9.00,10.00,12.00,15.00,17.00,true
+Position+Archetype,QB,Pocket,ThrowPower,536,25.00,31.00,34.00,39.00,45.00,50.50,54.00,65.00,78.00,true
+Position+Archetype,QB,Pocket,ThrowAccuracy,536,25.00,31.00,34.00,39.00,45.00,50.50,53.00,62.65,73.00,true
+Position+Archetype,QB,Pocket,KickAccuracy,536,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,QB,Pocket,KickPower,536,0.00,2.00,3.00,6.00,9.00,10.00,11.25,15.00,17.00,true
+Position+Archetype,QB,Pocket,PuntAccuracy,536,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,QB,Pocket,PuntPower,536,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,OG,Pass Blocking,Speed,672,11.00,14.00,16.00,18.00,22.00,24.00,25.00,28.00,30.00,true
+Position+Archetype,OG,Pass Blocking,Agility,672,3.00,8.00,11.00,14.00,18.00,23.00,27.45,39.00,47.00,true
+Position+Archetype,OG,Pass Blocking,FootballIQ,672,5.00,11.00,14.00,18.00,24.00,30.00,33.00,39.00,46.00,true
+Position+Archetype,OG,Pass Blocking,Strength,672,30.00,35.00,39.00,45.00,50.00,55.00,60.00,67.00,76.00,true
+Position+Archetype,OG,Pass Blocking,Carrying,672,0.00,4.00,7.00,10.00,15.00,19.00,20.00,25.00,31.00,true
+Position+Archetype,OG,Pass Blocking,Catching,672,0.00,4.00,7.00,10.00,15.00,19.00,20.00,25.00,30.00,true
+Position+Archetype,OG,Pass Blocking,RouteRunning,672,0.00,1.00,3.00,5.00,8.00,9.00,10.00,13.29,16.00,true
+Position+Archetype,OG,Pass Blocking,ZoneCoverage,672,0.00,3.00,7.00,10.00,15.00,19.00,20.00,24.29,28.00,true
+Position+Archetype,OG,Pass Blocking,ManCoverage,672,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,OG,Pass Blocking,Tackle,672,1.00,4.00,7.00,10.00,15.00,19.00,21.00,24.29,30.00,true
+Position+Archetype,OG,Pass Blocking,PassBlock,672,21.00,29.00,33.00,38.00,44.00,49.90,53.45,61.29,69.00,true
+Position+Archetype,OG,Pass Blocking,RunBlock,672,6.00,13.00,17.00,22.00,28.00,32.00,37.45,43.29,50.00,true
+Position+Archetype,OG,Pass Blocking,PassRush,672,0.00,2.00,5.00,8.00,12.00,16.00,20.00,25.00,28.00,true
+Position+Archetype,OG,Pass Blocking,RunDefense,672,0.00,2.00,4.00,7.00,9.00,11.00,14.00,16.00,18.00,true
+Position+Archetype,OG,Pass Blocking,ThrowPower,672,0.00,2.00,4.00,8.00,12.00,17.00,19.00,24.00,26.00,true
+Position+Archetype,OG,Pass Blocking,ThrowAccuracy,672,0.00,2.00,5.00,8.00,11.00,17.00,19.00,25.58,30.00,true
+Position+Archetype,OG,Pass Blocking,KickAccuracy,672,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.29,17.00,true
+Position+Archetype,OG,Pass Blocking,KickPower,672,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,OG,Pass Blocking,PuntAccuracy,672,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,OG,Pass Blocking,PuntPower,672,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,TE,Receiving,Speed,557,25.00,30.00,34.00,40.00,45.00,50.00,54.00,60.44,61.00,true
+Position+Archetype,TE,Receiving,Agility,557,14.00,19.60,23.00,29.00,35.00,39.00,43.00,49.00,56.00,true
+Position+Archetype,TE,Receiving,FootballIQ,557,7.00,11.00,14.00,19.00,25.00,30.00,33.00,37.44,42.00,true
+Position+Archetype,TE,Receiving,Strength,557,24.00,30.00,34.00,40.00,45.00,51.00,54.00,58.44,67.00,true
+Position+Archetype,TE,Receiving,Carrying,557,8.00,13.00,16.00,20.00,24.00,28.40,33.00,39.00,42.00,true
+Position+Archetype,TE,Receiving,Catching,557,15.00,20.00,24.00,29.00,35.00,40.00,43.00,49.44,55.00,true
+Position+Archetype,TE,Receiving,RouteRunning,557,9.00,13.00,16.00,20.00,24.00,28.00,32.00,37.44,43.00,true
+Position+Archetype,TE,Receiving,ZoneCoverage,557,1.00,3.60,7.00,10.00,15.00,19.00,21.00,26.00,28.00,true
+Position+Archetype,TE,Receiving,ManCoverage,557,0.00,4.00,6.00,10.00,15.00,19.00,20.00,24.44,30.00,true
+Position+Archetype,TE,Receiving,Tackle,557,1.00,4.00,7.00,11.00,15.00,18.00,20.00,25.00,28.00,true
+Position+Archetype,TE,Receiving,PassBlock,557,15.00,20.00,24.00,29.00,34.00,39.00,42.00,49.00,54.00,true
+Position+Archetype,TE,Receiving,RunBlock,557,15.00,20.00,24.00,29.00,35.00,40.00,43.00,48.44,54.00,true
+Position+Archetype,TE,Receiving,PassRush,557,1.00,5.00,9.00,14.00,19.00,22.40,24.00,28.44,31.00,true
+Position+Archetype,TE,Receiving,RunDefense,557,0.00,3.00,7.00,11.00,15.00,19.00,20.20,25.44,31.00,true
+Position+Archetype,TE,Receiving,ThrowPower,557,1.00,4.00,7.00,11.00,15.00,19.00,20.00,25.00,31.00,true
+Position+Archetype,TE,Receiving,ThrowAccuracy,557,1.00,3.60,7.00,11.00,15.00,20.00,21.00,25.00,27.00,true
+Position+Archetype,TE,Receiving,KickAccuracy,557,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,TE,Receiving,KickPower,557,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.44,16.00,true
+Position+Archetype,TE,Receiving,PuntAccuracy,557,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,TE,Receiving,PuntPower,557,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,CB,Zone Coverage,Speed,906,30.00,36.00,40.00,45.00,50.00,56.00,60.00,66.00,72.00,true
+Position+Archetype,CB,Zone Coverage,Agility,906,19.00,26.00,30.00,34.00,40.00,46.00,49.00,56.00,60.00,true
+Position+Archetype,CB,Zone Coverage,FootballIQ,906,5.00,11.00,14.00,19.00,24.00,30.00,33.00,39.95,47.00,true
+Position+Archetype,CB,Zone Coverage,Strength,906,1.00,7.00,9.00,12.00,16.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,CB,Zone Coverage,Carrying,906,1.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,27.00,true
+Position+Archetype,CB,Zone Coverage,Catching,906,4.00,7.00,9.25,12.00,15.00,18.00,20.00,22.00,25.00,true
+Position+Archetype,CB,Zone Coverage,RouteRunning,906,0.00,2.00,4.00,7.00,10.00,15.00,18.00,23.00,27.00,true
+Position+Archetype,CB,Zone Coverage,ZoneCoverage,906,30.00,35.00,39.00,43.00,49.00,55.00,59.00,66.00,76.00,true
+Position+Archetype,CB,Zone Coverage,ManCoverage,906,14.00,19.00,23.00,28.00,33.00,38.00,41.75,49.00,56.00,true
+Position+Archetype,CB,Zone Coverage,Tackle,906,2.00,7.00,10.00,13.00,18.00,22.00,24.00,28.00,34.00,true
+Position+Archetype,CB,Zone Coverage,PassBlock,906,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,18.00,true
+Position+Archetype,CB,Zone Coverage,RunBlock,906,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,CB,Zone Coverage,PassRush,906,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.95,15.00,true
+Position+Archetype,CB,Zone Coverage,RunDefense,906,1.00,3.00,5.00,8.00,10.00,13.00,15.00,17.95,20.00,true
+Position+Archetype,CB,Zone Coverage,ThrowPower,906,1.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,CB,Zone Coverage,ThrowAccuracy,906,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,CB,Zone Coverage,KickAccuracy,906,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,CB,Zone Coverage,KickPower,906,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,CB,Zone Coverage,PuntAccuracy,906,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,CB,Zone Coverage,PuntPower,906,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.95,16.00,true
+Position+Archetype,TE,Blocking,Speed,363,17.00,24.00,27.00,31.00,37.00,42.00,45.00,56.38,60.00,true
+Position+Archetype,TE,Blocking,Agility,363,6.00,13.00,16.00,20.00,26.00,31.80,35.00,41.00,49.00,true
+Position+Archetype,TE,Blocking,FootballIQ,363,5.00,10.00,12.50,16.00,23.00,27.00,30.00,36.00,43.00,true
+Position+Archetype,TE,Blocking,Strength,363,29.00,34.00,37.00,42.00,48.00,53.00,56.00,63.14,71.00,true
+Position+Archetype,TE,Blocking,Carrying,363,9.00,13.00,15.00,18.00,22.00,26.00,29.00,37.00,41.00,true
+Position+Archetype,TE,Blocking,Catching,363,8.00,13.00,17.00,21.00,27.00,32.00,34.00,45.00,47.00,true
+Position+Archetype,TE,Blocking,RouteRunning,363,5.00,8.00,10.00,13.00,16.00,21.00,24.00,31.76,36.00,true
+Position+Archetype,TE,Blocking,ZoneCoverage,363,1.00,3.00,6.00,10.00,14.00,19.00,20.00,24.38,25.00,true
+Position+Archetype,TE,Blocking,ManCoverage,363,1.00,3.00,6.00,10.00,15.00,18.00,20.00,23.38,26.00,true
+Position+Archetype,TE,Blocking,Tackle,363,1.00,3.00,6.00,9.00,14.00,19.00,20.00,24.00,26.00,true
+Position+Archetype,TE,Blocking,PassBlock,363,20.00,24.20,28.00,32.00,38.00,42.00,45.00,57.00,60.00,true
+Position+Archetype,TE,Blocking,RunBlock,363,18.00,24.00,27.00,31.00,37.00,42.00,45.00,56.00,59.00,true
+Position+Archetype,TE,Blocking,PassRush,363,1.00,4.00,6.00,11.00,16.00,20.80,23.00,25.38,29.00,true
+Position+Archetype,TE,Blocking,RunDefense,363,1.00,4.00,7.00,10.00,13.00,18.00,20.00,24.00,25.00,true
+Position+Archetype,TE,Blocking,ThrowPower,363,0.00,3.00,6.00,10.00,15.00,18.00,20.00,24.38,28.00,true
+Position+Archetype,TE,Blocking,ThrowAccuracy,363,1.00,3.00,6.00,10.00,14.00,18.80,20.00,23.00,26.00,true
+Position+Archetype,TE,Blocking,KickAccuracy,363,1.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,TE,Blocking,KickPower,363,0.00,2.00,3.00,6.00,9.00,10.00,11.00,12.38,18.00,true
+Position+Archetype,TE,Blocking,PuntAccuracy,363,0.00,2.00,3.50,6.00,8.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,TE,Blocking,PuntPower,363,1.00,2.00,3.00,6.00,9.00,10.00,11.00,13.38,14.00,true
+Position+Archetype,P,Power,Speed,232,1.00,3.00,6.00,9.00,14.00,18.00,20.00,23.00,24.00,true
+Position+Archetype,P,Power,Agility,232,1.00,4.00,6.00,10.00,14.25,18.90,21.00,25.00,27.00,true
+Position+Archetype,P,Power,FootballIQ,232,6.00,9.00,11.00,14.00,19.00,23.00,24.45,28.00,33.00,true
+Position+Archetype,P,Power,Strength,232,0.00,2.00,3.00,6.00,8.25,10.00,11.00,14.00,15.00,true
+Position+Archetype,P,Power,Carrying,232,1.00,3.00,6.00,10.00,14.00,18.90,21.00,23.69,28.00,true
+Position+Archetype,P,Power,Catching,232,1.00,3.00,6.00,10.00,14.00,19.00,20.45,24.00,29.00,true
+Position+Archetype,P,Power,RouteRunning,232,0.00,1.00,3.00,5.00,8.00,10.00,10.00,14.00,15.00,true
+Position+Archetype,P,Power,ZoneCoverage,232,1.00,3.10,6.00,10.00,14.00,18.00,19.45,23.38,26.00,true
+Position+Archetype,P,Power,ManCoverage,232,0.00,3.00,6.00,10.00,14.00,18.00,21.00,25.00,28.00,true
+Position+Archetype,P,Power,Tackle,232,0.00,2.00,4.00,6.00,8.00,10.00,12.00,14.00,15.00,true
+Position+Archetype,P,Power,PassBlock,232,0.00,2.00,4.00,7.00,9.00,10.00,11.00,13.69,15.00,true
+Position+Archetype,P,Power,RunBlock,232,0.00,2.00,3.00,7.00,9.00,10.00,11.00,14.69,16.00,true
+Position+Archetype,P,Power,PassRush,232,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.69,15.00,true
+Position+Archetype,P,Power,RunDefense,232,0.00,2.00,4.00,6.00,9.00,10.00,11.00,12.69,14.00,true
+Position+Archetype,P,Power,ThrowPower,232,1.00,4.00,6.00,9.50,14.00,18.00,19.45,25.00,30.00,true
+Position+Archetype,P,Power,ThrowAccuracy,232,0.00,3.10,6.00,9.00,14.00,19.00,21.00,24.69,29.00,true
+Position+Archetype,P,Power,KickAccuracy,232,1.00,3.00,6.00,9.00,15.00,18.00,20.45,25.00,26.00,true
+Position+Archetype,P,Power,KickPower,232,1.00,3.00,6.00,10.00,14.00,18.00,21.00,24.69,28.00,true
+Position+Archetype,P,Power,PuntAccuracy,232,7.00,10.00,12.00,17.00,23.00,28.00,30.00,36.00,36.00,true
+Position+Archetype,P,Power,PuntPower,232,19.00,24.00,27.75,34.00,43.00,50.00,53.00,58.38,62.00,true
+Position+Archetype,DT,Nose Tackle,Speed,523,7.00,13.00,16.00,19.00,23.00,27.00,29.00,33.00,38.00,true
+Position+Archetype,DT,Nose Tackle,Agility,523,3.00,8.20,12.00,16.00,21.00,26.00,29.00,35.00,44.00,true
+Position+Archetype,DT,Nose Tackle,FootballIQ,523,6.00,11.00,13.00,17.00,23.00,27.00,30.00,39.78,49.00,true
+Position+Archetype,DT,Nose Tackle,Strength,523,23.00,30.00,33.00,38.00,47.00,53.00,56.90,64.56,70.00,true
+Position+Archetype,DT,Nose Tackle,Carrying,523,1.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,DT,Nose Tackle,Catching,523,1.00,4.00,7.00,10.00,14.50,19.00,21.00,26.00,30.00,true
+Position+Archetype,DT,Nose Tackle,RouteRunning,523,0.00,1.00,3.00,6.00,8.00,10.00,10.00,13.00,15.00,true
+Position+Archetype,DT,Nose Tackle,ZoneCoverage,523,0.00,4.00,6.00,10.00,14.50,18.00,20.90,25.00,30.00,true
+Position+Archetype,DT,Nose Tackle,ManCoverage,523,1.00,4.00,7.00,11.00,15.00,19.00,21.90,25.00,30.00,true
+Position+Archetype,DT,Nose Tackle,Tackle,523,18.00,24.00,28.00,32.00,38.00,42.00,46.00,53.78,68.00,true
+Position+Archetype,DT,Nose Tackle,PassBlock,523,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.78,16.00,true
+Position+Archetype,DT,Nose Tackle,RunBlock,523,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,DT,Nose Tackle,PassRush,523,3.00,9.00,12.00,17.00,22.00,27.00,31.00,38.00,56.00,true
+Position+Archetype,DT,Nose Tackle,RunDefense,523,18.00,23.00,26.00,30.00,36.00,41.00,45.00,52.78,66.00,true
+Position+Archetype,DT,Nose Tackle,ThrowPower,523,0.00,4.00,7.00,10.00,15.00,19.00,21.00,24.00,28.00,true
+Position+Archetype,DT,Nose Tackle,ThrowAccuracy,523,0.00,4.00,7.00,10.00,14.00,18.00,20.00,25.00,28.00,true
+Position+Archetype,DT,Nose Tackle,KickAccuracy,523,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.78,16.00,true
+Position+Archetype,DT,Nose Tackle,KickPower,523,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,DT,Nose Tackle,PuntAccuracy,523,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,19.00,true
+Position+Archetype,DT,Nose Tackle,PuntPower,523,0.00,2.00,4.00,6.00,8.00,10.00,11.00,14.78,16.00,true
+Position+Archetype,CB,Ball Hawk,Speed,687,29.00,35.00,38.00,43.00,49.00,55.00,58.00,64.00,76.00,true
+Position+Archetype,CB,Ball Hawk,Agility,687,20.00,25.00,28.00,32.00,38.00,44.00,47.00,53.14,61.00,true
+Position+Archetype,CB,Ball Hawk,FootballIQ,687,5.00,10.00,13.00,18.00,23.00,29.00,32.00,38.14,50.00,true
+Position+Archetype,CB,Ball Hawk,Strength,687,2.00,6.00,9.00,12.00,14.00,18.00,20.00,25.00,29.00,true
+Position+Archetype,CB,Ball Hawk,Carrying,687,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,CB,Ball Hawk,Catching,687,15.00,20.00,23.00,28.00,33.00,39.00,42.00,48.00,52.00,true
+Position+Archetype,CB,Ball Hawk,RouteRunning,687,0.00,2.00,5.00,8.00,12.00,16.00,19.00,24.00,30.00,true
+Position+Archetype,CB,Ball Hawk,ZoneCoverage,687,20.00,24.00,27.00,32.00,38.00,43.00,47.00,53.14,66.00,true
+Position+Archetype,CB,Ball Hawk,ManCoverage,687,20.00,24.00,28.00,32.00,38.00,43.00,46.00,53.00,59.00,true
+Position+Archetype,CB,Ball Hawk,Tackle,687,2.00,6.00,9.00,13.00,16.00,21.00,23.00,27.14,38.00,true
+Position+Archetype,CB,Ball Hawk,PassBlock,687,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,CB,Ball Hawk,RunBlock,687,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,CB,Ball Hawk,PassRush,687,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,CB,Ball Hawk,RunDefense,687,1.00,2.00,5.00,7.00,10.00,12.00,14.00,16.00,19.00,true
+Position+Archetype,CB,Ball Hawk,ThrowPower,687,0.00,4.00,6.50,10.00,15.00,18.40,20.00,25.14,30.00,true
+Position+Archetype,CB,Ball Hawk,ThrowAccuracy,687,1.00,4.00,7.00,11.00,15.00,18.00,21.00,26.00,31.00,true
+Position+Archetype,CB,Ball Hawk,KickAccuracy,687,0.00,2.00,4.00,6.00,8.00,10.00,11.00,14.14,16.00,true
+Position+Archetype,CB,Ball Hawk,KickPower,687,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,18.00,true
+Position+Archetype,CB,Ball Hawk,PuntAccuracy,687,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,CB,Ball Hawk,PuntPower,687,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,WR,Red Zone Threat,Speed,650,29.00,35.00,39.00,44.00,49.00,53.10,57.00,65.00,70.00,true
+Position+Archetype,WR,Red Zone Threat,Agility,650,11.00,19.90,23.00,28.00,33.00,37.00,40.00,48.51,55.00,true
+Position+Archetype,WR,Red Zone Threat,FootballIQ,650,7.00,10.00,14.00,19.00,24.00,28.00,31.00,37.51,43.00,true
+Position+Archetype,WR,Red Zone Threat,Strength,650,11.00,20.00,24.00,28.00,33.00,37.00,42.00,48.51,54.00,true
+Position+Archetype,WR,Red Zone Threat,Carrying,650,1.00,9.90,13.00,18.00,22.00,27.00,31.00,37.00,40.00,true
+Position+Archetype,WR,Red Zone Threat,Catching,650,12.00,20.00,23.00,29.00,33.00,38.00,42.00,49.00,56.00,true
+Position+Archetype,WR,Red Zone Threat,RouteRunning,650,9.00,15.00,19.00,23.00,28.00,31.10,34.00,39.00,46.00,true
+Position+Archetype,WR,Red Zone Threat,ZoneCoverage,650,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,28.00,true
+Position+Archetype,WR,Red Zone Threat,ManCoverage,650,1.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,WR,Red Zone Threat,Tackle,650,0.00,2.00,5.00,8.00,12.00,17.00,20.00,24.00,29.00,true
+Position+Archetype,WR,Red Zone Threat,PassBlock,650,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.51,19.00,true
+Position+Archetype,WR,Red Zone Threat,RunBlock,650,23.00,27.00,29.00,31.00,34.00,37.00,38.00,42.02,47.00,true
+Position+Archetype,WR,Red Zone Threat,PassRush,650,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,WR,Red Zone Threat,RunDefense,650,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,WR,Red Zone Threat,ThrowPower,650,0.00,4.00,7.00,11.00,15.00,19.00,21.00,26.00,29.00,true
+Position+Archetype,WR,Red Zone Threat,ThrowAccuracy,650,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,WR,Red Zone Threat,KickAccuracy,650,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,WR,Red Zone Threat,KickPower,650,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,WR,Red Zone Threat,PuntAccuracy,650,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,WR,Red Zone Threat,PuntPower,650,0.00,2.00,4.00,6.00,9.00,11.00,11.00,14.51,16.00,true
+Position+Archetype,CB,Man Coverage,Speed,875,29.00,36.00,39.00,44.00,51.00,56.00,59.00,64.26,70.00,true
+Position+Archetype,CB,Man Coverage,Agility,875,20.00,26.00,29.00,34.00,40.00,45.00,48.00,53.00,65.00,true
+Position+Archetype,CB,Man Coverage,FootballIQ,875,4.00,11.00,14.00,19.00,24.00,30.00,33.00,37.00,49.00,true
+Position+Archetype,CB,Man Coverage,Strength,875,3.00,7.00,9.00,12.00,15.00,19.00,21.00,25.26,30.00,true
+Position+Archetype,CB,Man Coverage,Carrying,875,0.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,CB,Man Coverage,Catching,875,1.00,7.00,10.00,12.00,15.00,18.00,20.00,23.00,28.00,true
+Position+Archetype,CB,Man Coverage,RouteRunning,875,0.00,3.00,6.00,10.00,15.00,19.00,21.00,24.00,29.00,true
+Position+Archetype,CB,Man Coverage,ZoneCoverage,875,13.00,19.00,22.00,27.00,32.00,38.00,41.00,46.00,58.00,true
+Position+Archetype,CB,Man Coverage,ManCoverage,875,30.00,35.00,38.00,43.00,49.00,55.00,57.00,63.00,74.00,true
+Position+Archetype,CB,Man Coverage,Tackle,875,1.00,6.00,9.50,13.00,18.00,21.00,24.00,27.00,34.00,true
+Position+Archetype,CB,Man Coverage,PassBlock,875,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,CB,Man Coverage,RunBlock,875,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.26,17.00,true
+Position+Archetype,CB,Man Coverage,PassRush,875,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,CB,Man Coverage,RunDefense,875,1.00,3.00,5.00,8.00,11.00,13.00,15.00,17.26,22.00,true
+Position+Archetype,CB,Man Coverage,ThrowPower,875,0.00,3.00,7.00,11.00,15.00,19.00,21.00,24.26,26.00,true
+Position+Archetype,CB,Man Coverage,ThrowAccuracy,875,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,CB,Man Coverage,KickAccuracy,875,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,CB,Man Coverage,KickPower,875,0.00,2.00,4.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,CB,Man Coverage,PuntAccuracy,875,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,CB,Man Coverage,PuntPower,875,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,RB,Speed,Speed,645,44.00,49.00,53.00,59.00,66.00,71.00,74.00,80.00,87.00,true
+Position+Archetype,RB,Speed,Agility,645,8.00,15.00,18.00,23.00,29.00,34.60,38.00,44.00,50.00,true
+Position+Archetype,RB,Speed,FootballIQ,645,4.00,11.00,14.00,19.00,25.00,30.00,33.00,39.00,47.00,true
+Position+Archetype,RB,Speed,Strength,645,1.00,9.00,12.00,17.00,23.00,28.00,31.00,37.00,40.00,true
+Position+Archetype,RB,Speed,Carrying,645,4.00,9.00,13.00,18.00,24.00,29.00,32.00,37.00,40.00,true
+Position+Archetype,RB,Speed,Catching,645,1.00,8.00,10.00,14.00,19.00,23.00,26.80,32.56,37.00,true
+Position+Archetype,RB,Speed,RouteRunning,645,0.00,1.00,2.00,6.00,8.00,10.00,10.00,13.56,15.00,true
+Position+Archetype,RB,Speed,ZoneCoverage,645,0.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,RB,Speed,ManCoverage,645,0.00,4.00,7.00,11.00,15.00,19.00,21.00,24.00,28.00,true
+Position+Archetype,RB,Speed,Tackle,645,0.00,3.00,6.00,11.00,15.00,19.00,21.00,24.56,30.00,true
+Position+Archetype,RB,Speed,PassBlock,645,1.00,3.00,7.00,14.00,23.00,27.00,30.00,34.00,39.00,true
+Position+Archetype,RB,Speed,RunBlock,645,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.56,16.00,true
+Position+Archetype,RB,Speed,PassRush,645,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,RB,Speed,RunDefense,645,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.00,17.00,true
+Position+Archetype,RB,Speed,ThrowPower,645,0.00,4.00,6.00,10.00,15.00,19.00,21.80,25.56,31.00,true
+Position+Archetype,RB,Speed,ThrowAccuracy,645,0.00,3.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,RB,Speed,KickAccuracy,645,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,RB,Speed,KickPower,645,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,RB,Speed,PuntAccuracy,645,0.00,2.00,4.00,6.00,8.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,RB,Speed,PuntPower,645,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OLB,Run Stopper,Speed,430,18.00,25.00,29.00,33.00,39.00,44.00,47.00,52.00,58.00,true
+Position+Archetype,OLB,Run Stopper,Agility,430,10.00,15.00,18.00,22.00,28.00,33.00,36.00,41.71,45.00,true
+Position+Archetype,OLB,Run Stopper,FootballIQ,430,7.00,11.00,14.00,18.00,24.00,28.00,31.00,37.00,42.00,true
+Position+Archetype,OLB,Run Stopper,Strength,430,19.00,25.00,29.00,35.00,42.00,49.00,52.55,57.00,60.00,true
+Position+Archetype,OLB,Run Stopper,Carrying,430,0.00,4.00,6.00,10.00,14.00,18.00,20.00,23.00,25.00,true
+Position+Archetype,OLB,Run Stopper,Catching,430,0.00,5.00,7.00,11.00,14.00,19.00,20.00,24.00,26.00,true
+Position+Archetype,OLB,Run Stopper,RouteRunning,430,0.00,1.00,3.00,5.00,8.00,9.00,10.00,12.71,15.00,true
+Position+Archetype,OLB,Run Stopper,ZoneCoverage,430,9.00,15.00,18.00,23.00,27.75,32.00,36.00,40.00,47.00,true
+Position+Archetype,OLB,Run Stopper,ManCoverage,430,10.00,15.00,18.00,23.00,28.00,33.00,36.00,40.71,47.00,true
+Position+Archetype,OLB,Run Stopper,Tackle,430,17.00,25.00,28.00,33.00,39.00,44.10,46.00,52.00,53.00,true
+Position+Archetype,OLB,Run Stopper,PassBlock,430,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.71,15.00,true
+Position+Archetype,OLB,Run Stopper,RunBlock,430,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.00,15.00,true
+Position+Archetype,OLB,Run Stopper,PassRush,430,4.00,7.00,10.00,13.00,17.00,21.00,23.55,28.71,33.00,true
+Position+Archetype,OLB,Run Stopper,RunDefense,430,25.00,30.00,34.00,38.00,43.75,50.00,53.00,57.00,63.00,true
+Position+Archetype,OLB,Run Stopper,ThrowPower,430,1.00,4.00,7.00,10.00,15.00,18.00,20.00,25.00,27.00,true
+Position+Archetype,OLB,Run Stopper,ThrowAccuracy,430,0.00,4.00,7.00,11.00,14.00,18.00,20.00,24.00,30.00,true
+Position+Archetype,OLB,Run Stopper,KickAccuracy,430,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OLB,Run Stopper,KickPower,430,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OLB,Run Stopper,PuntAccuracy,430,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.71,15.00,true
+Position+Archetype,OLB,Run Stopper,PuntPower,430,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.00,15.00,true
+Position+Archetype,C,Pass Blocking,Speed,277,13.00,14.00,16.00,19.00,22.00,24.00,25.00,27.00,28.00,true
+Position+Archetype,C,Pass Blocking,Agility,277,5.00,8.00,11.00,14.00,18.00,24.40,29.20,35.00,39.00,true
+Position+Archetype,C,Pass Blocking,FootballIQ,277,7.00,11.00,14.00,19.00,24.00,30.00,33.00,35.24,40.00,true
+Position+Archetype,C,Pass Blocking,Strength,277,30.00,35.00,39.00,44.00,51.00,57.00,59.20,64.24,68.00,true
+Position+Archetype,C,Pass Blocking,Carrying,277,0.00,3.00,6.00,10.00,15.00,19.00,22.00,26.00,27.00,true
+Position+Archetype,C,Pass Blocking,Catching,277,1.00,4.00,7.00,11.00,15.00,19.00,21.00,24.00,27.00,true
+Position+Archetype,C,Pass Blocking,RouteRunning,277,0.00,1.00,3.00,6.00,8.00,10.00,10.20,13.00,14.00,true
+Position+Archetype,C,Pass Blocking,ZoneCoverage,277,0.00,4.00,6.00,10.00,15.00,18.40,21.00,26.00,27.00,true
+Position+Archetype,C,Pass Blocking,ManCoverage,277,1.00,3.00,7.00,10.00,15.00,19.00,21.00,25.24,27.00,true
+Position+Archetype,C,Pass Blocking,Tackle,277,1.00,4.00,7.00,10.00,15.00,18.00,20.00,25.00,26.00,true
+Position+Archetype,C,Pass Blocking,PassBlock,277,23.00,28.00,33.00,38.00,44.00,50.00,53.00,58.20,63.00,true
+Position+Archetype,C,Pass Blocking,RunBlock,277,9.00,13.00,17.00,22.00,28.00,34.00,37.00,39.48,45.00,true
+Position+Archetype,C,Pass Blocking,PassRush,277,0.00,2.60,5.00,9.00,12.00,18.00,20.00,24.00,27.00,true
+Position+Archetype,C,Pass Blocking,RunDefense,277,1.00,2.00,4.00,7.00,10.00,12.00,14.00,16.00,17.00,true
+Position+Archetype,C,Pass Blocking,ThrowPower,277,1.00,2.00,5.00,8.00,12.00,15.40,19.00,24.24,26.00,true
+Position+Archetype,C,Pass Blocking,ThrowAccuracy,277,0.00,3.00,6.00,8.00,11.00,16.00,19.20,22.48,27.00,true
+Position+Archetype,C,Pass Blocking,KickAccuracy,277,0.00,3.00,4.00,7.00,9.00,11.00,12.20,16.00,17.00,true
+Position+Archetype,C,Pass Blocking,KickPower,277,1.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,C,Pass Blocking,PuntAccuracy,277,1.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,C,Pass Blocking,PuntPower,277,1.00,2.00,3.00,6.00,9.00,10.00,11.20,14.00,15.00,true
+Position+Archetype,FB,Blocking,Speed,247,17.00,21.00,24.00,30.00,36.00,42.00,45.00,50.08,57.00,true
+Position+Archetype,FB,Blocking,Agility,247,5.00,8.00,12.00,17.00,24.00,30.00,31.00,36.54,39.00,true
+Position+Archetype,FB,Blocking,FootballIQ,247,6.00,9.00,13.00,19.00,25.00,30.00,32.70,38.08,42.00,true
+Position+Archetype,FB,Blocking,Strength,247,25.00,29.00,32.00,38.00,44.00,50.40,54.00,60.00,63.00,true
+Position+Archetype,FB,Blocking,Carrying,247,5.00,7.00,10.00,14.00,18.00,24.00,27.00,30.00,39.00,true
+Position+Archetype,FB,Blocking,Catching,247,5.00,8.00,11.00,14.00,19.00,23.40,25.70,31.54,33.00,true
+Position+Archetype,FB,Blocking,RouteRunning,247,0.00,1.00,3.00,5.00,8.00,10.00,10.00,14.54,18.00,true
+Position+Archetype,FB,Blocking,ZoneCoverage,247,0.00,4.00,6.00,10.00,15.00,20.00,22.00,24.08,26.00,true
+Position+Archetype,FB,Blocking,ManCoverage,247,1.00,3.00,6.00,10.00,15.00,18.00,20.00,24.54,27.00,true
+Position+Archetype,FB,Blocking,Tackle,247,1.00,3.00,6.00,10.00,15.00,20.00,21.70,25.00,27.00,true
+Position+Archetype,FB,Blocking,PassBlock,247,25.00,30.00,33.00,39.00,46.00,51.00,55.00,60.00,68.00,true
+Position+Archetype,FB,Blocking,RunBlock,247,25.00,31.00,34.00,40.00,46.00,51.40,55.00,61.54,62.00,true
+Position+Archetype,FB,Blocking,PassRush,247,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,15.00,true
+Position+Archetype,FB,Blocking,RunDefense,247,0.00,2.00,4.00,6.00,8.50,10.00,10.70,13.00,16.00,true
+Position+Archetype,FB,Blocking,ThrowPower,247,1.00,4.00,6.00,10.00,15.00,19.00,20.00,25.00,26.00,true
+Position+Archetype,FB,Blocking,ThrowAccuracy,247,1.00,3.00,6.00,10.00,15.00,19.00,20.70,25.08,29.00,true
+Position+Archetype,FB,Blocking,KickAccuracy,247,0.00,2.00,3.50,7.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,FB,Blocking,KickPower,247,0.00,2.00,4.00,6.00,9.00,10.00,11.00,12.54,16.00,true
+Position+Archetype,FB,Blocking,PuntAccuracy,247,0.00,2.00,3.00,6.00,9.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,FB,Blocking,PuntPower,247,0.00,2.00,4.00,7.00,9.00,10.40,11.00,13.54,15.00,true
+Position+Archetype,P,Accuracy,Speed,241,1.00,3.00,6.00,10.00,14.00,19.00,21.00,24.60,25.00,true
+Position+Archetype,P,Accuracy,Agility,241,0.00,3.00,6.00,9.00,14.00,18.00,20.00,24.00,26.00,true
+Position+Archetype,P,Accuracy,FootballIQ,241,2.00,8.00,11.00,15.00,19.00,23.00,25.00,28.00,29.00,true
+Position+Archetype,P,Accuracy,Strength,241,0.00,2.00,4.00,6.00,8.00,10.00,10.00,13.60,15.00,true
+Position+Archetype,P,Accuracy,Carrying,241,1.00,3.00,7.00,10.00,14.00,18.00,19.00,21.60,26.00,true
+Position+Archetype,P,Accuracy,Catching,241,1.00,4.00,6.00,10.00,14.00,18.00,21.00,25.60,26.00,true
+Position+Archetype,P,Accuracy,RouteRunning,241,0.00,1.00,2.00,5.00,8.00,9.00,10.00,14.00,14.00,true
+Position+Archetype,P,Accuracy,ZoneCoverage,241,1.00,3.00,6.00,10.00,14.00,19.00,20.00,25.00,26.00,true
+Position+Archetype,P,Accuracy,ManCoverage,241,1.00,3.00,6.00,10.00,14.00,19.00,20.00,23.60,25.00,true
+Position+Archetype,P,Accuracy,Tackle,241,0.00,2.00,4.00,6.00,8.00,10.00,10.00,13.20,16.00,true
+Position+Archetype,P,Accuracy,PassBlock,241,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.60,16.00,true
+Position+Archetype,P,Accuracy,RunBlock,241,0.00,2.00,4.00,6.00,9.00,11.00,11.00,14.60,15.00,true
+Position+Archetype,P,Accuracy,PassRush,241,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,P,Accuracy,RunDefense,241,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.60,16.00,true
+Position+Archetype,P,Accuracy,ThrowPower,241,1.00,2.00,5.00,10.00,14.00,19.00,20.00,22.60,26.00,true
+Position+Archetype,P,Accuracy,ThrowAccuracy,241,1.00,3.00,6.00,9.00,14.00,19.00,20.00,24.60,25.00,true
+Position+Archetype,P,Accuracy,KickAccuracy,241,0.00,3.00,6.00,10.00,15.00,19.00,20.00,24.20,26.00,true
+Position+Archetype,P,Accuracy,KickPower,241,1.00,4.00,7.00,10.00,14.00,19.00,20.00,24.00,25.00,true
+Position+Archetype,P,Accuracy,PuntAccuracy,241,19.00,25.00,28.00,34.00,41.00,45.00,51.00,55.20,58.00,true
+Position+Archetype,P,Accuracy,PuntPower,241,6.00,10.00,12.00,16.00,21.00,27.00,30.00,33.60,35.00,true
+Position+Archetype,ATH,Wingback,Speed,124,26.00,34.30,38.00,44.00,48.00,55.00,57.85,64.54,67.00,true
+Position+Archetype,ATH,Wingback,Agility,124,16.00,19.30,22.00,27.00,31.00,35.00,38.85,46.54,48.00,true
+Position+Archetype,ATH,Wingback,FootballIQ,124,10.00,13.00,16.00,22.00,32.00,35.00,36.00,40.54,41.00,true
+Position+Archetype,ATH,Wingback,Strength,124,5.00,10.30,14.00,20.00,25.00,28.70,30.85,36.00,38.00,true
+Position+Archetype,ATH,Wingback,Carrying,124,1.00,11.30,13.00,20.00,26.00,33.00,37.70,41.77,46.00,true
+Position+Archetype,ATH,Wingback,Catching,124,16.00,20.00,25.00,28.00,33.00,36.00,40.85,50.00,53.00,true
+Position+Archetype,ATH,Wingback,RouteRunning,124,17.00,20.30,23.00,27.00,31.00,35.00,39.70,42.00,43.00,true
+Position+Archetype,ATH,Wingback,ZoneCoverage,124,3.00,5.30,8.00,12.00,17.00,21.00,23.00,28.00,37.00,true
+Position+Archetype,ATH,Wingback,ManCoverage,124,4.00,6.30,9.00,13.00,16.00,21.70,24.00,25.77,36.00,true
+Position+Archetype,ATH,Wingback,Tackle,124,2.00,6.00,8.00,10.00,15.00,18.00,19.85,23.77,25.00,true
+Position+Archetype,ATH,Wingback,PassBlock,124,1.00,5.30,7.00,10.00,15.00,19.00,20.00,25.00,25.00,true
+Position+Archetype,ATH,Wingback,RunBlock,124,3.00,6.00,8.00,11.00,16.00,18.70,20.00,23.77,27.00,true
+Position+Archetype,ATH,Wingback,PassRush,124,1.00,3.00,5.00,8.00,10.00,14.00,15.00,15.00,16.00,true
+Position+Archetype,ATH,Wingback,RunDefense,124,0.00,2.00,4.00,7.00,10.25,14.00,15.00,15.00,16.00,true
+Position+Archetype,ATH,Wingback,ThrowPower,124,0.00,3.00,6.00,9.00,12.00,15.00,18.00,20.00,24.00,true
+Position+Archetype,ATH,Wingback,ThrowAccuracy,124,0.00,4.00,6.00,10.00,13.00,15.00,16.85,20.00,25.00,true
+Position+Archetype,ATH,Wingback,KickAccuracy,124,0.00,4.00,6.00,8.00,11.00,13.00,14.00,15.00,16.00,true
+Position+Archetype,ATH,Wingback,KickPower,124,0.00,3.00,5.00,7.00,10.00,14.00,15.00,15.00,16.00,true
+Position+Archetype,ATH,Wingback,PuntAccuracy,124,0.00,1.30,4.75,8.00,10.00,13.00,15.00,15.00,16.00,true
+Position+Archetype,ATH,Wingback,PuntPower,124,0.00,2.00,5.00,8.00,11.00,13.00,14.00,15.77,16.00,true
+Position+Archetype,ATH,Slotback,Speed,106,20.00,26.00,30.00,36.00,41.75,46.50,48.00,50.00,53.00,true
+Position+Archetype,ATH,Slotback,Agility,106,11.00,15.50,21.00,26.00,32.00,36.00,38.75,43.95,46.00,true
+Position+Archetype,ATH,Slotback,FootballIQ,106,9.00,13.00,16.25,21.50,28.00,34.00,35.00,36.95,38.00,true
+Position+Archetype,ATH,Slotback,Strength,106,25.00,31.50,38.00,44.50,52.75,58.00,61.00,66.95,70.00,true
+Position+Archetype,ATH,Slotback,Carrying,106,4.00,9.50,12.25,19.50,25.00,27.50,29.75,32.00,35.00,true
+Position+Archetype,ATH,Slotback,Catching,106,11.00,15.00,21.00,27.00,34.00,39.50,41.75,49.90,50.00,true
+Position+Archetype,ATH,Slotback,RouteRunning,106,15.00,20.00,24.00,30.00,35.75,41.00,43.00,45.95,51.00,true
+Position+Archetype,ATH,Slotback,ZoneCoverage,106,1.00,6.00,8.00,12.00,15.75,18.50,20.00,21.95,23.00,true
+Position+Archetype,ATH,Slotback,ManCoverage,106,4.00,7.00,9.00,13.00,15.75,19.00,20.00,22.90,26.00,true
+Position+Archetype,ATH,Slotback,Tackle,106,1.00,6.00,8.00,12.00,16.00,19.50,21.00,22.00,22.00,true
+Position+Archetype,ATH,Slotback,PassBlock,106,1.00,5.00,9.25,16.50,24.75,30.50,33.00,37.85,44.00,true
+Position+Archetype,ATH,Slotback,RunBlock,106,5.00,7.00,11.00,28.50,35.00,40.00,43.00,45.90,52.00,true
+Position+Archetype,ATH,Slotback,PassRush,106,0.00,2.50,5.00,6.00,10.00,13.00,14.00,16.00,16.00,true
+Position+Archetype,ATH,Slotback,RunDefense,106,0.00,1.00,4.25,7.00,10.00,14.00,15.00,15.00,16.00,true
+Position+Archetype,ATH,Slotback,ThrowPower,106,1.00,4.00,6.25,10.00,14.00,19.00,19.75,22.90,24.00,true
+Position+Archetype,ATH,Slotback,ThrowAccuracy,106,0.00,4.00,7.00,10.50,14.75,20.00,20.75,23.00,24.00,true
+Position+Archetype,ATH,Slotback,KickAccuracy,106,0.00,3.00,5.00,7.00,10.00,13.00,14.00,15.95,16.00,true
+Position+Archetype,ATH,Slotback,KickPower,106,0.00,1.00,4.00,7.00,10.00,13.00,14.00,15.00,16.00,true
+Position+Archetype,ATH,Slotback,PuntAccuracy,106,0.00,3.00,5.00,8.00,10.00,13.00,13.00,15.00,16.00,true
+Position+Archetype,ATH,Slotback,PuntPower,106,0.00,1.50,4.00,8.00,10.00,13.00,14.75,15.00,15.00,true
+Position+Archetype,OT,Pass Blocking,Speed,981,12.00,15.00,16.00,19.00,22.00,24.00,26.00,28.00,31.00,true
+Position+Archetype,OT,Pass Blocking,Agility,981,1.00,8.00,11.00,14.00,18.00,24.00,28.00,36.20,44.00,true
+Position+Archetype,OT,Pass Blocking,FootballIQ,981,6.00,11.00,14.00,19.00,25.00,30.00,33.00,40.00,46.00,true
+Position+Archetype,OT,Pass Blocking,Strength,981,30.00,36.00,40.00,45.00,51.00,56.00,60.00,66.00,76.00,true
+Position+Archetype,OT,Pass Blocking,Carrying,981,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,OT,Pass Blocking,Catching,981,1.00,4.00,7.00,11.00,15.00,19.00,21.00,26.00,30.00,true
+Position+Archetype,OT,Pass Blocking,RouteRunning,981,0.00,1.00,3.00,5.00,8.00,9.00,10.00,13.00,15.00,true
+Position+Archetype,OT,Pass Blocking,ZoneCoverage,981,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,OT,Pass Blocking,ManCoverage,981,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.20,31.00,true
+Position+Archetype,OT,Pass Blocking,Tackle,981,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,OT,Pass Blocking,PassBlock,981,20.00,29.00,33.00,38.00,44.00,50.00,53.00,59.20,71.00,true
+Position+Archetype,OT,Pass Blocking,RunBlock,981,8.00,14.00,17.00,22.00,28.00,33.00,36.00,42.40,51.00,true
+Position+Archetype,OT,Pass Blocking,PassRush,981,0.00,2.00,5.00,8.00,13.00,18.00,20.00,24.20,29.00,true
+Position+Archetype,OT,Pass Blocking,RunDefense,981,0.00,2.00,4.00,7.00,10.00,12.00,14.00,16.00,20.00,true
+Position+Archetype,OT,Pass Blocking,ThrowPower,981,0.00,2.00,5.00,8.00,13.00,17.00,19.00,25.00,29.00,true
+Position+Archetype,OT,Pass Blocking,ThrowAccuracy,981,0.00,3.00,5.00,9.00,13.00,17.00,20.00,24.00,29.00,true
+Position+Archetype,OT,Pass Blocking,KickAccuracy,981,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,OT,Pass Blocking,KickPower,981,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OT,Pass Blocking,PuntAccuracy,981,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OT,Pass Blocking,PuntPower,981,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,DE,Balanced,Speed,797,22.00,27.00,31.00,36.00,41.00,46.00,49.20,55.00,66.00,true
+Position+Archetype,DE,Balanced,Agility,797,12.00,20.00,23.00,28.00,33.00,38.00,41.00,47.08,55.00,true
+Position+Archetype,DE,Balanced,FootballIQ,797,4.00,11.00,14.00,18.00,24.00,29.00,32.00,38.04,44.00,true
+Position+Archetype,DE,Balanced,Strength,797,12.00,21.00,24.00,28.00,33.00,38.00,42.00,50.00,53.00,true
+Position+Archetype,DE,Balanced,Carrying,797,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,DE,Balanced,Catching,797,1.00,5.00,8.00,13.00,18.00,22.40,25.00,30.00,35.00,true
+Position+Archetype,DE,Balanced,RouteRunning,797,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,15.00,true
+Position+Archetype,DE,Balanced,ZoneCoverage,797,1.00,4.00,7.00,10.00,15.00,19.00,21.00,25.04,30.00,true
+Position+Archetype,DE,Balanced,ManCoverage,797,0.00,4.00,7.00,11.00,15.00,19.00,20.00,25.00,30.00,true
+Position+Archetype,DE,Balanced,Tackle,797,17.00,23.00,27.00,31.00,36.00,42.00,45.00,51.00,62.00,true
+Position+Archetype,DE,Balanced,PassBlock,797,0.00,2.00,3.00,6.00,9.00,10.00,11.00,16.00,17.00,true
+Position+Archetype,DE,Balanced,RunBlock,797,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.04,16.00,true
+Position+Archetype,DE,Balanced,PassRush,797,14.00,20.00,24.00,28.00,33.00,39.00,42.00,49.00,54.00,true
+Position+Archetype,DE,Balanced,RunDefense,797,15.00,20.00,24.00,28.00,33.00,39.00,41.00,47.04,55.00,true
+Position+Archetype,DE,Balanced,ThrowPower,797,0.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,DE,Balanced,ThrowAccuracy,797,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,DE,Balanced,KickAccuracy,797,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,DE,Balanced,KickPower,797,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.04,16.00,true
+Position+Archetype,DE,Balanced,PuntAccuracy,797,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,DE,Balanced,PuntPower,797,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,OG,Run Blocking,Speed,548,10.00,14.00,16.00,20.00,22.00,24.00,26.00,28.00,30.00,true
+Position+Archetype,OG,Run Blocking,Agility,548,3.00,8.00,11.00,14.00,18.00,23.00,29.00,37.00,45.00,true
+Position+Archetype,OG,Run Blocking,FootballIQ,548,3.00,11.00,13.00,18.00,24.00,29.00,32.00,38.00,40.00,true
+Position+Archetype,OG,Run Blocking,Strength,548,25.00,35.00,39.00,44.00,50.00,55.00,59.00,63.53,73.00,true
+Position+Archetype,OG,Run Blocking,Carrying,548,1.00,3.70,6.00,11.00,15.00,19.00,21.00,25.53,26.00,true
+Position+Archetype,OG,Run Blocking,Catching,548,0.00,3.00,7.00,10.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,OG,Run Blocking,RouteRunning,548,0.00,1.00,3.00,6.00,8.00,10.00,10.00,13.53,16.00,true
+Position+Archetype,OG,Run Blocking,ZoneCoverage,548,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,OG,Run Blocking,ManCoverage,548,0.00,3.00,7.00,10.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,OG,Run Blocking,Tackle,548,0.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,OG,Run Blocking,PassBlock,548,7.00,14.00,17.00,22.00,27.00,32.00,35.65,42.00,50.00,true
+Position+Archetype,OG,Run Blocking,RunBlock,548,21.00,28.00,32.00,37.00,44.00,48.00,52.00,60.53,64.00,true
+Position+Archetype,OG,Run Blocking,PassRush,548,1.00,3.00,5.00,8.00,11.00,17.00,19.00,23.53,25.00,true
+Position+Archetype,OG,Run Blocking,RunDefense,548,0.00,2.00,3.00,7.00,9.00,11.00,14.00,15.53,16.00,true
+Position+Archetype,OG,Run Blocking,ThrowPower,548,0.00,2.00,4.00,7.50,11.00,16.00,19.00,24.53,28.00,true
+Position+Archetype,OG,Run Blocking,ThrowAccuracy,548,0.00,2.00,5.00,8.00,11.00,16.00,19.00,22.00,26.00,true
+Position+Archetype,OG,Run Blocking,KickAccuracy,548,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,18.00,true
+Position+Archetype,OG,Run Blocking,KickPower,548,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,OG,Run Blocking,PuntAccuracy,548,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OG,Run Blocking,PuntPower,548,0.00,2.00,4.00,6.00,9.00,10.00,12.00,15.00,17.00,true
+Position+Archetype,K,Accuracy,Speed,282,0.00,3.00,6.00,9.00,13.00,17.00,20.00,24.00,24.00,true
+Position+Archetype,K,Accuracy,Agility,282,0.00,3.00,6.00,9.00,13.00,18.00,20.00,23.38,25.00,true
+Position+Archetype,K,Accuracy,FootballIQ,282,5.00,8.00,11.00,13.50,18.00,22.00,23.00,26.38,29.00,true
+Position+Archetype,K,Accuracy,Strength,282,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.19,16.00,true
+Position+Archetype,K,Accuracy,Carrying,282,0.00,3.00,6.00,10.00,13.00,18.00,20.00,22.00,23.00,true
+Position+Archetype,K,Accuracy,Catching,282,0.00,3.00,6.00,9.00,14.00,18.00,20.95,24.19,26.00,true
+Position+Archetype,K,Accuracy,RouteRunning,282,0.00,1.00,2.25,5.00,8.00,9.00,10.00,12.19,16.00,true
+Position+Archetype,K,Accuracy,ZoneCoverage,282,1.00,3.00,5.00,10.00,14.00,19.00,20.00,23.00,25.00,true
+Position+Archetype,K,Accuracy,ManCoverage,282,0.00,3.00,6.00,9.00,14.00,18.00,20.00,25.00,25.00,true
+Position+Archetype,K,Accuracy,Tackle,282,0.00,2.00,3.00,6.00,8.00,10.00,10.95,15.00,16.00,true
+Position+Archetype,K,Accuracy,PassBlock,282,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.19,15.00,true
+Position+Archetype,K,Accuracy,RunBlock,282,0.00,2.00,3.00,6.00,8.00,10.00,11.00,12.00,16.00,true
+Position+Archetype,K,Accuracy,PassRush,282,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.19,14.00,true
+Position+Archetype,K,Accuracy,RunDefense,282,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,15.00,true
+Position+Archetype,K,Accuracy,ThrowPower,282,1.00,3.00,6.00,9.00,13.00,18.00,20.00,25.19,27.00,true
+Position+Archetype,K,Accuracy,ThrowAccuracy,282,0.00,4.00,6.00,9.00,13.00,18.00,20.00,23.19,25.00,true
+Position+Archetype,K,Accuracy,KickAccuracy,282,19.00,24.00,27.00,32.00,41.00,48.00,53.00,57.19,62.00,true
+Position+Archetype,K,Accuracy,KickPower,282,5.00,9.00,12.00,15.00,21.00,26.00,29.00,33.00,33.00,true
+Position+Archetype,K,Accuracy,PuntAccuracy,282,1.00,3.00,5.25,9.00,13.00,18.00,20.00,23.19,26.00,true
+Position+Archetype,K,Accuracy,PuntPower,282,0.00,3.00,6.00,9.00,14.00,18.00,19.95,25.00,26.00,true
+Position+Archetype,ATH,Lineman,Speed,138,10.00,14.70,18.00,23.00,26.00,29.00,30.00,31.63,35.00,true
+Position+Archetype,ATH,Lineman,Agility,138,10.00,14.70,19.25,24.50,30.00,35.00,38.00,45.63,50.00,true
+Position+Archetype,ATH,Lineman,FootballIQ,138,10.00,14.00,18.00,22.00,31.00,37.00,38.00,40.00,40.00,true
+Position+Archetype,ATH,Lineman,Strength,138,25.00,29.70,35.00,41.00,47.75,53.30,56.00,59.63,61.00,true
+Position+Archetype,ATH,Lineman,Carrying,138,1.00,4.00,6.00,10.00,14.00,18.00,20.00,23.26,24.00,true
+Position+Archetype,ATH,Lineman,Catching,138,1.00,2.00,3.00,5.50,9.00,10.00,11.15,15.63,16.00,true
+Position+Archetype,ATH,Lineman,RouteRunning,138,0.00,1.00,3.25,6.00,8.00,10.00,10.00,11.63,13.00,true
+Position+Archetype,ATH,Lineman,ZoneCoverage,138,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,ATH,Lineman,ManCoverage,138,1.00,2.00,5.00,7.00,11.00,21.00,25.00,31.26,33.00,true
+Position+Archetype,ATH,Lineman,Tackle,138,5.00,7.00,8.25,13.00,20.00,36.30,38.30,49.52,52.00,true
+Position+Archetype,ATH,Lineman,PassBlock,138,10.00,14.00,22.00,27.00,35.00,39.30,41.15,46.63,48.00,true
+Position+Archetype,ATH,Lineman,RunBlock,138,10.00,17.00,21.25,28.00,34.00,39.00,41.30,47.78,52.00,true
+Position+Archetype,ATH,Lineman,PassRush,138,12.00,14.70,19.00,25.00,30.00,34.30,37.15,40.00,41.00,true
+Position+Archetype,ATH,Lineman,RunDefense,138,10.00,14.00,20.00,25.00,30.00,34.00,35.15,38.63,40.00,true
+Position+Archetype,ATH,Lineman,ThrowPower,138,1.00,3.00,6.00,9.50,13.75,17.00,19.00,22.00,25.00,true
+Position+Archetype,ATH,Lineman,ThrowAccuracy,138,1.00,2.70,6.00,9.00,13.00,18.00,19.00,21.00,25.00,true
+Position+Archetype,ATH,Lineman,KickAccuracy,138,1.00,2.00,5.00,8.00,10.00,15.00,15.00,16.00,17.00,true
+Position+Archetype,ATH,Lineman,KickPower,138,0.00,1.70,4.00,7.00,10.00,13.00,15.00,15.63,19.00,true
+Position+Archetype,ATH,Lineman,PuntAccuracy,138,0.00,2.00,5.00,8.00,10.00,14.00,15.00,15.63,16.00,true
+Position+Archetype,ATH,Lineman,PuntPower,138,0.00,2.00,5.00,8.00,10.00,13.00,14.15,15.63,18.00,true
+Position+Archetype,ILB,Speed,Speed,316,35.00,41.00,44.00,49.00,57.00,62.00,65.00,68.00,73.00,true
+Position+Archetype,ILB,Speed,Agility,316,20.00,25.00,28.00,33.00,40.00,46.00,49.00,54.00,59.00,true
+Position+Archetype,ILB,Speed,FootballIQ,316,3.00,11.00,14.00,19.00,25.00,30.00,34.00,38.00,40.00,true
+Position+Archetype,ILB,Speed,Strength,316,13.00,20.00,23.00,28.00,34.00,40.00,43.00,49.00,52.00,true
+Position+Archetype,ILB,Speed,Carrying,316,0.00,4.00,6.00,10.00,16.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,ILB,Speed,Catching,316,1.00,4.00,7.00,11.00,15.00,19.00,21.00,25.85,30.00,true
+Position+Archetype,ILB,Speed,RouteRunning,316,0.00,1.00,3.00,5.00,8.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,ILB,Speed,ZoneCoverage,316,12.00,20.00,23.00,28.00,34.00,41.00,45.00,51.70,54.00,true
+Position+Archetype,ILB,Speed,ManCoverage,316,14.00,20.00,23.00,29.00,35.00,40.50,45.00,51.85,59.00,true
+Position+Archetype,ILB,Speed,Tackle,316,12.00,19.00,23.00,28.00,35.00,39.50,44.00,47.00,52.00,true
+Position+Archetype,ILB,Speed,PassBlock,316,1.00,2.00,3.75,6.00,9.00,10.00,11.00,13.85,17.00,true
+Position+Archetype,ILB,Speed,RunBlock,316,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,ILB,Speed,PassRush,316,2.00,8.00,11.00,14.00,19.00,23.00,25.25,29.00,30.00,true
+Position+Archetype,ILB,Speed,RunDefense,316,16.00,25.00,28.75,33.00,39.00,44.00,49.00,52.85,58.00,true
+Position+Archetype,ILB,Speed,ThrowPower,316,1.00,3.00,6.00,10.00,15.00,19.00,21.25,25.00,31.00,true
+Position+Archetype,ILB,Speed,ThrowAccuracy,316,1.00,4.00,7.00,11.00,15.00,19.00,20.25,24.00,29.00,true
+Position+Archetype,ILB,Speed,KickAccuracy,316,1.00,2.00,3.00,6.00,9.00,10.00,11.00,14.85,16.00,true
+Position+Archetype,ILB,Speed,KickPower,316,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,ILB,Speed,PuntAccuracy,316,1.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,ILB,Speed,PuntPower,316,0.00,2.00,4.00,7.00,9.00,11.00,12.00,15.85,17.00,true
+Position+Archetype,C,Run Blocking,Speed,238,13.00,14.00,16.00,19.00,22.00,24.00,25.00,26.63,29.00,true
+Position+Archetype,C,Run Blocking,Agility,238,5.00,8.00,10.00,14.00,17.00,21.00,26.15,37.26,41.00,true
+Position+Archetype,C,Run Blocking,FootballIQ,238,7.00,10.00,14.00,18.00,23.00,28.00,33.00,39.52,41.00,true
+Position+Archetype,C,Run Blocking,Strength,238,30.00,35.00,38.00,43.00,48.00,53.30,58.00,67.63,70.00,true
+Position+Archetype,C,Run Blocking,Carrying,238,1.00,3.00,6.00,10.00,14.00,18.00,19.15,22.63,26.00,true
+Position+Archetype,C,Run Blocking,Catching,238,0.00,3.00,7.00,10.00,14.00,17.00,19.15,23.63,25.00,true
+Position+Archetype,C,Run Blocking,RouteRunning,238,0.00,1.00,2.25,5.00,8.00,9.00,10.00,12.52,14.00,true
+Position+Archetype,C,Run Blocking,ZoneCoverage,238,1.00,4.00,7.00,10.00,15.00,18.00,19.15,24.63,30.00,true
+Position+Archetype,C,Run Blocking,ManCoverage,238,2.00,4.00,7.00,10.00,14.00,17.30,20.00,23.63,25.00,true
+Position+Archetype,C,Run Blocking,Tackle,238,1.00,4.00,6.00,10.00,15.00,18.00,20.00,24.63,28.00,true
+Position+Archetype,C,Run Blocking,PassBlock,238,9.00,13.70,17.00,21.50,27.75,32.30,37.00,42.00,46.00,true
+Position+Archetype,C,Run Blocking,RunBlock,238,23.00,28.00,32.25,37.00,43.00,49.00,51.15,61.26,65.00,true
+Position+Archetype,C,Run Blocking,PassRush,238,0.00,2.00,5.00,8.00,10.00,16.00,19.00,21.63,25.00,true
+Position+Archetype,C,Run Blocking,RunDefense,238,0.00,2.00,4.00,6.00,10.00,11.00,13.00,16.00,16.00,true
+Position+Archetype,C,Run Blocking,ThrowPower,238,1.00,3.00,5.00,8.00,11.00,16.00,19.00,24.63,27.00,true
+Position+Archetype,C,Run Blocking,ThrowAccuracy,238,0.00,2.00,5.00,8.00,11.00,16.00,19.00,25.00,25.00,true
+Position+Archetype,C,Run Blocking,KickAccuracy,238,0.00,2.00,3.00,6.00,8.75,10.00,10.15,14.00,17.00,true
+Position+Archetype,C,Run Blocking,KickPower,238,0.00,2.00,4.00,6.00,9.00,10.00,10.00,16.63,17.00,true
+Position+Archetype,C,Run Blocking,PuntAccuracy,238,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.63,17.00,true
+Position+Archetype,C,Run Blocking,PuntPower,238,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.63,15.00,true
+Position+Archetype,OT,Run Blocking,Speed,805,13.00,15.00,17.00,20.00,22.00,24.60,26.00,28.00,30.00,true
+Position+Archetype,OT,Run Blocking,Agility,805,5.00,8.00,11.00,14.00,18.00,25.00,30.00,36.96,46.00,true
+Position+Archetype,OT,Run Blocking,FootballIQ,805,6.00,11.00,14.00,19.00,25.00,30.00,33.00,37.00,43.00,true
+Position+Archetype,OT,Run Blocking,Strength,805,30.00,35.00,39.00,45.00,51.00,56.00,59.00,65.00,74.00,true
+Position+Archetype,OT,Run Blocking,Carrying,805,1.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,OT,Run Blocking,Catching,805,1.00,4.00,7.00,11.00,15.00,19.00,20.00,24.00,25.00,true
+Position+Archetype,OT,Run Blocking,RouteRunning,805,0.00,1.00,3.00,6.00,8.00,10.00,10.80,14.00,16.00,true
+Position+Archetype,OT,Run Blocking,ZoneCoverage,805,0.00,4.00,7.00,11.00,16.00,19.00,21.00,24.00,31.00,true
+Position+Archetype,OT,Run Blocking,ManCoverage,805,0.00,4.00,8.00,11.00,16.00,19.00,21.00,24.96,30.00,true
+Position+Archetype,OT,Run Blocking,Tackle,805,0.00,4.00,8.00,11.00,15.00,20.00,21.00,25.00,26.00,true
+Position+Archetype,OT,Run Blocking,PassBlock,805,7.00,13.00,17.00,22.00,28.00,33.00,36.00,41.00,49.00,true
+Position+Archetype,OT,Run Blocking,RunBlock,805,23.00,28.00,32.00,39.00,44.00,50.00,52.80,57.00,66.00,true
+Position+Archetype,OT,Run Blocking,PassRush,805,0.00,2.00,5.00,8.00,12.00,17.00,20.00,24.00,27.00,true
+Position+Archetype,OT,Run Blocking,RunDefense,805,0.00,2.00,4.00,7.00,10.00,11.00,14.00,15.00,18.00,true
+Position+Archetype,OT,Run Blocking,ThrowPower,805,1.00,3.00,5.00,8.00,12.00,17.60,20.00,24.00,28.00,true
+Position+Archetype,OT,Run Blocking,ThrowAccuracy,805,0.00,2.00,5.00,8.00,12.00,18.00,20.00,23.96,26.00,true
+Position+Archetype,OT,Run Blocking,KickAccuracy,805,0.00,2.00,4.00,6.00,9.00,10.00,12.00,15.96,16.00,true
+Position+Archetype,OT,Run Blocking,KickPower,805,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,OT,Run Blocking,PuntAccuracy,805,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,18.00,true
+Position+Archetype,OT,Run Blocking,PuntPower,805,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,ILB,Field General,Speed,378,25.00,31.00,34.00,39.00,45.00,51.30,54.15,59.00,66.00,true
+Position+Archetype,ILB,Field General,Agility,378,15.00,20.00,24.00,29.00,34.00,40.00,43.00,49.46,56.00,true
+Position+Archetype,ILB,Field General,FootballIQ,378,20.00,27.00,30.00,36.00,41.00,46.00,50.00,57.23,61.00,true
+Position+Archetype,ILB,Field General,Strength,378,15.00,20.00,24.00,29.00,34.75,40.00,43.00,49.23,58.00,true
+Position+Archetype,ILB,Field General,Carrying,378,1.00,3.00,7.00,11.00,15.00,19.00,20.15,27.00,31.00,true
+Position+Archetype,ILB,Field General,Catching,378,0.00,5.00,7.00,10.00,14.00,19.00,20.00,25.00,28.00,true
+Position+Archetype,ILB,Field General,RouteRunning,378,0.00,1.00,2.25,5.00,8.00,10.00,10.00,14.00,15.00,true
+Position+Archetype,ILB,Field General,ZoneCoverage,378,20.00,26.00,30.00,34.00,40.00,46.00,49.00,54.00,60.00,true
+Position+Archetype,ILB,Field General,ManCoverage,378,7.00,15.00,19.00,24.00,29.00,34.00,38.00,44.23,50.00,true
+Position+Archetype,ILB,Field General,Tackle,378,13.00,20.00,23.00,29.00,34.00,41.00,43.15,50.46,56.00,true
+Position+Archetype,ILB,Field General,PassBlock,378,0.00,2.00,3.00,6.00,8.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,ILB,Field General,RunBlock,378,0.00,2.00,4.00,6.00,9.00,10.00,11.15,15.00,17.00,true
+Position+Archetype,ILB,Field General,PassRush,378,4.00,8.00,11.00,14.00,18.00,22.00,24.15,31.00,34.00,true
+Position+Archetype,ILB,Field General,RunDefense,378,15.00,20.00,24.00,29.00,34.75,40.00,44.00,48.23,60.00,true
+Position+Archetype,ILB,Field General,ThrowPower,378,1.00,3.00,7.00,11.00,15.00,19.00,21.00,26.23,30.00,true
+Position+Archetype,ILB,Field General,ThrowAccuracy,378,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,33.00,true
+Position+Archetype,ILB,Field General,KickAccuracy,378,0.00,2.00,3.00,6.00,9.00,10.00,12.00,14.00,16.00,true
+Position+Archetype,ILB,Field General,KickPower,378,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.46,17.00,true
+Position+Archetype,ILB,Field General,PuntAccuracy,378,0.00,2.00,4.00,6.00,8.00,10.00,12.00,15.00,16.00,true
+Position+Archetype,ILB,Field General,PuntPower,378,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,TE,Vertical Threat,Speed,423,34.00,39.00,44.00,49.00,55.50,61.80,65.00,70.78,75.00,true
+Position+Archetype,TE,Vertical Threat,Agility,423,14.00,20.00,23.00,26.00,33.00,39.00,42.00,49.00,54.00,true
+Position+Archetype,TE,Vertical Threat,FootballIQ,423,7.00,11.00,13.00,18.00,24.00,30.00,33.00,38.00,42.00,true
+Position+Archetype,TE,Vertical Threat,Strength,423,20.00,25.00,28.00,33.00,39.00,45.00,48.90,54.78,60.00,true
+Position+Archetype,TE,Vertical Threat,Carrying,423,4.00,13.00,16.00,19.00,23.00,29.00,32.00,37.56,43.00,true
+Position+Archetype,TE,Vertical Threat,Catching,423,15.00,20.00,23.00,28.00,34.00,39.00,42.00,47.78,51.00,true
+Position+Archetype,TE,Vertical Threat,RouteRunning,423,1.00,8.00,10.00,14.00,18.00,23.00,26.90,31.00,33.00,true
+Position+Archetype,TE,Vertical Threat,ZoneCoverage,423,0.00,4.00,6.00,10.00,14.00,18.00,20.00,24.00,30.00,true
+Position+Archetype,TE,Vertical Threat,ManCoverage,423,1.00,4.00,6.50,10.00,14.00,19.00,21.00,25.00,26.00,true
+Position+Archetype,TE,Vertical Threat,Tackle,423,1.00,4.00,7.00,10.00,15.00,19.00,21.00,24.00,29.00,true
+Position+Archetype,TE,Vertical Threat,PassBlock,423,8.00,14.20,18.00,24.00,29.00,34.00,36.90,43.78,46.00,true
+Position+Archetype,TE,Vertical Threat,RunBlock,423,15.00,20.00,23.00,28.00,34.00,39.00,43.00,49.78,54.00,true
+Position+Archetype,TE,Vertical Threat,PassRush,423,1.00,5.00,8.00,12.00,17.00,21.00,23.00,29.78,33.00,true
+Position+Archetype,TE,Vertical Threat,RunDefense,423,0.00,3.00,7.00,10.00,15.00,19.00,21.00,25.78,30.00,true
+Position+Archetype,TE,Vertical Threat,ThrowPower,423,0.00,4.00,7.00,11.00,15.00,19.00,20.00,24.00,29.00,true
+Position+Archetype,TE,Vertical Threat,ThrowAccuracy,423,1.00,5.00,7.00,11.00,15.00,19.00,20.00,24.00,27.00,true
+Position+Archetype,TE,Vertical Threat,KickAccuracy,423,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,TE,Vertical Threat,KickPower,423,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,17.00,true
+Position+Archetype,TE,Vertical Threat,PuntAccuracy,423,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.56,16.00,true
+Position+Archetype,TE,Vertical Threat,PuntPower,423,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,SS,Run Stopper,Speed,262,30.00,34.00,37.00,42.00,50.00,54.00,56.95,61.39,63.00,true
+Position+Archetype,SS,Run Stopper,Agility,262,14.00,19.00,22.25,26.00,34.00,39.00,40.95,45.00,52.00,true
+Position+Archetype,SS,Run Stopper,FootballIQ,262,7.00,10.00,12.00,16.50,24.00,28.00,31.00,36.39,40.00,true
+Position+Archetype,SS,Run Stopper,Strength,262,6.00,10.00,12.00,18.00,26.75,32.00,35.00,40.39,44.00,true
+Position+Archetype,SS,Run Stopper,Carrying,262,1.00,4.00,6.00,10.00,15.00,19.00,21.00,24.00,26.00,true
+Position+Archetype,SS,Run Stopper,Catching,262,3.00,7.00,9.00,11.00,14.00,16.00,18.00,21.17,27.00,true
+Position+Archetype,SS,Run Stopper,RouteRunning,262,0.00,1.00,2.00,5.00,8.00,9.00,10.00,14.39,15.00,true
+Position+Archetype,SS,Run Stopper,ZoneCoverage,262,13.00,18.00,22.00,26.00,31.00,37.00,39.95,45.00,48.00,true
+Position+Archetype,SS,Run Stopper,ManCoverage,262,15.00,19.00,21.00,26.00,31.00,37.00,39.00,43.39,46.00,true
+Position+Archetype,SS,Run Stopper,Tackle,262,13.00,19.00,22.00,27.00,34.00,39.90,41.95,47.00,50.00,true
+Position+Archetype,SS,Run Stopper,PassBlock,262,0.00,2.00,4.00,7.00,9.00,10.00,11.95,15.00,16.00,true
+Position+Archetype,SS,Run Stopper,RunBlock,262,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.39,15.00,true
+Position+Archetype,SS,Run Stopper,PassRush,262,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.78,15.00,true
+Position+Archetype,SS,Run Stopper,RunDefense,262,19.00,24.00,26.00,31.00,36.00,42.00,45.95,49.00,53.00,true
+Position+Archetype,SS,Run Stopper,ThrowPower,262,1.00,3.00,6.00,10.00,14.00,18.00,21.00,23.00,26.00,true
+Position+Archetype,SS,Run Stopper,ThrowAccuracy,262,1.00,3.00,6.00,9.00,14.00,18.90,20.00,24.00,26.00,true
+Position+Archetype,SS,Run Stopper,KickAccuracy,262,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.39,15.00,true
+Position+Archetype,SS,Run Stopper,KickPower,262,1.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,SS,Run Stopper,PuntAccuracy,262,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.00,14.00,true
+Position+Archetype,SS,Run Stopper,PuntPower,262,1.00,2.00,3.00,6.00,9.00,10.00,11.00,14.78,16.00,true
+Position+Archetype,ATH,Weakside,Speed,119,20.00,29.00,31.00,37.00,44.00,50.20,53.00,58.00,59.00,true
+Position+Archetype,ATH,Weakside,Agility,119,11.00,16.80,23.00,28.00,36.00,43.00,50.10,55.00,59.00,true
+Position+Archetype,ATH,Weakside,FootballIQ,119,10.00,17.00,21.50,25.00,29.00,34.00,37.10,39.00,40.00,true
+Position+Archetype,ATH,Weakside,Strength,119,10.00,15.00,18.00,27.00,33.00,38.20,40.00,46.00,50.00,true
+Position+Archetype,ATH,Weakside,Carrying,119,1.00,3.00,7.00,10.00,15.00,18.20,20.10,22.00,24.00,true
+Position+Archetype,ATH,Weakside,Catching,119,5.00,7.00,10.00,15.00,22.00,26.00,29.00,30.82,32.00,true
+Position+Archetype,ATH,Weakside,RouteRunning,119,0.00,2.80,6.00,9.00,12.00,14.20,15.00,18.64,19.00,true
+Position+Archetype,ATH,Weakside,ZoneCoverage,119,7.00,17.80,22.50,29.00,35.00,40.00,44.10,48.00,50.00,true
+Position+Archetype,ATH,Weakside,ManCoverage,119,10.00,16.80,23.00,28.00,34.00,39.00,43.00,45.00,49.00,true
+Position+Archetype,ATH,Weakside,Tackle,119,12.00,16.00,20.00,27.00,33.00,37.20,39.10,42.82,47.00,true
+Position+Archetype,ATH,Weakside,PassBlock,119,0.00,2.00,4.00,8.00,10.00,13.00,14.10,16.00,16.00,true
+Position+Archetype,ATH,Weakside,RunBlock,119,0.00,2.00,5.00,8.00,11.00,13.20,14.10,15.00,16.00,true
+Position+Archetype,ATH,Weakside,PassRush,119,5.00,9.00,13.00,17.00,22.00,28.20,31.00,33.82,35.00,true
+Position+Archetype,ATH,Weakside,RunDefense,119,4.00,8.80,12.00,17.00,22.00,25.00,29.00,33.00,34.00,true
+Position+Archetype,ATH,Weakside,ThrowPower,119,0.00,2.80,6.00,9.00,12.00,15.00,16.10,19.82,26.00,true
+Position+Archetype,ATH,Weakside,ThrowAccuracy,119,0.00,2.00,6.00,8.00,11.50,15.00,16.30,24.28,26.00,true
+Position+Archetype,ATH,Weakside,KickAccuracy,119,0.00,2.00,5.00,8.00,10.50,13.00,14.00,15.82,16.00,true
+Position+Archetype,ATH,Weakside,KickPower,119,0.00,2.00,4.00,7.00,11.50,14.20,15.00,16.00,16.00,true
+Position+Archetype,ATH,Weakside,PuntAccuracy,119,0.00,2.00,5.00,8.00,11.00,14.00,14.00,15.82,16.00,true
+Position+Archetype,ATH,Weakside,PuntPower,119,0.00,2.80,6.00,8.00,10.00,14.00,14.10,15.00,15.00,true
+Position+Archetype,ATH,Soccer Player,Speed,106,10.00,13.50,17.00,22.50,26.00,32.00,32.75,35.95,37.00,true
+Position+Archetype,ATH,Soccer Player,Agility,106,16.00,18.00,21.00,28.00,33.00,37.00,39.75,40.00,42.00,true
+Position+Archetype,ATH,Soccer Player,FootballIQ,106,7.00,10.00,12.00,15.00,20.75,25.00,25.00,29.90,32.00,true
+Position+Archetype,ATH,Soccer Player,Strength,106,1.00,5.00,7.00,11.00,17.00,21.00,23.50,25.00,25.00,true
+Position+Archetype,ATH,Soccer Player,Carrying,106,1.00,4.00,7.00,10.00,13.00,17.50,19.75,24.80,26.00,true
+Position+Archetype,ATH,Soccer Player,Catching,106,5.00,10.00,12.00,16.00,20.00,24.50,27.00,28.95,29.00,true
+Position+Archetype,ATH,Soccer Player,RouteRunning,106,1.00,6.00,9.00,11.00,14.75,19.50,22.00,23.95,28.00,true
+Position+Archetype,ATH,Soccer Player,ZoneCoverage,106,0.00,3.00,5.00,7.00,10.00,13.00,14.00,15.00,15.00,true
+Position+Archetype,ATH,Soccer Player,ManCoverage,106,0.00,2.00,5.00,7.50,10.00,13.00,14.00,14.00,15.00,true
+Position+Archetype,ATH,Soccer Player,Tackle,106,0.00,3.00,5.00,8.00,11.00,14.00,16.50,20.90,23.00,true
+Position+Archetype,ATH,Soccer Player,PassBlock,106,0.00,1.00,4.00,7.50,10.00,13.50,14.00,15.00,15.00,true
+Position+Archetype,ATH,Soccer Player,RunBlock,106,0.00,2.50,5.00,8.00,10.00,12.50,13.00,15.00,15.00,true
+Position+Archetype,ATH,Soccer Player,PassRush,106,0.00,4.50,7.00,9.00,11.00,12.00,12.75,15.95,18.00,true
+Position+Archetype,ATH,Soccer Player,RunDefense,106,0.00,2.00,4.25,7.00,10.00,12.50,14.00,14.95,15.00,true
+Position+Archetype,ATH,Soccer Player,ThrowPower,106,1.00,5.00,8.00,13.00,18.00,26.00,28.75,31.95,35.00,true
+Position+Archetype,ATH,Soccer Player,ThrowAccuracy,106,1.00,5.00,9.00,13.00,18.00,23.00,26.50,31.85,34.00,true
+Position+Archetype,ATH,Soccer Player,KickAccuracy,106,11.00,16.00,21.00,27.00,32.00,36.50,39.00,44.95,46.00,true
+Position+Archetype,ATH,Soccer Player,KickPower,106,12.00,16.50,22.00,27.00,31.00,35.50,39.00,42.90,43.00,true
+Position+Archetype,ATH,Soccer Player,PuntAccuracy,106,10.00,14.00,20.00,26.00,31.00,36.50,38.75,42.95,45.00,true
+Position+Archetype,ATH,Soccer Player,PuntPower,106,10.00,14.00,20.25,27.00,32.00,35.00,37.75,43.80,48.00,true
+Position+Archetype,RB,Balanced,Speed,560,38.00,44.00,47.00,53.00,59.00,65.00,68.05,75.00,78.00,true
+Position+Archetype,RB,Balanced,Agility,560,11.00,21.00,24.00,28.00,33.25,40.00,43.00,49.00,57.00,true
+Position+Archetype,RB,Balanced,FootballIQ,560,7.00,12.00,15.00,19.00,24.00,29.00,32.00,38.00,42.00,true
+Position+Archetype,RB,Balanced,Strength,560,10.00,14.00,17.00,20.00,25.00,30.00,33.00,39.00,45.00,true
+Position+Archetype,RB,Balanced,Carrying,560,10.00,15.00,18.00,23.00,28.00,33.00,36.00,42.00,48.00,true
+Position+Archetype,RB,Balanced,Catching,560,9.00,13.00,16.00,21.00,27.00,32.00,35.00,39.00,44.00,true
+Position+Archetype,RB,Balanced,RouteRunning,560,0.00,1.00,3.00,6.00,9.00,11.00,14.05,24.00,28.00,true
+Position+Archetype,RB,Balanced,ZoneCoverage,560,0.00,4.00,7.00,11.00,15.00,19.00,20.00,24.00,26.00,true
+Position+Archetype,RB,Balanced,ManCoverage,560,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.41,26.00,true
+Position+Archetype,RB,Balanced,Tackle,560,0.00,4.00,7.00,11.00,15.00,19.00,20.00,24.41,31.00,true
+Position+Archetype,RB,Balanced,PassBlock,560,1.00,3.00,7.00,11.00,26.00,31.00,33.00,37.41,43.00,true
+Position+Archetype,RB,Balanced,RunBlock,560,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.00,15.00,true
+Position+Archetype,RB,Balanced,PassRush,560,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.00,15.00,true
+Position+Archetype,RB,Balanced,RunDefense,560,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.41,17.00,true
+Position+Archetype,RB,Balanced,ThrowPower,560,1.00,4.00,7.00,11.00,14.00,18.00,20.00,24.00,31.00,true
+Position+Archetype,RB,Balanced,ThrowAccuracy,560,1.00,4.90,7.00,11.00,15.00,18.00,20.00,23.00,26.00,true
+Position+Archetype,RB,Balanced,KickAccuracy,560,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,RB,Balanced,KickPower,560,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,RB,Balanced,PuntAccuracy,560,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,RB,Balanced,PuntPower,560,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.41,16.00,true
+Position+Archetype,WR,Route Runner,Speed,728,35.00,40.00,44.00,49.00,54.00,59.00,63.00,69.73,74.00,true
+Position+Archetype,WR,Route Runner,Agility,728,20.00,25.00,28.75,33.00,38.00,43.00,46.00,54.73,62.00,true
+Position+Archetype,WR,Route Runner,FootballIQ,728,5.00,11.00,14.00,18.00,23.00,28.00,32.00,37.00,42.00,true
+Position+Archetype,WR,Route Runner,Strength,728,1.00,4.00,7.75,12.00,17.00,21.30,24.00,31.00,39.00,true
+Position+Archetype,WR,Route Runner,Carrying,728,3.00,10.00,13.00,17.00,23.00,27.00,31.00,36.73,43.00,true
+Position+Archetype,WR,Route Runner,Catching,728,12.00,20.00,24.00,28.00,33.00,38.00,41.65,48.73,53.00,true
+Position+Archetype,WR,Route Runner,RouteRunning,728,13.00,20.00,24.00,28.00,34.00,39.00,41.65,50.00,56.00,true
+Position+Archetype,WR,Route Runner,ZoneCoverage,728,0.00,4.00,7.00,11.00,15.00,19.00,21.00,25.00,31.00,true
+Position+Archetype,WR,Route Runner,ManCoverage,728,0.00,4.00,7.00,11.00,15.00,19.00,20.00,24.73,29.00,true
+Position+Archetype,WR,Route Runner,Tackle,728,0.00,2.00,5.00,8.00,12.00,16.00,19.00,23.00,26.00,true
+Position+Archetype,WR,Route Runner,PassBlock,728,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,WR,Route Runner,RunBlock,728,4.00,7.00,9.00,11.00,14.00,17.00,18.00,20.00,26.00,true
+Position+Archetype,WR,Route Runner,PassRush,728,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.00,16.00,true
+Position+Archetype,WR,Route Runner,RunDefense,728,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,WR,Route Runner,ThrowPower,728,1.00,5.00,7.00,11.00,15.00,19.00,20.00,25.73,29.00,true
+Position+Archetype,WR,Route Runner,ThrowAccuracy,728,1.00,4.00,7.00,10.00,15.00,19.00,21.00,24.73,31.00,true
+Position+Archetype,WR,Route Runner,KickAccuracy,728,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.00,15.00,true
+Position+Archetype,WR,Route Runner,KickPower,728,0.00,2.00,4.00,6.00,8.25,10.00,11.00,13.00,17.00,true
+Position+Archetype,WR,Route Runner,PuntAccuracy,728,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,WR,Route Runner,PuntPower,728,0.00,2.00,4.00,6.00,9.00,10.00,11.00,13.73,16.00,true
+Position+Archetype,QB,Field General,Speed,428,13.00,17.00,20.00,25.00,30.00,36.00,39.00,45.73,56.00,true
+Position+Archetype,QB,Field General,Agility,428,2.00,6.00,9.00,11.00,15.00,20.00,23.00,30.19,39.00,true
+Position+Archetype,QB,Field General,FootballIQ,428,27.00,30.00,34.00,39.00,44.00,49.30,52.65,59.00,70.00,true
+Position+Archetype,QB,Field General,Strength,428,3.00,7.00,9.00,13.00,17.00,22.00,25.00,31.00,41.00,true
+Position+Archetype,QB,Field General,Carrying,428,0.00,3.00,6.00,10.00,15.00,19.00,20.00,25.00,30.00,true
+Position+Archetype,QB,Field General,Catching,428,1.00,3.00,6.00,10.50,15.00,19.00,20.00,24.73,27.00,true
+Position+Archetype,QB,Field General,RouteRunning,428,0.00,1.00,3.00,6.00,8.00,10.00,10.65,14.00,15.00,true
+Position+Archetype,QB,Field General,ZoneCoverage,428,1.00,4.00,7.00,10.00,15.00,19.00,21.00,25.00,29.00,true
+Position+Archetype,QB,Field General,ManCoverage,428,0.00,4.00,7.00,10.00,15.00,19.00,20.00,25.00,30.00,true
+Position+Archetype,QB,Field General,Tackle,428,0.00,4.00,7.00,10.00,15.00,18.30,20.00,22.00,27.00,true
+Position+Archetype,QB,Field General,PassBlock,428,0.00,2.00,3.00,6.00,9.00,10.00,11.65,15.00,16.00,true
+Position+Archetype,QB,Field General,RunBlock,428,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,QB,Field General,PassRush,428,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.73,17.00,true
+Position+Archetype,QB,Field General,RunDefense,428,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,QB,Field General,ThrowPower,428,12.00,17.70,21.00,27.00,33.00,37.00,39.00,46.73,54.00,true
+Position+Archetype,QB,Field General,ThrowAccuracy,428,13.00,18.00,21.00,27.00,34.00,41.00,45.00,50.73,63.00,true
+Position+Archetype,QB,Field General,KickAccuracy,428,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,QB,Field General,KickPower,428,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,QB,Field General,PuntAccuracy,428,0.00,2.00,4.00,7.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,QB,Field General,PuntPower,428,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,C,Line Captain,Speed,218,13.00,14.00,16.00,18.00,21.00,24.00,26.00,27.83,28.00,true
+Position+Archetype,C,Line Captain,Agility,218,4.00,8.00,10.25,14.00,17.00,21.30,24.15,35.32,39.00,true
+Position+Archetype,C,Line Captain,FootballIQ,218,25.00,32.00,34.00,38.50,44.00,48.00,50.15,57.83,66.00,true
+Position+Archetype,C,Line Captain,Strength,218,30.00,35.00,38.00,43.00,49.00,53.00,55.00,61.00,69.00,true
+Position+Archetype,C,Line Captain,Carrying,218,1.00,3.70,6.00,10.00,14.00,18.00,21.15,24.83,27.00,true
+Position+Archetype,C,Line Captain,Catching,218,1.00,3.70,7.00,10.00,14.75,19.00,21.00,25.83,30.00,true
+Position+Archetype,C,Line Captain,RouteRunning,218,0.00,1.00,3.00,5.00,7.75,9.00,11.00,13.83,15.00,true
+Position+Archetype,C,Line Captain,ZoneCoverage,218,0.00,4.00,6.00,10.00,14.00,18.00,20.15,22.83,25.00,true
+Position+Archetype,C,Line Captain,ManCoverage,218,1.00,4.00,6.00,10.00,14.00,18.00,22.00,25.00,26.00,true
+Position+Archetype,C,Line Captain,Tackle,218,1.00,3.00,6.00,10.00,14.00,18.00,21.00,24.00,27.00,true
+Position+Archetype,C,Line Captain,PassBlock,218,10.00,14.00,18.00,22.00,27.00,33.30,39.00,44.00,48.00,true
+Position+Archetype,C,Line Captain,RunBlock,218,10.00,15.00,18.00,22.00,27.00,32.00,35.15,43.49,46.00,true
+Position+Archetype,C,Line Captain,PassRush,218,1.00,2.00,4.00,7.00,10.00,15.00,18.15,22.00,23.00,true
+Position+Archetype,C,Line Captain,RunDefense,218,1.00,2.00,4.00,7.00,9.00,11.00,13.00,14.83,15.00,true
+Position+Archetype,C,Line Captain,ThrowPower,218,1.00,2.00,4.00,7.00,10.00,14.00,15.15,21.83,26.00,true
+Position+Archetype,C,Line Captain,ThrowAccuracy,218,1.00,2.00,5.00,7.00,10.00,14.00,17.00,20.83,26.00,true
+Position+Archetype,C,Line Captain,KickAccuracy,218,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.83,14.00,true
+Position+Archetype,C,Line Captain,KickPower,218,1.00,2.00,3.00,6.00,8.00,10.00,11.00,14.83,15.00,true
+Position+Archetype,C,Line Captain,PuntAccuracy,218,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,C,Line Captain,PuntPower,218,0.00,2.00,3.00,6.00,9.00,11.00,12.00,14.00,16.00,true
+Position+Archetype,FS,Ball Hawk,Speed,305,30.00,35.00,38.00,43.00,50.00,56.00,61.00,66.96,68.00,true
+Position+Archetype,FS,Ball Hawk,Agility,305,20.00,25.00,28.00,33.00,39.00,44.60,49.80,56.96,59.00,true
+Position+Archetype,FS,Ball Hawk,FootballIQ,305,7.00,10.00,13.00,18.00,24.00,29.00,33.80,41.92,47.00,true
+Position+Archetype,FS,Ball Hawk,Strength,305,3.00,7.00,9.00,12.00,16.00,20.00,22.00,26.00,29.00,true
+Position+Archetype,FS,Ball Hawk,Carrying,305,0.00,4.00,7.00,10.00,15.00,19.00,20.00,24.92,26.00,true
+Position+Archetype,FS,Ball Hawk,Catching,305,15.00,19.00,23.00,28.00,34.00,40.00,44.00,50.96,52.00,true
+Position+Archetype,FS,Ball Hawk,RouteRunning,305,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,15.00,true
+Position+Archetype,FS,Ball Hawk,ZoneCoverage,305,20.00,24.00,28.00,32.00,38.00,43.60,48.80,55.00,58.00,true
+Position+Archetype,FS,Ball Hawk,ManCoverage,305,17.00,23.00,27.00,32.00,38.00,43.00,47.00,56.88,58.00,true
+Position+Archetype,FS,Ball Hawk,Tackle,305,6.00,10.00,13.00,17.00,23.00,28.00,32.00,38.96,42.00,true
+Position+Archetype,FS,Ball Hawk,PassBlock,305,0.00,2.00,4.00,7.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,FS,Ball Hawk,RunBlock,305,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.96,17.00,true
+Position+Archetype,FS,Ball Hawk,PassRush,305,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,FS,Ball Hawk,RunDefense,305,7.00,10.00,13.00,18.00,23.00,28.00,32.80,36.96,42.00,true
+Position+Archetype,FS,Ball Hawk,ThrowPower,305,0.00,3.40,7.00,10.00,14.00,18.60,20.00,25.92,27.00,true
+Position+Archetype,FS,Ball Hawk,ThrowAccuracy,305,0.00,3.00,6.00,10.00,15.00,19.00,21.00,25.96,27.00,true
+Position+Archetype,FS,Ball Hawk,KickAccuracy,305,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,FS,Ball Hawk,KickPower,305,0.00,2.00,3.00,6.00,9.00,10.00,11.00,13.96,16.00,true
+Position+Archetype,FS,Ball Hawk,PuntAccuracy,305,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.96,17.00,true
+Position+Archetype,FS,Ball Hawk,PuntPower,305,1.00,2.00,4.00,7.00,9.00,10.00,11.00,14.96,16.00,true
+Position+Archetype,DT,Pass Rusher,Speed,616,18.00,23.50,26.00,28.00,33.00,37.00,39.25,44.00,51.00,true
+Position+Archetype,DT,Pass Rusher,Agility,616,15.00,19.00,22.00,28.00,33.00,38.00,43.00,49.70,60.00,true
+Position+Archetype,DT,Pass Rusher,FootballIQ,616,3.00,10.00,13.00,18.00,24.00,29.00,32.00,38.00,48.00,true
+Position+Archetype,DT,Pass Rusher,Strength,616,15.00,19.00,23.00,28.00,34.00,39.00,42.00,47.85,53.00,true
+Position+Archetype,DT,Pass Rusher,Carrying,616,0.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,DT,Pass Rusher,Catching,616,1.00,3.50,7.00,10.00,15.00,19.00,21.00,26.00,30.00,true
+Position+Archetype,DT,Pass Rusher,RouteRunning,616,0.00,1.00,3.00,6.00,8.00,10.00,10.00,14.00,16.00,true
+Position+Archetype,DT,Pass Rusher,ZoneCoverage,616,0.00,4.00,6.75,10.00,15.00,19.00,21.00,24.85,29.00,true
+Position+Archetype,DT,Pass Rusher,ManCoverage,616,0.00,3.00,6.00,10.00,15.00,19.00,21.00,25.00,26.00,true
+Position+Archetype,DT,Pass Rusher,Tackle,616,20.00,24.00,28.00,33.00,39.00,45.00,48.00,54.85,59.00,true
+Position+Archetype,DT,Pass Rusher,PassBlock,616,0.00,2.00,4.00,6.00,9.00,11.00,12.00,14.00,17.00,true
+Position+Archetype,DT,Pass Rusher,RunBlock,616,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.85,16.00,true
+Position+Archetype,DT,Pass Rusher,PassRush,616,15.00,20.00,23.00,27.50,34.00,40.00,43.25,50.00,54.00,true
+Position+Archetype,DT,Pass Rusher,RunDefense,616,10.00,14.00,18.00,22.00,28.00,34.00,37.00,43.85,51.00,true
+Position+Archetype,DT,Pass Rusher,ThrowPower,616,0.00,4.00,6.00,10.00,15.00,19.00,21.00,25.00,30.00,true
+Position+Archetype,DT,Pass Rusher,ThrowAccuracy,616,1.00,3.00,6.00,10.00,15.00,20.00,21.00,25.00,31.00,true
+Position+Archetype,DT,Pass Rusher,KickAccuracy,616,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,17.00,true
+Position+Archetype,DT,Pass Rusher,KickPower,616,0.00,2.00,3.00,6.00,9.00,10.00,11.00,15.00,16.00,true
+Position+Archetype,DT,Pass Rusher,PuntAccuracy,616,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.85,17.00,true
+Position+Archetype,DT,Pass Rusher,PuntPower,616,0.00,2.00,4.00,6.50,9.00,10.00,11.00,15.00,15.00,true
+Position+Archetype,OG,Balanced,Speed,440,10.00,15.00,17.00,20.00,22.00,24.00,25.00,27.61,31.00,true
+Position+Archetype,OG,Balanced,Agility,440,4.00,8.00,11.00,14.00,18.00,24.00,27.05,33.61,40.00,true
+Position+Archetype,OG,Balanced,FootballIQ,440,7.00,11.00,13.00,18.00,23.00,28.00,31.00,36.00,41.00,true
+Position+Archetype,OG,Balanced,Strength,440,30.00,35.00,38.75,44.00,49.00,54.00,56.05,63.00,65.00,true
+Position+Archetype,OG,Balanced,Carrying,440,0.00,4.00,7.00,10.00,15.00,19.00,20.00,24.61,26.00,true
+Position+Archetype,OG,Balanced,Catching,440,1.00,5.00,8.00,12.00,16.00,20.00,22.00,28.00,35.00,true
+Position+Archetype,OG,Balanced,RouteRunning,440,0.00,1.00,3.00,6.00,8.00,10.00,10.00,13.22,16.00,true
+Position+Archetype,OG,Balanced,ZoneCoverage,440,0.00,4.00,7.00,10.00,15.00,18.00,20.00,24.00,28.00,true
+Position+Archetype,OG,Balanced,ManCoverage,440,1.00,4.90,7.00,10.00,15.00,19.00,20.00,25.00,26.00,true
+Position+Archetype,OG,Balanced,Tackle,440,0.00,3.90,7.00,11.00,15.00,19.00,20.00,23.61,28.00,true
+Position+Archetype,OG,Balanced,PassBlock,440,16.00,21.00,24.00,29.00,35.00,40.00,43.00,48.61,54.00,true
+Position+Archetype,OG,Balanced,RunBlock,440,16.00,21.00,24.00,29.00,35.00,39.00,43.00,49.61,53.00,true
+Position+Archetype,OG,Balanced,PassRush,440,1.00,3.00,5.00,7.00,11.00,15.00,18.00,21.61,28.00,true
+Position+Archetype,OG,Balanced,RunDefense,440,0.00,2.00,4.00,7.00,10.00,15.00,18.00,20.00,23.00,true
+Position+Archetype,OG,Balanced,ThrowPower,440,0.00,2.00,5.00,8.00,10.00,15.00,18.00,21.61,28.00,true
+Position+Archetype,OG,Balanced,ThrowAccuracy,440,0.00,2.00,4.00,7.00,10.00,14.10,18.00,22.00,25.00,true
+Position+Archetype,OG,Balanced,KickAccuracy,440,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OG,Balanced,KickPower,440,0.00,2.00,3.00,6.00,8.00,10.00,11.00,13.00,16.00,true
+Position+Archetype,OG,Balanced,PuntAccuracy,440,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,OG,Balanced,PuntPower,440,0.00,2.00,4.00,6.00,9.00,10.00,11.00,14.00,16.00,true
+Position+Archetype,FS,Man Coverage,Speed,299,35.00,39.80,42.00,49.00,56.00,62.00,65.10,73.00,74.00,true
+Position+Archetype,FS,Man Coverage,Agility,299,18.00,24.00,27.00,33.00,39.00,45.00,50.00,57.04,62.00,true
+Position+Archetype,FS,Man Coverage,FootballIQ,299,7.00,10.00,13.00,18.00,24.00,30.00,34.00,39.00,41.00,true
+Position+Archetype,FS,Man Coverage,Strength,299,3.00,6.00,8.00,12.00,15.00,19.00,22.00,25.00,28.00,true
+Position+Archetype,FS,Man Coverage,Carrying,299,1.00,4.00,7.00,11.00,15.00,20.00,22.00,25.00,32.00,true
+Position+Archetype,FS,Man Coverage,Catching,299,1.00,6.00,8.00,11.00,14.50,18.00,20.00,23.00,27.00,true
+Position+Archetype,FS,Man Coverage,RouteRunning,299,0.00,2.00,4.00,7.00,10.00,16.00,19.00,22.02,24.00,true
+Position+Archetype,FS,Man Coverage,ZoneCoverage,299,15.00,19.00,21.00,27.00,33.00,39.00,44.00,50.02,59.00,true
+Position+Archetype,FS,Man Coverage,ManCoverage,299,30.00,34.00,37.00,42.00,48.00,54.00,60.00,65.02,73.00,true
+Position+Archetype,FS,Man Coverage,Tackle,299,5.00,10.00,13.00,17.00,23.00,28.20,34.10,37.10,43.00,true
+Position+Archetype,FS,Man Coverage,PassBlock,299,0.00,2.00,4.00,6.00,9.00,10.00,11.00,15.02,17.00,true
+Position+Archetype,FS,Man Coverage,RunBlock,299,1.00,2.00,4.00,6.00,9.00,10.00,11.10,16.00,17.00,true
+Position+Archetype,FS,Man Coverage,PassRush,299,0.00,2.00,4.00,7.00,9.00,10.20,11.00,15.00,16.00,true
+Position+Archetype,FS,Man Coverage,RunDefense,299,7.00,9.80,13.00,18.00,23.00,29.00,32.10,40.00,42.00,true
+Position+Archetype,FS,Man Coverage,ThrowPower,299,1.00,4.00,7.00,11.00,15.00,20.00,22.00,25.00,26.00,true
+Position+Archetype,FS,Man Coverage,ThrowAccuracy,299,1.00,3.00,6.00,10.00,15.50,19.00,21.00,25.06,30.00,true
+Position+Archetype,FS,Man Coverage,KickAccuracy,299,0.00,2.00,3.00,6.00,9.00,10.00,11.00,14.02,15.00,true
+Position+Archetype,FS,Man Coverage,KickPower,299,1.00,2.00,3.00,6.00,9.00,10.00,11.00,12.02,15.00,true
+Position+Archetype,FS,Man Coverage,PuntAccuracy,299,0.00,2.00,3.00,6.00,8.00,10.00,11.00,14.02,16.00,true
+Position+Archetype,FS,Man Coverage,PuntPower,299,0.00,2.00,3.00,6.00,9.00,11.00,13.00,16.00,17.00,true
+Position+Archetype,ATH,Bandit,Speed,139,1.00,26.00,31.00,37.00,43.00,48.00,52.00,59.00,61.00,true
+Position+Archetype,ATH,Bandit,Agility,139,1.00,25.80,29.00,34.00,39.00,43.20,48.00,54.72,58.00,true
+Position+Archetype,ATH,Bandit,FootballIQ,139,1.00,13.00,17.00,21.00,26.00,33.20,35.00,38.86,41.00,true
+Position+Archetype,ATH,Bandit,Strength,139,1.00,16.00,20.00,25.00,32.00,38.00,41.00,45.24,46.00,true
+Position+Archetype,ATH,Bandit,Carrying,139,0.00,2.00,6.00,10.00,14.00,19.20,21.00,25.00,26.00,true
+Position+Archetype,ATH,Bandit,Catching,139,0.00,6.00,10.00,14.00,19.50,26.20,29.10,31.00,35.00,true
+Position+Archetype,ATH,Bandit,RouteRunning,139,0.00,1.00,5.00,8.00,11.00,14.00,14.00,15.00,17.00,true
+Position+Archetype,ATH,Bandit,ZoneCoverage,139,1.00,19.80,26.00,34.00,39.00,44.00,50.00,53.62,54.00,true
+Position+Archetype,ATH,Bandit,ManCoverage,139,1.00,21.80,25.50,32.00,39.00,46.00,51.00,57.00,58.00,true
+Position+Archetype,ATH,Bandit,Tackle,139,1.00,15.00,20.00,26.00,33.00,39.00,43.10,47.24,49.00,true
+Position+Archetype,ATH,Bandit,PassBlock,139,0.00,2.00,4.00,8.00,10.00,13.00,14.00,16.00,16.00,true
+Position+Archetype,ATH,Bandit,RunBlock,139,0.00,2.00,5.00,8.00,10.00,13.00,15.00,16.00,16.00,true
+Position+Archetype,ATH,Bandit,PassRush,139,1.00,8.00,11.50,16.00,21.00,26.00,29.00,36.10,39.00,true
+Position+Archetype,ATH,Bandit,RunDefense,139,1.00,10.00,14.00,19.00,26.00,29.00,32.10,36.62,39.00,true
+Position+Archetype,ATH,Bandit,ThrowPower,139,1.00,3.00,5.00,8.00,13.00,15.00,17.10,22.24,29.00,true
+Position+Archetype,ATH,Bandit,ThrowAccuracy,139,0.00,3.00,6.00,10.00,13.00,15.00,16.10,21.62,30.00,true
+Position+Archetype,ATH,Bandit,KickAccuracy,139,0.00,2.00,5.00,7.00,11.00,14.00,15.00,16.00,17.00,true
+Position+Archetype,ATH,Bandit,KickPower,139,0.00,1.80,4.00,7.00,10.00,12.00,14.00,15.00,16.00,true
+Position+Archetype,ATH,Bandit,PuntAccuracy,139,0.00,1.00,4.00,7.00,10.00,12.20,14.00,15.00,15.00,true
+Position+Archetype,ATH,Bandit,PuntPower,139,0.00,1.00,3.50,7.00,10.00,12.00,15.00,15.62,16.00,true
