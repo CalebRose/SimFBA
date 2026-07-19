@@ -293,6 +293,10 @@ func (s *StreamScheduler) Tick(ctx context.Context) {
 
 	// 1. Mark completed game slots revealed and free them.
 	for i, slot := range s.ActiveSlots {
+		// Only four active slots are allowed for NFL, so skip any beyond that.
+		if s.League == "nfl" && i > 3 {
+			continue
+		}
 		if slot == nil {
 			continue
 		}
