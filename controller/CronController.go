@@ -131,7 +131,8 @@ func SyncPhaseTuesdayViaCron() {
 
 	// Calculate Player Minimum Values and Average Annual Value (AAV) for players
 	if ts.Phase == 19 || ts.NFLWeek == 9 {
-		managers.CalculatePlayerMinimumAndAAVValues()
+		// w := http.ResponseWriter(nil)
+		// managers.CalculatePlayerMinimumAndAAVValues(w)
 	}
 
 	if (ts.CollegeSeasonOver && !ts.ProgressedCollegePlayers) || (ts.Phase == 31 && !ts.ProgressedCollegePlayers) {

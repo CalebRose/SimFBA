@@ -379,12 +379,28 @@ func GetCFBTeamDataForDiscord(id string) structs.CollegeTeamResponseData {
 }
 
 func GetCFBPlayByPlayStreamData(timeslot string, isFBS bool) []structs.StreamResponse {
+	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
+	_, gameType := ts.GetCFBCurrentGameType()
 	collegeWeekID := ts.CollegeWeekID
 	teamMap := GetCollegeTeamMap()
 	games := GetCollegeGamesByTimeslotAndWeekId(strconv.Itoa(collegeWeekID), timeslot, ts.CFBSpringGames)
-
+	collegePlayers := repository.FindAllCollegePlayers(repository.PlayerQuery{})
+	collegePlayerMapByTeamID := MakeCollegePlayerMapByTeamID(collegePlayers, true)
+	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
+	weekID := strconv.Itoa(int(ts.CollegeWeekID))
+	collegePlayerStats := repository.FindCollegePlayerGameStatsRecords(seasonID, weekID, gameType, "")
+	collegePlayerStatsMap := MakeCollegePlayerStatsMapByTeamID(collegePlayerStats)
 	streams := []structs.StreamResponse{}
+
+	var allPbPs []structs.CollegePlayByPlay
+	gameIDs := make([]uint, 0, len(games))
+	for _, game := range games {
+		gameIDs = append(gameIDs, game.ID)
+	}
+	db.Where("game_id IN ?", gameIDs).Find(&allPbPs)
+
+	playByPlayMap := MakeCFBPlayByPlayMapByGameID(allPbPs)
 
 	for _, game := range games {
 		if !game.GameComplete || game.IsRevealed {
@@ -406,34 +422,27 @@ func GetCFBPlayByPlayStreamData(timeslot string, isFBS bool) []structs.StreamRes
 		if homeTeam.IsFBS && awayTeam.IsFBS && !isFBS {
 			continue
 		}
-		gameID := strconv.Itoa(int(game.ID))
 		var wg sync.WaitGroup
 		var (
-			homeGameplan structs.CollegeGameplan
-			awayGameplan structs.CollegeGameplan
-			playByPlays  []structs.CollegePlayByPlay
-			homePlayers  []structs.GameResultsPlayer
-			awayPlayers  []structs.GameResultsPlayer
-			homeStats    []structs.CollegePlayerStats
-			awayStats    []structs.CollegePlayerStats
+			homeGameplan    structs.CollegeGameplan
+			awayGameplan    structs.CollegeGameplan
+			gamePlayByPlays []structs.CollegePlayByPlay
+			homePlayers     []structs.GameResultsPlayer
+			awayPlayers     []structs.GameResultsPlayer
+			homeStats       []structs.CollegePlayerStats
+			awayStats       []structs.CollegePlayerStats
 		)
 		homeTeamID := strconv.Itoa(game.HomeTeamID)
 		awayTeamID := strconv.Itoa(game.AwayTeamID)
+
+		homeStats = collegePlayerStatsMap[uint(game.HomeTeamID)]
+		awayStats = collegePlayerStatsMap[uint(game.AwayTeamID)]
+		roster := collegePlayerMapByTeamID[uint(game.HomeTeamID)]
+		homePlayers = MakeGameResultsPlayerListFromCFB(homeStats, roster)
+		awayRoster := collegePlayerMapByTeamID[uint(game.AwayTeamID)]
+		awayPlayers = MakeGameResultsPlayerListFromCFB(awayStats, awayRoster)
+		gamePlayByPlays = playByPlayMap[game.ID]
 		wg.Add(2)
-
-		go func() {
-			defer wg.Done()
-			homeStats = GetAllCollegePlayerStatsByGame(gameID, homeTeamID)
-		}()
-
-		go func() {
-			defer wg.Done()
-			awayStats = GetAllCollegePlayerStatsByGame(gameID, awayTeamID)
-		}()
-
-		wg.Wait()
-
-		wg.Add(5)
 
 		go func() {
 			defer wg.Done()
@@ -445,25 +454,10 @@ func GetCFBPlayByPlayStreamData(timeslot string, isFBS bool) []structs.StreamRes
 			awayGameplan = GetGameplanByTeamID(awayTeamID)
 		}()
 
-		go func() {
-			defer wg.Done()
-			playByPlays = GetCFBPlayByPlaysByGameID(gameID)
-		}()
-
-		go func() {
-			defer wg.Done()
-			homePlayers = GetAllCollegePlayersWithGameStatsByTeamID(gameID, homeStats)
-		}()
-
-		go func() {
-			defer wg.Done()
-			awayPlayers = GetAllCollegePlayersWithGameStatsByTeamID(gameID, awayStats)
-		}()
-
 		wg.Wait()
 
 		participantMap := getGameParticipantMap(homePlayers, awayPlayers)
-		playbyPlayResponse := GenerateCFBPlayByPlayResponse(playByPlays, participantMap, true, game.HomeTeam, game.AwayTeam)
+		playbyPlayResponse := GenerateCFBPlayByPlayResponse(gamePlayByPlays, participantMap, true, game.HomeTeam, game.AwayTeam)
 
 		stream := structs.StreamResponse{
 			GameID:              game.ID,
@@ -502,17 +496,29 @@ func GetCFBPlayByPlayStreamData(timeslot string, isFBS bool) []structs.StreamRes
 
 func GetNFLPlayByPlayStreamData(timeslot string) []structs.StreamResponse {
 	ts := GetTimestamp()
+	db := dbprovider.GetInstance().GetDB()
+	_, gameType := ts.GetNFLCurrentGameType()
 	nflWeekID := ts.NFLWeekID
+	seasonID := strconv.Itoa(ts.NFLSeasonID)
 	games := GetNFLGamesByTimeslotAndWeekId(strconv.Itoa(nflWeekID), timeslot, ts.NFLPreseason)
-
+	nflPlayers := GetAllNFLPlayers()
+	nflPlayerMapByTeamID := MakeNFLPlayerMapByTeamID(nflPlayers, true)
+	nflPlayerStats := repository.FindProPlayerGameStatsRecords(seasonID, strconv.Itoa(nflWeekID), gameType, "")
+	nflPlayerStatsMap := MakeNFLPlayerStatsMapByTeamID(nflPlayerStats)
+	var allPbPs []structs.NFLPlayByPlay
+	gameIDs := make([]uint, 0, len(games))
+	for _, game := range games {
+		gameIDs = append(gameIDs, game.ID)
+	}
+	db.Where("game_id IN ?", gameIDs).Find(&allPbPs)
 	streams := []structs.StreamResponse{}
+	playByPlayMap := MakeNFLPlayByPlayMapByGameID(allPbPs)
 
 	for _, game := range games {
 		if !game.GameComplete {
 			continue
 		}
 
-		gameID := strconv.Itoa(int(game.ID))
 		var wg sync.WaitGroup
 		var (
 			homeGameplan structs.NFLGameplan
@@ -525,21 +531,15 @@ func GetNFLPlayByPlayStreamData(timeslot string) []structs.StreamResponse {
 		)
 		homeTeamID := strconv.Itoa(game.HomeTeamID)
 		awayTeamID := strconv.Itoa(game.AwayTeamID)
-
-		wg.Add(2)
-
-		go func() {
-			defer wg.Done()
-			homeStats = GetAllNFLPlayerStatsByGame(gameID, homeTeamID)
-		}()
-
-		go func() {
-			defer wg.Done()
-			awayStats = GetAllNFLPlayerStatsByGame(gameID, awayTeamID)
-		}()
-
+		homeStats = nflPlayerStatsMap[uint(game.HomeTeamID)]
+		awayStats = nflPlayerStatsMap[uint(game.AwayTeamID)]
+		homeRoster := nflPlayerMapByTeamID[uint(game.HomeTeamID)]
+		awayRoster := nflPlayerMapByTeamID[uint(game.AwayTeamID)]
+		homePlayers = MakeGameResultsPlayerListFromNFL(homeStats, homeRoster)
+		awayPlayers = MakeGameResultsPlayerListFromNFL(awayStats, awayRoster)
+		playByPlays = playByPlayMap[game.ID]
 		wg.Wait()
-		wg.Add(5)
+		wg.Add(2)
 
 		go func() {
 			defer wg.Done()
@@ -549,21 +549,6 @@ func GetNFLPlayByPlayStreamData(timeslot string) []structs.StreamResponse {
 		go func() {
 			defer wg.Done()
 			awayGameplan = GetNFLGameplanByTeamID(awayTeamID)
-		}()
-
-		go func() {
-			defer wg.Done()
-			playByPlays = GetNFLPlayByPlaysByGameID(gameID)
-		}()
-
-		go func() {
-			defer wg.Done()
-			homePlayers = GetAllNFLPlayersWithGameStatsByTeamID(gameID, homeStats)
-		}()
-
-		go func() {
-			defer wg.Done()
-			awayPlayers = GetAllNFLPlayersWithGameStatsByTeamID(gameID, awayStats)
 		}()
 
 		wg.Wait()

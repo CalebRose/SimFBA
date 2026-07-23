@@ -156,29 +156,63 @@ func MakeHistoricCollegeSeasonStatsMapByTeamID(stats []structs.CollegePlayerSeas
 	return statsMap
 }
 
+func MakeCollegePlayerStatsMapByTeamID(stats []structs.CollegePlayerStats) map[uint][]structs.CollegePlayerStats {
+	statsMap := make(map[uint][]structs.CollegePlayerStats)
+
+	for _, p := range stats {
+		if p.TeamID == 0 {
+			continue
+		}
+		if len(statsMap[uint(p.TeamID)]) > 0 {
+			statsMap[uint(p.TeamID)] = append(statsMap[uint(p.TeamID)], p)
+		} else {
+			statsMap[uint(p.TeamID)] = []structs.CollegePlayerStats{p}
+		}
+	}
+
+	return statsMap
+}
+
+func MakeNFLPlayerStatsMapByTeamID(stats []structs.NFLPlayerStats) map[uint][]structs.NFLPlayerStats {
+	statsMap := make(map[uint][]structs.NFLPlayerStats)
+
+	for _, p := range stats {
+		if p.TeamID == 0 {
+			continue
+		}
+		if len(statsMap[uint(p.TeamID)]) > 0 {
+			statsMap[uint(p.TeamID)] = append(statsMap[uint(p.TeamID)], p)
+		} else {
+			statsMap[uint(p.TeamID)] = []structs.NFLPlayerStats{p}
+		}
+	}
+
+	return statsMap
+}
+
 /*
 Where("team_one_id = ? OR team_two_id = ?", teamID, teamID)
 */
 func MakeHistoricRivalriesMapByTeamID(rivals []structs.CollegeRival) map[uint][]structs.CollegeRival {
-	statsMap := make(map[uint][]structs.CollegeRival)
+	rivalMap := make(map[uint][]structs.CollegeRival)
 
 	for _, r := range rivals {
 		if r.TeamOneID == 0 || r.TeamTwoID == 0 {
 			continue
 		}
-		if len(statsMap[uint(r.TeamOneID)]) > 0 {
-			statsMap[uint(r.TeamOneID)] = append(statsMap[uint(r.TeamOneID)], r)
+		if len(rivalMap[uint(r.TeamOneID)]) > 0 {
+			rivalMap[uint(r.TeamOneID)] = append(rivalMap[uint(r.TeamOneID)], r)
 		} else {
-			statsMap[uint(r.TeamOneID)] = []structs.CollegeRival{r}
+			rivalMap[uint(r.TeamOneID)] = []structs.CollegeRival{r}
 		}
-		if len(statsMap[uint(r.TeamTwoID)]) > 0 {
-			statsMap[uint(r.TeamTwoID)] = append(statsMap[uint(r.TeamTwoID)], r)
+		if len(rivalMap[uint(r.TeamTwoID)]) > 0 {
+			rivalMap[uint(r.TeamTwoID)] = append(rivalMap[uint(r.TeamTwoID)], r)
 		} else {
-			statsMap[uint(r.TeamTwoID)] = []structs.CollegeRival{r}
+			rivalMap[uint(r.TeamTwoID)] = []structs.CollegeRival{r}
 		}
 	}
 
-	return statsMap
+	return rivalMap
 }
 
 func MakeHistoricGamesMapByTeamID(games []structs.CollegeGame) map[uint][]structs.CollegeGame {
@@ -532,4 +566,22 @@ func MakeStadiumMapByID(stadia []structs.Stadium) map[uint]structs.Stadium {
 		stadiumMap[s.ID] = s
 	}
 	return stadiumMap
+}
+
+func MakeCFBPlayByPlayMapByGameID(plays []structs.CollegePlayByPlay) map[uint][]structs.CollegePlayByPlay {
+	playMap := make(map[uint][]structs.CollegePlayByPlay)
+
+	for _, p := range plays {
+		playMap[p.GameID] = append(playMap[p.GameID], p)
+	}
+	return playMap
+}
+
+func MakeNFLPlayByPlayMapByGameID(plays []structs.NFLPlayByPlay) map[uint][]structs.NFLPlayByPlay {
+	playMap := make(map[uint][]structs.NFLPlayByPlay)
+
+	for _, p := range plays {
+		playMap[p.GameID] = append(playMap[p.GameID], p)
+	}
+	return playMap
 }
