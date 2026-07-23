@@ -1246,3 +1246,33 @@ func ExportNFLPreseasonPlayByPlayToCSV(w http.ResponseWriter) {
 		}
 	}
 }
+
+func ExportMinimumValueAndTagUpdatesToCSV(w http.ResponseWriter, csvRows [][]string) {
+	w.Header().Set("Content-Type", "text/csv")
+	filename := "minimum_value_and_tag_updates_test.csv"
+	w.Header().Set("Content-Disposition", "attachment;filename="+filename)
+
+	writer := csv.NewWriter(w)
+	defer writer.Flush()
+	HeaderRow := []string{
+		"Group", "ID", "First Name", "Last Name", "Position", "Archetype",
+		"Position Two", "Archetype Two", "Age",
+		"Overall", "Calculated Value", "Calculated AAV", "Current Value", "Current AAV",
+	}
+	err := writer.Write(HeaderRow)
+	if err != nil {
+		log.Fatal("Cannot write header row", err)
+	}
+
+	for _, row := range csvRows {
+		if err := writer.Write(row); err != nil {
+			log.Fatal("Cannot write row to CSV", err)
+		}
+
+		writer.Flush()
+		err = writer.Error()
+		if err != nil {
+			log.Fatal("Error while writing to file ::", err)
+		}
+	}
+}

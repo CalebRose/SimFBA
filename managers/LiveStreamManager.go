@@ -74,6 +74,7 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 		Plays:   make(map[uint][]structs.PlayByPlayResponse),
 		Rosters: make(map[uint]GameRosterDTO),
 	}
+	_, gameType := ts.GetCFBCurrentGameType()
 
 	db := dbprovider.GetInstance().GetDB()
 
@@ -86,6 +87,9 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 		games := repository.FindCollegeGamesRecords(clauses)
 		collegePlayers := repository.FindAllCollegePlayers(repository.PlayerQuery{})
 		collegePlayerMap := MakeCollegePlayerMap(collegePlayers)
+		collegePlayerMapByTeamID := MakeCollegePlayerMapByTeamID(collegePlayers, true)
+		collegePlayerStats := repository.FindCollegePlayerGameStatsRecords(seasonID, weekID, gameType, "")
+		collegePlayerStatsMap := MakeCollegePlayerStatsMapByTeamID(collegePlayerStats)
 
 		for _, g := range games {
 			// if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
@@ -105,7 +109,6 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 			// if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
 			// 	continue
 			// }
-			gameIDStr := strconv.Itoa(int(g.ID))
 			response.Plays[g.ID] = []structs.PlayByPlayResponse{}
 
 			// Build Roster for this game
@@ -116,10 +119,12 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 
 			htID := strconv.Itoa(g.HomeTeamID)
 			atID := strconv.Itoa(g.AwayTeamID)
-			homeStats := GetAllCollegePlayerStatsByGame(gameIDStr, htID)
-			awayStats := GetAllCollegePlayerStatsByGame(gameIDStr, atID)
-			homePlayers := GetAllCollegePlayersWithGameStatsByTeamID(gameIDStr, homeStats)
-			awayPlayers := GetAllCollegePlayersWithGameStatsByTeamID(gameIDStr, awayStats)
+			homeStats := collegePlayerStatsMap[uint(g.HomeTeamID)]
+			awayStats := collegePlayerStatsMap[uint(g.AwayTeamID)]
+			homeRoster := collegePlayerMapByTeamID[uint(g.HomeTeamID)]
+			awayRoster := collegePlayerMapByTeamID[uint(g.AwayTeamID)]
+			homePlayers := MakeGameResultsPlayerListFromCFB(homeStats, homeRoster)
+			awayPlayers := MakeGameResultsPlayerListFromCFB(awayStats, awayRoster)
 
 			playerStats := []structs.CollegePlayerStats{}
 			playerStats = append(playerStats, homeStats...)
@@ -171,6 +176,9 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 		games := repository.FindNFLGamesRecords(clauses)
 		nflPlayers := GetAllNFLPlayers()
 		proPlayerMap := MakeNFLPlayerMap(nflPlayers)
+		nflPlayerMapByTeamID := MakeNFLPlayerMapByTeamID(nflPlayers, true)
+		nflPlayerStats := repository.FindProPlayerGameStatsRecords(seasonID, weekID, gameType, "")
+		nflPlayerStatsMap := MakeNFLPlayerStatsMapByTeamID(nflPlayerStats)
 
 		for _, g := range games {
 			// if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
@@ -190,7 +198,6 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 			// if reqTimeslot != "" && reqTimeslot != "undefined" && g.TimeSlot != reqTimeslot {
 			// 	continue
 			// }
-			gameIDStr := strconv.Itoa(int(g.ID))
 			response.Plays[g.ID] = []structs.PlayByPlayResponse{}
 
 			roster := GameRosterDTO{
@@ -199,14 +206,16 @@ func GetBulkPlayByPlayData(isCollege bool, reqSeason string, reqWeek string, req
 			}
 			htID := strconv.Itoa(g.HomeTeamID)
 			atID := strconv.Itoa(g.AwayTeamID)
-			homePlayerStats := GetAllNFLPlayerStatsByGame(gameIDStr, htID)
-			awayPlayerStats := GetAllNFLPlayerStatsByGame(gameIDStr, atID)
-			homePlayers := GetAllNFLPlayersWithGameStatsByTeamID(gameIDStr, homePlayerStats)
-			awayPlayers := GetAllNFLPlayersWithGameStatsByTeamID(gameIDStr, awayPlayerStats)
+			homeStats := nflPlayerStatsMap[uint(g.HomeTeamID)]
+			awayStats := nflPlayerStatsMap[uint(g.AwayTeamID)]
+			homeRoster := nflPlayerMapByTeamID[uint(g.HomeTeamID)]
+			awayRoster := nflPlayerMapByTeamID[uint(g.AwayTeamID)]
+			homePlayers := MakeGameResultsPlayerListFromNFL(homeStats, homeRoster)
+			awayPlayers := MakeGameResultsPlayerListFromNFL(awayStats, awayRoster)
 
 			playerStats := []structs.NFLPlayerStats{}
-			playerStats = append(playerStats, homePlayerStats...)
-			playerStats = append(playerStats, awayPlayerStats...)
+			playerStats = append(playerStats, homeStats...)
+			playerStats = append(playerStats, awayStats...)
 			for _, s := range playerStats {
 				if s.Snaps <= 0 {
 					continue

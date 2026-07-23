@@ -3,6 +3,7 @@ package managers
 import (
 	"log"
 	"math"
+	"net/http"
 	"sort"
 	"strconv"
 
@@ -331,10 +332,12 @@ func computeGroupExtensionValues(group string, entries []playerGroupEntry) []str
 // contract (extension) value and AAV for every active NFL player.
 // Run once per offseason. Also updates OriginalMinimumValue / OriginalAAV so
 // the week-15 reset restores to this freshly computed baseline.
-func CalculatePlayerMinimumAndAAVValues() {
+func CalculatePlayerMinimumAndAAVValues(w http.ResponseWriter) {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
 	seasonID := strconv.Itoa(ts.NFLSeasonID)
+	isTest := true // TODO: set to false for production
+	csvRows := [][]string{}
 
 	nflPlayers := GetAllNFLPlayers()
 	contracts := repository.FindAllActiveNFLContracts()
@@ -362,17 +365,40 @@ func CalculatePlayerMinimumAndAAVValues() {
 	for group, entries := range groupEntries {
 		updated := computeGroupExtensionValues(group, entries)
 		for _, p := range updated {
-			if err := db.Model(&p).Updates(map[string]interface{}{
-				"minimum_value":          p.MinimumValue,
-				"original_minimum_value": p.OriginalMinimumValue,
-				"aav":                    p.AAV,
-				"original_aav":           p.OriginalAAV,
-			}).Error; err != nil {
-				log.Printf("ValuationManager: failed to save player %d (%s): %v", p.ID, group, err)
-				continue
+			if !isTest {
+				if err := db.Model(&p).Updates(map[string]interface{}{
+					"minimum_value":          p.MinimumValue,
+					"original_minimum_value": p.OriginalMinimumValue,
+					"aav":                    p.AAV,
+					"original_aav":           p.OriginalAAV,
+				}).Error; err != nil {
+					log.Printf("ValuationManager: failed to save player %d (%s): %v", p.ID, group, err)
+					continue
+				}
+			} else {
+				row := []string{
+					group,
+					strconv.Itoa(int(p.ID)),
+					p.FirstName,
+					p.LastName,
+					p.Position,
+					p.Archetype,
+					p.PositionTwo,
+					p.ArchetypeTwo,
+					strconv.Itoa(int(p.Age)),
+					strconv.Itoa(int(p.Overall)),
+					strconv.FormatFloat(p.OriginalMinimumValue, 'f', 2, 64),
+					strconv.FormatFloat(p.OriginalAAV, 'f', 2, 64),
+					strconv.FormatFloat(p.MinimumValue, 'f', 2, 64),
+					strconv.FormatFloat(p.AAV, 'f', 2, 64),
+				}
+				csvRows = append(csvRows, row)
 			}
 			saved++
 		}
+	}
+	if isTest {
+		ExportMinimumValueAndTagUpdatesToCSV(w, csvRows)
 	}
 
 	log.Printf("CalculatePlayerMinimumAndAAVValues: updated %d players", saved)

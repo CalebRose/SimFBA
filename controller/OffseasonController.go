@@ -18,7 +18,7 @@ func UpdateTeamProfileAffinities(w http.ResponseWriter, r *http.Request) {
 }
 
 func CalculateExtensionValues(w http.ResponseWriter, r *http.Request) {
-	managers.CalculatePlayerMinimumAndAAVValues()
+	managers.CalculatePlayerMinimumAndAAVValues(w)
 	json.NewEncoder(w).Encode("Done!")
 }
 
