@@ -567,3 +567,21 @@ func MakeStadiumMapByID(stadia []structs.Stadium) map[uint]structs.Stadium {
 	}
 	return stadiumMap
 }
+
+func MakeCFBPlayByPlayMapByGameID(plays []structs.CollegePlayByPlay) map[uint][]structs.CollegePlayByPlay {
+	playMap := make(map[uint][]structs.CollegePlayByPlay)
+
+	for _, p := range plays {
+		playMap[p.GameID] = append(playMap[p.GameID], p)
+	}
+	return playMap
+}
+
+func MakeNFLPlayByPlayMapByGameID(plays []structs.NFLPlayByPlay) map[uint][]structs.NFLPlayByPlay {
+	playMap := make(map[uint][]structs.NFLPlayByPlay)
+
+	for _, p := range plays {
+		playMap[p.GameID] = append(playMap[p.GameID], p)
+	}
+	return playMap
+}
