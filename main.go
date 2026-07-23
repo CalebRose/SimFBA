@@ -493,6 +493,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/games/plays/bulk/nfl", controller.GetBulkPlayByPlay).Methods("GET")
 	apiRouter.HandleFunc("/games/fb/games/stream/queue/{league}", controller.GetFBGameQueue).Methods("GET")
 	apiRouter.HandleFunc("/games/cfb/live-plays/test/", controller.TestCFBCronJob).Methods("GET")
+	apiRouter.HandleFunc("/games/nfl/live-plays/test/", controller.TestNFLCronJob).Methods("GET")
 
 	// Firebase test endpoints
 	apiRouter.HandleFunc("/firebase/test/notification/", controller.TestNotificationToTuscan).Methods("GET")
