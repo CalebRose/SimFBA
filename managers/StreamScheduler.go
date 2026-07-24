@@ -57,6 +57,7 @@ type StreamScheduler struct {
 	mu               sync.Mutex
 	ActiveSlots      [maxStreamSlots]*GameStream
 	Queue            []PendingGame
+	GameDay          string // "Thursday Night", "Friday Night", "Saturday Morning", etc.
 	League           string // "chl" or "phl"
 	isCollege        bool
 	CFBPlayByPlayMap map[uint][]structs.CollegePlayByPlay
@@ -137,6 +138,7 @@ func (s *StreamScheduler) dequeue() (PendingGame, bool) {
 // InitQueue loads all complete, unrevealed games for the current matchup and
 // sorts them with user-coached/owned games first, then by GameID.
 func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseason bool) {
+	s.GameDay = gameDay
 	s.mu.Lock()
 	defer s.mu.Unlock()
 

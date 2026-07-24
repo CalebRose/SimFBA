@@ -556,10 +556,10 @@ func handleCron() *cron.Cron {
 		c.AddFunc("0 2 * * 5", controller.SyncPhaseFridayViaCron)
 
 		// Live Stream
-		c.AddFunc("30 16 * * 4", controller.StreamCFBThursdayGamesToInterfaceViaCron)
-		c.AddFunc("30 16 * * 5", controller.StreamCFBFridayGamesToInterfaceViaCron)
-		c.AddFunc("30 15 * * 6", controller.StreamCFBSaturdayGamesToInterfaceViaCron)
-		c.AddFunc("30 17 * * 4", controller.StreamNFLThursdayGamesToInterfaceViaCron)
+		c.AddFunc("0 16 * * 4", controller.StreamCFBThursdayGamesToInterfaceViaCron)
+		c.AddFunc("0 16 * * 5", controller.StreamCFBFridayGamesToInterfaceViaCron)
+		c.AddFunc("0 14 * * 6", controller.StreamCFBSaturdayGamesToInterfaceViaCron)
+		c.AddFunc("0 17 * * 4", controller.StreamNFLThursdayGamesToInterfaceViaCron)
 		c.AddFunc("0 17 * * 0", controller.StreamNFLSundayGamesToInterfaceViaCron)
 		c.AddFunc("0 15 * * 1", controller.StreamNFLMondayGamesToInterfaceViaCron)
 	}
