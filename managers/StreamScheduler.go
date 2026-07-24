@@ -266,8 +266,8 @@ func (s *StreamScheduler) InitQueue(weekID, seasonID, gameDay string, isPreseaso
 			"Saturday Afternoon":      5,
 			"Saturday Evening":        6,
 			"Saturday Night":          7,
-			"Sunday Morning":          8,
-			"Sunday Noon":             9,
+			"Sunday Noon":             8,
+			"Sunday Afternoon":        9,
 			"Sunday Night Football":   10,
 			"Monday Night Football":   11,
 		}
