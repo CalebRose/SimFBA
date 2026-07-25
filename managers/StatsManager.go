@@ -1516,7 +1516,7 @@ func generateResultsString(play structs.PlayByPlay, playType string, participant
 		if play.IsTouchback {
 			firstSegment += " Touchback. "
 		} else {
-			resultYdsStr := strconv.Itoa(int(100 - play.ResultYards))
+			resultYdsStr := strconv.Itoa(int(play.ResultYards))
 			resultYards := util.GetYardsString(play.ResultYards)
 			firstSegment += recLabel + " returns the ball " + resultYdsStr + resultYards
 		}
@@ -1528,17 +1528,8 @@ func generateResultsString(play structs.PlayByPlay, playType string, participant
 		distanceStr := util.GetYardsString(play.KickDistance)
 		verb := " punts for "
 		firstSegment = kickerLabel + verb + strconv.Itoa(int(play.KickDistance)) + distanceStr
-		los := play.LineOfScrimmage
-		if los > 50 {
-			los = 100 - los
-		}
-		outside := los + play.KickDistance
-		netReturnYards := outside - play.ResultYards
-		resultYdsStr := strconv.Itoa(int(netReturnYards))
-		resultYards := util.GetYardsString(netReturnYards)
-		if !play.IsTouchback {
-			resultYdsStr = strconv.Itoa(int(netReturnYards))
-		}
+		resultYdsStr := strconv.Itoa(int(play.ResultYards))
+		resultYards := util.GetYardsString(play.ResultYards)
 
 		if play.IsBlocked {
 			blockerLabel := getPlayerLabel(participantMap[turnID])
@@ -1729,10 +1720,9 @@ func generateStreamString(play structs.PlayByPlay, playType, playName, poa strin
 		if play.IsTouchback {
 			firstSegment += util.GetTouchbackStatement()
 		} else {
-			netReturnYards := int(play.ResultYards) - outside
-			resultYdsStr := strconv.Itoa(int(netReturnYards))
-			resultYards := util.GetYardsString(int8(netReturnYards))
-			verb := util.GetReturnVerb(netReturnYards, play.IsTouchdown, play.IsOutOfBounds)
+			resultYdsStr := strconv.Itoa(int(play.ResultYards))
+			resultYards := util.GetYardsString(play.ResultYards)
+			verb := util.GetReturnVerb(int(play.ResultYards), play.IsTouchdown, play.IsOutOfBounds)
 			firstSegment += recLabel + verb + resultYdsStr + resultYards
 		}
 	case "Punt":
@@ -1743,18 +1733,8 @@ func generateStreamString(play structs.PlayByPlay, playType, playName, poa strin
 		distanceStr := util.GetYardsString(play.KickDistance)
 		verb := util.GetPuntVerb()
 		firstSegment = kickerLabel + verb + strconv.Itoa(int(play.KickDistance)) + distanceStr
-		los := play.LineOfScrimmage
-		if los > 50 {
-			los = 100 - los
-		}
-		outside := los + play.KickDistance
-		// Line of Scrimmage + kick distance = ball spot  // Result yards - ball spot = actual yards ran // Ball spot - yards ran = next line of scrimmage
-		netReturnYards := outside - play.ResultYards
-		resultYards := util.GetYardsString(netReturnYards)
-		resultYdsStr := strconv.Itoa(int(netReturnYards))
-		if !play.IsTouchback {
-			resultYdsStr = strconv.Itoa(int(netReturnYards))
-		}
+		resultYards := util.GetYardsString(play.ResultYards)
+		resultYdsStr := strconv.Itoa(int(play.ResultYards))
 		if play.IsBlocked {
 			blockerLabel := getPlayerLabel(participantMap[turnID])
 			verb := util.GetBlockedStatement(false)
@@ -1766,7 +1746,7 @@ func generateStreamString(play structs.PlayByPlay, playType, playName, poa strin
 			tb := util.GetTouchbackStatement()
 			firstSegment += tb
 		} else {
-			verb := util.GetReturnVerb(int(netReturnYards), play.IsTouchdown, play.IsOutOfBounds)
+			verb := util.GetReturnVerb(int(play.ResultYards), play.IsTouchdown, play.IsOutOfBounds)
 			firstSegment += recLabel + verb + resultYdsStr + resultYards
 		}
 	case "XP":
