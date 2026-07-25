@@ -403,7 +403,7 @@ func GetCFBPlayByPlayStreamData(timeslot string, isFBS bool) []structs.StreamRes
 	playByPlayMap := MakeCFBPlayByPlayMapByGameID(allPbPs)
 
 	for _, game := range games {
-		if !game.GameComplete || game.IsRevealed {
+		if !game.GameComplete {
 			continue
 		}
 		homeTeam := teamMap[uint(game.HomeTeamID)]
