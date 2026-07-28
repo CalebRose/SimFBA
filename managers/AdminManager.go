@@ -51,6 +51,11 @@ func MoveUpWeek() structs.Timestamp {
 	CheckNFLRookiesForLetterGrade(strconv.Itoa(int(ts.NFLSeasonID)))
 	ts.SyncToNextWeek()
 
+	if ts.CollegeWeek == 0 && !ts.CFBSpringGames && ts.Phase == 10 {
+		// Reset all college injuries
+		RecoverAllInjuredCollegePlayersFromSpringGames()
+	}
+
 	if ts.CollegeWeek < 21 && !ts.CollegeSeasonOver && !ts.IsOffSeason && !ts.CFBSpringGames {
 		SyncCollegePollSubmissionForCurrentWeek(uint(ts.CollegeWeek), uint(ts.CollegeWeekID), uint(ts.CollegeSeasonID))
 		ts.TogglePollRan()
