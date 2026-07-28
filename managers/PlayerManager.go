@@ -1424,3 +1424,18 @@ func GetHistoricCollegePlayersByTeamID(teamID string) []structs.HistoricCollegeP
 
 	return CollegePlayers
 }
+
+func RecoverAllInjuredCollegePlayersFromSpringGames() {
+	db := dbprovider.GetInstance().GetDB()
+
+	var collegePlayers []structs.CollegePlayer
+
+	db.Where("is_injured = true").Find(&collegePlayers)
+
+	for _, p := range collegePlayers {
+		p.IsInjured = false
+		p.InjuryType = ""
+		p.WeeksOfRecovery = 0
+		repository.SaveCFBPlayer(p, db)
+	}
+}

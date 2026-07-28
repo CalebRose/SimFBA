@@ -85,6 +85,11 @@ func SyncToNextWeekViaCron() {
 		if !ts.IsOffSeason && !ts.IsNFLOffSeason {
 			ts = managers.MoveUpWeek()
 		}
+
+		if ts.CollegeWeek == 0 && !ts.CFBSpringGames {
+			// Reset all college injuries
+			managers.RecoverAllInjuredCollegePlayersFromSpringGames()
+		}
 		managers.AssignTeamGrades()
 
 		if ts.CollegeWeek >= 2 && !ts.CFBSpringGames && ts.CollegeWeek < 21 {
