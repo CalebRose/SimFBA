@@ -266,7 +266,11 @@ func ExportCrootsToCSV(w http.ResponseWriter) {
 		"High School", "City", "State", "Height",
 		"Weight", "Overall", "Potential Grade", "Affinity One", "Affinity Two", "Personality",
 		"Recruiting Bias", "Academic Bias", "Work Ethic",
-		"Signing Status", "Expectations", "LeadingTeams",
+		"Program", "Professional Dev.", "Traditions", "Facilities",
+		"Atmosphere", "Academics", "Conference", "Coach",
+		"Season Momentum", "Campus Life", "Religion",
+		"Service Academy", "Small Town", "Big City", "Media Spotlight",
+		"Signing Status", "Expectations", "LeadingTeams", "Odds of signing with Tennessee?",
 	}
 
 	err := writer.Write(HeaderRow)
@@ -282,6 +286,15 @@ func ExportCrootsToCSV(w http.ResponseWriter) {
 				leadingAbbr = append(leadingAbbr, lt.TeamAbbr)
 			}
 		}
+		tennesseeOdds := "Unlikely"
+		if croot.Stars >= 4 {
+			tennesseeOdds = "Likely"
+		} else if croot.Stars < 3 {
+			tennesseeOdds = "They're going to Chattanooga"
+		}
+		if croot.Position == "FB" && croot.Stars == 5 {
+			tennesseeOdds = "They're going to ETSU"
+		}
 		recruitingTendency := util.GetRecruitingTendency(croot.RecruitModifier)
 		crootRow := []string{
 			strconv.Itoa(int(croot.ID)), croot.FirstName, croot.LastName, croot.Position,
@@ -290,7 +303,11 @@ func ExportCrootsToCSV(w http.ResponseWriter) {
 			strconv.Itoa(croot.Weight), croot.OverallGrade, croot.PotentialGrade,
 			croot.AffinityOne, croot.AffinityTwo, croot.Personality, croot.RecruitingBias,
 			croot.AcademicBias, croot.WorkEthic,
-			croot.RecruitingStatus, recruitingTendency, strings.Join(leadingAbbr, ", "),
+			strconv.Itoa(int(croot.ProgramPref)), strconv.Itoa(int(croot.ProfDevPref)), strconv.Itoa(int(croot.TraditionsPref)), strconv.Itoa(int(croot.FacilitiesPref)),
+			strconv.Itoa(int(croot.AtmospherePref)), strconv.Itoa(int(croot.AcademicsPref)), strconv.Itoa(int(croot.ConferencePref)), strconv.Itoa(int(croot.CoachPref)),
+			strconv.Itoa(int(croot.SeasonMomentumPref)), strconv.Itoa(int(croot.CampusLifePref)), strconv.Itoa(int(croot.ReligionPref)),
+			strconv.Itoa(int(croot.ServiceAcademyPref)), strconv.Itoa(int(croot.SmallTownPref)), strconv.Itoa(int(croot.BigCityPref)), strconv.Itoa(int(croot.MediaSpotlightPref)),
+			croot.RecruitingStatus, recruitingTendency, strings.Join(leadingAbbr, ", "), tennesseeOdds,
 		}
 
 		err = writer.Write(crootRow)
