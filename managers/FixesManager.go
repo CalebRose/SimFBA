@@ -190,7 +190,7 @@ func FixTimeslots() {
 	collegeGames := repository.FindCollegeGamesRecords(repository.GamesQuery{SeasonID: strconv.Itoa(int(ts.CollegeSeasonID))})
 
 	for _, game := range collegeGames {
-		if game.TimeSlot == "Thursday Night" && !game.IsNeutral && game.IsSpringGame {
+		if game.TimeSlot == "Thursday Night" && !game.IsNeutral && !game.IsSpringGame && !game.IsConference {
 			homeTeam := cfbTeamMap[uint(game.HomeTeamID)]
 			game.TimeSlot = util.GetTimeslot(game.State, uint(homeTeam.ConferenceID))
 			repository.SaveCFBGameRecord(game, db)
