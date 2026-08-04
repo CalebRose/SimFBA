@@ -45,3 +45,7 @@ func FixTimeslots(w http.ResponseWriter, r *http.Request) {
 func FixBrokenGameplans(w http.ResponseWriter, r *http.Request) {
 	managers.FixBrokenGameplans()
 }
+
+func FixRecruitingProfileModifiers(w http.ResponseWriter, r *http.Request) {
+	managers.FixRecruitingProfileModifiers()
+}

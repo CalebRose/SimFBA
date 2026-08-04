@@ -197,3 +197,22 @@ func FixTimeslots() {
 		}
 	}
 }
+
+func FixRecruitingProfileModifiers() {
+	db := dbprovider.GetInstance().GetDB()
+	recruitProfiles := repository.FindRecruitPlayerProfileRecords("", "", false, false, false)
+	recruits := GetAllRecruitRecords()
+	recruitMap := MakeCollegeRecruitMapByID(recruits)
+	teamProfiles := GetAllTeamRecruitingProfiles()
+	teamProfileMap := MakeRecruitTeamProfileMapByTeamID(teamProfiles)
+	stateMatcher := util.GetStateMatcher()
+	regionMatcher := util.GetStateRegionMatcher()
+
+	for _, profile := range recruitProfiles {
+		croot := recruitMap[uint(profile.RecruitID)]
+		teamProfile := teamProfileMap[uint(profile.ProfileID)]
+		modifier := CalculateModifierTowardsRecruit(croot, teamProfile, stateMatcher, regionMatcher)
+		profile.PreferenceModifier = modifier
+		repository.SaveRecruitProfile(profile, db)
+	}
+}

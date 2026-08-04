@@ -354,7 +354,7 @@ func CalculateModifierTowardsRecruit(player structs.Recruit, team structs.Recrui
 	// Weighted average of dynamic and static modifiers, with dynamic modifiers having a higher weight
 	// since they are more likely to change over time and thus be more influential in a
 	// recruit's decision making process
-	largeMod := (dynamicModSum + staticMod) / 15
+	largeMod := (dynamicModSum + staticMod) / 15.7
 	return largeMod + closeToHomeMod
 }
 
@@ -367,11 +367,11 @@ func calculateBaseModifier(attr int, isBool, booleanAttr bool) float32 {
 			attrVal = 5
 		}
 	}
-	return 1 + float32(attrVal-5)/5
+	return 1 + float32(attrVal-5)/9
 }
 
 func calculateAdjustmentFactor(teamAttr, playerPref int) float32 {
-	return 1 + float32(teamAttr-playerPref)/10
+	return 1 + (float32(teamAttr-playerPref) / 9)
 }
 
 func calculateMultiplier(teamAttr uint, playerPref uint, isBool, booleanAttr bool) float32 {
@@ -385,5 +385,6 @@ func calculateMultiplier(teamAttr uint, playerPref uint, isBool, booleanAttr boo
 		}
 	}
 	adjFactor := calculateAdjustmentFactor(effectiveAttr, int(playerPref))
-	return baseMod * adjFactor
+	finalAdjFactor := adjFactor * baseMod
+	return (baseMod + finalAdjFactor) / 2
 }

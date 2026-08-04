@@ -177,6 +177,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/nfl/stadiums", controller.FixNFLStadiums).Methods("GET")
 	// apiRouter.HandleFunc("/fix/player/weights", controller.FixPlayerWeights).Methods("GET")
 	// apiRouter.HandleFunc("/fix/timeslots", controller.FixTimeslots).Methods("GET")
+	apiRouter.HandleFunc("/fix/recruiting/profile/modifiers", controller.FixRecruitingProfileModifiers).Methods("GET")
 	apiRouter.HandleFunc("/fix/broken/gameplans", controller.FixBrokenGameplans).Methods("GET")
 	// Free Agency Controls
 	// apiRouter.HandleFunc("/nfl/extensions/sync", controller.SyncExtensions).Methods("GET")
@@ -530,7 +531,7 @@ func handleCron() *cron.Cron {
 		// Run RES
 		c.AddFunc("0 7 * * 4", controller.RunRESViaCron)
 		// Sync Recruiting
-		c.AddFunc("0 16 * * 3", controller.SyncRecruitingViaCron)
+		// c.AddFunc("0 16 * * 3", controller.SyncRecruitingViaCron)
 		// Sync Free Agency
 		c.AddFunc("0 16 * * *", controller.SyncFreeAgencyViaCron)
 		// Sync Extension Offers
