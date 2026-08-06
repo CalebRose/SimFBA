@@ -1178,14 +1178,14 @@ func buildCFBJobApplicationParagraphs(request structs.TeamRequest, teamName, mas
 
 	return paragraphs
 }
-func CreateNFLJobApplicationThread(request structs.NFLRequest) {
+func CreateNFLJobApplicationThread(request structs.NFLRequest, teamName, mascot string) {
 	ctx := context.Background()
 
 	role := nflRequestRole(request)
-	title := fmt.Sprintf("NFL Application: %s for %s %s", request.Username, request.NFLTeam, role)
+	title := fmt.Sprintf("NFL Application: %s for %s %s %s", request.Username, teamName, mascot, role)
 	eventKey := fmt.Sprintf("nfl:application:team%d:%s:%s", request.NFLTeamID, request.Username, role)
 
-	paragraphs := buildNFLJobApplicationParagraphs(request)
+	paragraphs := buildNFLJobApplicationParagraphs(request, teamName)
 	bodyText := strings.Join(paragraphs, "\n\n")
 	richBody := buildRichPostBody(paragraphs)
 
@@ -1229,13 +1229,13 @@ func nflRequestRole(r structs.NFLRequest) string {
 	}
 }
 
-func buildNFLJobApplicationParagraphs(request structs.NFLRequest) []string {
+func buildNFLJobApplicationParagraphs(request structs.NFLRequest, teamName string) []string {
 	var paragraphs []string
 
 	role := nflRequestRole(request)
 	paragraphs = append(paragraphs,
 		fmt.Sprintf("%s has applied for the %s position with the %s. Please review their application below.",
-			request.Username, role, request.NFLTeam),
+			request.Username, role, teamName),
 	)
 
 	if request.DiscordUsername != "" {

@@ -116,7 +116,8 @@ func CreateNFLTeamRequest(request structs.NFLRequest) {
 
 	db.Create(&request)
 	// Create a forum post in the job-applications subforum from the request
-	go CreateNFLJobApplicationThread(request)
+	nflTeam := GetNFLTeamByTeamID(strconv.Itoa(int(request.NFLTeamID)))
+	go CreateNFLJobApplicationThread(request, nflTeam.TeamName, nflTeam.Mascot)
 }
 
 func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
