@@ -518,6 +518,10 @@ func GetCurrentWeekWeather() []structs.GameResponse {
 	resList := []structs.GameResponse{}
 
 	collegeGames := GetCollegeGamesByWeekIdAndSeasonID(weekID, seasonID, ts.CFBSpringGames)
+	collegeStandings := GetAllCollegeStandingsBySeasonID(seasonID)
+	collegeStandingsMap := MakeCollegeStandingsMapByTeamID(collegeStandings)
+	nflStandings := GetAllNFLStandingsBySeasonID(nflSeasonID)
+	nflStandingsMap := MakeNFLStandingsMapByTeamID(nflStandings)
 
 	nflGames := GetNFLGamesByWeekAndSeasonID(nflWeekID, nflSeasonID)
 
@@ -527,8 +531,8 @@ func GetCurrentWeekWeather() []structs.GameResponse {
 		if cg.GameComplete || ((!cg.IsSpringGame && isPreseason) || (cg.IsSpringGame && !isPreseason)) {
 			continue
 		}
-		homeTeamStandings := GetCFBStandingsByTeamIDAndSeasonID(strconv.Itoa(int(cg.HomeTeamID)), seasonID)
-		awayTeamStandings := GetCFBStandingsByTeamIDAndSeasonID(strconv.Itoa(int(cg.AwayTeamID)), seasonID)
+		homeTeamStandings := collegeStandingsMap[uint(cg.HomeTeamID)]
+		awayTeamStandings := collegeStandingsMap[uint(cg.AwayTeamID)]
 		htRecord := strconv.Itoa(homeTeamStandings.TotalWins) + "-" + strconv.Itoa(homeTeamStandings.TotalLosses)
 		atRecord := strconv.Itoa(awayTeamStandings.TotalWins) + "-" + strconv.Itoa(awayTeamStandings.TotalLosses)
 
@@ -582,8 +586,8 @@ func GetCurrentWeekWeather() []structs.GameResponse {
 		if nflG.GameComplete || ((!nflG.IsPreseasonGame && isPreseason) || (nflG.IsPreseasonGame && !isPreseason)) {
 			continue
 		}
-		homeTeamStandings := GetNFLStandingsByTeamIDAndSeasonID(strconv.Itoa(int(nflG.HomeTeamID)), nflSeasonID)
-		awayTeamStandings := GetNFLStandingsByTeamIDAndSeasonID(strconv.Itoa(int(nflG.AwayTeamID)), nflSeasonID)
+		homeTeamStandings := nflStandingsMap[uint(nflG.HomeTeamID)]
+		awayTeamStandings := nflStandingsMap[uint(nflG.AwayTeamID)]
 		htRecord := strconv.Itoa(homeTeamStandings.TotalWins) + "-" + strconv.Itoa(homeTeamStandings.TotalLosses)
 		atRecord := strconv.Itoa(awayTeamStandings.TotalWins) + "-" + strconv.Itoa(awayTeamStandings.TotalLosses)
 

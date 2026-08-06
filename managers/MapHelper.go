@@ -122,6 +122,19 @@ func MakeCollegeStandingsMapByTeamID(standings []structs.CollegeStandings) map[u
 	return standingsMap
 }
 
+func MakeNFLStandingsMapByTeamID(standings []structs.NFLStandings) map[uint]structs.NFLStandings {
+	standingsMap := make(map[uint]structs.NFLStandings)
+
+	for _, p := range standings {
+		if p.TeamID == 0 {
+			continue
+		}
+		standingsMap[uint(p.TeamID)] = p
+	}
+
+	return standingsMap
+}
+
 func MakeHistoricCollegeStandingsMapByTeamID(standings []structs.CollegeStandings) map[uint][]structs.CollegeStandings {
 	standingsMap := make(map[uint][]structs.CollegeStandings)
 
