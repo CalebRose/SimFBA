@@ -93,6 +93,11 @@ func CreateTeamRequest(request structs.TeamRequest) {
 	}
 
 	db.Create(&request)
+
+	// Create a forum post in the job-applications subforum from the request
+	teamID := strconv.Itoa(request.TeamID)
+	team := GetTeamByTeamID(teamID)
+	go CreateCFBJobApplicationThread(request, team.TeamName, team.Mascot)
 }
 
 func CreateNFLTeamRequest(request structs.NFLRequest) {
@@ -110,6 +115,8 @@ func CreateNFLTeamRequest(request structs.NFLRequest) {
 	}
 
 	db.Create(&request)
+	// Create a forum post in the job-applications subforum from the request
+	go CreateNFLJobApplicationThread(request)
 }
 
 func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {

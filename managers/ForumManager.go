@@ -1118,3 +1118,140 @@ func buildNFLUDFASyncParagraphs(season int, signings []string) []string {
 
 	return paragraphs
 }
+
+func CreateCFBJobApplicationThread(request structs.TeamRequest, teamName, mascot string) {
+	ctx := context.Background()
+
+	title := fmt.Sprintf("CFB Application: %s for the %s %s", request.Username, teamName, mascot)
+	eventKey := fmt.Sprintf("cfb:application:team%d:%s", request.TeamID, request.Username)
+
+	paragraphs := buildCFBJobApplicationParagraphs(request, teamName, mascot)
+	bodyText := strings.Join(paragraphs, "\n\n")
+	richBody := buildRichPostBody(paragraphs)
+
+	input := fbsvc.CreateForumThreadInput{
+		ForumID:           "welcome-job-applications",
+		ForumPath:         []string{"welcome", "job-applications"},
+		Title:             title,
+		AuthorUID:         "system",
+		AuthorUsername:    "SimSN",
+		AuthorDisplayName: "SimSN System",
+		CreatedByType:     fbsvc.CreatedBySystem,
+		ThreadType:        fbsvc.ThreadTypeStandard,
+		FirstPostBodyText: bodyText,
+		FirstPostBody:     richBody,
+		ReferencedLeague:  "cfb",
+		ExternalEventKey:  eventKey,
+	}
+
+	thread, err := fbsvc.CreateThread(ctx, input)
+	if err != nil {
+		log.Printf("ForumManager: failed to create CFB job application thread for %s: %v", request.Username, err)
+		return
+	}
+
+	log.Printf("ForumManager: created CFB job application thread %s for %s", thread.ID, request.Username)
+}
+
+func buildCFBJobApplicationParagraphs(request structs.TeamRequest, teamName, mascot string) []string {
+	var paragraphs []string
+
+	paragraphs = append(paragraphs,
+		fmt.Sprintf("%s has applied to coach the %s %s. Please review their application below.",
+			request.Username, teamName, mascot),
+	)
+
+	if request.DiscordUsername != "" {
+		paragraphs = append(paragraphs, fmt.Sprintf("Discord: %s", request.DiscordUsername))
+	}
+
+	paragraphs = append(paragraphs,
+		fmt.Sprintf("Time commitment: %s", request.HowMuchTimeAnswer),
+		fmt.Sprintf("How they found SimSN: %s", request.HowDidYouHearAboutSimSN),
+	)
+
+	if request.CommunityReference != "" {
+		paragraphs = append(paragraphs, fmt.Sprintf("Community reference: %s", request.CommunityReference))
+	}
+
+	paragraphs = append(paragraphs, fmt.Sprintf("About %s: %s", request.Username, request.AboutYourself))
+
+	return paragraphs
+}
+func CreateNFLJobApplicationThread(request structs.NFLRequest) {
+	ctx := context.Background()
+
+	role := nflRequestRole(request)
+	title := fmt.Sprintf("NFL Application: %s for %s %s", request.Username, request.NFLTeam, role)
+	eventKey := fmt.Sprintf("nfl:application:team%d:%s:%s", request.NFLTeamID, request.Username, role)
+
+	paragraphs := buildNFLJobApplicationParagraphs(request)
+	bodyText := strings.Join(paragraphs, "\n\n")
+	richBody := buildRichPostBody(paragraphs)
+
+	input := fbsvc.CreateForumThreadInput{
+		ForumID:           "welcome-job-applications",
+		ForumPath:         []string{"welcome", "job-applications"},
+		Title:             title,
+		AuthorUID:         "system",
+		AuthorUsername:    "SimSN",
+		AuthorDisplayName: "SimSN System",
+		CreatedByType:     fbsvc.CreatedBySystem,
+		ThreadType:        fbsvc.ThreadTypeStandard,
+		FirstPostBodyText: bodyText,
+		FirstPostBody:     richBody,
+		ReferencedLeague:  "nfl",
+		ExternalEventKey:  eventKey,
+	}
+
+	thread, err := fbsvc.CreateThread(ctx, input)
+	if err != nil {
+		log.Printf("ForumManager: failed to create NFL job application thread for %s: %v", request.Username, err)
+		return
+	}
+
+	log.Printf("ForumManager: created NFL job application thread %s for %s", thread.ID, request.Username)
+}
+
+// nflRequestRole returns the human-readable role label for an NFL request.
+func nflRequestRole(r structs.NFLRequest) string {
+	switch {
+	case r.IsOwner:
+		return "Owner"
+	case r.IsManager:
+		return "General Manager"
+	case r.IsCoach:
+		return "Head Coach"
+	case r.IsAssistant:
+		return "Assistant"
+	default:
+		return "Staff"
+	}
+}
+
+func buildNFLJobApplicationParagraphs(request structs.NFLRequest) []string {
+	var paragraphs []string
+
+	role := nflRequestRole(request)
+	paragraphs = append(paragraphs,
+		fmt.Sprintf("%s has applied for the %s position with the %s. Please review their application below.",
+			request.Username, role, request.NFLTeam),
+	)
+
+	if request.DiscordUsername != "" {
+		paragraphs = append(paragraphs, fmt.Sprintf("Discord: %s", request.DiscordUsername))
+	}
+
+	paragraphs = append(paragraphs,
+		fmt.Sprintf("Time commitment: %s", request.HowMuchTimeAnswer),
+		fmt.Sprintf("How they found SimSN: %s", request.HowDidYouHearAboutSimSN),
+	)
+
+	if request.CommunityReference != "" {
+		paragraphs = append(paragraphs, fmt.Sprintf("Community reference: %s", request.CommunityReference))
+	}
+
+	paragraphs = append(paragraphs, fmt.Sprintf("About %s: %s", request.Username, request.AboutYourself))
+
+	return paragraphs
+}
