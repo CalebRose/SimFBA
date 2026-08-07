@@ -242,3 +242,23 @@ func FindProPlayerStatsRecordByGame(gameID string) []structs.NFLPlayerStats {
 
 	return playerStats
 }
+
+func FindCollegePlayerGameSnapsByWeekID(weekID string) []structs.CollegePlayerGameSnaps {
+	db := dbprovider.GetInstance().GetDB()
+
+	var snaps []structs.CollegePlayerGameSnaps
+
+	db.Where("week_id = ?", weekID).Find(&snaps)
+
+	return snaps
+}
+
+func FindProPlayerGameSnapsByWeekID(weekID string) []structs.NFLPlayerGameSnaps {
+	db := dbprovider.GetInstance().GetDB()
+
+	var snaps []structs.NFLPlayerGameSnaps
+
+	db.Where("week_id = ?", weekID).Find(&snaps)
+
+	return snaps
+}

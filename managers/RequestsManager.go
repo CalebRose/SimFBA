@@ -301,6 +301,7 @@ func RemoveUserFromTeam(teamId string) {
 	if !recruitingProfile.IsAI || recruitingProfile.IsUserTeam {
 		recruitingProfile.ActivateAI()
 	}
+	recruitingProfile.AssignRecruiter("AI")
 
 	repository.SaveRecruitingTeamProfile(recruitingProfile, db)
 

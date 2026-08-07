@@ -798,12 +798,15 @@ func AllocatePointsToAIBoards() {
 				}
 				croot.ToggleRemoveFromBoard()
 				fmt.Println("Because " + croot.Recruit.FirstName + " " + croot.Recruit.LastName + " is heavily considering other teams, they are being removed from " + team.TeamAbbreviation + "'s Recruiting Board.")
-				db.Save(&croot)
+				repository.SaveRecruitProfile(croot, db)
 				continue
 			}
 
 			if ts.CollegeWeek == 20 {
 				num = 2
+				if num > pointsRemaining {
+					num = pointsRemaining
+				}
 			}
 
 			croot.AllocateCurrentWeekPoints(num)
@@ -813,17 +816,17 @@ func AllocatePointsToAIBoards() {
 			}
 
 			team.AIAllocateSpentPoints(num)
-			db.Save(&croot)
+			repository.SaveRecruitProfile(croot, db)
 			fmt.Println(team.TeamAbbreviation + " allocating " + strconv.Itoa(int(num)) + " points to " + croot.Recruit.FirstName + " " + croot.Recruit.LastName)
 
 		}
 		// Save Team Profile after iterating through recruits
 		fmt.Println("Saved " + team.TeamAbbreviation + " Recruiting Board!")
-		db.Save(&team)
+		repository.SaveRecruitingTeamProfile(team, db)
 	}
 
 	ts.ToggleAIrecruitingSync()
-	db.Save(&ts)
+	repository.SaveTimestamp(ts, db)
 }
 
 func ResetAIBoardsForCompletedTeams() {

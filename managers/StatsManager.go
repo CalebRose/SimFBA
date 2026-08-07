@@ -224,7 +224,18 @@ func GetCollegeTeamSeasonStatsBySeason(TeamID, SeasonID, gameType string) struct
 
 	var teamStats structs.CollegeTeamSeasonStats
 
-	err := db.Where("team_id = ? AND season_id = ? AND game_type = ?", TeamID, SeasonID, gameType).Find(&teamStats).Error
+	query := db.Model(&teamStats)
+	if len(TeamID) > 0 {
+		query = query.Where("team_id = ?", TeamID)
+	}
+	if len(SeasonID) > 0 {
+		query = query.Where("season_id = ?", SeasonID)
+	}
+	if len(gameType) > 0 {
+		query = query.Where("game_type = ?", gameType)
+	}
+
+	err := query.Find(&teamStats).Error
 	if err != nil {
 		return structs.CollegeTeamSeasonStats{}
 	}
