@@ -150,7 +150,7 @@ func SyncTimeslot(timeslot string) {
 			awayTeamSeasonStats := seasonStatsMap[awayTeamID]
 			// homeTeamSeasonStats := GetCollegeTeamSeasonStatsBySeason(strconv.Itoa(homeTeamID), strconv.Itoa(int(ts.CollegeSeasonID)), cfbgt)
 			// awayTeamSeasonStats := GetCollegeTeamSeasonStatsBySeason(strconv.Itoa(awayTeamID), strconv.Itoa(int(ts.CollegeSeasonID)), cfbgt)
-			if homeTeamSeasonStats.ID == 0 {
+			if homeTeamSeasonStats == nil || homeTeamSeasonStats.ID == 0 {
 				homeTeamSeasonStats = &structs.CollegeTeamSeasonStats{
 					TeamID:   uint(homeTeamID),
 					SeasonID: uint(game.SeasonID),
@@ -161,7 +161,7 @@ func SyncTimeslot(timeslot string) {
 				}
 			}
 
-			if awayTeamSeasonStats.ID == 0 {
+			if awayTeamSeasonStats == nil || awayTeamSeasonStats.ID == 0 {
 				awayTeamSeasonStats = &structs.CollegeTeamSeasonStats{
 					TeamID:   uint(awayTeamID),
 					SeasonID: uint(game.SeasonID),
@@ -215,8 +215,8 @@ func SyncTimeslot(timeslot string) {
 					playerRecord.SetIsInjured(h.WasInjured, h.InjuryType, h.WeeksOfRecovery)
 					repository.SaveCFBPlayer(playerRecord, db)
 				}
-				playerSeasonStat := playerSeasonStatsMap[h.CollegePlayerID]
-				if playerSeasonStat.ID == 0 {
+				playerSeasonStat, ok := playerSeasonStatsMap[h.CollegePlayerID]
+				if !ok || playerSeasonStat.ID == 0 {
 					playerSeasonStat = structs.CollegePlayerSeasonStats{
 						CollegePlayerID: uint(h.CollegePlayerID),
 						SeasonID:        uint(ts.CollegeSeasonID),
@@ -267,8 +267,8 @@ func SyncTimeslot(timeslot string) {
 					playerRecord.SetIsInjured(a.WasInjured, a.InjuryType, a.WeeksOfRecovery)
 					repository.SaveCFBPlayer(playerRecord, db)
 				}
-				playerSeasonStat := playerSeasonStatsMap[a.CollegePlayerID]
-				if playerSeasonStat.ID == 0 {
+				playerSeasonStat, ok := playerSeasonStatsMap[a.CollegePlayerID]
+				if !ok || playerSeasonStat.ID == 0 {
 					playerSeasonStat = structs.CollegePlayerSeasonStats{
 						CollegePlayerID: uint(a.CollegePlayerID),
 						SeasonID:        uint(ts.CollegeSeasonID),
