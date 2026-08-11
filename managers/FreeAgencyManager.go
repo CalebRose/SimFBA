@@ -396,9 +396,9 @@ func CreateFAOffer(offer structs.FreeAgencyOfferDTO) structs.FreeAgencyOffer {
 		freeAgentOffer.AssignID(id)
 	}
 
-	if ts.IsFreeAgencyLocked {
-		return freeAgentOffer
-	}
+	// if ts.IsFreeAgencyLocked {
+	// 	return freeAgentOffer
+	// }
 
 	freeAgentOffer.CalculateOffer(offer)
 
