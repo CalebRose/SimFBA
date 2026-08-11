@@ -63,11 +63,13 @@ type BootstrapDataRecruiting struct {
 }
 
 type BootstrapDataFreeAgency struct {
-	FreeAgents      []structs.NFLPlayer
-	UDFAs           []structs.NFLPlayer
-	WaiverPlayers   []structs.NFLPlayer
-	FreeAgentOffers []structs.FreeAgencyOffer
-	WaiverOffers    []structs.NFLWaiverOffer
+	FreeAgents           []structs.NFLPlayer
+	UDFAs                []structs.NFLPlayer
+	WaiverPlayers        []structs.NFLPlayer
+	PracticeSquadPlayers []structs.NFLPlayer
+	FreeAgentOffers      []structs.FreeAgencyOffer
+	WaiverOffers         []structs.NFLWaiverOffer
+	ContractMap          map[uint]structs.NFLContract
 }
 
 type BootstrapDataScheduling struct {
@@ -433,15 +435,17 @@ func GetRecruitingBootstrap(collegeID string) BootstrapDataRecruiting {
 func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 	var wg sync.WaitGroup
 	var (
-		freeAgents      []structs.NFLPlayer
-		waiverPlayers   []structs.NFLPlayer
-		freeAgentoffers []structs.FreeAgencyOffer
-		waiverOffers    []structs.NFLWaiverOffer
-		udfas           []structs.NFLPlayer
+		freeAgents           []structs.NFLPlayer
+		waiverPlayers        []structs.NFLPlayer
+		practiceSquadPlayers []structs.NFLPlayer
+		freeAgentoffers      []structs.FreeAgencyOffer
+		waiverOffers         []structs.NFLWaiverOffer
+		udfas                []structs.NFLPlayer
+		contractMap          map[uint]structs.NFLContract
 	)
 
 	if len(proID) > 0 && proID != "0" {
-		wg.Add(4)
+		wg.Add(6)
 
 		go func() {
 			defer wg.Done()
@@ -465,16 +469,27 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 			waiverPlayers = GetAllWaiverWirePlayers()
 		}()
 
+		go func() {
+			defer wg.Done()
+			practiceSquadPlayers = GetAllPracticeSquadPlayers()
+		}()
+		go func() {
+			defer wg.Done()
+			contractMap = GetContractMap()
+		}()
+
 	}
 
 	wg.Wait()
 
 	return BootstrapDataFreeAgency{
-		FreeAgentOffers: freeAgentoffers,
-		WaiverOffers:    waiverOffers,
-		FreeAgents:      freeAgents,
-		UDFAs:           udfas,
-		WaiverPlayers:   waiverPlayers,
+		FreeAgentOffers:      freeAgentoffers,
+		WaiverOffers:         waiverOffers,
+		FreeAgents:           freeAgents,
+		UDFAs:                udfas,
+		WaiverPlayers:        waiverPlayers,
+		PracticeSquadPlayers: practiceSquadPlayers,
+		ContractMap:          contractMap,
 	}
 }
 
