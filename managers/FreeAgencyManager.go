@@ -412,6 +412,7 @@ func CreateFAOffer(offer structs.FreeAgencyOfferDTO) structs.FreeAgencyOffer {
 
 	if player.IsPracticeSquad && player.TeamID != int(offer.TeamID) {
 		nflTeam := GetNFLTeamByTeamID(strconv.Itoa(player.TeamID))
+		offeringTeam := GetNFLTeamByTeamID(strconv.Itoa(int(offer.TeamID)))
 		ctx := context.Background()
 		var usernames []string
 		if nflTeam.NFLOwnerName != "" && nflTeam.NFLOwnerName != "AI" {
@@ -428,7 +429,7 @@ func CreateFAOffer(offer structs.FreeAgencyOfferDTO) structs.FreeAgencyOffer {
 					OwnerTeamID:    uint(player.TeamID),
 					OwnerTeamName:  nflTeam.TeamName,
 					OwnerTeamAbbr:  nflTeam.TeamAbbr,
-					OfferingTeam:   offer.Team,
+					OfferingTeam:   offeringTeam.TeamName,
 					PlayerID:       uint(player.PlayerID),
 					PlayerName:     player.FirstName + " " + player.LastName,
 					Position:       player.Position,
