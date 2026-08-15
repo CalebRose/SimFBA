@@ -380,7 +380,7 @@ func RunTheGames() {
 	ts := <-tsChn
 	close(tsChn)
 
-	ts.ToggleRunGames()
+	ts.RunGames = true
 	repository.SaveTimestamp(ts, db)
 
 }
