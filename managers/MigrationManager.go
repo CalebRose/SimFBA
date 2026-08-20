@@ -341,7 +341,7 @@ func migrateNFLPlayerSeasonStats(nflPlayerSeasonStatMap map[uint][]structs.NFLPl
 func MigrateCFBPlayerStatsFromPreviousSeason() {
 	db := dbprovider.GetInstance().GetDB()
 	ts := GetTimestamp()
-	seasonID2022 := ts.CollegeSeasonID - 3 // Season ID should be 7
+	seasonID2022 := ts.CollegeSeasonID - 0 // Season ID should be 7
 	seasonID := strconv.Itoa(seasonID2022)
 	cfbPlayerSeasonStatMap := GetALLCFBPlayerSeasonStatMapBySeason(seasonID)
 	cfbPlayerStatMap := GetCFBPlayerIndividualStatMapBySeason(seasonID)

@@ -165,6 +165,8 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/simcfb/nfl/dts", controller.FixCollegeDTOVRs).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simcfb/standings/", controller.FixCollegeStandings).Methods("GET")
+	// apiRouter.HandleFunc("/fix/simcfb/seasonstats/", controller.ResetCFBSeasonalStats).Methods("GET")
+
 	// apiRouter.HandleFunc("/fix/simfba/secondary/positions/", controller.FixSecondaryPositions).Methods("GET")
 	// apiRouter.HandleFunc("/fix/spending/count", controller.FixSpendingCount).Methods("GET")
 	// apiRouter.HandleFunc("/fix/scheme/penalties", controller.CheckForSchemePenalties).Methods("GET")
@@ -376,7 +378,6 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/statistics/interface/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetNFLStatsPageContent).Methods("GET")
 	apiRouter.HandleFunc("/statistics/interface/v2/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetCFBStatsPageContent).Methods("GET")
 	apiRouter.HandleFunc("/statistics/interface/v2/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetProStatsPageContent).Methods("GET")
-	apiRouter.HandleFunc("/statistics/reset/cfb/season/", controller.ResetCFBSeasonalStats).Methods("GET")
 	// apiRouter.HandleFunc("/statistics/reset/nfl/season/", controller.ResetNFLSeasonalStats).Methods("GET")
 	apiRouter.HandleFunc("/statistics/cfb/export/crootforthecrootgod/", controller.ExportAllSpringGamesPbPToCSV).Methods("GET")
 	apiRouter.HandleFunc("/statistics/nfl/export/crootforthecrootgod/", controller.ExportAllPreseasonGamesPbPToCSV).Methods("GET")

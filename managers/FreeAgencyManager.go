@@ -565,13 +565,18 @@ func SyncFreeAgencyOffers() {
 			continue
 		}
 		maxDay := 1000
+		maxAllowed := 3
+		if !ts.IsNFLOffSeason || ts.NFLWeek > 0 {
+			maxDay = 1
+			maxAllowed = 1
+		}
 
 		for _, offer := range Offers {
-			if maxDay > int(offer.Syncs) {
+			if maxDay > int(offer.Syncs) && (!ts.IsNFLOffSeason || ts.NFLWeek > 0) {
 				maxDay = int(offer.Syncs)
 			}
 		}
-		if maxDay < 3 {
+		if maxDay < maxAllowed {
 			for _, offer := range Offers {
 				offer.IncrementSyncs()
 				repository.SaveFreeAgencyOfferRecord(offer, db)
