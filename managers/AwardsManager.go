@@ -256,15 +256,15 @@ func (sc *ScoreCalculator) calculateDefensiveScore(stat structs.CollegePlayerSta
 	score += float64(stat.STSoloTackles) * 1
 	score += float64(stat.AssistedTackles) * 0.9
 	score += float64(stat.STAssistedTackles) * 0.9
-	score += float64(stat.TacklesForLoss) * 6.25
-	score += float64(stat.SacksMade) * 7.125
-	score += float64(stat.PassDeflections) * 6.25
-	score += float64(stat.ForcedFumbles) * 8
-	score += float64(stat.RecoveredFumbles) * 6
-	score += float64(stat.InterceptionsCaught) * 15
-	score += float64(stat.PuntsBlocked) * 10
-	score += float64(stat.Safeties) * 10
-	score += float64(stat.DefensiveTDs) * 20
+	score += float64(stat.TacklesForLoss) * 6.125
+	score += float64(stat.SacksMade) * 7.0
+	score += float64(stat.PassDeflections) * 6.125
+	score += float64(stat.ForcedFumbles) * 7.5
+	score += float64(stat.RecoveredFumbles) * 5.5
+	score += float64(stat.InterceptionsCaught) * 14
+	score += float64(stat.PuntsBlocked) * 9
+	score += float64(stat.Safeties) * 9
+	score += float64(stat.DefensiveTDs) * 18
 	return score
 }
 
