@@ -1253,7 +1253,7 @@ func AllocateAIRedshirts(seasonId string) {
 				isAboveMinPositionCount(target.Position, positionCountMap) {
 
 				redshirts[redshirtCount] = fmt.Sprintf("%s %s %s %s, GamesPlayed: %d, Injury Weeks: %d\n", team.TeamAbbr, target.Position, target.FirstName, target.LastName, playerSeasonStats.GamesPlayed, target.WeeksOfRecovery)
-				SetRedshirtStatusForPlayer(strconv.Itoa(target.TeamID))
+				SetRedshirtStatusForPlayer(strconv.Itoa(target.PlayerID))
 				positionCountMap[target.Position] -= 1
 				redshirtCount++
 			}
