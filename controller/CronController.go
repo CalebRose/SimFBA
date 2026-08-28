@@ -77,6 +77,7 @@ func SyncToNextWeekViaCron() {
 	ts.MoveUpPhase()
 
 	if ts.Phase < 7 {
+		repository.SaveTimestamp(ts, db)
 		return
 	}
 
