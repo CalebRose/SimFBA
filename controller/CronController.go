@@ -71,13 +71,12 @@ func SyncFreeAgencyViaCron() {
 }
 
 func SyncToNextWeekViaCron() {
+	db := dbprovider.GetInstance().GetDB()
 	ts := managers.GetTimestamp()
 
 	ts.MoveUpPhase()
 
 	if ts.Phase < 7 {
-		db := dbprovider.GetInstance().GetDB()
-		repository.SaveTimestamp(ts, db)
 		return
 	}
 
@@ -95,13 +94,10 @@ func SyncToNextWeekViaCron() {
 
 		// Once National Championship is over and we move up a week.
 		if (ts.CollegeSeasonOver && ts.CollegeWeek == 21) || ts.Phase == 31 {
-			db := dbprovider.GetInstance().GetDB()
-
 			// Sync Promises
 			managers.SyncPromises()
 			ts.TransferPortalPhase = 1
 			ts.TransferPortalRound = 1
-			repository.SaveTimestamp(ts, db)
 		}
 
 		if (ts.NFLSeasonOver && ts.CollegeSeasonOver && !ts.IsNFLOffSeason && !ts.IsOffSeason && ts.ProgressedCollegePlayers && ts.ProgressedProfessionalPlayers) || ts.Phase > 34 {
@@ -110,6 +106,7 @@ func SyncToNextWeekViaCron() {
 			repository.SaveTimestamp(ts, db)
 			managers.GenerateOffseasonData()
 		}
+		repository.SaveTimestamp(ts, db)
 	}
 }
 
