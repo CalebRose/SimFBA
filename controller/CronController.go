@@ -85,6 +85,11 @@ func SyncToNextWeekViaCron() {
 			ts = managers.MoveUpWeek()
 		}
 
+		if ts.CollegeWeek == 4 || ts.Phase == 14 {
+			seasonID := strconv.Itoa(ts.CollegeSeasonID)
+			managers.AllocateAIRedshirts(seasonID)
+		}
+
 		managers.AssignTeamGrades()
 
 		if ts.CollegeWeek >= 2 && !ts.CFBSpringGames && ts.CollegeWeek < 21 {
