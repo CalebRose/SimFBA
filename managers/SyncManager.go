@@ -1235,8 +1235,12 @@ func AllocateAIRedshirts(seasonId string) {
 
 		redshirtCount := 0
 		redshirts := make([]string, 20)
+		redshirtMax := 20
+		if !team.IsFBS {
+			redshirtMax = 10
+		}
 		for _, target := range redshirtTargets {
-			if redshirtCount >= 20 {
+			if redshirtCount >= redshirtMax {
 				break
 			}
 
@@ -1281,7 +1285,7 @@ func isAboveMinPositionCount(position string, positionCountMap map[string]int) b
 	case "QB", "RB", "FB", "TE", "FS", "SS", "C":
 		minPositionThreshold = 3
 	case "OT", "OG", "DE", "DT", "OLB", "ILB":
-		minPositionThreshold = 4
+		minPositionThreshold = 5
 	case "WR", "CB":
 		minPositionThreshold = 5
 	default:
