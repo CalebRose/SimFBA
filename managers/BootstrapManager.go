@@ -444,6 +444,8 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 		contractMap          map[uint]structs.NFLContract
 	)
 
+	ts := GetTimestamp()
+
 	if len(proID) > 0 && proID != "0" {
 		wg.Add(6)
 
@@ -460,7 +462,7 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 		go func() {
 			defer wg.Done()
 			freeAgentList := GetAllFreeAgents()
-			freeAgents = MakeGeneralFreeAgentList(freeAgentList)
+			freeAgents = MakeGeneralFreeAgentList(freeAgentList, ts.Phase)
 			udfas = MakeUDFAList(freeAgentList)
 		}()
 

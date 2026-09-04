@@ -48,11 +48,11 @@ func MakePracticeSquadList(players []structs.NFLPlayer) []structs.NFLPlayer {
 	return playerList
 }
 
-func MakeGeneralFreeAgentList(players []structs.NFLPlayer) []structs.NFLPlayer {
+func MakeGeneralFreeAgentList(players []structs.NFLPlayer, phase uint) []structs.NFLPlayer {
 	playerList := []structs.NFLPlayer{}
 
 	for _, p := range players {
-		if p.IsFreeAgent && p.Experience > 1 {
+		if p.IsFreeAgent && p.Experience > 1 && phase >= 6 {
 			playerList = append(playerList, p)
 		}
 	}
