@@ -50,9 +50,13 @@ func MakePracticeSquadList(players []structs.NFLPlayer) []structs.NFLPlayer {
 
 func MakeGeneralFreeAgentList(players []structs.NFLPlayer, phase uint) []structs.NFLPlayer {
 	playerList := []structs.NFLPlayer{}
-
+	baseYear := 1
+	// If UDFA phase is over, include UDFAs in general free agent list
+	if phase >= 6 {
+		baseYear = 0
+	}
 	for _, p := range players {
-		if p.IsFreeAgent && p.Experience > 1 && phase >= 6 {
+		if p.IsFreeAgent && p.Experience > uint(baseYear) {
 			playerList = append(playerList, p)
 		}
 	}
