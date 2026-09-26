@@ -497,6 +497,10 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/games/cfb/live-plays/test/", controller.TestCFBCronJob).Methods("GET")
 	apiRouter.HandleFunc("/games/nfl/live-plays/test/", controller.TestNFLCronJob).Methods("GET")
 
+	// Historical Gameplans
+	apiRouter.HandleFunc("/gameplans/college/season/{seasonID}/week/{weekID}", controller.GetHistoricalCollegeGameplansBySeasonAndWeek).Methods("GET")
+	apiRouter.HandleFunc("/gameplans/nfl/season/{seasonID}/week/{weekID}", controller.GetHistoricalNFLGameplansBySeasonAndWeek).Methods("GET")
+
 	// Firebase test endpoints
 	apiRouter.HandleFunc("/firebase/test/notification/", controller.TestNotificationToTuscan).Methods("GET")
 	// apiRouter.HandleFunc("/firebase/test/forum/", controller.TestForumPost).Methods("GET")

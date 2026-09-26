@@ -612,6 +612,7 @@ func ExportCFBStatisticsFromSim(gameStats []structs.GameStatDTO) {
 	ts := GetTimestamp()
 	gameType, _ := ts.GetCFBCurrentGameType()
 	var teamStats []structs.CollegeTeamStats
+	var historicalGameplans []structs.CollegeGameplanRecord
 
 	for _, gameDataDTO := range gameStats {
 		gameID := strconv.Itoa(int(gameDataDTO.GameID))
@@ -863,6 +864,23 @@ func ExportCFBStatisticsFromSim(gameStats []structs.GameStatDTO) {
 
 		repository.SaveCFBGameRecord(gameRecord, db)
 
+		historicalGameplans = append(historicalGameplans, structs.CollegeGameplanRecord{
+			GameID:       gameDataDTO.GameID,
+			TeamID:       uint(gameRecord.HomeTeamID),
+			SeasonID:     uint(ts.CollegeSeasonID),
+			WeekID:       uint(ts.CollegeWeekID),
+			IsHome:       true,
+			GameplanJSON: string(gameDataDTO.HomeGameplan),
+		})
+		historicalGameplans = append(historicalGameplans, structs.CollegeGameplanRecord{
+			GameID:       gameDataDTO.GameID,
+			TeamID:       uint(gameRecord.AwayTeamID),
+			SeasonID:     uint(ts.CollegeSeasonID),
+			WeekID:       uint(ts.CollegeWeekID),
+			IsHome:       false,
+			GameplanJSON: string(gameDataDTO.AwayGameplan),
+		})
+
 		repository.CreateCFBPlayerStatsInBatch(playerStats, db)
 
 		pbp := gameDataDTO.Plays
@@ -879,6 +897,7 @@ func ExportCFBStatisticsFromSim(gameStats []structs.GameStatDTO) {
 	}
 
 	repository.CreateCFBTeamStatsInBatch(teamStats, db)
+	repository.CreateCollegeGameplanRecordsInBatch(historicalGameplans, db)
 }
 
 func ExportNFLStatisticsFromSim(gameStats []structs.GameStatDTO) {
@@ -887,6 +906,7 @@ func ExportNFLStatisticsFromSim(gameStats []structs.GameStatDTO) {
 	ts := GetTimestamp()
 	gameType, _ := ts.GetNFLCurrentGameType()
 	var teamStats []structs.NFLTeamStats
+	var historicalGameplans []structs.NFLGameplanRecord
 
 	for _, gameDataDTO := range gameStats {
 		gameID := strconv.Itoa(int(gameDataDTO.GameID))
@@ -1138,6 +1158,23 @@ func ExportNFLStatisticsFromSim(gameStats []structs.GameStatDTO) {
 
 		repository.SaveNFLGameRecord(gameRecord, db)
 
+		historicalGameplans = append(historicalGameplans, structs.NFLGameplanRecord{
+			GameID:       gameDataDTO.GameID,
+			TeamID:       uint(gameRecord.HomeTeamID),
+			SeasonID:     uint(ts.NFLSeasonID),
+			WeekID:       uint(ts.NFLWeekID),
+			IsHome:       true,
+			GameplanJSON: string(gameDataDTO.HomeGameplan),
+		})
+		historicalGameplans = append(historicalGameplans, structs.NFLGameplanRecord{
+			GameID:       gameDataDTO.GameID,
+			TeamID:       uint(gameRecord.AwayTeamID),
+			SeasonID:     uint(ts.NFLSeasonID),
+			WeekID:       uint(ts.NFLWeekID),
+			IsHome:       false,
+			GameplanJSON: string(gameDataDTO.AwayGameplan),
+		})
+
 		repository.CreateNFLPlayerStatsInBatch(playerStats, db)
 
 		pbp := gameDataDTO.Plays
@@ -1154,6 +1191,7 @@ func ExportNFLStatisticsFromSim(gameStats []structs.GameStatDTO) {
 	}
 
 	repository.CreateNFLTeamStatsInBatch(teamStats, db)
+	repository.CreateNFLGameplanRecordsInBatch(historicalGameplans, db)
 }
 
 func GetCFBGameResultsByGameID(gameID string) structs.GameResultsResponse {

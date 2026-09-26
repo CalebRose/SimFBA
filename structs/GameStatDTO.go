@@ -1,5 +1,7 @@
 package structs
 
+import "encoding/json"
+
 type GameStatDTO struct {
 	GameID            uint
 	HomeTeam          TeamStatDTO
@@ -10,6 +12,8 @@ type GameStatDTO struct {
 	AwayScore         int
 	Plays             []PlayByPlayDTO
 	PlayerSnapTracker PlayerSnapTracker
+	HomeGameplan      json.RawMessage
+	AwayGameplan      json.RawMessage
 }
 
 type PlayerSnapTracker struct {
