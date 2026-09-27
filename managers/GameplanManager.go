@@ -31,7 +31,7 @@ func GetCollegeGameplanMap() map[uint]structs.CollegeGameplan {
 	gameplans := GetAllCollegeGameplans()
 
 	for _, g := range gameplans {
-		gMap[g.ID] = g
+		gMap[uint(g.TeamID)] = g
 	}
 
 	return gMap
