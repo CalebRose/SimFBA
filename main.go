@@ -498,6 +498,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/games/nfl/live-plays/test/", controller.TestNFLCronJob).Methods("GET")
 
 	// Historical Gameplans
+	apiRouter.HandleFunc("/gameplans/backfill/current", controller.BackfillGameplans).Methods("GET")
 	apiRouter.HandleFunc("/gameplans/college/season/{seasonID}/week/{weekID}", controller.GetHistoricalCollegeGameplansBySeasonAndWeek).Methods("GET")
 	apiRouter.HandleFunc("/gameplans/nfl/season/{seasonID}/week/{weekID}", controller.GetHistoricalNFLGameplansBySeasonAndWeek).Methods("GET")
 
@@ -620,3 +621,4 @@ func main() {
 
 	fmt.Println("Server exiting")
 }
+
