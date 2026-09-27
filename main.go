@@ -236,6 +236,18 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/gameplan/nfl/updatedepthchart", controller.UpdateNFLDepthChart).Methods("POST")
 	apiRouter.HandleFunc("/gameplan/nfl/depthchart/ai/update/", controller.UpdateNFLAIDepthCharts).Methods("GET")
 
+	// Depth Chart Season Snapshots (college_depth_chart_season_snapshot and nfl_depth_chart_season_snapshot)
+	apiRouter.HandleFunc("/depthcharts/snapshots/{league}/season/{seasonID}/week/{weekID}", controller.GetDepthChartSnapshots).Methods("GET")
+	apiRouter.HandleFunc("/depthcharts/snapshots/{league}/season/{seasonID}/week/{weekID}", controller.CaptureDepthChartSnapshot).Methods("POST")
+	apiRouter.HandleFunc("/depthcharts/snapshots/{league}/season/{seasonID}/week/{weekID}", controller.UploadDepthChartSnapshot).Methods("PUT")
+	apiRouter.HandleFunc("/depthcharts/snapshots/{league}/season/{seasonID}", controller.GetDepthChartSnapshots).Methods("GET")
+	apiRouter.HandleFunc("/depthcharts/snapshots/{league}/season/{seasonID}", controller.CaptureDepthChartSnapshot).Methods("POST")
+	apiRouter.HandleFunc("/depthcharts/snapshots/{league}/season/{seasonID}", controller.UploadDepthChartSnapshot).Methods("PUT")
+	apiRouter.HandleFunc("/gameplan/snapshots/{league}/season/{seasonID}/week/{weekID}", controller.GetDepthChartSnapshots).Methods("GET")
+	apiRouter.HandleFunc("/gameplan/snapshots/{league}/season/{seasonID}/week/{weekID}", controller.CaptureDepthChartSnapshot).Methods("POST")
+	apiRouter.HandleFunc("/gameplan/snapshots/{league}/season/{seasonID}", controller.GetDepthChartSnapshots).Methods("GET")
+	apiRouter.HandleFunc("/gameplan/snapshots/{league}/season/{seasonID}", controller.CaptureDepthChartSnapshot).Methods("POST")
+
 	// Generation Controls
 	// apiRouter.HandleFunc("/admin/generate/walkons", controller.GenerateWalkOns).Methods("GET")
 
