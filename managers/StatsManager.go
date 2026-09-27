@@ -504,7 +504,7 @@ func GetHistoricalTeamStats(TeamID string, SeasonID string) []structs.CollegeTea
 
 	var teamStats []structs.CollegeTeamStats
 
-	db.Where("team_id = ? AND season_id = ?", TeamID, SeasonID).Find(&teamStats)
+	db.Where("team_id = ? AND season_id = ?", TeamID, SeasonID).Order("week_id asc").Find(&teamStats)
 
 	return teamStats
 }
@@ -514,7 +514,7 @@ func GetNFLHistoricalTeamStats(TeamID string, SeasonID string) []structs.NFLTeam
 
 	var teamStats []structs.NFLTeamStats
 
-	db.Where("team_id = ? AND season_id = ?", TeamID, SeasonID).Find(&teamStats)
+	db.Where("team_id = ? AND season_id = ?", TeamID, SeasonID).Order("week_id asc").Find(&teamStats)
 
 	return teamStats
 }
