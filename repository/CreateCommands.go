@@ -22,6 +22,20 @@ func CreateNFLPlayByPlaysInBatch(plays []structs.NFLPlayByPlay, db *gorm.DB) {
 	}
 }
 
+func CreateCollegeGameplanRecordsInBatch(records []structs.CollegeGameplanRecord, db *gorm.DB) {
+	err := db.CreateInBatches(&records, len(records)).Error
+	if err != nil {
+		log.Panicln("Could not save college gameplan records!")
+	}
+}
+
+func CreateNFLGameplanRecordsInBatch(records []structs.NFLGameplanRecord, db *gorm.DB) {
+	err := db.CreateInBatches(&records, len(records)).Error
+	if err != nil {
+		log.Panicln("Could not save nfl gameplan records!")
+	}
+}
+
 func CreateCFBTeamStatsInBatch(stats []structs.CollegeTeamStats, db *gorm.DB) {
 	err := db.CreateInBatches(&stats, len(stats)).Error
 	if err != nil {
