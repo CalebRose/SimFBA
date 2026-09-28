@@ -22591,6 +22591,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs45(in *jlexer.Lexer, o
 				}
 				in.Delim(']')
 			}
+		case "Shotgun":
+			out.Shotgun = int(in.Int())
 		case "ProgramPref":
 			out.ProgramPref = uint8(in.Uint8())
 		case "ProfDevPref":
@@ -22790,6 +22792,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs45(out *jwriter.Writer
 			}
 			out.RawByte(']')
 		}
+	}
+	{
+		const prefix string = ",\"Shotgun\":"
+		out.RawString(prefix)
+		out.Int(int(in.Shotgun))
 	}
 	{
 		const prefix string = ",\"ProgramPref\":"
