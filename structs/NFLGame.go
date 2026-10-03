@@ -15,7 +15,7 @@ type NFLGame struct {
 	AwayTeam                 string
 	AwayTeamCoach            string
 	AwayTeamWin              bool
-	MVP                      string
+	MVP                      uint
 	HomeTeamScore            int
 	AwayTeamScore            int
 	TimeSlot                 string
@@ -48,6 +48,10 @@ type NFLGame struct {
 	NextGameHOA              string
 	HomePreviousBye          bool
 	AwayPreviousBye          bool
+}
+
+func (m *NFLGame) AssignMVP(playerID uint) {
+	m.MVP = playerID
 }
 
 // RevealResultsOnInterface will reveal game results for interface viewing, but it will not sync data to the season stats quite yet.

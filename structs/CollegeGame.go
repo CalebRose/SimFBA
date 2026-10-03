@@ -17,7 +17,7 @@ type CollegeGame struct {
 	AwayTeam                 string
 	AwayTeamCoach            string
 	AwayTeamWin              bool
-	MVP                      string
+	MVP                      uint
 	HomeTeamScore            int
 	AwayTeamScore            int
 	TimeSlot                 string
@@ -56,6 +56,10 @@ type CollegeGame struct {
 
 func (m *CollegeGame) RevealResultsOnInterface() {
 	m.IsRevealed = true
+}
+
+func (m *CollegeGame) AssignMVP(playerID uint) {
+	m.MVP = playerID
 }
 
 func (cg *CollegeGame) UpdateScore(HomeScore int, AwayScore int) {
