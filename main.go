@@ -130,7 +130,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/bootstrap/roster/{collegeID}/{proID}", controller.BootstrapTeamRosterData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/recruiting/{collegeID}", controller.BootstrapRecruitingData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/freeagency/{proID}", controller.BootstrapFreeAgencyData).Methods("GET")
-	apiRouter.HandleFunc("/bootstrap/scheduling/{username}/{collegeID}/{seasonID}", controller.BootstrapSchedulingData).Methods("GET")
+	apiRouter.HandleFunc("/bootstrap/scheduling/{username}/{collegeID}/{proID}/{seasonID}", controller.BootstrapSchedulingData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/draft/{proID}", controller.BootstrapDraftData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/portal/{collegeID}", controller.BootstrapPortalData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/gameplan/{collegeID}/{proID}", controller.BootstrapGameplanData).Methods("GET")
