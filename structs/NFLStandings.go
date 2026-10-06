@@ -91,7 +91,7 @@ func (ns *NFLStandings) CalculatePercentages() {
 		ns.TotalWinPercentage = 0
 	}
 	if totalConfGames > 0 {
-		ns.ConfWinPercentage = float32(ns.TotalWins) / float32(totalConfGames)
+		ns.ConfWinPercentage = float32(ns.ConferenceWins) / float32(totalConfGames)
 	} else {
 		ns.ConfWinPercentage = 0
 	}
