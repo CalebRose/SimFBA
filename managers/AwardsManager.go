@@ -277,6 +277,59 @@ func (sc *ScoreCalculator) calculateSpecialTeamsScore(stat structs.CollegePlayer
 	return score
 }
 
+// CalculateCollegeGameScore scores a single game's stat line using the shared scoring components,
+// without season-level opponent weighting or normalization.
+func (sc *ScoreCalculator) CalculateCollegeGameScore(stat structs.CollegePlayerStats, position string) float64 {
+	score := sc.calculatePassingScore(stat)
+	score += sc.calculateRushingScore(stat, position)
+	score += sc.calculateReceivingScore(stat, position)
+	score += sc.calculateDefensiveScore(stat)
+	score += sc.calculateSpecialTeamsScore(stat)
+	return score
+}
+
+// GetCollegeGameMVP returns the CollegePlayerID of the highest scoring stat line in a game.
+// positionMap maps CollegePlayerID to position. Returns 0 if there are no stats.
+func GetCollegeGameMVP(playerStats []structs.CollegePlayerStats, positionMap map[int]string) uint {
+	calculator := &ScoreCalculator{}
+	var mvpID int
+	var topScore float64
+	found := false
+
+	for _, stat := range playerStats {
+		score := calculator.CalculateCollegeGameScore(stat, positionMap[stat.CollegePlayerID])
+		if !found || score > topScore {
+			found = true
+			topScore = score
+			mvpID = stat.CollegePlayerID
+		}
+	}
+
+	return uint(mvpID)
+}
+
+// GetNFLGameMVP returns the NFLPlayerID of the highest scoring stat line in a game.
+// positionMap maps NFLPlayerID to position. Returns 0 if there are no stats.
+func GetNFLGameMVP(playerStats []structs.NFLPlayerStats, positionMap map[int]string) uint {
+	calculator := &ScoreCalculator{}
+	var mvpID int
+	var topScore float64
+	found := false
+
+	for _, stat := range playerStats {
+		// The scoring components only read BasePlayerStats, which both stat types share
+		collegeStat := structs.CollegePlayerStats{BasePlayerStats: stat.BasePlayerStats}
+		score := calculator.CalculateCollegeGameScore(collegeStat, positionMap[stat.NFLPlayerID])
+		if !found || score > topScore {
+			found = true
+			topScore = score
+			mvpID = stat.NFLPlayerID
+		}
+	}
+
+	return uint(mvpID)
+}
+
 // Position-specific scoring modifiers
 func enhanceDefensiveScoring(score float64, position string) float64 {
 	return score * 1.2 // Boost defensive stats

@@ -105,9 +105,6 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/simfba/sync/season/", controller.SyncToNextSeason).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/sync/missing/", controller.SyncMissingRES).Methods("GET")
 	apiRouter.HandleFunc("/simfba/mass/{off}/{def}", controller.MassUpdateGameplans).Methods("GET")
-	apiRouter.HandleFunc("/simfba/sync/weather/", controller.WeatherGenerator).Methods("GET")
-	apiRouter.HandleFunc("/simfba/current/weather/forecast/", controller.GetWeatherForecast).Methods("GET")
-	apiRouter.HandleFunc("/simfba/future/weather/forecast/", controller.GetFutureWeatherForecast).Methods("GET")
 	apiRouter.HandleFunc("/news/{weekID}/{seasonID}/", controller.GetNewsLogs).Methods("GET")
 	apiRouter.HandleFunc("/season/{seasonID}/weeks/{weekID}", controller.GetWeeksInSeason).Methods("GET")
 	apiRouter.HandleFunc("/admin/teams/croot/sync", controller.SyncTeamRecruitingRanks).Methods("GET")
@@ -123,6 +120,13 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/admin/trades/veto/sync/{proposalID}", controller.VetoAcceptedTrade).Methods("GET")
 	apiRouter.HandleFunc("/admin/trades/cleanup", controller.CleanUpRejectedTrades).Methods("GET")
 	apiRouter.HandleFunc("/admin/process-udfas", controller.ProcessUDFAs).Methods("GET")
+
+	// Engine Endpoints
+	apiRouter.HandleFunc("/simfba/sync/weather/", controller.WeatherGenerator).Methods("GET")
+	apiRouter.HandleFunc("/simfba/current/weather/forecast/", controller.GetWeatherForecast).Methods("GET")
+	apiRouter.HandleFunc("/simfba/future/weather/forecast/", controller.GetFutureWeatherForecast).Methods("GET")
+	apiRouter.HandleFunc("/statistics/export/cfb/", controller.ExportCFBStatisticsFromSim).Methods("POST")
+	// End Engine Endpoints
 
 	// Bootstrap
 	apiRouter.HandleFunc("/bootstrap/teams", controller.BootstrapTeamData).Methods("GET")
@@ -366,7 +370,6 @@ func handleRequests() http.Handler {
 
 	// Stats Controls
 	apiRouter.HandleFunc("/stats/cfb/player/{playerID}/season/{seasonID}/", controller.GetCFBSeasonStatsRecord).Methods("GET")
-	apiRouter.HandleFunc("/statistics/export/cfb/", controller.ExportCFBStatisticsFromSim).Methods("POST")
 	// apiRouter.HandleFunc("/statistics/export/nfl/", controller.ExportNFLStatisticsFromSim).Methods("POST")
 	apiRouter.HandleFunc("/statistics/export/players/", controller.ExportPlayerStatsToCSV).Methods("GET")
 	apiRouter.HandleFunc("/statistics/export/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.ExportCFBStatsPageContentForSeason).Methods("GET")

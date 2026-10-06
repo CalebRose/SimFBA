@@ -858,8 +858,17 @@ func ExportCFBStatisticsFromSim(gameStats []structs.GameStatDTO) {
 			playerStats = append(playerStats, collegePlayerStats)
 		}
 
+		positionMap := make(map[int]string, len(gameDataDTO.HomePlayers)+len(gameDataDTO.AwayPlayers))
+		for _, p := range gameDataDTO.HomePlayers {
+			positionMap[p.GetPlayerID()] = p.Position
+		}
+		for _, p := range gameDataDTO.AwayPlayers {
+			positionMap[p.GetPlayerID()] = p.Position
+		}
+
 		// Update Game
 		gameRecord.UpdateScore(gameDataDTO.HomeScore, gameDataDTO.AwayScore)
+		gameRecord.AssignMVP(GetCollegeGameMVP(playerStats, positionMap))
 
 		repository.SaveCFBGameRecord(gameRecord, db)
 
@@ -1133,8 +1142,17 @@ func ExportNFLStatisticsFromSim(gameStats []structs.GameStatDTO) {
 			playerStats = append(playerStats, nflPlayerStats)
 		}
 
+		positionMap := make(map[int]string, len(gameDataDTO.HomePlayers)+len(gameDataDTO.AwayPlayers))
+		for _, p := range gameDataDTO.HomePlayers {
+			positionMap[p.GetPlayerID()] = p.Position
+		}
+		for _, p := range gameDataDTO.AwayPlayers {
+			positionMap[p.GetPlayerID()] = p.Position
+		}
+
 		// Update Game
 		gameRecord.UpdateScore(gameDataDTO.HomeScore, gameDataDTO.AwayScore)
+		gameRecord.AssignMVP(GetNFLGameMVP(playerStats, positionMap))
 
 		repository.SaveNFLGameRecord(gameRecord, db)
 
