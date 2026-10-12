@@ -157,7 +157,7 @@ func CFBProgressionMain() {
 				if diceRoll == 1 {
 
 					enableBoomBust = true
-				} else if diceRoll == 20 || (cp.ID == 84719 || cp.ID == 84504) {
+				} else if diceRoll == 20 {
 					enableBoomBust = true
 					isBoom = true
 				} else {
