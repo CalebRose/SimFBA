@@ -258,7 +258,7 @@ func buildPostGameNodes(
 
 	// ── MVP ───────────────────────────────────────────────────────────────────
 	if mvp != 0 {
-		nodes = append(nodes, rtParagraph(fmt.Sprintf("MVP: %s", mvp)))
+		nodes = append(nodes, rtParagraph(fmt.Sprintf("MVP: %d", int(mvp))))
 	}
 
 	// ── Offense table ─────────────────────────────────────────────────────────
