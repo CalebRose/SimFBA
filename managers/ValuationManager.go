@@ -256,7 +256,7 @@ func computeGroupExtensionValues(group string, entries []playerGroupEntry) []str
 	// the weighted blend and let flat top-tier values leak through).
 	midTierValues := make([]float64, len(ranked))
 	for i, rp := range ranked {
-		midTierValues[i] = computeMidTierValue(int(rp.Entry.Player.Overall), ageThreshold, entries)
+		midTierValues[i] = computeMidTierValue(group, int(rp.Entry.Player.Overall)+getYoungCompBonus(group, int(rp.Entry.Player.Age)), ageThreshold, entries)
 	}
 
 	// Find the real-overall range spanned by elite-tier members, so we can scale
@@ -350,18 +350,28 @@ func computeGroupExtensionValues(group string, entries []playerGroupEntry) []str
 	return result
 }
 
+// isUnprovenScaleContract reports whether a contract is still a rookie-scale
+// or UDFA deal. Extensions reuse the original contract record (and its
+// "Rookie"/"UDFA" type) while overwriting SigningValue with the new market
+// deal, so extended contracts are real comps and must not be excluded.
+func isUnprovenScaleContract(c structs.NFLContract) bool {
+	if c.IsExtended {
+		return false
+	}
+	return c.ContractType == "Rookie" || c.ContractType == "UDFA"
+}
 // computeMidTierValue calculates a player's raw expected value using the
 // mid-tier lookup: the highest signing value among comparably-or-lesser-
 // rated peers, preferring comps below the group's age exclusion threshold
 // but falling back to (or being floored by) the best comparable regardless
 // of age, so groups whose veteran pool skews old (e.g. Centers) don't
 // bottom out just because few contracts passed the age filter.
-func computeMidTierValue(actualOverall, ageThreshold int, entries []playerGroupEntry) float64 {
+func computeMidTierValue(group string, actualOverall, ageThreshold int, entries []playerGroupEntry) float64 {
 	var anyAgeValues, withinAgeValues []float64
 
 	for _, e := range entries {
 		c := e.Contract
-		if !c.IsActive || c.ContractType == "Rookie" || c.ContractType == "UDFA" {
+		if !c.IsActive || isUnprovenScaleContract(c) {
 			continue
 		}
 		if int(e.Player.Overall) > actualOverall {
@@ -373,8 +383,8 @@ func computeMidTierValue(actualOverall, ageThreshold int, entries []playerGroupE
 		}
 	}
 
-	bestValueAnyAge := robustCompValue(anyAgeValues)
-	bestValue := robustCompValue(withinAgeValues)
+	bestValueAnyAge := robustCompValue(group, anyAgeValues)
+	bestValue := robustCompValue(group, withinAgeValues)
 
 	// An any-age comp only counts at a discount once a within-threshold comp
 	// exists, so a single strong veteran deal can't fully override the
@@ -385,27 +395,48 @@ func computeMidTierValue(actualOverall, ageThreshold int, entries []playerGroupE
 	return math.Max(bestValue, bestValueAnyAge*0.85)
 }
 
-// compSampleSize is the number of top comps considered before trimming outliers.
-const compSampleSize = 5
+// getYoungCompBonus returns extra overall points used only when looking up a
+// player's comps, so young players in groups where the market prices
+// potential (EDGE) are compared against slightly higher-rated veterans'
+// contracts. Mirrors the +4 age bonus used for ranking.
+func getYoungCompBonus(group string, age int) int {
+	if group == "EDGE" && age <= 25 {
+		return 4
+	}
+	return 0
+}
+// getCompParams returns how many comps to average (sampleSize) and the spike
+// ratio used to discard outlier contracts for a position group. Deep groups
+// have plenty of comparable deals, so they average several and filter spikes
+// tightly. Thin groups have few market-setting deals, so they lean on the
+// best comp (TE averages two, since it was the group most prone to spikes).
+func getCompParams(group string) (sampleSize int, spikeRatio float64) {
+	switch group {
+	case "OT", "OG", "CB", "WR", "DL", "LB":
+		return 3, 1.25
+	case "TE":
+		return 2, 1.3
+	default: // QB, RB, FB, C, EDGE, FS, SS, K, P
+		return 1, 1.3
+	}
+}
 
-// robustCompValue takes the top compSampleSize values and averages them after
-// trimming outliers: with a full sample the highest and lowest are dropped;
-// with 3-4 values only the highest is dropped; with 1-2 the plain average is used.
-func robustCompValue(vals []float64) float64 {
+// robustCompValue discards spike contracts (a value at least the group's spike
+// ratio times the next-highest, applied repeatedly while 3+ values remain),
+// then averages the top sampleSize remaining values.
+func robustCompValue(group string, vals []float64) float64 {
 	if len(vals) == 0 {
 		return 0
 	}
+	sampleSize, spikeRatio := getCompParams(group)
 	sorted := make([]float64, len(vals))
 	copy(sorted, vals)
 	sort.Slice(sorted, func(i, j int) bool { return sorted[i] > sorted[j] })
-	if len(sorted) > compSampleSize {
-		sorted = sorted[:compSampleSize]
-	}
-	switch {
-	case len(sorted) >= compSampleSize:
-		sorted = sorted[1 : len(sorted)-1]
-	case len(sorted) >= 3:
+	for len(sorted) >= 3 && sorted[0] >= sorted[1]*spikeRatio {
 		sorted = sorted[1:]
+	}
+	if len(sorted) > sampleSize {
+		sorted = sorted[:sampleSize]
 	}
 	return avgFloats(sorted)
 }
