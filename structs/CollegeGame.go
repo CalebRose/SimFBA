@@ -4,6 +4,8 @@ import "github.com/jinzhu/gorm"
 
 type CollegeGame struct {
 	gorm.Model
+	// Projected stream channel (Discord channel name); derived from the game, never persisted.
+	StreamChannel string `gorm:"-" json:"StreamChannel"`
 	WeekID                   int
 	Week                     int
 	SeasonID                 int
@@ -151,4 +153,33 @@ type WeatherResponse struct {
 	Precip       string
 	WindSpeed    float64
 	WindCategory string
+}
+
+// GetCFBStreamFeed returns the feed a CFB game streams on: "fbs" when at least one team is FBS,
+// otherwise "fcs".
+func GetCFBStreamFeed(homeIsFBS, awayIsFBS bool) string {
+	if homeIsFBS || awayIsFBS {
+		return "fbs"
+	}
+	return "fcs"
+}
+
+// GetCFBStreamChannel returns the Discord channel a CFB game is played in. FCS games all play in
+// simfcs-live; FBS games play in a channel that depends on the timeslot. It is a projection and
+// does not depend on GameComplete / IsRevealed.
+func GetCFBStreamChannel(game CollegeGame, homeIsFBS, awayIsFBS bool) string {
+	if GetCFBStreamFeed(homeIsFBS, awayIsFBS) == "fcs" {
+		return "simfcs-live"
+	}
+	switch game.TimeSlot {
+	case "Saturday Afternoon":
+		return "b1g-noon-kickoff"
+	case "Saturday Evening":
+		return "prime-time"
+	case "Saturday Night":
+		return "pac-2-afterdark"
+	default:
+		// Thursday, Friday and Saturday Morning games (and games without a timeslot yet).
+		return "simfba-live"
+	}
 }

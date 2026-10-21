@@ -408,18 +408,11 @@ func GetCFBPlayByPlayStreamData(timeslot string, isFBS bool) []structs.StreamRes
 		}
 		homeTeam := teamMap[uint(game.HomeTeamID)]
 		awayTeam := teamMap[uint(game.AwayTeamID)]
-		// If it's a full FCS match up and we're not streaming FCS, skip
-		if !homeTeam.IsFBS && !awayTeam.IsFBS && isFBS {
-			continue
+		channel := "fcs"
+		if isFBS {
+			channel = "fbs"
 		}
-
-		// If it's a partial FCS and we're streaming FCS, skip. It was streamed in FBS
-		if ((!homeTeam.IsFBS && awayTeam.IsFBS) || (homeTeam.IsFBS && !awayTeam.IsFBS)) && !isFBS {
-			continue
-		}
-
-		// If it's an FBS match and we're streaming FCS, skip
-		if homeTeam.IsFBS && awayTeam.IsFBS && !isFBS {
+		if structs.GetCFBStreamFeed(homeTeam.IsFBS, awayTeam.IsFBS) != channel {
 			continue
 		}
 		var wg sync.WaitGroup

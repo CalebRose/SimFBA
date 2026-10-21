@@ -49,6 +49,15 @@ func MoveUpWeek() structs.Timestamp {
 	UpdateGameplanPenalties()
 	RecoverPlayers()
 	CheckNFLRookiesForLetterGrade(strconv.Itoa(int(ts.NFLSeasonID)))
+
+	// Capture Week 3 depth chart snapshots for historical test replays
+	if ts.CollegeWeek == 3 && !ts.IsOffSeason && !ts.CollegeSeasonOver {
+		go CaptureCollegeDepthChartSnapshot(uint(ts.CollegeSeasonID))
+	}
+	if ts.NFLWeek == 3 && !ts.IsNFLOffSeason && !ts.NFLSeasonOver {
+		go CaptureNFLDepthChartSnapshot(uint(ts.NFLSeasonID))
+	}
+
 	ts.SyncToNextWeek()
 
 	if ts.CollegeWeek == 0 && !ts.CFBSpringGames && ts.Phase == 10 {

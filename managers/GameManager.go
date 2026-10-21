@@ -96,6 +96,8 @@ func GetCollegeGamesByTeamIdAndSeasonId(TeamID string, SeasonID string, isSpring
 
 	db.Order("week_id asc").Where("season_id = ? AND (home_team_id = ? OR away_team_id = ?) AND is_spring_game = ?", SeasonID, TeamID, TeamID, isSpringGame).Find(&games)
 
+	repository.AssignCFBStreamChannels(games)
+
 	return games
 }
 
@@ -260,6 +262,8 @@ func GetAllCollegeGames() []structs.CollegeGame {
 
 	db.Order("week_id asc").Find(&games)
 
+	repository.AssignCFBStreamChannels(games)
+
 	return games
 }
 
@@ -269,6 +273,8 @@ func GetCollegeGamesByTeamId(TeamID string) []structs.CollegeGame {
 	var games []structs.CollegeGame
 
 	db.Order("week_id asc").Where("home_team_id = ? OR away_team_id = ?", TeamID, TeamID).Find(&games)
+
+	repository.AssignCFBStreamChannels(games)
 
 	return games
 }

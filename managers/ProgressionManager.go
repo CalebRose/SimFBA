@@ -85,14 +85,14 @@ func CFBProgressionMain() {
 					}
 
 					// Generate Tier
-					if diceRoll == 1 && player.ID != 24984 {
+					if diceRoll == 1 {
 						boomBustStatus = "Bust"
 						enableBoomBust = true
 						// Bust
 
 						draftee.AssignBoomBustStatus(boomBustStatus)
 
-					} else if diceRoll == 20 || player.ID == 24984 {
+					} else if diceRoll == 20 {
 						enableBoomBust = true
 						// Boom
 
@@ -157,7 +157,7 @@ func CFBProgressionMain() {
 				if diceRoll == 1 {
 
 					enableBoomBust = true
-				} else if diceRoll == 20 || (cp.ID == 84719 || cp.ID == 84504) {
+				} else if diceRoll == 20 {
 					enableBoomBust = true
 					isBoom = true
 				} else {

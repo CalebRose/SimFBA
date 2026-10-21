@@ -292,6 +292,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs4(in *jlexer.Lexer, ou
 			continue
 		}
 		switch key {
+		case "StreamChannel":
+			out.StreamChannel = string(in.String())
 		case "WeekID":
 			out.WeekID = int(in.Int())
 		case "Week":
@@ -425,8 +427,13 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs4(out *jwriter.Writer,
 	first := true
 	_ = first
 	{
-		const prefix string = ",\"WeekID\":"
+		const prefix string = ",\"StreamChannel\":"
 		out.RawString(prefix[1:])
+		out.String(string(in.StreamChannel))
+	}
+	{
+		const prefix string = ",\"WeekID\":"
+		out.RawString(prefix)
 		out.Int(int(in.WeekID))
 	}
 	{
@@ -20708,6 +20715,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs45(in *jlexer.Lexer, o
 			continue
 		}
 		switch key {
+		case "StreamChannel":
+			out.StreamChannel = string(in.String())
 		case "WeekID":
 			out.WeekID = int(in.Int())
 		case "Week":
@@ -20833,8 +20842,13 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs45(out *jwriter.Writer
 	first := true
 	_ = first
 	{
-		const prefix string = ",\"WeekID\":"
+		const prefix string = ",\"StreamChannel\":"
 		out.RawString(prefix[1:])
+		out.String(string(in.StreamChannel))
+	}
+	{
+		const prefix string = ",\"WeekID\":"
+		out.RawString(prefix)
 		out.Int(int(in.WeekID))
 	}
 	{
@@ -23136,6 +23150,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs46(in *jlexer.Lexer, o
 				}
 				in.Delim(']')
 			}
+		case "Shotgun":
+			out.Shotgun = int(in.Int())
 		case "ProgramPref":
 			out.ProgramPref = uint8(in.Uint8())
 		case "ProfDevPref":
@@ -23335,6 +23351,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs46(out *jwriter.Writer
 			}
 			out.RawByte(']')
 		}
+	}
+	{
+		const prefix string = ",\"Shotgun\":"
+		out.RawString(prefix)
+		out.Int(int(in.Shotgun))
 	}
 	{
 		const prefix string = ",\"ProgramPref\":"
