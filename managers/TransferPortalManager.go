@@ -77,7 +77,7 @@ func ProcessTransferIntention() {
 
 	for _, p := range allCollegePlayers {
 		// Do not include redshirts and all graduating players
-		if p.IsRedshirting || p.TeamID > 194 || p.TeamID == 0 {
+		if p.TeamID > 194 || p.TeamID == 0 || p.Year >= 5 {
 			continue
 		}
 		// Weight will be the initial barrier required for a player to consider transferring.
@@ -178,14 +178,10 @@ func ProcessTransferIntention() {
 		/// Have this be a multiplicative factor to odds
 		if p.Year == 1 {
 			ageMod = .01
-		} else if p.Year == 2 && p.IsRedshirt {
-			ageMod = .1
-		} else if p.Year == 2 && !p.IsRedshirt {
-			ageMod = .4
-		} else if p.Year == 3 && p.IsRedshirt {
-			ageMod = .75
-		} else if p.Year == 3 && !p.IsRedshirt {
-			ageMod = 1
+		} else if p.Year == 2 {
+			ageMod = .25
+		} else if p.Year == 3 {
+			ageMod = .85
 		} else if p.Year == 4 {
 			ageMod = 1.25
 		} else if p.Year == 5 {
@@ -297,22 +293,14 @@ func ProcessTransferIntention() {
 		// Is Intending to transfer
 		p.DeclareTransferIntention(int(transferWeight))
 		transferCount++
-		if p.Year == 1 && !p.IsRedshirt {
+		if p.Year == 1 {
 			freshmanCount++
-		} else if p.Year == 2 && p.IsRedshirt {
-			redshirtFreshmanCount++
-		} else if p.Year == 2 && !p.IsRedshirt {
+		} else if p.Year == 2 {
 			sophomoreCount++
-		} else if p.Year == 3 && p.IsRedshirt {
-			redshirtSophomoreCount++
-		} else if p.Year == 3 && !p.IsRedshirt {
+		} else if p.Year == 3 {
 			juniorCount++
-		} else if p.Year == 4 && p.IsRedshirt {
-			redshirtJuniorCount++
-		} else if p.Year == 4 && !p.IsRedshirt {
+		} else if p.Year == 4 {
 			seniorCount++
-		} else if p.Year == 5 && p.IsRedshirt {
-			redshirtSeniorCount++
 		}
 
 		if transferWeight < 34 {
@@ -1552,7 +1540,7 @@ func filterRosterByPosition(roster []structs.CollegePlayer, pos string) []struct
 	estimatedSize := len(roster) / 5 // Adjust this based on your data
 	filteredList := make([]structs.CollegePlayer, 0, estimatedSize)
 	for _, p := range roster {
-		if p.Position != pos || (p.Year == 5 || (p.Year == 4 && p.IsRedshirt)) {
+		if p.Position != pos || p.Year >= 5 {
 			continue
 		}
 		filteredList = append(filteredList, p)
@@ -2021,12 +2009,7 @@ func SyncPromises() {
 					break
 				}
 			}
-		} else if promise.PromiseType == "No Redshirt" {
-			result = "Was Redshirted"
-			if !player.IsRedshirting {
-				result = ""
-				promise.FulfillPromise()
-			}
+
 		} else if promise.PromiseType == "National Championship" {
 			result = "Did not win the Natty."
 			standings := standingsMap[promise.TeamID]

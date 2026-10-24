@@ -453,7 +453,7 @@ func GenerateWalkOns() {
 		roster := collegeRosterMap[team.ID]
 		rosterCount := len(roster)
 		for _, p := range roster {
-			if p.Year == 5 || (p.Year == 4 && !p.IsRedshirt) {
+			if p.Year >= 5 {
 				rosterCount--
 			}
 		}

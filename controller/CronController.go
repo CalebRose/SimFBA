@@ -86,10 +86,7 @@ func SyncToNextWeekViaCron() {
 			ts = managers.MoveUpWeek()
 		}
 
-		if ts.CollegeWeek == 4 || ts.Phase == 14 {
-			seasonID := strconv.Itoa(ts.CollegeSeasonID)
-			managers.AllocateAIRedshirts(seasonID)
-		}
+		// Redshirt allocation deprecated under 5-year eligibility model
 
 		managers.AssignTeamGrades()
 

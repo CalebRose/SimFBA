@@ -216,3 +216,16 @@ func FixRecruitingProfileModifiers() {
 		repository.SaveRecruitProfile(profile, db)
 	}
 }
+
+func MigrateTo5YearModel() {
+	db := dbprovider.GetInstance().GetDB()
+
+	// 1. Reset all redshirt flags for all college players
+	db.Model(&structs.CollegePlayer{}).Where("id > 0").Updates(map[string]interface{}{
+		"is_redshirt":   false,
+		"is_redshirting": false,
+	})
+
+	// 2. Remove any "No Redshirt" transfer portal promises
+	db.Delete(&structs.CollegePromise{}, "promise_type = ?", "No Redshirt")
+}

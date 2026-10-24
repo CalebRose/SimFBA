@@ -180,6 +180,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/player/weights", controller.FixPlayerWeights).Methods("GET")
 	// apiRouter.HandleFunc("/fix/timeslots", controller.FixTimeslots).Methods("GET")
 	apiRouter.HandleFunc("/fix/recruiting/profile/modifiers", controller.FixRecruitingProfileModifiers).Methods("GET")
+	apiRouter.HandleFunc("/admin/fix/five-year-model", controller.MigrateTo5YearModel).Methods("GET")
 	apiRouter.HandleFunc("/fix/broken/gameplans", controller.FixBrokenGameplans).Methods("GET")
 	// Free Agency Controls
 	// apiRouter.HandleFunc("/nfl/extensions/sync", controller.SyncExtensions).Methods("GET")
