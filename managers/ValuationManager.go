@@ -3,7 +3,6 @@ package managers
 import (
 	"log"
 	"math"
-	"net/http"
 	"sort"
 	"strconv"
 
@@ -360,6 +359,7 @@ func isUnprovenScaleContract(c structs.NFLContract) bool {
 	}
 	return c.ContractType == "Rookie" || c.ContractType == "UDFA"
 }
+
 // computeMidTierValue calculates a player's raw expected value using the
 // mid-tier lookup: the highest signing value among comparably-or-lesser-
 // rated peers, preferring comps below the group's age exclusion threshold
@@ -405,6 +405,7 @@ func getYoungCompBonus(group string, age int) int {
 	}
 	return 0
 }
+
 // getCompParams returns how many comps to average (sampleSize) and the spike
 // ratio used to discard outlier contracts for a position group. Deep groups
 // have plenty of comparable deals, so they average several and filter spikes
@@ -440,6 +441,7 @@ func robustCompValue(group string, vals []float64) float64 {
 	}
 	return avgFloats(sorted)
 }
+
 // =============================================================================
 // CalculatePlayerMinimumAndAAVValues
 // =============================================================================
@@ -448,12 +450,62 @@ func robustCompValue(group string, vals []float64) float64 {
 // contract (extension) value and AAV for every active NFL player.
 // Run once per offseason. Also updates OriginalMinimumValue / OriginalAAV so
 // the week-15 reset restores to this freshly computed baseline.
-func CalculatePlayerMinimumAndAAVValues(w http.ResponseWriter) {
+func CalculatePlayerMinimumAndAAVValues() {
 	db := dbprovider.GetInstance().GetDB()
+
+	saved := 0
+	for group, updated := range computeAllExtensionValues() {
+		for _, p := range updated {
+			if err := db.Model(&p).Updates(map[string]interface{}{
+				"minimum_value":          p.MinimumValue,
+				"original_minimum_value": p.OriginalMinimumValue,
+				"aav":                    p.AAV,
+				"original_aav":           p.OriginalAAV,
+			}).Error; err != nil {
+				log.Printf("ValuationManager: failed to save player %d (%s): %v", p.ID, group, err)
+				continue
+			}
+			saved++
+		}
+	}
+
+	log.Printf("CalculatePlayerMinimumAndAAVValues: updated %d players", saved)
+}
+
+// PreviewPlayerMinimumAndAAVValues runs the same calculation without saving
+// anything and returns CSV rows (Calculated = new values, Current = values
+// stored on the player before the run) for offline review.
+func PreviewPlayerMinimumAndAAVValues() [][]string {
+	csvRows := [][]string{}
+	for group, updated := range computeAllExtensionValues() {
+		for _, p := range updated {
+			csvRows = append(csvRows, []string{
+				group,
+				strconv.Itoa(int(p.ID)),
+				p.FirstName,
+				p.LastName,
+				p.Position,
+				p.Archetype,
+				p.PositionTwo,
+				p.ArchetypeTwo,
+				strconv.Itoa(int(p.Age)),
+				strconv.Itoa(int(p.Overall)),
+				strconv.FormatFloat(p.OriginalMinimumValue, 'f', 2, 64),
+				strconv.FormatFloat(p.OriginalAAV, 'f', 2, 64),
+				strconv.FormatFloat(p.MinimumValue, 'f', 2, 64),
+				strconv.FormatFloat(p.AAV, 'f', 2, 64),
+			})
+		}
+	}
+	return csvRows
+}
+
+// computeAllExtensionValues loads players and active contracts, groups the
+// players, and returns the calculated values per position group. It does not
+// persist anything.
+func computeAllExtensionValues() map[string][]structs.NFLPlayer {
 	ts := GetTimestamp()
 	seasonID := strconv.Itoa(ts.NFLSeasonID)
-	isTest := true // TODO: set to false for production
-	csvRows := [][]string{}
 
 	nflPlayers := GetAllNFLPlayers()
 	contracts := repository.FindAllActiveNFLContracts()
@@ -476,50 +528,12 @@ func CalculatePlayerMinimumAndAAVValues(w http.ResponseWriter) {
 		})
 	}
 
-	// Calculate extension values per group, then save
-	saved := 0
+	results := make(map[string][]structs.NFLPlayer, len(groupEntries))
 	for group, entries := range groupEntries {
-		updated := computeGroupExtensionValues(group, entries)
-		for _, p := range updated {
-			if !isTest {
-				if err := db.Model(&p).Updates(map[string]interface{}{
-					"minimum_value":          p.MinimumValue,
-					"original_minimum_value": p.OriginalMinimumValue,
-					"aav":                    p.AAV,
-					"original_aav":           p.OriginalAAV,
-				}).Error; err != nil {
-					log.Printf("ValuationManager: failed to save player %d (%s): %v", p.ID, group, err)
-					continue
-				}
-			} else {
-				row := []string{
-					group,
-					strconv.Itoa(int(p.ID)),
-					p.FirstName,
-					p.LastName,
-					p.Position,
-					p.Archetype,
-					p.PositionTwo,
-					p.ArchetypeTwo,
-					strconv.Itoa(int(p.Age)),
-					strconv.Itoa(int(p.Overall)),
-					strconv.FormatFloat(p.OriginalMinimumValue, 'f', 2, 64),
-					strconv.FormatFloat(p.OriginalAAV, 'f', 2, 64),
-					strconv.FormatFloat(p.MinimumValue, 'f', 2, 64),
-					strconv.FormatFloat(p.AAV, 'f', 2, 64),
-				}
-				csvRows = append(csvRows, row)
-			}
-			saved++
-		}
+		results[group] = computeGroupExtensionValues(group, entries)
 	}
-	if isTest {
-		ExportMinimumValueAndTagUpdatesToCSV(w, csvRows)
-	}
-
-	log.Printf("CalculatePlayerMinimumAndAAVValues: updated %d players", saved)
+	return results
 }
-
 // =============================================================================
 // CalculateTagValues
 // =============================================================================
