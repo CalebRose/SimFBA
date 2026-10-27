@@ -456,11 +456,13 @@ func CalculatePlayerMinimumAndAAVValues() {
 	saved := 0
 	for group, updated := range computeAllExtensionValues() {
 		for _, p := range updated {
+			minValue := roundTo2Decimals(p.OriginalMinimumValue)
+			aav := roundTo2Decimals(p.OriginalAAV)
 			if err := db.Model(&p).Updates(map[string]interface{}{
-				"minimum_value":          p.MinimumValue,
-				"original_minimum_value": p.OriginalMinimumValue,
-				"aav":                    p.AAV,
-				"original_aav":           p.OriginalAAV,
+				"minimum_value":          minValue,
+				"original_minimum_value": minValue,
+				"aav":                    aav,
+				"original_aav":           aav,
 			}).Error; err != nil {
 				log.Printf("ValuationManager: failed to save player %d (%s): %v", p.ID, group, err)
 				continue
@@ -470,6 +472,10 @@ func CalculatePlayerMinimumAndAAVValues() {
 	}
 
 	log.Printf("CalculatePlayerMinimumAndAAVValues: updated %d players", saved)
+}
+
+func roundTo2Decimals(v float64) float64 {
+	return math.Round(v*100) / 100
 }
 
 // PreviewPlayerMinimumAndAAVValues runs the same calculation without saving
@@ -534,6 +540,7 @@ func computeAllExtensionValues() map[string][]structs.NFLPlayer {
 	}
 	return results
 }
+
 // =============================================================================
 // CalculateTagValues
 // =============================================================================
