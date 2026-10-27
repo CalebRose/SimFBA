@@ -323,3 +323,71 @@ func (t *Timestamp) GetCFBCurrentGameType() (int, string) {
 	}
 	return 2, "2"
 }
+
+func (t *Timestamp) ReadyForSeasonMigration() bool {
+	return (t.NFLSeasonOver && t.CollegeSeasonOver && !t.IsNFLOffSeason && !t.IsOffSeason && t.ProgressedCollegePlayers && t.ProgressedProfessionalPlayers) || t.Phase > 34
+}
+
+func (t *Timestamp) RunRedshirtsAlgorithm() bool {
+	return t.Phase == 14 || t.CollegeWeek == 4
+}
+
+func (t *Timestamp) RunGenerateCollegeRankings() bool {
+	return t.CollegeWeek >= 2 && !t.CFBSpringGames && t.CollegeWeek < 21
+}
+
+func (t *Timestamp) RunSyncPromises() bool {
+	return (t.CollegeSeasonOver && t.CollegeWeek == 21) || t.Phase == 31
+}
+
+func (t *Timestamp) RunExtensionAndTagValues() bool {
+	return t.Phase == 19 || t.NFLWeek == 9
+}
+
+func (t *Timestamp) RunCollegeProgressions() bool {
+	return (t.CollegeSeasonOver && !t.ProgressedCollegePlayers) || (t.Phase == 31 && !t.ProgressedCollegePlayers)
+}
+
+func (t *Timestamp) RunProfessionalProgressions() bool {
+	return (t.NFLSeasonOver && !t.ProgressedProfessionalPlayers) || (t.Phase == 33 && !t.ProgressedProfessionalPlayers)
+}
+
+func (t *Timestamp) RunGenerateWeatherFunction() bool {
+	return t.Phase == 1
+}
+
+func (t *Timestamp) RunGenerateOOCSchedule() bool {
+	return t.Phase == 6
+}
+
+func (t *Timestamp) RunCollegeRankings() bool {
+	return t.CollegeWeek >= 2 && !t.CFBSpringGames && t.CollegeWeek < 21
+}
+
+func (t *Timestamp) RunUDFAs() bool {
+	return t.Phase == 4
+}
+
+func (t *Timestamp) RunTrainingCamps() bool {
+	return t.Phase == 5
+}
+
+func (t *Timestamp) RunGenerateWalkonAlgorithm() bool {
+	return t.Phase == 30 || t.CollegeWeek == 20
+}
+
+func (t *Timestamp) RunTransferIntentions() bool {
+	return (t.RunCron && t.CollegeSeasonOver && t.TransferPortalPhase == 1) || t.Phase == 31
+}
+
+func (t *Timestamp) ReadyToActivatePortal() bool {
+	return (t.RunCron && t.CollegeSeasonOver && t.TransferPortalPhase == 2) || t.Phase == 32
+}
+
+func (t *Timestamp) IsCollegeRegularSeason() bool {
+	return t.RunCron && !t.IsOffSeason && !t.CollegeSeasonOver
+}
+
+func (t *Timestamp) IsNFLRegularSeason() bool {
+	return t.RunCron && !t.IsNFLOffSeason && !t.NFLSeasonOver
+}

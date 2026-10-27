@@ -630,11 +630,10 @@ func RevealCFBGameOnInterface(gameID string) {
 	awayTeamStats := <-awayStatsChan
 	homePlayerStats := <-homePlayerStatsChan
 	awayPlayerStats := <-awayPlayerStatsChan
-
-	go CreatePostGameDiscussionThreadForCFBGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, collegePlayersMap)
-
 	game.RevealResultsOnInterface()
 	repository.SaveCFBGameRecord(game, db)
+
+	go CreatePostGameDiscussionThreadForCFBGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, collegePlayersMap)
 }
 
 func RevealNFLGameOnInterface(gameID string) {
@@ -667,8 +666,9 @@ func RevealNFLGameOnInterface(gameID string) {
 	homePlayerStats := <-homePlayerStatsChan
 	awayPlayerStats := <-awayPlayerStatsChan
 
-	go CreatePostGameDiscussionThreadForNFLGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, proPlayersMap)
-
 	game.RevealResultsOnInterface()
 	repository.SaveNFLGameRecord(game, db)
+
+	go CreatePostGameDiscussionThreadForNFLGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, proPlayersMap)
+
 }
