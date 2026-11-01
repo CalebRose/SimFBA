@@ -35,6 +35,13 @@ type BaseGameplan struct {
 	PreviousWeekBye      bool
 	FocusPlays           string
 	DoubleTeam           int
+	Pace                 string
+	AggressiveFourthDown string
+	AggressiveTwoPoint   string
+	PlayCalling3rdShort  string
+	PlayCalling3rdLong   string
+	PlayCalling4thShort  string
+	PlayCalling4thLong   string
 }
 
 func (cg *BaseGameplan) ApplySchemePenalty(IsOffense bool, diff int) {
@@ -204,6 +211,13 @@ func (bg *BaseGameplan) UpdateCollegeGameplan(dto CollegeGameplan) {
 	bg.PreviousWeekBye = dto.PreviousWeekBye
 	bg.FocusPlays = dto.FocusPlays
 	bg.DoubleTeam = dto.DoubleTeam
+	bg.Pace = dto.Pace
+	bg.AggressiveFourthDown = dto.AggressiveFourthDown
+	bg.AggressiveTwoPoint = dto.AggressiveTwoPoint
+	bg.PlayCalling3rdShort = dto.PlayCalling3rdShort
+	bg.PlayCalling3rdLong = dto.PlayCalling3rdLong
+	bg.PlayCalling4thShort = dto.PlayCalling4thShort
+	bg.PlayCalling4thLong = dto.PlayCalling4thLong
 }
 
 func (bg *BaseGameplan) UpdateNFLGameplan(dto NFLGameplan) {
@@ -339,6 +353,13 @@ func (bg *BaseGameplan) UpdateNFLGameplan(dto NFLGameplan) {
 	bg.DefaultDefense = dto.DefaultDefense
 	bg.DoubleTeam = dto.DoubleTeam
 	bg.FocusPlays = dto.FocusPlays
+	bg.Pace = dto.Pace
+	bg.AggressiveFourthDown = dto.AggressiveFourthDown
+	bg.AggressiveTwoPoint = dto.AggressiveTwoPoint
+	bg.PlayCalling3rdShort = dto.PlayCalling3rdShort
+	bg.PlayCalling3rdLong = dto.PlayCalling3rdLong
+	bg.PlayCalling4thShort = dto.PlayCalling4thShort
+	bg.PlayCalling4thLong = dto.PlayCalling4thLong
 }
 
 func (bg *BaseGameplan) UpdateSchemes(off, def string) {
@@ -611,6 +632,13 @@ func (bg *BaseGameplan) UpdateCollegeGameplanTEST(dto CollegeGameplanTEST) {
 	bg.PreviousWeekBye = dto.PreviousWeekBye
 	bg.FocusPlays = dto.FocusPlays
 	bg.DoubleTeam = dto.DoubleTeam
+	bg.Pace = dto.Pace
+	bg.AggressiveFourthDown = dto.AggressiveFourthDown
+	bg.AggressiveTwoPoint = dto.AggressiveTwoPoint
+	bg.PlayCalling3rdShort = dto.PlayCalling3rdShort
+	bg.PlayCalling3rdLong = dto.PlayCalling3rdLong
+	bg.PlayCalling4thShort = dto.PlayCalling4thShort
+	bg.PlayCalling4thLong = dto.PlayCalling4thLong
 }
 
 func (bg *BaseGameplan) UpdateFormations(offFormations OffensiveFormation) {
