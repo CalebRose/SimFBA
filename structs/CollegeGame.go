@@ -2,10 +2,37 @@ package structs
 
 import "github.com/jinzhu/gorm"
 
+type BowlGameRequestContainer struct {
+	Requests []BowlGameRequestDTO
+}
+
+type BowlGameRequestDTO struct {
+	BowlGameID uint
+	HomeTeamID uint
+	AwayTeamID uint
+	IsSelected bool
+	SeasonID   uint
+	WeekID     uint
+	Timeslot   string
+}
+
+type BowlGame struct {
+	gorm.Model
+	UserPreference uint8
+	Tier           uint8
+	Conference1    uint
+	Conference2    uint
+	StadiumID      uint
+	IsPlayoffGame  bool
+	HomeTeamSeed   uint8
+	AwayTeamSeed   uint8
+	IsToiletBowl   bool
+}
+
 type CollegeGame struct {
 	gorm.Model
 	// Projected stream channel (Discord channel name); derived from the game, never persisted.
-	StreamChannel string `gorm:"-" json:"StreamChannel"`
+	StreamChannel            string `gorm:"-" json:"StreamChannel"`
 	WeekID                   int
 	Week                     int
 	SeasonID                 int

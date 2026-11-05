@@ -250,6 +250,28 @@ func MakeHistoricGamesMapByTeamID(games []structs.CollegeGame) map[uint][]struct
 	return gamesMap
 }
 
+func MakeNFLGameMapByTeamID(games []structs.NFLGame) map[uint][]structs.NFLGame {
+	gamesMap := make(map[uint][]structs.NFLGame)
+
+	for _, r := range games {
+		if r.HomeTeamID == 0 || r.AwayTeamID == 0 {
+			continue
+		}
+		if len(gamesMap[uint(r.HomeTeamID)]) > 0 {
+			gamesMap[uint(r.HomeTeamID)] = append(gamesMap[uint(r.HomeTeamID)], r)
+		} else {
+			gamesMap[uint(r.HomeTeamID)] = []structs.NFLGame{r}
+		}
+		if len(gamesMap[uint(r.AwayTeamID)]) > 0 {
+			gamesMap[uint(r.AwayTeamID)] = append(gamesMap[uint(r.AwayTeamID)], r)
+		} else {
+			gamesMap[uint(r.AwayTeamID)] = []structs.NFLGame{r}
+		}
+	}
+
+	return gamesMap
+}
+
 func MakeFreeAgencyOfferMapByPlayer(offers []structs.FreeAgencyOffer) map[uint][]structs.FreeAgencyOffer {
 	playerMap := make(map[uint][]structs.FreeAgencyOffer)
 

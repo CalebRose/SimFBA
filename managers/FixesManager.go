@@ -216,3 +216,42 @@ func FixRecruitingProfileModifiers() {
 		repository.SaveRecruitProfile(profile, db)
 	}
 }
+
+func FixSeasonStandings() {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	seasonID := strconv.Itoa(int(ts.CollegeSeasonID))
+	collegeStandings := repository.FindAllCollegeStandingsRecords(repository.StandingsQuery{SeasonID: seasonID})
+	nflStandings := repository.FindAllNFLStandingsRecords(repository.StandingsQuery{SeasonID: seasonID})
+
+	collegeGames := repository.FindCollegeGamesRecords(repository.GamesQuery{SeasonID: seasonID})
+	nflGames := repository.FindNFLGamesRecords(repository.GamesQuery{SeasonID: seasonID})
+	collegeGamesMap := MakeHistoricGamesMapByTeamID(collegeGames)
+	nflGamesMap := MakeNFLGameMapByTeamID(nflGames)
+
+	for _, standing := range collegeStandings {
+		teamID := standing.TeamID
+		collegeGames := collegeGamesMap[uint(teamID)]
+		standing.ResetCFBStandings()
+		for _, game := range collegeGames {
+			if game.IsSpringGame || !game.GameComplete {
+				continue
+			}
+			standing.UpdateCollegeStandings(game)
+		}
+		repository.SaveCFBStandingsRecord(standing, db)
+	}
+
+	for _, standing := range nflStandings {
+		teamID := standing.TeamID
+		nflGames := nflGamesMap[uint(teamID)]
+		standing.ResetNFLStandings()
+		for _, game := range nflGames {
+			if game.IsPreseasonGame || !game.GameComplete {
+				continue
+			}
+			standing.UpdateNFLStandings(game)
+		}
+		repository.SaveNFLStandingsRecord(standing, db)
+	}
+}

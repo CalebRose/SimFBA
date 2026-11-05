@@ -2,6 +2,26 @@ package structs
 
 import "github.com/jinzhu/gorm"
 
+type UpdateTimestampDTO struct {
+	WeekID             uint
+	Week               uint
+	SeasonID           uint
+	Phase              uint
+	CFBSpringGames     bool
+	NFLPreseason       bool
+	ThursdayGames      bool
+	FridayGames        bool
+	SaturdayMorning    bool
+	SaturdayNoon       bool
+	SaturdayEvening    bool
+	SaturdayNight      bool
+	NFLThursday        bool
+	NFLSundayNoon      bool
+	NFLSundayAfternoon bool
+	NFLSundayEvening   bool
+	NFLMondayEvening   bool
+}
+
 type Timestamp struct {
 	gorm.Model
 	Phase                         uint

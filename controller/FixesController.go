@@ -7,7 +7,7 @@ import (
 )
 
 func FixCollegeStandings(w http.ResponseWriter, r *http.Request) {
-	managers.ResetCollegeStandings()
+	managers.FixSeasonStandings()
 }
 
 func FixRecruitPoints(w http.ResponseWriter, r *http.Request) {
@@ -48,4 +48,8 @@ func FixBrokenGameplans(w http.ResponseWriter, r *http.Request) {
 
 func FixRecruitingProfileModifiers(w http.ResponseWriter, r *http.Request) {
 	managers.FixRecruitingProfileModifiers()
+}
+
+func FixSeasonStandings(w http.ResponseWriter, r *http.Request) {
+	managers.FixSeasonStandings()
 }
