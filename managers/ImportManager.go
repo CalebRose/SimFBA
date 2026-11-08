@@ -3,6 +3,7 @@ package managers
 import (
 	"fmt"
 	"log"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -346,13 +347,23 @@ func ImportUDFAs() {
 func ImportCFBGames(isSpringGames bool) {
 	db := dbprovider.GetInstance().GetDB()
 
-	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2026\\2026_fbs_playoffs.csv"
+	path := filepath.Join("data", "2027", "2027_fcs_playoffs.csv")
 
 	gamesCSV := util.ReadCSV(path)
 	ts := GetTimestamp()
 	teamMap := make(map[string]structs.CollegeTeam)
 	collegeGames := GetCollegeGamesBySeasonID(strconv.Itoa(int(ts.CollegeSeasonID)))
 	collegeGameMap := MakeCollegeGameMapByID(collegeGames)
+
+	var lastGame structs.CollegeGame
+	db.Unscoped().Order("id desc").First(&lastGame)
+	idOffset := 0
+	if len(gamesCSV) > 1 {
+		firstRowID := util.ConvertStringToInt(gamesCSV[1][0])
+		if firstRowID <= 0 || firstRowID <= int(lastGame.ID) {
+			idOffset = int(lastGame.ID) + 1 - firstRowID
+		}
+	}
 
 	var games []structs.CollegeGame
 
@@ -367,7 +378,7 @@ func ImportCFBGames(isSpringGames bool) {
 			continue
 		}
 
-		gameID := util.ConvertStringToInt(row[0])
+		gameID := util.ConvertStringToInt(row[0]) + idOffset
 		existingGame := collegeGameMap[uint(gameID)]
 		if existingGame.ID > 0 {
 			continue
@@ -383,37 +394,48 @@ func ImportCFBGames(isSpringGames bool) {
 		homeTeamID := ht.ID
 		awayTeamID := at.ID
 		homeTeamCoach := ht.Coach
+		if homeTeamID > 0 && homeTeamCoach == "" {
+			homeTeamCoach = "AI"
+		}
 		awayTeamCoach := at.Coach
+		if awayTeamID > 0 && awayTeamCoach == "" {
+			awayTeamCoach = "AI"
+		}
 		timeSlot := row[16]
-		if week < 17 {
+		if week < 17 || timeSlot == "" {
 			timeSlot = SelectTimeslotForGameByConferenceID(uint(ht.ConferenceID))
 		}
-		// Need to implement Stadium ID
+		stadiumID := uint(0)
 		stadium := row[17]
 		city := row[18]
 		state := row[19]
 		isDomed := util.ConvertStringToBool(row[20])
-		// Need to check for if a game is in a domed stadium or not
-		isConferenceGame := !isSpringGames && ht.ConferenceID == at.ConferenceID
+		isConferenceChampionship := util.ConvertStringToBool(row[8])
+		isBowlGame := util.ConvertStringToBool(row[9])
+		isPlayoffGame := util.ConvertStringToBool(row[10])
+		isNationalChampionship := util.ConvertStringToBool(row[11])
+		isConferenceGame := !isSpringGames && !isPlayoffGame && !isBowlGame && ht.ConferenceID > 0 && ht.ConferenceID == at.ConferenceID
 		isDivisionGame := !isSpringGames && isConferenceGame && ht.DivisionID == at.DivisionID && ht.DivisionID > 0
 		conferenceID := 0
 		if isConferenceGame {
 			conferenceID = ht.ConferenceID
 		}
 		isNeutralSite := util.ConvertStringToBool(row[7])
-		if !isNeutralSite {
+		if !isNeutralSite && ht.ID > 0 {
+			stadiumID = ht.StadiumID
 			stadium = ht.Stadium
 			city = ht.City
 			state = ht.State
+		} else if isNeutralSite && stadium == "FirstBank Stadium" {
+			stadiumID = teamMap["VAND"].StadiumID
 		}
-		isConferenceChampionship := util.ConvertStringToBool(row[8])
-		isBowlGame := util.ConvertStringToBool(row[9])
-		isPlayoffGame := util.ConvertStringToBool(row[10])
-		isNationalChampionship := util.ConvertStringToBool(row[11])
 		isHomePrevBye := util.ConvertStringToBool(row[12])
 		isAwayPrevBye := util.ConvertStringToBool(row[13])
 		gameTitle := row[21]
 		nextGame := util.ConvertStringToInt(row[23])
+		if nextGame > 0 {
+			nextGame += idOffset
+		}
 		nextGameHOA := row[24]
 
 		game := structs.CollegeGame{
@@ -436,6 +458,7 @@ func ImportCFBGames(isSpringGames bool) {
 			IsConference:             isConferenceGame,
 			IsDivisional:             isDivisionGame,
 			TimeSlot:                 timeSlot,
+			StadiumID:                stadiumID,
 			Stadium:                  stadium,
 			City:                     city,
 			State:                    state,

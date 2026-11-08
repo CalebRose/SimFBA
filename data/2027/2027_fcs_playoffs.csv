@@ -1,0 +1,24 @@
+GameID,Season,Week,Home Team,Away Team,Conference Game,Division Game,Neutral Site,Conference Champ,Bowl Game,Playoff,National Champ,HomeTeamBye,AwayTeamBye,Listed Coach,Other Coach,TimeSlot,Stadium,City,State,Domed Stadium,GameTitle,Info,NextGameID,HoA
+1,2027,16,SDST,GEOT,0,0,0,0,0,1,0,1,1,AI,AI,,Dana J. Dykhouse Stadium,Brookings,SD,0,FCS Playoffs First Round,,9,A
+2,2027,16,CIT,NCAT,0,0,0,0,0,1,0,1,1,AI,AI,,Johnson Hagood Stadium,Charleston,SC,0,FCS Playoffs First Round,,10,A
+3,2027,16,IDST,EWU,0,0,0,0,0,1,0,1,1,AI,David VanHousen,,Holt Arena,Pocatello,ID,1,FCS Playoffs First Round,,11,A
+4,2027,16,CHST,AAMU,0,0,0,0,0,1,0,1,1,AI,AI,,SeatGeek Stadium,Chicago,IL,0,FCS Playoffs First Round,,12,A
+5,2027,16,HAMP,MRMK,0,0,0,0,0,1,0,1,1,AI,AI,,Armstrong Stadium,Hampton,VA,0,FCS Playoffs First Round,,13,A
+6,2027,16,ALCN,NAU,0,0,0,0,0,1,0,1,1,AI,AI,,Spinks-Casem Stadium,Lorman,MS,0,FCS Playoffs First Round,,14,A
+7,2027,16,UTC,LEH,0,0,0,0,0,1,0,1,1,AI,AI,,Finley Stadium,Chattanooga,TN,0,FCS Playoffs First Round,,15,A
+8,2027,16,NHU,UNCO,0,0,0,0,0,1,0,1,1,AI,AI,,Ralph F. DellaCamera Stadium,New Haven,CT,0,FCS Playoffs First Round,,16,A
+9,2027,17,CP,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Alex G. Spanos Stadium,San Luis Obispo,CA,0,FCS Playoffs Second Round,,17,H
+10,2027,17,HOW,,0,0,0,0,0,1,0,1,0,AI,#N/A,,William H. Greene Stadium,Washington,DC,0,FCS Playoffs Second Round,,18,H
+11,2027,17,ILST,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Hancock Stadium,Normal,IL,0,FCS Playoffs Second Round,,19,H
+12,2027,17,MRST,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Leonidoff Field,Poughkeepsie,NY,0,FCS Playoffs Second Round,,20,H
+13,2027,17,COLG,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Andy Kerr Stadium,Hamilton,NY,0,FCS Playoffs Second Round,,20,A
+14,2027,17,BCU,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Daytona Stadium,Daytona Beach,FL,0,FCS Playoffs Second Round,,19,A
+15,2027,17,YALE,,0,0,0,0,0,1,0,1,0,AI,#N/A,,Yale Bowl,New Haven,CT,0,FCS Playoffs Second Round,,18,A
+16,2027,17,SOU,,0,0,0,0,0,1,0,1,0,AI,#N/A,,A.W. Mumford Stadium,Baton Rouge,LA,0,FCS Playoffs Second Round,,17,A
+17,2027,18,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,0,FCS Playoffs Quarterfinals,,21,H
+18,2027,18,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,0,FCS Playoffs Quarterfinals,,22,H
+19,2027,18,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,0,FCS Playoffs Quarterfinals,,22,A
+20,2027,18,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,0,FCS Playoffs Quarterfinals,,21,A
+21,2027,20,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,0,FCS Playoffs Semifinals,,23,H
+22,2027,20,,,0,0,0,0,0,1,0,0,0,#N/A,#N/A,,#N/A,#N/A,#N/A,0,FCS Playoffs Semifinals,,23,A
+23,2027,22,,,0,0,1,0,0,1,1,0,0,#N/A,#N/A,,FirstBank Stadium,Nashville,TN,0,FCS National Championship Game,,0,

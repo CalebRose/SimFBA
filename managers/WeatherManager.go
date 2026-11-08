@@ -40,7 +40,7 @@ func GenerateWeatherForGames() {
 	collegeGames := GetCollegeGamesBySeasonID(seasonID)
 
 	for _, game := range collegeGames {
-		if game.WeekID < ts.CollegeWeekID || game.GameTemp != 0 {
+		if game.WeekID < ts.CollegeWeekID || game.Stadium == "#N/A" || game.GameTemp != 0 {
 			continue
 		}
 		GenerateWeatherForGame(db, game, teamRegions, regions, rainForecasts, mixForecasts, snowForecasts)
@@ -60,8 +60,19 @@ func GenerateWeatherForGames() {
 
 func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions map[string]string, regions map[string]structs.WeatherRegion, rainForecasts map[float64]map[int]string, mixForecasts map[float64]map[int]string, snowForecasts map[float64]map[int]string) {
 	regionName := teamRegions[game.HomeTeam]
+	if regionName == "" && game.Stadium == "FirstBank Stadium" {
+		regionName = teamRegions["VAND"]
+	}
+	if regionName == "" {
+		return
+	}
 	region := regions[regionName]
 	chances := []structs.WeatherChance{}
+
+	week := game.Week
+	if week > 20 {
+		week = 19
+	}
 
 	precip := ""
 	lowTemp := 0.0
@@ -71,16 +82,16 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 	wind := 0.0
 	windCategory := ""
 
-	if region.Forecasts[game.Week].DaysOfRain != 0 {
-		chances = append(chances, structs.WeatherChance{Weather: "Rain", DaysOfWeather: region.Forecasts[game.Week].DaysOfRain})
+	if region.Forecasts[week].DaysOfRain != 0 {
+		chances = append(chances, structs.WeatherChance{Weather: "Rain", DaysOfWeather: region.Forecasts[week].DaysOfRain})
 	}
 
-	if region.Forecasts[game.Week].DaysOfMix != 0 {
-		chances = append(chances, structs.WeatherChance{Weather: "Mix", DaysOfWeather: region.Forecasts[game.Week].DaysOfMix})
+	if region.Forecasts[week].DaysOfMix != 0 {
+		chances = append(chances, structs.WeatherChance{Weather: "Mix", DaysOfWeather: region.Forecasts[week].DaysOfMix})
 	}
 
-	if region.Forecasts[game.Week].DaysOfSnow != 0 {
-		chances = append(chances, structs.WeatherChance{Weather: "Snow", DaysOfWeather: region.Forecasts[game.Week].DaysOfSnow})
+	if region.Forecasts[week].DaysOfSnow != 0 {
+		chances = append(chances, structs.WeatherChance{Weather: "Snow", DaysOfWeather: region.Forecasts[week].DaysOfSnow})
 	}
 
 	var prev float64 = 0.0
@@ -103,7 +114,7 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 	}
 
 	if precip == "Rain" {
-		inchesPerEvent := region.Forecasts[game.Week].InchesPerRain
+		inchesPerEvent := region.Forecasts[week].InchesPerRain
 		for k := range rainForecasts {
 			if inchesPerEvent > k {
 				continue
@@ -113,7 +124,7 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 			break
 		}
 	} else if precip == "Mix" {
-		inchesPerEvent := region.Forecasts[game.Week].InchesPerRain
+		inchesPerEvent := region.Forecasts[week].InchesPerRain
 		for k := range mixForecasts {
 			if inchesPerEvent > k {
 				continue
@@ -123,7 +134,7 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 			break
 		}
 	} else if precip == "Snow" {
-		inchesPerEvent := region.Forecasts[game.Week].InchesPerSnow
+		inchesPerEvent := region.Forecasts[week].InchesPerSnow
 		for k := range snowForecasts {
 			if inchesPerEvent > k {
 				continue
@@ -136,12 +147,12 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 
 	cloudChances := []structs.WeatherChance{}
 	if precip == "Clear" {
-		cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Clear", DaysOfWeather: region.Forecasts[game.Week].Clear})
-		cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Mostly Clear", DaysOfWeather: region.Forecasts[game.Week].MostlyClear})
-		cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Partly Cloudy", DaysOfWeather: region.Forecasts[game.Week].PartlyCloudy})
+		cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Clear", DaysOfWeather: region.Forecasts[week].Clear})
+		cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Mostly Clear", DaysOfWeather: region.Forecasts[week].MostlyClear})
+		cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Partly Cloudy", DaysOfWeather: region.Forecasts[week].PartlyCloudy})
 	}
-	cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Mostly Cloudy", DaysOfWeather: region.Forecasts[game.Week].MostlyCloudy})
-	cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Overcast", DaysOfWeather: region.Forecasts[game.Week].Overcast})
+	cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Mostly Cloudy", DaysOfWeather: region.Forecasts[week].MostlyCloudy})
+	cloudChances = append(cloudChances, structs.WeatherChance{Weather: "Overcast", DaysOfWeather: region.Forecasts[week].Overcast})
 
 	prev = 0
 	for _, chance := range cloudChances {
@@ -157,8 +168,8 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 		cloud = chance.Weather
 	}
 
-	meanWind := region.Forecasts[game.Week].WindSpeedAvg
-	maxWind := region.Forecasts[game.Week].WindSpeedMax
+	meanWind := region.Forecasts[week].WindSpeedAvg
+	maxWind := region.Forecasts[week].WindSpeedMax
 	stdDev := (maxWind - meanWind) / 1.28
 	speed := rand.NormFloat64()*stdDev + meanWind
 
@@ -190,13 +201,13 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 		windCategory = "Very Windy"
 	}
 
-	lowMean := float64(region.Forecasts[game.Week].AvgLow)
-	lowMin := float64(region.Forecasts[game.Week].MinLow)
+	lowMean := float64(region.Forecasts[week].AvgLow)
+	lowMin := float64(region.Forecasts[week].MinLow)
 	lowStdDev := (lowMean - lowMin) / 1.28
 	lowTemp = rand.NormFloat64()*lowStdDev + lowMean
 
-	highMean := float64(region.Forecasts[game.Week].AvgHigh)
-	highMin := float64(region.Forecasts[game.Week].MinHigh)
+	highMean := float64(region.Forecasts[week].AvgHigh)
+	highMin := float64(region.Forecasts[week].MinHigh)
 	highStdDev := (highMean - highMin) / 1.28
 	highTemp = rand.NormFloat64()*highStdDev + highMean
 
