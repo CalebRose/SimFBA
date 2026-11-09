@@ -408,18 +408,11 @@ func GetCFBPlayByPlayStreamData(timeslot string, isFBS bool) []structs.StreamRes
 		}
 		homeTeam := teamMap[uint(game.HomeTeamID)]
 		awayTeam := teamMap[uint(game.AwayTeamID)]
-		// If it's a full FCS match up and we're not streaming FCS, skip
-		if !homeTeam.IsFBS && !awayTeam.IsFBS && isFBS {
-			continue
+		channel := "fcs"
+		if isFBS {
+			channel = "fbs"
 		}
-
-		// If it's a partial FCS and we're streaming FCS, skip. It was streamed in FBS
-		if ((!homeTeam.IsFBS && awayTeam.IsFBS) || (homeTeam.IsFBS && !awayTeam.IsFBS)) && !isFBS {
-			continue
-		}
-
-		// If it's an FBS match and we're streaming FCS, skip
-		if homeTeam.IsFBS && awayTeam.IsFBS && !isFBS {
+		if structs.GetCFBStreamFeed(homeTeam.IsFBS, awayTeam.IsFBS) != channel {
 			continue
 		}
 		var wg sync.WaitGroup
@@ -637,11 +630,10 @@ func RevealCFBGameOnInterface(gameID string) {
 	awayTeamStats := <-awayStatsChan
 	homePlayerStats := <-homePlayerStatsChan
 	awayPlayerStats := <-awayPlayerStatsChan
-
-	go CreatePostGameDiscussionThreadForCFBGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, collegePlayersMap)
-
 	game.RevealResultsOnInterface()
 	repository.SaveCFBGameRecord(game, db)
+
+	go CreatePostGameDiscussionThreadForCFBGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, collegePlayersMap)
 }
 
 func RevealNFLGameOnInterface(gameID string) {
@@ -674,8 +666,9 @@ func RevealNFLGameOnInterface(gameID string) {
 	homePlayerStats := <-homePlayerStatsChan
 	awayPlayerStats := <-awayPlayerStatsChan
 
-	go CreatePostGameDiscussionThreadForNFLGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, proPlayersMap)
-
 	game.RevealResultsOnInterface()
 	repository.SaveNFLGameRecord(game, db)
+
+	go CreatePostGameDiscussionThreadForNFLGame(game, homeTeamStats, awayTeamStats, homePlayerStats, awayPlayerStats, proPlayersMap)
+
 }

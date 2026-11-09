@@ -81,7 +81,8 @@ func BootstrapSchedulingData(w http.ResponseWriter, r *http.Request) {
 	username := vars["username"]
 	collegeID := vars["collegeID"]
 	seasonID := vars["seasonID"]
-	data := managers.GetSchedulePageBootstrap(username, collegeID, seasonID)
+	proID := vars["proID"]
+	data := managers.GetSchedulePageBootstrap(username, collegeID, proID, seasonID)
 	bootstrapData, err := easyjson.Marshal(data)
 	if err != nil {
 		log.Printf("Failed to encode JSON response: %v", err)

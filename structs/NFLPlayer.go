@@ -81,6 +81,10 @@ func (np *NFLPlayer) AssignMinimumValue(val, aav float64) {
 func (np *NFLPlayer) AssignCalculatedValues(val, aav float64) {
 	np.OriginalMinimumValue = val
 	np.OriginalAAV = aav
+	if np.OriginalMinimumValue < 0.7 {
+		np.OriginalMinimumValue = 0.7
+		np.OriginalAAV = 0.5
+	}
 }
 
 func (np *NFLPlayer) ShowRealAttributeValue() {

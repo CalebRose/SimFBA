@@ -218,7 +218,7 @@ func buildPostGameNodes(
 	stadium, city, state string,
 	gameTemp, windSpeed float64, windCategory, precip string,
 	isDomed bool,
-	mvp string,
+	mvp uint,
 	away, home structs.BaseTeamStats,
 ) []map[string]interface{} {
 	nodes := []map[string]interface{}{}
@@ -257,8 +257,8 @@ func buildPostGameNodes(
 	}
 
 	// ── MVP ───────────────────────────────────────────────────────────────────
-	if mvp != "" {
-		nodes = append(nodes, rtParagraph(fmt.Sprintf("MVP: %s", mvp)))
+	if mvp != 0 {
+		nodes = append(nodes, rtParagraph(fmt.Sprintf("MVP: %d", int(mvp))))
 	}
 
 	// ── Offense table ─────────────────────────────────────────────────────────

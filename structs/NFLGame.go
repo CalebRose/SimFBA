@@ -1,9 +1,14 @@
 package structs
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/jinzhu/gorm"
+	gormv2 "gorm.io/gorm"
+)
 
 type NFLGame struct {
 	gorm.Model
+	// Projected stream channel; derived from the game, never persisted.
+	StreamChannel string `gorm:"-" json:"StreamChannel"`
 	WeekID                   int
 	Week                     int
 	SeasonID                 int
@@ -15,7 +20,7 @@ type NFLGame struct {
 	AwayTeam                 string
 	AwayTeamCoach            string
 	AwayTeamWin              bool
-	MVP                      string
+	MVP                      uint
 	HomeTeamScore            int
 	AwayTeamScore            int
 	TimeSlot                 string
@@ -48,6 +53,10 @@ type NFLGame struct {
 	NextGameHOA              string
 	HomePreviousBye          bool
 	AwayPreviousBye          bool
+}
+
+func (m *NFLGame) AssignMVP(playerID uint) {
+	m.MVP = playerID
 }
 
 // RevealResultsOnInterface will reveal game results for interface viewing, but it will not sync data to the season stats quite yet.
@@ -124,4 +133,15 @@ func (cg *NFLGame) HideScore() {
 	cg.HomeTeamWin = false
 	cg.AwayTeamWin = false
 	cg.GameComplete = false
+}
+
+// GetNFLStreamChannel returns the Discord channel every NFL game is played in.
+func GetNFLStreamChannel() string {
+	return "simfl-live"
+}
+
+// AfterFind populates the derived StreamChannel on every NFLGame loaded from the database.
+func (m *NFLGame) AfterFind(tx *gormv2.DB) error {
+	m.StreamChannel = GetNFLStreamChannel()
+	return nil
 }

@@ -82,6 +82,10 @@ type BootstrapDataScheduling struct {
 	NFLGameRequests        []structs.NFLGameRequest
 	CollegeGameplanMap     map[uint]structs.CollegeGameplan
 	NFLGameplanMap         map[uint]structs.NFLGameplan
+	AllCollegeGames        []structs.CollegeGame
+	AllProGames            []structs.NFLGame
+	CollegeStandings       []structs.CollegeStandings
+	ProStandings           []structs.NFLStandings
 }
 
 type BootstrapDataDraft struct {
@@ -495,7 +499,7 @@ func GetFreeAgencyBootstrap(proID string) BootstrapDataFreeAgency {
 	}
 }
 
-func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDataScheduling {
+func GetSchedulePageBootstrap(username, collegeID, proID, seasonID string) BootstrapDataScheduling {
 	var wg sync.WaitGroup
 	var (
 		officialPolls          []structs.CollegePollOfficial
@@ -507,9 +511,13 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 		nflGameRequests        []structs.NFLGameRequest
 		cfbGameplanMap         map[uint]structs.CollegeGameplan
 		nflGameplanMap         map[uint]structs.NFLGameplan
+		allCFBGames            []structs.CollegeGame
+		allNFLGames            []structs.NFLGame
+		allCollegeStandings    []structs.CollegeStandings
+		allNFLStandings        []structs.NFLStandings
 	)
 	if len(collegeID) > 0 && collegeID != "0" {
-		wg.Add(5)
+		wg.Add(7)
 		go func() {
 			defer wg.Done()
 			officialPolls = GetAllOfficialPolls()
@@ -531,8 +539,39 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 			gameplans := GetAllCollegeGameplans()
 			cfbGameplanMap = MakeCollegeGameplanMap(gameplans)
 		}()
+		go func() {
+			defer wg.Done()
+			allCFBGames = repository.FindCollegeGamesRecords(repository.GamesQuery{})
+		}()
+		go func() {
+			defer wg.Done()
+			allCollegeStandings = repository.FindAllCollegeStandingsRecords(repository.StandingsQuery{})
+		}()
 	}
-	wg.Add(4)
+
+	if len(proID) > 0 && proID != "0" {
+		wg.Add(4)
+		go func() {
+			defer wg.Done()
+			allNFLGames = repository.FindNFLGamesRecords(repository.GamesQuery{})
+		}()
+		go func() {
+			defer wg.Done()
+			allNFLStandings = repository.FindAllNFLStandingsRecords(repository.StandingsQuery{})
+		}()
+		go func() {
+			defer wg.Done()
+			log.Println("Fetching NFL Game Requests...")
+			nflGameRequests = repository.FindNFLGameRequestRecords(repository.SchedulerQuery{SeasonID: seasonID})
+			log.Println("Fetched NFL Game Requests, count:", len(nflGameRequests))
+		}()
+		go func() {
+			defer wg.Done()
+			gameplans := GetAllNFLGameplans()
+			nflGameplanMap = MakeNFLGameplanMap(gameplans)
+		}()
+	}
+	wg.Add(2)
 	go func() {
 		defer wg.Done()
 		log.Println("Fetching Retired Players...")
@@ -544,17 +583,6 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 		log.Println("Fetching Stadiums...")
 		stadiums = GetAllStadiums()
 		log.Println("Fetched Stadiums, count:", len(stadiums))
-	}()
-	go func() {
-		defer wg.Done()
-		log.Println("Fetching NFL Game Requests...")
-		nflGameRequests = repository.FindNFLGameRequestRecords(repository.SchedulerQuery{SeasonID: seasonID})
-		log.Println("Fetched NFL Game Requests, count:", len(nflGameRequests))
-	}()
-	go func() {
-		defer wg.Done()
-		gameplans := GetAllNFLGameplans()
-		nflGameplanMap = MakeNFLGameplanMap(gameplans)
 	}()
 	wg.Wait()
 
@@ -568,6 +596,10 @@ func GetSchedulePageBootstrap(username, collegeID, seasonID string) BootstrapDat
 		NFLGameRequests:        nflGameRequests,
 		CollegeGameplanMap:     cfbGameplanMap,
 		NFLGameplanMap:         nflGameplanMap,
+		AllCollegeGames:        allCFBGames,
+		CollegeStandings:       allCollegeStandings,
+		AllProGames:            allNFLGames,
+		ProStandings:           allNFLStandings,
 	}
 }
 
