@@ -18,8 +18,12 @@ func UpdateTeamProfileAffinities(w http.ResponseWriter, r *http.Request) {
 }
 
 func CalculateExtensionValues(w http.ResponseWriter, r *http.Request) {
-	managers.CalculatePlayerMinimumAndAAVValues(w)
+	managers.CalculatePlayerMinimumAndAAVValues()
 	json.NewEncoder(w).Encode("Done!")
+}
+
+func PreviewExtensionValues(w http.ResponseWriter, r *http.Request) {
+	managers.ExportMinimumValueAndTagUpdatesToCSV(w, managers.PreviewPlayerMinimumAndAAVValues())
 }
 
 func CalculateTagValues(w http.ResponseWriter, r *http.Request) {

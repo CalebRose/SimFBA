@@ -3,7 +3,6 @@ package managers
 import (
 	"log"
 	"math"
-	"net/http"
 	"sort"
 	"strconv"
 
@@ -249,35 +248,61 @@ func computeGroupExtensionValues(group string, entries []playerGroupEntry) []str
 	}
 	topTierExpectedValue := maxContractValue * 1.10
 
-	// First pass: assign raw (pre-smoothing) expected values
+	// Steps 5–6: mid-tier reference value for every player (highest signing
+	// value among comparably-or-lesser-rated peers). Computed for everyone,
+	// including elite-tier members, since it doubles as the blend baseline
+	// below (previously left at 0 for elite members, which silently broke
+	// the weighted blend and let flat top-tier values leak through).
+	midTierValues := make([]float64, len(ranked))
+	for i, rp := range ranked {
+		midTierValues[i] = computeMidTierValue(group, int(rp.Entry.Player.Overall)+getYoungCompBonus(group, int(rp.Entry.Player.Age)), ageThreshold, entries)
+	}
+
+	// Find the real-overall range spanned by elite-tier members, so we can scale
+	// each elite player's blend weight by how good they actually are, not just
+	// whether their age-boosted rank cleared the cutoff.
+	maxEliteOverall, minEliteOverall := 0, math.MaxInt32
+	for _, rp := range ranked {
+		if rp.AdjOverall >= topTierMinOverall {
+			o := int(rp.Entry.Player.Overall)
+			if o > maxEliteOverall {
+				maxEliteOverall = o
+			}
+			if o < minEliteOverall {
+				minEliteOverall = o
+			}
+		}
+	}
+	eliteOverallSpan := maxEliteOverall - minEliteOverall
+
+	// Step 4: elite tier — blend max-contract-value+10% with the mid-tier
+	// value, weighted by real overall position within the tier (small floor
+	// so tier membership is still worth something, but kept low enough that
+	// it doesn't drag the whole group's values up). Non-elite players get a
+	// fast-decaying share of that same bonus based on how close their real
+	// overall is to the tier floor, so values still don't cliff hard at the
+	// tier boundary (e.g. LB Daniel/Downs vs Palardy) without spreading the
+	// elite premium across the whole position group.
+	const eliteBonusFloor = 0.08
+	const eliteBonusDecay = 1.5 // overall points per e-fold falloff below the tier floor
 	rawValues := make([]float64, len(ranked))
 	for i, rp := range ranked {
-		if rp.AdjOverall >= topTierMinOverall {
-			// Step 4: elite tier — max contract value + 10%
-			rawValues[i] = topTierExpectedValue
-		} else {
-			// Steps 5–6: mid-tier — highest signing value among players with
-			// equal-or-lower actual overall in the filtered custom set
-			actualOverall := int(rp.Entry.Player.Overall)
-			var bestValue float64
-			for _, e := range entries {
-				c := e.Contract
-				if !c.IsActive {
-					continue
-				}
-				// Exclude rookies, UDFAs, and age-ineligible players
-				if c.ContractType == "Rookie" || c.ContractType == "UDFA" {
-					continue
-				}
-				if int(e.Player.Age) >= ageThreshold {
-					continue
-				}
-				if int(e.Player.Overall) <= actualOverall && c.SigningValue > bestValue {
-					bestValue = c.SigningValue
-				}
+		overall := int(rp.Entry.Player.Overall)
+		weight := 0.0
+		switch {
+		case rp.AdjOverall >= topTierMinOverall:
+			weight = 1.0
+			if eliteOverallSpan > 0 {
+				norm := float64(overall-minEliteOverall) / float64(eliteOverallSpan)
+				weight = eliteBonusFloor + norm*(1-eliteBonusFloor)
 			}
-			rawValues[i] = bestValue
+		case minEliteOverall != math.MaxInt32:
+			dist := float64(minEliteOverall - overall)
+			if dist > 0 {
+				weight = eliteBonusFloor * math.Exp(-dist/eliteBonusDecay)
+			}
 		}
+		rawValues[i] = weight*topTierExpectedValue + (1-weight)*midTierValues[i]
 	}
 
 	// Step 7: smoothing — average values of players at (overall+1) and (overall-1)
@@ -324,6 +349,99 @@ func computeGroupExtensionValues(group string, entries []playerGroupEntry) []str
 	return result
 }
 
+// isUnprovenScaleContract reports whether a contract is still a rookie-scale
+// or UDFA deal. Extensions reuse the original contract record (and its
+// "Rookie"/"UDFA" type) while overwriting SigningValue with the new market
+// deal, so extended contracts are real comps and must not be excluded.
+func isUnprovenScaleContract(c structs.NFLContract) bool {
+	if c.IsExtended {
+		return false
+	}
+	return c.ContractType == "Rookie" || c.ContractType == "UDFA"
+}
+
+// computeMidTierValue calculates a player's raw expected value using the
+// mid-tier lookup: the highest signing value among comparably-or-lesser-
+// rated peers, preferring comps below the group's age exclusion threshold
+// but falling back to (or being floored by) the best comparable regardless
+// of age, so groups whose veteran pool skews old (e.g. Centers) don't
+// bottom out just because few contracts passed the age filter.
+func computeMidTierValue(group string, actualOverall, ageThreshold int, entries []playerGroupEntry) float64 {
+	var anyAgeValues, withinAgeValues []float64
+
+	for _, e := range entries {
+		c := e.Contract
+		if !c.IsActive || isUnprovenScaleContract(c) {
+			continue
+		}
+		if int(e.Player.Overall) > actualOverall {
+			continue
+		}
+		anyAgeValues = append(anyAgeValues, c.SigningValue)
+		if int(e.Player.Age) < ageThreshold {
+			withinAgeValues = append(withinAgeValues, c.SigningValue)
+		}
+	}
+
+	bestValueAnyAge := robustCompValue(group, anyAgeValues)
+	bestValue := robustCompValue(group, withinAgeValues)
+
+	// An any-age comp only counts at a discount once a within-threshold comp
+	// exists, so a single strong veteran deal can't fully override the
+	// age-conscious pool - it can still act as a floor when that pool is thin.
+	if bestValue == 0 {
+		return bestValueAnyAge
+	}
+	return math.Max(bestValue, bestValueAnyAge*0.85)
+}
+
+// getYoungCompBonus returns extra overall points used only when looking up a
+// player's comps, so young players in groups where the market prices
+// potential (EDGE) are compared against slightly higher-rated veterans'
+// contracts. Mirrors the +4 age bonus used for ranking.
+func getYoungCompBonus(group string, age int) int {
+	if group == "EDGE" && age <= 25 {
+		return 4
+	}
+	return 0
+}
+
+// getCompParams returns how many comps to average (sampleSize) and the spike
+// ratio used to discard outlier contracts for a position group. Deep groups
+// have plenty of comparable deals, so they average several and filter spikes
+// tightly. Thin groups have few market-setting deals, so they lean on the
+// best comp (TE averages two, since it was the group most prone to spikes).
+func getCompParams(group string) (sampleSize int, spikeRatio float64) {
+	switch group {
+	case "OT", "OG", "CB", "WR", "DL", "LB":
+		return 3, 1.25
+	case "TE":
+		return 2, 1.3
+	default: // QB, RB, FB, C, EDGE, FS, SS, K, P
+		return 1, 1.3
+	}
+}
+
+// robustCompValue discards spike contracts (a value at least the group's spike
+// ratio times the next-highest, applied repeatedly while 3+ values remain),
+// then averages the top sampleSize remaining values.
+func robustCompValue(group string, vals []float64) float64 {
+	if len(vals) == 0 {
+		return 0
+	}
+	sampleSize, spikeRatio := getCompParams(group)
+	sorted := make([]float64, len(vals))
+	copy(sorted, vals)
+	sort.Slice(sorted, func(i, j int) bool { return sorted[i] > sorted[j] })
+	for len(sorted) >= 3 && sorted[0] >= sorted[1]*spikeRatio {
+		sorted = sorted[1:]
+	}
+	if len(sorted) > sampleSize {
+		sorted = sorted[:sampleSize]
+	}
+	return avgFloats(sorted)
+}
+
 // =============================================================================
 // CalculatePlayerMinimumAndAAVValues
 // =============================================================================
@@ -332,12 +450,68 @@ func computeGroupExtensionValues(group string, entries []playerGroupEntry) []str
 // contract (extension) value and AAV for every active NFL player.
 // Run once per offseason. Also updates OriginalMinimumValue / OriginalAAV so
 // the week-15 reset restores to this freshly computed baseline.
-func CalculatePlayerMinimumAndAAVValues(w http.ResponseWriter) {
+func CalculatePlayerMinimumAndAAVValues() {
 	db := dbprovider.GetInstance().GetDB()
+
+	saved := 0
+	for group, updated := range computeAllExtensionValues() {
+		for _, p := range updated {
+			minValue := roundTo2Decimals(p.OriginalMinimumValue)
+			aav := roundTo2Decimals(p.OriginalAAV)
+			if err := db.Model(&p).Updates(map[string]interface{}{
+				"minimum_value":          minValue,
+				"original_minimum_value": minValue,
+				"aav":                    aav,
+				"original_aav":           aav,
+			}).Error; err != nil {
+				log.Printf("ValuationManager: failed to save player %d (%s): %v", p.ID, group, err)
+				continue
+			}
+			saved++
+		}
+	}
+
+	log.Printf("CalculatePlayerMinimumAndAAVValues: updated %d players", saved)
+}
+
+func roundTo2Decimals(v float64) float64 {
+	return math.Round(v*100) / 100
+}
+
+// PreviewPlayerMinimumAndAAVValues runs the same calculation without saving
+// anything and returns CSV rows (Calculated = new values, Current = values
+// stored on the player before the run) for offline review.
+func PreviewPlayerMinimumAndAAVValues() [][]string {
+	csvRows := [][]string{}
+	for group, updated := range computeAllExtensionValues() {
+		for _, p := range updated {
+			csvRows = append(csvRows, []string{
+				group,
+				strconv.Itoa(int(p.ID)),
+				p.FirstName,
+				p.LastName,
+				p.Position,
+				p.Archetype,
+				p.PositionTwo,
+				p.ArchetypeTwo,
+				strconv.Itoa(int(p.Age)),
+				strconv.Itoa(int(p.Overall)),
+				strconv.FormatFloat(p.OriginalMinimumValue, 'f', 2, 64),
+				strconv.FormatFloat(p.OriginalAAV, 'f', 2, 64),
+				strconv.FormatFloat(p.MinimumValue, 'f', 2, 64),
+				strconv.FormatFloat(p.AAV, 'f', 2, 64),
+			})
+		}
+	}
+	return csvRows
+}
+
+// computeAllExtensionValues loads players and active contracts, groups the
+// players, and returns the calculated values per position group. It does not
+// persist anything.
+func computeAllExtensionValues() map[string][]structs.NFLPlayer {
 	ts := GetTimestamp()
 	seasonID := strconv.Itoa(ts.NFLSeasonID)
-	isTest := true // TODO: set to false for production
-	csvRows := [][]string{}
 
 	nflPlayers := GetAllNFLPlayers()
 	contracts := repository.FindAllActiveNFLContracts()
@@ -360,48 +534,11 @@ func CalculatePlayerMinimumAndAAVValues(w http.ResponseWriter) {
 		})
 	}
 
-	// Calculate extension values per group, then save
-	saved := 0
+	results := make(map[string][]structs.NFLPlayer, len(groupEntries))
 	for group, entries := range groupEntries {
-		updated := computeGroupExtensionValues(group, entries)
-		for _, p := range updated {
-			if !isTest {
-				if err := db.Model(&p).Updates(map[string]interface{}{
-					"minimum_value":          p.MinimumValue,
-					"original_minimum_value": p.OriginalMinimumValue,
-					"aav":                    p.AAV,
-					"original_aav":           p.OriginalAAV,
-				}).Error; err != nil {
-					log.Printf("ValuationManager: failed to save player %d (%s): %v", p.ID, group, err)
-					continue
-				}
-			} else {
-				row := []string{
-					group,
-					strconv.Itoa(int(p.ID)),
-					p.FirstName,
-					p.LastName,
-					p.Position,
-					p.Archetype,
-					p.PositionTwo,
-					p.ArchetypeTwo,
-					strconv.Itoa(int(p.Age)),
-					strconv.Itoa(int(p.Overall)),
-					strconv.FormatFloat(p.OriginalMinimumValue, 'f', 2, 64),
-					strconv.FormatFloat(p.OriginalAAV, 'f', 2, 64),
-					strconv.FormatFloat(p.MinimumValue, 'f', 2, 64),
-					strconv.FormatFloat(p.AAV, 'f', 2, 64),
-				}
-				csvRows = append(csvRows, row)
-			}
-			saved++
-		}
+		results[group] = computeGroupExtensionValues(group, entries)
 	}
-	if isTest {
-		ExportMinimumValueAndTagUpdatesToCSV(w, csvRows)
-	}
-
-	log.Printf("CalculatePlayerMinimumAndAAVValues: updated %d players", saved)
+	return results
 }
 
 // =============================================================================

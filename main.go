@@ -9,6 +9,7 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+	_ "time/tzdata"
 
 	"github.com/CalebRose/SimFBA/controller"
 	"github.com/CalebRose/SimFBA/dbprovider"
@@ -105,9 +106,6 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/simfba/sync/season/", controller.SyncToNextSeason).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/sync/missing/", controller.SyncMissingRES).Methods("GET")
 	apiRouter.HandleFunc("/simfba/mass/{off}/{def}", controller.MassUpdateGameplans).Methods("GET")
-	apiRouter.HandleFunc("/simfba/sync/weather/", controller.WeatherGenerator).Methods("GET")
-	apiRouter.HandleFunc("/simfba/current/weather/forecast/", controller.GetWeatherForecast).Methods("GET")
-	apiRouter.HandleFunc("/simfba/future/weather/forecast/", controller.GetFutureWeatherForecast).Methods("GET")
 	apiRouter.HandleFunc("/news/{weekID}/{seasonID}/", controller.GetNewsLogs).Methods("GET")
 	apiRouter.HandleFunc("/season/{seasonID}/weeks/{weekID}", controller.GetWeeksInSeason).Methods("GET")
 	apiRouter.HandleFunc("/admin/teams/croot/sync", controller.SyncTeamRecruitingRanks).Methods("GET")
@@ -124,13 +122,20 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/admin/trades/cleanup", controller.CleanUpRejectedTrades).Methods("GET")
 	apiRouter.HandleFunc("/admin/process-udfas", controller.ProcessUDFAs).Methods("GET")
 
+	// Engine Endpoints
+	apiRouter.HandleFunc("/simfba/sync/weather/", controller.WeatherGenerator).Methods("GET")
+	apiRouter.HandleFunc("/simfba/current/weather/forecast/", controller.GetWeatherForecast).Methods("GET")
+	apiRouter.HandleFunc("/simfba/future/weather/forecast/", controller.GetFutureWeatherForecast).Methods("GET")
+	apiRouter.HandleFunc("/statistics/export/cfb/", controller.ExportCFBStatisticsFromSim).Methods("POST")
+	// End Engine Endpoints
+
 	// Bootstrap
 	apiRouter.HandleFunc("/bootstrap/teams", controller.BootstrapTeamData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/landing/{collegeID}/{proID}", controller.BootstrapLandingData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/roster/{collegeID}/{proID}", controller.BootstrapTeamRosterData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/recruiting/{collegeID}", controller.BootstrapRecruitingData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/freeagency/{proID}", controller.BootstrapFreeAgencyData).Methods("GET")
-	apiRouter.HandleFunc("/bootstrap/scheduling/{username}/{collegeID}/{seasonID}", controller.BootstrapSchedulingData).Methods("GET")
+	apiRouter.HandleFunc("/bootstrap/scheduling/{username}/{collegeID}/{proID}/{seasonID}", controller.BootstrapSchedulingData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/draft/{proID}", controller.BootstrapDraftData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/portal/{collegeID}", controller.BootstrapPortalData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/gameplan/{collegeID}/{proID}", controller.BootstrapGameplanData).Methods("GET")
@@ -166,6 +171,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/simcfb/ath/", controller.FixATHProgressions).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simcfb/standings/", controller.FixCollegeStandings).Methods("GET")
 	// apiRouter.HandleFunc("/fix/simcfb/seasonstats/", controller.ResetCFBSeasonalStats).Methods("GET")
+	// apiRouter.HandleFunc("/fix/season/standings", controller.FixSeasonStandings).Methods("GET")
 
 	// apiRouter.HandleFunc("/fix/simfba/secondary/positions/", controller.FixSecondaryPositions).Methods("GET")
 	// apiRouter.HandleFunc("/fix/spending/count", controller.FixSpendingCount).Methods("GET")
@@ -179,9 +185,9 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/fix/nfl/stadiums", controller.FixNFLStadiums).Methods("GET")
 	// apiRouter.HandleFunc("/fix/player/weights", controller.FixPlayerWeights).Methods("GET")
 	// apiRouter.HandleFunc("/fix/timeslots", controller.FixTimeslots).Methods("GET")
-	apiRouter.HandleFunc("/fix/recruiting/profile/modifiers", controller.FixRecruitingProfileModifiers).Methods("GET")
+	// apiRouter.HandleFunc("/fix/recruiting/profile/modifiers", controller.FixRecruitingProfileModifiers).Methods("GET")
 	apiRouter.HandleFunc("/admin/fix/five-year-model", controller.MigrateTo5YearModel).Methods("GET")
-	apiRouter.HandleFunc("/fix/broken/gameplans", controller.FixBrokenGameplans).Methods("GET")
+	// apiRouter.HandleFunc("/fix/broken/gameplans", controller.FixBrokenGameplans).Methods("GET")
 	// Free Agency Controls
 	// apiRouter.HandleFunc("/nfl/extensions/sync", controller.SyncExtensions).Methods("GET")
 	apiRouter.HandleFunc("/nfl/extension/create/offer", controller.CreateExtensionOffer).Methods("POST")
@@ -297,6 +303,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/offseason/fix/postseason/status", controller.FixPostseasonStatus).Methods("GET")
 	apiRouter.HandleFunc("/offseason/update/team/profile/affinities", controller.UpdateTeamProfileAffinities).Methods("GET")
 	apiRouter.HandleFunc("/offseason/nfl/calculate/extension/values", controller.CalculateExtensionValues).Methods("GET")
+	apiRouter.HandleFunc("/offseason/nfl/preview/extension/values", controller.PreviewExtensionValues).Methods("GET")
 	apiRouter.HandleFunc("/offseason/nfl/calculate/tag/values", controller.CalculateTagValues).Methods("GET")
 	apiRouter.HandleFunc("/offseason/nfl/reset/minimum/values", controller.ResetNFLMinimumValues).Methods("GET")
 	apiRouter.HandleFunc("/offseason/nfl/seed/tag/data", controller.SeedTagDataFromJSON).Methods("GET")
@@ -379,7 +386,6 @@ func handleRequests() http.Handler {
 
 	// Stats Controls
 	apiRouter.HandleFunc("/stats/cfb/player/{playerID}/season/{seasonID}/", controller.GetCFBSeasonStatsRecord).Methods("GET")
-	apiRouter.HandleFunc("/statistics/export/cfb/", controller.ExportCFBStatisticsFromSim).Methods("POST")
 	// apiRouter.HandleFunc("/statistics/export/nfl/", controller.ExportNFLStatisticsFromSim).Methods("POST")
 	apiRouter.HandleFunc("/statistics/export/players/", controller.ExportPlayerStatsToCSV).Methods("GET")
 	apiRouter.HandleFunc("/statistics/export/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.ExportCFBStatsPageContentForSeason).Methods("GET")
@@ -510,6 +516,11 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/games/cfb/live-plays/test/", controller.TestCFBCronJob).Methods("GET")
 	apiRouter.HandleFunc("/games/nfl/live-plays/test/", controller.TestNFLCronJob).Methods("GET")
 
+	// Historical Gameplans
+	apiRouter.HandleFunc("/gameplans/backfill/current", controller.BackfillGameplans).Methods("GET")
+	apiRouter.HandleFunc("/gameplans/college/season/{seasonID}/week/{weekID}", controller.GetHistoricalCollegeGameplansBySeasonAndWeek).Methods("GET")
+	apiRouter.HandleFunc("/gameplans/nfl/season/{seasonID}/week/{weekID}", controller.GetHistoricalNFLGameplansBySeasonAndWeek).Methods("GET")
+
 	// Firebase test endpoints
 	apiRouter.HandleFunc("/firebase/test/notification/", controller.TestNotificationToTuscan).Methods("GET")
 	// apiRouter.HandleFunc("/firebase/test/forum/", controller.TestForumPost).Methods("GET")
@@ -532,51 +543,55 @@ func loadEnvs() {
 }
 
 func handleCron() *cron.Cron {
-	c := cron.New(cron.WithLocation(time.UTC))
+	location, err := time.LoadLocation("America/New_York")
+	if err != nil {
+		log.Fatalf("Unable to load cron timezone America/New_York: %v", err)
+	}
+	c := cron.New(cron.WithLocation(location))
 	runJobs := os.Getenv("RUN_JOBS")
 	if runJobs != "false" {
 		// Fill AI Recruiting Boards
-		c.AddFunc("0 5 * * 4", controller.FillAIBoardsViaCron)
+		c.AddFunc("0 0 * * 4", controller.FillAIBoardsViaCron)
 		// Update AI Gameplans and DCs
-		c.AddFunc("0 1 * * 3", controller.RunAISchemeAndDCViaCron)
-		c.AddFunc("0 4 * * 3", controller.RunAIGameplanViaCron)
+		c.AddFunc("0 20 * * 2", controller.RunAISchemeAndDCViaCron)
+		c.AddFunc("0 23 * * 2", controller.RunAIGameplanViaCron)
 		// Allocate AI Boards
-		c.AddFunc("0 3 * * 4,6", controller.SyncAIBoardsViaCron)
+		c.AddFunc("0 22 * * 3,5", controller.SyncAIBoardsViaCron)
 		// Run RES
-		c.AddFunc("0 7 * * 4", controller.RunRESViaCron)
+		c.AddFunc("0 2 * * 4", controller.RunRESViaCron)
 		// Sync Recruiting
-		c.AddFunc("0 16 * * 3", controller.SyncRecruitingViaCron)
+		c.AddFunc("0 11 * * 3", controller.SyncRecruitingViaCron)
 		// Sync Free Agency
-		c.AddFunc("0 16 * * *", controller.SyncFreeAgencyViaCron)
+		c.AddFunc("0 11 * * *", controller.SyncFreeAgencyViaCron)
 		// Sync Extension Offers
 		// Run the Games
-		c.AddFunc("0 4 * * 4", controller.RunTheGamesViaCron)
+		c.AddFunc("0 23 * * 3", controller.RunTheGamesViaCron)
 		// Reveal Timeslot Results
-		c.AddFunc("0 22 * * 4", controller.ShowCFBThursdayViaCron) // Thurs Night
-		c.AddFunc("0 21 * * 4", controller.ShowNFLThursdayViaCron) // Thurs NFL
-		c.AddFunc("0 22 * * 5", controller.ShowCFBFridayViaCron)   // Fri Night
-		c.AddFunc("0 16 * * 6", controller.ShowCFBSatMornViaCron)  // Sat. Morning
-		c.AddFunc("0 18 * * 6", controller.ShowCFBSatAftViaCron)   // Sat. Afternoon
-		c.AddFunc("0 20 * * 6", controller.ShowCFBSatEveViaCron)   // Sat. Evening
-		c.AddFunc("0 22 * * 6", controller.ShowCFBSatNitViaCron)   // Sat. Night
-		c.AddFunc("0 16 * * 0", controller.ShowNFLSunNoonViaCron)  // Sun Noon
-		c.AddFunc("0 18 * * 0", controller.ShowNFLSunAftViaCron)   // Sun Aft
-		c.AddFunc("0 20 * * 0", controller.ShowNFLSunNitViaCron)   // Sun Nit
-		c.AddFunc("0 17 * * 1", controller.ShowNFLMonNitViaCron)   // Mon Nit
+		c.AddFunc("0 17 * * 4", controller.ShowCFBThursdayViaCron) // Thurs Night
+		c.AddFunc("0 16 * * 4", controller.ShowNFLThursdayViaCron) // Thurs NFL
+		c.AddFunc("0 17 * * 5", controller.ShowCFBFridayViaCron)   // Fri Night
+		c.AddFunc("0 11 * * 6", controller.ShowCFBSatMornViaCron)  // Sat. Morning
+		c.AddFunc("0 13 * * 6", controller.ShowCFBSatAftViaCron)   // Sat. Afternoon
+		c.AddFunc("0 15 * * 6", controller.ShowCFBSatEveViaCron)   // Sat. Evening
+		c.AddFunc("0 17 * * 6", controller.ShowCFBSatNitViaCron)   // Sat. Night
+		c.AddFunc("0 11 * * 0", controller.ShowNFLSunNoonViaCron)  // Sun Noon
+		c.AddFunc("0 13 * * 0", controller.ShowNFLSunAftViaCron)   // Sun Aft
+		c.AddFunc("0 15 * * 0", controller.ShowNFLSunNitViaCron)   // Sun Nit
+		c.AddFunc("0 12 * * 1", controller.ShowNFLMonNitViaCron)   // Mon Nit
 		// Sync Week
-		c.AddFunc("0 18 * * 1", controller.SyncToNextWeekViaCron)
-		c.AddFunc("0 2 * * 2", controller.SyncPhaseTuesdayViaCron)
-		c.AddFunc("0 2 * * 3", controller.SyncPhaseWednesdayViaCron)
-		c.AddFunc("0 2 * * 4", controller.SyncPhaseThursdayViaCron)
-		c.AddFunc("0 2 * * 5", controller.SyncPhaseFridayViaCron)
+		c.AddFunc("0 13 * * 1", controller.SyncToNextWeekViaCron)
+		c.AddFunc("0 21 * * 1", controller.SyncPhaseTuesdayViaCron)
+		c.AddFunc("0 21 * * 2", controller.SyncPhaseWednesdayViaCron)
+		c.AddFunc("0 21 * * 3", controller.SyncPhaseThursdayViaCron)
+		c.AddFunc("0 21 * * 4", controller.SyncPhaseFridayViaCron)
 
 		// Live Stream
-		c.AddFunc("0 16 * * 4", controller.StreamCFBThursdayGamesToInterfaceViaCron)
-		c.AddFunc("0 16 * * 5", controller.StreamCFBFridayGamesToInterfaceViaCron)
-		c.AddFunc("0 14 * * 6", controller.StreamCFBSaturdayGamesToInterfaceViaCron)
-		c.AddFunc("0 17 * * 4", controller.StreamNFLThursdayGamesToInterfaceViaCron)
-		c.AddFunc("0 17 * * 0", controller.StreamNFLSundayGamesToInterfaceViaCron)
-		c.AddFunc("0 15 * * 1", controller.StreamNFLMondayGamesToInterfaceViaCron)
+		c.AddFunc("0 11 * * 4", controller.StreamCFBThursdayGamesToInterfaceViaCron)
+		c.AddFunc("0 11 * * 5", controller.StreamCFBFridayGamesToInterfaceViaCron)
+		c.AddFunc("0 9 * * 6", controller.StreamCFBSaturdayGamesToInterfaceViaCron)
+		c.AddFunc("0 12 * * 4", controller.StreamNFLThursdayGamesToInterfaceViaCron)
+		c.AddFunc("0 12 * * 0", controller.StreamNFLSundayGamesToInterfaceViaCron)
+		c.AddFunc("0 10 * * 1", controller.StreamNFLMondayGamesToInterfaceViaCron)
 	}
 
 	c.Start()

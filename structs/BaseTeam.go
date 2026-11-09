@@ -44,6 +44,7 @@ func (bt *BaseTeam) RemoveUserFromTeam() {
 
 func (bt *BaseTeam) AssignUserToTeam(user string) {
 	bt.Coach = user
+	bt.UpdateLatestInstance()
 }
 
 func (bt *BaseTeam) AssignDiscordID(id string) {

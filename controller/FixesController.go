@@ -7,7 +7,7 @@ import (
 )
 
 func FixCollegeStandings(w http.ResponseWriter, r *http.Request) {
-	managers.ResetCollegeStandings()
+	managers.FixSeasonStandings()
 }
 
 func FixRecruitPoints(w http.ResponseWriter, r *http.Request) {
@@ -54,4 +54,8 @@ func MigrateTo5YearModel(w http.ResponseWriter, r *http.Request) {
 	managers.MigrateTo5YearModel()
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Successfully migrated database to NCAA 5-Year Eligibility Model"))
+}
+
+func FixSeasonStandings(w http.ResponseWriter, r *http.Request) {
+	managers.FixSeasonStandings()
 }

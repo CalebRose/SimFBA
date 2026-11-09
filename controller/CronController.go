@@ -46,13 +46,13 @@ func RunRESViaCron() {
 
 func SyncRecruitingViaCron() {
 	ts := managers.GetTimestamp()
-	if ts.RunCron && !ts.IsOffSeason && !ts.CollegeSeasonOver && !ts.CFBSpringGames && ts.CollegeWeek > 0 && ts.CollegeWeek < 21 {
+	if ts.IsCollegeRegularSeason() && !ts.CFBSpringGames && ts.CollegeWeek > 0 && ts.CollegeWeek < 21 {
 		managers.SyncRecruiting(ts)
 	}
-	if (ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 1) || ts.Phase == 31 {
+	if ts.RunTransferIntentions() {
 		managers.ProcessTransferIntention()
 	}
-	if (ts.RunCron && ts.CollegeSeasonOver && ts.TransferPortalPhase == 2) || ts.Phase == 32 {
+	if ts.ReadyToActivatePortal() {
 		managers.EnterTheTransferPortal()
 	} else if ts.RunCron && (ts.CollegeSeasonOver || ts.IsOffSeason) && ts.TransferPortalPhase == 3 && ts.TransferPortalRound <= 10 {
 		managers.SyncTransferPortal()
@@ -63,9 +63,9 @@ func SyncFreeAgencyViaCron() {
 	ts := managers.GetTimestamp()
 	if ts.RunCron {
 		managers.SyncFreeAgencyOffers()
-		if ts.FreeAgencyRound >= 1 && ts.FreeAgencyRound < 25 {
-			managers.MoveUpInOffseasonFreeAgency()
-		}
+		// if ts.FreeAgencyRound >= 1 && ts.FreeAgencyRound < 25 {
+		// 	managers.MoveUpInOffseasonFreeAgency()
+		// }
 		managers.AllocateCapsheets()
 	}
 }
@@ -75,9 +75,8 @@ func SyncToNextWeekViaCron() {
 	ts := managers.GetTimestamp()
 
 	ts.MoveUpPhase()
-
+	repository.SaveTimestamp(ts, db)
 	if ts.Phase < 7 {
-		repository.SaveTimestamp(ts, db)
 		return
 	}
 
@@ -90,20 +89,20 @@ func SyncToNextWeekViaCron() {
 
 		managers.AssignTeamGrades()
 
-		if ts.CollegeWeek >= 2 && !ts.CFBSpringGames && ts.CollegeWeek < 21 {
+		if ts.RunGenerateCollegeRankings() {
 			seasonID := strconv.Itoa(ts.CollegeSeasonID)
 			managers.GenerateCollegeRankings(seasonID)
 		}
 
 		// Once National Championship is over and we move up a week.
-		if (ts.CollegeSeasonOver && ts.CollegeWeek == 21) || ts.Phase == 31 {
+		if ts.RunSyncPromises() {
 			// Sync Promises
 			managers.SyncPromises()
 			ts.TransferPortalPhase = 1
 			ts.TransferPortalRound = 1
 		}
 
-		if (ts.NFLSeasonOver && ts.CollegeSeasonOver && !ts.IsNFLOffSeason && !ts.IsOffSeason && ts.ProgressedCollegePlayers && ts.ProgressedProfessionalPlayers) || ts.Phase > 34 {
+		if ts.ReadyForSeasonMigration() {
 			db := dbprovider.GetInstance().GetDB()
 			ts.MoveUpSeason()
 			repository.SaveTimestamp(ts, db)
@@ -120,23 +119,23 @@ func SyncPhaseTuesdayViaCron() {
 		return
 	}
 	db := dbprovider.GetInstance().GetDB()
-	if ts.Phase == 1 {
+	if ts.RunGenerateWeatherFunction() {
 		// Generate weather for existing CFB Games
 		managers.GenerateWeatherForGames()
 	}
 
-	if ts.Phase == 6 {
+	if ts.RunGenerateOOCSchedule() {
 		managers.GenerateOOCSchedule()
 		managers.GenerateWeatherForGames()
 	}
 
 	// Calculate Player Minimum Values and Average Annual Value (AAV) for players
-	if ts.Phase == 19 || ts.NFLWeek == 9 {
-		// w := http.ResponseWriter(nil)
-		// managers.CalculatePlayerMinimumAndAAVValues(w)
+	if ts.RunExtensionAndTagValues() {
+		managers.CalculateTagValues()
+		managers.CalculatePlayerMinimumAndAAVValues()
 	}
 
-	if (ts.CollegeSeasonOver && !ts.ProgressedCollegePlayers) || (ts.Phase == 31 && !ts.ProgressedCollegePlayers) {
+	if ts.RunCollegeProgressions() {
 		// Reset progression flags on all teams and players before running
 		db.Model(&structs.CollegeTeam{}).Where("id > ?", 0).Updates(map[string]interface{}{"players_progressed": false, "recruits_added": false})
 		db.Model(&structs.CollegePlayer{}).Where("id > ?", 0).Update("has_progressed", false)
@@ -147,7 +146,7 @@ func SyncPhaseTuesdayViaCron() {
 		repository.SaveTimestamp(ts, db)
 	}
 
-	if (ts.NFLWeek == 23 || ts.Phase == 33) && ts.NFLSeasonOver && !ts.ProgressedProfessionalPlayers {
+	if ts.RunProfessionalProgressions() {
 		// Reset progression flags on all teams and players before running
 		db.Model(&structs.NFLPlayer{}).Where("id > ?", 0).Update("has_progressed", false)
 		managers.NFLProgressionMain()
@@ -165,16 +164,16 @@ func SyncPhaseWednesdayViaCron() {
 	}
 
 	// Run UDFAs
-	if ts.Phase == 4 {
+	if ts.RunUDFAs() {
 		managers.ProcessUDFAs(false)
 	}
 
-	if ts.Phase == 5 {
+	if ts.RunTrainingCamps() {
 		managers.RunTrainingCamps("")
 	}
 
 	// Generate Walkons in the middle of the night.
-	if ts.CollegeWeek == 20 || ts.Phase == 30 {
+	if ts.RunGenerateWalkonAlgorithm() {
 		managers.GenerateWalkOns()
 		managers.AssignAllRecruitRanks()
 	}
@@ -198,14 +197,14 @@ func SyncPhaseFridayViaCron() {
 
 func RunAISchemeAndDCViaCron() {
 	ts := managers.GetTimestamp()
-	if ts.RunCron && !ts.IsOffSeason && !ts.CollegeSeasonOver {
+	if ts.IsCollegeRegularSeason() {
 		managers.DetermineAIGameplan()
 	}
 }
 
 func RunAIGameplanViaCron() {
 	ts := managers.GetTimestamp()
-	if ts.RunCron && !ts.IsOffSeason && !ts.CollegeSeasonOver {
+	if ts.IsCollegeRegularSeason() {
 		managers.SetAIGameplan()
 	}
 }
@@ -213,7 +212,7 @@ func RunAIGameplanViaCron() {
 func RunTheGamesViaCron() {
 	ts := managers.GetTimestamp()
 	if ts.RunCron {
-		if !ts.IsOffSeason && ts.RunGames && ts.NFLWeek < 22 && ts.CollegeWeek < 21 {
+		if ts.RunGames && (ts.IsCollegeRegularSeason() || ts.IsNFLRegularSeason()) {
 			managers.FixBrokenGameplans()
 			managers.CheckForSchemePenalties()
 			managers.RunTheGames()
@@ -232,7 +231,7 @@ func ShowCFBThursdayViaCron() {
 	if !ts.ThursdayGames {
 		timeslot = "Thursday Night"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsCollegeRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -246,7 +245,7 @@ func ShowNFLThursdayViaCron() {
 	if !ts.NFLThursday {
 		timeslot = "Thursday Night Football"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsNFLRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -260,7 +259,7 @@ func ShowCFBFridayViaCron() {
 	if !ts.FridayGames {
 		timeslot = "Friday Night"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsCollegeRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -274,7 +273,7 @@ func ShowCFBSatMornViaCron() {
 	if !ts.SaturdayMorning {
 		timeslot = "Saturday Morning"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsCollegeRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -288,7 +287,7 @@ func ShowCFBSatAftViaCron() {
 	if !ts.SaturdayNoon {
 		timeslot = "Saturday Afternoon"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsCollegeRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -302,7 +301,7 @@ func ShowCFBSatEveViaCron() {
 	if !ts.SaturdayEvening {
 		timeslot = "Saturday Evening"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsCollegeRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -316,7 +315,7 @@ func ShowCFBSatNitViaCron() {
 	if !ts.SaturdayNight {
 		timeslot = "Saturday Night"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsCollegeRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -330,7 +329,7 @@ func ShowNFLSunNoonViaCron() {
 	if !ts.NFLSundayNoon {
 		timeslot = "Sunday Noon"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsNFLRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -344,7 +343,7 @@ func ShowNFLSunAftViaCron() {
 	if !ts.NFLSundayAfternoon {
 		timeslot = "Sunday Afternoon"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsNFLRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -358,7 +357,7 @@ func ShowNFLSunNitViaCron() {
 	if !ts.NFLSundayEvening {
 		timeslot = "Sunday Night Football"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsNFLRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }
@@ -372,7 +371,7 @@ func ShowNFLMonNitViaCron() {
 	if !ts.NFLMondayEvening {
 		timeslot = "Monday Night Football"
 	}
-	if ts.RunCron && (!ts.IsOffSeason || !ts.IsNFLOffSeason || !ts.CollegeSeasonOver || !ts.NFLSeasonOver) {
+	if ts.RunCron && (ts.IsNFLRegularSeason()) {
 		managers.SyncTimeslot(timeslot)
 	}
 }

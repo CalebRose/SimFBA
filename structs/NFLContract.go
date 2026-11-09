@@ -120,6 +120,7 @@ func (c *NFLContract) MapExtension(e NFLExtensionOffer) {
 	c.IsComplete = false
 	c.IsExtended = true
 	c.IsTagged = e.IsTag
+	c.ContractType = "Extension"
 }
 
 func (c *NFLContract) MapPracticeSquadOffer(f FreeAgencyOffer) {
