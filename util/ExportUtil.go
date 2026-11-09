@@ -146,31 +146,21 @@ func GetLetterGrade(Attribute int, mean float32, stddev float32, year int) strin
 }
 
 func GetYearAndRedshirtStatus(year int, redshirt bool) (string, string) {
-	status := ""
-	if redshirt {
-		status = "Redshirt"
-	} else {
-		status = ""
-	}
-
-	if year == 1 && !redshirt {
+	status := "Eligible"
+	switch year {
+	case 1:
 		return "Fr", status
-	} else if year == 2 && redshirt {
-		return "(Fr)", status
-	} else if year == 2 && !redshirt {
+	case 2:
 		return "So", status
-	} else if year == 3 && redshirt {
-		return "(So)", status
-	} else if year == 3 && !redshirt {
+	case 3:
 		return "Jr", status
-	} else if year == 4 && redshirt {
-		return "(Jr)", status
-	} else if year == 4 && !redshirt {
+	case 4:
 		return "Sr", status
-	} else if year == 5 && redshirt {
-		return "(Sr)", status
+	case 5:
+		return "5th", status
+	default:
+		return "Grad", status
 	}
-	return "Super Sr", status
 }
 
 func GetNFLYear(year uint) string {

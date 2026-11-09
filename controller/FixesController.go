@@ -50,6 +50,12 @@ func FixRecruitingProfileModifiers(w http.ResponseWriter, r *http.Request) {
 	managers.FixRecruitingProfileModifiers()
 }
 
+func MigrateTo5YearModel(w http.ResponseWriter, r *http.Request) {
+	managers.MigrateTo5YearModel()
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Successfully migrated database to NCAA 5-Year Eligibility Model"))
+}
+
 func FixSeasonStandings(w http.ResponseWriter, r *http.Request) {
 	managers.FixSeasonStandings()
 }

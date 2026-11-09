@@ -517,7 +517,7 @@ func ReAlignCollegeDepthChart(db *gorm.DB, teamID string, gp structs.CollegeGame
 	bonus := 5
 	// Allocate the Position Map
 	for _, cp := range roster {
-		if cp.IsInjured || cp.IsRedshirting {
+		if cp.IsInjured {
 			continue
 		}
 		pos := cp.Position
@@ -1150,7 +1150,7 @@ func ReAlignCollegeDepthChart(db *gorm.DB, teamID string, gp structs.CollegeGame
 			score := 0
 			if cp.Year == 2 || cp.Year == 1 {
 				score += 50
-			} else if cp.Year == 3 && cp.IsRedshirt {
+			} else if cp.Year == 3 {
 				score += 25
 			}
 
@@ -2083,7 +2083,7 @@ func DetermineAIGameplan() {
 			if count == 24 {
 				break
 			}
-			if p.IsRedshirting || positionMap[p.Position] > 2 {
+			if positionMap[p.Position] > 2 {
 				continue
 			}
 			positionMap[p.Position] += 1
@@ -2355,7 +2355,7 @@ func FixBrokenGameplans() {
 		players := dc.DepthChartPlayers
 		for _, dcp := range players {
 			p := dcp.CollegePlayer
-			if p.IsRedshirting || (p.IsInjured && p.WeeksOfRecovery > 0) {
+			if p.IsInjured && p.WeeksOfRecovery > 0 {
 				isBroken = true
 				// playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
 				break

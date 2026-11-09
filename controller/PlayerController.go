@@ -96,13 +96,8 @@ func UpdateCollegePlayer(w http.ResponseWriter, r *http.Request) {
 
 // ToggleRedshirtStatusForPlayer
 func ToggleRedshirtStatusForPlayer(w http.ResponseWriter, r *http.Request) {
-	// Update DTO for College Player
-	vars := mux.Vars(r)
-	PlayerID := vars["PlayerID"]
-
-	managers.SetRedshirtStatusForPlayer(PlayerID)
-
-	fmt.Println(w, "College Player successfully redshirted.")
+	// Deprecated under NCAA 5-Year Eligibility Model
+	json.NewEncoder(w).Encode("Redshirts are deprecated under the 5-year eligibility model.")
 }
 
 // ToggleRedshirtStatusForPlayer

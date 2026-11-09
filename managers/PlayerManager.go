@@ -115,7 +115,7 @@ func GetAllCollegePlayersByTeamIdWithoutRedshirts(TeamID string) []structs.Colle
 
 	var CollegePlayers []structs.CollegePlayer
 
-	db.Where("team_id = ?", TeamID).Where("is_redshirting = ?", false).Where("has_graduated = ?", false).Find(&CollegePlayers)
+	db.Where("team_id = ?", TeamID).Where("has_graduated = ?", false).Find(&CollegePlayers)
 
 	return CollegePlayers
 }

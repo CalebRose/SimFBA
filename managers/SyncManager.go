@@ -8,7 +8,7 @@ import (
 	"math/rand"
 	"sort"
 	"strconv"
-	"strings"
+
 	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
@@ -1225,45 +1225,8 @@ func getRecruitingOdds(ts structs.Timestamp, croot structs.Recruit, team structs
 }
 
 func AllocateAIRedshirts(seasonId string) {
-	allAICollegeTeams := GetAllAvailableCollegeTeams()
-	seasonStatsMap := GetCFBPlayerSeasonStatMapBySeason(seasonId, "2")
-
-	for _, team := range allAICollegeTeams {
-		log.Printf("\nAllocating redshirts for %s\n", team.TeamAbbr)
-		redshirtTargets := GetAllCollegePlayersByTeamId(strconv.Itoa(int(team.ID)))
-		positionCountMap := getPositionCounts(redshirtTargets)
-
-		redshirtCount := 0
-		redshirts := make([]string, 20)
-		redshirtMax := 20
-		if !team.IsFBS {
-			redshirtMax = 10
-		}
-		for _, target := range redshirtTargets {
-			if redshirtCount >= redshirtMax {
-				break
-			}
-
-			playerSeasonStats := seasonStatsMap[uint(target.PlayerID)]
-
-			/*
-			 * Redshirt top 20 players that have never been redshirted and either have no snaps or a long-term injury this season.
-			 * Also skips players if redshirting would put the team below that position minimum.
-			 * GetAllCollegePlayersByTeamId returns players sorted by OVR by default.
-			 */
-			if (playerSeasonStats.GamesPlayed == 0 ||
-				(target.InjuryType != "" && target.WeeksOfRecovery >= 10)) &&
-				!target.IsRedshirt && !target.IsRedshirting &&
-				isAboveMinPositionCount(target.Position, positionCountMap) {
-
-				redshirts[redshirtCount] = fmt.Sprintf("%s %s %s %s, GamesPlayed: %d, Injury Weeks: %d\n", team.TeamAbbr, target.Position, target.FirstName, target.LastName, playerSeasonStats.GamesPlayed, target.WeeksOfRecovery)
-				SetRedshirtStatusForPlayer(strconv.Itoa(target.PlayerID))
-				positionCountMap[target.Position] -= 1
-				redshirtCount++
-			}
-		}
-		log.Printf("Redshirts for %s:\n%s\n", team.TeamAbbr, strings.Join(redshirts, ""))
-	}
+	// Deprecated under NCAA 5-Year Eligibility Model
+	log.Println("AllocateAIRedshirts: Deprecated under 5-year eligibility model.")
 }
 
 func getPositionCounts(players []structs.CollegePlayer) map[string]int {
