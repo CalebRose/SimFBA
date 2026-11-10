@@ -7,6 +7,8 @@ type UpdateTimestampDTO struct {
 	Week               uint
 	SeasonID           uint
 	Phase              uint
+	SalaryCap          float64
+	Y1Capspace         float64
 	CFBSpringGames     bool
 	NFLPreseason       bool
 	ThursdayGames      bool

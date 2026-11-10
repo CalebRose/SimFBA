@@ -10,6 +10,7 @@ import (
 	"github.com/CalebRose/SimFBA/managers"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
+	"github.com/CalebRose/SimFBA/ws"
 	"github.com/gorilla/mux"
 )
 
@@ -157,4 +158,105 @@ func NFLAttributePercentilesReport(w http.ResponseWriter, r *http.Request) {
 
 func CFBAttributePercentilesReport(w http.ResponseWriter, r *http.Request) {
 	managers.CFBAttributePercentilesReport()
+}
+
+func SaveCFBConferenceChampionship(w http.ResponseWriter, r *http.Request) {
+	var dto structs.CFBConferenceChampionshipDTO
+	err := json.NewDecoder(r.Body).Decode(&dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	savedGame, err := managers.SaveCFBConferenceChampionship(dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	json.NewEncoder(w).Encode(savedGame)
+}
+
+func GetCFBPostseasonGames(w http.ResponseWriter, r *http.Request) {
+	games := managers.GetCFBPostseasonGames()
+	json.NewEncoder(w).Encode(games)
+}
+
+func DeleteCFBPostseasonGame(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	gameID := vars["gameID"]
+	if len(gameID) == 0 {
+		http.Error(w, "Missing gameID", http.StatusBadRequest)
+		return
+	}
+	err := managers.DeleteCFBPostseasonGame(gameID)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	json.NewEncoder(w).Encode(map[string]bool{"deleted": true})
+}
+
+func UploadCFBBowlGames(w http.ResponseWriter, r *http.Request) {
+	var dto structs.CFBBowlUploadRequest
+	err := json.NewDecoder(r.Body).Decode(&dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	savedGames, err := managers.UploadCFBBowlGames(dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	json.NewEncoder(w).Encode(savedGames)
+}
+
+func GetNFLPostseasonGames(w http.ResponseWriter, r *http.Request) {
+	games := managers.GetNFLPostseasonGames()
+	json.NewEncoder(w).Encode(games)
+}
+
+func DeleteNFLPostseasonGame(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	gameID := vars["gameID"]
+	if len(gameID) == 0 {
+		http.Error(w, "Missing gameID", http.StatusBadRequest)
+		return
+	}
+	err := managers.DeleteNFLPostseasonGame(gameID)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	json.NewEncoder(w).Encode(map[string]bool{"deleted": true})
+}
+
+func UpdateTimestampDirect(w http.ResponseWriter, r *http.Request) {
+	var dto structs.UpdateTimestampDTO
+	err := json.NewDecoder(r.Body).Decode(&dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	ts, err := managers.UpdateTimestampDirect(dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	ws.BroadcastTSUpdate(ts)
+	json.NewEncoder(w).Encode(ts)
+}
+
+func AddCompensatoryDraftPick(w http.ResponseWriter, r *http.Request) {
+	var dto structs.CompensatoryDraftPickDTO
+	err := json.NewDecoder(r.Body).Decode(&dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	pick, err := managers.AddCompensatoryDraftPick(dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	json.NewEncoder(w).Encode(pick)
 }
