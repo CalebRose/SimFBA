@@ -2,11 +2,14 @@ package managers
 
 import (
 	"context"
+	"crypto/sha256"
 	"fmt"
 	"log"
 	"sort"
 	"strconv"
+	"strings"
 	"sync"
+	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	fbsvc "github.com/CalebRose/SimFBA/firebase"
@@ -412,7 +415,13 @@ func GetPlayerFromNFLDClist(id uint, updatedPlayers []structs.NFLDepthChartPosit
 }
 
 func CheckAllUserDepthChartsForInjuredPlayers() {
-	teams := GetAllCollegeTeams()
+	db := dbprovider.GetInstance().GetDB()
+	var teams []structs.CollegeTeam
+	if err := db.Find(&teams).Error; err != nil {
+		log.Printf("GameplanManager: cannot check user depth charts: %v", err)
+		return
+	}
+	ts := GetTimestamp()
 
 	for _, team := range teams {
 		if len(team.Coach) == 0 || team.Coach == "AI" {
@@ -420,17 +429,147 @@ func CheckAllUserDepthChartsForInjuredPlayers() {
 		}
 		teamID := strconv.Itoa(int(team.ID))
 
-		depthchartPositions := GetDepthChartPositionPlayersByDepthchartID(teamID)
+		var depthchartPositions []structs.CollegeDepthChartPosition
+		if err := db.Where("depth_chart_id = ?", team.ID).Find(&depthchartPositions).Error; err != nil {
+			log.Printf("GameplanManager: cannot check depth chart for team %d: %v", team.ID, err)
+			continue
+		}
+		players, err := loadCollegeDepthChartPlayers(db, depthchartPositions)
+		if err != nil {
+			log.Printf("GameplanManager: cannot check depth chart players for team %d: %v", team.ID, err)
+			continue
+		}
+		issues := collegeDepthChartIssues(team.ID, depthchartPositions, players)
+		if len(issues) == 0 {
+			continue
+		}
+		message := fmt.Sprintf("%s (team %d, coach %s) has an invalid depth chart:\n%s", team.TeamName, team.ID, team.Coach, strings.Join(issues, "\n"))
+		log.Printf("GameplanManager: %s", message)
+		reportBrokenDepthChart("cfb", team.ID, message, ts)
+		ReAlignCollegeDepthChart(db, teamID, GetGameplanByTeamID(teamID))
+	}
+}
 
-		for _, dcp := range depthchartPositions {
-			player := dcp.CollegePlayer
-
-			if player.IsInjured {
-				fmt.Println(team.TeamName + ": INJURY AT " + dcp.Position + dcp.PositionLevel + ": " + player.FirstName + " " + player.LastName + " injured with " + strconv.Itoa(int(player.WeeksOfRecovery)) + " weeks of recovery.")
-			}
+func loadCollegeDepthChartPlayers(db *gorm.DB, positions []structs.CollegeDepthChartPosition) ([]structs.CollegePlayer, error) {
+	ids := make([]int, 0, len(positions))
+	for _, position := range positions {
+		if position.PlayerID > 0 {
+			ids = append(ids, position.PlayerID)
 		}
 	}
+	var players []structs.CollegePlayer
+	if len(ids) != 0 {
+		if err := db.Where("id IN ?", ids).Find(&players).Error; err != nil {
+			return nil, err
+		}
+	}
+	return players, nil
+}
 
+func collegeDepthChartIssues(teamID uint, positions []structs.CollegeDepthChartPosition, players []structs.CollegePlayer) []string {
+	playersByID := make(map[int]structs.CollegePlayer, len(players))
+	for _, player := range players {
+		if player.DeletedAt == nil {
+			playersByID[int(player.ID)] = player
+		}
+	}
+	var issues []string
+	for _, position := range positions {
+		slot := position.Position + position.PositionLevel
+		if position.PlayerID == 0 {
+			if position.PositionLevel == "1" || position.PositionLevel == "2" {
+				issues = append(issues, fmt.Sprintf("%s: empty depth chart slot", slot))
+			}
+			continue
+		}
+		player, found := playersByID[position.PlayerID]
+		if !found {
+			name := strings.TrimSpace(position.FirstName + " " + position.LastName)
+			issues = append(issues, fmt.Sprintf("%s: %s (player %d) is missing from player records", slot, name, position.PlayerID))
+			continue
+		}
+		name := fmt.Sprintf("%s %s (player %d)", player.FirstName, player.LastName, player.ID)
+		if player.IsInjured {
+			issues = append(issues, fmt.Sprintf("%s: %s is injured (%d weeks of recovery)", slot, name, player.WeeksOfRecovery))
+		}
+		if player.TeamID != int(teamID) || player.HasGraduated {
+			issues = append(issues, fmt.Sprintf("%s: %s is not on the active team roster", slot, name))
+		}
+	}
+	sort.Strings(issues)
+	return issues
+}
+
+func loadNFLDepthChartPlayers(db *gorm.DB, positions []structs.NFLDepthChartPosition) ([]structs.NFLPlayer, error) {
+	ids := make([]uint, 0, len(positions))
+	for _, position := range positions {
+		if position.PlayerID > 0 {
+			ids = append(ids, position.PlayerID)
+		}
+	}
+	var players []structs.NFLPlayer
+	if len(ids) != 0 {
+		if err := db.Where("id IN ?", ids).Find(&players).Error; err != nil {
+			return nil, err
+		}
+	}
+	return players, nil
+}
+
+func nflDepthChartIssues(teamID uint, positions []structs.NFLDepthChartPosition, players []structs.NFLPlayer) []string {
+	playersByID := make(map[uint]structs.NFLPlayer, len(players))
+	for _, player := range players {
+		if player.DeletedAt == nil {
+			playersByID[player.ID] = player
+		}
+	}
+	var issues []string
+	for _, position := range positions {
+		slot := position.Position + position.PositionLevel
+		if position.PlayerID == 0 {
+			if position.PositionLevel == "1" || position.PositionLevel == "2" {
+				issues = append(issues, fmt.Sprintf("%s: empty depth chart slot", slot))
+			}
+			continue
+		}
+		player, found := playersByID[position.PlayerID]
+		if !found {
+			name := strings.TrimSpace(position.FirstName + " " + position.LastName)
+			issues = append(issues, fmt.Sprintf("%s: %s (player %d) is missing from player records", slot, name, position.PlayerID))
+			continue
+		}
+		name := fmt.Sprintf("%s %s (player %d)", player.FirstName, player.LastName, player.ID)
+		if player.IsInjured {
+			issues = append(issues, fmt.Sprintf("%s: %s is injured (%d weeks of recovery)", slot, name, player.WeeksOfRecovery))
+		}
+		if player.IsPracticeSquad {
+			issues = append(issues, fmt.Sprintf("%s: %s is on the practice squad", slot, name))
+		}
+		if player.TeamID != int(teamID) {
+			issues = append(issues, fmt.Sprintf("%s: %s is not on the team roster", slot, name))
+		}
+	}
+	sort.Strings(issues)
+	return issues
+}
+
+func reportBrokenDepthChart(league string, teamID uint, message string, ts structs.Timestamp) {
+	if ts.ID == 0 {
+		log.Printf("GameplanManager: cannot report broken depth chart for team %d: timestamp unavailable", teamID)
+		return
+	}
+	report, err := fbsvc.BrokenGameplanReport(league, teamID, message, ts)
+	if err != nil {
+		log.Printf("GameplanManager: cannot report broken depth chart for team %d: %v", teamID, err)
+		return
+	}
+	hash := sha256.Sum256([]byte(message))
+	id := fmt.Sprintf("broken-gameplan-%s-%d-%d-%d-%x", league, teamID, report.WeekID, report.Phase, hash)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	if err := fbsvc.CreateAdminReport(ctx, id, report); err != nil {
+		log.Printf("GameplanManager: failed to create broken depth chart report for team %d: %v", teamID, err)
+	}
 }
 
 func MassUpdateGameplanSchemes(off, def string) {
@@ -517,7 +656,7 @@ func ReAlignCollegeDepthChart(db *gorm.DB, teamID string, gp structs.CollegeGame
 	bonus := 5
 	// Allocate the Position Map
 	for _, cp := range roster {
-		if cp.IsInjured {
+		if cp.IsInjured || cp.DeletedAt != nil {
 			continue
 		}
 		pos := cp.Position
@@ -1279,7 +1418,7 @@ func ReAlignNFLDepthChart(db *gorm.DB, teamID string, gp structs.NFLGameplan, dc
 
 	// Allocate the Position Map
 	for _, cp := range roster {
-		if cp.IsInjured || cp.IsPracticeSquad || cp.WeeksOfRecovery > 0 {
+		if cp.IsInjured || cp.IsPracticeSquad || cp.WeeksOfRecovery > 0 || cp.DeletedAt != nil {
 			continue
 		}
 		pos := cp.Position
@@ -2334,7 +2473,7 @@ func FixBrokenGameplans() {
 		teamMap[t.ID] = t
 	}
 	gameplanMap := GetCollegeGameplanMap()
-	// recruitingProfileMap := GetTeamProfileMap()
+	recruitingProfileMap := GetTeamProfileMap()
 	ts := GetTimestamp()
 	currentGames := GetCollegeGamesByWeekIdAndSeasonID(strconv.Itoa(ts.CollegeWeekID), strconv.Itoa(ts.CollegeSeasonID), ts.CFBSpringGames)
 	teamIDs := []uint{}
@@ -2343,62 +2482,87 @@ func FixBrokenGameplans() {
 		teamIDs = append(teamIDs, uint(g.HomeTeamID), uint(g.AwayTeamID))
 	}
 	for _, t := range teamIDs {
-		// team := teamMap[t]
+		team := teamMap[t]
 		id := strconv.Itoa(int(t))
 		gp := gameplanMap[t]
-		// rtp := *recruitingProfileMap[id]
-
 		dc := GetDepthchartByTeamID(id)
+		rosterPlayers, err := loadCollegeDepthChartPlayers(db, dc.DepthChartPlayers)
+		if err != nil {
+			log.Printf("GameplanManager: cannot check college depth chart for team %d: %v", t, err)
+			continue
+		}
+		playerMap := make(map[int]structs.CollegePlayer, len(rosterPlayers))
+		for _, player := range rosterPlayers {
+			if player.DeletedAt == nil {
+				playerMap[int(player.ID)] = player
+			}
+		}
+		issues := collegeDepthChartIssues(t, dc.DepthChartPlayers, rosterPlayers)
+		if len(issues) > 0 {
+			message := fmt.Sprintf("%s (team %d, coach %s) has an invalid depth chart:\n%s", team.TeamName, team.ID, team.Coach, strings.Join(issues, "\n"))
+			reportBrokenDepthChart("cfb", t, message, ts)
+		}
 
 		isBroken := false
-		// playerLabel := ""
+		playerLabel := ""
 
 		players := dc.DepthChartPlayers
 		for _, dcp := range players {
-			p := dcp.CollegePlayer
+			p := playerMap[dcp.PlayerID]
 			if p.IsInjured && p.WeeksOfRecovery > 0 {
 				isBroken = true
-				// playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
+				playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
 				break
 			}
 			if dcp.PlayerID == 0 && (dcp.PositionLevel == "1" || dcp.PositionLevel == "2") {
 				isBroken = true
-				// playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
+				playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
 				break
 			}
 			if dcp.PlayerID != 0 && p.ID == 0 {
 				isBroken = true
-				// playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
+				playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
 				break
 			}
 		}
 
 		if isBroken {
 			// Penalize CFB Team
-			// rtp.SubtractScholarshipsAvailable()
-			// repository.SaveRecruitingTeamProfile(rtp, db)
-			// team.MarkTeamForPenalty()
-			// repository.SaveCFBTeam(team, db)
-			// // Notify team coach via Firebase
-			// if team.Coach != "" && team.Coach != "AI" {
-			// 	message := rtp.TeamAbbreviation + " has lost a scholarship due to having an injured player (" + playerLabel + ") on their depthchart. This is penalty number " + strconv.Itoa(int(team.PenaltyMarks)) + "."
-			// 	ctx := context.Background()
-			// 	uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{team.Coach})
-			// 	if len(uids) > 0 {
-			// 		eventKey := fbsvc.BuildSourceEventKey("gameplan_penalty", "cfb", strconv.Itoa(int(t)))
-			// 		_ = fbsvc.NotifyGameplanIssue(ctx, fbsvc.GameplanNotificationInput{
-			// 			League:         "cfb",
-			// 			Domain:         fbsvc.DomainCFB,
-			// 			TeamID:         t,
-			// 			TeamName:       team.TeamName,
-			// 			TeamAbbr:       rtp.TeamAbbreviation,
-			// 			Message:        message,
-			// 			RecipientUIDs:  uids,
-			// 			SourceEventKey: eventKey,
-			// 		})
-			// 	}
-			// }
-			// Autosort Depth Chart
+			profile := recruitingProfileMap[id]
+			teamAbbr := team.TeamAbbr
+			if profile != nil {
+				profile.SubtractScholarshipsAvailable()
+				repository.SaveRecruitingTeamProfile(*profile, db)
+				teamAbbr = profile.TeamAbbreviation
+			} else {
+				log.Printf("GameplanManager: cannot apply scholarship penalty for team %d: recruiting profile unavailable", t)
+			}
+			team.MarkTeamForPenalty()
+			repository.SaveCFBTeam(team, db)
+			// Notify team coach via Firebase
+			if team.Coach != "" && team.Coach != "AI" {
+				message := teamAbbr + " has been marked for a broken depth chart (" + playerLabel + "). This is penalty number " + strconv.Itoa(int(team.PenaltyMarks)) + "."
+				if profile != nil {
+					message = teamAbbr + " has lost a scholarship due to a broken depth chart (" + playerLabel + "). This is penalty number " + strconv.Itoa(int(team.PenaltyMarks)) + "."
+				}
+				ctx := context.Background()
+				uids := fbsvc.ResolveUIDsByUsernames(ctx, []string{team.Coach})
+				if len(uids) > 0 {
+					eventKey := fbsvc.BuildSourceEventKey("gameplan_penalty", "cfb", strconv.Itoa(int(t)))
+					_ = fbsvc.NotifyGameplanIssue(ctx, fbsvc.GameplanNotificationInput{
+						League:         "cfb",
+						Domain:         fbsvc.DomainCFB,
+						TeamID:         t,
+						TeamName:       team.TeamName,
+						TeamAbbr:       teamAbbr,
+						Message:        message,
+						RecipientUIDs:  uids,
+						SourceEventKey: eventKey,
+					})
+				}
+			}
+		}
+		if isBroken || len(issues) > 0 {
 			ReAlignCollegeDepthChart(db, id, gp)
 		}
 	}
@@ -2410,13 +2574,32 @@ func FixBrokenGameplans() {
 
 		gp := GetNFLGameplanByTeamID(id)
 		dc := GetNFLDepthchartByTeamID(id)
+		rosterPlayers, err := loadNFLDepthChartPlayers(db, dc.DepthChartPlayers)
+		if err != nil {
+			log.Printf("GameplanManager: cannot check NFL depth chart for team %d: %v", n.ID, err)
+			continue
+		}
+		playerMap := make(map[uint]structs.NFLPlayer, len(rosterPlayers))
+		for _, player := range rosterPlayers {
+			if player.DeletedAt == nil {
+				playerMap[player.ID] = player
+			}
+		}
+		issues := nflDepthChartIssues(n.ID, dc.DepthChartPlayers, rosterPlayers)
+		if len(issues) > 0 {
+			message := fmt.Sprintf("%s (team %d) has an invalid depth chart:\n%s", n.TeamName, n.ID, strings.Join(issues, "\n"))
+			reportBrokenDepthChart("nfl", n.ID, message, ts)
+		}
 
 		isBroken := false
 		playerLabel := ""
 
 		players := dc.DepthChartPlayers
 		for _, dcp := range players {
-			p := dcp.NFLPlayer
+			if dcp.PlayerID == 0 && dcp.PositionLevel != "1" && dcp.PositionLevel != "2" {
+				continue
+			}
+			p := playerMap[dcp.PlayerID]
 			if p.IsPracticeSquad || (p.TeamID != int(n.ID)) || (p.IsInjured && p.WeeksOfRecovery > 0) {
 				isBroken = true
 				playerLabel = p.Position + " " + p.FirstName + " " + p.LastName
@@ -2448,7 +2631,8 @@ func FixBrokenGameplans() {
 				}
 			}
 
-			// Autosort Depth Chart
+		}
+		if isBroken || len(issues) > 0 {
 			ReAlignNFLDepthChart(db, id, gp, players)
 		}
 	}
