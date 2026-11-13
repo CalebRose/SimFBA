@@ -343,13 +343,13 @@ func UpdateDepthChart(updateDepthchartDTO structs.UpdateDepthChartDTO) {
 		}
 
 		player.UpdateDepthChartPosition(updatedPlayer)
+		db.Save(&player)
 
 		updateCounter++
 
 		if updateCounter == len(updatedPlayers) {
 			break
 		}
-		db.Save(&player)
 	}
 }
 
@@ -375,13 +375,13 @@ func UpdateNFLDepthChart(updateDepthchartDTO structs.UpdateNFLDepthChartDTO) {
 		}
 
 		player.UpdateDepthChartPosition(updatedPlayer)
+		db.Save(&player)
 
 		updateCounter++
 
 		if updateCounter == len(updatedPlayers) {
 			break
 		}
-		db.Save(&player)
 	}
 }
 

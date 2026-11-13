@@ -179,7 +179,15 @@ func ConvertStringToBool(str string) bool {
 func ReadJson(path string) []byte {
 	content, err := ioutil.ReadFile(path)
 	if err != nil {
-		log.Fatal("Error when opening file: ", err)
+		if _, errStat := os.Stat(path); os.IsNotExist(errStat) {
+			base := filepath.Base(path)
+			localFallback := filepath.Join("data", base)
+			if fbContent, fbErr := ioutil.ReadFile(localFallback); fbErr == nil {
+				return fbContent
+			}
+		}
+		log.Println("Error when opening file: ", err)
+		return []byte("{}")
 	}
 	return content
 }

@@ -339,16 +339,21 @@ func checkNameInList(name string, namesList [][]string) bool {
 
 func getFaceDataBlob() map[string][]string {
 	path := filepath.Join(os.Getenv("ROOT"), "data", "faceData.json")
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		path = filepath.Join("data", "faceData.json")
+	}
 
 	f, err := os.ReadFile(path)
 	if err != nil {
-		log.Fatal("Unable to read input file "+path, err)
+		log.Println("Unable to read input file "+path, err)
+		return make(map[string][]string)
 	}
 
 	var payload map[string][]string
 	err = json.Unmarshal(f, &payload)
 	if err != nil {
-		log.Fatal("Error during unmarshal: ", err)
+		log.Println("Error during unmarshal: ", err)
+		return make(map[string][]string)
 	}
 
 	return payload

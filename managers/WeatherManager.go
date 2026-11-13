@@ -59,6 +59,11 @@ func GenerateWeatherForGames() {
 }
 
 func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions map[string]string, regions map[string]structs.WeatherRegion, rainForecasts map[float64]map[int]string, mixForecasts map[float64]map[int]string, snowForecasts map[float64]map[int]string) {
+	if game.IsDomed {
+		game.ApplyWeather("None", 70, 70, 70, "Clear", 0, "Calm", "Dome")
+		db.Save(&game)
+		return
+	}
 	regionName := teamRegions[game.HomeTeam]
 	if regionName == "" && game.Stadium == "FirstBank Stadium" {
 		regionName = teamRegions["VAND"]
@@ -67,6 +72,25 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 		return
 	}
 	region := regions[regionName]
+	if len(region.Forecasts) == 0 {
+		for k, r := range regions {
+			if len(r.Forecasts) > 0 {
+				regionName = k
+				region = r
+				break
+			}
+		}
+	}
+	if len(region.Forecasts) == 0 {
+		return
+	}
+	week := game.Week
+	if week >= len(region.Forecasts) {
+		week = len(region.Forecasts) - 1
+	}
+	if week < 0 {
+		week = 0
+	}
 	chances := []structs.WeatherChance{}
 
 	week := game.Week

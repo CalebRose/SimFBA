@@ -110,8 +110,151 @@ func AllocateAIRedshirts(w http.ResponseWriter, r *http.Request) {
 }
 
 func RunTheGames(w http.ResponseWriter, r *http.Request) {
+	managers.FixBrokenGameplans()
+	managers.CheckForSchemePenalties()
 	managers.RunTheGames()
-	fmt.Println(w, "Games for current week are set to run.")
+	ts := managers.GetTimestamp()
+	json.NewEncoder(w).Encode(ts)
+}
+
+func UpdateTimestampAdmin(w http.ResponseWriter, r *http.Request) {
+	var dto structs.UpdateTimestampDTO
+	err := json.NewDecoder(r.Body).Decode(&dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	db := dbprovider.GetInstance().GetDB()
+	ts := managers.GetTimestamp()
+	if dto.Phase > 0 {
+		ts.Phase = dto.Phase
+	}
+	if dto.SeasonID > 0 {
+		ts.CollegeSeasonID = int(dto.SeasonID)
+		ts.NFLSeasonID = int(dto.SeasonID)
+		ts.Season = 2020 + int(dto.SeasonID)
+	}
+	ts.CollegeWeek = int(dto.Week)
+	ts.NFLWeek = int(dto.Week)
+	if dto.WeekID > 0 {
+		ts.CollegeWeekID = int(dto.WeekID)
+		ts.NFLWeekID = int(dto.WeekID)
+	}
+	ts.CFBSpringGames = dto.CFBSpringGames
+	ts.NFLPreseason = dto.NFLPreseason
+	ts.ThursdayGames = dto.ThursdayGames
+	ts.FridayGames = dto.FridayGames
+	ts.SaturdayMorning = dto.SaturdayMorning
+	ts.SaturdayNoon = dto.SaturdayNoon
+	ts.SaturdayEvening = dto.SaturdayEvening
+	ts.SaturdayNight = dto.SaturdayNight
+	ts.NFLThursday = dto.NFLThursday
+	ts.NFLSundayNoon = dto.NFLSundayNoon
+	ts.NFLSundayAfternoon = dto.NFLSundayAfternoon
+	ts.NFLSundayEvening = dto.NFLSundayEvening
+	ts.NFLMondayEvening = dto.NFLMondayEvening
+	repository.SaveTimestamp(ts, db)
+	json.NewEncoder(w).Encode(ts)
+}
+
+func GetCFBPostseasonGames(w http.ResponseWriter, r *http.Request) {
+	games := managers.GetCFBPostseasonGamesForCurrentSeason()
+	json.NewEncoder(w).Encode(games)
+}
+
+func DeleteCFBPostseasonGame(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	gameID := vars["gameID"]
+	if err := managers.DeleteCFBPostseasonGame(gameID); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(map[string]bool{"deleted": true})
+}
+
+func SaveCFBConferenceChampionship(w http.ResponseWriter, r *http.Request) {
+	var dto structs.CFBConferenceChampionshipDTO
+	if err := json.NewDecoder(r.Body).Decode(&dto); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	game, err := managers.SaveCFBConferenceChampionship(dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(game)
+}
+
+func UploadCFBBowlGames(w http.ResponseWriter, r *http.Request) {
+	var req structs.CFBBowlUploadRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	games, err := managers.UploadCFBBowlGames(req)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(games)
+}
+
+func GenerateFBSPlayoffSchedule(w http.ResponseWriter, r *http.Request) {
+	var req structs.CFBPlayoffScheduleRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	games, err := managers.GenerateFBSPlayoffSchedule(req)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(games)
+}
+
+func GenerateFCSPlayoffSchedule(w http.ResponseWriter, r *http.Request) {
+	var req structs.CFBPlayoffScheduleRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	games, err := managers.GenerateFCSPlayoffSchedule(req)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(games)
+}
+
+func GetNFLPostseasonGames(w http.ResponseWriter, r *http.Request) {
+	games := managers.GetNFLPostseasonGamesForCurrentSeason()
+	json.NewEncoder(w).Encode(games)
+}
+
+func DeleteNFLPostseasonGame(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	gameID := vars["gameID"]
+	if err := managers.DeleteNFLPostseasonGame(gameID); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(map[string]bool{"deleted": true})
+}
+
+func GenerateNFLPlayoffSchedule(w http.ResponseWriter, r *http.Request) {
+	var req structs.NFLPlayoffScheduleRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	games, err := managers.GenerateNFLPlayoffSchedule(req)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(games)
 }
 
 func WeatherGenerator(w http.ResponseWriter, r *http.Request) {
