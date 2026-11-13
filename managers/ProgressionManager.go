@@ -2592,7 +2592,7 @@ func SecondaryProgression(progression int8, input int8) int8 {
 
 func GetModifiers(position string, archetype string, spg int, attrib string) float64 {
 	var snapMod float64 = 0.0
-	if spg > 50 {
+	if spg > 45 {
 		snapMod = rand.Float64()*(1.25-1) + 1
 	} else if spg > 30 {
 		snapMod = rand.Float64()*(1.1-0.9) + 0.9
@@ -2872,7 +2872,7 @@ func DetermineIfDeclaring(player structs.CollegePlayer, avgSnaps int) bool {
 	}
 
 	snapMod := 0
-	if avgSnaps > 50 {
+	if avgSnaps > 45 {
 		snapMod = 16
 	} else if avgSnaps > 30 {
 		snapMod = 12
