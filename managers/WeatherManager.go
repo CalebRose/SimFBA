@@ -93,11 +93,6 @@ func GenerateWeatherForGame(db *gorm.DB, game structs.CollegeGame, teamRegions m
 	}
 	chances := []structs.WeatherChance{}
 
-	week := game.Week
-	if week > 20 {
-		week = 19
-	}
-
 	precip := ""
 	lowTemp := 0.0
 	highTemp := 0.0

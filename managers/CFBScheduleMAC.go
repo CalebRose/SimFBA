@@ -25,7 +25,7 @@ var macPods = [4][]uint{
 	{19, 28, 128},    // Pod 4
 }
 
-func macPodOf(teamID uint) int {
+func MacPodOf(teamID uint) int {
 	for p, pod := range macPods {
 		for _, id := range pod {
 			if id == teamID {

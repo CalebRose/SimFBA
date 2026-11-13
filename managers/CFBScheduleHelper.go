@@ -240,10 +240,10 @@ func groupAThisSeason(season int) bool {
 	return cy == 1 || cy == 3
 }
 
-// homeForThisSeason returns whether teamID should be home against oppID given
+// HomeForCycleYear returns whether teamID should be home against oppID given
 // the cycle year and a given "base" home assignment (true = teamID hosts in Year 1).
 // Years 1 & 3 keep base, Years 2 & 4 flip.
-func homeForCycleYear(season int, baseIsHome bool) bool {
+func HomeForCycleYear(season int, baseIsHome bool) bool {
 	cy := cycleYear(season)
 	if cy == 1 || cy == 3 {
 		return baseIsHome
@@ -522,7 +522,7 @@ var ConferenceExpectedGames = map[int]int{
 	27: 7, // UAC
 }
 
-// rebalanceConferenceHomeAway performs a multi-pass greedy swap of home/away
+// RebalanceConferenceHomeAway performs a multi-pass greedy swap of home/away
 // roles for conference games where the current home team is home-heavy and the
 // current away team is away-heavy. The goal is to bring every team's
 // |home − away| conference game count to ≤ 2.
@@ -530,7 +530,7 @@ var ConferenceExpectedGames = map[int]int{
 // Neutral-site and rivalry games are never swapped. The game record (stadium,
 // city, timeslot, etc.) is fully rebuilt from the new home team's data for
 // every swapped pair.
-func rebalanceConferenceHomeAway(
+func RebalanceConferenceHomeAway(
 	games []structs.CollegeGame,
 	teamMap map[uint]structs.CollegeTeam,
 	stadiumMap map[uint]structs.Stadium,

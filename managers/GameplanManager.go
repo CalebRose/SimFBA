@@ -1148,9 +1148,10 @@ func ReAlignCollegeDepthChart(db *gorm.DB, teamID string, gp structs.CollegeGame
 		// STU
 		if pos == "FB" || pos == "TE" || pos == "ILB" || pos == "OLB" || pos == "RB" || pos == "CB" || pos == "FS" || pos == "SS" || pos == "WR" || pos == "ATH" {
 			score := 0
-			if cp.Year == 2 || cp.Year == 1 {
+			switch cp.Year {
+			case 1, 2:
 				score += 50
-			} else if cp.Year == 3 {
+			case 3:
 				score += 25
 			}
 

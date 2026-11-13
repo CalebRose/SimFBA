@@ -85,21 +85,22 @@ func CFBProgressionMain() {
 					}
 
 					// Generate Tier
-					if diceRoll == 1 {
+					switch diceRoll {
+					case 1:
 						boomBustStatus = "Bust"
 						enableBoomBust = true
 						// Bust
 
 						draftee.AssignBoomBustStatus(boomBustStatus)
 
-					} else if diceRoll == 20 {
+					case 20:
 						enableBoomBust = true
 						// Boom
 
 						boomBustStatus = "Boom"
 						isBoom = true
 						draftee.AssignBoomBustStatus(boomBustStatus)
-					} else {
+					default:
 						tier = 0
 					}
 					if enableBoomBust {
@@ -154,13 +155,13 @@ func CFBProgressionMain() {
 				}
 
 				// Generate Tier
-				if diceRoll == 1 {
-
+				switch diceRoll {
+				case 1:
 					enableBoomBust = true
-				} else if diceRoll == 20 {
+				case 20:
 					enableBoomBust = true
 					isBoom = true
-				} else {
+				default:
 					tier = 0
 				}
 				if enableBoomBust {

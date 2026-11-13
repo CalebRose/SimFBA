@@ -16,7 +16,7 @@ import (
 // Northern Illinois(73), San Jose State(90), UNLV(114),
 // UTEP(116), Wyoming(130), North Dakota State(143)
 
-var mwcTeamIDs = []uint{1, 38, 68, 69, 73, 90, 114, 116, 130, 143}
+var MWCTeamIDs = []uint{1, 38, 68, 69, 73, 90, 114, 116, 130, 143}
 
 // mwcLockedMatchups: pairs with a specific week assignment
 var mwcLockedMatchups = []struct {

@@ -176,15 +176,16 @@ func ProcessTransferIntention() {
 		// The more experienced the player is in the league,
 		// the more likely they will transfer.
 		/// Have this be a multiplicative factor to odds
-		if p.Year == 1 {
+		switch p.Year {
+		case 1:
 			ageMod = .01
-		} else if p.Year == 2 {
+		case 2:
 			ageMod = .25
-		} else if p.Year == 3 {
+		case 3:
 			ageMod = .85
-		} else if p.Year == 4 {
+		case 4:
 			ageMod = 1.25
-		} else if p.Year == 5 {
+		case 5:
 			ageMod = 1.5
 		}
 
@@ -293,13 +294,14 @@ func ProcessTransferIntention() {
 		// Is Intending to transfer
 		p.DeclareTransferIntention(int(transferWeight))
 		transferCount++
-		if p.Year == 1 {
+		switch p.Year {
+		case 1:
 			freshmanCount++
-		} else if p.Year == 2 {
+		case 2:
 			sophomoreCount++
-		} else if p.Year == 3 {
+		case 3:
 			juniorCount++
-		} else if p.Year == 4 {
+		case 4:
 			seniorCount++
 		}
 
@@ -1552,7 +1554,7 @@ func filterRosterByPosition(roster []structs.CollegePlayer, pos string) []struct
 	return filteredList
 }
 
-func getTransferPortalProfileMap(players []structs.CollegePlayer) map[uint][]structs.TransferPortalProfile {
+func GetTransferPortalProfileMap(players []structs.CollegePlayer) map[uint][]structs.TransferPortalProfile {
 	portalMap := make(map[uint][]structs.TransferPortalProfile)
 	var mu sync.Mutex     // to safely update the map
 	var wg sync.WaitGroup // to wait for all goroutines to finish
@@ -1680,7 +1682,7 @@ func getPromiseWeightBySnapsOrWins(position, category string, benchmark int) str
 	return weight
 }
 
-func getPlayerPrestigeRating(stars, overall int) int {
+func GetPlayerPrestigeRating(stars, overall int) int {
 	prestige := 1
 
 	starMod := stars / 2
@@ -1721,7 +1723,7 @@ func getBasePromiseOdds(tbPref, ptTendency string) int {
 	return promiseOdds
 }
 
-func getTransferStatus(weight int) string {
+func GetTransferStatus(weight int) string {
 	if weight < 20 {
 		return "Low"
 	}

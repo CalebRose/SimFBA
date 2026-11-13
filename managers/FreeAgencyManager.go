@@ -1075,7 +1075,7 @@ func getExtensionPercentageOdds(percentage float64) float64 {
 	return 0
 }
 
-func validateFreeAgencyPref(playerRecord structs.NFLPlayer, team structs.NFLTeam, seasonID string, offerLength int, offerIdx int) bool {
+func ValidateFreeAgencyPref(playerRecord structs.NFLPlayer, team structs.NFLTeam, seasonID string, offerLength int, offerIdx int) bool {
 	preference := playerRecord.FreeAgency
 
 	if preference == "Average" {

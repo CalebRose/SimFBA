@@ -1507,14 +1507,14 @@ func getLatestRecord(db *gorm.DB) uint {
 	return lastPlayerRecord.ID + 1
 }
 
-func pickAlmaMater(teams []structs.RecruitingTeamProfile) structs.RecruitingTeamProfile {
+func PickAlmaMater(teams []structs.RecruitingTeamProfile) structs.RecruitingTeamProfile {
 	start := 0
 	end := len(teams) - 1
 	idx := util.GenerateIntFromRange(start, end)
 	return teams[idx]
 }
 
-func getCoachAge() int {
+func GetCoachAge() int {
 	num := util.GenerateIntFromRange(1, 100)
 
 	if num < 10 {
@@ -1532,7 +1532,7 @@ func getCoachAge() int {
 	}
 }
 
-func getGoodHire(schoolQuality, adminBehavior string) bool {
+func GetGoodHire(schoolQuality, adminBehavior string) bool {
 	diceRoll := util.GenerateIntFromRange(1, 20)
 	mod := 0
 	switch schoolQuality {
@@ -1553,7 +1553,7 @@ func getGoodHire(schoolQuality, adminBehavior string) bool {
 	return goodHire
 }
 
-func getStarRange(schoolQuality string, goodHire bool) (int, int) {
+func GetStarRange(schoolQuality string, goodHire bool) (int, int) {
 
 	switch schoolQuality {
 	case "Blue Blood":
@@ -1583,7 +1583,7 @@ func getStarRange(schoolQuality string, goodHire bool) (int, int) {
 	}
 }
 
-func getPointRange(schoolQuality string, goodHire bool) (int, int) {
+func GetPointRange(schoolQuality string, goodHire bool) (int, int) {
 	min := 0
 	max := 15
 	switch schoolQuality {
@@ -1623,7 +1623,7 @@ func getPointRange(schoolQuality string, goodHire bool) (int, int) {
 	return min, max
 }
 
-func getStartingPrestige(goodHire bool) int {
+func GetStartingPrestige(goodHire bool) int {
 	if goodHire {
 		return util.GenerateIntFromRange(3, 7)
 	}

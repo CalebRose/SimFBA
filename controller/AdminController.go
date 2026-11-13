@@ -118,43 +118,7 @@ func RunTheGames(w http.ResponseWriter, r *http.Request) {
 }
 
 func UpdateTimestampAdmin(w http.ResponseWriter, r *http.Request) {
-	var dto structs.UpdateTimestampDTO
-	err := json.NewDecoder(r.Body).Decode(&dto)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	db := dbprovider.GetInstance().GetDB()
-	ts := managers.GetTimestamp()
-	if dto.Phase > 0 {
-		ts.Phase = dto.Phase
-	}
-	if dto.SeasonID > 0 {
-		ts.CollegeSeasonID = int(dto.SeasonID)
-		ts.NFLSeasonID = int(dto.SeasonID)
-		ts.Season = 2020 + int(dto.SeasonID)
-	}
-	ts.CollegeWeek = int(dto.Week)
-	ts.NFLWeek = int(dto.Week)
-	if dto.WeekID > 0 {
-		ts.CollegeWeekID = int(dto.WeekID)
-		ts.NFLWeekID = int(dto.WeekID)
-	}
-	ts.CFBSpringGames = dto.CFBSpringGames
-	ts.NFLPreseason = dto.NFLPreseason
-	ts.ThursdayGames = dto.ThursdayGames
-	ts.FridayGames = dto.FridayGames
-	ts.SaturdayMorning = dto.SaturdayMorning
-	ts.SaturdayNoon = dto.SaturdayNoon
-	ts.SaturdayEvening = dto.SaturdayEvening
-	ts.SaturdayNight = dto.SaturdayNight
-	ts.NFLThursday = dto.NFLThursday
-	ts.NFLSundayNoon = dto.NFLSundayNoon
-	ts.NFLSundayAfternoon = dto.NFLSundayAfternoon
-	ts.NFLSundayEvening = dto.NFLSundayEvening
-	ts.NFLMondayEvening = dto.NFLMondayEvening
-	repository.SaveTimestamp(ts, db)
-	json.NewEncoder(w).Encode(ts)
+	UpdateTimestampDirect(w, r)
 }
 
 func GetCFBPostseasonGames(w http.ResponseWriter, r *http.Request) {
@@ -301,76 +265,6 @@ func NFLAttributePercentilesReport(w http.ResponseWriter, r *http.Request) {
 
 func CFBAttributePercentilesReport(w http.ResponseWriter, r *http.Request) {
 	managers.CFBAttributePercentilesReport()
-}
-
-func SaveCFBConferenceChampionship(w http.ResponseWriter, r *http.Request) {
-	var dto structs.CFBConferenceChampionshipDTO
-	err := json.NewDecoder(r.Body).Decode(&dto)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	savedGame, err := managers.SaveCFBConferenceChampionship(dto)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	json.NewEncoder(w).Encode(savedGame)
-}
-
-func GetCFBPostseasonGames(w http.ResponseWriter, r *http.Request) {
-	games := managers.GetCFBPostseasonGames()
-	json.NewEncoder(w).Encode(games)
-}
-
-func DeleteCFBPostseasonGame(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	gameID := vars["gameID"]
-	if len(gameID) == 0 {
-		http.Error(w, "Missing gameID", http.StatusBadRequest)
-		return
-	}
-	err := managers.DeleteCFBPostseasonGame(gameID)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	json.NewEncoder(w).Encode(map[string]bool{"deleted": true})
-}
-
-func UploadCFBBowlGames(w http.ResponseWriter, r *http.Request) {
-	var dto structs.CFBBowlUploadRequest
-	err := json.NewDecoder(r.Body).Decode(&dto)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	savedGames, err := managers.UploadCFBBowlGames(dto)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	json.NewEncoder(w).Encode(savedGames)
-}
-
-func GetNFLPostseasonGames(w http.ResponseWriter, r *http.Request) {
-	games := managers.GetNFLPostseasonGames()
-	json.NewEncoder(w).Encode(games)
-}
-
-func DeleteNFLPostseasonGame(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	gameID := vars["gameID"]
-	if len(gameID) == 0 {
-		http.Error(w, "Missing gameID", http.StatusBadRequest)
-		return
-	}
-	err := managers.DeleteNFLPostseasonGame(gameID)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	json.NewEncoder(w).Encode(map[string]bool{"deleted": true})
 }
 
 func UpdateTimestampDirect(w http.ResponseWriter, r *http.Request) {

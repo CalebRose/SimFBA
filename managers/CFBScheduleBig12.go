@@ -18,10 +18,10 @@ import (
 // Pod Orange: West Virginia(126), UCF(110), Cincinnati(21), Iowa State(43)
 
 const (
-	big12PodRed    = 0
-	big12PodYellow = 1
-	big12PodGreen  = 2
-	big12PodOrange = 3
+	Big12PodRed    = 0
+	Big12PodYellow = 1
+	Big12PodGreen  = 2
+	Big12PodOrange = 3
 )
 
 var big12Pods = [4][]uint{
@@ -31,8 +31,8 @@ var big12Pods = [4][]uint{
 	{126, 110, 21, 43}, // Orange
 }
 
-// big12PodOf returns which pod index a team belongs to, -1 if not found.
-func big12PodOf(teamID uint) int {
+// Big12PodOf returns which pod index a team belongs to, -1 if not found.
+func Big12PodOf(teamID uint) int {
 	for p, pod := range big12Pods {
 		for _, id := range pod {
 			if id == teamID {

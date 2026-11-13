@@ -1229,7 +1229,7 @@ func AllocateAIRedshirts(seasonId string) {
 	log.Println("AllocateAIRedshirts: Deprecated under 5-year eligibility model.")
 }
 
-func getPositionCounts(players []structs.CollegePlayer) map[string]int {
+func GetPositionCounts(players []structs.CollegePlayer) map[string]int {
 	counts := make(map[string]int)
 	for _, player := range players {
 		counts[player.Position]++
@@ -1237,7 +1237,7 @@ func getPositionCounts(players []structs.CollegePlayer) map[string]int {
 	return counts
 }
 
-func isAboveMinPositionCount(position string, positionCountMap map[string]int) bool {
+func IsAboveMinPositionCount(position string, positionCountMap map[string]int) bool {
 	minPositionThreshold := 0
 
 	switch position {
@@ -1259,7 +1259,7 @@ func isAboveMinPositionCount(position string, positionCountMap map[string]int) b
 	return positionCount > minPositionThreshold
 }
 
-func getCoachMap() map[uint]structs.CollegeCoach {
+func GetCoachMap() map[uint]structs.CollegeCoach {
 	coachMap := make(map[uint]structs.CollegeCoach)
 
 	collegeCoaches := GetAllAICollegeCoaches()
