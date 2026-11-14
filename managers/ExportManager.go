@@ -151,6 +151,8 @@ func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 		"Pass Rush", "Run Defense", "Throw Power", "Throw Accuracy",
 		"Kick Power", "Kick Accuracy", "Punt Power", "Punt Accuracy",
 		"Stamina", "Injury", "Potential Grade",
+		"Y1 Salary", "Y1 Bonus", "Y2 Salary", "Y2 Bonus", "Y3 Salary", "Y3 Bonus",
+		"Y4 Salary", "Y4 Bonus", "Y5 Salary", "Y5 Bonus", "Contract Value", "Minimum Value", "AAV",
 	}
 
 	err := writer.Write(HeaderRow)
@@ -160,6 +162,7 @@ func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 
 	for _, player := range players {
 		csvModel := structs.MapNFLPlayerToCSVModel(player)
+		contract := player.Contract
 		playerRow := []string{
 			team.TeamName, strconv.Itoa(int(player.ID)), csvModel.FirstName, csvModel.LastName, csvModel.Position,
 			csvModel.Archetype, csvModel.PositionTwo, csvModel.ArchetypeTwo, csvModel.Year, strconv.Itoa(int(player.Age)),
@@ -171,6 +174,8 @@ func ExportNFLTeamToCSV(TeamID string, w http.ResponseWriter) {
 			csvModel.PassRushGrade, csvModel.RunDefenseGrade, csvModel.ThrowPowerGrade, csvModel.ThrowAccuracyGrade,
 			csvModel.KickPowerGrade, csvModel.KickAccuracyGrade, csvModel.PuntPowerGrade, csvModel.PuntAccuracyGrade,
 			csvModel.StaminaGrade, csvModel.InjuryGrade, csvModel.PotentialGrade,
+			util.ConvertFloatTostring(contract.Y1BaseSalary), util.ConvertFloatTostring(contract.Y1Bonus), util.ConvertFloatTostring(contract.Y2BaseSalary), util.ConvertFloatTostring(contract.Y2Bonus), util.ConvertFloatTostring(contract.Y3BaseSalary), util.ConvertFloatTostring(contract.Y3Bonus),
+			util.ConvertFloatTostring(contract.Y4BaseSalary), util.ConvertFloatTostring(contract.Y4Bonus), util.ConvertFloatTostring(contract.Y5BaseSalary), util.ConvertFloatTostring(contract.Y5Bonus), util.ConvertFloatTostring(contract.ContractValue), util.ConvertFloatTostring(player.MinimumValue), util.ConvertFloatTostring(player.AAV),
 		}
 
 		err = writer.Write(playerRow)
