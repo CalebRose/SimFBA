@@ -337,6 +337,7 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/rankings/assign/all/croots/", controller.AssignAllRecruitRanks).Methods("GET")
 
 	// Recruiting Controls
+	apiRouter.HandleFunc("/recruiting/custom/croot/", controller.CreateCustomCroot).Methods("POST")
 	apiRouter.HandleFunc("/recruiting/overview/dashboard/{teamID}", controller.GetRecruitingProfileForDashboardByTeamID).Methods("GET")
 	// apiRouter.HandleFunc("/recruiting/profile/recalibrate/", controller.RecalibrateCrootProfiles).Methods("GET")
 	apiRouter.HandleFunc("/recruiting/profile/team/{teamID}/", controller.GetRecruitingProfileForTeamBoardByTeamID).Methods("GET")

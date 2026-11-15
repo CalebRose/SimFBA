@@ -297,3 +297,23 @@ func (r *Recruit) AssignTwinData(lastName, city, state, highschool string) {
 	r.State = state
 	r.HighSchool = highschool
 }
+
+type CustomRecruitDTO struct {
+	FirstName        string
+	LastName         string
+	City             string
+	HighSchool       string
+	State            string
+	Country          string
+	PreferenceOne    string
+	PreferenceTwo    string
+	ExistingRelative uint
+	Ethnicity        string
+	Bio              string
+	Position         string
+	Archetype        string
+	Height           uint
+	Weight           uint
+	CustomCrootFor   string
+	FaceData         FaceDataResponse
+}

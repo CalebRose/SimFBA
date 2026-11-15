@@ -222,7 +222,7 @@ func (pg *CrootGenerator) generatePlayer() (structs.Recruit, structs.Player) {
 	}
 
 	pickedPosition := util.PickPosition()
-	player := createRecruit(pickedPosition, star, firstName, lastName, pg.attributeBlob, state, pg.crootLocations[state])
+	player := CreateRecruit(pickedPosition, "", star, firstName, lastName, pg.attributeBlob, state, "", "", pg.crootLocations[state])
 	player.AssignRelativeData(uint(relativeID), uint(relativeType), uint(coachTeamID), coachTeamAbbr, notes)
 	globalPlayer := structs.Player{
 		CollegePlayerID: int(pg.newID),
@@ -259,7 +259,7 @@ func (pg *CrootGenerator) generateTwin(player *structs.Recruit) (structs.Recruit
 		stars = int(player.Stars)
 	}
 	twinNotes := "Twin Brother of " + strconv.Itoa(int(player.Stars)) + " Star Recruit " + player.Position + " " + player.FirstName + " " + player.LastName
-	twinPlayer := createRecruit(twinPosition, stars, twinN, player.LastName, pg.attributeBlob, player.State, pg.crootLocations[player.State])
+	twinPlayer := CreateRecruit(twinPosition, "", stars, twinN, player.LastName, pg.attributeBlob, player.State, "", "", pg.crootLocations[player.State])
 	twinPlayer.AssignRelativeData(uint(firstTwinRelativeID), 4, 0, "", twinNotes)
 	twinPlayer.AssignTwinData(player.LastName, player.City, player.State, player.HighSchool)
 	notes := "Twin Brother of " + strconv.Itoa(int(twinPlayer.Stars)) + " Star Recruit " + twinPlayer.Position + " " + twinPlayer.FirstName + " " + twinPlayer.LastName
@@ -397,7 +397,7 @@ func GenerateCroots() {
 		coachList:         GetAllAICollegeCoaches(),
 		teamMap:           GetCollegeTeamMap(),
 		crootLocations:    getCrootLocations(),
-		attributeBlob:     getAttributeBlob(),
+		attributeBlob:     GetAttributeBlob(),
 		positionList:      util.GetPositionList(),
 		newID:             lastPlayerRecord.ID + 1,
 		requiredPlayers:   util.GenerateIntFromRange(6400, 6601),
@@ -436,7 +436,7 @@ func GenerateWalkOns() {
 	AllTeams := GetRecruitingProfileForRecruitSync()
 	ts := GetTimestamp()
 	count := 0
-	attributeBlob := getAttributeBlob()
+	attributeBlob := GetAttributeBlob()
 	highSchoolBlob := getCrootLocations()
 	faceDataBlob := getFaceDataBlob()
 	faces := []structs.FaceData{}
@@ -531,7 +531,7 @@ func CreateCustomCroots() {
 	db := dbprovider.GetInstance().GetDB()
 	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\2027\\2027_Custom_Croot_Class.csv"
 	crootCSV := util.ReadCSV(path)
-	attributeBlob := getAttributeBlob()
+	attributeBlob := GetAttributeBlob()
 	latestID := getLatestRecord(db)
 
 	crootList := []structs.Recruit{}
@@ -566,11 +566,16 @@ func CreateCustomCroots() {
 	repository.CreateGlobalPlayerRecordsBatch(db, globalList, 100)
 }
 
-func createRecruit(position string, stars int, firstName, lastName string, blob map[string]map[string]map[string]map[string]interface{}, state string, hsBlob []structs.CrootLocation) structs.Recruit {
+func CreateRecruit(position, arch string, stars int, firstName, lastName string, blob map[string]map[string]map[string]map[string]interface{}, state, city, hs string, hsBlob []structs.CrootLocation) structs.Recruit {
 	age := 18
-	city, highSchool := getCityAndHighSchool(hsBlob)
-
-	archetype := getArchetype(position)
+	city, highSchool := city, hs
+	if city == "" && highSchool == "" {
+		city, highSchool = getCityAndHighSchool(hsBlob)
+	}
+	archetype := arch
+	if archetype == "" {
+		archetype = getArchetype(position)
+	}
 	height := getAttributeValue(position, archetype, stars, "Height", blob)
 	weight := getAttributeValue(position, archetype, stars, "Weight", blob)
 	footballIQ := getAttributeValue(position, archetype, stars, "Football IQ", blob)
@@ -1141,7 +1146,7 @@ func getCrootLocations() map[string][]structs.CrootLocation {
 	return payload
 }
 
-func getAttributeBlob() map[string]map[string]map[string]map[string]interface{} {
+func GetAttributeBlob() map[string]map[string]map[string]map[string]interface{} {
 	path := "C:\\Users\\ctros\\go\\src\\github.com\\CalebRose\\SimFBA\\data\\attributeBlob.json"
 
 	content, err := os.ReadFile(path)

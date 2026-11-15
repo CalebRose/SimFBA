@@ -1,6 +1,6 @@
 package structs
 
-import "github.com/jinzhu/gorm"
+import "gorm.io/gorm"
 
 // Player - The generic player for the sim. Will hold foreign key references for Recruit, College, and NFL table
 type Player struct {

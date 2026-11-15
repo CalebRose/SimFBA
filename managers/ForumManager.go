@@ -1255,3 +1255,41 @@ func buildNFLJobApplicationParagraphs(request structs.NFLRequest, teamName strin
 
 	return paragraphs
 }
+
+// CreateCustomCrootForumThread posts a "Meet the Croots" thread to the SimCHL media forum.
+func CreateCustomCrootForumThread(recruitID uint, dto structs.CustomRecruitDTO) {
+	ctx := context.Background()
+
+	// Only the US, Canada, Sweden and Russia have states/provinces/regions.
+	locationParts := make([]string, 0, 3)
+	for _, part := range []string{dto.City, dto.State, dto.Country} {
+		if strings.TrimSpace(part) != "" {
+			locationParts = append(locationParts, strings.TrimSpace(part))
+		}
+	}
+	title := fmt.Sprintf("Meet the Croots: %s %s %s from %s",
+		dto.Position, dto.FirstName, dto.LastName, strings.Join(locationParts, ", "))
+
+	paragraphs := []string{fmt.Sprintf("Croot Made by %s", dto.CustomCrootFor), dto.Bio}
+	input := fbsvc.CreateForumThreadInput{
+		ForumID:           "media-simcfb",
+		ForumPath:         []string{"media", "simcfb"},
+		Title:             title,
+		AuthorUID:         "system",
+		AuthorUsername:    "SimSN",
+		AuthorDisplayName: "SimSN System",
+		CreatedByType:     fbsvc.CreatedBySystem,
+		ThreadType:        fbsvc.ThreadTypeStandard,
+		FirstPostBodyText: dto.Bio,
+		FirstPostBody:     buildRichPostBody(paragraphs),
+		ReferencedLeague:  "cfb",
+		ExternalEventKey:  fmt.Sprintf("custom_croot:cfb:%d", recruitID),
+	}
+
+	thread, err := fbsvc.CreateThread(ctx, input)
+	if err != nil {
+		log.Printf("ForumManager: failed to create custom croot thread for recruit %d: %v", recruitID, err)
+		return
+	}
+	log.Printf("ForumManager: created custom croot thread %s for recruit %d", thread.ID, recruitID)
+}

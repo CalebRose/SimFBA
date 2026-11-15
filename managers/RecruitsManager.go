@@ -388,3 +388,38 @@ func calculateMultiplier(teamAttr uint, playerPref uint, isBool, booleanAttr boo
 	finalAdjFactor := adjFactor * baseMod
 	return (baseMod + finalAdjFactor) / 2
 }
+
+func CreateCustomCroot(dto structs.CustomRecruitDTO) structs.Recruit {
+	db := dbprovider.GetInstance().GetDB()
+	lastPlayerRecord := repository.FindLatestGlobalPlayerRecord()
+	latestID := lastPlayerRecord.ID + 1
+	attributeBlob := GetAttributeBlob()
+	// Generate Recruit
+	stars := util.GetStarRating()
+	recruit := CreateRecruit(dto.Position, dto.Archetype, stars, dto.FirstName, dto.LastName, attributeBlob, dto.State, dto.City, dto.HighSchool, []structs.CrootLocation{})
+	recruit.ID = latestID
+	recruit.IsCustomCroot = true
+	recruit.CustomCrootFor = dto.CustomCrootFor
+
+	// Generate Face Data
+	faceDataResponse := dto.FaceData
+
+	face := ConvertFaceDataResponseToFaceData(faceDataResponse)
+	face.PlayerID = recruit.ID
+
+	globalPlayer := structs.Player{
+		Model: gorm.Model{
+			ID: recruit.ID,
+		},
+		RecruitID:       int(latestID),
+		CollegePlayerID: int(latestID),
+		NFLPlayerID:     int(latestID),
+	}
+	repository.CreateGlobalPlayerRecordsBatch(db, []structs.Player{globalPlayer}, 1)
+	repository.CreateCFBRecruitRecordsBatch(db, []structs.Recruit{recruit}, 1)
+	repository.CreateFaceRecordsBatch(db, []structs.FaceData{face}, 1)
+
+	CreateCustomCrootForumThread(recruit.ID, dto)
+
+	return recruit
+}

@@ -55,3 +55,15 @@ func FindAllCollegePlayers(clauses PlayerQuery) []structs.CollegePlayer {
 
 	return CollegePlayers
 }
+
+func FindLatestGlobalPlayerRecord() structs.Player {
+	db := dbprovider.GetInstance().GetDB()
+
+	var lastPlayerRecord structs.Player
+	err := db.Last(&lastPlayerRecord).Error
+	if err != nil {
+		return lastPlayerRecord
+	}
+
+	return lastPlayerRecord
+}

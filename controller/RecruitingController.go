@@ -211,3 +211,16 @@ func enableCors(w *http.ResponseWriter) {
 func RecalibrateCrootProfiles(w http.ResponseWriter, r *http.Request) {
 	managers.RecalibrateCrootProfiles()
 }
+
+func CreateCustomCroot(w http.ResponseWriter, r *http.Request) {
+	var customCrootDto structs.CustomRecruitDTO
+	err := json.NewDecoder(r.Body).Decode(&customCrootDto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	profile := managers.CreateCustomCroot(customCrootDto)
+
+	json.NewEncoder(w).Encode(profile)
+}
