@@ -558,7 +558,7 @@ func GetNewArchetypeMap() map[string]map[string]map[string]string {
 				"OLB": "Run Stopper",
 				"ILB": "Run Stopper",
 			},
-			"Speed Rush": {
+			"Speed Rusher": {
 				"DT":  "Pass Rusher",
 				"OLB": "Pass Rush",
 				"ILB": "Speed",
@@ -575,7 +575,7 @@ func GetNewArchetypeMap() map[string]map[string]map[string]string {
 				"OLB": "Run Stopper",
 			},
 			"Pass Rusher": {
-				"DE":  "Speed Rush",
+				"DE":  "Speed Rusher",
 				"OLB": "Pass Rush",
 			},
 			"Nose Tackle": {
@@ -590,7 +590,7 @@ func GetNewArchetypeMap() map[string]map[string]map[string]string {
 				"SS":  "Man Coverage",
 			},
 			"Pass Rush": {
-				"DE":  "Speed Rush",
+				"DE":  "Speed Rusher",
 				"ILB": "Speed",
 				"SS":  "Man Coverage",
 			},
@@ -600,7 +600,7 @@ func GetNewArchetypeMap() map[string]map[string]map[string]string {
 				"SS":  "Run Stopper",
 			},
 			"Speed": {
-				"DE":  "Speed Rush",
+				"DE":  "Speed Rusher",
 				"ILB": "Speed",
 				"SS":  "Zone Coverage",
 			},
@@ -622,7 +622,7 @@ func GetNewArchetypeMap() map[string]map[string]map[string]string {
 				"SS":  "Run Stopper",
 			},
 			"Speed": {
-				"DE":  "Speed Rush",
+				"DE":  "Speed Rusher",
 				"OLB": "Speed",
 				"SS":  "Run Stopper",
 			},
@@ -708,6 +708,9 @@ func GetNewArchetypeMap() map[string]map[string]map[string]string {
 			},
 		},
 		"K": {
+			"Balanced": {
+				"P": "Balanced",
+			},
 			"Power": {
 				"P":  "Power",
 				"QB": "Balanced",
@@ -718,6 +721,9 @@ func GetNewArchetypeMap() map[string]map[string]map[string]string {
 			},
 		},
 		"P": {
+			"Balanced": {
+				"K": "Balanced",
+			},
 			"Power": {
 				"K":  "Power",
 				"QB": "Balanced",

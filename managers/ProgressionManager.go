@@ -463,6 +463,8 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 	ManCoverage := int8(0)
 	ZoneCoverage := int8(0)
 
+	// Specialist development uses the full season total, before the position-change ST exclusion.
+	seasonSnaps := totalSnaps
 	mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, np.Position)
 	totalSnaps -= int(snaps.STSnaps)
 	posThreshold := float64(totalSnaps) * 0.8
@@ -760,8 +762,8 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 		RouteRunning = SecondaryProgression(np.RouteRunning, np.RouteRunning)
 	case "K":
 		// Primary
-		KickPower = PrimaryProgression(np.Progression, np.KickPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Kick Power", np.IsPracticeSquad)
-		KickAccuracy = PrimaryProgression(np.Progression, np.KickAccuracy, mostPlayedPosition, np.Archetype, SnapsPerGame, "Kick Accuracy", np.IsPracticeSquad)
+		KickPower = primarySpecialistProgression(np.Progression, np.KickPower, mostPlayedPosition, np.Archetype, seasonSnaps, SnapsPerGame, "Kick Power", np.IsPracticeSquad)
+		KickAccuracy = primarySpecialistProgression(np.Progression, np.KickAccuracy, mostPlayedPosition, np.Archetype, seasonSnaps, SnapsPerGame, "Kick Accuracy", np.IsPracticeSquad)
 		// Secondary
 		ThrowPower = SecondaryProgression(np.Progression, np.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
@@ -791,8 +793,8 @@ func ProgressNFLPlayer(np structs.NFLPlayer, SeasonID string, totalSnaps, SnapsP
 			ThrowAccuracy = SecondaryProgression(np.Progression, np.ThrowAccuracy)
 		}
 		// Primary Progressions
-		PuntPower = PrimaryProgression(np.Progression, np.PuntPower, mostPlayedPosition, np.Archetype, SnapsPerGame, "Punt Power", np.IsPracticeSquad)
-		PuntAccuracy = PrimaryProgression(np.Progression, np.PuntAccuracy, mostPlayedPosition, np.Archetype, SnapsPerGame, "Punt Accuracy", np.IsPracticeSquad)
+		PuntPower = primarySpecialistProgression(np.Progression, np.PuntPower, mostPlayedPosition, np.Archetype, seasonSnaps, SnapsPerGame, "Punt Power", np.IsPracticeSquad)
+		PuntAccuracy = primarySpecialistProgression(np.Progression, np.PuntAccuracy, mostPlayedPosition, np.Archetype, seasonSnaps, SnapsPerGame, "Punt Accuracy", np.IsPracticeSquad)
 		// Secondary Progressions
 		RunBlock = SecondaryProgression(np.Progression, np.RunBlock)
 		PassBlock = SecondaryProgression(np.Progression, np.PassBlock)
@@ -1110,6 +1112,8 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 	ZoneCoverage := int8(0)
 
 	// Get most played position
+	// Specialist development uses the full season total, before the position-change ST exclusion.
+	seasonSnaps := totalSnaps
 	mostPlayedPosition, mostPlayedSnaps := getMostPlayedPosition(snaps.BasePlayerSeasonSnaps, cp.Position)
 	totalSnaps -= int(snaps.STSnaps)
 	posThreshold := float64(totalSnaps) * 0.8
@@ -1399,8 +1403,8 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 		RouteRunning = SecondaryProgression(cp.RouteRunning, cp.RouteRunning)
 	case "K":
 		// Primary
-		KickPower = PrimaryProgression(cp.Progression, cp.KickPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Kick Power", cp.IsRedshirting)
-		KickAccuracy = PrimaryProgression(cp.Progression, cp.KickAccuracy, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Kick Accuracy", cp.IsRedshirting)
+		KickPower = primarySpecialistProgression(cp.Progression, cp.KickPower, mostPlayedPosition, cp.Archetype, seasonSnaps, SnapsPerGame, "Kick Power", cp.IsRedshirting)
+		KickAccuracy = primarySpecialistProgression(cp.Progression, cp.KickAccuracy, mostPlayedPosition, cp.Archetype, seasonSnaps, SnapsPerGame, "Kick Accuracy", cp.IsRedshirting)
 		// Secondary
 		ThrowPower = SecondaryProgression(cp.Progression, cp.ThrowPower)
 		ThrowAccuracy = SecondaryProgression(cp.Progression, cp.ThrowAccuracy)
@@ -1432,8 +1436,8 @@ func ProgressCollegePlayer(cp structs.CollegePlayer, SeasonID string, stats []st
 			FootballIQ = SecondaryProgression(cp.Progression, cp.FootballIQ)
 		}
 		// Primary Progressions
-		PuntPower = PrimaryProgression(cp.Progression, cp.PuntPower, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Punt Power", cp.IsRedshirting)
-		PuntAccuracy = PrimaryProgression(cp.Progression, cp.PuntAccuracy, mostPlayedPosition, cp.Archetype, SnapsPerGame, "Punt Accuracy", cp.IsRedshirting)
+		PuntPower = primarySpecialistProgression(cp.Progression, cp.PuntPower, mostPlayedPosition, cp.Archetype, seasonSnaps, SnapsPerGame, "Punt Power", cp.IsRedshirting)
+		PuntAccuracy = primarySpecialistProgression(cp.Progression, cp.PuntAccuracy, mostPlayedPosition, cp.Archetype, seasonSnaps, SnapsPerGame, "Punt Accuracy", cp.IsRedshirting)
 		// Secondary Progressions
 		RunBlock = SecondaryProgression(cp.Progression, cp.RunBlock)
 		PassBlock = SecondaryProgression(cp.Progression, cp.PassBlock)
@@ -2520,7 +2524,34 @@ func PrimaryProgression(progression int8, input int8, position string, archetype
 	}
 
 	modifier := GetModifiers(position, archetype, spg, attribute)
+	return primaryProgressionWithModifier(progression, input, modifier, isRedshirting)
+}
 
+// Only normal offseason K/P progression calls this path. Boom/bust and other
+// positions retain PrimaryProgression's existing snaps-per-game lookup.
+func primarySpecialistProgression(progression, input int8, position, archetype string, seasonSnaps, spg int, attribute string, isRedshirting bool) int8 {
+	if position != "K" && position != "P" {
+		return PrimaryProgression(progression, input, position, archetype, spg, attribute, isRedshirting)
+	}
+	if input == 0 {
+		return 1
+	}
+	modifier := getSpecialistSnapModifier(seasonSnaps) + GetArchetypeMod(position, archetype, attribute)
+	return primaryProgressionWithModifier(progression, input, modifier, isRedshirting)
+}
+
+func getSpecialistSnapModifier(seasonSnaps int) float64 {
+	switch {
+	case seasonSnaps >= 24:
+		return 1.0 + rand.Float64()*0.25
+	case seasonSnaps >= 12:
+		return 0.9 + rand.Float64()*0.20
+	default:
+		return 0.5 + rand.Float64()*0.25
+	}
+}
+
+func primaryProgressionWithModifier(progression, input int8, modifier float64, isRedshirting bool) int8 {
 	var progress float64 = 0
 
 	// Is Redshirting or Practice Squad Check
@@ -2610,7 +2641,7 @@ func GetArchetypeMod(pos string, arch string, attribute string) float64 {
 			}
 			return 0.0
 		case "Balanced":
-			if attribute == "Agility" || attribute == "Pass Block" {
+			if attribute == "Agility" || attribute == "Pass Blocking" {
 				return 0.05
 			}
 			return 0.0
