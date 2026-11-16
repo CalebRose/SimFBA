@@ -106,6 +106,12 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/admin/nfl/postseason/games", controller.GetNFLPostseasonGames).Methods("GET")
 	apiRouter.HandleFunc("/admin/nfl/game/delete/{gameID}", controller.DeleteNFLPostseasonGame).Methods("POST")
 	apiRouter.HandleFunc("/admin/nfl/draft-pick/compensatory", controller.AddCompensatoryDraftPick).Methods("POST")
+	apiRouter.HandleFunc("/admin/nfl/draft-pick/forfeit", controller.ForfeitNFLDraftPick).Methods("POST")
+	apiRouter.HandleFunc("/admin/nfl/run/combine", controller.RunCombine).Methods("POST")
+	apiRouter.HandleFunc("/admin/cfb/run/pro-days", controller.RunProDays).Methods("POST")
+	apiRouter.HandleFunc("/admin/cfb/toggle/proday-nominations", controller.ToggleProDayNominations).Methods("POST")
+	apiRouter.HandleFunc("/cfb/proday/nominations/{teamID}", controller.GetProDayNominationsByTeam).Methods("GET")
+	apiRouter.HandleFunc("/cfb/proday/nominate", controller.SubmitProDayNominations).Methods("POST")
 	apiRouter.HandleFunc("/simfba/sync/week/", controller.SyncWeek).Methods("GET")
 	apiRouter.HandleFunc("/simfba/sync/timeslot/{timeslot}", controller.SyncTimeslot).Methods("GET")
 	// apiRouter.HandleFunc("/simfba/regress/timeslot/{timeslot}", controller.RegressTimeslot).Methods("GET")
@@ -175,6 +181,10 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/nfl/draft/remove/{id}", controller.RemovePlayerFromScoutBoard).Methods("GET")
 	apiRouter.HandleFunc("/nfl/draft/scout/{id}", controller.GetScoutingDataByDraftee).Methods("GET")
 	// apiRouter.HandleFunc("/nfl/draft/boom/bust", controller.BoomOrBust).Methods("GET")
+	apiRouter.HandleFunc("/nfl/draft/events/combine/export", controller.ExportCombineResultsToCSV).Methods("GET")
+	apiRouter.HandleFunc("/nfl/draft/events/proday/export", controller.ExportProDayResultsToCSV).Methods("GET")
+	apiRouter.HandleFunc("/nfl/draft/events/combine", controller.GetCombineResults).Methods("GET")
+	apiRouter.HandleFunc("/nfl/draft/events/proday", controller.GetProDayResults).Methods("GET")
 
 	// Face Controls
 	// apiRouter.HandleFunc("/faces/migrate", controller.MigrateFaceData).Methods("GET")

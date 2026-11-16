@@ -46,6 +46,7 @@ type NFLDraftee struct {
 	PuntPowerGrade     string
 	BoomOrBust         bool
 	BoomOrBustStatus   string
+	IsNominatedForProDay bool
 }
 
 func (n *NFLDraftee) Map(cp structs.CollegePlayer) {

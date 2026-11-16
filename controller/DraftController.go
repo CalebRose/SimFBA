@@ -157,3 +157,21 @@ func BoomOrBust(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode("Boom/Bust Complete")
 }
+
+func ExportCombineResultsToCSV(w http.ResponseWriter, r *http.Request) {
+	managers.ExportCombineResultsToCSV(w)
+}
+
+func ExportProDayResultsToCSV(w http.ResponseWriter, r *http.Request) {
+	managers.ExportProDayResultsToCSV(w)
+}
+
+func GetCombineResults(w http.ResponseWriter, r *http.Request) {
+	results := managers.GetCombineResults()
+	json.NewEncoder(w).Encode(results)
+}
+
+func GetProDayResults(w http.ResponseWriter, r *http.Request) {
+	results := managers.GetProDayResults()
+	json.NewEncoder(w).Encode(results)
+}

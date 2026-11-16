@@ -22,6 +22,7 @@ type UpdateTimestampDTO struct {
 	NFLSundayAfternoon bool
 	NFLSundayEvening   bool
 	NFLMondayEvening   bool
+	AllowProDayNominations bool
 }
 
 type Timestamp struct {
@@ -77,6 +78,7 @@ type Timestamp struct {
 	ProgressedProfessionalPlayers bool
 	TransferPortalPhase           uint
 	TransferPortalRound           uint
+	AllowProDayNominations        bool
 }
 
 func (t *Timestamp) MoveUpPhase() {
