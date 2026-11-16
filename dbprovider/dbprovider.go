@@ -9,6 +9,7 @@ import (
 	"time"
 
 	config "github.com/CalebRose/SimFBA/secrets"
+	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/structs"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"golang.org/x/crypto/ssh"
@@ -166,6 +167,9 @@ func (p *Provider) InitDatabase() bool {
 
 	db.AutoMigrate(&structs.CollegeGameplanRecord{})
 	db.AutoMigrate(&structs.NFLGameplanRecord{})
+	db.AutoMigrate(&structs.Timestamp{})
+	db.AutoMigrate(&models.NFLDraftee{})
+	db.AutoMigrate(&models.EventResults{})
 	return true
 }
 

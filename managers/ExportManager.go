@@ -2,11 +2,14 @@ package managers
 
 import (
 	"encoding/csv"
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
 	"strings"
 
+	"github.com/CalebRose/SimFBA/dbprovider"
+	"github.com/CalebRose/SimFBA/models"
 	"github.com/CalebRose/SimFBA/repository"
 	"github.com/CalebRose/SimFBA/structs"
 	"github.com/CalebRose/SimFBA/util"
@@ -1292,4 +1295,140 @@ func ExportMinimumValueAndTagUpdatesToCSV(w http.ResponseWriter, csvRows [][]str
 			log.Fatal("Error while writing to file ::", err)
 		}
 	}
+}
+
+func formatEventFloat(v float32) string {
+	if v <= 0 {
+		return ""
+	}
+	return fmt.Sprintf("%.2f", v)
+}
+
+func formatEventUint8(v uint8) string {
+	if v == 0 {
+		return ""
+	}
+	return strconv.Itoa(int(v))
+}
+
+func exportEventResultsCSV(w http.ResponseWriter, isCombine bool, filename string) {
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
+	w.Header().Set("Content-Disposition", "attachment;filename="+filename)
+	w.Header().Set("Transfer-Encoding", "chunked")
+
+	writer := csv.NewWriter(w)
+	defer writer.Flush()
+
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+
+	var results []models.EventResults
+	if ts.NFLSeasonID > 0 {
+		db.Where("season_id = ? AND is_combine = ?", ts.NFLSeasonID, isCombine).Find(&results)
+	} else {
+		db.Where("is_combine = ?", isCombine).Find(&results)
+	}
+
+	draftees := GetAllNFLDraftees()
+	drafteeMap := make(map[uint]models.NFLDraftee)
+	for _, d := range draftees {
+		drafteeMap[d.ID] = d
+	}
+
+	header := []string{
+		"PlayerID", "First Name", "Last Name", "Position", "College", "Event",
+		"40-Yard Dash", "Bench Press", "Shuttle", "3-Cone", "Vertical Jump", "Broad Jump", "Wonderlic",
+		"Throwing Accuracy", "Throwing Distance", "Inside Run", "Outside Run", "Catching", "Route Running",
+		"Run Blocking", "Pass Blocking", "Pass Rush", "Run Stop", "LB Coverage", "Man Coverage", "Zone Coverage",
+		"Kickoff", "Field Goal", "Punt Distance", "Coffin Punt",
+	}
+
+	if err := writer.Write(header); err != nil {
+		log.Printf("Cannot write CSV header: %v", err)
+		return
+	}
+
+	for _, res := range results {
+		draftee := drafteeMap[res.PlayerID]
+		row := []string{
+			strconv.Itoa(int(res.PlayerID)),
+			draftee.FirstName,
+			draftee.LastName,
+			draftee.Position,
+			draftee.College,
+			res.Name,
+			formatEventFloat(res.FourtyYardDash),
+			formatEventUint8(res.BenchPress),
+			formatEventFloat(res.Shuttle),
+			formatEventFloat(res.ThreeCone),
+			formatEventUint8(res.VerticalJump),
+			formatEventUint8(res.BroadJump),
+			formatEventUint8(res.Wonderlic),
+			formatEventFloat(res.ThrowingAccuracy),
+			formatEventFloat(res.ThrowingDistance),
+			formatEventFloat(res.InsideRun),
+			formatEventFloat(res.OutsideRun),
+			formatEventFloat(res.Catching),
+			formatEventFloat(res.RouteRunning),
+			formatEventFloat(res.RunBlocking),
+			formatEventFloat(res.PassBlocking),
+			formatEventFloat(res.PassRush),
+			formatEventFloat(res.RunStop),
+			formatEventFloat(res.LBCoverage),
+			formatEventFloat(res.ManCoverage),
+			formatEventFloat(res.ZoneCoverage),
+			formatEventFloat(res.Kickoff),
+			formatEventFloat(res.Fieldgoal),
+			formatEventFloat(res.PuntDistance),
+			formatEventFloat(res.CoffinPunt),
+		}
+		if err := writer.Write(row); err != nil {
+			log.Printf("Cannot write CSV row: %v", err)
+			return
+		}
+	}
+}
+
+func ExportCombineResultsToCSV(w http.ResponseWriter) {
+	ts := GetTimestamp()
+	season := ts.Season
+	if season == 0 {
+		season = 2028
+	}
+	filename := fmt.Sprintf("%dSimNFLCombineResults.csv", season)
+	exportEventResultsCSV(w, true, filename)
+}
+
+func ExportProDayResultsToCSV(w http.ResponseWriter) {
+	ts := GetTimestamp()
+	season := ts.Season
+	if season == 0 {
+		season = 2028
+	}
+	filename := fmt.Sprintf("%dSimCFBProDayResults.csv", season)
+	exportEventResultsCSV(w, false, filename)
+}
+
+func GetCombineResults() []models.EventResults {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	var results []models.EventResults
+	if ts.NFLSeasonID > 0 {
+		db.Where("season_id = ? AND is_combine = ?", ts.NFLSeasonID, true).Find(&results)
+	} else {
+		db.Where("is_combine = ?", true).Find(&results)
+	}
+	return results
+}
+
+func GetProDayResults() []models.EventResults {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	var results []models.EventResults
+	if ts.NFLSeasonID > 0 {
+		db.Where("season_id = ? AND is_combine = ?", ts.NFLSeasonID, false).Find(&results)
+	} else {
+		db.Where("is_combine = ?", false).Find(&results)
+	}
+	return results
 }

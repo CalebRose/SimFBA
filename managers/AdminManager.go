@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"strings"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	fbsvc "github.com/CalebRose/SimFBA/firebase"
@@ -887,6 +888,7 @@ func GetWeeksInASeason(seasonID string, weekID string) []structs.CollegeWeek {
 // UpdateTimestampDirect directly updates the timestamp fields and saves to DB.
 func UpdateTimestampDirect(dto structs.UpdateTimestampDTO) (structs.Timestamp, error) {
 	db := dbprovider.GetInstance().GetDB()
+	db.AutoMigrate(&structs.Timestamp{})
 	ts := GetTimestamp()
 
 	if dto.WeekID > 0 {
@@ -923,6 +925,7 @@ func UpdateTimestampDirect(dto structs.UpdateTimestampDTO) (structs.Timestamp, e
 	ts.NFLSundayAfternoon = dto.NFLSundayAfternoon
 	ts.NFLSundayEvening = dto.NFLSundayEvening
 	ts.NFLMondayEvening = dto.NFLMondayEvening
+	ts.AllowProDayNominations = dto.AllowProDayNominations
 
 	err := db.Save(&ts).Error
 	return ts, err
@@ -981,4 +984,48 @@ func AddCompensatoryDraftPick(dto structs.CompensatoryDraftPickDTO) (structs.NFL
 
 	err := db.Create(&pick).Error
 	return pick, err
+}
+
+// ForfeitNFLDraftPick marks an NFL draft pick as void (forfeited) and logs a transaction news item
+func ForfeitNFLDraftPick(dto structs.ForfeitDraftPickDTO) (structs.NFLDraftPick, error) {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+
+	if dto.DraftPickID == 0 {
+		return structs.NFLDraftPick{}, fmt.Errorf("draft pick ID is required")
+	}
+
+	var pick structs.NFLDraftPick
+	if err := db.Where("id = ?", dto.DraftPickID).First(&pick).Error; err != nil {
+		return structs.NFLDraftPick{}, fmt.Errorf("draft pick not found")
+	}
+
+	if pick.IsVoid {
+		return pick, fmt.Errorf("draft pick is already forfeited / void")
+	}
+
+	pick.IsVoid = true
+	reasonText := strings.TrimSpace(dto.Reason)
+	if reasonText == "" {
+		reasonText = "League Sanction"
+	}
+
+	if pick.Notes != "" {
+		pick.Notes += fmt.Sprintf(" | Forfeited: %s", reasonText)
+	} else {
+		pick.Notes = fmt.Sprintf("Forfeited: %s", reasonText)
+	}
+
+	if err := db.Save(&pick).Error; err != nil {
+		return pick, err
+	}
+
+	season := pick.Season
+	if season == 0 {
+		season = uint(ts.Season)
+	}
+	msg := fmt.Sprintf("The %s have forfeited their %d Round %d Pick (Pick #%d). Reason: %s", pick.Team, season, pick.DraftRound, pick.DraftNumber, reasonText)
+	CreateNewsLog("NFL", msg, "Draft", int(pick.TeamID), ts)
+
+	return pick, nil
 }

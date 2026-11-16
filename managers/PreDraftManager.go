@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"sort"
 	"strings"
+	"time"
 
 	"github.com/CalebRose/SimFBA/dbprovider"
 	"github.com/CalebRose/SimFBA/models"
@@ -728,4 +730,268 @@ func GenerateTypicalListOfEvents() []models.PreDraftEvent {
 	tempList = append(tempList, tempEvent)
 
 	return tempList
+}
+
+// RunCombine processes Combine drills for a list of player IDs entered by an admin.
+func RunCombine(playerIDs []uint) (int, []string, error) {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	db.AutoMigrate(&models.EventResults{})
+
+	allDraftees := GetAllNFLDraftees()
+	drafteeByID := make(map[uint]models.NFLDraftee)
+	drafteeByPlayerID := make(map[int]models.NFLDraftee)
+	for _, d := range allDraftees {
+		drafteeByID[d.ID] = d
+		if d.PlayerID > 0 {
+			drafteeByPlayerID[d.PlayerID] = d
+		}
+	}
+
+	event := models.PreDraftEvent{
+		Name:      "NFL Combine",
+		IsCombine: true,
+	}
+
+	count := 0
+	var unfound []string
+
+	for _, id := range playerIDs {
+		draftee, ok := drafteeByID[id]
+		if !ok {
+			draftee, ok = drafteeByPlayerID[int(id)]
+		}
+		if !ok {
+			unfound = append(unfound, fmt.Sprintf("%d", id))
+			continue
+		}
+
+		hidePerformance := ShouldHidePerformance()
+		eventResult := GenerateEvent(draftee, event, ts)
+		eventResult = RunEvents(draftee, hidePerformance, eventResult)
+
+		var existing models.EventResults
+		if err := db.Where("player_id = ? AND season_id = ? AND is_combine = ?", eventResult.PlayerID, eventResult.SeasonID, true).First(&existing).Error; err == nil {
+			eventResult.ID = existing.ID
+			eventResult.CreatedAt = existing.CreatedAt
+			db.Save(&eventResult)
+		} else {
+			db.Create(&eventResult)
+		}
+		count++
+	}
+
+	return count, unfound, nil
+}
+
+// RunProDays runs pro day testing for nominated players, auto-selected graduates for non-nominating teams, and top 35 FCS prospects.
+func RunProDays() (int, error) {
+	db := dbprovider.GetInstance().GetDB()
+	ts := GetTimestamp()
+	db.AutoMigrate(&models.EventResults{}, &models.NFLDraftee{})
+
+	teams := GetAllCollegeTeams()
+	allDraftees := GetAllNFLDraftees()
+
+	teamMap := make(map[uint]structs.CollegeTeam)
+	for _, t := range teams {
+		teamMap[t.ID] = t
+	}
+
+	drafteesByCollege := make(map[uint][]models.NFLDraftee)
+	var fcsDraftees []models.NFLDraftee
+
+	for _, d := range allDraftees {
+		team, isTeam := teamMap[d.CollegeID]
+		if isTeam && !team.IsFBS {
+			fcsDraftees = append(fcsDraftees, d)
+		} else {
+			drafteesByCollege[d.CollegeID] = append(drafteesByCollege[d.CollegeID], d)
+		}
+	}
+
+	var participants []models.NFLDraftee
+	seenPlayerIDs := make(map[uint]bool)
+
+	// 1. Process FBS Teams
+	for _, team := range teams {
+		if !team.IsFBS {
+			continue
+		}
+		collegeDraftees := drafteesByCollege[team.ID]
+		if len(collegeDraftees) == 0 {
+			continue
+		}
+
+		var nominated []models.NFLDraftee
+		for _, d := range collegeDraftees {
+			if d.IsNominatedForProDay {
+				nominated = append(nominated, d)
+			}
+		}
+
+		if len(nominated) > 0 {
+			for _, d := range nominated {
+				if !seenPlayerIDs[d.ID] {
+					seenPlayerIDs[d.ID] = true
+					participants = append(participants, d)
+				}
+			}
+		} else {
+			// No nominations: pick up to 5 random available graduates
+			rand.Seed(time.Now().UnixNano())
+			shuffled := make([]models.NFLDraftee, len(collegeDraftees))
+			copy(shuffled, collegeDraftees)
+			rand.Shuffle(len(shuffled), func(i, j int) {
+				shuffled[i], shuffled[j] = shuffled[j], shuffled[i]
+			})
+			limit := 5
+			if len(shuffled) < limit {
+				limit = len(shuffled)
+			}
+			for i := 0; i < limit; i++ {
+				d := shuffled[i]
+				if !seenPlayerIDs[d.ID] {
+					seenPlayerIDs[d.ID] = true
+					participants = append(participants, d)
+				}
+			}
+		}
+	}
+
+	// 2. Process FCS Teams (top 35 players)
+	sort.Slice(fcsDraftees, func(i, j int) bool {
+		if fcsDraftees[i].Overall != fcsDraftees[j].Overall {
+			return fcsDraftees[i].Overall > fcsDraftees[j].Overall
+		}
+		iVal := util.GetNumericalSortValueByLetterGrade(fcsDraftees[i].OverallGrade)
+		jVal := util.GetNumericalSortValueByLetterGrade(fcsDraftees[j].OverallGrade)
+		return iVal < jVal
+	})
+
+	fcsLimit := 35
+	if len(fcsDraftees) < fcsLimit {
+		fcsLimit = len(fcsDraftees)
+	}
+	for i := 0; i < fcsLimit; i++ {
+		d := fcsDraftees[i]
+		if !seenPlayerIDs[d.ID] {
+			seenPlayerIDs[d.ID] = true
+			participants = append(participants, d)
+		}
+	}
+
+	// 3. Run drills for each participant
+	count := 0
+	for _, player := range participants {
+		team := teamMap[player.CollegeID]
+		eventName := "Pro Day"
+		if !team.IsFBS {
+			eventName = "FCS Pro Day"
+		} else if team.Conference != "" {
+			eventName = team.Conference + " Pro Day"
+		}
+
+		event := models.PreDraftEvent{
+			Name:      eventName,
+			IsCombine: false,
+		}
+
+		hidePerformance := ShouldHidePerformance()
+		eventResult := GenerateEvent(player, event, ts)
+		eventResult = RunEvents(player, hidePerformance, eventResult)
+
+		var existing models.EventResults
+		if err := db.Where("player_id = ? AND season_id = ? AND is_combine = ?", eventResult.PlayerID, eventResult.SeasonID, false).First(&existing).Error; err == nil {
+			eventResult.ID = existing.ID
+			eventResult.CreatedAt = existing.CreatedAt
+			db.Save(&eventResult)
+		} else {
+			db.Create(&eventResult)
+		}
+		count++
+	}
+
+	return count, nil
+}
+
+// ToggleProDayNominations toggles the AllowProDayNominations flag on Timestamp.
+func ToggleProDayNominations() (bool, error) {
+	db := dbprovider.GetInstance().GetDB()
+	db.AutoMigrate(&structs.Timestamp{})
+	ts := GetTimestamp()
+	ts.AllowProDayNominations = !ts.AllowProDayNominations
+	err := db.Save(&ts).Error
+	return ts.AllowProDayNominations, err
+}
+
+// GetProDayNominationsByTeam fetches graduating/declared draftees for a college team.
+func GetProDayNominationsByTeam(teamID string) ([]models.NFLDraftee, bool, error) {
+	db := dbprovider.GetInstance().GetDB()
+	db.AutoMigrate(&structs.Timestamp{}, &models.NFLDraftee{})
+	ts := GetTimestamp()
+	var draftees []models.NFLDraftee
+	if err := db.Where("college_id = ?", teamID).Find(&draftees).Error; err != nil {
+		return nil, ts.AllowProDayNominations, err
+	}
+
+	// Pre-progression fallback: if no draftees exist yet for this team, pull current seniors/graduates
+	if len(draftees) == 0 {
+		var players []structs.CollegePlayer
+		db.Where("team_id = ? AND (year >= 4 OR has_graduated = ?)", teamID, true).Find(&players)
+		if len(players) == 0 {
+			// fallback to year 3 (juniors) if team has no seniors
+			db.Where("team_id = ? AND year >= 3", teamID).Find(&players)
+		}
+		for _, cp := range players {
+			var d models.NFLDraftee
+			d.Map(cp)
+			d.GetLetterGrades()
+			draftees = append(draftees, d)
+		}
+	}
+
+	return draftees, ts.AllowProDayNominations, nil
+}
+
+// SubmitProDayNominations saves a team's nominated players (up to 5).
+func SubmitProDayNominations(dto structs.ProDayNominationDTO) error {
+	if dto.TeamID == 0 {
+		return fmt.Errorf("team ID is required")
+	}
+	if len(dto.PlayerIDs) > 5 {
+		return fmt.Errorf("a team can nominate at most 5 players for Pro Days")
+	}
+	db := dbprovider.GetInstance().GetDB()
+	db.AutoMigrate(&structs.Timestamp{}, &models.NFLDraftee{})
+	ts := GetTimestamp()
+	if !ts.AllowProDayNominations {
+		return fmt.Errorf("pro day nominations are currently closed")
+	}
+
+	// Reset all draftees for this college
+	db.Model(&models.NFLDraftee{}).Where("college_id = ?", dto.TeamID).Update("is_nominated_for_pro_day", false)
+
+	// Set nominated players
+	if len(dto.PlayerIDs) > 0 {
+		var existingCount int64
+		db.Model(&models.NFLDraftee{}).Where("college_id = ? AND id IN (?)", dto.TeamID, dto.PlayerIDs).Count(&existingCount)
+		if existingCount > 0 {
+			if err := db.Model(&models.NFLDraftee{}).Where("college_id = ? AND id IN (?)", dto.TeamID, dto.PlayerIDs).Update("is_nominated_for_pro_day", true).Error; err != nil {
+				return err
+			}
+		} else {
+			// Pre-progression fallback: populate them into nfl_draftees so they persist as nominated
+			var collegePlayers []structs.CollegePlayer
+			db.Where("team_id = ? AND id IN (?)", dto.TeamID, dto.PlayerIDs).Find(&collegePlayers)
+			for _, cp := range collegePlayers {
+				var d models.NFLDraftee
+				d.Map(cp)
+				d.GetLetterGrades()
+				d.IsNominatedForProDay = true
+				db.Save(&d)
+			}
+		}
+	}
+	return nil
 }

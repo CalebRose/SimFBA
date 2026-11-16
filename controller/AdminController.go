@@ -297,3 +297,100 @@ func AddCompensatoryDraftPick(w http.ResponseWriter, r *http.Request) {
 	}
 	json.NewEncoder(w).Encode(pick)
 }
+
+func ForfeitNFLDraftPick(w http.ResponseWriter, r *http.Request) {
+	var dto structs.ForfeitDraftPickDTO
+	err := json.NewDecoder(r.Body).Decode(&dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	pick, err := managers.ForfeitNFLDraftPick(dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	json.NewEncoder(w).Encode(pick)
+}
+
+func RunCombine(w http.ResponseWriter, r *http.Request) {
+	var dto structs.RunCombineDTO
+	err := json.NewDecoder(r.Body).Decode(&dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	count, unfound, err := managers.RunCombine(dto.PlayerIDs)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	res := map[string]interface{}{
+		"Count":   count,
+		"Unfound": unfound,
+		"Message": fmt.Sprintf("Successfully ran combine testing for %d players.", count),
+	}
+	json.NewEncoder(w).Encode(res)
+}
+
+func RunProDays(w http.ResponseWriter, r *http.Request) {
+	count, err := managers.RunProDays()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	res := map[string]interface{}{
+		"Count":   count,
+		"Message": fmt.Sprintf("Successfully ran pro day testing for %d players.", count),
+	}
+	json.NewEncoder(w).Encode(res)
+}
+
+func ToggleProDayNominations(w http.ResponseWriter, r *http.Request) {
+	val, err := managers.ToggleProDayNominations()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	ts := managers.GetTimestamp()
+	ws.BroadcastTSUpdate(ts)
+	res := map[string]interface{}{
+		"AllowProDayNominations": val,
+		"Timestamp":              ts,
+	}
+	json.NewEncoder(w).Encode(res)
+}
+
+func GetProDayNominationsByTeam(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	teamID := vars["teamID"]
+	if len(teamID) == 0 {
+		http.Error(w, "teamID is required", http.StatusBadRequest)
+		return
+	}
+	draftees, allowNominations, err := managers.GetProDayNominationsByTeam(teamID)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	res := map[string]interface{}{
+		"Players":                draftees,
+		"AllowProDayNominations": allowNominations,
+	}
+	json.NewEncoder(w).Encode(res)
+}
+
+func SubmitProDayNominations(w http.ResponseWriter, r *http.Request) {
+	var dto structs.ProDayNominationDTO
+	err := json.NewDecoder(r.Body).Decode(&dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	err = managers.SubmitProDayNominations(dto)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode("Successfully saved Pro Day nominations")
+}
