@@ -31,11 +31,16 @@ type BaseTeam struct {
 	SpecialTeamsGrade string
 	PenaltyMarks      uint8
 	JerseyType        uint8
+	LatestIP          string
 	LastLogin         time.Time
 }
 
 func (bt *BaseTeam) UpdateLatestInstance() {
 	bt.LastLogin = time.Now()
+}
+
+func (bt *BaseTeam) UpdateLatestIP(ip string) {
+	bt.LatestIP = ip
 }
 
 func (bt *BaseTeam) RemoveUserFromTeam() {

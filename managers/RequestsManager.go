@@ -274,6 +274,7 @@ func RemoveUserFromTeam(teamId string) {
 	coach.SetAsInactive()
 
 	team.RemoveUserFromTeam()
+	team.UpdateLatestIP("")
 	team.AssignDiscordID("")
 
 	repository.SaveCollegeTeamRecord(team, db)

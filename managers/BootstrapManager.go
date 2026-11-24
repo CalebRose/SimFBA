@@ -203,7 +203,7 @@ func GetPlayerBootstrap(collegeID, proID string) BootstrapPlayerData {
 	}
 }
 
-func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
+func GetLandingBootstrap(collegeID, proID, ip string) BootstrapDataLanding {
 	var wg sync.WaitGroup
 
 	// College Data
@@ -245,6 +245,7 @@ func GetLandingBootstrap(collegeID, proID string) BootstrapDataLanding {
 			defer wg.Done()
 			collegeTeam = GetTeamByTeamID(collegeID)
 			collegeTeam.UpdateLatestInstance()
+			collegeTeam.UpdateLatestIP(ip)
 			repository.SaveCFBTeam(collegeTeam, dbprovider.GetInstance().GetDB())
 		}()
 		go func() {

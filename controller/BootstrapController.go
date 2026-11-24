@@ -3,6 +3,7 @@ package controller
 import (
 	"encoding/json"
 	"log"
+	"net"
 	"net/http"
 
 	"github.com/CalebRose/SimFBA/managers"
@@ -24,9 +25,14 @@ func BootstrapTeamData(w http.ResponseWriter, r *http.Request) {
 func BootstrapLandingData(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	vars := mux.Vars(r)
+	ip, _, err := net.SplitHostPort(r.RemoteAddr)
+	if err != nil {
+		log.Printf("Failed to get IP address: %v", err)
+	}
+	log.Printf("Request IP address: %s", ip)
 	collegeID := vars["collegeID"]
 	proID := vars["proID"]
-	data := managers.GetLandingBootstrap(collegeID, proID)
+	data := managers.GetLandingBootstrap(collegeID, proID, ip)
 	bootstrapData, err := easyjson.Marshal(data)
 	if err != nil {
 		log.Printf("Failed to encode JSON response: %v", err)
