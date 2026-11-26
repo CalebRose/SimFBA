@@ -5,6 +5,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"strings"
 
 	"github.com/CalebRose/SimFBA/managers"
 	"github.com/gorilla/mux"
@@ -25,10 +26,7 @@ func BootstrapTeamData(w http.ResponseWriter, r *http.Request) {
 func BootstrapLandingData(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	vars := mux.Vars(r)
-	ip, _, err := net.SplitHostPort(r.RemoteAddr)
-	if err != nil {
-		log.Printf("Failed to get IP address: %v", err)
-	}
+	ip := getClientIP(r)
 	log.Printf("Request IP address: %s", ip)
 	collegeID := vars["collegeID"]
 	proID := vars["proID"]
@@ -39,6 +37,33 @@ func BootstrapLandingData(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 	w.Write(bootstrapData)
+}
+
+func getClientIP(r *http.Request) string {
+	if forwardedFor := r.Header.Get("X-Forwarded-For"); forwardedFor != "" {
+		candidate := strings.TrimSpace(strings.SplitN(forwardedFor, ",", 2)[0])
+		if ip := parseIPAddress(candidate); ip != "" {
+			return ip
+		}
+		log.Printf("Invalid client IP in X-Forwarded-For: %q", candidate)
+	}
+
+	if ip := parseIPAddress(r.RemoteAddr); ip != "" {
+		return ip
+	}
+	log.Printf("Failed to get client IP from RemoteAddr %q", r.RemoteAddr)
+	return ""
+}
+
+func parseIPAddress(value string) string {
+	if net.ParseIP(value) != nil {
+		return value
+	}
+	host, _, err := net.SplitHostPort(value)
+	if err == nil && net.ParseIP(host) != nil {
+		return host
+	}
+	return ""
 }
 
 func BootstrapTeamRosterData(w http.ResponseWriter, r *http.Request) {
