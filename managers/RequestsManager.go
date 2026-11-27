@@ -157,7 +157,7 @@ func ApproveTeamRequest(request structs.TeamRequest) structs.TeamRequest {
 		}
 	}
 
-	if ts.CollegeWeekID < 15 {
+	if ts.CollegeWeek < 15 {
 		standings := GetCFBStandingsByTeamIDAndSeasonID(teamId, seasonID)
 		standings.SetCoach(coach.CoachName)
 		repository.SaveCFBStandingsRecord(standings, db)
